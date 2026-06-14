@@ -1,0 +1,8 @@
+# OS junk
+.DS_Store
+
+# Office temp/lock files
+~$*
+
+# Node
+node_modules/
