@@ -231,12 +231,13 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
+      background-image: var(--slide-bg);
       background-size: cover;
       background-position: center;
       z-index: -2;
       transform: scale(1.05);
       transition: transform 6s cubic-bezier(0.16, 1, 0.3, 1);
-      filter: brightness(0.9) contrast(1.02);
+      filter: brightness(0.95) contrast(1.02);
     }
 
     .slide.active::before {
@@ -247,7 +248,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: inherit; /* Inherits any background gradient from the element */
+      background: var(--slide-overlay, linear-gradient(135deg, rgba(8, 5, 4, 0.95) 40%, rgba(8, 5, 4, 0.5) 100%));
       z-index: -1;
     }
 
@@ -533,6 +534,296 @@
       box-shadow: 0 24px 64px rgba(0,0,0,0.5);
     }
 
+    /* SLIDE 3: SHORTCOMINGS */
+    .shortcomings-split {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .shortcomings-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .shortcoming-card {
+      background: rgba(244, 63, 94, 0.02);
+      border: 1px solid rgba(244, 63, 94, 0.08);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      backdrop-filter: blur(16px);
+      transition: var(--transition-smooth);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .shortcoming-card:hover {
+      border-color: var(--color-rose);
+      background: rgba(244, 63, 94, 0.04);
+      transform: translateX(4px);
+    }
+
+    .shortcoming-header {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .shortcoming-header i {
+      color: var(--color-rose);
+      font-size: 20px;
+    }
+
+    .shortcoming-bullet {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .shortcoming-bullet i {
+      color: var(--color-rose);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* SLIDE 7: SPEC SHEET */
+    .specs-split-layout {
+      display: grid;
+      grid-template-columns: 0.65fr 1.35fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .specs-showcase-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .specs-selector-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .spec-selector-btn {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+      width: 100%;
+      text-align: left;
+    }
+
+    .spec-selector-btn:hover {
+      border-color: rgba(217, 119, 6, 0.4);
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateX(4px);
+    }
+
+    .spec-selector-btn.active {
+      border-color: var(--color-amber);
+      background: var(--color-amber-light);
+      color: #fff;
+    }
+
+    .spec-selector-btn-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .spec-selector-btn-left img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    }
+
+    .spec-selector-name {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .spec-selector-btn i.ti-chevron-right {
+      font-size: 12px;
+      opacity: 0.5;
+      transition: var(--transition-smooth);
+    }
+
+    .spec-selector-btn.active i.ti-chevron-right {
+      opacity: 1;
+      transform: translateX(4px);
+      color: var(--color-amber);
+    }
+
+    .specs-content-card {
+      background: rgba(8, 5, 4, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      min-height: 270px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .spec-content-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .spec-content-header img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .spec-content-desc {
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+    }
+
+    .spec-stat-ribbon {
+      display: flex;
+      gap: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 16px;
+    }
+
+    .spec-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .spec-stat-val {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--color-amber);
+      line-height: 1;
+    }
+
+    .spec-stat-lbl {
+      font-size: 10px;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* SLIDE 10: DEMAND & TRACTION */
+    .demand-split-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .demand-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .demand-card {
+      background: rgba(8, 5, 4, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      transition: var(--transition-smooth);
+    }
+
+    .demand-card:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .demand-card.wide {
+      grid-column: span 2;
+    }
+
+    .demand-lbl {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: var(--font-mono);
+    }
+
+    .demand-val {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .demand-desc {
+      font-size: 11.5px;
+      line-height: 1.4;
+      color: var(--text-secondary);
+    }
+
+    .demand-visuals-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .demand-visual-box {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.2);
+      transition: var(--transition-smooth);
+    }
+
+    .demand-visual-box:hover {
+      border-color: var(--color-amber);
+      transform: scale(1.02);
+    }
+
+    .demand-visual-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
     /* SLIDE 4: UNTAPPED WOOD PILLARS */
     .untapped-card-grid {
       display: grid;
@@ -777,6 +1068,13 @@
     }
 
     /* SLIDE 14: THANK YOU */
+    .thank-you-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
     .thank-you-card {
       background: var(--bg-card);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -879,7 +1177,7 @@
       <div class="slides-container" id="slides-track">
         
         <!-- SLIDE 1: COVER SLIDE -->
-        <section class="slide active" data-slide="1" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.95) 35%, rgba(8, 5, 4, 0.45) 100%), url('assets/hero.jpg');">
+        <section class="slide active" data-slide="1" style="--slide-bg: url('assets/image1.png'); --slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.95) 35%, rgba(8, 5, 4, 0.45) 100%);">
           <div class="slide-wrapper title-content-box">
             <div class="cover-badge">
               <i class="ti ti-bolt"></i> Now Shipping SUPERWOOD
@@ -894,7 +1192,7 @@
         </section>
 
         <!-- SLIDE 2: URBANIZATION -->
-        <section class="slide" data-slide="2" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.94) 40%, rgba(8, 5, 4, 0.55) 100%), url('assets/construction.jpg');">
+        <section class="slide" data-slide="2" style="--slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.96) 40%, rgba(8, 5, 4, 0.7) 100%);">
           <div class="slide-wrapper">
             <div class="slide-header">
               <span class="slide-subtitle-tag">SOCIETAL PRESSURES</span>
@@ -903,87 +1201,102 @@
             
             <div class="urban-content-split">
               <div class="urban-left">
-                <p style="font-size: 19px; color: var(--text-secondary); line-height: 1.6; font-weight: 300;">
+                <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.5; font-weight: 300; margin-bottom: 16px;">
                   Global populations are urbanizing at an unprecedented pace. The built floor space of global cities is projected to double over the next 30+ years, demanding massive volumes of core structural materials.
                 </p>
-                <div class="urban-counter-card" style="background: rgba(8, 5, 4, 0.7); backdrop-filter: blur(10px); border-color: rgba(255, 255, 255, 0.05);">
+                <div class="urban-counter-card" style="background: rgba(8, 5, 4, 0.7); backdrop-filter: blur(10px); border-color: rgba(255, 255, 255, 0.05); margin-bottom: 16px;">
                   <span class="urban-counter-lbl">Floor space built since you loaded this pitch</span>
                   <span class="urban-counter-val" id="floor-space-counter">0.00 m²</span>
                 </div>
-                <div class="highlight-nyc" style="background: rgba(244, 63, 94, 0.08); border-color: var(--color-rose);">
+                <div class="highlight-nyc" style="background: rgba(244, 63, 94, 0.08); border-color: var(--color-rose); margin-bottom: 16px;">
                   <strong>The Sourcing Reality:</strong> Adding 1 New York City worth of floor space to the planet every single month for the next 30 years.
+                </div>
+                
+                <div class="projection-mini-card" style="background: rgba(255,255,255,0.01); padding: 18px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05);">
+                  <span class="urban-counter-lbl" style="margin-bottom: 10px; display: block; font-size: 11px;">Interactive Growth Projection Comparison</span>
+                  <div class="bar-comparison-wrapper" style="display: flex; flex-direction: column; gap: 12px;">
+                    <div class="bar-comparison-row">
+                      <div class="bar-comparison-meta" style="font-size: 11px;">
+                        <span>2017 baseline</span>
+                        <span>235 Billion m²</span>
+                      </div>
+                      <div class="comparison-bar-bg" style="height: 6px;">
+                        <div class="comparison-bar-fill" id="slide2-bar-2017" style="width: 50%;"></div>
+                      </div>
+                    </div>
+                    <div class="bar-comparison-row">
+                      <div class="bar-comparison-meta" style="font-size: 11px;">
+                        <span>2050 projection</span>
+                        <span>476 Billion m² (+102%)</span>
+                      </div>
+                      <div class="comparison-bar-bg" style="height: 6px;">
+                        <div class="comparison-bar-fill" id="slide2-bar-2050" style="width: 100%;"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              <div class="glass-visual-card">
-                <span class="urban-counter-lbl">Global Building Floor Space Growth Projection</span>
-                <div class="bar-comparison-wrapper" style="display: flex; flex-direction: column; gap: 20px;">
-                  <div class="bar-comparison-row">
-                    <div class="bar-comparison-meta">
-                      <span>2017 baseline</span>
-                      <span>235 Billion m²</span>
-                    </div>
-                    <div class="comparison-bar-bg">
-                      <div class="comparison-bar-fill" id="slide2-bar-2017" style="width: 50%;"></div>
-                    </div>
-                  </div>
-                  <div class="bar-comparison-row">
-                    <div class="bar-comparison-meta">
-                      <span>2050 projection</span>
-                      <span>476 Billion m² (+102%)</span>
-                    </div>
-                    <div class="comparison-bar-bg">
-                      <div class="comparison-bar-fill" id="slide2-bar-2050" style="width: 100%;"></div>
-                    </div>
-                  </div>
-                </div>
-                <span style="font-size: 10px; color: var(--text-tertiary); font-family: var(--font-mono); text-align: right;">Source: Wörsdörfer et al. (2019) / IEA Net Zero Scenario</span>
+              <div class="glass-visual-card" style="padding: 0; overflow: hidden; border-color: rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); box-shadow: 0 24px 64px rgba(0,0,0,0.6);">
+                <img src="assets/image2.png" style="width: 100%; height: auto; display: block; object-fit: contain;" alt="Global Building Floor Space Growth Projection Chart">
               </div>
             </div>
           </div>
         </section>
 
         <!-- SLIDE 3: SHORTCOMINGS -->
-        <section class="slide" data-slide="3" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.95) 45%, rgba(8, 5, 4, 0.5) 100%), url('assets/skeleton.jpg');">
-          <div class="slide-wrapper">
-            <div class="slide-header">
-              <span class="slide-subtitle-tag">THE PROBLEM</span>
-              <h2 class="slide-title">Concrete & Steel Have Major Shortcomings</h2>
-            </div>
-            
-            <div class="shortcomings-grid">
-              <div class="shortcoming-card">
-                <div class="shortcoming-header">
-                  <i class="ti ti-building-bridge"></i> Concrete
-                </div>
-                <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Slow curing process (requires 7+ days)</div>
-                <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Shrinks and cracks under weather cycles</div>
-                <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Fragile under seismic activity or marine environments</div>
-              </div>
+        <section class="slide" data-slide="3" style="--slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.96) 45%, rgba(8, 5, 4, 0.75) 100%);">
+          <div class="slide-wrapper" style="max-width: 1300px;">
+            <div class="shortcomings-split">
               
-              <div class="shortcoming-card">
-                <div class="shortcoming-header">
-                  <i class="ti ti-anchor"></i> Steel
-                </div>
-                <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Extremely heavy (high transportation energy cost)</div>
-                <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> High geopolitical & price volatility</div>
-                <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Thermal bridging (causes major building energy loss)</div>
+              <!-- Left side: image3.jpeg -->
+              <div class="glass-visual-card" style="padding: 0; overflow: hidden; border-color: rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); box-shadow: 0 24px 64px rgba(0,0,0,0.6); height: 500px;">
+                <img src="assets/image3.jpeg" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="Concrete and Steel Construction Shortcomings">
               </div>
 
-              <div class="shortcoming-card">
-                <div class="shortcoming-header">
-                  <i class="ti ti-alert-triangle"></i> Ecology & Health
+              <!-- Right side: Content -->
+              <div>
+                <div class="slide-header" style="margin-bottom: 24px;">
+                  <span class="slide-subtitle-tag">THE PROBLEM</span>
+                  <h2 class="slide-title" style="font-size: 38px; line-height: 1.15;">Concrete &amp; Steel Have Major Shortcomings</h2>
                 </div>
-                <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Together concrete & steel account for 15% of global emissions</div>
-                <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Disconnection from natural wood raises human cortisol and stress levels</div>
-                <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Concrete sand mining leads to violent resource sand wars globally</div>
+                
+                <div class="shortcomings-grid">
+                  <div class="shortcoming-card">
+                    <div class="shortcoming-header">
+                      <i class="ti ti-building-bridge"></i> Concrete
+                    </div>
+                    <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Slow curing process (requires 7+ days)</div>
+                    <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Shrinks and cracks under weather cycles</div>
+                    <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Fragile under seismic activity or marine environments</div>
+                  </div>
+                  
+                  <div class="shortcoming-card">
+                    <div class="shortcoming-header">
+                      <i class="ti ti-anchor"></i> Steel
+                    </div>
+                    <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Extremely heavy (high transportation energy cost)</div>
+                    <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> High geopolitical &amp; price volatility</div>
+                    <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Thermal bridging (causes major building energy loss)</div>
+                  </div>
+
+                  <div class="shortcoming-card">
+                    <div class="shortcoming-header">
+                      <i class="ti ti-alert-triangle"></i> Ecology &amp; Health
+                    </div>
+                    <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Together concrete &amp; steel account for 15% of global emissions</div>
+                    <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Disconnection from natural wood raises human cortisol and stress levels</div>
+                    <div class="shortcoming-bullet"><i class="ti ti-circle-x"></i> Concrete sand mining leads to violent resource sand wars globally</div>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
         </section>
 
         <!-- SLIDE 4: UNTAPPED WOOD -->
-        <section class="slide" data-slide="4" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.94) 40%, rgba(8, 5, 4, 0.5) 100%), url('assets/forest.jpg');">
+        <section class="slide" data-slide="4" style="--slide-bg: url('assets/image4.png'); --slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.94) 40%, rgba(8, 5, 4, 0.5) 100%);">
           <div class="slide-wrapper">
             <div class="slide-header">
               <span class="slide-subtitle-tag">THE OPPORTUNITY</span>
@@ -1027,7 +1340,7 @@
         </section>
 
         <!-- SLIDE 5: BREAKTHROUGH -->
-        <section class="slide" data-slide="5" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.95) 45%, rgba(8, 5, 4, 0.5) 100%), url('assets/hero.jpg');">
+        <section class="slide" data-slide="5" style="--slide-bg: url('assets/image5.png'); --slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.95) 45%, rgba(8, 5, 4, 0.5) 100%);">
           <div class="slide-wrapper">
             <div class="slide-header">
               <span class="slide-subtitle-tag">THE BREAKTHROUGH</span>
@@ -1040,17 +1353,17 @@
                   Prof. Liangbing Hu connected carbon nanotube structures with natural wood biology. The cellulose nanocrystals (CNCs) that give wood its structural rigidity possess mechanical strength surpassing typical carbon fibers.
                 </p>
                 <div class="bio-profile-card" style="background: rgba(8, 5, 4, 0.6); border-color: rgba(255, 255, 255, 0.05);">
-                  <img src="assets/hu.jpg" class="bio-avatar-img" alt="Prof. Liangbing Hu">
+                  <img src="assets/image6.png" class="bio-avatar-img" alt="Prof. Liangbing Hu">
                   <div class="bio-info">
                     <span class="bio-name">Prof. Liangbing Hu</span>
-                    <span class="bio-title">Founder & Inventor, Yale Professor</span>
+                    <span class="bio-title">Founder &amp; Inventor, Yale Professor</span>
                     <p class="bio-fact">H-index of 187. One of the most-cited material scientists in history. 4-Time winner of the R&D 100 Award ("Oscars of Invention") for commercial impact.</p>
                   </div>
                 </div>
               </div>
 
               <div style="display: flex; flex-direction: column; gap: 20px;">
-                <img src="assets/hu.jpg" class="hu-portrait-box" alt="Prof. Hu Working in Lab">
+                <img src="assets/image6.png" class="hu-portrait-box" alt="Prof. Hu Working in Lab">
                 <div class="strength-visualizer-card" style="background: rgba(8, 5, 4, 0.65); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);">
                   <span class="urban-counter-lbl"><i class="ti ti-gauge"></i> Tensile Strength Comparison</span>
                   
@@ -1085,7 +1398,7 @@
         </section>
 
         <!-- SLIDE 6: TECHNOLOGY -->
-        <section class="slide" data-slide="6" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.94) 40%, rgba(8, 5, 4, 0.5) 100%), url('assets/boards.png');">
+        <section class="slide" data-slide="6" style="--slide-bg: url('assets/image7.png'); --slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.94) 40%, rgba(8, 5, 4, 0.5) 100%);">
           <div class="slide-wrapper">
             <div class="slide-header">
               <span class="slide-subtitle-tag">THE TECHNOLOGY</span>
@@ -1096,19 +1409,35 @@
               <div class="tech-step-card">
                 <span class="step-badge">Phase 1</span>
                 <span class="step-title"><i class="ti ti-tree"></i> Sawn Feedstock</span>
-                <p class="step-desc">Species-flexible timber, including fast-growing underutilized species or waste timber, is trimmed and readied.</p>
+                <p class="step-desc" style="font-size: 12.5px; line-height: 1.4; height: 50px;">Species-flexible timber, including fast-growing underutilized species or waste timber, is trimmed and readied.</p>
+                <div class="step-image-wrap" style="width: 100%; height: 110px; border-radius: var(--radius-sm); overflow: hidden; margin-top: 12px; border: 1px solid rgba(255,255,255,0.06);">
+                  <img src="assets/image8.jpeg" style="width: 100%; height: 100%; object-fit: cover;" alt="Sawn Feedstock Wood Sample">
+                </div>
               </div>
 
               <div class="tech-step-card">
                 <span class="step-badge">Phase 2</span>
                 <span class="step-title"><i class="ti ti-settings"></i> Autoclave Restructuring</span>
-                <p class="step-desc">A chemical-mechanical process collapses cell walls, removes weaknesses, and aligns cellulose nano-fibers.</p>
+                <p class="step-desc" style="font-size: 12.5px; line-height: 1.4; height: 50px;">A chemical-mechanical process collapses cell walls, removes weaknesses, and aligns cellulose nano-fibers.</p>
+                <div class="step-image-wrap" style="width: 100%; height: 110px; display: flex; gap: 8px; margin-top: 12px;">
+                  <div style="flex: 1; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid rgba(255,255,255,0.06); position: relative;">
+                    <img src="assets/image11.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Porous Wood Cells">
+                    <span style="position: absolute; bottom: 4px; left: 4px; font-size: 8px; background: rgba(0,0,0,0.8); padding: 2px 4px; border-radius: 2px; font-family: var(--font-mono); color: var(--text-secondary);">Porous</span>
+                  </div>
+                  <div style="flex: 1; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid rgba(255,255,255,0.06); position: relative;">
+                    <img src="assets/image12.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Collapsed Cell Walls">
+                    <span style="position: absolute; bottom: 4px; left: 4px; font-size: 8px; background: rgba(0,0,0,0.8); padding: 2px 4px; border-radius: 2px; font-family: var(--font-mono); color: var(--color-amber); font-weight: 700;">Collapsed</span>
+                  </div>
+                </div>
               </div>
 
               <div class="tech-step-card" style="border-color: var(--color-amber);">
                 <span class="step-badge" style="background: var(--color-amber);">Phase 3</span>
                 <span class="step-title" style="color: var(--color-amber);"><img src="assets/logo.png" style="height: 14px; vertical-align: text-bottom; margin-right: 4px; display: inline-block;"> SUPERWOOD® Output</span>
-                <p class="step-desc">50% stronger and 6x lighter than structural steel. Manufactured with no toxic glues or polymer binders.</p>
+                <p class="step-desc" style="font-size: 12.5px; line-height: 1.4; height: 50px;">50% stronger and 6x lighter than structural steel. Manufactured with no toxic glues or polymer binders.</p>
+                <div class="step-image-wrap" style="width: 100%; height: 110px; border-radius: var(--radius-sm); overflow: hidden; margin-top: 12px; border: 1px solid var(--color-amber-dark);">
+                  <img src="assets/image13.png" style="width: 100%; height: 100%; object-fit: cover;" alt="SUPERWOOD Output Profile">
+                </div>
               </div>
 
               <div class="pipeline-canvas-box" style="background: rgba(8, 5, 4, 0.65); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(16px);">
@@ -1118,64 +1447,98 @@
                 </div>
                 <button class="porosity-btn" id="btn-run-porosity-sim">Trigger Compression Cycle</button>
               </div>
-            </div>
-          </div>
         </section>
-
+        
         <!-- SLIDE 7: SPECS -->
-        <section class="slide" data-slide="7" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.94) 40%, rgba(8, 5, 4, 0.45) 100%), url('assets/product-dark.jpg');">
-          <div class="slide-wrapper">
-            <div class="slide-header">
-              <span class="slide-subtitle-tag">SPECIFICATIONS</span>
-              <h2 class="slide-title">Introducing SUPERWOOD®: The Soul of Wood, the Strength of Steel</h2>
-            </div>
-            
-            <div class="specs-showcase-grid">
-              <div class="specs-selector-list">
-                <button class="spec-selector-btn active" data-spec="fire">
-                  <div class="spec-selector-btn-left">
-                    <i class="ti ti-flame"></i>
-                    <span class="spec-selector-name">Fire Resistance</span>
-                  </div>
-                  <i class="ti ti-chevron-right"></i>
-                </button>
-
-                <button class="spec-selector-btn" data-spec="dura">
-                  <div class="spec-selector-btn-left">
-                    <i class="ti ti-shield-half"></i>
-                    <span class="spec-selector-name">Unmatched Durability</span>
-                  </div>
-                  <i class="ti ti-chevron-right"></i>
-                </button>
-
-                <button class="spec-selector-btn" data-spec="pest">
-                  <div class="spec-selector-btn-left">
-                    <i class="ti ti-bug"></i>
-                    <span class="spec-selector-name">Pest &amp; Rot Proof</span>
-                  </div>
-                  <i class="ti ti-chevron-right"></i>
-                </button>
-
-                <button class="spec-selector-btn" data-spec="thermal">
-                  <div class="spec-selector-btn-left">
-                    <i class="ti ti-thermometer"></i>
-                    <span class="spec-selector-name">Thermal Insulation</span>
-                  </div>
-                  <i class="ti ti-chevron-right"></i>
-                </button>
+        <section class="slide" data-slide="7" style="--slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.94) 40%, rgba(8, 5, 4, 0.45) 100%);">
+          <div class="slide-wrapper" style="max-width: 1300px;">
+            <div class="specs-split-layout">
+              
+              <!-- Left side: image14.png -->
+              <div class="glass-visual-card" style="padding: 0; overflow: hidden; border-color: rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); box-shadow: 0 24px 64px rgba(0,0,0,0.6); height: 520px;">
+                <img src="assets/image14.png" style="width: 100%; height: 100%; object-fit: cover; display: block;" alt="SUPERWOOD Output Spec Board">
               </div>
 
-              <div class="specs-content-card" style="background: rgba(8, 5, 4, 0.65); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(24px);">
-                <div id="spec-detail-box">
-                  <!-- Dynamic content loaded via JS -->
+              <!-- Right side: Title & Interactive selector -->
+              <div>
+                <div class="slide-header" style="margin-bottom: 24px;">
+                  <span class="slide-subtitle-tag">SPECIFICATIONS</span>
+                  <h2 class="slide-title" style="font-size: 34px; line-height: 1.15; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Introducing SUPERWOOD®: The Soul of Wood, the Strength of Steel</h2>
+                </div>
+                
+                <div class="specs-showcase-grid">
+                  <div class="specs-selector-list">
+                    <button class="spec-selector-btn active" data-spec="fire">
+                      <div class="spec-selector-btn-left">
+                        <img src="assets/image15.png" alt="Fire">
+                        <span class="spec-selector-name">Fire Resistance</span>
+                      </div>
+                      <i class="ti ti-chevron-right"></i>
+                    </button>
+
+                    <button class="spec-selector-btn" data-spec="dura">
+                      <div class="spec-selector-btn-left">
+                        <img src="assets/image16.png" alt="Durability">
+                        <span class="spec-selector-name">Unmatched Durability</span>
+                      </div>
+                      <i class="ti ti-chevron-right"></i>
+                    </button>
+
+                    <button class="spec-selector-btn" data-spec="pest">
+                      <div class="spec-selector-btn-left">
+                        <img src="assets/image17.png" alt="Pest">
+                        <span class="spec-selector-name">Pest &amp; Rot Proof</span>
+                      </div>
+                      <i class="ti ti-chevron-right"></i>
+                    </button>
+
+                    <button class="spec-selector-btn" data-spec="thermal">
+                      <div class="spec-selector-btn-left">
+                        <img src="assets/image18.png" alt="Thermal">
+                        <span class="spec-selector-name">Thermal Insulation</span>
+                      </div>
+                      <i class="ti ti-chevron-right"></i>
+                    </button>
+
+                    <button class="spec-selector-btn" data-spec="rf">
+                      <div class="spec-selector-btn-left">
+                        <img src="assets/image19.png" alt="RF">
+                        <span class="spec-selector-name">RF Transparency</span>
+                      </div>
+                      <i class="ti ti-chevron-right"></i>
+                    </button>
+
+                    <button class="spec-selector-btn" data-spec="sound">
+                      <div class="spec-selector-btn-left">
+                        <img src="assets/image20.png" alt="Sound">
+                        <span class="spec-selector-name">Sound Attenuation</span>
+                      </div>
+                      <i class="ti ti-chevron-right"></i>
+                    </button>
+
+                    <button class="spec-selector-btn" data-spec="beauty">
+                      <div class="spec-selector-btn-left">
+                        <img src="assets/image21.png" alt="Beauty">
+                        <span class="spec-selector-name">Naturally Beautiful</span>
+                      </div>
+                      <i class="ti ti-chevron-right"></i>
+                    </button>
+                  </div>
+
+                  <div class="specs-content-card" style="background: rgba(8, 5, 4, 0.65); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(24px);">
+                    <div id="spec-detail-box">
+                      <!-- Dynamic content loaded via JS -->
+                    </div>
+                  </div>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
 
         <!-- SLIDE 8: TAM MARKET -->
-        <section class="slide" data-slide="8" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.96) 50%, rgba(8, 5, 4, 0.8) 100%), url('assets/hero.jpg');">
+        <section class="slide" data-slide="8" style="--slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.96) 50%, rgba(8, 5, 4, 0.8) 100%);">
           <div class="slide-wrapper">
             <div class="slide-header">
               <span class="slide-subtitle-tag">MARKET SCALING</span>
@@ -1230,7 +1593,7 @@
         </section>
 
         <!-- SLIDE 9: ROADMAP -->
-        <section class="slide" data-slide="9" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.94) 40%, rgba(8, 5, 4, 0.45) 100%), url('assets/factory.jpg');">
+        <section class="slide" data-slide="9" style="--slide-bg: url('assets/image22.png'); --slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.94) 40%, rgba(8, 5, 4, 0.45) 100%);">
           <div class="slide-wrapper">
             <div class="slide-header">
               <span class="slide-subtitle-tag">COMMERCIAL ROADMAP</span>
@@ -1238,23 +1601,41 @@
             </div>
             
             <div class="roadmap-split">
-              <p style="font-size: 21px; color: var(--text-secondary); line-height: 1.6; font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+              <p style="font-size: 20px; color: var(--text-secondary); line-height: 1.5; font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
                 By progressively scaling raw timber batch-compression into veneers and continuous flow extrusion processes, we open up massive addressable structural markets while lowering price barriers.
               </p>
               <div class="roadmap-timeline-box">
                 <div class="roadmap-glass-card">
-                  <span class="roadmap-timeline-badge">2025 - 2026</span>
-                  <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1;">
+                    <span class="roadmap-timeline-badge">2025 - 2026</span>
                     <span class="roadmap-name">SUPERMILL ONE</span>
-                    <p style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.4;">Proven batch-autoclave economics. Sawn Timber feedstock -> SUPERWOOD Board products. Seeding immediate demand in premium markets.</p>
+                    <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-right: 8px;">Proven batch-autoclave economics. Sawn Timber feedstock -> SUPERWOOD Board products. Seeding immediate demand in premium markets.</p>
+                  </div>
+                  <div style="display: flex; gap: 6px; width: 130px; flex-shrink: 0; height: 70px;">
+                    <img src="assets/image30.png" style="width: 50%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.05);" alt="Sawn Feedstock">
+                    <img src="assets/image31.png" style="width: 50%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.05);" alt="SUPERWOOD Board">
                   </div>
                 </div>
 
                 <div class="roadmap-glass-card" style="border-color: var(--color-amber);">
-                  <span class="roadmap-timeline-badge" style="background: var(--color-amber);">2028 - 2030</span>
-                  <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1;">
+                    <span class="roadmap-timeline-badge" style="background: var(--color-amber);">2028 - 2030</span>
                     <span class="roadmap-name" style="color: var(--color-amber);">SUPERMILL TWO</span>
-                    <p style="font-size: 12.5px; color: var(--text-secondary); line-height: 1.4;">Scale manufacturing capabilities. Peeled Veneer feedstock -> SUPER Veneer products. Establish robust profit baseline, maintaining batch process.</p>
+                    <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-right: 8px;">Scale manufacturing capabilities. Peeled Veneer feedstock -> SUPER Veneer products. Maintain batch process at scale.</p>
+                  </div>
+                  <div style="width: 130px; flex-shrink: 0; height: 70px;">
+                    <img src="assets/image29.jpeg" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.05);" alt="SUPER Veneer">
+                  </div>
+                </div>
+
+                <div class="roadmap-glass-card">
+                  <div style="display: flex; flex-direction: column; gap: 4px; flex-grow: 1;">
+                    <span class="roadmap-timeline-badge">2032+</span>
+                    <span class="roadmap-name">ChipMill</span>
+                    <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-right: 8px;">Dramatically decrease costs via extremely low-cost wood chips &amp; waste feedstock -> SUPER OSB commodity products.</p>
+                  </div>
+                  <div style="width: 130px; flex-shrink: 0; height: 70px;">
+                    <img src="assets/image28.png" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.05);" alt="SUPER OSB">
                   </div>
                 </div>
               </div>
@@ -1263,55 +1644,83 @@
         </section>
 
         <!-- SLIDE 10: DEMAND -->
-        <section class="slide" data-slide="10" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.96) 50%, rgba(8, 5, 4, 0.85) 100%), url('assets/boards-beige.jpg');">
-          <div class="slide-wrapper">
-            <div class="slide-header">
-              <span class="slide-subtitle-tag">COMMERCIAL TRACTION</span>
-              <h2 class="slide-title">SUPERMILL ONE Shipping: Backlog Outstrips Capacity 5x</h2>
-            </div>
-            
-            <div class="demand-grid">
-              <div class="demand-card" style="background: rgba(8, 5, 4, 0.65); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);">
-                <span class="demand-lbl">Demand Pipeline</span>
-                <span class="demand-val">$134M+</span>
-                <p class="demand-desc">Residential &amp; commercial pre-orders for SUPERMILL ONE, outstripping plant capacities immediately.</p>
+        <section class="slide" data-slide="10" style="--slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.96) 50%, rgba(8, 5, 4, 0.85) 100%);">
+          <div class="slide-wrapper" style="max-width: 1300px;">
+            <div class="demand-split-layout">
+              
+              <!-- Left Column: content and stats -->
+              <div>
+                <div class="slide-header" style="margin-bottom: 24px;">
+                  <span class="slide-subtitle-tag">COMMERCIAL TRACTION</span>
+                  <h2 class="slide-title" style="font-size: 38px; line-height: 1.15;">SUPERMILL ONE Shipping: Backlog Outstrips Capacity 5x</h2>
+                </div>
+                
+                <div class="demand-grid">
+                  <div class="demand-card">
+                    <span class="demand-lbl">Demand Pipeline</span>
+                    <span class="demand-val">$134M+</span>
+                    <p class="demand-desc">Residential &amp; commercial pre-orders for SUPERMILL ONE, outstripping plant capacities immediately.</p>
+                  </div>
+
+                  <div class="demand-card">
+                    <span class="demand-lbl">Reserve Queue</span>
+                    <span class="demand-val">600+</span>
+                    <p class="demand-desc">Paid customer reservation deposits in queue to secure production capacity allotments.</p>
+                  </div>
+
+                  <div class="demand-card">
+                    <span class="demand-lbl">Inquiries Queue</span>
+                    <span class="demand-val">15k+</span>
+                    <p class="demand-desc">Inbound customer requests from architectural firms, yacht builders, and commercial developers.</p>
+                  </div>
+
+                  <div class="demand-card">
+                    <span class="demand-lbl">Non-Dilutive Funding</span>
+                    <span class="demand-val">$40M+</span>
+                    <p class="demand-desc">Secured capital from U.S. ARPA-E and federal agencies to fund fundamental engineering scaling.</p>
+                  </div>
+
+                  <div class="demand-card wide" style="background: rgba(16, 185, 129, 0.04); border-color: rgba(16, 185, 129, 0.25);">
+                    <span class="demand-lbl" style="color: var(--color-emerald);"><i class="ti ti-arrow-up-right"></i> Future Scale Demand Pipeline</span>
+                    <span class="demand-val" style="color: var(--color-emerald);">$1.8 Billion+</span>
+                    <p class="demand-desc" style="color: var(--text-secondary);">Long-term procurement commitments representing letters of intent for products coming out of SUPERMILL TWO and future ChipMills.</p>
+                  </div>
+
+                  <div class="demand-card wide" style="background: rgba(217, 119, 6, 0.04); border-color: var(--color-amber);">
+                    <span class="demand-lbl" style="color: var(--color-amber);"><i class="ti ti-check"></i> Commercial Capacity Limit</span>
+                    <span class="demand-val" style="color: var(--color-amber);">100% Sold</span>
+                    <p class="demand-desc" style="color: var(--text-secondary);">SUPERMILL ONE capacity is completely locked under initial OEM sourcing agreements, leaving secondary customers in the deposit reservation queues.</p>
+                  </div>
+                </div>
+
+                <!-- Partner logos ribbon -->
+                <div class="partner-logos-strip" style="display: flex; gap: 16px; align-items: center; justify-content: flex-start; margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); overflow-x: auto;">
+                  <span style="font-size: 10px; text-transform: uppercase; color: var(--text-tertiary); letter-spacing: 0.05em; font-family: var(--font-mono); margin-right: 8px; flex-shrink: 0;">Partners:</span>
+                  <img src="assets/image38.png" style="height: 20px; filter: grayscale(1) brightness(1.6) opacity(0.75); transition: var(--transition-smooth);" alt="Partner logo" onmouseover="this.style.filter='none'; this.style.opacity='1';" onmouseout="this.style.filter='grayscale(1) brightness(1.6) opacity(0.75)';">
+                  <img src="assets/image35.png" style="height: 20px; filter: grayscale(1) brightness(1.6) opacity(0.75); transition: var(--transition-smooth);" alt="Partner logo" onmouseover="this.style.filter='none'; this.style.opacity='1';" onmouseout="this.style.filter='grayscale(1) brightness(1.6) opacity(0.75)';">
+                  <img src="assets/image36.png" style="height: 20px; filter: grayscale(1) brightness(1.6) opacity(0.75); transition: var(--transition-smooth);" alt="Partner logo" onmouseover="this.style.filter='none'; this.style.opacity='1';" onmouseout="this.style.filter='grayscale(1) brightness(1.6) opacity(0.75)';">
+                  <img src="assets/image37.png" style="height: 20px; filter: grayscale(1) brightness(1.6) opacity(0.75); transition: var(--transition-smooth);" alt="Partner logo" onmouseover="this.style.filter='none'; this.style.opacity='1';" onmouseout="this.style.filter='grayscale(1) brightness(1.6) opacity(0.75)';">
+                  <img src="assets/image34.png" style="height: 20px; filter: grayscale(1) brightness(1.6) opacity(0.75); transition: var(--transition-smooth);" alt="Partner logo" onmouseover="this.style.filter='none'; this.style.opacity='1';" onmouseout="this.style.filter='grayscale(1) brightness(1.6) opacity(0.75)';">
+                  <img src="assets/image39.png" style="height: 20px; filter: grayscale(1) brightness(1.6) opacity(0.75); transition: var(--transition-smooth);" alt="Partner logo" onmouseover="this.style.filter='none'; this.style.opacity='1';" onmouseout="this.style.filter='grayscale(1) brightness(1.6) opacity(0.75)';">
+                </div>
               </div>
 
-              <div class="demand-card" style="background: rgba(8, 5, 4, 0.65); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);">
-                <span class="demand-lbl">Reserve Queue</span>
-                <span class="demand-val">600+</span>
-                <p class="demand-desc">Paid customer reservation deposits in queue to secure production capacity allotments.</p>
+              <!-- Right Column: Visual displays -->
+              <div class="demand-visuals-col">
+                <div class="demand-visual-box">
+                  <img src="assets/image33.png" alt="SuperMill ONE Plant layout/blueprint">
+                </div>
+                <div class="demand-visual-box">
+                  <img src="assets/image32.jpeg" alt="SUPERWOOD Finished Boards preview">
+                </div>
               </div>
 
-              <div class="demand-card" style="background: rgba(8, 5, 4, 0.65); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);">
-                <span class="demand-lbl">Inquiries Queue</span>
-                <span class="demand-val">15k+</span>
-                <p class="demand-desc">Inbound customer requests from architectural firms, yacht builders, and commercial developers.</p>
-              </div>
-
-              <div class="demand-card" style="background: rgba(8, 5, 4, 0.65); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);">
-                <span class="demand-lbl">Non-Dilutive Funding</span>
-                <span class="demand-val">$40M+</span>
-                <p class="demand-desc">Secured capital from U.S. ARPA-E and federal agencies to fund fundamental engineering scaling.</p>
-              </div>
-
-              <div class="demand-card wide" style="background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.25); backdrop-filter: blur(10px);">
-                <span class="demand-lbl" style="color: var(--color-emerald);"><i class="ti ti-arrow-up-right"></i> Future Scale Demand Pipeline</span>
-                <span class="demand-val" style="color: var(--color-emerald);">$1.8 Billion+</span>
-                <p class="demand-desc" style="color: var(--text-secondary);">Long-term procurement commitments representing letters of intent for products coming out of SUPERMILL TWO and future ChipMills.</p>
-              </div>
-
-              <div class="demand-card wide" style="background: rgba(217, 119, 6, 0.05); border-color: var(--color-amber); backdrop-filter: blur(10px);">
-                <span class="demand-lbl" style="color: var(--color-amber);"><i class="ti ti-check"></i> Commercial Capacity Limit</span>
-                <span class="demand-val" style="color: var(--color-amber);">100% Sold</span>
-                <p class="demand-desc" style="color: var(--text-secondary);">SUPERMILL ONE capacity is completely locked under initial OEM sourcing agreements, leaving secondary customers in the deposit reservation queues.</p>
-              </div>
             </div>
           </div>
         </section>
 
         <!-- SLIDE 11: LEADERSHIP -->
-        <section class="slide" data-slide="11" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.95) 45%, rgba(8, 5, 4, 0.6) 100%), url('assets/hero.jpg');">
+        <section class="slide" data-slide="11" style="--slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.95) 45%, rgba(8, 5, 4, 0.6) 100%);">
           <div class="slide-wrapper">
             <div class="slide-header">
               <span class="slide-subtitle-tag">THE TEAM</span>
@@ -1324,77 +1733,77 @@
                 <div class="glass-group-card">
                   <div class="executive-team-grid">
                     <div class="team-avatar-box">
-                      <img src="assets/team-alex.jpg" class="team-circle-img" alt="Alex Lau">
+                      <img src="assets/image40.png" class="team-circle-img" alt="Alex Lau">
                       <div class="team-texts">
                         <span class="team-header-role">CEO / Co-founder</span>
                         <span class="team-header-name">Alex Lau</span>
                         <span class="team-header-desc">Climate investor, 30+ yrs operations operations. Dartmouth BS.</span>
                       </div>
                     </div>
-
+ 
                     <div class="team-avatar-box">
-                      <img src="assets/team-jonathan.jpg" class="team-circle-img" alt="Jonathan Strimling">
+                      <img src="assets/image42.png" class="team-circle-img" alt="Jonathan Strimling">
                       <div class="team-texts">
                         <span class="team-header-role">COO</span>
                         <span class="team-header-name">Jonathan Strimling</span>
                         <span class="team-header-desc">Inc 5000 manufacturing CEO, NASDAQ SaaS CEO. MIT Sloan.</span>
                       </div>
                     </div>
-
+ 
                     <div class="team-avatar-box">
-                      <img src="assets/team-jack.jpg" class="team-circle-img" alt="Jack Winterowd">
+                      <img src="assets/image41.png" class="team-circle-img" alt="Jack Winterowd">
                       <div class="team-texts">
                         <span class="team-header-role">Principal Scientist</span>
                         <span class="team-header-name">Jack Winterowd</span>
                         <span class="team-header-desc">Former Weyerhaeuser chemistry head, 51 issued patents.</span>
                       </div>
                     </div>
-
+ 
                     <div class="team-avatar-box">
-                      <img src="assets/team-jiaqi.jpg" class="team-circle-img" alt="Jiaqi Dai">
+                      <img src="assets/image43.png" class="team-circle-img" alt="Jiaqi Dai">
                       <div class="team-texts">
                         <span class="team-header-role">CTO / Co-founder</span>
                         <span class="team-header-name">Jiaqi Dai</span>
-                        <span class="team-header-desc">Hu Protégé Protégé. Top 2% global scientist. H-index of 93.</span>
+                        <span class="team-header-desc">Hu Protégé. Top 2% global scientist. H-index of 93.</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
+ 
               <div class="advisors-section">
                 <span class="slide-subtitle-tag">Strategic Advisory Council</span>
                 <div class="glass-group-card" style="background: rgba(8, 5, 4, 0.4);">
                   <div class="executive-team-grid">
                     <div class="team-avatar-box">
-                      <img src="assets/adv-davies.jpg" class="team-circle-img" alt="Don Davies">
+                      <img src="assets/image47.png" class="team-circle-img" alt="Don Davies">
                       <div class="team-texts">
                         <span class="team-header-role">Structural Eng</span>
                         <span class="team-header-name">Don Davies</span>
                         <span class="team-header-desc">Former President MKA (google, Meta structural lead), building decarbonization leader.</span>
                       </div>
                     </div>
-
+ 
                     <div class="team-avatar-box">
-                      <img src="assets/adv-hawken.jpg" class="team-circle-img" alt="Paul Hawken">
+                      <img src="assets/image44.jpeg" class="team-circle-img" alt="Paul Hawken">
                       <div class="team-texts">
                         <span class="team-header-role">Ecology &amp; Design</span>
                         <span class="team-header-name">Paul Hawken</span>
                         <span class="team-header-desc">Environmental author of "Drawdown" and "Regeneration". Corporate advisor.</span>
                       </div>
                     </div>
-
+ 
                     <div class="team-avatar-box">
-                      <img src="assets/adv-zsmith.jpg" class="team-circle-img" alt="Z Smith">
+                      <img src="assets/image45.jpeg" class="team-circle-img" alt="Z Smith">
                       <div class="team-texts">
                         <span class="team-header-role">High Perf Buildings</span>
                         <span class="team-header-name">Z Smith</span>
                         <span class="team-header-desc">EDR Sustainability head. ScB MIT, PhD Princeton, former Xerox CTO.</span>
                       </div>
                     </div>
-
+ 
                     <div class="team-avatar-box">
-                      <img src="assets/adv-organschi.jpg" class="team-circle-img" alt="Alan Organschi">
+                      <img src="assets/image46.png" class="team-circle-img" alt="Alan Organschi">
                       <div class="team-texts">
                         <span class="team-header-role">Urban Architecture</span>
                         <span class="team-header-name">Alan Organschi</span>
@@ -1409,43 +1818,51 @@
         </section>
 
         <!-- SLIDE 12: IP -->
-        <section class="slide" data-slide="12" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.94) 40%, rgba(8, 5, 4, 0.45) 100%), url('assets/sphere.jpg');">
-          <div class="slide-wrapper">
+        <section class="slide" data-slide="12" style="--slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.94) 40%, rgba(8, 5, 4, 0.45) 100%);">
+          <div class="slide-wrapper" style="max-width: 1300px;">
             <div class="slide-header">
               <span class="slide-subtitle-tag">INTELLECTUAL PROPERTY</span>
               <h2 class="slide-title">Protected by a Robust and Growing Patent Portfolio</h2>
             </div>
             
             <div class="ip-split">
-              <p style="font-size: 21px; color: var(--text-secondary); line-height: 1.6; font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
-                Our patents defend our technology at every layer—from foundational raw material physics to specialized manufacturing methods and downstream B2B market products.
-              </p>
-              <div class="ip-list-card" style="background: rgba(8, 5, 4, 0.65); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);">
-                <div class="ip-bullet">
-                  <i class="ti ti-shield-check"></i>
-                  <div>
-                    <strong>"Walling" + "Patent Network" Strategy:</strong> Multi-layered patent strategy designed for proactive risk mitigation and maximum defensive protection.
+              <!-- Left Column: text and bullets -->
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <p style="font-size: 19px; color: var(--text-secondary); line-height: 1.5; font-weight: 300; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                  Our patents defend our technology at every layer—from foundational raw material physics to specialized manufacturing methods and downstream B2B market products.
+                </p>
+                <div class="ip-list-card" style="background: rgba(8, 5, 4, 0.65); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);">
+                  <div class="ip-bullet">
+                    <i class="ti ti-shield-check"></i>
+                    <div>
+                      <strong>"Walling" + "Patent Network" Strategy:</strong> Multi-layered patent strategy designed for proactive risk mitigation and maximum defensive protection.
+                    </div>
+                  </div>
+                  <div class="ip-bullet">
+                    <i class="ti ti-shield-check"></i>
+                    <div>
+                      <strong>IP Steering Committee:</strong> Comprises business, R&amp;D, manufacturing leadership, and world-class IP consultants to align patent filing with commercial pipeline targets.
+                    </div>
+                  </div>
+                  <div class="ip-bullet">
+                    <i class="ti ti-shield-check"></i>
+                    <div>
+                      <strong>Extensive Scope:</strong> Portfolio covers the foundational nanotechnology platform material, core chemical treatment parameters, product-specific formulas, and upcoming licensing assets.
+                    </div>
                   </div>
                 </div>
-                <div class="ip-bullet">
-                  <i class="ti ti-shield-check"></i>
-                  <div>
-                    <strong>IP Steering Committee:</strong> Comprises business, R&amp;D, manufacturing leadership, and world-class IP consultants to align patent filing with commercial pipeline targets.
-                  </div>
-                </div>
-                <div class="ip-bullet">
-                  <i class="ti ti-shield-check"></i>
-                  <div>
-                    <strong>Extensive Scope:</strong> Portfolio covers the foundational nanotechnology platform material, core chemical treatment parameters, product-specific formulas, and upcoming licensing assets.
-                  </div>
-                </div>
+              </div>
+
+              <!-- Right Column: patent rings graphic -->
+              <div class="glass-visual-card" style="padding: 16px; border-color: rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); box-shadow: 0 24px 64px rgba(0,0,0,0.6);">
+                <img src="assets/image51.png" style="width: 100%; height: auto; display: block; object-fit: contain; max-height: 420px;" alt="Intellectual Property Patent Rings Chart">
               </div>
             </div>
           </div>
         </section>
 
         <!-- SLIDE 13: PRESS -->
-        <section class="slide" data-slide="13" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.96) 50%, rgba(8, 5, 4, 0.8) 100%), url('assets/deck-dusk.jpg');">
+        <section class="slide" data-slide="13" style="--slide-bg: url('assets/image59.png'); --slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.96) 50%, rgba(8, 5, 4, 0.8) 100%);">
           <div class="slide-wrapper">
             <div class="slide-header">
               <span class="slide-subtitle-tag">MEDIA HIGHLIGHTS</span>
@@ -1453,20 +1870,20 @@
             </div>
             
             <div class="press-grid">
-              <div class="press-card">
-                <img src="assets/press52.jpg" class="press-img" alt="Nature news illustration">
+              <div class="press-card text-center" style="background: rgba(8, 5, 4, 0.65);">
+                <img src="assets/image52.png" class="press-img" alt="Nature Journal press coverage clipping" style="height: 120px; object-fit: contain;">
                 <span class="press-source">Nature Journal</span>
                 <p class="press-quote">"A highly efficient structural material that makes wood stronger than steel, opening a green pathway to sustainable cities."</p>
               </div>
 
-              <div class="press-card">
-                <img src="assets/press53.jpg" class="press-img" alt="Aut autoclave press clipping">
+              <div class="press-card text-center" style="background: rgba(8, 5, 4, 0.65);">
+                <img src="assets/image53.png" class="press-img" alt="Scientific American press coverage clipping" style="height: 120px; object-fit: contain;">
                 <span class="press-source">Scientific American</span>
                 <p class="press-quote">"By collapsing the hollow cells of ordinary lumber, this technology yields wood with the mechanical capabilities of high-performance metals."</p>
               </div>
 
-              <div class="press-card">
-                <img src="assets/press54.jpg" class="press-img" alt="ballistic test frame">
+              <div class="press-card text-center" style="background: rgba(8, 5, 4, 0.65);">
+                <img src="assets/image54.png" class="press-img" alt="YouTube Science Creator video clipping" style="height: 120px; object-fit: contain;">
                 <span class="press-source">YouTube Science Creator</span>
                 <p class="press-quote">"SUPERWOOD is completely mindblowing. It doesn't break, it doesn't rot, and it stops bullets. This is going to revolutionize building construction."</p>
               </div>
@@ -1475,19 +1892,25 @@
         </section>
 
         <!-- SLIDE 14: THANK YOU -->
-        <section class="slide" data-slide="14" style="background-image: linear-gradient(135deg, rgba(8, 5, 4, 0.95) 35%, rgba(8, 5, 4, 0.45) 100%), url('assets/hero.jpg');">
+        <section class="slide" data-slide="14" style="--slide-bg: url('assets/hero.jpg'); --slide-overlay: linear-gradient(135deg, rgba(8, 5, 4, 0.95) 45%, rgba(8, 5, 4, 0.5) 100%);">
           <div class="slide-wrapper">
-            <div class="thank-you-card" style="background: rgba(8, 5, 4, 0.75); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);">
-              <span class="cover-badge" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); color: var(--color-emerald);">
-                <i class="ti ti-check"></i> End of Presentation
-              </span>
-              <h2 class="thank-you-title">Thank You</h2>
-              <p class="thank-you-subtitle">Join us in heralding the new Age of Wood. For partnerships, sourcing agreements, or investment opportunities, get in touch.</p>
+            <div class="thank-you-split">
+              <div class="thank-you-card" style="background: rgba(8, 5, 4, 0.75); border-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); text-align: left; align-items: flex-start; max-width: none; margin: 0;">
+                <span class="cover-badge" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); color: var(--color-emerald); align-self: flex-start;">
+                  <i class="ti ti-check"></i> End of Presentation
+                </span>
+                <h2 class="thank-you-title" style="background: linear-gradient(135deg, #fff 40%, var(--color-amber) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Thank You</h2>
+                <p class="thank-you-subtitle" style="font-size: 16px; color: var(--text-secondary); line-height: 1.5;">Join us in heralding the new Age of Wood. For partnerships, sourcing agreements, or investment opportunities, get in touch.</p>
+                
+                <div class="contact-info" style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 16px; width: 100%; font-family: var(--font-mono); font-size: 13px; color: var(--text-tertiary);">
+                  <span style="font-weight: 700; color: #fff;">INVENTWOOD, INC.</span><br/>
+                  <span style="color: var(--color-amber); font-weight: 600; font-size: 16px; margin-top: 4px; display: inline-block;">info@inventwood.com</span><br/>
+                  <span style="font-size: 11px; color: var(--text-tertiary); margin-top: 16px; display: block; line-height: 1.4;">CONFIDENTIAL PRESENTATION MATERIAL FOR REGISTERED PARTNERS</span>
+                </div>
+              </div>
               
-              <div class="contact-info">
-                <span>INVENTWOOD, INC.</span><br/>
-                <span style="color: var(--color-amber);">info@inventwood.com</span><br/>
-                <span style="font-size: 11px; color: var(--text-tertiary); margin-top: 12px; display: block;">CONFIDENTIAL PRESENTATION MATERIAL FOR REGISTERED PARTNERS</span>
+              <div class="glass-visual-card" style="padding: 0; overflow: hidden; border-color: rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); box-shadow: 0 24px 64px rgba(0,0,0,0.6);">
+                <img src="assets/image61.png" style="width: 100%; height: auto; display: block; object-fit: contain;" alt="InventWood Thank You Presentation Visual">
               </div>
             </div>
           </div>
@@ -1615,7 +2038,7 @@
     const SPEC_DETAILS = {
       fire: {
         title: "Fire Resistant Safety Standards",
-        icon: "ti-flame",
+        icon: "assets/image15.png",
         desc: "SUPERWOOD® is ASTM E84 tested to Class A standard and meets strict aerospace standards. The densified cellulosic alignment forms a highly compact natural char layer during flame contact, cutting off oxygen penetration and preventing active flame spread.",
         stats: [
           { val: "Class A", lbl: "ASTM E84 Rating" },
@@ -1624,7 +2047,7 @@
       },
       dura: {
         title: "Unmatched Mechanical Durability",
-        icon: "ti-shield-half",
+        icon: "assets/image16.png",
         desc: "Engineered to be the hardest and densest wood product in the world. SUPERWOOD® is impact-resistant, storm-proof, and has successfully passed anti-ballistic and shrapnel testing, replacing heavy metal armor sheets in defensive and logistics applications.",
         stats: [
           { val: "18,000+ N", lbl: "Janka Hardness Rating" },
@@ -1633,7 +2056,7 @@
       },
       pest: {
         title: "Pest & Decay Protections",
-        icon: "ti-bug",
+        icon: "assets/image17.png",
         desc: "Because the microscopic cellular pores are completely collapsed and compressed, termites, moisture droplets, fungal spores, and rot bacteria are physically blocked from invading the wood fiber matrix. Requires zero toxic copper or chemical impregnations.",
         stats: [
           { val: "< 0.03%", lbl: "Moisture Swelling Bounds" },
@@ -1642,11 +2065,38 @@
       },
       thermal: {
         title: "Superior Thermal Insulation",
-        icon: "ti-thermometer",
+        icon: "assets/image18.png",
         desc: "Cellulose nanocrystals maintain a naturally low thermal conductivity. SUPERWOOD® provides 100× better thermal insulation than carbon steel and 400× better insulation than aluminum, eliminating structural thermal bridges and cutting HVAC cooling losses.",
         stats: [
           { val: "100× Better", lbl: "Insulation vs Steel" },
           { val: "400× Better", lbl: "Insulation vs Aluminum" }
+        ]
+      },
+      rf: {
+        title: "RF Transparency",
+        icon: "assets/image19.png",
+        desc: "Unlike metals which block electromagnetic waves, cellulose nanostructures are completely RF transparent. Wireless signals pass through unhindered, making it perfect for telecommunication housings or hidden antennas.",
+        stats: [
+          { val: "100%", lbl: "RF Wave Transmission" },
+          { val: "0 dB", lbl: "Signal Attenuation Loss" }
+        ]
+      },
+      sound: {
+        title: "Sound Attenuation & Dampening",
+        icon: "assets/image20.png",
+        desc: "Possesses superior natural energy-absorbing qualities. SUPERWOOD® has a 3.5× higher internal acoustic dampening coefficient than structural steel, making it an excellent barrier for traffic walls or premium concert acoustics.",
+        stats: [
+          { val: "3.5× Better", lbl: "Sound Dampening vs Steel" },
+          { val: "2.0x Better", lbl: "vs Standard Timber" }
+        ]
+      },
+      beauty: {
+        title: "Naturally Beautiful Aesthetics",
+        icon: "assets/image21.png",
+        desc: "Retains the organic wood texture, rich natural colors, and warm biophilic feeling of premium timber, without any toxic urea-formaldehyde binders or artificial laminates.",
+        stats: [
+          { val: "100% Natural", lbl: "Biophilic Sourcing" },
+          { val: "Zero", lbl: "Toxic Polymer Binders" }
         ]
       }
     };
