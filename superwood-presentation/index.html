@@ -21,9 +21,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#15100c;--ink2:#1f1812;--ink3:#2a2018;
+  --ink:#1f150c;--ink2:#2a1d11;--ink3:#372717;
   --cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;
-  --wood:#c47a35;--wood-bright:#e09a4e;--wood-deep:#8a4f23;
+  --wood:#b87d44;--wood-bright:#cda165;--wood-deep:#8a4f23;
   --sand:#e6d6bd;--line:rgba(228,210,180,.16);--maxw:1180px;
   /* market tiers */
   --m1:#824928;--m5:#956541;--m10:#a06438;--m50:#c2a67f;--m100:#d6c9a8;
@@ -37,7 +37,7 @@ section{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;positio
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
 
 h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01em;line-height:1.04}
-.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:1.3rem}
+.eyebrow{display:none}
 .lead{font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.6;color:var(--cream-dim);font-weight:300;max-width:42ch}
 .hl{color:var(--wood-bright)}.serif-em{font-style:italic;font-weight:500}
 
@@ -63,7 +63,7 @@ nav.dots button:hover span{opacity:1}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* COVER */
-#s1 .scrim{background:linear-gradient(180deg,rgba(12,9,6,.55) 0%,rgba(12,9,6,.25) 45%,rgba(12,9,6,.85) 100%)}
+#s1 .scrim{background:linear-gradient(180deg,rgba(22,14,8,.55) 0%,rgba(22,14,8,.25) 45%,rgba(22,14,8,.85) 100%)}
 #s1 h1{font-size:clamp(2.6rem,6vw,5.4rem);font-weight:300;max-width:18ch}
 .superword{font-size:clamp(1.4rem,3.4vw,2.6rem);font-weight:600;letter-spacing:.04em;margin-top:1.8rem}
 .superword b{color:var(--wood-bright);font-weight:700}
@@ -71,7 +71,7 @@ nav.dots button:hover span{opacity:1}
 .tagchips span:not(:last-child)::after{content:"·";margin-left:.6rem;color:var(--wood)}
 .cover-logo{height:34px;margin-bottom:2.4rem}.cover-logo img{height:100%}
 
-.dark{background:radial-gradient(120% 90% at 75% 10%,#241b14 0%,var(--ink) 60%)}
+.dark{background:radial-gradient(120% 90% at 75% 10%,#332314 0%,var(--ink) 60%)}
 .darker{background:var(--ink)}
 
 .bignum{font-family:'Fraunces';font-weight:300;line-height:.9;color:var(--wood-bright)}
@@ -146,6 +146,27 @@ nav.dots button:hover span{opacity:1}
 
 /* SUPERWOOD intro (slide 7) */
 .sw-split{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(1.6rem,4vw,3.4rem);align-items:center;width:100%}
+/* Slide 7 full-bleed */
+#s7{padding:0;align-items:stretch;overflow:hidden}
+.sw7{display:flex;width:100%;min-height:100vh}
+.sw7-left{flex:1.5;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:7vh 4vw;background:#ddd5c6}
+.sw7-left .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.sw7-left::after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(18,13,8,.12) 0%,rgba(18,13,8,0) 32%,rgba(18,13,8,.66) 100%);z-index:1}
+.sw7-left>*{position:relative;z-index:2}
+.sw7-kicker{font-size:.78rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#fff;opacity:.88;margin-bottom:1rem}
+.sw7-title{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(3rem,7vw,6rem);line-height:.92;letter-spacing:.005em;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.28)}
+.sw7-tag{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.2rem,2.1vw,1.75rem);color:#fff;margin-top:.7rem;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.sw7-claims{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(1.5rem,3vw,2.6rem);line-height:1.18;color:#f4ecdf;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.sw7-claims .hl{color:var(--wood-bright)}
+.sw7-right{flex:1;background:var(--ink2);display:flex;align-items:center;padding:4vh 2.8vw}
+.proplist{list-style:none;display:flex;flex-direction:column;width:100%}
+.proplist li{display:flex;gap:1.1rem;align-items:flex-start;padding:1.05rem 0;border-bottom:1px solid var(--line)}
+.proplist li:last-child{border-bottom:none}
+.pic7{flex:none;width:30px;display:flex;justify-content:center;color:var(--wood-bright);margin-top:2px}
+.pic7 svg{width:26px;height:26px;display:block}
+.proplist h4{font-family:'Inter',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cream);margin-bottom:.28rem}
+.proplist p{font-size:.85rem;line-height:1.42;color:var(--cream-dim)}
+@media(max-width:900px){.sw7{flex-direction:column}.sw7-left{min-height:62vh}.sw7-right{padding:6vh 6vw}}
 .props{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-top:1.4rem}
 .prop{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:11px;padding:1rem 1.1rem;transition:transform .4s,border-color .4s,background .4s}
 .prop:hover{transform:translateY(-4px);border-color:var(--wood);background:rgba(196,122,53,.08)}
@@ -226,9 +247,9 @@ nav.dots button:hover span{opacity:1}
 .person .ro{font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;color:var(--wood-bright);margin:.18rem 0 .45rem;min-height:2em}
 .person .bi{font-size:.72rem;line-height:1.4;color:var(--cream-dim)}
 .person .hint{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:auto;padding-top:.6rem;opacity:.7}
-.bio-pop{position:absolute;left:0;right:0;bottom:calc(100% + 10px);background:#241b14;border:1px solid var(--wood-deep);border-radius:12px;padding:1.1rem 1.2rem;font-size:.78rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 30px 70px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(8px);transition:all .3s;z-index:20;min-width:280px}
+.bio-pop{position:absolute;left:0;right:0;bottom:calc(100% + 10px);background:#332314;border:1px solid var(--wood-deep);border-radius:12px;padding:1.1rem 1.2rem;font-size:.78rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 30px 70px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(8px);transition:all .3s;z-index:20;min-width:280px}
 .bio-pop b{color:var(--wood-bright)}
-.bio-pop::after{content:"";position:absolute;top:100%;left:30px;border:8px solid transparent;border-top-color:#241b14}
+.bio-pop::after{content:"";position:absolute;top:100%;left:30px;border:8px solid transparent;border-top-color:#332314}
 .person:hover .bio-pop,.advc:hover .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
 .adv-head{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:1.3rem 0 .9rem;border-top:1px solid var(--line);padding-top:1rem}
 .adv{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem}
@@ -271,7 +292,7 @@ nav.dots button:hover span{opacity:1}
 .yt{font-size:.8rem;color:var(--cream-dim)}.yt b{color:var(--wood-bright)}
 
 /* CLOSE */
-#s14 .scrim{background:linear-gradient(180deg,rgba(12,9,6,.5),rgba(12,9,6,.82))}
+#s14 .scrim{background:linear-gradient(180deg,rgba(22,14,8,.5),rgba(22,14,8,.82))}
 #s14 h1{font-size:clamp(2.6rem,6.5vw,5.6rem);font-weight:300;max-width:16ch}
 .contact{margin-top:2.2rem;font-size:1rem;color:var(--cream-dim)}
 .contact a{color:var(--wood-bright);text-decoration:none;border-bottom:1px solid rgba(224,154,78,.4)}
@@ -359,7 +380,7 @@ nav.dots button:hover span{opacity:1}
   <!-- 4 WOOD OPPORTUNITY -->
   <section id="s4" data-nav="The Opportunity">
     <div class="bg" style="background-image:url('assets/forest.jpg')"></div>
-    <div class="scrim" style="background:linear-gradient(180deg,rgba(12,9,6,.7),rgba(12,9,6,.55))"></div>
+    <div class="scrim" style="background:linear-gradient(180deg,rgba(22,14,8,.7),rgba(22,14,8,.55))"></div>
     <div class="wrap s4-wrap">
       <div>
         <div class="eyebrow rv">The Overlooked Answer</div>
@@ -389,11 +410,11 @@ nav.dots button:hover span{opacity:1}
           <svg viewBox="0 0 540 210" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
             <!-- Cellulose nanocrystal 7.5 (highlight) -->
             <text x="8" y="18" fill="#f4ecdf" font-family="Inter,sans-serif" font-size="17" font-weight="700">Cellulose nanocrystal</text>
-            <rect x="8" y="26" width="462" height="30" rx="4" fill="#e09a4e"/>
-            <text x="478" y="49" fill="#e09a4e" font-family="Fraunces,serif" font-size="24">7</text>
+            <rect x="8" y="26" width="462" height="30" rx="4" fill="#cda165"/>
+            <text x="478" y="49" fill="#cda165" font-family="Fraunces,serif" font-size="24">7</text>
             <!-- Carbon fiber 4.5 (black) -->
             <text x="8" y="92" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="17" font-weight="600">Carbon fiber</text>
-            <rect x="8" y="100" width="297" height="30" rx="4" fill="#2b2b2b"/>
+            <rect x="8" y="100" width="297" height="30" rx="4" fill="#0c0c0c"/>
             <text x="313" y="123" fill="#cdbfa9" font-family="Fraunces,serif" font-size="24">4.5</text>
             <!-- Steel 0.4 -->
             <text x="8" y="166" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="17" font-weight="600">Steel</text>
@@ -445,30 +466,27 @@ nav.dots button:hover span{opacity:1}
   </section>
 
   <!-- 7 INTRODUCING SUPERWOOD -->
-  <section id="s7" class="dark" data-nav="SUPERWOOD">
-    <div class="wrap sw-split">
-      <div>
-        <div class="eyebrow rv">Introducing</div>
-        <h2 class="rv" style="font-size:clamp(2.2rem,4.6vw,3.8rem);letter-spacing:.02em">SUPERWOOD</h2>
-        <p class="rv" style="font-family:'Fraunces';font-style:italic;font-size:clamp(1.15rem,2vw,1.6rem);color:var(--sand);margin-top:.3rem">The strength of steel, the soul of wood.</p>
-        <div class="sw-hero rv" style="margin-top:1.4rem"><img src="assets/product-hero.jpg" alt="SUPERWOOD boards"></div>
-        <div class="sw-claim rv">
-          <div><div class="k">Stronger</div><div class="t">than steel</div></div>
-          <div><div class="k">6× lighter</div><div class="t">than steel</div></div>
-          <div><div class="k">½ the cost</div><div class="t">to manufacture</div></div>
+  <section id="s7" data-nav="SUPERWOOD">
+    <div class="sw7">
+      <div class="sw7-left">
+        <div class="bgimg" style="background-image:url('assets/product-hero.jpg')"></div>
+        <div class="sw7-top rv">
+          <div class="sw7-kicker">Introducing</div>
+          <h2 class="sw7-title">SUPERWOOD</h2>
+          <p class="sw7-tag">The strength of steel, the soul of wood.</p>
         </div>
+        <div class="sw7-claims rv">Stronger than steel.<br><span class="hl">6 times</span> lighter.<br>Manufacturable at <span class="hl">half</span> the cost.</div>
       </div>
-      <div class="rv">
-        <div class="props">
-          <div class="prop"><div class="ic">🔥</div><h4>Fire Resistant</h4><p>ASTM E84 Class A &amp; aerospace standards. A dense natural char layer limits flame spread.</p></div>
-          <div class="prop"><div class="ic">🛡️</div><h4>Unmatched Durability</h4><p>The strongest, hardest wood in the world. Anti-ballistic, impact and storm resistant.</p></div>
-          <div class="prop"><div class="ic">🐜</div><h4>Fights Pests &amp; Rot</h4><p>Protects against termites, mold, fungus and corrosion for long-lasting performance.</p></div>
-          <div class="prop"><div class="ic">🌡️</div><h4>Thermally Insulating</h4><p>100× better than steel; 400× better than aluminum.</p></div>
-          <div class="prop"><div class="ic">📡</div><h4>RF Transparent</h4><p>Wireless signals pass through unhindered. Undetectable by radar.</p></div>
-          <div class="prop"><div class="ic">🔇</div><h4>Sound Attenuating</h4><p>Improved sound dampening and acoustic performance vs steel.</p></div>
-          <div class="prop"><div class="ic">✨</div><h4>Naturally Beautiful</h4><p>The texture, colors and natural warmth of real wood.</p></div>
-          <div class="prop" style="display:flex;align-items:center;justify-content:center"><p style="font-family:'Fraunces';font-style:italic;color:var(--wood-bright);font-size:1rem">One material.<br>Seven superpowers.</p></div>
-        </div>
+      <div class="sw7-right">
+        <ul class="proplist rv">
+          <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5C9.5 6 8 8 8 11.5a4 4 0 0 0 8 0c0-1.7-.8-3-1.7-4.2-.3 1.2-1.1 2-2.1 2 .8-2.4-.2-5-0.2-6.8z"/></svg></span><div><h4>Fire Resistant</h4><p>ASTM E84 tested to Class A standard and aerospace standards. Dense natural char layer limits flame spread.</p></div></li>
+          <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.2-3 7.4-7 8.5-4-1.1-7-4.3-7-8.5V6l7-3z"/><path d="M9 12l2 2 4-4.5"/></svg></span><div><h4>Unmatched Durability</h4><p>The strongest and hardest wood in the world. Anti-ballistic, impact and storm-resistant.</p></div></li>
+          <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c3.5 4 6 6.7 6 10a6 6 0 0 1-12 0c0-3.3 2.5-6 6-10z"/></svg></span><div><h4>Fights Pests, Rot &amp; Fungus</h4><p>Protects against familiar threats like termites, mold, fungus and corrosion for long-lasting performance.</p></div></li>
+          <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.5V5a2 2 0 0 0-4 0v9.5a3.5 3.5 0 1 0 4 0z"/></svg></span><div><h4>Thermally Insulating</h4><p>100&times; better than steel; 400&times; better than aluminum.</p></div></li>
+          <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M6 6a8.5 8.5 0 0 0 0 12M18 6a8.5 8.5 0 0 1 0 12"/></svg></span><div><h4>RF Transparent</h4><p>Wireless signals pass through unhindered. Undetectable by radar.</p></div></li>
+          <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L13 19V5L7.5 9.5H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/></svg></span><div><h4>Sound Attenuating</h4><p>Improved sound dampening vs steel, with improved acoustic performance.</p></div></li>
+          <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14z"/><path d="M5 19C9 15 13 11 16.5 9"/></svg></span><div><h4>Naturally Beautiful</h4><p>With the texture, colors and natural warmth of wood.</p></div></li>
+        </ul>
       </div>
     </div>
   </section>
