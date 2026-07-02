@@ -18,7 +18,7 @@
 <meta name="twitter:image" content="assets/og-cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#1f150c;--ink2:#2a1d11;--ink3:#372717;
@@ -52,11 +52,11 @@ h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01
 #prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:linear-gradient(90deg,var(--wood-deep),var(--wood-bright));transition:width .15s linear}
 .brand{position:fixed;top:26px;left:34px;z-index:90;height:20px;opacity:.92}.brand img{height:100%}
 .conf{position:fixed;bottom:20px;left:34px;z-index:90;font-size:.62rem;letter-spacing:.32em;color:var(--muted);text-transform:uppercase}
-nav.dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:12px}
-nav.dots button{width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(228,210,180,.4);background:transparent;cursor:pointer;padding:0;transition:all .3s;position:relative}
-nav.dots button:hover{border-color:var(--wood-bright)}
-nav.dots button.active{background:var(--wood-bright);border-color:var(--wood-bright);transform:scale(1.25)}
-nav.dots button span{position:absolute;right:18px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);opacity:0;pointer-events:none;transition:opacity .25s}
+nav.dots{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:9px}
+nav.dots button{border:none;background:transparent;cursor:pointer;padding:1px 2px;font-family:'Inter',sans-serif;font-weight:500;font-size:.6rem;line-height:1;letter-spacing:.1em;font-variant-numeric:tabular-nums;color:var(--muted);opacity:.5;transition:color .25s,opacity .25s;position:relative}
+nav.dots button:hover{color:var(--cream);opacity:1}
+nav.dots button.active{color:var(--wood-bright);opacity:1;font-weight:600}
+nav.dots button span{position:absolute;right:calc(100% + 8px);top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);opacity:0;pointer-events:none;transition:opacity .25s}
 nav.dots button:hover span{opacity:1}
 .scrollcue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:5;font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;color:var(--cream-dim);display:flex;flex-direction:column;align-items:center;gap:8px}
 .scrollcue::after{content:"";width:1px;height:34px;background:linear-gradient(var(--wood-bright),transparent);animation:drop 1.8s infinite}
@@ -149,12 +149,12 @@ nav.dots button:hover span{opacity:1}
 /* Slide 7 full-bleed */
 #s7{padding:0;align-items:stretch;overflow:hidden}
 .sw7{display:flex;width:100%;min-height:100vh}
-.sw7-left{flex:1.5;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:7vh 4vw;background:#ddd5c6}
+.sw7-left{flex:1.5;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:7vh 4vw;background:#ddd5c6}
 .sw7-left .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
 .sw7-left::after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(18,13,8,.12) 0%,rgba(18,13,8,0) 32%,rgba(18,13,8,.66) 100%);z-index:1}
 .sw7-left>*{position:relative;z-index:2}
 .sw7-kicker{font-size:.78rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#fff;opacity:.88;margin-bottom:1rem}
-.sw7-title{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(3rem,7vw,6rem);line-height:.92;letter-spacing:.005em;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.28)}
+.sw7-title{font-family:'Gotham','Gotham Black','Montserrat',sans-serif;font-weight:900;font-size:clamp(3rem,7vw,6rem);line-height:.92;letter-spacing:.01em;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.28)}
 .sw7-tag{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.2rem,2.1vw,1.75rem);color:#fff;margin-top:.7rem;text-shadow:0 1px 12px rgba(0,0,0,.35)}
 .sw7-claims{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(1.5rem,3vw,2.6rem);line-height:1.18;color:#f4ecdf;text-shadow:0 2px 18px rgba(0,0,0,.55)}
 .sw7-claims .hl{color:var(--wood-bright)}
@@ -324,7 +324,6 @@ nav.dots button:hover span{opacity:1}
     <div class="bg" style="background-image:url('assets/hero.jpg')"></div>
     <div class="scrim"></div>
     <div class="wrap">
-      <div class="cover-logo rv"><img src="assets/logo.png" alt="InventWood"></div>
       <h1 class="rv">Reinventing wood to herald a new <span class="hl serif-em">Age of Wood.</span></h1>
       <div class="superword rv">Now shipping <b>SUPERWOOD</b></div>
       <div class="tagchips rv"><span>Beautiful</span><span>Durable</span><span>Stronger than steel</span></div>
@@ -338,7 +337,7 @@ nav.dots button:hover span{opacity:1}
       <div>
         <div class="eyebrow rv">The Moment</div>
         <h2 class="rv" style="font-size:clamp(2rem,3.8vw,3.4rem)">Construction is happening at the <span class="hl">fastest rate</span> in human history.</h2>
-        <p class="lead rv" style="margin-top:1.6rem">Global floor space is on track to <b style="color:var(--cream)">double over the next 30+ years</b> — the largest building boom the world has ever seen. What we build it from will define the century.</p>
+        <p class="lead rv" style="margin-top:1.6rem">Global floor space is on track to <b style="color:var(--cream)">double over the next 30+ years</b> — the largest building boom the world has ever seen. What we build it from will define the world our children and grandchildren grow up in.</p>
         <p class="rv" style="margin-top:1.6rem;font-size:.78rem;color:var(--muted)">Source: Wörsdörfer et al. (2019)</p>
       </div>
       <div class="rv">
@@ -408,13 +407,22 @@ nav.dots button:hover span{opacity:1}
         <div class="strength-chart rv">
           <div class="sc-title">Tensile strength <span>(gigapascals)</span></div>
           <svg viewBox="0 0 540 210" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+            <defs>
+              <linearGradient id="cfa" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4a4e"/><stop offset="1" stop-color="#101012"/></linearGradient>
+              <linearGradient id="cfb" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a4e"/><stop offset="1" stop-color="#101012"/></linearGradient>
+              <pattern id="cf" width="8" height="8" patternUnits="userSpaceOnUse">
+                <rect width="8" height="8" fill="#1b1b1e"/>
+                <rect width="4" height="4" fill="url(#cfa)"/><rect x="4" y="4" width="4" height="4" fill="url(#cfa)"/>
+                <rect x="4" y="0" width="4" height="4" fill="url(#cfb)"/><rect x="0" y="4" width="4" height="4" fill="url(#cfb)"/>
+              </pattern>
+            </defs>
             <!-- Cellulose nanocrystal 7.5 (highlight) -->
             <text x="8" y="18" fill="#f4ecdf" font-family="Inter,sans-serif" font-size="17" font-weight="700">Cellulose nanocrystal</text>
-            <rect x="8" y="26" width="462" height="30" rx="4" fill="#cda165"/>
-            <text x="478" y="49" fill="#cda165" font-family="Fraunces,serif" font-size="24">7</text>
+            <rect x="8" y="26" width="462" height="30" rx="4" fill="#f5f1ea"/>
+            <text x="478" y="49" fill="#f5f1ea" font-family="Fraunces,serif" font-size="24">7</text>
             <!-- Carbon fiber 4.5 (black) -->
             <text x="8" y="92" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="17" font-weight="600">Carbon fiber</text>
-            <rect x="8" y="100" width="297" height="30" rx="4" fill="#0c0c0c"/>
+            <rect x="8" y="100" width="297" height="30" rx="4" fill="url(#cf)"/>
             <text x="313" y="123" fill="#cdbfa9" font-family="Fraunces,serif" font-size="24">4.5</text>
             <!-- Steel 0.4 -->
             <text x="8" y="166" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="17" font-weight="600">Steel</text>
@@ -772,7 +780,6 @@ nav.dots button:hover span{opacity:1}
     <div class="bg" style="background-image:url('assets/deck-dusk.jpg')"></div>
     <div class="scrim"></div>
     <div class="wrap">
-      <div class="close-logo rv"><img src="assets/logo.png" alt="InventWood"></div>
       <h1 class="rv">Join us in building the <span class="hl serif-em">Age of Wood.</span></h1>
       <div class="contact rv">Alex Lau · CEO &amp; Co-founder &nbsp;·&nbsp; <a href="mailto:alex@inventwood.com">alex@inventwood.com</a></div>
     </div>
@@ -785,10 +792,10 @@ const deck=document.getElementById('deck');
 const secs=[...document.querySelectorAll('section')];
 const prog=document.getElementById('prog');
 const dotsBox=document.getElementById('dots');
-secs.forEach((s)=>{const b=document.createElement('button');b.innerHTML='<span>'+(s.dataset.nav||'')+'</span>';b.onclick=()=>s.scrollIntoView({behavior:'smooth'});dotsBox.appendChild(b);});
+secs.forEach((s,i)=>{const b=document.createElement('button');b.innerHTML=String(i+1).padStart(2,'0')+'<span>'+(s.dataset.nav||'')+'</span>';b.onclick=()=>s.scrollIntoView({behavior:'smooth'});dotsBox.appendChild(b);});
 const dots=[...dotsBox.children];
 deck.addEventListener('scroll',()=>{const sc=deck.scrollTop,h=deck.scrollHeight-deck.clientHeight;prog.style.width=(sc/h*100)+'%';});
-const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');const i=secs.indexOf(e.target);dots.forEach((d,j)=>d.classList.toggle('active',j===i));e.target.querySelectorAll('[data-count]').forEach(el=>{if(el.dataset.done)return;el.dataset.done=1;animate(el);});}});},{root:deck,threshold:.5});
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);if(e.isIntersecting){e.target.classList.add('in');dots.forEach((d,j)=>d.classList.toggle('active',j===i));e.target.querySelectorAll('[data-count]').forEach(el=>{animate(el);});}else{e.target.classList.remove('in');}});},{root:deck,threshold:.5});
 secs.forEach(s=>io.observe(s));
 function animate(el){const target=parseFloat(el.dataset.count);const dec=parseInt(el.dataset.dec||0);const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';const dur=1400,t0=performance.now();
 function fmt(v){let n=dec?v.toFixed(dec):Math.round(v).toLocaleString('en-US');return pre+n+suf;}
