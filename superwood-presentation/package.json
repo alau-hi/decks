@@ -4,5 +4,8 @@
   "description": "SUPERWOOD Master HTML Presentation Deck",
   "scripts": {
     "dev": "npx -y vite --port 3000 --open"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
   }
 }
