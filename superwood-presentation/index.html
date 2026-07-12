@@ -251,6 +251,10 @@ nav.dots button:hover span{opacity:1}
 .bio-pop b{color:var(--wood-bright)}
 .bio-pop::after{content:"";position:absolute;top:100%;left:30px;border:8px solid transparent;border-top-color:#332314}
 .person:hover .bio-pop,.advc:hover .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
+/* team popups: center on the card so tall bios don't clip past the viewport top */
+.team .bio-pop{bottom:auto;top:50%;transform:translateY(-50%) translateY(8px)}
+.team .bio-pop::after{display:none}
+.team .person:hover .bio-pop{transform:translateY(-50%)}
 .adv-head{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:1.3rem 0 .9rem;border-top:1px solid var(--line);padding-top:1rem}
 .adv{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem}
 .advc{display:flex;gap:.7rem;align-items:center;position:relative;cursor:default}
@@ -646,7 +650,7 @@ nav.dots button:hover span{opacity:1}
         <div class="person">
           <img loading="lazy" decoding="async" class="pic" src="assets/team-alex.jpg" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-founder</div>
           <div class="bi">Technology entrepreneur and investor. 20+ years in real estate development and operations. Built world class teams. Successful IP strategist. BS Cognitive Science and Physics, Dartmouth.</div><div class="hint">Hover for full bio</div>
-          <div class="bio-pop"><b>Alex Lau — CEO / Co-founder.</b> Technology entrepreneur and investor with 20+ years in real estate development and operations. Built world-class teams and is a successful IP strategist across multiple firms. BS Cognitive Science and Physics, Dartmouth.</div>
+          <div class="bio-pop"><b>Alex Lau — CEO / Co-founder.</b> Technology entrepreneur and investor who began his career in Silicon Valley in artificial intelligence and human-interface design. Involved in five successful manufacturing scale-ups around the world. 20+ years in real estate development and operations, leading groundbreaking development and redevelopment projects in California and Canada. Built world-class teams and is a successful IP strategist across multiple firms. BS Cognitive Science and Physics, Dartmouth.</div>
         </div>
         <div class="person">
           <img loading="lazy" decoding="async" class="pic" src="assets/team-jonathan.jpg" alt="Jonathan Strimling"><div class="nm">Jonathan Strimling</div><div class="ro">COO</div>
