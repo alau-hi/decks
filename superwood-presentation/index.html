@@ -297,6 +297,8 @@ nav.dots button:hover span{opacity:1}
   .ip-legend i{width:11px;height:11px;border-radius:3px;flex:none}
   .ip-legend b{margin-left:auto;color:var(--cream);font-weight:600;font-variant-numeric:tabular-nums}
   .ip-callout{margin-top:1rem}
+  /* slide-9 cost graph: bump the SVG labels so they stay legible at phone width */
+  .costgraph svg text{font-size:26px}
 }
 
 /* PRESS (slide 13) */
@@ -614,23 +616,42 @@ nav.dots button:hover span{opacity:1}
       <h2 class="rv" style="font-size:clamp(1.8rem,3.5vw,2.9rem);max-width:26ch">Profitable at pilot scale, with clear roadmap to <span class="hl">85% cost reduction</span>.</h2>
       <p class="rv" style="margin-top:.8rem;font-size:.92rem;color:var(--cream-dim);max-width:66ch">A <b style="color:var(--cream)">modular manufacturing approach</b> minimizes scale-up complexity, with massive cost savings already identified — driving SUPERWOOD's manufacturing cost below steel and ultimately far beneath it.</p>
       <div class="costgraph rv">
-        <svg viewBox="0 0 1000 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
-          <line x1="78" y1="8" x2="78" y2="128" stroke="rgba(228,210,180,.45)" stroke-width="1"/>
-          <line x1="78" y1="128" x2="958" y2="128" stroke="rgba(228,210,180,.45)" stroke-width="1"/>
-          <text x="34" y="68" fill="#9d8d76" font-family="Inter,sans-serif" font-size="11" transform="rotate(-90 34,68)" text-anchor="middle">cost ($/m³)</text>
-          <rect x="79" y="20" width="879" height="12" fill="rgba(158,162,170,.5)"/>
-          <text x="90" y="16" fill="#dfe1e6" font-family="Inter,sans-serif" font-size="11" font-weight="600">Stainless steel cost</text>
-          <rect x="79" y="96" width="879" height="12" fill="rgba(168,80,58,.62)"/>
-          <text x="90" y="92" fill="#f4ecdf" font-family="Inter,sans-serif" font-size="11" font-weight="600">Steel cost</text>
-          <path d="M160,77 C 300,90 400,99 500,102 C 640,110 740,114 840,117" fill="none" stroke="#aebf76" stroke-width="3.5" stroke-linecap="round"/>
-          <circle cx="160" cy="77" r="4.5" fill="#aebf76"/><circle cx="500" cy="102" r="4.5" fill="#aebf76"/><circle cx="840" cy="117" r="4.5" fill="#aebf76"/>
-          <text x="190" y="66" fill="#aebf76" font-family="Inter,sans-serif" font-size="11.5" font-weight="600">SUPERWOOD cost</text>
-          <line x1="160" y1="128" x2="160" y2="133" stroke="rgba(228,210,180,.45)" stroke-width="1"/>
-          <line x1="500" y1="128" x2="500" y2="133" stroke="rgba(228,210,180,.45)" stroke-width="1"/>
-          <line x1="840" y1="128" x2="840" y2="133" stroke="rgba(228,210,180,.45)" stroke-width="1"/>
-          <text x="160" y="148" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">SuperMill One</text>
-          <text x="500" y="148" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">SuperMill Two</text>
-          <text x="840" y="148" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">ChipMill</text>
+        <svg viewBox="0 0 1000 330" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+          <defs>
+            <linearGradient id="swfill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#aebf76" stop-opacity=".34"/>
+              <stop offset="1" stop-color="#aebf76" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <text x="30" y="160" fill="#9d8d76" font-family="Inter,sans-serif" font-size="16" transform="rotate(-90 30,160)" text-anchor="middle">cost per m³</text>
+          <line x1="130" y1="40" x2="130" y2="282" stroke="rgba(228,210,180,.4)" stroke-width="1.5"/>
+          <line x1="130" y1="282" x2="920" y2="282" stroke="rgba(228,210,180,.4)" stroke-width="1.5"/>
+          <!-- reference lines -->
+          <line x1="130" y1="70" x2="920" y2="70" stroke="rgba(170,175,184,.75)" stroke-width="2" stroke-dasharray="8 7"/>
+          <text x="916" y="61" fill="#c7cbd3" font-family="Inter,sans-serif" font-size="17" font-weight="600" text-anchor="end">Stainless steel cost</text>
+          <line x1="130" y1="155" x2="920" y2="155" stroke="rgba(190,96,70,.95)" stroke-width="2" stroke-dasharray="8 7"/>
+          <text x="916" y="146" fill="#dd9078" font-family="Inter,sans-serif" font-size="17" font-weight="600" text-anchor="end">Steel cost</text>
+          <!-- SUPERWOOD cost curve -->
+          <path d="M250,132 C 360,161 445,182 545,200 C 650,221 735,244 830,262 L830,282 L250,282 Z" fill="url(#swfill)"/>
+          <path d="M250,132 C 360,161 445,182 545,200 C 650,221 735,244 830,262" fill="none" stroke="#aebf76" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="250" cy="132" r="7" fill="#aebf76"/>
+          <circle cx="545" cy="200" r="7" fill="#aebf76"/>
+          <circle cx="830" cy="262" r="9" fill="#e6efce" stroke="#aebf76" stroke-width="3"/>
+          <text x="250" y="112" fill="#c3d18a" font-family="Inter,sans-serif" font-size="19" font-weight="700">SUPERWOOD cost</text>
+          <!-- 85% drop annotation -->
+          <line x1="250" y1="132" x2="892" y2="132" stroke="rgba(174,191,118,.45)" stroke-width="1" stroke-dasharray="3 5"/>
+          <line x1="830" y1="262" x2="892" y2="262" stroke="rgba(174,191,118,.45)" stroke-width="1" stroke-dasharray="3 5"/>
+          <line x1="880" y1="132" x2="880" y2="262" stroke="#aebf76" stroke-width="2"/>
+          <path d="M875,139 L880,130 L885,139" fill="none" stroke="#aebf76" stroke-width="2"/>
+          <path d="M875,255 L880,264 L885,255" fill="none" stroke="#aebf76" stroke-width="2"/>
+          <text x="905" y="197" fill="#aebf76" font-family="Fraunces,serif" font-size="25" transform="rotate(-90 905,197)" text-anchor="middle">−85%</text>
+          <!-- x axis -->
+          <line x1="250" y1="282" x2="250" y2="288" stroke="rgba(228,210,180,.4)" stroke-width="1.5"/>
+          <line x1="545" y1="282" x2="545" y2="288" stroke="rgba(228,210,180,.4)" stroke-width="1.5"/>
+          <line x1="830" y1="282" x2="830" y2="288" stroke="rgba(228,210,180,.4)" stroke-width="1.5"/>
+          <text x="250" y="308" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="18" font-weight="600" text-anchor="middle">SuperMill One</text>
+          <text x="545" y="308" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="18" font-weight="600" text-anchor="middle">SuperMill Two</text>
+          <text x="830" y="308" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="18" font-weight="600" text-anchor="middle">ChipMill</text>
         </svg>
       </div>
       <div class="road rv">
