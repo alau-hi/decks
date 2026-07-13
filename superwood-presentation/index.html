@@ -250,13 +250,14 @@ nav.dots button:hover span{opacity:1}
 .person .ro{font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;color:var(--wood-bright);margin:.18rem 0 .45rem;min-height:2em}
 .person .bi{font-size:.72rem;line-height:1.4;color:var(--cream-dim)}
 .person .hint{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:auto;padding-top:.6rem;opacity:.7}
-.bio-pop{position:absolute;left:0;right:0;bottom:calc(100% + 10px);background:#332314;border:1px solid var(--wood-deep);border-radius:12px;padding:1.1rem 1.2rem;font-size:.78rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 30px 70px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(8px);transition:all .3s;z-index:20;min-width:280px}
+.bio-pop{position:absolute;left:0;right:0;bottom:calc(100% + 10px);background:#332314;border:1px solid var(--wood-deep);border-radius:12px;padding:1.1rem 1.2rem;font-size:.78rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 30px 70px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .15s,transform .15s,visibility .15s;z-index:20;min-width:280px}
 .bio-pop b{color:var(--wood-bright)}
 .bio-pop::after{content:"";position:absolute;top:100%;left:30px;border:8px solid transparent;border-top-color:#332314}
 .person:hover .bio-pop,.advc:hover .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
 /* team popups: open beside the card so they never cover the person's photo */
-.team .bio-pop{bottom:auto;top:0;left:calc(100% + 12px);right:auto;width:300px}
-.team .person:last-child .bio-pop{left:auto;right:calc(100% + 12px)}
+/* team bios open right beside the photo (not the whole card) so they read as attached to the person */
+.team .bio-pop{bottom:auto;top:-6px;left:74px;right:auto;width:290px}
+.team .person:last-child .bio-pop{left:auto;right:calc(100% + 10px)}
 .team .bio-pop::after{display:none}
 .adv-head{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:1.3rem 0 .9rem;border-top:1px solid var(--line);padding-top:1rem}
 .adv{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem}
