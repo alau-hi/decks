@@ -189,8 +189,8 @@ nav.dots button:hover span{opacity:1}
 .mcol .sub{font-size:.74rem;color:var(--muted);margin-bottom:.9rem;line-height:1.35;min-height:2.4em}
 .mbox{font-size:.76rem;font-weight:500;padding:.5rem .75rem;border-radius:6px;margin-bottom:.4rem;color:#fff;line-height:1.25;transition:transform .2s}
 .mbox:hover{transform:translateX(4px)}
-.mbox.t1{background:var(--m1)}.mbox.t5{background:var(--m5)}.mbox.t10{background:var(--m10)}
-.mbox.t50{background:var(--m50);color:#3a2616}.mbox.t100{background:var(--m100);color:#3a2616}
+.mbox.t1{background:var(--m100);color:#3a2616}.mbox.t5{background:var(--m50);color:#3a2616}.mbox.t10{background:var(--m10)}
+.mbox.t50{background:var(--m5)}.mbox.t100{background:var(--m1)}
 .legend{display:flex;align-items:center;gap:1rem;margin-top:1.8rem;flex-wrap:wrap}
 .legend .lab{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .legend .scale{display:flex;flex:1;min-width:280px;max-width:560px;border-radius:6px;overflow:hidden;height:34px;border:1px solid var(--line)}
@@ -216,6 +216,7 @@ nav.dots button:hover span{opacity:1}
 .mcell{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0}
 .mtile{width:100%;background:radial-gradient(120% 135% at 50% 28%,#8a6a40 0%,#574022 55%,#3a2914 100%);border:1px solid rgba(220,185,130,.28);border-radius:9px;height:58px;display:flex;align-items:center;justify-content:center;padding:4px;overflow:hidden;box-shadow:inset 0 -10px 16px -10px rgba(0,0,0,.5)}
 .mtile img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 3px 5px rgba(0,0,0,.5))}
+.mtile img[src*="cut-prod-board"]{width:100%;height:100%;object-fit:cover;object-position:50% 70%}
 .mcap{font-size:.6rem;text-align:center;margin-top:.34rem;color:var(--cream-dim);line-height:1.14;letter-spacing:.01em}
 .mill-imgs .mar{color:var(--wood-bright);font-size:1.15rem;flex:none;align-self:flex-start;margin-top:18px}
 .mill-imgs.two{gap:.3rem}.mill-imgs.two .mtile{height:52px}.mill-imgs.two .mcap{font-size:.55rem}
@@ -253,10 +254,10 @@ nav.dots button:hover span{opacity:1}
 .bio-pop b{color:var(--wood-bright)}
 .bio-pop::after{content:"";position:absolute;top:100%;left:30px;border:8px solid transparent;border-top-color:#332314}
 .person:hover .bio-pop,.advc:hover .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
-/* team popups: center on the card so tall bios don't clip past the viewport top */
-.team .bio-pop{bottom:auto;top:50%;transform:translateY(-50%) translateY(8px)}
+/* team popups: open beside the card so they never cover the person's photo */
+.team .bio-pop{bottom:auto;top:0;left:calc(100% + 12px);right:auto;width:300px}
+.team .person:last-child .bio-pop{left:auto;right:calc(100% + 12px)}
 .team .bio-pop::after{display:none}
-.team .person:hover .bio-pop{transform:translateY(-50%)}
 .adv-head{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:1.3rem 0 .9rem;border-top:1px solid var(--line);padding-top:1rem}
 .adv{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem}
 .advc{display:flex;gap:.7rem;align-items:center;position:relative;cursor:default}
