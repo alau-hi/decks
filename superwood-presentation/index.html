@@ -256,7 +256,8 @@ nav.dots button:hover span{opacity:1}
 .person:hover .bio-pop,.advc:hover .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
 /* team popups: open beside the card so they never cover the person's photo */
 /* team bios open right beside the photo (not the whole card) so they read as attached to the person */
-.team .bio-pop{bottom:auto;top:-6px;left:74px;right:auto;width:290px}
+/* pointer-events:none so the popup never traps the cursor — hover is decided by the card alone, and moving off the card (even onto the popup) closes it */
+.team .bio-pop{bottom:auto;top:-6px;left:74px;right:auto;width:290px;pointer-events:none}
 .team .person:last-child .bio-pop{left:auto;right:calc(100% + 10px)}
 .team .bio-pop::after{display:none}
 .adv-head{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:1.3rem 0 .9rem;border-top:1px solid var(--line);padding-top:1rem}
@@ -322,7 +323,7 @@ nav.dots button:hover span{opacity:1}
 @media(max-width:820px){
   .team,.adv{grid-template-columns:repeat(3,1fr)}
   /* touch devices: bios open as a centered overlay (tap toggles, see JS) */
-  .bio-pop,.team .bio-pop,.team .person:last-child .bio-pop{position:fixed;left:16px;right:16px;top:50%;bottom:auto;width:auto;transform:translateY(-50%) translateY(8px);max-height:76vh;overflow-y:auto}
+  .bio-pop,.team .bio-pop,.team .person:last-child .bio-pop{position:fixed;left:16px;right:16px;top:50%;bottom:auto;width:auto;transform:translateY(-50%) translateY(8px);max-height:76vh;overflow-y:auto;pointer-events:auto}
   .person.show .bio-pop,.advc.show .bio-pop{opacity:1;visibility:visible;transform:translateY(-50%)}
 }
 @media(max-width:560px){
