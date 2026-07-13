@@ -844,7 +844,8 @@ secs.forEach((s,i)=>{const b=document.createElement('button');b.innerHTML=String
 const dots=[...dotsBox.children];
 deck.addEventListener('scroll',()=>{const sc=deck.scrollTop,h=deck.scrollHeight-deck.clientHeight;prog.style.width=h>0?(sc/h*100)+'%':'0%';});
 deck.addEventListener('wheel',e=>{if(readyUpTo<secs.length-1&&e.deltaY>0&&deck.scrollTop+deck.clientHeight>=deck.scrollHeight-4)pulsePill();},{passive:true});
-const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);if(e.isIntersecting){e.target.classList.add('in');dots.forEach((d,j)=>d.classList.toggle('active',j===i));e.target.querySelectorAll('[data-count]').forEach(el=>{animate(el);});}else{e.target.classList.remove('in');}});},{root:deck,threshold:.5});
+/* visibility = max(fraction of the slide shown, fraction of the viewport it fills) — the second term is what reveals slides taller than 2x the viewport, which never reach 50% of their own height on mobile */
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));}}else if(!e.isIntersecting){e.target.classList.remove('in');}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
 secs.forEach(s=>io.observe(s));
 function animate(el){const target=parseFloat(el.dataset.count);const dec=parseInt(el.dataset.dec||0);const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';const dur=1400,t0=performance.now();
 function fmt(v){let n=dec?v.toFixed(dec):Math.round(v).toLocaleString('en-US');return pre+n+suf;}
