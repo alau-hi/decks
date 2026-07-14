@@ -23,6 +23,10 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
+  // Storage-less deployment (staging): accept and drop beacons silently.
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return res.status(204).end();
+  }
   const { viewer, session, totals } = req.body || {};
   if (!/^[a-z0-9]{8,32}$/.test(String(session || ''))) {
     return res.status(400).json({ error: 'Bad session' });

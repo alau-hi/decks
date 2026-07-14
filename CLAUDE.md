@@ -31,7 +31,7 @@ Structure of `index.html`:
 
 ## Access gate & analytics (Vercel)
 
-The deployed deck is gated: every path except `/gate`, `/api/enter`, `/_vercel/*`, `/favicon.ico`, and `/assets/og-cover.jpg` requires a signed `sw_auth` cookie.
+The deployed deck is gated: every path except `/gate`, `/api/enter`, `/_vercel/*`, `/favicon.ico`, and `/assets/og-cover.jpg` requires a signed `sw_auth` cookie. The gate is env-aware: it activates only where `AUTH_SECRET` is configured (the production project), and `GATE_DISABLED=1` force-disables it — so staging projects deployed with no env vars serve the deck open, and deployments without `BLOB_READ_WRITE_TOKEN` accept but drop tracking beacons.
 
 - `gate.html` — branded email form shown to unauthenticated visitors (middleware rewrites to it, URL preserved). Email-only by design: no access code required (one existed originally; the unused `DECK_PASSWORD` env var remains if it's ever wanted back).
 - `api/enter.mjs` — validates the email shape, records the signup to Vercel Blob (`deck-signups/` prefix in the `deck-signups` store), sets an HMAC-signed cookie (secret: `AUTH_SECRET` env var, 30-day expiry), and redirects to `/?v=<email>` so the deck's per-viewer analytics attribute automatically.

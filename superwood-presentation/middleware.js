@@ -26,6 +26,11 @@ function b64urlDecode(s) {
 }
 
 export default async function middleware(req) {
+  // Env-aware gate: only deployments with AUTH_SECRET configured are gated
+  // (i.e. the production project). Staging/preview projects with no env vars
+  // serve the deck open; GATE_DISABLED=1 is an explicit off-switch.
+  if (!process.env.AUTH_SECRET || process.env.GATE_DISABLED === '1') return next();
+
   const url = new URL(req.url);
   const path = url.pathname;
   if (OPEN_PATHS.has(path) || path.startsWith('/_vercel/')) return next();

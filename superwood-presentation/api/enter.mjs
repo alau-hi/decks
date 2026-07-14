@@ -13,6 +13,11 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
+  // Ungated deployment (no AUTH_SECRET / gate disabled): no cookie to sign,
+  // nothing to record — just send the visitor into the deck.
+  if (!process.env.AUTH_SECRET || process.env.GATE_DISABLED === '1') {
+    return res.status(200).json({ redirect: '/' });
+  }
   const { email } = req.body || {};
   const cleanEmail = String(email || '').trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail) || cleanEmail.length > 254) {
