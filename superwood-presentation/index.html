@@ -948,7 +948,12 @@ window.addEventListener('keydown',e=>{
 
   var deckEl=document.getElementById('deck');
   var current=null,enterT=0,totals={};
-  function flush(){ if(current){ var s=Math.round((performance.now()-enterT)/1000); if(s>0){ totals[current]=(totals[current]||0)+s; } enterT=performance.now(); } }
+  /* Idle cutoff: time on a slide only counts up to IDLE_MS after the last
+     interaction, so an abandoned-but-visible tab stops inflating dwell. */
+  var IDLE_MS=180000,lastActive=performance.now();
+  function flush(){ if(current){ var end=Math.min(performance.now(),lastActive+IDLE_MS); var s=Math.round((end-enterT)/1000); if(s>0){ totals[current]=(totals[current]||0)+s; } enterT=performance.now(); } }
+  function activity(){ if(performance.now()-lastActive>IDLE_MS){ flush(); } lastActive=performance.now(); }
+  ['pointerdown','pointermove','wheel','keydown','touchstart'].forEach(function(ev){ document.addEventListener(ev,activity,{passive:true}); });
   var sio=new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(e.isIntersecting && e.intersectionRatio>=0.6){

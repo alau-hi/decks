@@ -51,6 +51,8 @@ export default async function handler(req, res) {
     ip: (req.headers['x-forwarded-for'] || '').split(',')[0].trim(),
     city: decodeURIComponent(req.headers['x-vercel-ip-city'] || ''),
     country: req.headers['x-vercel-ip-country'] || '',
+    lat: Number(req.headers['x-vercel-ip-latitude']) || null,
+    lon: Number(req.headers['x-vercel-ip-longitude']) || null,
     ts: new Date().toISOString(),
   };
   try {
