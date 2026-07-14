@@ -357,10 +357,12 @@ nav.dots button:hover span{opacity:1}
   .m-sm h3,.m-lg h3{grid-column:1/-1;grid-row:3;margin-top:.8rem}
   .m-sm p,.m-lg p{grid-column:1/-1;grid-row:4}
   .m-sm .loc,.m-lg .loc{grid-column:1/-1;grid-row:5}
-  .m-sm .mcell,.m-lg .mcell{flex:1 1 0;min-width:0;width:auto;max-width:72px}
-  /* 4-tile card stays stacked full-width, just tighter tiles */
-  .m-md .mcell{width:58px}
+  .m-sm .mcell,.m-lg .mcell{flex:1 1 0;min-width:0;width:auto;max-width:62px}
+  /* 4-tile card stays stacked full-width, with smaller squares so they sit clear of the card edges */
+  .m-md .mcell{width:48px}
+  .m-md .mtile{height:44px}
   .m-md .mill-imgs{gap:.3rem}
+  .m-md .mill-imgs.two .mcap{font-size:.4rem;width:100%;letter-spacing:-.02em;line-height:1.15}
 }
 @media(orientation:portrait) and (max-width:700px){
   /* portrait hero: recomposed vertical image; no Ken Burns zoom so the floor wordmark stays uncropped */
