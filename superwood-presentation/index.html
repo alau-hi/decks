@@ -137,7 +137,8 @@ nav.dots button:hover span{opacity:1}
 .tech-end .small{font-size:.78rem;color:var(--cream-dim);line-height:1.5}
 .tech-mid{display:flex;flex-direction:column;gap:.7rem}
 .pstep{display:grid;grid-template-columns:120px 1fr;gap:1rem;align-items:center;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem}
-.pstep .diag{background:radial-gradient(120% 135% at 50% 28%,#8a6a40 0%,#574022 55%,#3a2914 100%);border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center;height:62px;padding:6px}
+.pstep .diag{background:#17110b;border:1px solid rgba(220,185,130,.22);border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center;height:62px}
+.pstep .diag svg{width:100%;height:100%;display:block}
 .pstep .diag img{max-width:100%;max-height:100%;object-fit:contain}
 .pstep h4{font-family:'Inter';font-weight:600;font-size:.82rem;letter-spacing:.02em;color:var(--cream);margin-bottom:.2rem}
 .pstep p{font-size:.74rem;line-height:1.4;color:var(--cream-dim)}
@@ -510,9 +511,37 @@ nav.dots button:hover span{opacity:1}
         </div>
         <div class="tech-mid">
           <div class="cap">Conversion Technology</div>
-          <div class="pstep"><div class="diag"><img loading="lazy" decoding="async" src="assets/proc-restructure.png" alt=""></div><div><h4>1 · Molecular Restructuring</h4><p>Restructuring enables the controlled collapse of the cell walls.</p></div></div>
-          <div class="pstep"><div class="diag"><img loading="lazy" decoding="async" src="assets/proc-compress.png" alt=""></div><div><h4>2 · Compression &amp; Densification</h4><p>Total compression eliminates weaknesses and maximizes fiber density.</p></div></div>
-          <div class="pstep"><div class="diag"><img loading="lazy" decoding="async" src="assets/proc-align.png" alt=""></div><div><h4>3 · Fiber Alignment</h4><p>Preserving alignment of nano-cellulose fibers, enhancing hydrogen bonding.</p></div></div>
+          <div class="pstep"><div class="diag"><svg viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Molecular restructuring diagram">
+            <defs><polygon id="hx" points="9,0 4.5,7.5 -4.5,7.5 -9,0 -4.5,-7.5 4.5,-7.5" fill="#f4ecdf"/></defs>
+            <path d="M12,28 C 40,20 62,36 90,28 C 118,20 140,36 168,28 C 188,23 200,30 210,27" fill="none" stroke="#cda165" stroke-width="3"/>
+            <path d="M12,58 C 40,50 62,66 90,58 C 118,50 140,66 168,58 C 188,53 200,60 210,57" fill="none" stroke="#cda165" stroke-width="3"/>
+            <path d="M12,88 C 40,80 62,96 90,88 C 118,80 140,96 168,88 C 188,83 200,90 210,87" fill="none" stroke="#cda165" stroke-width="3"/>
+            <use href="#hx" x="38" y="27"/><use href="#hx" x="92" y="29"/><use href="#hx" x="146" y="27"/><use href="#hx" x="196" y="28"/>
+            <use href="#hx" x="24" y="57"/><use href="#hx" x="78" y="59"/><use href="#hx" x="132" y="57"/><use href="#hx" x="184" y="58"/>
+            <use href="#hx" x="38" y="87"/><use href="#hx" x="92" y="89"/><use href="#hx" x="146" y="87"/><use href="#hx" x="196" y="88"/>
+            <circle cx="60" cy="16" r="3.4" fill="#c47a35"/><circle cx="118" cy="42" r="3.4" fill="#c47a35"/><circle cx="168" cy="14" r="3.4" fill="#c47a35"/>
+            <circle cx="52" cy="72" r="3.4" fill="#c47a35"/><circle cx="160" cy="72" r="3.4" fill="#c47a35"/><circle cx="106" cy="100" r="3.4" fill="#c47a35"/>
+          </svg></div><div><h4>1 · Molecular Restructuring</h4><p>Restructuring enables the controlled collapse of the cell walls.</p></div></div>
+          <div class="pstep"><div class="diag"><svg viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Compression and densification diagram">
+            <rect x="18" y="8" width="184" height="9" rx="3" fill="#cda165"/>
+            <rect x="18" y="93" width="184" height="9" rx="3" fill="#cda165"/>
+            <g stroke="#f4ecdf" stroke-width="3" fill="none" stroke-linecap="round"><path d="M56,20 L56,30 M50,25 L56,31 L62,25"/><path d="M110,20 L110,30 M104,25 L110,31 L116,25"/><path d="M164,20 L164,30 M158,25 L164,31 L170,25"/><path d="M56,90 L56,80 M50,85 L56,79 L62,85"/><path d="M110,90 L110,80 M104,85 L110,79 L116,85"/><path d="M164,90 L164,80 M158,85 L164,79 L170,85"/></g>
+            <g stroke="#f4ecdf" stroke-width="3" fill="none">
+              <ellipse cx="52" cy="45" rx="17" ry="5.5"/><ellipse cx="88" cy="45" rx="17" ry="5.5"/><ellipse cx="124" cy="45" rx="17" ry="5.5"/><ellipse cx="160" cy="45" rx="17" ry="5.5"/>
+              <ellipse cx="70" cy="56" rx="17" ry="5.5"/><ellipse cx="106" cy="56" rx="17" ry="5.5"/><ellipse cx="142" cy="56" rx="17" ry="5.5"/>
+              <ellipse cx="52" cy="67" rx="17" ry="5.5"/><ellipse cx="88" cy="67" rx="17" ry="5.5"/><ellipse cx="124" cy="67" rx="17" ry="5.5"/><ellipse cx="160" cy="67" rx="17" ry="5.5"/>
+            </g>
+          </svg></div><div><h4>2 · Compression &amp; Densification</h4><p>Total compression eliminates weaknesses and maximizes fiber density.</p></div></div>
+          <div class="pstep"><div class="diag"><svg viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fiber alignment diagram">
+            <g stroke-width="4" stroke-linecap="round" fill="none">
+              <path d="M14,18 H130 M142,18 H206" stroke="#f4ecdf"/>
+              <path d="M14,33 H82 M94,33 H206" stroke="#cda165"/>
+              <path d="M14,48 H170 M182,48 H206" stroke="#f4ecdf"/>
+              <path d="M14,63 H58 M70,63 H206" stroke="#cda165"/>
+              <path d="M14,78 H146 M158,78 H206" stroke="#f4ecdf"/>
+              <path d="M14,93 H102 M114,93 H206" stroke="#cda165"/>
+            </g>
+          </svg></div><div><h4>3 · Fiber Alignment</h4><p>Preserving alignment of nano-cellulose fibers, enhancing hydrogen bonding.</p></div></div>
         </div>
         <div class="tech-col tech-end">
           <div class="cap">Output</div>
