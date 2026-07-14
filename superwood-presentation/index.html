@@ -282,21 +282,8 @@ nav.dots button:hover span{opacity:1}
 .ipstat{display:flex;align-items:center;gap:.9rem;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:.9rem 1.3rem}
 .ipstat .n{font-family:'Fraunces';font-weight:300;font-size:2.4rem;color:var(--wood-bright);line-height:1;flex:none}
 .ipstat .l{font-size:.78rem;color:var(--cream-dim);line-height:1.3}
-.ip-chart{flex-direction:column}
-.ip-legend{display:none}
 @media(max-width:980px){.ip-grid{grid-template-columns:1fr}.ipstats{grid-template-columns:1fr}}
 @media(max-width:700px){
-  /* mobile: the donut labels render ~6px and are unreadable. Lead with the chart, drop the tiny outer labels, enlarge the 3 core labels, and list the applications as a legend. */
-  .ip-chart{order:-1;width:100%}
-  .ip-chart svg{max-width:100%!important}
-  .ip-chart svg text[font-size="12.5"]{display:none}
-  .ip-chart svg text[font-size="13"]{font-size:18px}
-  .ip-chart svg text[font-size="17"]{font-size:27px}
-  .ip-legend{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1rem;width:100%;margin-top:.4rem}
-  .ip-legend span{display:flex;align-items:center;gap:.45rem;font-size:.78rem;color:var(--cream-dim)}
-  .ip-legend i{width:11px;height:11px;border-radius:3px;flex:none}
-  .ip-legend b{margin-left:auto;color:var(--cream);font-weight:600;font-variant-numeric:tabular-nums}
-  .ip-callout{margin-top:1rem}
   /* slide-9 cost graph: bump the SVG labels so they stay legible at phone width */
   .costgraph svg text{font-size:26px}
 }
@@ -826,20 +813,6 @@ nav.dots button:hover span{opacity:1}
 <path d="M279.09,81.00 A220,220 0 0 1 300.00,80.00 L300.00,124.00 A176,176 0 0 0 283.27,124.80 Z" fill="#7c8a55" stroke="#15100c" stroke-width="2"/>
 <text x="288.7" y="66.3" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="12.5" text-anchor="end">Energy, 2</text>
 </svg>
-          <div class="ip-legend" aria-hidden="true">
-            <span><i style="background:#b98c4a"></i>Structural<b>60</b></span>
-            <span><i style="background:#cdb46a"></i>Bioplastic<b>12</b></span>
-            <span><i style="background:#cdb06a"></i>Fibers<b>12</b></span>
-            <span><i style="background:#d9a05b"></i>Optics<b>11</b></span>
-            <span><i style="background:#c2a67f"></i>Other<b>10</b></span>
-            <span><i style="background:#9a4f3a"></i>Elastics<b>8</b></span>
-            <span><i style="background:#c47a35"></i>Materials<b>6</b></span>
-            <span><i style="background:#8a6a3a"></i>Process Opt.<b>5</b></span>
-            <span><i style="background:#7c8a55"></i>Energy<b>2</b></span>
-            <span><i style="background:#a8703f"></i>Evaporation<b>2</b></span>
-            <span><i style="background:#d6c9a8"></i>Paper<b>2</b></span>
-            <span><i style="background:#6f5a3a"></i>Stability<b>2</b></span>
-          </div>
         </div>
       </div>
       <div class="ipstats rv">
