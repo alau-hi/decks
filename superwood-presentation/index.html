@@ -50,8 +50,10 @@ h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01
 .scrim{position:absolute;inset:0;z-index:1}
 
 #prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:linear-gradient(90deg,var(--wood-deep),var(--wood-bright));transition:width .15s linear}
-.brand{position:fixed;bottom:20px;right:34px;z-index:90;height:18px;opacity:.85}.brand img{height:100%}
-.conf{position:fixed;bottom:20px;left:34px;z-index:90;font-size:.62rem;letter-spacing:.32em;color:var(--muted);text-transform:uppercase}
+.brand{position:fixed;bottom:20px;right:34px;z-index:90;height:18px;opacity:.85;transition:opacity .4s}.brand img{height:100%}
+.conf{position:fixed;bottom:20px;left:34px;z-index:90;font-size:.62rem;letter-spacing:.32em;color:var(--muted);text-transform:uppercase;transition:opacity .4s}
+/* the cover already carries the wordmark in the hero art — hide the fixed chrome there */
+body.on-cover .brand,body.on-cover .conf{opacity:0;pointer-events:none}
 nav.dots{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:9px}
 nav.dots button{border:none;background:transparent;cursor:pointer;padding:1px 2px;font-family:'Inter',sans-serif;font-weight:500;font-size:.6rem;line-height:1;letter-spacing:.1em;font-variant-numeric:tabular-nums;color:var(--muted);opacity:.5;transition:color .25s,opacity .25s;position:relative}
 nav.dots button:hover{color:var(--cream);opacity:1}
@@ -138,7 +140,7 @@ nav.dots button:hover span{opacity:1}
 .tech-mid{display:flex;flex-direction:column;gap:.7rem}
 .pstep{display:grid;grid-template-columns:120px 1fr;gap:1rem;align-items:center;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem}
 .pstep .diag{background:#17110b;border:1px solid rgba(220,185,130,.22);border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center;height:62px}
-.pstep .diag svg{width:100%;height:100%;display:block}
+.pstep .diag img{width:100%;height:100%;object-fit:cover;display:block}
 .pstep .diag img{max-width:100%;max-height:100%;object-fit:contain}
 .pstep h4{font-family:'Inter';font-weight:600;font-size:.82rem;letter-spacing:.02em;color:var(--cream);margin-bottom:.2rem}
 .pstep p{font-size:.74rem;line-height:1.4;color:var(--cream-dim)}
@@ -511,37 +513,9 @@ nav.dots button:hover span{opacity:1}
         </div>
         <div class="tech-mid">
           <div class="cap">Conversion Technology</div>
-          <div class="pstep"><div class="diag"><svg viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Molecular restructuring diagram">
-            <defs><polygon id="hx" points="9,0 4.5,7.5 -4.5,7.5 -9,0 -4.5,-7.5 4.5,-7.5" fill="#f4ecdf"/></defs>
-            <path d="M12,28 C 40,20 62,36 90,28 C 118,20 140,36 168,28 C 188,23 200,30 210,27" fill="none" stroke="#cda165" stroke-width="3"/>
-            <path d="M12,58 C 40,50 62,66 90,58 C 118,50 140,66 168,58 C 188,53 200,60 210,57" fill="none" stroke="#cda165" stroke-width="3"/>
-            <path d="M12,88 C 40,80 62,96 90,88 C 118,80 140,96 168,88 C 188,83 200,90 210,87" fill="none" stroke="#cda165" stroke-width="3"/>
-            <use href="#hx" x="38" y="27"/><use href="#hx" x="92" y="29"/><use href="#hx" x="146" y="27"/><use href="#hx" x="196" y="28"/>
-            <use href="#hx" x="24" y="57"/><use href="#hx" x="78" y="59"/><use href="#hx" x="132" y="57"/><use href="#hx" x="184" y="58"/>
-            <use href="#hx" x="38" y="87"/><use href="#hx" x="92" y="89"/><use href="#hx" x="146" y="87"/><use href="#hx" x="196" y="88"/>
-            <circle cx="60" cy="16" r="3.4" fill="#c47a35"/><circle cx="118" cy="42" r="3.4" fill="#c47a35"/><circle cx="168" cy="14" r="3.4" fill="#c47a35"/>
-            <circle cx="52" cy="72" r="3.4" fill="#c47a35"/><circle cx="160" cy="72" r="3.4" fill="#c47a35"/><circle cx="106" cy="100" r="3.4" fill="#c47a35"/>
-          </svg></div><div><h4>1 · Molecular Restructuring</h4><p>Restructuring enables the controlled collapse of the cell walls.</p></div></div>
-          <div class="pstep"><div class="diag"><svg viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Compression and densification diagram">
-            <rect x="18" y="8" width="184" height="9" rx="3" fill="#cda165"/>
-            <rect x="18" y="93" width="184" height="9" rx="3" fill="#cda165"/>
-            <g stroke="#f4ecdf" stroke-width="3" fill="none" stroke-linecap="round"><path d="M56,20 L56,30 M50,25 L56,31 L62,25"/><path d="M110,20 L110,30 M104,25 L110,31 L116,25"/><path d="M164,20 L164,30 M158,25 L164,31 L170,25"/><path d="M56,90 L56,80 M50,85 L56,79 L62,85"/><path d="M110,90 L110,80 M104,85 L110,79 L116,85"/><path d="M164,90 L164,80 M158,85 L164,79 L170,85"/></g>
-            <g stroke="#f4ecdf" stroke-width="3" fill="none">
-              <ellipse cx="52" cy="45" rx="17" ry="5.5"/><ellipse cx="88" cy="45" rx="17" ry="5.5"/><ellipse cx="124" cy="45" rx="17" ry="5.5"/><ellipse cx="160" cy="45" rx="17" ry="5.5"/>
-              <ellipse cx="70" cy="56" rx="17" ry="5.5"/><ellipse cx="106" cy="56" rx="17" ry="5.5"/><ellipse cx="142" cy="56" rx="17" ry="5.5"/>
-              <ellipse cx="52" cy="67" rx="17" ry="5.5"/><ellipse cx="88" cy="67" rx="17" ry="5.5"/><ellipse cx="124" cy="67" rx="17" ry="5.5"/><ellipse cx="160" cy="67" rx="17" ry="5.5"/>
-            </g>
-          </svg></div><div><h4>2 · Compression &amp; Densification</h4><p>Total compression eliminates weaknesses and maximizes fiber density.</p></div></div>
-          <div class="pstep"><div class="diag"><svg viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fiber alignment diagram">
-            <g stroke-width="4" stroke-linecap="round" fill="none">
-              <path d="M14,18 H130 M142,18 H206" stroke="#f4ecdf"/>
-              <path d="M14,33 H82 M94,33 H206" stroke="#cda165"/>
-              <path d="M14,48 H170 M182,48 H206" stroke="#f4ecdf"/>
-              <path d="M14,63 H58 M70,63 H206" stroke="#cda165"/>
-              <path d="M14,78 H146 M158,78 H206" stroke="#f4ecdf"/>
-              <path d="M14,93 H102 M114,93 H206" stroke="#cda165"/>
-            </g>
-          </svg></div><div><h4>3 · Fiber Alignment</h4><p>Preserving alignment of nano-cellulose fibers, enhancing hydrogen bonding.</p></div></div>
+          <div class="pstep"><div class="diag"><img loading="lazy" decoding="async" src="assets/proc2-restructure.webp" alt="Molecular restructuring diagram"></div><div><h4>1 · Molecular Restructuring</h4><p>Restructuring enables the controlled collapse of the cell walls.</p></div></div>
+          <div class="pstep"><div class="diag"><img loading="lazy" decoding="async" src="assets/proc2-compress.webp" alt="Compression and densification diagram"></div><div><h4>2 · Compression &amp; Densification</h4><p>Total compression eliminates weaknesses and maximizes fiber density.</p></div></div>
+          <div class="pstep"><div class="diag"><img loading="lazy" decoding="async" src="assets/proc2-align.webp" alt="Fiber alignment diagram"></div><div><h4>3 · Fiber Alignment</h4><p>Preserving alignment of nano-cellulose fibers, enhancing hydrogen bonding.</p></div></div>
         </div>
         <div class="tech-col tech-end">
           <div class="cap">Output</div>
@@ -930,7 +904,8 @@ function fmt(v){let n=dec?v.toFixed(dec):Math.round(v).toLocaleString('en-US');r
 function step(t){let p=Math.min((t-t0)/dur,1);p=1-Math.pow(1-p,3);el.textContent=fmt(target*p);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(target);}requestAnimationFrame(step);}
 let idx=0;
 function go(d){const t=Math.max(0,Math.min(secs.length-1,idx+d));idx=Math.min(t,readyUpTo);if(idx<t)pulsePill();secs[idx].scrollIntoView({behavior:'smooth'});}
-deck.addEventListener('scroll',()=>{const c=deck.scrollTop+deck.clientHeight/2;const f=secs.findIndex(s=>s.offsetTop<=c&&s.offsetTop+s.offsetHeight>c);if(f>=0)idx=f;});
+deck.addEventListener('scroll',()=>{const c=deck.scrollTop+deck.clientHeight/2;const f=secs.findIndex(s=>s.offsetTop<=c&&s.offsetTop+s.offsetHeight>c);if(f>=0)idx=f;document.body.classList.toggle('on-cover',idx===0);});
+document.body.classList.add('on-cover');
 window.addEventListener('keydown',e=>{if(['ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(1);}if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(-1);}if(e.key==='Home'){e.preventDefault();idx=0;secs[0].scrollIntoView({behavior:'smooth'});}if(e.key==='End'){e.preventDefault();idx=Math.min(secs.length-1,readyUpTo);secs[idx].scrollIntoView({behavior:'smooth'});if(idx<secs.length-1)pulsePill();}});
 /* touch devices: hover is unavailable, so bios open on tap as a centered overlay */
 if(matchMedia('(hover: none)').matches){
