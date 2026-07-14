@@ -47,9 +47,14 @@ export default async function handler(req, res) {
   const exp = Date.now() + MAX_AGE * 1000;
   const payload = `${Buffer.from(cleanEmail, 'utf8').toString('base64url')}.${exp}`;
   const sig = await hmacHex(payload, process.env.AUTH_SECRET || '');
+  // Share the login across all inventwood.net subdomains (sw, investor, …).
+  // On other hosts (*.vercel.app) a Domain=inventwood.net cookie would be
+  // rejected by the browser, so fall back to a host-only cookie there.
+  const host = String(req.headers['x-forwarded-host'] || req.headers.host || '');
+  const domain = /(^|\.)inventwood\.net$/.test(host.split(':')[0]) ? '; Domain=inventwood.net' : '';
   res.setHeader(
     'Set-Cookie',
-    `sw_auth=${payload}.${sig}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${MAX_AGE}`
+    `sw_auth=${payload}.${sig}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${MAX_AGE}${domain}`
   );
   return res.status(200).json({ redirect: `/?v=${encodeURIComponent(cleanEmail)}` });
 }
