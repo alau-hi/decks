@@ -299,8 +299,11 @@ nav.dots button:hover span{opacity:1}
 .pc:hover{transform:rotate(0) scale(1.05);box-shadow:0 34px 74px rgba(0,0,0,.8);z-index:40!important}
 .pc:hover::after{opacity:.8}
 @media(max-width:980px){
-  .press-collage{height:auto;min-height:0;display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;align-items:start}
-  .pc{position:static!important;width:auto!important;transform:none;border-width:4px}
+  /* phones: keep the collage feel — a staggered, overlapping pile instead of a flat grid */
+  .press-collage{height:auto;min-height:0;display:block}
+  .pc{position:relative!important;left:auto!important;top:auto!important;display:block;width:74%!important;transform:rotate(var(--r));border-width:4px}
+  .pc+.pc{margin-top:-15%}
+  .pc:nth-child(even){margin-left:26%}
 }
 .press-cta{margin-top:1.6rem;display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--wood);color:#1a1209;font-weight:600;font-size:.85rem;padding:.8rem 1.4rem;border-radius:30px;text-decoration:none;transition:background .3s,transform .3s}
