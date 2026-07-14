@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Deck Stats — InventWood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1f150c;--ink2:#2a1d11;
+  --cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;
+  --wood:#b87d44;--wood-bright:#cda165;--wood-deep:#8a4f23;
+  --line:rgba(228,210,180,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;min-height:100vh;padding:5vh 4vw}
+h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.6rem,3.4vw,2.2rem);margin-bottom:6px}
+.sub{font-size:.85rem;color:var(--muted);margin-bottom:30px}
+.keybox{max-width:380px;margin-top:20px}
+.keybox label{display:block;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.keybox input{width:100%;padding:12px 14px;background:rgba(244,236,223,.04);border:1px solid var(--line);border-radius:8px;color:var(--cream);font-family:'Inter',sans-serif;font-size:.95rem;outline:none;margin-bottom:14px}
+.keybox input:focus{border-color:var(--wood)}
+button{padding:11px 22px;border:none;border-radius:8px;background:linear-gradient(135deg,var(--wood-deep),var(--wood));color:var(--cream);font-family:'Inter',sans-serif;font-weight:600;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+button:hover{filter:brightness(1.12)}
+button.ghost{background:transparent;border:1px solid var(--line);color:var(--cream-dim)}
+.err{color:#d9906b;font-size:.85rem;margin-top:12px;min-height:1.2em}
+.bar{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.8rem;min-width:1100px}
+th,td{padding:9px 10px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+thead th{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--ink2);position:sticky;top:0}
+th.viewer,td.viewer{text-align:left;position:sticky;left:0;background:var(--ink2);max-width:230px;overflow:hidden;text-overflow:ellipsis}
+td.viewer .em{font-weight:500}
+td.viewer .meta{font-size:.66rem;color:var(--muted);margin-top:2px}
+td.total{font-weight:600;color:var(--wood-bright)}
+td.cell{font-variant-numeric:tabular-nums;color:var(--cream-dim)}
+tr:last-child td{border-bottom:none}
+.empty{padding:40px;text-align:center;color:var(--muted)}
+.foot{margin-top:26px;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+</style>
+</head>
+<body>
+<h1>SUPERWOOD deck — viewer stats</h1>
+<div class="sub" id="sub">Everyone who has passed the gate, with time spent per slide.</div>
+
+<div id="keyui" class="keybox" hidden>
+  <label for="key">Stats key</label>
+  <input id="key" type="password" placeholder="••••••••••••••••">
+  <button id="load">View stats</button>
+  <div id="kerr" class="err"></div>
+</div>
+
+<div id="dash" hidden>
+  <div class="bar">
+    <button id="refresh" class="ghost">Refresh</button>
+    <button id="forget" class="ghost">Forget key</button>
+    <span class="sub" id="gen"></span>
+  </div>
+  <div class="tablewrap"><table id="tbl"></table></div>
+</div>
+
+<div class="foot">InventWood — Confidential</div>
+<script>
+const SLIDES=["Cover","The Moment","The Problem","The Opportunity","Breakthrough","The Technology","SUPERWOOD","The Market","Roadmap","Traction","The Team","The Moat","In the Press","Join Us"];
+const keyui=document.getElementById('keyui'),dash=document.getElementById('dash'),kerr=document.getElementById('kerr');
+
+function fmt(s){ if(!s)return ''; if(s<60)return s+'s'; return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+function shade(s){ if(!s)return 'transparent'; const a=Math.min(.85,.12+s/180); return 'rgba(184,125,68,'+a.toFixed(2)+')'; }
+function when(ts){ if(!ts)return '—'; const d=new Date(ts); return d.toLocaleDateString(undefined,{month:'short',day:'numeric'})+' '+d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}); }
+
+function render(data){
+  document.getElementById('gen').textContent='Updated '+when(data.generatedAt);
+  const tbl=document.getElementById('tbl');
+  if(!data.viewers.length){ tbl.innerHTML='<tr><td class="empty">No viewers yet.</td></tr>'; return; }
+  let h='<thead><tr><th class="viewer">Viewer</th><th>Total</th>';
+  SLIDES.forEach((s,i)=>{ h+='<th title="'+s+'">'+(i+1)+'. '+s.replace('The ','')+'</th>'; });
+  h+='</tr></thead><tbody>';
+  data.viewers.forEach(v=>{
+    var loc='';
+    if(v.ips&&v.ips.length){
+      var m=v.ips[0];
+      loc=m.ip+(m.city?' · '+m.city+(m.country?', '+m.country:''):(m.country?' · '+m.country:''));
+      var all=v.ips.map(function(e){return e.ip+(e.city?' ('+e.city+(e.country?', '+e.country:'')+')':'');}).join('\n');
+    }
+    h+='<tr><td class="viewer"><div class="em">'+v.email+'</div><div class="meta">last seen '+when(v.lastSeen)+' · '+v.opens+' login'+(v.opens===1?'':'s')+' · '+v.sessions+' visit'+(v.sessions===1?'':'s')+'</div>'+(loc?'<div class="meta" title="'+all.replace(/"/g,'&quot;')+'">'+loc+(v.ips.length>1?' +'+(v.ips.length-1)+' more':'')+'</div>':'')+'</td>';
+    h+='<td class="total">'+(v.totalSeconds?fmt(v.totalSeconds):'opened only')+'</td>';
+    SLIDES.forEach(s=>{ const sec=v.sections[s]||0; h+='<td class="cell" style="background:'+shade(sec)+'">'+fmt(sec)+'</td>'; });
+    h+='</tr>';
+  });
+  tbl.innerHTML=h+'</tbody>';
+}
+
+async function load(key){
+  kerr.textContent='';
+  const r=await fetch('/api/stats?key='+encodeURIComponent(key));
+  if(r.status===401){ localStorage.removeItem('sw_stats_key'); keyui.hidden=false; dash.hidden=true; kerr.textContent='That key isn’t right.'; return; }
+  if(!r.ok){ kerr.textContent='Error loading stats ('+r.status+').'; return; }
+  localStorage.setItem('sw_stats_key',key);
+  keyui.hidden=true; dash.hidden=false;
+  render(await r.json());
+}
+
+document.getElementById('load').addEventListener('click',()=>load(document.getElementById('key').value.trim()));
+document.getElementById('key').addEventListener('keydown',e=>{ if(e.key==='Enter')load(e.target.value.trim()); });
+document.getElementById('refresh').addEventListener('click',()=>load(localStorage.getItem('sw_stats_key')||''));
+document.getElementById('forget').addEventListener('click',()=>{ localStorage.removeItem('sw_stats_key'); dash.hidden=true; keyui.hidden=false; });
+
+const saved=localStorage.getItem('sw_stats_key');
+if(saved)load(saved); else keyui.hidden=false;
+</script>
+</body>
+</html>

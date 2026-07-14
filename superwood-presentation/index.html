@@ -934,17 +934,21 @@ window.addEventListener('keydown',e=>{
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 
-<!-- Per-viewer + per-section engagement tracking -->
+<!-- Per-viewer + per-section engagement tracking.
+     Counts go to Vercel Analytics (deck_open, section_view — 2 data props max on Pro);
+     per-slide dwell seconds beacon to /api/track, cumulative per session so the
+     server can overwrite one record per session without double-counting. -->
 <script>
 (function(){
   var params=new URLSearchParams(location.search);
   var viewer=params.get('v')||params.get('to')||params.get('viewer')||'anonymous';
+  var session=Math.random().toString(36).slice(2,10)+Math.random().toString(36).slice(2,10);
   function track(name,data){try{window.va&&window.va('event',{name:name,data:Object.assign({viewer:viewer},data||{})});}catch(e){}}
   track('deck_open',{ref:document.referrer||'direct'});
 
   var deckEl=document.getElementById('deck');
   var current=null,enterT=0,totals={};
-  function flush(){ if(current){ var s=Math.round((performance.now()-enterT)/1000); if(s>0){ totals[current]=(totals[current]||0)+s; } current=null; } }
+  function flush(){ if(current){ var s=Math.round((performance.now()-enterT)/1000); if(s>0){ totals[current]=(totals[current]||0)+s; } enterT=performance.now(); } }
   var sio=new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(e.isIntersecting && e.intersectionRatio>=0.6){
@@ -957,9 +961,16 @@ window.addEventListener('keydown',e=>{
   },{root:deckEl,threshold:0.6});
   document.querySelectorAll('section').forEach(function(s){sio.observe(s);});
 
-  function reportDwell(){ flush(); Object.keys(totals).forEach(function(s){ track('section_time',{section:s,seconds:totals[s]}); }); totals={}; }
-  document.addEventListener('visibilitychange',function(){ if(document.hidden) reportDwell(); });
-  window.addEventListener('pagehide',reportDwell);
+  function send(){
+    flush();
+    if(!Object.keys(totals).length)return;
+    try{navigator.sendBeacon('/api/track',new Blob([JSON.stringify({viewer:viewer,session:session,totals:totals})],{type:'application/json'}));}catch(e){}
+  }
+  setInterval(function(){ if(!document.hidden) send(); },30000);
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden){ send(); } else { enterT=performance.now(); }
+  });
+  window.addEventListener('pagehide',send);
 })();
 </script>
 </body>
