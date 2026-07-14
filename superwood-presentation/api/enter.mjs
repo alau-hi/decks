@@ -13,13 +13,10 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  const { email, password } = req.body || {};
+  const { email } = req.body || {};
   const cleanEmail = String(email || '').trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail) || cleanEmail.length > 254) {
     return res.status(400).json({ error: 'Please enter a valid email address.' });
-  }
-  if (!process.env.DECK_PASSWORD || String(password || '') !== process.env.DECK_PASSWORD) {
-    return res.status(401).json({ error: 'That access code isn’t right. Check your invitation and try again.' });
   }
 
   const ts = new Date().toISOString();

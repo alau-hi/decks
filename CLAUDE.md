@@ -33,13 +33,13 @@ Structure of `index.html`:
 
 The deployed deck is gated: every path except `/gate`, `/api/enter`, `/_vercel/*`, `/favicon.ico`, and `/assets/og-cover.jpg` requires a signed `sw_auth` cookie.
 
-- `gate.html` — branded email + access-code form shown to unauthenticated visitors (middleware rewrites to it, URL preserved).
-- `api/enter.mjs` — validates the code against the `DECK_PASSWORD` env var, records the signup to Vercel Blob (`deck-signups/` prefix in the `deck-signups` store), sets an HMAC-signed cookie (secret: `AUTH_SECRET` env var, 30-day expiry), and redirects to `/?v=<email>` so the deck's per-viewer analytics attribute automatically.
+- `gate.html` — branded email form shown to unauthenticated visitors (middleware rewrites to it, URL preserved). Email-only by design: no access code required (one existed originally; the unused `DECK_PASSWORD` env var remains if it's ever wanted back).
+- `api/enter.mjs` — validates the email shape, records the signup to Vercel Blob (`deck-signups/` prefix in the `deck-signups` store), sets an HMAC-signed cookie (secret: `AUTH_SECRET` env var, 30-day expiry), and redirects to `/?v=<email>` so the deck's per-viewer analytics attribute automatically.
 - `middleware.js` — Edge middleware enforcing the cookie; also redirects authenticated visits to `/` onto `/?v=<email>`.
 
 Engagement analytics are two-layered. Vercel Web Analytics gets `deck_open` and `section_view` custom events (kept to ≤2 data properties — the plain-Pro limit). Per-slide dwell time is first-party: the tracker script at the bottom of `index.html` beacons cumulative per-section seconds to `api/track.mjs` (one Blob per session under `deck-dwell/<email>/<session>.json`, overwritten on each flush so repeats never double-count). Both record types include the viewer's IP and Vercel-provided geo (`x-vercel-ip-city`/`-country`). `stats.html` + `api/stats.mjs` render the private dashboard at `/stats`: full viewer roster (from signups, with IP + location) merged with a per-viewer × per-slide time heatmap; the API requires the `STATS_KEY` env var (separate from the deck access code). Slide columns in `stats.html` are a hardcoded list of the `data-nav` names — update it if slides are renamed/reordered.
 
-Operational notes: change the access code or stats key by updating the env var in Vercel project settings (then redeploy); view captured emails in the Vercel dashboard (Storage → deck-signups) or `vercel blob list`. Deploys: `vercel --prod` from `superwood-presentation/` (project `superwood-presentation`, team `inventwood`). Production domain: `sw.inventwood.net` (CNAME in Route 53 → `cname.vercel-dns.com`).
+Operational notes: change the stats key by updating the `STATS_KEY` env var in Vercel project settings (then redeploy); view captured emails in the Vercel dashboard (Storage → deck-signups) or `vercel blob list`. Deploys: `vercel --prod` from `superwood-presentation/` (project `superwood-presentation`, team `inventwood`). Production domain: `sw.inventwood.net` (CNAME in Route 53 → `cname.vercel-dns.com`).
 
 ## Conventions
 

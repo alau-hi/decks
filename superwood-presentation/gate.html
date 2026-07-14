@@ -38,12 +38,10 @@ button:disabled{opacity:.55;cursor:default}
 <div class="card">
   <div class="eyebrow">InventWood · Confidential</div>
   <h1>SUPERWOOD<em>.</em></h1>
-  <p class="sub">This presentation is shared privately. Enter your email and the access code from your invitation to continue.</p>
+  <p class="sub">This presentation is shared privately. Enter your email to continue.</p>
   <form id="f" novalidate>
     <label for="email">Work email</label>
     <input id="email" type="email" name="email" placeholder="you@company.com" autocomplete="email" required autofocus>
-    <label for="code">Access code</label>
-    <input id="code" type="password" name="password" placeholder="••••••••" autocomplete="off" required>
     <button id="go" type="submit">View the deck</button>
     <div id="err" class="err"></div>
   </form>
@@ -55,11 +53,10 @@ f.addEventListener('submit',async e=>{
   e.preventDefault();
   err.classList.remove('show');
   const email=document.getElementById('email').value.trim();
-  const password=document.getElementById('code').value;
-  if(!email||!password){err.textContent='Please fill in both fields.';err.classList.add('show');return;}
+  if(!email){err.textContent='Please enter your email.';err.classList.add('show');return;}
   go.disabled=true;go.textContent='Checking…';
   try{
-    const r=await fetch('/api/enter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});
+    const r=await fetch('/api/enter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
     const d=await r.json().catch(()=>({}));
     if(r.ok&&d.redirect){location.href=d.redirect;return;}
     err.textContent=d.error||'Something went wrong. Please try again.';
