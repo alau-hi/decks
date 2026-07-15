@@ -36,16 +36,14 @@ button:disabled{opacity:.55;cursor:default}
 </head>
 <body>
 <div class="card">
-  <div class="eyebrow">InventWood · Confidential</div>
   <h1>SUPERWOOD<em>.</em></h1>
-  <p class="sub">This presentation is shared privately. Enter your email to continue.</p>
+  <p class="sub">This presentation is shared privately. We appreciate you entering your email to continue.</p>
   <form id="f" novalidate>
-    <label for="email">Work email</label>
+    <label for="email">Email</label>
     <input id="email" type="email" name="email" placeholder="you@company.com" autocomplete="email" required autofocus>
     <button id="go" type="submit">View the deck</button>
     <div id="err" class="err"></div>
   </form>
-  <div class="foot">InventWood — Now Shipping SUPERWOOD</div>
 </div>
 <script>
 const f=document.getElementById('f'),go=document.getElementById('go'),err=document.getElementById('err');
