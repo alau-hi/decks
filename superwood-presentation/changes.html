@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Change Log — SUPERWOOD Investor Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1f150c;--cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;--wood:#b87d44;--wood-bright:#cda165;--line:rgba(228,210,180,.16)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--cream-dim);font-family:'Inter',sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:64px 28px 90px}
+h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(1.9rem,4vw,2.8rem);color:var(--cream);line-height:1.15}
+h1 em{font-style:italic;color:var(--wood-bright)}
+.sub{margin-top:.7rem;color:var(--muted);font-size:.85rem}
+.sub a{color:var(--wood-bright);text-decoration:none;border-bottom:1px solid rgba(205,161,101,.4)}
+h2{font-family:'Inter',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright);margin:3rem 0 1.1rem;border-top:1px solid var(--line);padding-top:1.6rem}
+.entry{margin-bottom:1.5rem}
+.req{font-family:'Fraunces',serif;font-style:italic;font-size:1.02rem;color:var(--cream);border-left:2px solid var(--wood);padding-left:.85rem;margin-bottom:.5rem}
+ul{list-style:none;padding-left:.95rem}
+li{position:relative;padding-left:1.1rem;margin:.3rem 0;font-size:.92rem}
+li::before{content:"◆";position:absolute;left:0;top:.45em;font-size:.5rem;color:var(--wood)}
+code{font-size:.78rem;color:var(--muted);background:rgba(255,255,255,.04);padding:.08em .4em;border-radius:4px}
+.note{margin-top:3.5rem;border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.3rem;font-size:.85rem;color:var(--muted)}
+.note b{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>SUPERWOOD Investor Deck — <em>change log</em></h1>
+  <p class="sub">Requests and shipped changes, July 9–15, 2026 &nbsp;·&nbsp; <a href="/">back to the deck</a></p>
+
+  <h2>Performance &amp; loading · Jul 9</h2>
+  <div class="entry">
+    <div class="req">“Some of the images are very slow to load on some devices, sometimes.”</div>
+    <ul>
+      <li>Compressed the heaviest images (1.5&nbsp;MB boards PNG → 70&nbsp;KB WebP and others); page weight roughly halved <code>d858e77</code></li>
+      <li>Added real cache lifetimes for <code>/assets/*</code> so repeat visits stop re-negotiating every image</li>
+      <li>Lazy-loading plus a navigation gate: slides reveal only after their images finish preloading, so viewers never see empty frames <code>374f867</code></li>
+    </ul>
+  </div>
+
+  <h2>Content edits · Jul 12</h2>
+  <div class="entry">
+    <div class="req">Roadmap slide (9)</div>
+    <ul>
+      <li>Title reworked to “Profitable at pilot scale, with clear roadmap to 85% cost reduction.” <code>31feb3b</code> <code>d5da457</code></li>
+      <li>Subtitle leads with the modular manufacturing approach minimizing scale-up complexity <code>d5da457</code></li>
+      <li>ChipMill: “Tech proven in lab, funded by DARPA”; modular-plants chip added (“easy to site, fast to construct”) <code>2acab4f</code> <code>e79e9b5</code></li>
+      <li>Material tiles: white backgrounds removed via Higgsfield cutouts, uniform tile sizes <code>d9a8346</code> <code>baba262</code></li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="req">Market slide (8) — “start with getting the data right, then the color coding”</div>
+    <ul>
+      <li>All 25 tiles re-tiered to best-estimate total market size (all materials; beams/trusses and joists include steel) <code>f398787</code></li>
+      <li>Sporting equipment re-tiered on material value, not retail <code>e888122</code></li>
+      <li>Foundations added at the $100B+ tier <code>90208c4</code></li>
+      <li>Tiles sorted largest-first and matched to the legend’s color mapping <code>f06bfb0</code> <code>e888122</code></li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="req">Other slides</div>
+    <ul>
+      <li>Slide 3: background raised to full visibility; steel bullets now “rusts easily, dangerous to work with” (thermal bridging dropped) <code>8bf3465</code> <code>ccc45b0</code></li>
+      <li>Slide 6: columns aligned, matched image boxes, “Ordinary Wood” label added <code>73bafae</code> <code>12fa864</code></li>
+      <li>Team slide: expanded Alex Lau deep-dive bio (Silicon Valley AI/HCI start, five manufacturing scale-ups, CA &amp; Canada development) <code>701c092</code></li>
+    </ul>
+  </div>
+
+  <h2>Mobile pass · Jul 13</h2>
+  <div class="entry">
+    <div class="req">“Make sure it renders beautifully and perfectly on phones in horizontal and vertical mode.”</div>
+    <ul>
+      <li>Portrait hero regenerated via Higgsfield with the floor wordmark intact (was cropped to fragments) <code>5b4a3be</code></li>
+      <li>Slide-number rail restored on mobile in compact form; wordmark hidden where it collided with titles <code>5b4a3be</code></li>
+      <li>Bios open on tap (hover doesn’t exist on touch); fixed blank tall slides — a reveal-threshold bug hid any slide taller than 2× the viewport <code>75bdbc8</code></li>
+      <li>Mill cards compacted (images beside the stat), press collage as an overlapping pile fitting one screen <code>e79e9b5</code> <code>0057c5a</code> <code>8fc4ab3</code></li>
+      <li>IP donut made readable on phones, then reverted to integrated labels per request to keep the slide compact <code>dbe93c1</code> <code>447d080</code></li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="req">Cost graph — “the most important slide of the deck; it should be much more clear”</div>
+    <ul>
+      <li>Rebuilt larger with labeled bands; then restored the compact one-page version for large screens per feedback: steel and stainless are bands (ranges), no re-emphasis of the 85% <code>ac17dbb</code> <code>8d93e27</code></li>
+      <li>Steel band recolored to oxidized rust so it doesn’t read as wood <code>a0226d3</code></li>
+    </ul>
+  </div>
+
+  <h2>Diagrams &amp; branding · Jul 14</h2>
+  <div class="entry">
+    <div class="req">Conversion technology thumbnails (slide 6)</div>
+    <ul>
+      <li>Rendered via Higgsfield in a consistent premium style: molecular lattice → fully-compressed cells at intermediate thickness with bold arrows → thin aligned-fiber board <code>ef55c9d</code> <code>f4d1383</code> <code>fbf2659</code></li>
+      <li>Step copy: “locking and bonding the fibers with new hydrogen bonds” / “retaining the wood’s heritage signature” <code>f4d1383</code></li>
+      <li>All three artworks rebuilt on identical canvases so left/right edges align exactly <code>e5adbeb</code> <code>5864a35</code></li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="req">Cover &amp; chrome</div>
+    <ul>
+      <li>Cover page shows no CONFIDENTIAL mark or corner wordmark (the hero art carries the wordmark); both fade in from slide 2 <code>ef55c9d</code></li>
+      <li>Fixed wordmark moved to the bottom-right corner deck-wide <code>a2bc004</code></li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="req">From a parallel session</div>
+    <ul>
+      <li>Email gate with first-party viewer analytics, stats charts and visit map <code>f2114d6</code> <code>c0b7f17</code> <code>5a02276</code></li>
+    </ul>
+  </div>
+
+  <h2>Scaling &amp; polish · Jul 15</h2>
+  <div class="entry">
+    <div class="req">“Slides don’t scale when I resize my window… continue to scale larger for bigger screens.”</div>
+    <ul>
+      <li>Whole deck now scales with the window — root size tracks viewport (down to ~72%, up to 2×), content column grows with it <code>907c53d</code> <code>9a7601a</code></li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="req">Individual fixes</div>
+    <ul>
+      <li>Market legend moved above the grid; darkest tiers lightened for legibility <code>a866677</code> <code>7bad4ae</code></li>
+      <li>Team slide given the same visual weight as its neighbors (was half-empty) <code>b1511c6</code></li>
+      <li>JLL logo replaced with current artwork, black lettering kept for the light partners panel <code>62badac</code> <code>5ee0026</code></li>
+      <li>Left/right arrow keys navigate slides; typed numbers (1–14) jump directly <code>3371aab</code> <code>90208c4</code></li>
+      <li>Bio popups anchor beside the photo and dismiss when the cursor leaves the card <code>90a6864</code> <code>7ce92a3</code></li>
+    </ul>
+  </div>
+
+  <div class="note"><b>Conventions adopted along the way:</b> asset content changes always ship under a new filename (assets carry a 1-day cache); slide images preload in slide order behind the navigation gate; market figures are best-estimate totals across all materials, with judgment calls flagged in commit messages.</div>
+</div>
+</body>
+</html>
