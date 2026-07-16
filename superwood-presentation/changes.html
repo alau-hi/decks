@@ -9,11 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#1f150c;--panel:#261a0f;--cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;--wood:#b87d44;--wood-bright:#cda165;--line:rgba(228,210,180,.14)}
+:root{--ink:#1f150c;--panel:#261a0f;--cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;--wood:#b87d44;--wood-bright:#cda165;--line:rgba(228,210,180,.14);--green:#8fb356;--teal:#5ea9a2;--sky:#7fa8c9;--rose:#c9706b;--amber:#e0a458;--lav:#a390c4;--gold:#e2b877}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%}
 body{background:var(--ink);color:var(--cream-dim);font-family:'Inter',sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;overflow:hidden}
-header{flex:none;display:flex;align-items:center;gap:1.2rem;padding:.8rem 26px;border-bottom:1px solid var(--line)}
+header{flex:none;display:flex;align-items:center;gap:1.2rem;padding:.8rem 26px;position:relative}
+header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--wood-bright),var(--green) 30%,var(--teal) 55%,var(--sky) 75%,var(--wood-bright))}
 header h1{font-family:'Fraunces',serif;font-weight:300;font-size:1.25rem;color:var(--cream);white-space:nowrap}
 header h1 em{font-style:italic;color:var(--wood-bright)}
 .btn{font-family:'Inter',sans-serif;font-weight:600;font-size:.78rem;background:var(--wood);color:#1a1209;border:none;border-radius:999px;padding:.55em 1.3em;cursor:pointer;white-space:nowrap}
@@ -47,7 +48,12 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 .pills{display:flex;gap:.4rem;flex-wrap:wrap}
 .pills button{font-family:'Inter',sans-serif;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:transparent;border:none;border-radius:999px;padding:.4em .85em;cursor:pointer}
 .pills button:hover{color:var(--cream)}
-.pills button.on{background:rgba(184,125,68,.18);color:var(--wood-bright);font-weight:600}
+.pills button.on{background:rgba(184,125,68,.22);color:var(--gold);font-weight:600}
+#filters [data-f]:not([data-f=all])::before{content:"●";margin-right:.45em;font-size:.85em}
+#filters [data-f=submitted]::before{color:var(--amber)}
+#filters [data-f=consideration]::before{color:var(--wood-bright)}
+#filters [data-f=planned]::before{color:var(--green)}
+#filters [data-f=rejected]::before{color:var(--rose)}
 .pills.tools{margin-left:auto;gap:.35rem}
 .pills.tools button{border:1px solid var(--line);border-radius:7px;color:var(--cream-dim)}
 .pills.tools button:hover{border-color:var(--wood);color:var(--wood-bright)}
@@ -57,12 +63,13 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 .reqhead:hover .sum{color:var(--cream)}
 .chev{flex:none;color:var(--muted);transition:transform .18s;font-size:.6rem;width:.9em}
 .open>.reqhead .chev,.loggroup.open .loghead .chev{transform:rotate(90deg)}
-.reqhead .sum{flex:1;min-width:0;color:var(--cream-dim);font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reqhead .sum{flex:1;min-width:0;color:var(--cream);font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reqhead .sum b{color:var(--gold)}
 .badge{flex:none;cursor:pointer;font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;font-weight:600;padding:.3em .8em;border-radius:999px;white-space:nowrap}
-.badge.submitted{color:var(--cream-dim);border:1px solid var(--line)}
+.badge.submitted{color:var(--amber);border:1px solid rgba(224,164,88,.55);background:rgba(224,164,88,.12)}
 .badge.consideration{color:#1a1209;background:var(--wood-bright)}
 .badge.planned{color:#1a1209;background:#aebf76}
-.badge.rejected{color:var(--cream);background:#7d3f2c}
+.badge.rejected{color:var(--cream);background:#a04a33}
 .reqbody{display:none;padding:.1rem .4rem .7rem 1.8rem;font-size:.86rem}
 .open>.reqbody{display:block}
 .reqbody .meta{color:var(--muted);font-size:.72rem;margin-top:.4rem}
@@ -74,11 +81,11 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 /* changelog */
 .dayhead{display:flex;align-items:center;gap:.8rem;margin:.9rem 0 .15rem;color:var(--muted);padding:0 .4rem}
 .dayhead .d{flex:1;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:var(--wood-bright);font-weight:600}
-.dayhead .n{font-size:.68rem;white-space:nowrap;margin-right:.6rem}
+.dayhead .n{font-size:.66rem;white-space:nowrap;margin-right:.6rem;color:var(--gold);background:rgba(226,184,119,.13);padding:.15em .75em;border-radius:999px;font-weight:600}
 .dots{display:inline-flex;flex:none}
 .dots i{width:14px;display:flex;justify-content:center}
-.dots i b{width:8px;height:8px;border-radius:50%;background:rgba(228,210,180,.1)}
-.dots i.on b{background:var(--wood-bright)}
+.dots i b{width:8px;height:8px;border-radius:50%;background:rgba(228,210,180,.13)}
+.dots i.on b{background:var(--gold);box-shadow:0 0 5px rgba(226,184,119,.55)}
 .dotlegend{display:flex;align-items:center;gap:.8rem;position:sticky;top:2.6rem;background:var(--ink);z-index:4;padding:.2rem 0 .35rem;border-bottom:1px solid var(--line)}
 .dotlegend .lab2{margin-left:auto;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .dotlegend .nums{display:inline-flex;flex:none}
@@ -86,8 +93,19 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 .loghead{display:flex;align-items:center;gap:.7rem;padding:.3rem .4rem;cursor:pointer;border-radius:7px}
 .loghead:hover{background:rgba(255,255,255,.035)}
 .loghead:hover .t{color:var(--cream)}
-.loghead .t{flex:1;min-width:0;color:var(--cream-dim);font-family:'Fraunces',serif;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.loghead .k{flex:none;color:var(--muted);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.loghead .t{flex:1;min-width:0;color:var(--cream);font-family:'Fraunces',serif;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.loghead .k{flex:none;color:var(--muted);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:.55em}
+.topicchip{padding:.18em .75em;border-radius:999px;font-weight:600;letter-spacing:.08em}
+.tc-performance{color:var(--green);background:rgba(143,179,86,.14)}
+.tc-content{color:var(--gold);background:rgba(226,184,119,.13)}
+.tc-mobile{color:var(--teal);background:rgba(94,169,162,.14)}
+.tc-charts{color:var(--amber);background:rgba(224,164,88,.14)}
+.tc-diagrams{color:#d89a5e;background:rgba(216,154,94,.14)}
+.tc-branding{color:var(--rose);background:rgba(201,112,107,.14)}
+.tc-analytics{color:var(--sky);background:rgba(127,168,201,.14)}
+.tc-scaling{color:var(--lav);background:rgba(163,144,196,.15)}
+.tc-polish{color:#d8c04a;background:rgba(216,192,74,.12)}
+.tc-meta{color:var(--cream-dim);background:rgba(205,191,169,.12)}
 .logbody{display:none;padding:.15rem .4rem .7rem 1.8rem}
 .loggroup.open .logbody{display:block}
 .logbody .req{font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;color:var(--cream);border-left:2px solid var(--wood);padding-left:.8rem;margin:.4rem 0}
@@ -406,7 +424,7 @@ function dayEl(label,entriesFor){
 function logGroupNode(e){
   const g=document.createElement('div');g.className='loggroup';
   const head=document.createElement('div');head.className='loghead';
-  head.innerHTML='<span class="chev">▶</span><span class="t">'+esc(e.title)+'</span><span class="k">'+esc(e.topic)+' · '+esc(e.date)+'</span>';
+  head.innerHTML='<span class="chev">▶</span><span class="t">'+esc(e.title)+'</span><span class="k"><span class="topicchip tc-'+esc(e.topic.toLowerCase())+'">'+esc(e.topic)+'</span>'+esc(e.date)+'</span>';
   head.appendChild(dotsEl(new Set(slidesOf(e))));
   const body=document.createElement('div');body.className='logbody';
   body.innerHTML='<div class="req">“'+esc(e.req)+'”</div><ul>'+e.items.map(i=>'<li>'+esc(i[0])+(i[1]?' <code>'+esc(i[1])+'</code>':'')+'</li>').join('')+'</ul>';
