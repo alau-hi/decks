@@ -9,110 +9,132 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#1f150c;--panel:#261a0f;--cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;--wood:#b87d44;--wood-bright:#cda165;--line:rgba(228,210,180,.16)}
+:root{--ink:#1f150c;--panel:#261a0f;--cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;--wood:#b87d44;--wood-bright:#cda165;--line:rgba(228,210,180,.14)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--ink);color:var(--cream-dim);font-family:'Inter',sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
-.topnav{position:sticky;top:0;z-index:50;background:rgba(31,21,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.topnav .in{max-width:860px;margin:0 auto;padding:.7rem 28px;display:flex;gap:1.4rem;align-items:center;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
-.topnav a{color:var(--cream-dim);text-decoration:none}
-.topnav a:hover{color:var(--wood-bright)}
-.topnav .deck{margin-left:auto;color:var(--wood-bright)}
-.wrap{max-width:860px;margin:0 auto;padding:44px 28px 90px}
-h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(1.9rem,4vw,2.6rem);color:var(--cream);line-height:1.15}
-h1 em{font-style:italic;color:var(--wood-bright)}
-.sub{margin-top:.6rem;color:var(--muted);font-size:.85rem}
-h2{font-family:'Inter',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright);margin:3rem 0 1.1rem;border-top:1px solid var(--line);padding-top:1.6rem}
-.pills{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 1.2rem}
-.pills button{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cream-dim);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.42em 1em;cursor:pointer;transition:all .2s}
-.pills button:hover{border-color:var(--wood)}
-.pills button.on{background:var(--wood);border-color:var(--wood);color:#1a1209;font-weight:600}
-/* request cards */
-.reqcard{border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;background:rgba(255,255,255,.02);overflow:hidden}
-.reqhead{display:flex;gap:.9rem;align-items:center;padding:.85rem 1.1rem;cursor:pointer}
-.reqhead .chev{flex:none;color:var(--muted);transition:transform .2s;font-size:.7rem}
-.reqcard.open .chev{transform:rotate(90deg)}
-.reqhead .sum{flex:1;min-width:0;color:var(--cream);font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.badge{flex:none;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:.35em .9em;border-radius:999px;white-space:nowrap}
+html,body{height:100%}
+body{background:var(--ink);color:var(--cream-dim);font-family:'Inter',sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;overflow:hidden}
+header{flex:none;display:flex;align-items:center;gap:1.2rem;padding:.8rem 26px;border-bottom:1px solid var(--line)}
+header h1{font-family:'Fraunces',serif;font-weight:300;font-size:1.25rem;color:var(--cream);white-space:nowrap}
+header h1 em{font-style:italic;color:var(--wood-bright)}
+.btn{font-family:'Inter',sans-serif;font-weight:600;font-size:.78rem;background:var(--wood);color:#1a1209;border:none;border-radius:999px;padding:.55em 1.3em;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--wood-bright)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--cream-dim)}
+header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--wood-bright);text-decoration:none;white-space:nowrap}
+/* split view */
+#split{flex:1;display:flex;flex-direction:column;min-height:0}
+.pane{overflow-y:auto;min-height:80px}
+#paneTop{flex:none;height:38vh}
+#paneBottom{flex:1}
+#divider{flex:none;height:10px;cursor:row-resize;position:relative;background:transparent}
+#divider::before{content:"";position:absolute;left:0;right:0;top:4px;height:2px;background:var(--line)}
+#divider::after{content:"⋯";position:absolute;left:50%;transform:translateX(-50%);top:-6px;color:var(--muted);letter-spacing:.3em;font-size:.9rem}
+#divider:hover::before{background:var(--wood)}
+.pad{padding:.9rem 26px 1.4rem}
+.panehead{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;position:sticky;top:0;background:var(--ink);padding:.7rem 0 .55rem;z-index:5}
+.panehead .lab{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;white-space:nowrap}
+.pills{display:flex;gap:.4rem;flex-wrap:wrap}
+.pills button{font-family:'Inter',sans-serif;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:transparent;border:none;border-radius:999px;padding:.4em .85em;cursor:pointer}
+.pills button:hover{color:var(--cream)}
+.pills button.on{background:rgba(184,125,68,.18);color:var(--wood-bright);font-weight:600}
+/* request rows */
+.reqrow{border-bottom:1px solid var(--line)}
+.reqhead{display:flex;gap:.7rem;align-items:center;padding:.55rem .2rem;cursor:pointer}
+.reqhead:hover .sum{color:var(--cream)}
+.chev{flex:none;color:var(--muted);transition:transform .18s;font-size:.6rem;width:.9em}
+.open>.reqhead .chev,.loggroup.open .loghead .chev{transform:rotate(90deg)}
+.reqhead .sum{flex:1;min-width:0;color:var(--cream-dim);font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge{flex:none;font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;font-weight:600;padding:.3em .8em;border-radius:999px;white-space:nowrap}
 .badge.submitted{color:var(--cream-dim);border:1px solid var(--line)}
 .badge.consideration{color:#1a1209;background:var(--wood-bright)}
 .badge.planned{color:#1a1209;background:#aebf76}
 .badge.rejected{color:var(--cream);background:#7d3f2c}
-.reqbody{display:none;padding:0 1.1rem 1rem 2.6rem;font-size:.9rem}
-.reqcard.open .reqbody{display:block}
-.reqbody .meta{color:var(--muted);font-size:.76rem;margin-top:.5rem}
-.reqbody .actions{margin-top:.7rem}
-.linkbtn{background:none;border:none;color:var(--wood-bright);font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.06em;cursor:pointer;padding:0;border-bottom:1px solid rgba(205,161,101,.4)}
-.editform{padding:.2rem 0 .4rem}
-.editform input[type=text],.editform textarea,.reqform textarea,.reqform input{width:100%;background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:8px;color:var(--cream);font-family:'Inter',sans-serif;font-size:.9rem;padding:.6em .8em;outline:none;margin-bottom:.6rem}
-.editform textarea,.reqform textarea{min-height:4.5em;resize:vertical}
-.editform input:focus,.editform textarea:focus,.reqform input:focus,.reqform textarea:focus{border-color:var(--wood)}
-.editform select{background:var(--panel);border:1px solid var(--line);border-radius:8px;color:var(--cream);font-family:'Inter',sans-serif;font-size:.85rem;padding:.5em .7em;margin-bottom:.7rem}
-.btn{font-family:'Inter',sans-serif;font-weight:600;font-size:.82rem;background:var(--wood);color:#1a1209;border:none;border-radius:999px;padding:.6em 1.4em;cursor:pointer}
-.btn:hover{background:var(--wood-bright)}
-.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--cream-dim);margin-left:.5rem}
-/* submit form */
-.reqform{margin-top:1.4rem;border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.3rem;background:rgba(255,255,255,.02)}
-.reqform label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
-.hintline{margin-top:.6rem;font-size:.75rem;color:var(--muted)}
+.reqbody{display:none;padding:.1rem .2rem .8rem 1.6rem;font-size:.86rem}
+.open>.reqbody{display:block}
+.reqbody .meta{color:var(--muted);font-size:.72rem;margin-top:.4rem}
+.linkbtn{background:none;border:none;color:var(--wood-bright);font-family:'Inter',sans-serif;font-size:.74rem;cursor:pointer;padding:0;border-bottom:1px solid rgba(205,161,101,.4);margin-top:.5rem}
+.editform input[type=text],.editform textarea,#modal textarea,#modal input{width:100%;background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:8px;color:var(--cream);font-family:'Inter',sans-serif;font-size:.88rem;padding:.55em .8em;outline:none;margin:.3rem 0}
+.editform textarea,#modal textarea{min-height:4.2em;resize:vertical}
+.editform input:focus,.editform textarea:focus,#modal input:focus,#modal textarea:focus{border-color:var(--wood)}
+.editform select{background:var(--panel);border:1px solid var(--line);border-radius:8px;color:var(--cream);font-size:.82rem;padding:.45em .7em;margin:.3rem 0 .6rem}
 /* changelog */
-.loggroup{border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;background:rgba(255,255,255,.02);overflow:hidden}
-.loghead{display:flex;align-items:center;gap:.9rem;padding:.85rem 1.1rem;cursor:pointer}
-.loghead .chev{flex:none;color:var(--muted);transition:transform .2s;font-size:.7rem}
-.loggroup.open .loghead .chev{transform:rotate(90deg)}
-.loghead .t{flex:1;color:var(--cream);font-family:'Fraunces',serif;font-size:1.02rem}
-.loghead .d{flex:none;color:var(--muted);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
-.logbody{display:none;padding:.1rem 1.2rem 1rem 2.6rem}
+.dayhead{display:flex;align-items:center;gap:.8rem;margin:1.1rem 0 .3rem;color:var(--muted)}
+.dayhead .d{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:var(--cream-dim)}
+.meter{height:5px;border-radius:3px;background:linear-gradient(90deg,var(--wood),var(--wood-bright));min-width:6px}
+.dayhead .n{font-size:.68rem;white-space:nowrap}
+.loggroup{border-bottom:1px solid var(--line)}
+.loghead{display:flex;align-items:center;gap:.7rem;padding:.5rem .2rem;cursor:pointer}
+.loghead:hover .t{color:var(--cream)}
+.loghead .t{flex:1;min-width:0;color:var(--cream-dim);font-family:'Fraunces',serif;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.loghead .k{flex:none;color:var(--muted);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.logbody{display:none;padding:.15rem .2rem .8rem 1.6rem}
 .loggroup.open .logbody{display:block}
-.logbody .req{font-family:'Fraunces',serif;font-style:italic;font-size:.98rem;color:var(--cream);border-left:2px solid var(--wood);padding-left:.85rem;margin:.7rem 0 .45rem}
+.logbody .req{font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;color:var(--cream);border-left:2px solid var(--wood);padding-left:.8rem;margin:.4rem 0}
 .logbody ul{list-style:none}
-.logbody li{position:relative;padding-left:1.1rem;margin:.3rem 0;font-size:.9rem}
-.logbody li::before{content:"◆";position:absolute;left:0;top:.45em;font-size:.5rem;color:var(--wood)}
-code{font-size:.76rem;color:var(--muted);background:rgba(255,255,255,.04);padding:.08em .4em;border-radius:4px}
-.note{margin-top:3rem;border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.3rem;font-size:.85rem;color:var(--muted)}
-.note b{color:var(--cream-dim)}
+.logbody li{position:relative;padding-left:1rem;margin:.25rem 0;font-size:.85rem}
+.logbody li::before{content:"◆";position:absolute;left:0;top:.45em;font-size:.45rem;color:var(--wood)}
+code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);padding:.06em .35em;border-radius:4px}
+.hintline{font-size:.72rem;color:var(--muted);margin:.6rem 0}
+/* modal */
+#overlay{position:fixed;inset:0;background:rgba(15,10,6,.72);backdrop-filter:blur(3px);display:none;z-index:100}
+#overlay.show{display:flex;align-items:center;justify-content:center}
+#modal{width:min(560px,92vw);background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.5rem;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#modal h3{font-family:'Fraunces',serif;font-weight:400;color:var(--cream);font-size:1.2rem;margin-bottom:.6rem}
+#modal .hintline{margin-top:.7rem}
 </style>
 </head>
 <body>
-<nav class="topnav"><div class="in">
-  <a href="#requests">Requests</a>
-  <a href="#submit">Submit</a>
-  <a href="#log">Change log</a>
+<header>
+  <h1>SUPERWOOD deck — <em>changes</em></h1>
+  <button class="btn" id="openModal">Request a change</button>
   <a class="deck" href="/">Deck →</a>
-</div></nav>
-<div class="wrap">
-  <h1>SUPERWOOD Investor Deck — <em>change log</em></h1>
-  <p class="sub">Open requests and shipped changes · July 2026</p>
+</header>
 
-  <h2 id="requests">Open change requests</h2>
-  <div class="pills" id="filters">
-    <button class="on" data-f="all">All</button>
-    <button data-f="submitted">Submitted</button>
-    <button data-f="consideration">Under consideration</button>
-    <button data-f="planned">Planned</button>
-    <button data-f="rejected">Rejected</button>
+<div id="split">
+  <div class="pane" id="paneTop">
+    <div class="pad">
+      <div class="panehead">
+        <span class="lab">Change requests</span>
+        <div class="pills" id="filters">
+          <button class="on" data-f="all">All</button>
+          <button data-f="submitted">Submitted</button>
+          <button data-f="consideration">Under consideration</button>
+          <button data-f="planned">Planned</button>
+          <button data-f="rejected">Rejected</button>
+        </div>
+      </div>
+      <div id="board"></div>
+      <p class="hintline">Click a request to expand; Edit changes wording or status. Edits and new requests are saved in this browser.</p>
+    </div>
   </div>
-  <div id="board"></div>
-  <p class="hintline">Click a request to expand it; use Edit to change its wording or status. Edits and new requests are saved in this browser.</p>
-
-  <form class="reqform" id="reqform">
-    <label for="reqtext" id="submit">Request a change</label>
-    <textarea id="reqtext" placeholder="Describe the change you'd like to see…" required></textarea>
-    <input id="reqfrom" type="text" placeholder="Your name (optional)">
-    <button type="submit" class="btn">Email this request</button>
-    <div class="hintline">Opens your mail client addressed to alex@inventwood.com and ir@inventwood.com, and files the request above under Submitted.</div>
-  </form>
-
-  <h2 id="log">Shipped changes</h2>
-  <div class="pills" id="logsort">
-    <button class="on" data-s="desc">Newest first</button>
-    <button data-s="asc">Oldest first</button>
-    <button data-s="topic">By topic</button>
-    <button data-s="expand" style="margin-left:auto">Expand all</button>
-    <button data-s="collapse">Collapse all</button>
+  <div id="divider" title="Drag to resize"></div>
+  <div class="pane" id="paneBottom">
+    <div class="pad">
+      <div class="panehead">
+        <span class="lab">Shipped changes</span>
+        <div class="pills" id="logsort">
+          <button class="on" data-s="desc">Newest first</button>
+          <button data-s="asc">Oldest first</button>
+          <button data-s="topic">By topic</button>
+          <button data-s="expand">Expand all</button>
+          <button data-s="collapse">Collapse all</button>
+        </div>
+      </div>
+      <div id="logwrap"></div>
+    </div>
   </div>
-  <div id="logwrap"></div>
+</div>
 
-  <div class="note"><b>Conventions adopted along the way:</b> asset content changes always ship under a new filename (assets carry a 1-day cache); slide images preload in slide order behind the navigation gate; market figures are best-estimate totals across all materials, with judgment calls flagged in commit messages.</div>
+<div id="overlay">
+  <div id="modal">
+    <h3>Request a change</h3>
+    <form id="reqform">
+      <textarea id="reqtext" placeholder="Describe the change you'd like to see…" required></textarea>
+      <input id="reqfrom" type="text" placeholder="Your name (optional)">
+      <button type="submit" class="btn">Email this request</button>
+      <button type="button" class="btn ghost" id="closeModal">Cancel</button>
+      <div class="hintline">Opens your mail client addressed to alex@inventwood.com and ir@inventwood.com, and files the request under Submitted.</div>
+    </form>
+  </div>
 </div>
 
 <script>
@@ -168,7 +190,7 @@ const LOG=[
   ['Left/right arrow keys navigate; typed numbers (1–14) jump directly','3371aab'],
   ['Bio popups anchor beside the photo and dismiss when the cursor leaves the card','7ce92a3']]},
  {iso:'2026-07-16',date:'Jul 16',topic:'Meta',title:'This page',req:'Create a summary page of change log and change requests at /changes.',items:[
-  ['Change log with sorting and collapsing; request board with statuses, editing, and an email form','faa509c']]}
+  ['Change log with sorting, day meters and split view; request board with statuses, editing, and an email form','201fe44']]}
 ];
 /* ---------- helpers ---------- */
 const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -192,21 +214,21 @@ function renderBoard(){
   const reqs=loadRequests().filter(r=>filter==='all'||r.status===filter);
   board.innerHTML=reqs.length?'':'<p class="hintline">No requests in this category.</p>';
   reqs.forEach(r=>{
-    const card=document.createElement('div');card.className='reqcard';card.dataset.id=r.id;
-    card.innerHTML='<div class="reqhead"><span class="chev">▶</span><span class="sum">'+esc(r.summary)+'</span><span class="badge '+esc(r.status)+'">'+STATUS_LABEL[r.status]+'</span></div>'+
-      '<div class="reqbody"><div class="detail">'+esc(r.detail||r.summary)+'</div><div class="meta">Logged '+esc(r.logged||'')+'</div><div class="actions"><button class="linkbtn edit">Edit</button></div></div>';
-    card.querySelector('.reqhead').addEventListener('click',()=>card.classList.toggle('open'));
-    card.querySelector('.edit').addEventListener('click',e=>{e.stopPropagation();openEditor(card,r);});
-    board.appendChild(card);
+    const row=document.createElement('div');row.className='reqrow';
+    row.innerHTML='<div class="reqhead"><span class="chev">▶</span><span class="sum">'+esc(r.summary)+'</span><span class="badge '+esc(r.status)+'">'+STATUS_LABEL[r.status]+'</span></div>'+
+      '<div class="reqbody"><div class="detail">'+esc(r.detail||r.summary)+'</div><div class="meta">Logged '+esc(r.logged||'')+'</div><button class="linkbtn edit">Edit</button></div>';
+    row.querySelector('.reqhead').addEventListener('click',()=>row.classList.toggle('open'));
+    row.querySelector('.edit').addEventListener('click',e=>{e.stopPropagation();openEditor(row,r);});
+    board.appendChild(row);
   });
 }
-function openEditor(card,r){
-  const body=card.querySelector('.reqbody');
+function openEditor(row,r){
+  const body=row.querySelector('.reqbody');
   body.innerHTML='<div class="editform">'+
     '<input type="text" class="e-sum" value="'+esc(r.summary)+'">'+
     '<textarea class="e-det">'+esc(r.detail||'')+'</textarea>'+
     '<select class="e-status">'+Object.keys(STATUS_LABEL).map(s=>'<option value="'+s+'"'+(s===r.status?' selected':'')+'>'+STATUS_LABEL[s]+'</option>').join('')+'</select><br>'+
-    '<button class="btn e-save">Save</button><button class="btn ghost e-cancel">Cancel</button></div>';
+    '<button class="btn e-save">Save</button> <button class="btn ghost e-cancel">Cancel</button></div>';
   body.querySelector('.e-save').addEventListener('click',()=>{
     saveOverride(r.id,{summary:body.querySelector('.e-sum').value.trim()||r.summary,
                        detail:body.querySelector('.e-det').value.trim(),
@@ -221,7 +243,12 @@ document.getElementById('filters').addEventListener('click',e=>{
   document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));
   filter=b.dataset.f;renderBoard();
 });
-/* ---------- submit form: email + auto-file under Submitted ---------- */
+/* ---------- modal ---------- */
+const overlay=document.getElementById('overlay');
+document.getElementById('openModal').addEventListener('click',()=>{overlay.classList.add('show');document.getElementById('reqtext').focus();});
+document.getElementById('closeModal').addEventListener('click',()=>overlay.classList.remove('show'));
+overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('show');});
+window.addEventListener('keydown',e=>{if(e.key==='Escape')overlay.classList.remove('show');});
 document.getElementById('reqform').addEventListener('submit',e=>{
   e.preventDefault();
   const text=document.getElementById('reqtext').value.trim();if(!text)return;
@@ -231,33 +258,48 @@ document.getElementById('reqform').addEventListener('submit',e=>{
   saveOverride(id,{summary:text.split('\n')[0].slice(0,90),detail:text+(from?'\n— '+from:''),status:'submitted',logged:today});
   renderBoard();
   document.getElementById('reqtext').value='';document.getElementById('reqfrom').value='';
+  overlay.classList.remove('show');
   const subject=encodeURIComponent('SUPERWOOD deck change request');
   const body=encodeURIComponent(text+(from?'\n\n— '+from:'')+'\n\nSubmitted from '+location.origin+'/changes');
   location.href='mailto:alex@inventwood.com?cc=ir@inventwood.com&subject='+subject+'&body='+body;
 });
-/* ---------- changelog ---------- */
+/* ---------- changelog with day meters ---------- */
 let sortMode='desc';
+const maxDay=Math.max(...Object.values(LOG.reduce((m,e)=>{m[e.iso]=(m[e.iso]||0)+e.items.length;return m;},{})));
+function meterEl(count,label){
+  const wrapEl=document.createElement('div');wrapEl.className='dayhead';
+  wrapEl.innerHTML='<span class="d">'+esc(label)+'</span><span class="meter" style="width:'+Math.round(count/maxDay*180)+'px"></span><span class="n">'+count+' change'+(count===1?'':'s')+'</span>';
+  return wrapEl;
+}
 function logGroupNode(e){
   const g=document.createElement('div');g.className='loggroup';
-  g.innerHTML='<div class="loghead"><span class="chev">▶</span><span class="t">'+esc(e.title)+'</span><span class="d">'+esc(e.topic)+' · '+esc(e.date)+'</span></div>'+
+  g.innerHTML='<div class="loghead"><span class="chev">▶</span><span class="t">'+esc(e.title)+'</span><span class="k">'+esc(e.topic)+' · '+esc(e.date)+'</span></div>'+
     '<div class="logbody"><div class="req">“'+esc(e.req)+'”</div><ul>'+e.items.map(i=>'<li>'+esc(i[0])+(i[1]?' <code>'+esc(i[1])+'</code>':'')+'</li>').join('')+'</ul></div>';
   g.querySelector('.loghead').addEventListener('click',()=>g.classList.toggle('open'));
   return g;
 }
 function renderLog(){
-  const wrap=document.getElementById('logwrap');wrap.innerHTML='';
+  const wrapEl=document.getElementById('logwrap');wrapEl.innerHTML='';
   let entries=[...LOG];
-  if(sortMode==='desc')entries.sort((a,b)=>b.iso.localeCompare(a.iso));
-  if(sortMode==='asc')entries.sort((a,b)=>a.iso.localeCompare(b.iso));
   if(sortMode==='topic'){
     const topics=[...new Set(entries.map(e=>e.topic))].sort();
     topics.forEach(t=>{
-      const h=document.createElement('h2');h.textContent=t;h.style.marginTop='1.6rem';wrap.appendChild(h);
-      entries.filter(e=>e.topic===t).sort((a,b)=>a.iso.localeCompare(b.iso)).forEach(e=>wrap.appendChild(logGroupNode(e)));
+      const te=entries.filter(e=>e.topic===t);
+      wrapEl.appendChild(meterEl(te.reduce((n,e)=>n+e.items.length,0),t));
+      te.sort((a,b)=>a.iso.localeCompare(b.iso)).forEach(e=>wrapEl.appendChild(logGroupNode(e)));
     });
-  }else{
-    entries.forEach(e=>wrap.appendChild(logGroupNode(e)));
+    return;
   }
+  entries.sort((a,b)=>sortMode==='desc'?b.iso.localeCompare(a.iso):a.iso.localeCompare(b.iso));
+  let lastDay=null;
+  entries.forEach(e=>{
+    if(e.iso!==lastDay){
+      lastDay=e.iso;
+      const dayTotal=LOG.filter(x=>x.iso===e.iso).reduce((n,x)=>n+x.items.length,0);
+      wrapEl.appendChild(meterEl(dayTotal,e.date));
+    }
+    wrapEl.appendChild(logGroupNode(e));
+  });
 }
 document.getElementById('logsort').addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
@@ -266,6 +308,23 @@ document.getElementById('logsort').addEventListener('click',e=>{
   document.querySelectorAll('#logsort button').forEach(x=>{if(['desc','asc','topic'].includes(x.dataset.s))x.classList.toggle('on',x===b);});
   sortMode=s;renderLog();
 });
+/* ---------- draggable divider ---------- */
+(function(){
+  const top=document.getElementById('paneTop'),div=document.getElementById('divider');
+  const saved=localStorage.getItem('swchg-split');if(saved)top.style.height=saved;
+  let dragging=false;
+  function move(clientY){
+    const rect=document.getElementById('split').getBoundingClientRect();
+    const h=Math.min(Math.max(clientY-rect.top,90),rect.height-140);
+    top.style.height=h+'px';
+  }
+  div.addEventListener('mousedown',e=>{dragging=true;e.preventDefault();});
+  window.addEventListener('mousemove',e=>{if(dragging)move(e.clientY);});
+  window.addEventListener('mouseup',()=>{if(dragging){dragging=false;localStorage.setItem('swchg-split',top.style.height);}});
+  div.addEventListener('touchstart',e=>{dragging=true;},{passive:true});
+  window.addEventListener('touchmove',e=>{if(dragging)move(e.touches[0].clientY);},{passive:true});
+  window.addEventListener('touchend',()=>{if(dragging){dragging=false;localStorage.setItem('swchg-split',top.style.height);}});
+})();
 renderBoard();renderLog();
 </script>
 </body>
