@@ -48,7 +48,7 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 .chev{flex:none;color:var(--muted);transition:transform .18s;font-size:.6rem;width:.9em}
 .open>.reqhead .chev,.loggroup.open .loghead .chev{transform:rotate(90deg)}
 .reqhead .sum{flex:1;min-width:0;color:var(--cream-dim);font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.badge{flex:none;font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;font-weight:600;padding:.3em .8em;border-radius:999px;white-space:nowrap}
+.badge{flex:none;cursor:pointer;font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;font-weight:600;padding:.3em .8em;border-radius:999px;white-space:nowrap}
 .badge.submitted{color:var(--cream-dim);border:1px solid var(--line)}
 .badge.consideration{color:#1a1209;background:var(--wood-bright)}
 .badge.planned{color:#1a1209;background:#aebf76}
@@ -87,8 +87,17 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);padding:.06em .35em;border-radius:4px}
 .hintline{font-size:.72rem;color:var(--muted);margin:.6rem 0}
 /* modal */
-#overlay{position:fixed;inset:0;background:rgba(15,10,6,.72);backdrop-filter:blur(3px);display:none;z-index:100}
-#overlay.show{display:flex;align-items:center;justify-content:center}
+#overlay,#idoverlay{position:fixed;inset:0;background:rgba(15,10,6,.72);backdrop-filter:blur(3px);display:none;z-index:100}
+#overlay.show,#idoverlay.show{display:flex;align-items:center;justify-content:center}
+#idmodal{width:min(420px,92vw);background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.3rem 1.4rem;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+#idmodal h3{font-family:'Fraunces',serif;font-weight:400;color:var(--cream);font-size:1.1rem;margin-bottom:.5rem}
+#idmodal input{width:100%;background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:8px;color:var(--cream);font-family:'Inter',sans-serif;font-size:.9rem;padding:.55em .8em;outline:none;margin:.3rem 0 .7rem}
+#idmodal input:focus{border-color:var(--wood)}
+.statmenu{position:fixed;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.3rem;z-index:120;box-shadow:0 12px 40px rgba(0,0,0,.55);display:flex;flex-direction:column;gap:.1rem}
+.statmenu button{font-family:'Inter',sans-serif;font-size:.74rem;letter-spacing:.05em;text-align:left;background:none;border:none;border-radius:6px;color:var(--cream-dim);padding:.4em .9em;cursor:pointer;white-space:nowrap}
+.statmenu button:hover{background:rgba(184,125,68,.2);color:var(--wood-bright)}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--panel);border:1px solid var(--line);border-radius:999px;color:var(--cream-dim);font-size:.78rem;padding:.55em 1.3em;z-index:130;opacity:0;transition:opacity .25s;pointer-events:none}
+#toast.show{opacity:1}
 #modal{width:min(560px,92vw);background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.5rem;box-shadow:0 30px 80px rgba(0,0,0,.6)}
 #modal h3{font-family:'Fraunces',serif;font-weight:400;color:var(--cream);font-size:1.2rem;margin-bottom:.6rem}
 #modal .hintline{margin-top:.7rem}
@@ -144,6 +153,14 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
 </div>
 
 <div id="yt" style="position:fixed;left:-9999px;bottom:0;width:1px;height:1px" aria-hidden="true"></div>
+<div id="idoverlay"><div id="idmodal">
+  <h3>Who's making this change?</h3>
+  <input id="idname" type="text" placeholder="Your name">
+  <button class="btn" id="idsave">Continue</button>
+  <button class="btn ghost" id="idcancel">Cancel</button>
+  <div class="hintline">Remembered on this device. Category changes are limited to Alex.</div>
+</div></div>
+<div id="toast"></div>
 <div id="overlay">
   <div id="modal">
     <h3>Request a change</h3>
@@ -240,6 +257,7 @@ function renderBoard(){
       '<div class="reqbody"><div class="detail">'+esc(r.detail||r.summary)+'</div><div class="meta">Logged '+esc(r.logged||'')+'</div><button class="linkbtn edit">Edit</button></div>';
     row.querySelector('.reqhead').addEventListener('click',()=>row.classList.toggle('open'));
     row.querySelector('.edit').addEventListener('click',e=>{e.stopPropagation();openEditor(row,r);});
+    row.querySelector('.badge').addEventListener('click',e=>{e.stopPropagation();beginStatusChange(r,e.currentTarget);});
     board.appendChild(row);
   });
 }
@@ -260,6 +278,41 @@ function openEditor(row,r){
     renderBoard();
   });
   body.querySelector('.e-cancel').addEventListener('click',()=>renderBoard());
+}
+/* ---------- identity + badge status menu ---------- */
+function setCookie(k,v){document.cookie=k+'='+encodeURIComponent(v)+';max-age=31536000;path=/'}
+function getCookie(k){const m=document.cookie.match('(?:^|; )'+k.replace(/([.$?*|{}()\[\]\\\/+^])/g,'\\$1')+'=([^;]*)');return m?decodeURIComponent(m[1]):''}
+const isAllowed=n=>/(^|\W)alex(\W|$)/i.test(n);
+let pendingStatus=null;
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2600);}
+function showIdModal(){document.getElementById('idoverlay').classList.add('show');document.getElementById('idname').focus();}
+function hideIdModal(){document.getElementById('idoverlay').classList.remove('show');}
+document.getElementById('idsave').addEventListener('click',()=>{
+  const n=document.getElementById('idname').value.trim();if(!n)return;
+  setCookie('swchg-user',n);hideIdModal();
+  if(pendingStatus){const p=pendingStatus;pendingStatus=null;beginStatusChange(p.r,p.anchor);}
+});
+document.getElementById('idcancel').addEventListener('click',()=>{pendingStatus=null;hideIdModal();});
+document.getElementById('idoverlay').addEventListener('click',e=>{if(e.target.id==='idoverlay'){pendingStatus=null;hideIdModal();}});
+function beginStatusChange(r,anchor){
+  const who=getCookie('swchg-user');
+  if(!who){pendingStatus={r,anchor};showIdModal();return;}
+  if(!isAllowed(who)){toast('Signed in as '+who+' — only Alex can change categories.');return;}
+  openStatusMenu(r,anchor);
+}
+function openStatusMenu(r,anchor){
+  document.querySelectorAll('.statmenu').forEach(m=>m.remove());
+  const menu=document.createElement('div');menu.className='statmenu';
+  Object.keys(STATUS_LABEL).forEach(st=>{
+    const b=document.createElement('button');b.textContent=STATUS_LABEL[st]+(st===r.status?' ✓':'');
+    b.addEventListener('click',()=>{saveOverride(r.id,{status:st});menu.remove();renderBoard();toast('Marked “'+(r.title||r.summary)+'” as '+STATUS_LABEL[st]+'.');});
+    menu.appendChild(b);
+  });
+  document.body.appendChild(menu);
+  const rect=anchor.getBoundingClientRect();
+  menu.style.top=Math.min(rect.bottom+6,innerHeight-menu.offsetHeight-10)+'px';
+  menu.style.left=Math.max(10,Math.min(rect.left,innerWidth-menu.offsetWidth-10))+'px';
+  setTimeout(()=>document.addEventListener('click',function close(e){if(!menu.contains(e.target)){menu.remove();document.removeEventListener('click',close);}}),0);
 }
 document.getElementById('filters').addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
