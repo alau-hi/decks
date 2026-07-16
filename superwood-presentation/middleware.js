@@ -2,7 +2,7 @@ import { next, rewrite } from '@vercel/edge';
 
 // Paths reachable without authentication. og-cover.jpg stays open so link
 // previews render in email clients and chat apps.
-const OPEN_PATHS = new Set(['/gate', '/gate.html', '/api/enter', '/favicon.ico', '/assets/og-cover.jpg', '/assets/logo.png']);
+const OPEN_PATHS = new Set(['/gate', '/gate.html', '/api/enter', '/favicon.ico', '/assets/og-cover.jpg']);
 
 const enc = new TextEncoder();
 async function hmacHex(data, secret) {
