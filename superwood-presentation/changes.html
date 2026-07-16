@@ -98,6 +98,7 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
 <header>
   <h1>SUPERWOOD deck — <em>changes</em></h1>
   <button class="btn" id="openModal">Request a change</button>
+  <button class="btn ghost" id="songbtn" title="David Bowie — Changes (official audio via YouTube)">♪ Ch-ch-changes</button>
   <a class="deck" href="/">Deck →</a>
 </header>
 
@@ -142,6 +143,7 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
   </div>
 </div>
 
+<div id="yt" style="position:fixed;left:-9999px;bottom:0;width:1px;height:1px" aria-hidden="true"></div>
 <div id="overlay">
   <div id="modal">
     <h3>Request a change</h3>
@@ -378,6 +380,24 @@ document.getElementById('logtools').addEventListener('click',e=>{
   window.addEventListener('touchmove',e=>{if(dragging)move(e.touches[0].clientY);},{passive:true});
   window.addEventListener('touchend',()=>{if(dragging){dragging=false;localStorage.setItem('swchg-split',top.style.height);}});
 })();
+/* ---------- Bowie: official YouTube embed, mute-toggle ---------- */
+let ytPlayer=null,ytReady=false;
+const songbtn=document.getElementById('songbtn');
+function songLabel(){
+  if(!ytReady){songbtn.textContent='♪ Ch-ch-changes';return;}
+  songbtn.textContent=ytPlayer.isMuted()?'🔇 Changes — unmute':'🔊 Changes';
+}
+window.onYouTubeIframeAPIReady=function(){
+  ytPlayer=new YT.Player('yt',{videoId:'4BgF7Y3q-as',playerVars:{autoplay:1,mute:1,loop:1,playlist:'4BgF7Y3q-as'},
+    events:{onReady:()=>{ytReady=true;ytPlayer.playVideo();songLabel();}}});
+};
+(function(){const t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t);})();
+songbtn.addEventListener('click',()=>{
+  if(!ytReady)return;
+  if(ytPlayer.getPlayerState()!==1)ytPlayer.playVideo();
+  ytPlayer.isMuted()?ytPlayer.unMute():ytPlayer.mute();
+  setTimeout(songLabel,80);
+});
 renderBoard();renderLog();
 </script>
 </body>
