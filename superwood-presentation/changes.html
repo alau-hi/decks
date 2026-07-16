@@ -26,12 +26,70 @@ li::before{content:"◆";position:absolute;left:0;top:.45em;font-size:.5rem;colo
 code{font-size:.78rem;color:var(--muted);background:rgba(255,255,255,.04);padding:.08em .4em;border-radius:4px}
 .note{margin-top:3.5rem;border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.3rem;font-size:.85rem;color:var(--muted)}
 .note b{color:var(--cream-dim)}
+/* change-request board */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 1.2rem}
+.filters button{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cream-dim);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.42em 1em;cursor:pointer;transition:all .2s}
+.filters button:hover{border-color:var(--wood)}
+.filters button.on{background:var(--wood);border-color:var(--wood);color:#1a1209;font-weight:600}
+.reqcard{border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;margin-bottom:.8rem;display:flex;gap:1rem;align-items:baseline;justify-content:space-between}
+.reqcard p{font-size:.95rem;color:var(--cream)}
+.reqcard small{display:block;margin-top:.3rem;color:var(--muted);font-size:.78rem}
+.badge{flex:none;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:.35em .9em;border-radius:999px;white-space:nowrap}
+.badge.submitted{color:var(--cream-dim);border:1px solid var(--line)}
+.badge.consideration{color:#1a1209;background:var(--wood-bright)}
+.badge.planned{color:#1a1209;background:#aebf76}
+.badge.rejected{color:var(--cream);background:#7d3f2c}
+/* request form */
+.reqform{margin-top:1.6rem;border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.3rem}
+.reqform label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.reqform textarea,.reqform input{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:8px;color:var(--cream);font-family:'Inter',sans-serif;font-size:.92rem;padding:.7em .9em;outline:none}
+.reqform textarea{min-height:5.5em;resize:vertical;margin-bottom:.8rem}
+.reqform input{margin-bottom:.8rem}
+.reqform textarea:focus,.reqform input:focus{border-color:var(--wood)}
+.reqform button{font-family:'Inter',sans-serif;font-weight:600;font-size:.85rem;background:var(--wood);color:#1a1209;border:none;border-radius:999px;padding:.75em 1.6em;cursor:pointer}
+.reqform button:hover{background:var(--wood-bright)}
+.reqform .hintline{margin-top:.6rem;font-size:.75rem;color:var(--muted)}
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>SUPERWOOD Investor Deck — <em>change log</em></h1>
   <p class="sub">Requests and shipped changes, July 9–15, 2026 &nbsp;·&nbsp; <a href="/">back to the deck</a></p>
+
+  <h2>Open change requests</h2>
+  <div class="filters" id="filters">
+    <button class="on" data-f="all">All</button>
+    <button data-f="submitted">Submitted</button>
+    <button data-f="consideration">Under consideration</button>
+    <button data-f="planned">Planned</button>
+    <button data-f="rejected">Rejected</button>
+  </div>
+  <div id="board">
+    <div class="reqcard" data-status="submitted">
+      <p>Make the deck more focused on the SuperMills.<small>Logged Jul 16</small></p>
+      <span class="badge submitted">Submitted</span>
+    </div>
+    <div class="reqcard" data-status="submitted">
+      <p>Reorganize the markets by category rather than timeline.<small>Logged Jul 16</small></p>
+      <span class="badge submitted">Submitted</span>
+    </div>
+    <div class="reqcard" data-status="submitted">
+      <p>Make a simpler but slightly dramatic email entry portal.<small>Logged Jul 16</small></p>
+      <span class="badge submitted">Submitted</span>
+    </div>
+    <div class="reqcard" data-status="submitted">
+      <p>Think about who to include on the contact info.<small>Logged Jul 16</small></p>
+      <span class="badge submitted">Submitted</span>
+    </div>
+  </div>
+
+  <form class="reqform" id="reqform">
+    <label for="reqtext">Request a change</label>
+    <textarea id="reqtext" placeholder="Describe the change you'd like to see…" required></textarea>
+    <input id="reqfrom" type="text" placeholder="Your name (optional)">
+    <button type="submit">Email this request</button>
+    <div class="hintline">Opens your mail client addressed to alex@inventwood.com and ir@inventwood.com.</div>
+  </form>
 
   <h2>Performance &amp; loading · Jul 9</h2>
   <div class="entry">
@@ -133,5 +191,21 @@ code{font-size:.78rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
 
   <div class="note"><b>Conventions adopted along the way:</b> asset content changes always ship under a new filename (assets carry a 1-day cache); slide images preload in slide order behind the navigation gate; market figures are best-estimate totals across all materials, with judgment calls flagged in commit messages.</div>
 </div>
+<script>
+document.getElementById('filters').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));
+  const f=b.dataset.f;
+  document.querySelectorAll('#board .reqcard').forEach(c=>{c.style.display=(f==='all'||c.dataset.status===f)?'':'none';});
+});
+document.getElementById('reqform').addEventListener('submit',e=>{
+  e.preventDefault();
+  const text=document.getElementById('reqtext').value.trim();if(!text)return;
+  const from=document.getElementById('reqfrom').value.trim();
+  const subject=encodeURIComponent('SUPERWOOD deck change request');
+  const body=encodeURIComponent(text+(from?'\n\n— '+from:'')+'\n\nSubmitted from '+location.origin+'/changes');
+  location.href='mailto:alex@inventwood.com?cc=ir@inventwood.com&subject='+subject+'&body='+body;
+});
+</script>
 </body>
 </html>
