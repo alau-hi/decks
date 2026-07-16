@@ -38,9 +38,12 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 .pills button{font-family:'Inter',sans-serif;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:transparent;border:none;border-radius:999px;padding:.4em .85em;cursor:pointer}
 .pills button:hover{color:var(--cream)}
 .pills button.on{background:rgba(184,125,68,.18);color:var(--wood-bright);font-weight:600}
+.pills.tools{margin-left:auto;gap:.35rem}
+.pills.tools button{border:1px solid var(--line);border-radius:7px;color:var(--cream-dim)}
+.pills.tools button:hover{border-color:var(--wood);color:var(--wood-bright)}
 /* request rows */
-.reqrow{border-bottom:1px solid var(--line)}
-.reqhead{display:flex;gap:.7rem;align-items:center;padding:.55rem .2rem;cursor:pointer}
+.reqhead{display:flex;gap:.7rem;align-items:center;padding:.32rem .4rem;cursor:pointer;border-radius:7px}
+.reqhead:hover{background:rgba(255,255,255,.035)}
 .reqhead:hover .sum{color:var(--cream)}
 .chev{flex:none;color:var(--muted);transition:transform .18s;font-size:.6rem;width:.9em}
 .open>.reqhead .chev,.loggroup.open .loghead .chev{transform:rotate(90deg)}
@@ -50,7 +53,7 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 .badge.consideration{color:#1a1209;background:var(--wood-bright)}
 .badge.planned{color:#1a1209;background:#aebf76}
 .badge.rejected{color:var(--cream);background:#7d3f2c}
-.reqbody{display:none;padding:.1rem .2rem .8rem 1.6rem;font-size:.86rem}
+.reqbody{display:none;padding:.1rem .4rem .7rem 1.8rem;font-size:.86rem}
 .open>.reqbody{display:block}
 .reqbody .meta{color:var(--muted);font-size:.72rem;margin-top:.4rem}
 .linkbtn{background:none;border:none;color:var(--wood-bright);font-family:'Inter',sans-serif;font-size:.74rem;cursor:pointer;padding:0;border-bottom:1px solid rgba(205,161,101,.4);margin-top:.5rem}
@@ -59,7 +62,7 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 .editform input:focus,.editform textarea:focus,#modal input:focus,#modal textarea:focus{border-color:var(--wood)}
 .editform select{background:var(--panel);border:1px solid var(--line);border-radius:8px;color:var(--cream);font-size:.82rem;padding:.45em .7em;margin:.3rem 0 .6rem}
 /* changelog */
-.dayhead{display:flex;align-items:center;gap:.8rem;margin:1.1rem 0 .3rem;color:var(--muted)}
+.dayhead{display:flex;align-items:center;gap:.8rem;margin:.9rem 0 .15rem;color:var(--muted);padding:0 .4rem}
 .dayhead .d{flex:1;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:var(--wood-bright);font-weight:600}
 .dayhead .n{font-size:.68rem;white-space:nowrap;margin-right:.6rem}
 .dots{display:inline-flex;flex:none}
@@ -70,12 +73,12 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 .dotlegend .lab2{flex:1;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .dotlegend .nums{display:inline-flex;flex:none}
 .dotlegend .nums span{width:14px;text-align:center;font-size:.52rem;color:var(--muted)}
-.loggroup{border-bottom:1px solid var(--line)}
-.loghead{display:flex;align-items:center;gap:.7rem;padding:.5rem .2rem;cursor:pointer}
+.loghead{display:flex;align-items:center;gap:.7rem;padding:.3rem .4rem;cursor:pointer;border-radius:7px}
+.loghead:hover{background:rgba(255,255,255,.035)}
 .loghead:hover .t{color:var(--cream)}
 .loghead .t{flex:1;min-width:0;color:var(--cream-dim);font-family:'Fraunces',serif;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .loghead .k{flex:none;color:var(--muted);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
-.logbody{display:none;padding:.15rem .2rem .8rem 1.6rem}
+.logbody{display:none;padding:.15rem .4rem .7rem 1.8rem}
 .loggroup.open .logbody{display:block}
 .logbody .req{font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;color:var(--cream);border-left:2px solid var(--wood);padding-left:.8rem;margin:.4rem 0}
 .logbody ul{list-style:none}
@@ -109,6 +112,8 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
           <button data-f="consideration">Under consideration</button>
           <button data-f="planned">Planned</button>
           <button data-f="rejected">Rejected</button>
+        </div>
+        <div class="pills tools" id="reqtools">
           <button data-a="expand">Expand all</button>
           <button data-a="collapse">Collapse all</button>
         </div>
@@ -126,8 +131,10 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
           <button class="on" data-s="desc">Newest first</button>
           <button data-s="asc">Oldest first</button>
           <button data-s="topic">By topic</button>
-          <button data-s="expand">Expand all</button>
-          <button data-s="collapse">Collapse all</button>
+        </div>
+        <div class="pills tools" id="logtools">
+          <button data-a="expand">Expand all</button>
+          <button data-a="collapse">Collapse all</button>
         </div>
       </div>
       <div id="logwrap"></div>
@@ -254,9 +261,12 @@ function openEditor(row,r){
 }
 document.getElementById('filters').addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
-  if(b.dataset.a){document.querySelectorAll('#board .reqrow').forEach(r=>r.classList.toggle('open',b.dataset.a==='expand'));return;}
-  document.querySelectorAll('#filters button').forEach(x=>{if(x.dataset.f)x.classList.toggle('on',x===b);});
+  document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));
   filter=b.dataset.f;renderBoard();
+});
+document.getElementById('reqtools').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#board .reqrow').forEach(r=>r.classList.toggle('open',b.dataset.a==='expand'));
 });
 /* ---------- modal ---------- */
 const overlay=document.getElementById('overlay');
@@ -344,10 +354,12 @@ function renderLog(){
 }
 document.getElementById('logsort').addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
-  const s=b.dataset.s;
-  if(s==='expand'||s==='collapse'){document.querySelectorAll('.loggroup').forEach(g=>g.classList.toggle('open',s==='expand'));return;}
-  document.querySelectorAll('#logsort button').forEach(x=>{if(['desc','asc','topic'].includes(x.dataset.s))x.classList.toggle('on',x===b);});
-  sortMode=s;renderLog();
+  document.querySelectorAll('#logsort button').forEach(x=>x.classList.toggle('on',x===b));
+  sortMode=b.dataset.s;renderLog();
+});
+document.getElementById('logtools').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('.loggroup').forEach(g=>g.classList.toggle('open',b.dataset.a==='expand'));
 });
 /* ---------- draggable divider ---------- */
 (function(){
