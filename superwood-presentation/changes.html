@@ -140,10 +140,10 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
 <script>
 /* ---------- data ---------- */
 const SEED_REQUESTS=[
- {id:'r1',summary:'Make the deck more focused on the SuperMills',detail:'Shift the narrative weight of the deck toward the SuperMills — the mills as the story, not just one roadmap slide.',status:'submitted',logged:'Jul 16'},
- {id:'r2',summary:'Reorganize the markets by category rather than timeline',detail:'The market slide currently groups applications into Phase 01/02/03 timeline columns; regroup them by market category instead.',status:'submitted',logged:'Jul 16'},
- {id:'r3',summary:'Make a simpler but slightly dramatic email entry portal',detail:'Redesign the email gate into a simpler, slightly dramatic entry experience in keeping with the deck aesthetic.',status:'submitted',logged:'Jul 16'},
- {id:'r4',summary:'Think about who to include on the contact info',detail:'Decide who should be listed on the closing contact slide (currently Alex Lau only).',status:'submitted',logged:'Jul 16'}
+ {id:'r1',title:'SuperMills focus',summary:'Make the deck more focused on the SuperMills',detail:'Shift the narrative weight of the deck toward the SuperMills — the mills as the story, not just one roadmap slide.',status:'submitted',logged:'Jul 16'},
+ {id:'r2',title:'Market categories',summary:'Reorganize the markets by category rather than timeline',detail:'The market slide currently groups applications into Phase 01/02/03 timeline columns; regroup them by market category instead.',status:'submitted',logged:'Jul 16'},
+ {id:'r3',title:'Entry portal',summary:'Make a simpler but slightly dramatic email entry portal',detail:'Redesign the email gate into a simpler, slightly dramatic entry experience in keeping with the deck aesthetic.',status:'submitted',logged:'Jul 16'},
+ {id:'r4',title:'Contact info',summary:'Think about who to include on the contact info',detail:'Decide who should be listed on the closing contact slide (currently Alex Lau only).',status:'submitted',logged:'Jul 16'}
 ];
 const LOG=[
  {iso:'2026-07-09',date:'Jul 9',topic:'Performance',title:'Faster image loading',req:'Some of the images are very slow to load on some devices, sometimes.',items:[
@@ -215,7 +215,8 @@ function renderBoard(){
   board.innerHTML=reqs.length?'':'<p class="hintline">No requests in this category.</p>';
   reqs.forEach(r=>{
     const row=document.createElement('div');row.className='reqrow';
-    row.innerHTML='<div class="reqhead"><span class="chev">▶</span><span class="sum">'+esc(r.summary)+'</span><span class="badge '+esc(r.status)+'">'+STATUS_LABEL[r.status]+'</span></div>'+
+    const title=r.title||r.summary.split(/\s+/).slice(0,2).join(' ');
+    row.innerHTML='<div class="reqhead"><span class="chev">▶</span><span class="sum"><b style="color:var(--cream)">'+esc(title)+'</b><span style="color:var(--muted)"> — </span>'+esc(r.summary)+'</span><span class="badge '+esc(r.status)+'">'+STATUS_LABEL[r.status]+'</span></div>'+
       '<div class="reqbody"><div class="detail">'+esc(r.detail||r.summary)+'</div><div class="meta">Logged '+esc(r.logged||'')+'</div><button class="linkbtn edit">Edit</button></div>';
     row.querySelector('.reqhead').addEventListener('click',()=>row.classList.toggle('open'));
     row.querySelector('.edit').addEventListener('click',e=>{e.stopPropagation();openEditor(row,r);});
@@ -225,12 +226,14 @@ function renderBoard(){
 function openEditor(row,r){
   const body=row.querySelector('.reqbody');
   body.innerHTML='<div class="editform">'+
+    '<input type="text" class="e-title" value="'+esc(r.title||'')+'" placeholder="Short title (1–2 words)">'+
     '<input type="text" class="e-sum" value="'+esc(r.summary)+'">'+
     '<textarea class="e-det">'+esc(r.detail||'')+'</textarea>'+
     '<select class="e-status">'+Object.keys(STATUS_LABEL).map(s=>'<option value="'+s+'"'+(s===r.status?' selected':'')+'>'+STATUS_LABEL[s]+'</option>').join('')+'</select><br>'+
     '<button class="btn e-save">Save</button> <button class="btn ghost e-cancel">Cancel</button></div>';
   body.querySelector('.e-save').addEventListener('click',()=>{
-    saveOverride(r.id,{summary:body.querySelector('.e-sum').value.trim()||r.summary,
+    saveOverride(r.id,{title:body.querySelector('.e-title').value.trim(),
+                       summary:body.querySelector('.e-sum').value.trim()||r.summary,
                        detail:body.querySelector('.e-det').value.trim(),
                        status:body.querySelector('.e-status').value,
                        logged:r.logged});
@@ -255,7 +258,8 @@ document.getElementById('reqform').addEventListener('submit',e=>{
   const from=document.getElementById('reqfrom').value.trim();
   const id='u'+Date.now();
   const today=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric'});
-  saveOverride(id,{summary:text.split('\n')[0].slice(0,90),detail:text+(from?'\n— '+from:''),status:'submitted',logged:today});
+  const autoTitle=text.split(/\s+/).slice(0,2).join(' ').replace(/[.,;:!?]+$/,'');
+  saveOverride(id,{title:autoTitle,summary:text.split('\n')[0].slice(0,90),detail:text+(from?'\n— '+from:''),status:'submitted',logged:today});
   renderBoard();
   document.getElementById('reqtext').value='';document.getElementById('reqfrom').value='';
   overlay.classList.remove('show');
