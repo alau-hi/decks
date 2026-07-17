@@ -20,11 +20,13 @@ header{flex:none;display:flex;align-items:center;gap:1.2rem;padding:.8rem 26px;p
 header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--wood-bright),var(--green) 30%,var(--teal) 55%,var(--sky) 75%,var(--wood-bright))}
 header h1{font-family:'Fraunces',serif;font-weight:300;font-size:1.25rem;color:var(--cream);white-space:nowrap}
 header h1 em{font-style:italic;color:var(--wood-bright)}
+header h1 a{color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+header h1 a:hover{color:var(--wood-bright);border-bottom-color:rgba(205,161,101,.5)}
 .btn{font-family:'Inter',sans-serif;font-weight:600;font-size:.78rem;background:var(--wood);color:#1a1209;border:none;border-radius:999px;padding:.55em 1.3em;cursor:pointer;white-space:nowrap}
 .btn:hover{background:var(--wood-bright)}
 .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--cream-dim)}
 header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--wood-bright);text-decoration:none;white-space:nowrap}
-.vinylbtn{flex:none;background:transparent;border:none;width:64px;height:64px;padding:0;cursor:pointer;transition:transform .2s;filter:drop-shadow(0 3px 10px rgba(0,0,0,.55))}
+.vinylbtn{flex:none;margin-left:auto;background:transparent;border:none;width:64px;height:64px;padding:0;cursor:pointer;transition:transform .2s;filter:drop-shadow(0 3px 10px rgba(0,0,0,.55))}
 .vinylbtn svg{width:100%;height:100%;display:block}
 .vinylbtn .disc{transform-origin:27px 32px}
 .vinylbtn.playing .disc{animation:vinylspin 2.2s linear infinite}
@@ -136,9 +138,8 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
 </head>
 <body>
 <header>
-  <h1>SUPERWOOD Deck — <em>Changes</em></h1>
+  <h1><a href="/" title="Open the deck">SUPERWOOD Deck</a> — <em>Changes</em></h1>
   <button class="btn" id="openModal">Request a change</button>
-  <a class="deck" href="/">Deck →</a>
   <button id="songbtn" class="vinylbtn" title="Mute / unmute music" aria-label="Mute or unmute music">
     <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
       <rect x="1.5" y="1.5" width="61" height="61" rx="10" fill="#f4ecdf" stroke="#8a4f23" stroke-width="2"/>
