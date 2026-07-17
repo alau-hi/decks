@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- UI convention (applies to this page and all future UI): keyboard-first.
+     Every text box gets default focus when revealed; Enter accepts (Shift+Enter for newlines in textareas);
+     Escape dismisses dialogs; add keyboard shortcuts wherever possible. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -133,7 +136,7 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
 </head>
 <body>
 <header>
-  <h1>SUPERWOOD deck — <em>changes</em></h1>
+  <h1>SUPERWOOD Deck — <em>Changes</em></h1>
   <button class="btn" id="openModal">Request a change</button>
   <a class="deck" href="/">Deck →</a>
   <button id="songbtn" class="vinylbtn" title="Mute / unmute music" aria-label="Mute or unmute music">
@@ -163,7 +166,7 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
   <div class="pane" id="paneTop">
     <div class="pad">
       <div class="panehead">
-        <span class="lab">Change <em>requests</em></span>
+        <span class="lab">Change <em>Requests</em></span>
         <div class="pills" id="filters">
           <button class="on" data-f="all">All</button>
           <button data-f="submitted">Submitted</button>
@@ -184,7 +187,7 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
   <div class="pane" id="paneBottom">
     <div class="pad">
       <div class="panehead">
-        <span class="lab">Shipped <em>changes</em></span>
+        <span class="lab">Change <em>Log</em></span>
         <div class="pills" id="logsort">
           <button class="on" data-s="desc">Newest first</button>
           <button data-s="asc">Oldest first</button>
@@ -326,6 +329,10 @@ function openEditor(row,r){
     renderBoard();
   });
   body.querySelector('.e-cancel').addEventListener('click',()=>renderBoard());
+  const saveOnEnter=e=>{if(e.key==='Enter'){e.preventDefault();body.querySelector('.e-save').click();}};
+  body.querySelector('.e-title').addEventListener('keydown',saveOnEnter);
+  body.querySelector('.e-sum').addEventListener('keydown',saveOnEnter);
+  body.querySelector('.e-title').focus();
 }
 /* ---------- identity + badge status menu ---------- */
 function setCookie(k,v){document.cookie=k+'='+encodeURIComponent(v)+';max-age=31536000;path=/'}
@@ -376,7 +383,11 @@ const overlay=document.getElementById('overlay');
 document.getElementById('openModal').addEventListener('click',()=>{overlay.classList.add('show');document.getElementById('reqtext').focus();});
 document.getElementById('closeModal').addEventListener('click',()=>overlay.classList.remove('show'));
 overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('show');});
-window.addEventListener('keydown',e=>{if(e.key==='Escape')overlay.classList.remove('show');});
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){overlay.classList.remove('show');document.getElementById('idoverlay').classList.remove('show');pendingStatus=null;}});
+document.getElementById('idname').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('idsave').click();}});
+document.getElementById('reqtext').addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();document.getElementById('reqform').requestSubmit();}
+});
 document.getElementById('reqform').addEventListener('submit',e=>{
   e.preventDefault();
   const text=document.getElementById('reqtext').value.trim();if(!text)return;
