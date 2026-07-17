@@ -42,6 +42,17 @@ export default async function middleware(req) {
       const [emailB64, exp, sig] = parts;
       const expected = await hmacHex(`${emailB64}.${exp}`, process.env.AUTH_SECRET || '');
       if (sig === expected && Number(exp) > Date.now()) {
+        // /changes is team-only: it additionally needs the sw_admin cookie
+        // (set by /api/adminkey after entering the stats key).
+        if (path === '/changes' || path === '/changes.html') {
+          const admin = getCookie(req, 'sw_admin');
+          const aParts = (admin || '').split('.');
+          if (aParts.length === 2) {
+            const aSig = await hmacHex(`admin.${aParts[0]}`, process.env.AUTH_SECRET || '');
+            if (aSig === aParts[1] && Number(aParts[0]) > Date.now()) return next();
+          }
+          return rewrite(new URL('/key', req.url));
+        }
         // Keep the viewer identity on the URL so the deck's per-slide
         // analytics (?v=) attribute return visits too.
         if (path === '/' && !url.searchParams.has('v')) {
