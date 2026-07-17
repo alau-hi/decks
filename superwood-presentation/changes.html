@@ -94,7 +94,12 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 .dotlegend{display:flex;align-items:center;gap:.8rem;position:sticky;top:2.6rem;background:var(--ink);z-index:4;padding:.2rem 0 .35rem;border-bottom:1px solid var(--line)}
 .dotlegend .lab2{margin-left:auto;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .dotlegend .nums{display:inline-flex;flex:none}
-.dotlegend .nums span{width:14px;text-align:center;font-size:.52rem;color:var(--muted)}
+.dotlegend .nums span{width:14px;text-align:center;font-size:.52rem;color:var(--muted);cursor:pointer;border-radius:4px}
+.dotlegend .nums span:hover{color:var(--gold)}
+.dotlegend .nums span.on{color:#1a1209;background:var(--gold);font-weight:700}
+.dots i{cursor:pointer}
+.dots i:hover b{box-shadow:0 0 6px rgba(226,184,119,.8)}
+.slidefilterchip{margin-left:.8rem;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:#1a1209;background:var(--gold);border:none;border-radius:999px;padding:.3em .9em;cursor:pointer;font-weight:600}
 .loghead{display:flex;align-items:center;gap:.7rem;padding:.3rem .4rem;cursor:pointer;border-radius:7px}
 .loghead:hover{background:rgba(255,255,255,.035)}
 .loghead:hover .t{color:var(--cream)}
@@ -406,22 +411,38 @@ document.getElementById('reqform').addEventListener('submit',e=>{
 });
 /* ---------- changelog with day meters ---------- */
 let sortMode='desc';
+let slideFilter=null;
 const NSLIDES=14;
 const slidesOf=e=>e.slides==='all'?Array.from({length:NSLIDES},(_,i)=>i+1):(e.slides||[]);
+function setSlideFilter(n){slideFilter=(slideFilter===n)?null:n;renderLog();}
 function dotsEl(slideSet){
   const d=document.createElement('span');d.className='dots';
   for(let i=1;i<=NSLIDES;i++){
     const c=document.createElement('i');if(slideSet.has(i))c.className='on';
-    c.title='Slide '+i+(slideSet.has(i)?' — changed':'');
-    c.innerHTML='<b></b>';d.appendChild(c);
+    c.title=(slideSet.has(i)?'Slide '+i+' — changed. ':'Slide '+i+'. ')+'Click to show only slide '+i;
+    c.innerHTML='<b></b>';
+    c.addEventListener('click',e=>{e.stopPropagation();setSlideFilter(i);});
+    d.appendChild(c);
   }
   return d;
 }
 function legendEl(){
   const l=document.createElement('div');l.className='dotlegend';
-  l.innerHTML='<span class="lab2">Slides touched →</span>';
+  const lab=document.createElement('span');lab.className='lab2';lab.textContent='Slides touched →';
+  if(slideFilter){
+    const chip=document.createElement('button');chip.className='slidefilterchip';chip.textContent='Slide '+slideFilter+' only ✕';
+    chip.title='Clear slide filter';chip.addEventListener('click',()=>setSlideFilter(slideFilter));
+    lab.appendChild(chip);
+  }
+  l.appendChild(lab);
   const nums=document.createElement('span');nums.className='nums';
-  for(let i=1;i<=NSLIDES;i++){const sp=document.createElement('span');sp.textContent=i;nums.appendChild(sp);}
+  for(let i=1;i<=NSLIDES;i++){
+    const sp=document.createElement('span');sp.textContent=i;
+    if(i===slideFilter)sp.className='on';
+    sp.title='Show only changes touching slide '+i;
+    sp.addEventListener('click',()=>setSlideFilter(i));
+    nums.appendChild(sp);
+  }
   l.appendChild(nums);
   return l;
 }
@@ -447,7 +468,11 @@ function logGroupNode(e){
 function renderLog(){
   const wrapEl=document.getElementById('logwrap');wrapEl.innerHTML='';
   wrapEl.appendChild(legendEl());
-  let entries=[...LOG];
+  let entries=LOG.filter(e=>!slideFilter||slidesOf(e).includes(slideFilter));
+  if(!entries.length){
+    const p=document.createElement('p');p.className='hintline';p.textContent='No changes touched slide '+slideFilter+'.';
+    wrapEl.appendChild(p);return;
+  }
   if(sortMode==='topic'){
     const topics=[...new Set(entries.map(e=>e.topic))].sort();
     topics.forEach(t=>{
@@ -462,7 +487,7 @@ function renderLog(){
   entries.forEach(e=>{
     if(e.iso!==lastDay){
       lastDay=e.iso;
-      wrapEl.appendChild(dayEl(e.date,LOG.filter(x=>x.iso===e.iso)));
+      wrapEl.appendChild(dayEl(e.date,entries.filter(x=>x.iso===e.iso)));
     }
     wrapEl.appendChild(logGroupNode(e));
   });
