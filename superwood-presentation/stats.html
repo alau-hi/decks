@@ -287,6 +287,8 @@ async function load(key){
   if(r.status===401){ localStorage.removeItem('sw_stats_key'); keyui.hidden=false; dash.hidden=true; kerr.textContent='That key isn’t right.'; return; }
   if(!r.ok){ kerr.textContent='Error loading stats ('+r.status+').'; return; }
   localStorage.setItem('sw_stats_key',key);
+  // Also set the sw_admin cookie so /changes unlocks without asking again.
+  fetch('/api/adminkey',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key})}).catch(()=>{});
   keyui.hidden=true; dash.hidden=false;
   render(await r.json());
 }

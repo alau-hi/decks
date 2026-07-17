@@ -1,6 +1,6 @@
 import { timingSafeEqual } from 'node:crypto';
 
-const MAX_AGE = 30 * 24 * 3600; // 30 days
+const MAX_AGE = 400 * 24 * 3600; // 400 days — the max lifetime browsers honor (RFC 6265bis)
 
 const enc = new TextEncoder();
 async function hmacHex(data, secret) {
