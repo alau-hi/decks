@@ -52,6 +52,11 @@ export default async function handler(req, res) {
   if (!keyOk(req.query?.key, process.env.STATS_KEY)) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
+  // Storage-less deployment (staging): valid key, but nothing recorded here.
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    res.setHeader('Cache-Control', 'no-store');
+    return res.status(200).json({ generatedAt: new Date().toISOString(), slideOrder: SLIDES, viewers: [], slides: [], dropoff: [], totalSessions: 0, locations: [] });
+  }
 
   const [signupBlobs, dwellBlobs] = await Promise.all([
     listAll('deck-signups/'),

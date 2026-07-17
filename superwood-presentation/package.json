@@ -4,7 +4,10 @@
   "description": "SUPERWOOD Master HTML Presentation Deck",
   "type": "module",
   "scripts": {
-    "dev": "npx -y vite --port 3000 --open"
+    "dev": "npx -y vite --port 3000 --open",
+    "deploy:prod": "vercel --prod --yes --scope inventwood",
+    "deploy:stage": "vercel deploy --yes --scope inventwood > /tmp/sw-stage-url && vercel alias set $(cat /tmp/sw-stage-url) superwood-stage.vercel.app --scope inventwood",
+    "deploy:stage-open": "vercel deploy --target=staging-open --yes --scope inventwood > /tmp/sw-stage-open-url && vercel alias set $(cat /tmp/sw-stage-open-url) superwood-stage-open.vercel.app --scope inventwood"
   },
   "dependencies": {
     "@vercel/blob": "^0.27.0",
