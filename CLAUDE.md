@@ -47,6 +47,21 @@ Environments (one Vercel project, `superwood-presentation`, team `inventwood`; d
 - **Ungated staging** — `npm run deploy:stage-open` (custom environment `staging-open` + alias) → `superwood-stage-open.vercel.app`. No secrets + `GATE_DISABLED=1`: no gate at all.
 Vercel's own SSO deployment protection is intentionally OFF for this project — the email gate is the protection layer.
 
+### Deploying — CRITICAL rule
+
+**Never run `vercel` from the repo root.** Always `cd superwood-presentation` first (the `deploy:*` npm scripts assume that cwd), in the same shell command as the deploy. A root-level `vercel --yes` auto-creates a brand-new PUBLIC project named `decks` that serves the entire repo ungated — including the 90MB master PPTX. This has happened three times. Telltale symptoms: deploy output says "Failed to link alau-hi/decks" or aliases to `decks-*.vercel.app` instead of `sw.inventwood.net`. Recovery: `vercel project rm decks`, delete the root `.vercel/` directory, redeploy from `superwood-presentation/`.
+
+### Collaborator deployments (no env vars)
+
+The gating is designed so collaborators (e.g. Alex, the designer) can deploy this repo to their own Vercel project and run locally with **zero configuration** — all protection keys off env vars that exist only in the team's project:
+
+- No `AUTH_SECRET` → `middleware.js` passes every request through: no email gate, `/changes` and `/stats` pages open.
+- No `BLOB_READ_WRITE_TOKEN` → `/api/track` returns a 204 no-op and `/api/stats` returns an empty dataset; nothing is ever recorded on collaborator deployments.
+- `/api/enter` returns a harmless redirect instead of erroring (the empty-HMAC-key 500 was fixed for good).
+- The build needs no env vars, and `npm run dev` (vite) serves the static deck with no middleware/APIs at all.
+
+Collaborators deploy with plain `vercel` / `vercel --prod` on their own project. The `deploy:prod|stage|stage-open` scripts are pinned to `--scope inventwood` and will fail harmlessly with a permissions error for anyone outside the team. `GATE_DISABLED` is optional everywhere: its absence never enables the gate — only the presence of `AUTH_SECRET` does.
+
 ## Conventions
 
 - Mobile matters: recent history is heavy with mobile-specific fixes. Slides use per-slide `@media` blocks (breakpoints vary: 560/700/820/900/980px, plus portrait orientation). Verify changes at phone widths, not just desktop.
