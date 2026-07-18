@@ -143,6 +143,15 @@ nav.dots button:hover span{opacity:1}
 .pstep .diag{background:#17110b;border:1px solid rgba(220,185,130,.22);border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center;height:3.875rem}
 .pstep .diag img{width:100%;height:100%;object-fit:cover;display:block}
 .pstep .diag img{max-width:100%;max-height:100%;object-fit:contain}
+.cmpanim{position:relative;display:block;width:100%;height:100%;overflow:hidden}
+.cmpanim img{position:absolute;left:0;width:100%;max-width:none;max-height:none;height:auto;display:block}
+.ca-top{top:0;height:33.74%!important;animation:caTop 16s ease-in-out infinite alternate}
+.ca-mid{top:33.74%;height:32.04%!important;transform-origin:50% 50%;animation:caMid 16s ease-in-out infinite alternate}
+.ca-bot{bottom:0;height:34.22%!important;animation:caBot 16s ease-in-out infinite alternate}
+@keyframes caTop{to{transform:translateY(13.3%)}}
+@keyframes caMid{to{transform:scaleY(.72)}}
+@keyframes caBot{to{transform:translateY(-13.1%)}}
+@media (prefers-reduced-motion: reduce){.ca-top,.ca-mid,.ca-bot{animation:none}}
 .pstep h4{font-family:'Inter';font-weight:600;font-size:.82rem;letter-spacing:.02em;color:var(--cream);margin-bottom:.2rem}
 .pstep p{font-size:.74rem;line-height:1.4;color:var(--cream-dim)}
 .feed-title{font-family:'Fraunces';font-size:1.6rem;color:var(--cream);margin-top:.7rem;margin-bottom:.4rem}
@@ -516,7 +525,7 @@ nav.dots button:hover span{opacity:1}
         <div class="tech-mid">
           <div class="cap">Conversion Technology</div>
           <div class="pstep"><div class="diag"><img loading="lazy" decoding="async" src="assets/proc7-restructure.webp" alt="Molecular restructuring diagram"></div><div><h4>1 · Molecular Restructuring</h4><p>Restructuring enables the controlled collapse of the cell walls.</p></div></div>
-          <div class="pstep"><div class="diag"><img loading="lazy" decoding="async" src="assets/proc7-compress.webp" alt="Compression and densification diagram"></div><div><h4>2 · Compression &amp; Densification</h4><p>Total compression eliminates weaknesses, locking and bonding the fibers together with new hydrogen bonds.</p></div></div>
+          <div class="pstep"><div class="diag"><span class="cmpanim" role="img" aria-label="Compression and densification diagram"><img loading="lazy" decoding="async" class="ca-top" src="assets/proc8-compress-top.webp" alt=""><img loading="lazy" decoding="async" class="ca-mid" src="assets/proc8-compress-mid.webp" alt=""><img loading="lazy" decoding="async" class="ca-bot" src="assets/proc8-compress-bot.webp" alt=""></span></div><div><h4>2 · Compression &amp; Densification</h4><p>Total compression eliminates weaknesses, locking and bonding the fibers together with new hydrogen bonds.</p></div></div>
           <div class="pstep"><div class="diag"><img loading="lazy" decoding="async" src="assets/proc7-align.webp" alt="Fiber alignment diagram"></div><div><h4>3 · Fiber Alignment</h4><p>Fiber alignment is preserved, maximizing strength while retaining the wood's heritage signature.</p></div></div>
         </div>
         <div class="tech-col tech-end">
