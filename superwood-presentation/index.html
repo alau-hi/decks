@@ -306,6 +306,15 @@ nav.dots button:hover span{opacity:1}
   .costgraph .cg-lg{display:none}
   .costgraph .cg-sm{display:block}
 }
+@media(pointer:coarse) and (max-width:700px){
+  /* slide-5: compact bio row — portrait beside name/title, creds full-width below — so the slide fits about one screen */
+  #s5 .split{gap:1.6rem}
+  #s5 .strength-chart{margin-top:1.2rem;padding:1rem 1.1rem}
+  #s5 .split>div:last-child{display:grid;grid-template-columns:auto 1fr;gap:1rem 1.1rem;align-items:center}
+  #s5 .media-frame{max-width:9rem}
+  #s5 .media-frame+div{margin-top:0!important} /* the name block carries an inline margin-top for the stacked desktop column */
+  #s5 .creds{grid-column:1/-1;margin-top:0;padding-bottom:1.4rem} /* keep the last bullet clear of the fixed Confidential label */
+}
 
 /* PRESS (slide 13) */
 .press-collage{position:relative;height:62vh;min-height:25rem;margin-top:1.4rem}
