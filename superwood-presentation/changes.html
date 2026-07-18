@@ -301,9 +301,27 @@ const LOG=[
   ['JLL logo replaced with current artwork, black lettering for the light partners panel','5ee0026'],
   ['Left/right arrow keys navigate; typed numbers (1–14) jump directly','3371aab'],
   ['Bio popups anchor beside the photo and dismiss when the cursor leaves the card','7ce92a3']]},
- {iso:'2026-07-16',date:'Jul 16',topic:'Meta',title:'This page',slides:[],req:'Create a summary page of change log and change requests at /changes.',items:[
-  ['Change log with sorting, day meters and split view; request board with statuses, editing, and an email form','201fe44']]}
+ {iso:'2026-07-16',date:'Jul 16',topic:'Meta',title:'This page: board & split view',slides:[],req:'Create a summary page of change log and change requests at /changes; make it navigable and attractive.',items:[
+  ['Change log and request board created, then rebuilt as a split view with draggable divider and independent scrolling','908a6f7'],
+  ['Requests carry short titles, one-line summaries, expandable detail and in-place editing','001c947'],
+  ['Status changes via badge click, identity-gated to Alex with a remembered cookie','1d57de2'],
+  ['Request form in a modal; new submissions auto-file under Submitted and email alex@/ir@','201fe44']]},
+ {iso:'2026-07-16',date:'Jul 16',topic:'Meta',title:'This page: log visualization & polish',slides:[],req:'Slide columns with dots instead of the meter; tighter; clearer titles; more color; keyboard-first.',items:[
+  ['Slide-matrix dots with numbered legend replace the change meter','fc3d0fb'],
+  ['Tight separator-free rows; expand/collapse-all split from the filters','8b237ff'],
+  ['Color pass: topic chips, colored status pills, gold day chips, gradient header line','645a715'],
+  ['Capitalized titles (Change Requests / Change Log); Enter accepts every text box, Escape dismisses','6161049']]},
+ {iso:'2026-07-16',date:'Jul 16',topic:'Meta',title:'This page: music',slides:[],req:'Add David Bowie\u2019s Changes with a mute button.',items:[
+  ['Official YouTube embed autoplays (muted until allowed); unmutes on first interaction','4b6f729'],
+  ['Mute control evolved into a square turntable: spinning disc, swinging tonearm, power LED','64bdf03']]},
+ {iso:'2026-07-17',date:'Jul 17',topic:'Meta',title:'This page: slide filter & responsive',slides:[],req:'Filter by slide; keep right-side UI near the text; render perfectly on iPhones and large screens.',items:[
+  ['Click a slide column or dot to filter the log to that slide, with a clear chip','2c2137e'],
+  ['Content width capped at 1060px so badges and dots stay beside their descriptions','1147ed5'],
+  ['iPhone pass: dynamic viewport height, compact dots and chips, no horizontal overflow','1147ed5'],
+  ['Tonearm swings over 3 seconds; duplicate row dates removed','91555eb']]}
 ];
+/* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
+   (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */
 /* ---------- helpers ---------- */
 const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const STATUS_LABEL={submitted:'Submitted',consideration:'Under consideration',planned:'Planned',rejected:'Rejected'};
