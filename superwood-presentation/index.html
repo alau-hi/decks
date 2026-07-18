@@ -315,6 +315,16 @@ nav.dots button:hover span{opacity:1}
   #s5 .media-frame+div{margin-top:0!important} /* the name block carries an inline margin-top for the stacked desktop column */
   #s5 .creds{grid-column:1/-1;margin-top:0;padding-bottom:1.4rem} /* keep the last bullet clear of the fixed Confidential label */
 }
+@media(pointer:coarse) and (max-width:700px){
+  /* slide-6: feedstock/output become horizontal thumb rows (same shape as the process steps) so the whole flow fits about one screen */
+  #s6 .tech-flow{margin-top:1.4rem;gap:1rem}
+  #s6 .tech-col{display:grid;grid-template-columns:7.5rem 1fr;gap:.2rem 1rem;align-items:center}
+  #s6 .tech-col .cap{grid-column:1/-1;margin-bottom:.2rem}
+  #s6 .tech-col .tech-img{grid-column:1;grid-row:2/4}
+  #s6 .tech-col h3{grid-column:2;grid-row:2;align-self:end;margin:0!important} /* feed/output titles carry inline top margins for the desktop columns */
+  #s6 .tech-col .feed-meta,#s6 .tech-col .small{grid-column:2;grid-row:3;align-self:start}
+  #s6 .badges{margin-top:1rem}
+}
 
 /* PRESS (slide 13) */
 .press-collage{position:relative;height:62vh;min-height:25rem;margin-top:1.4rem}
