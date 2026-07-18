@@ -17,6 +17,10 @@
 html,body{height:100%}
 body{height:100dvh}
 body{background:var(--ink);color:var(--cream-dim);font-family:'Inter',sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;overflow:hidden}
+/* faint watermark of the deck's slide-4 headline; negative z-index keeps it under all content */
+#wm{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding-top:16vh;pointer-events:none;user-select:none;z-index:-1;font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2.4rem,7vw,6.5rem);line-height:1.22;color:var(--cream);opacity:.045;text-align:center}
+#wm span{display:block;max-width:13ch;text-wrap:balance}
+#wm em{font-style:italic;color:var(--gold)}
 header{flex:none;padding:.8rem 26px;position:relative}
 header .hin{max-width:1060px;margin:0 auto;display:flex;align-items:center;gap:1.2rem}
 header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--wood-bright),var(--green) 30%,var(--teal) 55%,var(--sky) 75%,var(--wood-bright))}
@@ -160,6 +164,7 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
 </style>
 </head>
 <body>
+<div id="wm" aria-hidden="true"><span>There's something <em>wonderful</em> about wood.</span></div>
 <header><div class="hin">
   <h1><a href="/" title="Open the deck">SUPERWOOD Deck</a> — <em>Changes</em></h1>
   <button class="btn" id="openModal">Request a change</button>
@@ -325,7 +330,9 @@ const LOG=[
   ['Platens given a red-hot glow with a pulsing heat halo','5b36afc'],
   ['Revised: platens restored to gold; compression arrows recolored to a muted terracotta red baked into the artwork','e021a19']]},
  {iso:'2026-07-17',date:'Jul 17',topic:'Responsive',title:'Narrow laptop windows',slides:[2,6],req:'Shrinking the window on a laptop switched to the phone layout with tiny fonts and huge slide-6 images; keep the desktop layout and scale it instead.',items:[
-  ['Phone-layout media queries now apply only to touch devices; on mouse devices a narrow window keeps the desktop layout, scaled down uniformly to fit','']]}
+  ['Phone-layout media queries now apply only to touch devices; on mouse devices a narrow window keeps the desktop layout, scaled down uniformly to fit','f0d818d']]},
+ {iso:'2026-07-18',date:'Jul 18',topic:'Meta',title:'This page: watermark',slides:[],req:'Try "There’s something wonderful about wood." as a very faint background on the Changes page.',items:[
+  ['The deck’s slide-4 headline now sits behind the boards as a faint Fraunces watermark, gold italic on “wonderful”','']]}
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
    (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */
