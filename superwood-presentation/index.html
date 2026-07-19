@@ -447,8 +447,8 @@ nav.dots button:hover span{opacity:1}
 }
 @media(pointer:coarse) and (max-width:820px){
   .team,.adv{grid-template-columns:repeat(3,1fr)}
-  /* touch devices: bios open as a centered overlay (tap toggles, see JS) */
-  .bio-pop,.team .bio-pop,.team .person:last-child .bio-pop{position:fixed;left:16px;right:16px;top:50%;bottom:auto;width:auto;transform:translateY(-50%) translateY(8px);max-height:76vh;overflow-y:auto;pointer-events:auto}
+  /* touch devices: bios open as a centered overlay (tap toggles, see JS); nth-child(4) is listed because the desktop rule that flips Jiaqi's popup leftward would otherwise outrank the overlay and push it off-screen */
+  .bio-pop,.team .bio-pop,.team .person:last-child .bio-pop,.team .person:nth-child(4) .bio-pop{position:fixed;left:16px;right:16px;top:50%;bottom:auto;width:auto;transform:translateY(-50%) translateY(8px);max-height:76vh;overflow-y:auto;pointer-events:auto}
   .person.show .bio-pop,.advc.show .bio-pop{opacity:1;visibility:visible;transform:translateY(-50%)}
 }
 @media(pointer:coarse) and (max-width:35rem){
@@ -587,21 +587,23 @@ nav.dots button:hover span{opacity:1}
   #s10 .partners .ph{margin-bottom:.5rem}
   #s10 .plogos{gap:.5rem .7rem}
   #s10 .plogos img{height:1.6rem}
-  /* slide-11: compact grid; bios open as tap overlays instead of inline text */
-  #s11 h2{font-size:1.3rem!important}
-  #s11 .team{grid-template-columns:repeat(5,1fr);gap:.8rem;margin-top:.8rem}
-  #s11 .person .pic{width:3rem;height:3rem;margin-bottom:.4rem}
-  #s11 .person .nm{font-size:.85rem;min-height:0}
-  #s11 .person .ro{font-size:.55rem;min-height:0;margin:.1rem 0 .2rem}
+  /* slide-11: compact grid using the full landscape height; bios open as tap overlays instead of inline text */
+  #s11 h2{font-size:1.35rem!important}
+  #s11 .team{grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:1.4rem}
+  #s11 .person .pic{width:4rem;height:4rem;margin-bottom:.6rem}
+  #s11 .person .nm{font-size:1rem;min-height:0}
+  #s11 .person .ro{font-size:.62rem;min-height:0;margin:.15rem 0 .25rem}
   #s11 .person .bi{display:none}
   #s11 .person .hint{display:none}
-  #s11 .adv{grid-template-columns:repeat(5,1fr);gap:.5rem}
-  #s11 .advc>img{width:2.4rem;height:2.4rem}
-  #s11 .advc .nm{font-size:.75rem}
-  #s11 .advc .ro{font-size:.52rem}
-  #s11 .adv-head{margin:1rem 0 .6rem;padding-top:.8rem}
-  #s11 .bio-pop{position:fixed;left:16px;right:16px;top:50%;bottom:auto;width:auto;transform:translateY(-50%) translateY(8px);max-height:76vh;overflow-y:auto;pointer-events:auto}
-  #s11 .person.show .bio-pop,#s11 .advc.show .bio-pop{opacity:1;visibility:visible;transform:translateY(-50%)}
+  #s11 .adv{grid-template-columns:repeat(5,1fr);gap:.8rem}
+  #s11 .advc{gap:.6rem}
+  #s11 .advc>img{width:3.2rem;height:3.2rem}
+  #s11 .advc .nm{font-size:.9rem}
+  #s11 .advc .ro{font-size:.62rem}
+  #s11 .adv-head{margin:1.6rem 0 1rem;padding-top:1.2rem}
+  /* tap overlay: centered card instead of a full-width strip */
+  #s11 .bio-pop{position:fixed;left:50%;right:auto;top:50%;bottom:auto;width:min(34rem,84vw);transform:translateX(-50%) translateY(-50%) translateY(8px);max-height:84vh;overflow-y:auto;pointer-events:auto;font-size:.85rem;line-height:1.5;padding:1.1rem 1.3rem}
+  #s11 .person.show .bio-pop,#s11 .advc.show .bio-pop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(-50%)}
   /* slide-12 */
   #s12 h2{font-size:1.3rem!important}
   #s12 .ip-grid{grid-template-columns:.95fr 1.05fr;gap:1.2rem;margin-top:.5rem}
