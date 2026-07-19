@@ -331,6 +331,78 @@ nav.dots button:hover span{opacity:1}
   #s7 .sw7-right{padding:2.5vh 6vw 3.2rem} /* extra bottom padding keeps the last row clear of the fixed Confidential label */
   #s7 .proplist li{padding:.55rem 0}
 }
+@media(pointer:coarse) and (max-width:700px){
+  /* slide-8: tiles wrap two-up inside each phase so the market map approaches one screen */
+  #s8 .market-grid{grid-template-columns:1fr;gap:1rem;margin-top:.9rem}
+  #s8 .mcol{display:grid;grid-template-columns:repeat(2,1fr);gap:0 .5rem}
+  #s8 .mcol .ph,#s8 .mcol h3,#s8 .mcol .sub{grid-column:1/-1}
+  #s8 .mcol .sub{min-height:0;margin-bottom:.5rem}
+  #s8 .mbox{font-size:.68rem;padding:.4rem .55rem;margin-bottom:.35rem}
+  #s8 .legend{margin-top:.8rem}
+  #s8 .legend .scale{height:1.7rem;min-width:0}
+}
+@media(pointer:coarse) and (max-width:700px){
+  /* slide-9: mill cards read text on the left; capacity, dates and images on the right */
+  #s9 .wrap>p{font-size:.78rem!important;margin-top:.5rem!important}
+  #s9 .costgraph{margin:.4rem 0 .2rem}
+  #s9 .road{grid-template-columns:1fr;gap:.7rem;margin-top:.5rem}
+  #s9 .mill{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1rem;align-items:start;padding:.75rem .9rem}
+  #s9 .mill h3{font-size:1.25rem}
+  #s9 .mill p{font-size:.76rem;line-height:1.4}
+  #s9 .mill .loc{font-size:.66rem}
+  #s9 .out-badge .x{font-size:1.7rem}
+  #s9 .mill h3{grid-column:1;grid-row:1;margin:0 0 .3rem}
+  #s9 .mill p{grid-column:1;grid-row:2}
+  #s9 .mill .loc{grid-column:1;grid-row:3;margin-top:.4rem}
+  #s9 .mill .out-badge{grid-column:2;grid-row:1;margin:0;justify-self:end}
+  #s9 .mill .yr{grid-column:2;grid-row:2;justify-self:end;align-self:start;white-space:nowrap;margin-top:.15rem}
+  #s9 .mill .mill-imgs{grid-column:2;grid-row:3;height:auto;margin:0;justify-self:end;align-self:end}
+  #s9 .mill .mcell{width:3.4rem}
+  #s9 .mtile{height:2.4rem}
+  #s9 .mcap{font-size:.5rem}
+  #s9 .mill-imgs .mar{margin-top:10px;font-size:.9rem}
+  #s9 .mill-imgs.two{display:grid;grid-template-columns:repeat(2,3.4rem);gap:.3rem;justify-items:center}
+  #s9 .mill-imgs.two .mar{display:none} /* feeds sit above their outputs, so the arrow is implicit */
+  #s9 .feedrow{margin-top:.9rem;gap:.45rem;font-size:.7rem}
+  #s9 .feedrow .f{padding:.4rem .6rem}
+}
+@media(pointer:coarse) and (max-width:700px){
+  /* slide-10: tighter stat cards, capped factory photo */
+  #s10 .tract{gap:.6rem;margin-top:.7rem}
+  #s10 .tcard{padding:.85rem 1rem}
+  #s10 .tcard .n{font-size:1.6rem!important} /* base size is an inline clamp() */
+  #s10 .tcard .l{font-size:.72rem;margin-top:.35rem}
+  #s10 .tr-split{gap:1rem}
+  #s10 .tr-photo img{max-height:10rem;object-fit:cover;width:100%}
+  #s10 .partners{margin-top:.9rem;padding:.9rem 1rem}
+  #s10 .plogos{gap:.6rem .8rem}
+  #s10 .plogos img{height:1.9rem}
+}
+@media(pointer:coarse) and (max-width:700px){
+  /* slide-11: people become photo-left rows; full bios stay a tap away */
+  #s11 .team{grid-template-columns:1fr;gap:.9rem;margin-top:1rem}
+  #s11 .person{display:grid;grid-template-columns:3.9rem 1fr;column-gap:.9rem;align-items:start}
+  #s11 .person .pic{grid-column:1;grid-row:1/4;width:3.9rem;height:3.9rem;margin:0}
+  #s11 .person .nm{grid-column:2;font-size:1.05rem;min-height:0}
+  #s11 .person .ro{grid-column:2;min-height:0;margin:.1rem 0 .3rem}
+  #s11 .person .bi{grid-column:2;font-size:.74rem;line-height:1.45}
+  #s11 .person .hint{display:none} /* "hover" affordance is wrong on touch; tap still opens the bio overlay */
+  #s11 .adv{grid-template-columns:1fr 1fr;gap:.7rem}
+  #s11 .advc>img{width:3rem;height:3rem}
+  #s11 .advc .nm{font-size:.92rem}
+  #s11 .advc .ro{font-size:.62rem}
+  #s11 .adv-head{margin:1.2rem 0 .8rem;padding-top:1rem}
+}
+@media(pointer:coarse) and (max-width:700px){
+  /* slide-12: stat pills stay three-up and shrink instead of stacking */
+  #s12 .ip-grid{gap:1rem;margin-top:.6rem}
+  #s12 .ipstats{grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.8rem}
+  #s12 .ipstat{flex-direction:column;align-items:flex-start;gap:.3rem;padding:.6rem .7rem}
+  #s12 .ipstat .n{font-size:1.5rem}
+  #s12 .ipstat .l{font-size:.62rem}
+  #s12 .ipnotes li{font-size:.76rem}
+  #s12 .ip-callout{margin-top:.8rem;font-size:.92rem}
+}
 
 /* PRESS (slide 13) */
 .press-collage{position:relative;height:62vh;min-height:25rem;margin-top:1.4rem}
@@ -404,6 +476,158 @@ nav.dots button:hover span{opacity:1}
   #s1 .bg{background-image:url('assets/hero-portrait.jpg')!important;background-position:59% 50%;transform:none}
 }
 @media(max-height:500px){.brand{display:none}}
+
+/* LANDSCAPE PHONES: restore side-by-side compositions at compact scale so slides stay near one screen.
+   Placed last so it wins over the portrait/stacking rules above at equal specificity. */
+@media(pointer:coarse) and (orientation:landscape) and (max-height:500px){
+  section{padding:5vh 5vw}
+  .split,.tr-split{grid-template-columns:1.05fr .95fr;gap:1.6rem}
+  .lead{font-size:.9rem}
+  nav.dots{display:none}
+  /* slide-2 */
+  #s2 h2{font-size:1.6rem!important}
+  #s2 .grow{height:9rem;gap:2.2rem;margin-top:2.6rem}
+  .in #s2 .gbar.b1 .col{height:3.9rem}
+  .in #s2 .gbar.b2 .col{height:7.6rem}
+  #s2 .gbar .col{width:4.5rem}
+  #s2 .gbar .v{font-size:1.15rem;top:-2.1rem}
+  #s2 .gbar .yr{margin-top:.5rem;font-size:.8rem}
+  /* slide-3 */
+  #s3 h2{font-size:1.5rem!important}
+  #s3 .bignum{font-size:2.2rem!important}
+  #s3 .cols3{grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.1rem}
+  #s3 .col-card h3{margin-bottom:.5rem;padding-bottom:.4rem}
+  #s3 .col-card ul{gap:.45rem}
+  #s3 .col-card li{font-size:.74rem;line-height:1.35}
+  /* slide-4 */
+  #s4 h2{font-size:1.7rem!important}
+  #s4 .s4-wrap{min-height:0}
+  #s4 .pillars{grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.2rem}
+  #s4 .pillar .pn{font-size:1.3rem}
+  #s4 .pillar h3{font-size:1.05rem;margin:.2rem 0 .3rem}
+  #s4 .pillar p{font-size:.74rem;line-height:1.4}
+  #s4 .leadin{margin-top:.9rem;padding-right:.8rem}
+  #s4 .leadin-text{font-size:1rem}
+  #s4 .leadin-arrow{font-size:1.3rem;margin-top:.2rem}
+  /* slide-5 */
+  #s5 h2{font-size:1.35rem!important}
+  #s5 .lead{font-size:.8rem;margin-top:.6rem!important}
+  #s5 .strength-chart{margin-top:.7rem;padding:.7rem .8rem}
+  #s5 .sc-title{margin-bottom:.5rem;font-size:.7rem}
+  #s5 .split>div:last-child{display:grid;grid-template-columns:auto 1fr;gap:.6rem .9rem;align-items:center}
+  #s5 .media-frame{max-width:6.5rem}
+  #s5 .media-frame+div{margin-top:0!important}
+  #s5 .creds{grid-column:1/-1;margin-top:0;padding-bottom:0;gap:.4rem}
+  #s5 .creds li{font-size:.7rem;line-height:1.35}
+  /* slide-6 */
+  #s6 h2{font-size:1.3rem!important;max-width:none}
+  #s6 .tech-flow{display:grid;grid-template-columns:1fr 1.2fr;gap:.8rem;margin-top:1rem}
+  #s6 .tech-mid{grid-column:2;grid-row:1/3;gap:.5rem}
+  #s6 .tech-col{display:grid;grid-template-columns:6rem 1fr;gap:.15rem .8rem;align-items:center}
+  #s6 .tech-col .cap{grid-column:1/-1;margin-bottom:.1rem}
+  #s6 .tech-col .tech-img{grid-column:1;grid-row:2/4}
+  #s6 .tech-col h3{grid-column:2;grid-row:2;align-self:end;margin:0!important;font-size:1.15rem}
+  #s6 .tech-col .feed-meta,#s6 .tech-col .small{grid-column:2;grid-row:3;align-self:start;font-size:.68rem}
+  #s6 .pstep{padding:.45rem .6rem;grid-template-columns:5rem 1fr;gap:.7rem}
+  #s6 .pstep .diag{height:2.6rem}
+  #s6 .pstep h4{font-size:.72rem}
+  #s6 .pstep p{font-size:.62rem;line-height:1.3}
+  #s6 .badges{margin-top:.7rem;gap:.4rem}
+  #s6 .badge{font-size:.56rem;padding:.3rem .6rem}
+  /* slide-7 */
+  #s7 .sw7{flex-direction:row}
+  #s7 .sw7-left{min-height:0;padding:4vh 3vw}
+  #s7 .sw7-right{padding:3vh 3vw}
+  #s7 .sw7-title{font-size:2.2rem}
+  #s7 .sw7-tag{font-size:1rem;margin-top:.3rem}
+  #s7 .sw7-claims{font-size:1.05rem}
+  #s7 .proplist li{padding:.32rem 0;gap:.7rem}
+  #s7 .proplist h4{font-size:.72rem;margin-bottom:.1rem}
+  #s7 .proplist p{font-size:.66rem;line-height:1.3}
+  #s7 .pic7{width:1.3rem}
+  #s7 .pic7 svg{width:1.15rem;height:1.15rem}
+  /* slide-8 */
+  #s8 h2{font-size:1.35rem!important}
+  #s8 .legend{margin-top:.6rem}
+  #s8 .legend .scale{height:1.5rem;min-width:12rem;max-width:22rem}
+  #s8 .market-grid{grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:.7rem}
+  #s8 .mcol{display:block}
+  #s8 .mcol h3{font-size:.8rem;margin:.2rem 0}
+  #s8 .mcol .sub{min-height:0;margin-bottom:.45rem;font-size:.62rem}
+  #s8 .mbox{font-size:.62rem;padding:.3rem .45rem;margin-bottom:.25rem;border-radius:4px}
+  /* slide-9 */
+  #s9 h2{font-size:1.35rem!important}
+  #s9 .wrap>p{font-size:.72rem!important;margin-top:.4rem!important}
+  #s9 .costgraph .cg-lg{display:block}
+  #s9 .costgraph .cg-sm{display:none}
+  #s9 .road{grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:.5rem}
+  #s9 .mill{display:block;padding:.7rem .8rem}
+  #s9 .mill .mill-imgs{height:auto;margin:0 0 .4rem;justify-content:flex-start}
+  #s9 .mill .mcell{width:2.9rem}
+  #s9 .mtile{height:2rem}
+  #s9 .mcap{font-size:.42rem}
+  #s9 .mill-imgs .mar{margin-top:6px;font-size:.8rem}
+  #s9 .mill-imgs.two{display:flex;gap:.25rem}
+  #s9 .out-badge{margin:0 0 .3rem}
+  #s9 .out-badge .x{font-size:1.4rem}
+  #s9 .mill h3{font-size:1.05rem;margin:.15rem 0 .3rem}
+  #s9 .mill p{font-size:.62rem;line-height:1.35}
+  #s9 .mill .loc{font-size:.56rem;margin-top:.3rem}
+  #s9 .mill .yr{font-size:.6rem}
+  #s9 .feedrow{margin-top:.7rem;font-size:.62rem;gap:.4rem}
+  #s9 .feedrow .f{padding:.3rem .55rem}
+  /* slide-10 */
+  #s10 h2{font-size:1.35rem!important}
+  #s10 .tr-split{grid-template-columns:1.25fr .75fr}
+  #s10 .tract{gap:.5rem;margin-top:.5rem}
+  #s10 .tcard{padding:.6rem .8rem}
+  #s10 .tcard .n{font-size:1.35rem!important}
+  #s10 .tcard .l{font-size:.62rem;margin-top:.25rem;line-height:1.3}
+  #s10 .partners{margin-top:.7rem;padding:.7rem .9rem}
+  #s10 .partners .ph{margin-bottom:.5rem}
+  #s10 .plogos{gap:.5rem .7rem}
+  #s10 .plogos img{height:1.6rem}
+  /* slide-11: compact grid; bios open as tap overlays instead of inline text */
+  #s11 h2{font-size:1.3rem!important}
+  #s11 .team{grid-template-columns:repeat(5,1fr);gap:.8rem;margin-top:.8rem}
+  #s11 .person .pic{width:3rem;height:3rem;margin-bottom:.4rem}
+  #s11 .person .nm{font-size:.85rem;min-height:0}
+  #s11 .person .ro{font-size:.55rem;min-height:0;margin:.1rem 0 .2rem}
+  #s11 .person .bi{display:none}
+  #s11 .person .hint{display:none}
+  #s11 .adv{grid-template-columns:repeat(5,1fr);gap:.5rem}
+  #s11 .advc>img{width:2.4rem;height:2.4rem}
+  #s11 .advc .nm{font-size:.75rem}
+  #s11 .advc .ro{font-size:.52rem}
+  #s11 .adv-head{margin:1rem 0 .6rem;padding-top:.8rem}
+  #s11 .bio-pop{position:fixed;left:16px;right:16px;top:50%;bottom:auto;width:auto;transform:translateY(-50%) translateY(8px);max-height:76vh;overflow-y:auto;pointer-events:auto}
+  #s11 .person.show .bio-pop,#s11 .advc.show .bio-pop{opacity:1;visibility:visible;transform:translateY(-50%)}
+  /* slide-12 */
+  #s12 h2{font-size:1.3rem!important}
+  #s12 .ip-grid{grid-template-columns:.95fr 1.05fr;gap:1.2rem;margin-top:.5rem}
+  #s12 .ip-chart svg{max-width:19rem}
+  #s12 .ipnotes{gap:.5rem}
+  #s12 .ipnotes li{font-size:.68rem;line-height:1.4}
+  #s12 .ip-callout{margin-top:.7rem;font-size:.8rem}
+  #s12 .ipstats{grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.7rem}
+  #s12 .ipstat{padding:.5rem .8rem;gap:.6rem}
+  #s12 .ipstat .n{font-size:1.4rem}
+  #s12 .ipstat .l{font-size:.6rem}
+  /* slide-13: restore the absolute collage (the stacked-pile rules above use !important, so positions are re-declared per card) */
+  #s13 h2{font-size:1.4rem!important}
+  #s13 .press-collage{position:relative;height:56vh;min-height:0;display:block;margin-top:.8rem}
+  #s13 .pc{position:absolute!important;margin:0!important;border-width:3px}
+  #s13 .pc:nth-child(1){left:0%!important;top:40%!important;width:15.5%!important}
+  #s13 .pc:nth-child(2){left:8%!important;top:30%!important;width:17%!important}
+  #s13 .pc:nth-child(3){left:17%!important;top:17%!important;width:18%!important}
+  #s13 .pc:nth-child(4){left:26%!important;top:31%!important;width:19%!important}
+  #s13 .pc:nth-child(5){left:36%!important;top:12%!important;width:20%!important}
+  #s13 .pc:nth-child(6){left:45%!important;top:34%!important;width:20%!important}
+  #s13 .pc:nth-child(7){left:36%!important;top:56%!important;width:19%!important}
+  #s13 .pc:nth-child(8){left:63%!important;top:8%!important;width:27%!important}
+  #s13 .press-cta{margin-top:.6rem}
+  #s13 .btn{font-size:.7rem;padding:.5rem .9rem}
+}
 </style>
 </head>
 <body>
