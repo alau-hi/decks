@@ -325,6 +325,12 @@ nav.dots button:hover span{opacity:1}
   #s6 .tech-col .feed-meta,#s6 .tech-col .small{grid-column:2;grid-row:3;align-self:start}
   #s6 .badges{margin-top:1rem}
 }
+@media(pointer:coarse) and (max-width:700px){
+  /* slide-7: shorter hero and tighter property list so intro + all seven properties fit about one screen */
+  #s7 .sw7-left{min-height:40vh;padding:4.5vh 6vw}
+  #s7 .sw7-right{padding:2.5vh 6vw 3.2rem} /* extra bottom padding keeps the last row clear of the fixed Confidential label */
+  #s7 .proplist li{padding:.55rem 0}
+}
 
 /* PRESS (slide 13) */
 .press-collage{position:relative;height:62vh;min-height:25rem;margin-top:1.4rem}
