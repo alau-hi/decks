@@ -51,6 +51,17 @@ Vercel's own SSO deployment protection is intentionally OFF for this project —
 
 **Never run `vercel` from the repo root.** Always `cd superwood-presentation` first (the `deploy:*` npm scripts assume that cwd), in the same shell command as the deploy. A root-level `vercel --yes` auto-creates a brand-new PUBLIC project named `decks` that serves the entire repo ungated — including the 90MB master PPTX. This has happened three times. Telltale symptoms: deploy output says "Failed to link alau-hi/decks" or aliases to `decks-*.vercel.app` instead of `sw.inventwood.net`. Recovery: `vercel project rm decks`, delete the root `.vercel/` directory, redeploy from `superwood-presentation/`.
 
+### New machine setup (team members)
+
+1. `vercel login` (team scope: `inventwood`; project `superwood-presentation` links on first deploy from `superwood-presentation/`).
+2. GitHub: the working account needs write access to `alau-hi/decks` (SSH or `gh auth login`).
+3. Secrets are never in this repo — the stats key and gate secrets live in Vercel project env vars. To read them: `cd superwood-presentation && vercel env pull --environment=production .env.check` (then delete the file). `STATS_KEY` unlocks `/stats` and `/changes`.
+4. AWS/Route 53 is only needed for new subdomains (records are CNAME → `cname.vercel-dns.com`); the CLI user `S-Mac-cmdline` lacks Route 53 permissions, so records are created manually in the console.
+
+### Deferred decision: Neon Postgres (assessed 2026-07-17)
+
+Migrating the `/changes` board and Blob analytics to Postgres was sized and deliberately deferred. When picked up: use a **direct Neon account** (not the Vercel Marketplace) so the DB stays portable; `DATABASE_URL` via env var; `@neondatabase/serverless`. Revisit when `/api/stats` slows (it list+fetches every blob per load — fine at ~30 records, painful at hundreds) or when the team needs shared change-request statuses (currently per-browser localStorage).
+
 ### Collaborator deployments (no env vars)
 
 The gating is designed so collaborators (e.g. Alex, the designer) can deploy this repo to their own Vercel project and run locally with **zero configuration** — all protection keys off env vars that exist only in the team's project:
