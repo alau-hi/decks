@@ -1,5 +1,5 @@
-import { list } from '@vercel/blob';
 import { timingSafeEqual } from 'node:crypto';
+import { sql, iso } from './_db.mjs';
 
 // Canonical slide order (matches data-nav in index.html). Shared with
 // stats.html via the response so the client doesn't hardcode it.
@@ -28,44 +28,24 @@ function keyOk(given, expected) {
   return a.length === b.length && timingSafeEqual(a, b);
 }
 
-async function listAll(prefix) {
-  const blobs = [];
-  let cursor;
-  do {
-    const r = await list({ prefix, cursor, limit: 1000 });
-    blobs.push(...r.blobs);
-    cursor = r.cursor;
-  } while (cursor);
-  return blobs;
-}
-
-async function fetchJson(url) {
-  try {
-    const r = await fetch(url);
-    return r.ok ? await r.json() : null;
-  } catch {
-    return null;
-  }
-}
-
 export default async function handler(req, res) {
   if (!keyOk(req.query?.key, process.env.STATS_KEY)) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
-  // Storage-less deployment (staging): valid key, but nothing recorded here.
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+  // Storage-less deployment (staging-open, collaborators): valid key, but nothing recorded here.
+  if (!sql) {
     res.setHeader('Cache-Control', 'no-store');
     return res.status(200).json({ generatedAt: new Date().toISOString(), slideOrder: SLIDES, viewers: [], slides: [], dropoff: [], totalSessions: 0, locations: [] });
   }
 
-  const [signupBlobs, dwellBlobs] = await Promise.all([
-    listAll('deck-signups/'),
-    listAll('deck-dwell/'),
+  const [signupRows, dwellRows] = await Promise.all([
+    sql`SELECT email, ts, ua, ip, city, country, lat, lon FROM signups`,
+    sql`SELECT session, viewer, totals, ua, ip, city, country, lat, lon, ts FROM dwell_sessions`,
   ]);
-  const [signups, dwells] = await Promise.all([
-    Promise.all(signupBlobs.map(b => fetchJson(b.url))),
-    Promise.all(dwellBlobs.map(b => fetchJson(b.url))),
-  ]);
+  // Rows carry the same fields the blobs did; normalize timestamps back to
+  // the ISO strings the aggregation below compares lexicographically.
+  const signups = signupRows.map(r => ({ ...r, ts: iso(r.ts) }));
+  const dwells = dwellRows.map(r => ({ ...r, ts: iso(r.ts) }));
 
   const viewers = new Map();
   function ensure(email) {

@@ -1,4 +1,4 @@
-import { put } from '@vercel/blob';
+import { sql } from './_db.mjs';
 
 // The gate cookie is the authoritative viewer identity; the payload viewer is
 // only a fallback (middleware already blocks unauthenticated requests).
@@ -23,8 +23,8 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  // Storage-less deployment (staging): accept and drop beacons silently.
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+  // Storage-less deployment (staging-open, collaborators): accept and drop beacons silently.
+  if (!sql) {
     return res.status(204).end();
   }
   const { viewer, session, totals } = req.body || {};
@@ -56,11 +56,14 @@ export default async function handler(req, res) {
     ts: new Date().toISOString(),
   };
   try {
-    await put(
-      `deck-dwell/${email.replace(/[^a-z0-9@._-]/g, '_')}/${session}.json`,
-      JSON.stringify(record),
-      { access: 'public', contentType: 'application/json', allowOverwrite: true, addRandomSuffix: false }
-    );
+    // Upsert on session: each flush overwrites the running totals, so repeat
+    // beacons never double-count (same semantics as the old per-session blob).
+    await sql`
+      INSERT INTO dwell_sessions (session, viewer, totals, ua, ip, city, country, lat, lon, ts)
+      VALUES (${session}, ${email}, ${JSON.stringify(clean)}::jsonb, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.ts})
+      ON CONFLICT (session) DO UPDATE SET
+        viewer = EXCLUDED.viewer, totals = EXCLUDED.totals, ua = EXCLUDED.ua, ip = EXCLUDED.ip,
+        city = EXCLUDED.city, country = EXCLUDED.country, lat = EXCLUDED.lat, lon = EXCLUDED.lon, ts = EXCLUDED.ts`;
   } catch (err) {
     console.log('deck-dwell write failed:', JSON.stringify(record), err.message);
     return res.status(500).json({ error: 'Store failed' });

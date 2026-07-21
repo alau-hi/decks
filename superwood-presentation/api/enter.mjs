@@ -1,4 +1,4 @@
-import { put } from '@vercel/blob';
+import { sql } from './_db.mjs';
 
 const MAX_AGE = 30 * 24 * 3600; // 30 days
 
@@ -36,14 +36,14 @@ export default async function handler(req, res) {
     lon: Number(req.headers['x-vercel-ip-longitude']) || null,
   };
   try {
-    await put(
-      `deck-signups/${ts}-${cleanEmail.replace(/[^a-z0-9@._-]/g, '_')}.json`,
-      JSON.stringify(record),
-      { access: 'public', contentType: 'application/json' }
-    );
+    if (!sql) throw new Error('DATABASE_URL not configured');
+    await sql`
+      INSERT INTO signups (email, ts, ua, ip, city, country, lat, lon)
+      VALUES (${record.email}, ${record.ts}, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon})
+      ON CONFLICT (email, ts) DO NOTHING`;
   } catch (err) {
-    // Blob store unavailable — keep the signup in function logs and let the viewer in.
-    console.log('deck-signup (blob write failed):', JSON.stringify(record), err.message);
+    // DB unavailable — keep the signup in function logs and let the viewer in.
+    console.log('deck-signup (db write failed):', JSON.stringify(record), err.message);
   }
 
   const exp = Date.now() + MAX_AGE * 1000;
