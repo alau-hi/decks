@@ -54,9 +54,11 @@ async function fetchJson(url) {
   }
 }
 
-// Schema (idempotent CREATE TABLE IF NOT EXISTS statements).
-const schema = readFileSync(join(here, 'schema.sql'), 'utf8');
-for (const stmt of schema.split(/;\s*\n/).map(s => s.trim()).filter(s => s && !s.startsWith('--'))) {
+// Schema (idempotent CREATE TABLE IF NOT EXISTS statements). Strip full-line
+// comments first so a leading comment can't swallow the statement after it.
+const schema = readFileSync(join(here, 'schema.sql'), 'utf8')
+  .split('\n').filter(l => !l.trim().startsWith('--')).join('\n');
+for (const stmt of schema.split(/;\s*\n/).map(s => s.trim()).filter(Boolean)) {
   await sql.query(stmt);
 }
 console.log('schema applied');
