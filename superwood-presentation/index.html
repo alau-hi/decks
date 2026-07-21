@@ -276,8 +276,8 @@ nav.dots button:hover span{opacity:1}
 .sw-tip a{color:var(--wood-bright);text-decoration:none;border-bottom:1px solid rgba(205,161,101,.4)}
 .sw-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#332314}
 .sw-ref:hover .sw-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
-.srcbtn{display:block;margin-top:1.1rem;margin-left:auto;width:max-content;background:transparent;border:1px solid var(--line);border-radius:1.875rem;color:var(--muted);font-family:'Inter';font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;padding:.5em 1.2em;cursor:pointer;transition:color .25s,border-color .25s}
-.srcbtn:hover{color:var(--wood-bright);border-color:var(--wood)}
+.srcbtn{display:block;margin-top:1.1rem;margin-left:auto;width:max-content;background:rgba(184,125,68,.16);border:1px solid var(--wood);border-radius:1.875rem;color:var(--wood-bright);font-family:'Inter';font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.5em 1.2em;cursor:pointer;transition:color .25s,border-color .25s,background .25s}
+.srcbtn:hover{color:#1a1209;background:var(--wood-bright);border-color:var(--wood-bright)}
 #srcpop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:60;background:rgba(15,9,4,.38)}
 #srcpop.show{display:flex}
 .srcbox{background:#2a1c10;border:1px solid var(--line);border-radius:14px;max-width:46rem;width:calc(100% - 3rem);max-height:80vh;overflow-y:auto;padding:1.8rem 2rem;box-shadow:0 30px 80px rgba(0,0,0,.65)}
@@ -729,7 +729,7 @@ nav.dots button:hover span{opacity:1}
           <li>Cognitive fatigue and sensory overstimulation</li>
           <li>Climate risks from production <b>threaten lives and property</b></li></ul></div>
       </div>
-      <button class="srcbtn rv" id="srcopenbtn" aria-haspopup="dialog">Further reading on human health</button>
+      <button class="srcbtn rv" id="srcopenbtn" aria-haspopup="dialog">Read more on human health</button>
     </div>
     <div id="srcpop" role="dialog" aria-modal="true" aria-label="Sources and references">
       <div class="srcbox">
