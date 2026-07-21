@@ -1267,6 +1267,10 @@ window.addEventListener('keydown',e=>{
 const srcpop=document.getElementById('srcpop');
 document.getElementById('srcopenbtn').addEventListener('click',()=>{srcpop.classList.add('show');});
 document.getElementById('srcclosebtn').addEventListener('click',()=>srcpop.classList.remove('show'));
+// auto-close when the pointer leaves the popup box (grace delay forgives accidental exits)
+{const box=srcpop.querySelector('.srcbox');let t=null;
+ box.addEventListener('mouseleave',()=>{t=setTimeout(()=>srcpop.classList.remove('show'),450);});
+ box.addEventListener('mouseenter',()=>clearTimeout(t));}
 srcpop.addEventListener('click',e=>{if(e.target===srcpop)srcpop.classList.remove('show');});
 window.addEventListener('keydown',e=>{
   if(!srcpop.classList.contains('show'))return;
