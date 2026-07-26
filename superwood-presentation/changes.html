@@ -337,7 +337,19 @@ const LOG=[
  {iso:'2026-07-20',date:'Jul 20',topic:'Meta',title:'Shared board & Postgres backend',slides:[],req:'Migrate the deck stats and changes backends to a Neon-hosted Postgres; the request board should be shared across the team.',items:[
   ['Request board now saves to a shared database — statuses, edits and new requests are the same for everyone',''],
   ['One-time banner imports edits previously stuck in this browser’s localStorage',''],
-  ['Signup and per-slide dwell analytics moved from Vercel Blob to Postgres; old blobs kept as a frozen archive','']]}
+  ['Signup and per-slide dwell analytics moved from Vercel Blob to Postgres; old blobs kept as a frozen archive','']]},
+ {iso:'2026-07-20',date:'Jul 20',topic:'Content',title:'Slide-3 sources popup',slides:[3],req:'Add links and references to slide 3 without polluting the clean display — a single popup with all references, clickable where possible.',items:[
+  ['Deep research pass across the seven concrete health impacts; 18 claims survived adversarial verification',''],
+  ['A discreet Sources & further reading button on slide 3 opens a modal with 9 grouped, clickable references (Pulitzer sand wars, Evans 2003, Kaplan 1995, Berman 2008, Ulrich 1984, Glass & Singer 1972, wood-cortisol RCT review 2020, wooden-room affect 2024, Lancet urban-heat 2023)','']]},
+ {iso:'2026-07-21',date:'Jul 21',topic:'Content',title:'Slide-3 reference polish',slides:[3],req:'Link "sand wars" (no underline, hover card with the article + link); button bottom-right below Human & Planet; popup keeps the slide visible behind a light fade; rename to Read more on human health with color.',items:[
+  ['"sand wars" links to the Pulitzer article; hover shows a card with title, author and a clickable link','4a7bac1'],
+  ['Sources button moved bottom-right below the Human & Planet column; popup backdrop lightened so the slide stays visible','951a448'],
+  ['Button renamed to Read more on human health, wood-tinted fill and gold text','071fe6c'],
+  ['Variant deck published to inventwood-teaser-test.vercel.app: no button — hovering the two human-health bullets opens the references popup',''],
+  ['Popup opening animated: backdrop fades, panel rises and settles (both versions, reduced-motion aware)','40a1741'],
+  ['Popup auto-closes when the pointer leaves it (450ms grace period)','04386f4']]},
+ {iso:'2026-07-22',date:'Jul 22',topic:'Content',title:'Slide-3 popup pruning',slides:[3],req:'Remove the sand-wars references from the human-health popup.',items:[
+  ['Sand-wars reference removed from the human-health popup (both versions) — it lives in the \u201csand wars\u201d hover tooltip instead','17ac33d']]}
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
    (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */

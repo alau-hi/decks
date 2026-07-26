@@ -7,3 +7,6 @@
 # Node
 node_modules/
 .vercel
+
+# Visual-companion brainstorm artifacts
+.superpowers/
