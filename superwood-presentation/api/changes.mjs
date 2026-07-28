@@ -1,5 +1,5 @@
 import { createHmac, timingSafeEqual } from 'node:crypto';
-import { sql } from './_db.mjs';
+import { sql, DECK } from './_db.mjs';
 
 const STATUSES = new Set(['submitted', 'consideration', 'planned', 'rejected']);
 
@@ -54,7 +54,7 @@ function cleanPatch(raw) {
 }
 
 async function upsert(p) {
-  const [existing] = await sql`SELECT * FROM change_requests WHERE id = ${p.id}`;
+  const [existing] = await sql`SELECT * FROM change_requests WHERE deck = ${DECK} AND id = ${p.id}`;
   const m = {
     title: p.title ?? existing?.title ?? '',
     summary: p.summary ?? existing?.summary ?? '',
@@ -65,16 +65,16 @@ async function upsert(p) {
     deleted: p.deleted ?? existing?.deleted ?? false,
   };
   await sql`
-    INSERT INTO change_requests (id, title, summary, detail, status, author, logged, deleted)
-    VALUES (${p.id}, ${m.title}, ${m.summary}, ${m.detail}, ${m.status}, ${m.author}, ${m.logged}, ${m.deleted})
-    ON CONFLICT (id) DO UPDATE SET
+    INSERT INTO change_requests (deck, id, title, summary, detail, status, author, logged, deleted)
+    VALUES (${DECK}, ${p.id}, ${m.title}, ${m.summary}, ${m.detail}, ${m.status}, ${m.author}, ${m.logged}, ${m.deleted})
+    ON CONFLICT (deck, id) DO UPDATE SET
       title = EXCLUDED.title, summary = EXCLUDED.summary, detail = EXCLUDED.detail,
       status = EXCLUDED.status, author = EXCLUDED.author, logged = EXCLUDED.logged,
       deleted = EXCLUDED.deleted, updated_at = now()`;
 }
 
 const listRequests = () =>
-  sql`SELECT id, title, summary, detail, status, author, logged FROM change_requests WHERE NOT deleted ORDER BY created_at`;
+  sql`SELECT id, title, summary, detail, status, author, logged FROM change_requests WHERE deck = ${DECK} AND NOT deleted ORDER BY created_at`;
 
 export default async function handler(req, res) {
   if (!adminOk(req)) return res.status(401).json({ error: 'Unauthorized' });

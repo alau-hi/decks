@@ -1,4 +1,4 @@
-import { sql } from './_db.mjs';
+import { sql, DECK } from './_db.mjs';
 
 // The gate cookie is the authoritative viewer identity; the payload viewer is
 // only a fallback (middleware already blocks unauthenticated requests).
@@ -59,8 +59,8 @@ export default async function handler(req, res) {
     // Upsert on session: each flush overwrites the running totals, so repeat
     // beacons never double-count (same semantics as the old per-session blob).
     await sql`
-      INSERT INTO dwell_sessions (session, viewer, totals, ua, ip, city, country, lat, lon, ts)
-      VALUES (${session}, ${email}, ${JSON.stringify(clean)}::jsonb, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.ts})
+      INSERT INTO dwell_sessions (session, deck, viewer, totals, ua, ip, city, country, lat, lon, ts)
+      VALUES (${session}, ${DECK}, ${email}, ${JSON.stringify(clean)}::jsonb, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.ts})
       ON CONFLICT (session) DO UPDATE SET
         viewer = EXCLUDED.viewer, totals = EXCLUDED.totals, ua = EXCLUDED.ua, ip = EXCLUDED.ip,
         city = EXCLUDED.city, country = EXCLUDED.country, lat = EXCLUDED.lat, lon = EXCLUDED.lon, ts = EXCLUDED.ts`;

@@ -16,6 +16,7 @@ import { fileURLToPath } from 'node:url';
 import { list } from '@vercel/blob';
 import { neon } from '@neondatabase/serverless';
 import { SEED_REQUESTS } from '../api/changes.mjs';
+import { DECK } from '../api/_db.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -70,9 +71,9 @@ for (const b of signupBlobs) {
   const s = await fetchJson(b.url);
   if (!s?.email || !s.ts) continue;
   const r = await sql`
-    INSERT INTO signups (email, ts, ua, ip, city, country, lat, lon)
-    VALUES (${s.email}, ${s.ts}, ${s.ua || ''}, ${s.ip || ''}, ${s.city || ''}, ${s.country || ''}, ${s.lat ?? null}, ${s.lon ?? null})
-    ON CONFLICT (email, ts) DO NOTHING`;
+    INSERT INTO signups (deck, email, ts, ua, ip, city, country, lat, lon)
+    VALUES (${DECK}, ${s.email}, ${s.ts}, ${s.ua || ''}, ${s.ip || ''}, ${s.city || ''}, ${s.country || ''}, ${s.lat ?? null}, ${s.lon ?? null})
+    ON CONFLICT (deck, email, ts) DO NOTHING`;
   inserted += r.length ?? 0;
 }
 console.log(`signups: ${signupBlobs.length} blobs scanned`);
@@ -83,8 +84,8 @@ for (const b of dwellBlobs) {
   const d = await fetchJson(b.url);
   if (!d?.session || !d.viewer) continue;
   await sql`
-    INSERT INTO dwell_sessions (session, viewer, totals, ua, ip, city, country, lat, lon, ts)
-    VALUES (${d.session}, ${d.viewer}, ${JSON.stringify(d.totals || {})}::jsonb, ${d.ua || ''}, ${d.ip || ''}, ${d.city || ''}, ${d.country || ''}, ${d.lat ?? null}, ${d.lon ?? null}, ${d.ts || null})
+    INSERT INTO dwell_sessions (session, deck, viewer, totals, ua, ip, city, country, lat, lon, ts)
+    VALUES (${d.session}, ${DECK}, ${d.viewer}, ${JSON.stringify(d.totals || {})}::jsonb, ${d.ua || ''}, ${d.ip || ''}, ${d.city || ''}, ${d.country || ''}, ${d.lat ?? null}, ${d.lon ?? null}, ${d.ts || null})
     ON CONFLICT (session) DO NOTHING`;
 }
 console.log(`dwell sessions: ${dwellBlobs.length} blobs scanned`);
@@ -92,9 +93,9 @@ console.log(`dwell sessions: ${dwellBlobs.length} blobs scanned`);
 // Seed the /changes board with the original hardcoded requests.
 for (const r of SEED_REQUESTS) {
   await sql`
-    INSERT INTO change_requests (id, title, summary, detail, status, logged)
-    VALUES (${r.id}, ${r.title}, ${r.summary}, ${r.detail}, ${r.status}, ${r.logged})
-    ON CONFLICT (id) DO NOTHING`;
+    INSERT INTO change_requests (deck, id, title, summary, detail, status, logged)
+    VALUES (${DECK}, ${r.id}, ${r.title}, ${r.summary}, ${r.detail}, ${r.status}, ${r.logged})
+    ON CONFLICT (deck, id) DO NOTHING`;
 }
 console.log('change_requests seeded');
 

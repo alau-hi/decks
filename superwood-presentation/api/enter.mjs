@@ -1,4 +1,4 @@
-import { sql } from './_db.mjs';
+import { sql, DECK } from './_db.mjs';
 
 const MAX_AGE = 30 * 24 * 3600; // 30 days
 
@@ -38,9 +38,9 @@ export default async function handler(req, res) {
   try {
     if (!sql) throw new Error('DATABASE_URL not configured');
     await sql`
-      INSERT INTO signups (email, ts, ua, ip, city, country, lat, lon)
-      VALUES (${record.email}, ${record.ts}, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon})
-      ON CONFLICT (email, ts) DO NOTHING`;
+      INSERT INTO signups (deck, email, ts, ua, ip, city, country, lat, lon)
+      VALUES (${DECK}, ${record.email}, ${record.ts}, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon})
+      ON CONFLICT (deck, email, ts) DO NOTHING`;
   } catch (err) {
     // DB unavailable — keep the signup in function logs and let the viewer in.
     console.log('deck-signup (db write failed):', JSON.stringify(record), err.message);

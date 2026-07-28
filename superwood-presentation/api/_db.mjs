@@ -8,3 +8,7 @@ export const sql = process.env.DATABASE_URL ? neon(process.env.DATABASE_URL) : n
 // Timestamps leave the DB as Date objects; the blobs stored ISO strings and
 // all downstream aggregation/sorting assumes that format.
 export const iso = (t) => (t == null ? null : new Date(t).toISOString());
+
+// The database is shared by (future) multiple decks; each deployment tags and
+// filters its rows by this identity.
+export const DECK = process.env.DECK_ID || 'superwood';
