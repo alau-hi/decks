@@ -135,14 +135,15 @@ nav.dots button:hover span{opacity:1}
 
 /* TECHNOLOGY (slide 6) */
 .tech-flow{display:grid;grid-template-columns:.8fr 1.6fr .8fr;gap:1.6rem;align-items:start;margin-top:2rem}
-.tech-flow .cap{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.8rem}
+.tech-flow .cap{font-size:.95rem;letter-spacing:.18em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.8rem}
 .tech-mid .cap::before,.tech-end .cap::before{content:"→";margin-right:.5rem} /* flow cue: feedstock → conversion → output */
 .tech-img{aspect-ratio:1000/1072;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 14px 30px rgba(0,0,0,.45))}
 .tech-img img{width:100%;height:100%;object-fit:contain;display:block;transform:scale(1.16)}
 .tech-end .tech-img img{transform:scale(1.42)} /* cutouts carry internal air; scale to match the old cover-filled tiles, bleeding past the box */
+.tech-flow>.tech-col:first-child .tech-img{margin-top:2.15rem} /* drop the feedstock so its top aligns with the SUPERWOOD stack */
 
 .tech-end h3{font-family:'Fraunces';font-size:1.6rem;color:var(--wood-bright);margin-bottom:.6rem}
-.tech-end .small{font-size:.78rem;color:var(--cream-dim);line-height:1.5}
+.tech-end .small{font-size:.95rem;color:var(--cream-dim);line-height:1.5}
 .tech-mid{display:flex;flex-direction:column;gap:.7rem}
 .pstep{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;align-items:center;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem}
 .pstep .diag{background:#17110b;border:1px solid rgba(220,185,130,.22);border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center;height:3.875rem}
@@ -160,7 +161,7 @@ nav.dots button:hover span{opacity:1}
 .pstep h4{font-family:'Inter';font-weight:600;font-size:.82rem;letter-spacing:.02em;color:var(--cream);margin-bottom:.2rem}
 .pstep p{font-size:.74rem;line-height:1.4;color:var(--cream-dim)}
 .feed-title{font-family:'Fraunces';font-size:1.6rem;color:var(--cream);margin-top:.7rem;margin-bottom:.4rem}
-.feed-meta{font-size:.78rem;color:var(--cream-dim);line-height:1.45}
+.feed-meta{font-size:.95rem;color:var(--cream-dim);line-height:1.45}
 .badges{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.8rem}
 .badge{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem .9rem;border:1px solid var(--line);border-radius:1.875rem;color:var(--cream-dim)}
 .badge b{color:var(--wood-bright)}
