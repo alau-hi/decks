@@ -35,6 +35,15 @@ export default async function middleware(req) {
   const path = url.pathname;
   if (OPEN_PATHS.has(path) || path.startsWith('/_vercel/')) return next();
 
+  // Canonical deck URL is /intro. Middleware runs before vercel.json routing,
+  // so redirect the root here too — otherwise unauthenticated visitors would
+  // see the gate at / instead of /intro.
+  if (path === '/') {
+    const dest = new URL(url);
+    dest.pathname = '/intro';
+    return Response.redirect(dest, 302);
+  }
+
   const token = getCookie(req, 'sw_auth');
   if (token) {
     const parts = token.split('.');
@@ -55,7 +64,7 @@ export default async function middleware(req) {
         }
         // Keep the viewer identity on the URL so the deck's per-slide
         // analytics (?v=) attribute return visits too.
-        if (path === '/' && !url.searchParams.has('v')) {
+        if (path === '/intro' && !url.searchParams.has('v')) {
           try {
             const dest = new URL(url);
             dest.searchParams.set('v', b64urlDecode(emailB64));

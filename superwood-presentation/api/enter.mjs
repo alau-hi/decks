@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   // Ungated deployment (no AUTH_SECRET / gate disabled): no cookie to sign,
   // nothing to record — just send the visitor into the deck.
   if (!process.env.AUTH_SECRET || process.env.GATE_DISABLED === '1') {
-    return res.status(200).json({ redirect: '/' });
+    return res.status(200).json({ redirect: '/intro' });
   }
   const { email } = req.body || {};
   const cleanEmail = String(email || '').trim().toLowerCase();
@@ -58,5 +58,5 @@ export default async function handler(req, res) {
     'Set-Cookie',
     `sw_auth=${payload}.${sig}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${MAX_AGE}${domain}`
   );
-  return res.status(200).json({ redirect: `/?v=${encodeURIComponent(cleanEmail)}` });
+  return res.status(200).json({ redirect: `/intro?v=${encodeURIComponent(cleanEmail)}` });
 }
