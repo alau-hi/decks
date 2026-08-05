@@ -137,9 +137,9 @@ nav.dots button:hover span{opacity:1}
 .tech-flow{display:grid;grid-template-columns:.8fr 1.6fr .8fr;gap:1.6rem;align-items:start;margin-top:2rem}
 .tech-flow .cap{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.8rem}
 .tech-mid .cap::before,.tech-end .cap::before{content:"→";margin-right:.5rem} /* flow cue: feedstock → conversion → output */
-.tech-img{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#0d0a07;aspect-ratio:1000/1072}
-.tech-img img{width:100%;height:100%;object-fit:cover;display:block}
-.tech-end .tech-img{background:radial-gradient(120% 100% at 50% 42%,#262422 0%,#100e0c 68%,#080807 100%)}
+.tech-img{aspect-ratio:1000/1072;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 14px 30px rgba(0,0,0,.45))}
+.tech-img img{width:100%;height:100%;object-fit:contain;display:block}
+
 .tech-end h3{font-family:'Fraunces';font-size:1.6rem;color:var(--wood-bright);margin-bottom:.6rem}
 .tech-end .small{font-size:.78rem;color:var(--cream-dim);line-height:1.5}
 .tech-mid{display:flex;flex-direction:column;gap:.7rem}
@@ -837,7 +837,7 @@ nav.dots button:hover span{opacity:1}
       <div class="tech-flow rv">
         <div class="tech-col">
           <div class="cap">Feedstock</div>
-          <div class="tech-img"><img loading="lazy" decoding="async" src="assets/feedstock.jpg" alt="Ordinary wood feedstock"></div>
+          <div class="tech-img"><img loading="lazy" decoding="async" src="assets/feedstock2.webp" alt="Ordinary wood feedstock"></div>
           <h3 class="feed-title">Ordinary Wood</h3>
           <div class="feed-meta"><b style="color:var(--cream)">Species &amp; form flexible</b> — including underutilized species and waste wood.</div>
         </div>
@@ -849,7 +849,7 @@ nav.dots button:hover span{opacity:1}
         </div>
         <div class="tech-col tech-end">
           <div class="cap">Output</div>
-          <div class="tech-img"><img loading="lazy" decoding="async" src="assets/boards.webp" alt="SUPERWOOD" style="background:transparent"></div>
+          <div class="tech-img"><img loading="lazy" decoding="async" src="assets/boards2.webp" alt="SUPERWOOD"></div>
           <h3 style="margin-top:.7rem">SUPERWOOD</h3>
           <div class="small">Up to <b style="color:var(--wood-bright)">50% stronger</b> and <b style="color:var(--wood-bright)">6× lighter</b> than steel.</div>
         </div>
@@ -879,7 +879,7 @@ nav.dots button:hover span{opacity:1}
           <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c3.5 4 6 6.7 6 10a6 6 0 0 1-12 0c0-3.3 2.5-6 6-10z"/></svg></span><div><h4>Fights Pests, Rot &amp; Fungus</h4><p>Protects against familiar threats like termites, mold, fungus and corrosion for long-lasting performance.</p></div></li>
           <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.5V5a2 2 0 0 0-4 0v9.5a3.5 3.5 0 1 0 4 0z"/></svg></span><div><h4>Thermally Insulating</h4><p>100&times; better than steel; 400&times; better than aluminum.</p></div></li>
           <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M6 6a8.5 8.5 0 0 0 0 12M18 6a8.5 8.5 0 0 1 0 12"/></svg></span><div><h4>RF Transparent</h4><p>Wireless signals pass through unhindered. Undetectable by radar.</p></div></li>
-          <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L13 19V5L7.5 9.5H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/></svg></span><div><h4>Sound Attenuating</h4><p>Improved sound dampening vs steel, with improved acoustic performance.</p></div></li>
+          <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c1.1-7.5 2.9-7.5 4 0c1.1 7.5 2.9 7.5 4 0c.85-4.8 2.15-4.8 3 0c.85 4.8 2.15 4.8 3 0c.7-2.6 1.8-2.6 2.5 0c.7 2.6 1.8 2.6 2.5 0"/></svg></span><div><h4>Sound Attenuating</h4><p>Improved sound dampening vs steel, with improved acoustic performance.</p></div></li>
           <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14z"/><path d="M5 19C9 15 13 11 16.5 9"/></svg></span><div><h4>Naturally Beautiful</h4><p>With the texture, colors and natural warmth of wood.</p></div></li>
         </ul>
       </div>
