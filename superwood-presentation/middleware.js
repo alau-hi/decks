@@ -35,9 +35,9 @@ export default async function middleware(req) {
   const path = url.pathname;
   if (OPEN_PATHS.has(path) || path.startsWith('/_vercel/')) return next();
 
-  // Canonical deck URL is /intro. Middleware runs before vercel.json routing,
-  // so redirect the root here too — otherwise unauthenticated visitors would
-  // see the gate at / instead of /intro.
+  // Canonical deck URL is /intro. Fallback in case platform routing order
+  // ever changes — in practice vercel.json's redirect wins (307) before the
+  // middleware runs, so this branch stays dormant on Vercel.
   if (path === '/') {
     const dest = new URL(url);
     dest.pathname = '/intro';
