@@ -222,6 +222,20 @@ nav.dots button:hover span{opacity:1}
 /* ROADMAP (slide 9) */
 .costgraph{margin:.7rem 0 .3rem}
 .costgraph svg{width:100%;height:auto;display:block}
+/* cost-decline animation: line draws left-to-right, milestones pop as it passes, fill rises after */
+.costgraph .cg-line{stroke-dasharray:1;stroke-dashoffset:1}
+.costgraph .cg-dot,.costgraph .cg-fill{opacity:0}
+section.in .costgraph .cg-line{animation:cgDraw 2.4s cubic-bezier(.55,.05,.35,1) .5s forwards}
+section.in .costgraph .cg-dot.d1{animation:cgPop .45s ease .55s forwards}
+section.in .costgraph .cg-dot.d2{animation:cgPop .45s ease 1.6s forwards}
+section.in .costgraph .cg-dot.d3{animation:cgPop .45s ease 2.7s forwards}
+section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
+@keyframes cgDraw{to{stroke-dashoffset:0}}
+@keyframes cgPop{to{opacity:1}}
+@media (prefers-reduced-motion: reduce){
+  .costgraph .cg-line{stroke-dasharray:none;stroke-dashoffset:0;animation:none!important}
+  .costgraph .cg-dot,.costgraph .cg-fill{opacity:1;animation:none!important}
+}
 .costgraph .cg-sm{display:none}
 .road{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:.8rem;align-items:stretch}
 .mill{border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.2rem;background:rgba(255,255,255,.02);position:relative}
@@ -956,8 +970,8 @@ nav.dots button:hover span{opacity:1}
           <text x="90" y="16" fill="#dfe1e6" font-family="Inter,sans-serif" font-size="11" font-weight="600">Stainless steel cost</text>
           <rect x="79" y="96" width="879" height="12" fill="rgba(168,80,58,.62)"/>
           <text x="90" y="92" fill="#f4ecdf" font-family="Inter,sans-serif" font-size="11" font-weight="600">Steel cost</text>
-          <path d="M160,77 C 300,90 400,99 500,102 C 640,110 740,114 840,117" fill="none" stroke="#aebf76" stroke-width="3.5" stroke-linecap="round"/>
-          <circle cx="160" cy="77" r="4.5" fill="#aebf76"/><circle cx="500" cy="102" r="4.5" fill="#aebf76"/><circle cx="840" cy="117" r="4.5" fill="#aebf76"/>
+          <path class="cg-line" pathLength="1" d="M160,77 C 300,90 400,99 500,102 C 640,110 740,114 840,117" fill="none" stroke="#aebf76" stroke-width="3.5" stroke-linecap="round"/>
+          <circle class="cg-dot d1" cx="160" cy="77" r="4.5" fill="#aebf76"/><circle class="cg-dot d2" cx="500" cy="102" r="4.5" fill="#aebf76"/><circle class="cg-dot d3" cx="840" cy="117" r="4.5" fill="#aebf76"/>
           <text x="190" y="66" fill="#aebf76" font-family="Inter,sans-serif" font-size="11.5" font-weight="600">SUPERWOOD cost</text>
           <line x1="160" y1="128" x2="160" y2="133" stroke="rgba(228,210,180,.45)" stroke-width="1"/>
           <line x1="500" y1="128" x2="500" y2="133" stroke="rgba(228,210,180,.45)" stroke-width="1"/>
@@ -982,11 +996,11 @@ nav.dots button:hover span{opacity:1}
           <rect x="120" y="150" width="810" height="30" fill="rgba(178,88,64,.55)"/>
           <text x="924" y="142" fill="#dd9078" font-family="Inter,sans-serif" font-size="27" font-weight="600" text-anchor="end">Steel cost</text>
           <!-- SUPERWOOD cost -->
-          <path d="M250,132 C 360,163 445,185 545,206 C 650,228 735,250 830,268 L830,290 L250,290 Z" fill="url(#swfill2)"/>
-          <path d="M250,132 C 360,163 445,185 545,206 C 650,228 735,250 830,268" fill="none" stroke="#aebf76" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="250" cy="132" r="9" fill="#aebf76"/>
-          <circle cx="545" cy="206" r="9" fill="#aebf76"/>
-          <circle cx="830" cy="268" r="10" fill="#e6efce" stroke="#aebf76" stroke-width="3"/>
+          <path class="cg-fill" d="M250,132 C 360,163 445,185 545,206 C 650,228 735,250 830,268 L830,290 L250,290 Z" fill="url(#swfill2)"/>
+          <path class="cg-line" pathLength="1" d="M250,132 C 360,163 445,185 545,206 C 650,228 735,250 830,268" fill="none" stroke="#aebf76" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="cg-dot d1" cx="250" cy="132" r="9" fill="#aebf76"/>
+          <circle class="cg-dot d2" cx="545" cy="206" r="9" fill="#aebf76"/>
+          <circle class="cg-dot d3" cx="830" cy="268" r="10" fill="#e6efce" stroke="#aebf76" stroke-width="3"/>
           <text x="250" y="116" fill="#c3d18a" font-family="Inter,sans-serif" font-size="30" font-weight="700">SUPERWOOD cost</text>
           <text x="250" y="322" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="27" font-weight="600" text-anchor="middle">SuperMill One</text>
           <text x="545" y="322" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="27" font-weight="600" text-anchor="middle">SuperMill Two</text>
