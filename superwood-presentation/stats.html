@@ -75,7 +75,7 @@ tr:last-child td{border-bottom:none}
 .hbar .lab{flex:none;width:128px;text-align:right;color:var(--cream-dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .hbar .trk{flex:1;height:13px;background:var(--grid);border-radius:4px;overflow:hidden}
 .hbar .fill{height:100%;background:var(--wood);border-radius:4px}
-.hbar .n{flex:none;width:64px;color:var(--muted);font-variant-numeric:tabular-nums}
+.hbar .n{flex:none;width:88px;color:var(--muted);font-variant-numeric:tabular-nums}
 .devchip{font-size:.66rem;color:var(--muted);margin-top:2px}
 </style>
 </head>
@@ -312,7 +312,7 @@ function renderDevices(){
     const lab=document.createElement('div');lab.className='lab';lab.textContent=r.key;row.append(lab);
     const trk=document.createElement('div');trk.className='trk';
     const fill=document.createElement('div');fill.className='fill';fill.style.width=(r.sessions/max*100)+'%';trk.append(fill);row.append(trk);
-    const n=document.createElement('div');n.className='n';n.textContent=r.sessions+' · '+Math.round(r.sessions/total*100)+'%';row.append(n);
+    const n=document.createElement('div');n.className='n';n.textContent=(r.sessions/total*100).toFixed(1)+'% ('+r.sessions+')';row.append(n);
     box.append(row);
   });
   if(!list.length){const d=document.createElement('div');d.className='hbar';d.textContent='no data yet';d.style.color='var(--muted)';box.append(d);}
