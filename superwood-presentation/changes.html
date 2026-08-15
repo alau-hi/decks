@@ -385,7 +385,15 @@ const LOG=[
   ['Slide 7 claim: \u201cAs strong as steel\u201d shortened to \u201cStrong as steel\u201d','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Legibility',title:'IP-stats font sizing',slides:[12],req:'The three stat-card numbers and labels on slide 12 should be larger and more legible.',items:[
   ['Stat numbers enlarged 2.4rem \u2192 2.9rem, labels .78rem \u2192 .95rem on desktop','42e0bdf'],
-  ['Stat type given px floors via clamp() at every breakpoint, so shrinking the window can no longer scale the numbers and labels into illegibility (labels held at 13px on a 900px window instead of collapsing to 10px)','']]}
+  ['Stat type given px floors via clamp() at every breakpoint, so shrinking the window can no longer scale the numbers and labels into illegibility (labels held at 13px on a 900px window instead of collapsing to 10px)','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Audit',title:'Audit fixes (all five)',slides:[9],req:'Take all five recommended actions from the impeccable audit; keep slide-12 style legibility as screens shrink. Slide-9 phone graph was out of proportion, line misplaced, not animating.',items:[
+  ['Keyboard focus rings added deck-wide (:focus-visible) \u2014 previously there were none, a WCAG 2.4.7 failure worsened by the newly focusable bio cards',''],
+  ['Text legibility floored across every slide: visible sub-11px elements cut from 182 to 18 at 375px, smallest text 6.9px \u2192 9.5px',''],
+  ['Nav dots given a 36\u00d724px invisible hit area (WCAG 2.5.8) and more breathing room',''],
+  ['Investors label contrast raised to pass AA; progress bar animates transform instead of width',''],
+  ['Slide-9 phone chart rebuilt on a taller viewBox (1000\u00d7340 \u2192 1000\u00d7620) so it is no longer crushed to 112px; mill tiles span the full card so captions stop colliding',''],
+  ['Cost-line reveal now guarded by a .js class so a failed observer can never leave the line invisible',''],
+  ['Polish: single h1, absolute og:image/twitter:image for link previews, three !important declarations removed, buzzword copy replaced','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
