@@ -400,7 +400,13 @@ const LOG=[
   ['Slide 7 and every slide now size to 100dvh, so iOS no longer adds the URL-bar strip to each slide\u2019s height',''],
   ['Rotating the phone keeps you on the same slide instead of jumping',''],
   ['Landscape phone keeps the tech slide\u2019s three-column laptop layout, shrinking type rather than reflowing',''],
-  ['Removed the progress indicator line at the top of the screen','']]}
+  ['Removed the progress indicator line at the top of the screen','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Phone fixes round 3',slides:[6,9],req:'Landscape tech slide: FEEDSTOCK label overlapping the image, and the claim bubbles were bigger than the step titles. Cost roadmap still too tall; move its icons right in landscape; remove the odd shading under the cost line in portrait.',items:[
+  ['Landscape tech slide: image cutouts no longer scale past their boxes, so the FEEDSTOCK label stops overlapping the photo',''],
+  ['Claim bubbles shrunk below the step titles, which were enlarged \u2014 the three conversion steps now get the extra room',''],
+  ['Removed the gradient area fill under the SUPERWOOD cost line; it implied area-under-curve, which means nothing for a cost line',''],
+  ['Cost roadmap now fits exactly one screen in portrait (997px \u2192 812px) after compressing the chart and card chrome',''],
+  ['Landscape cost roadmap puts each mill\u2019s icons to the right of its copy so the text gets the width','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
