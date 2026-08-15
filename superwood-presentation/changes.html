@@ -393,7 +393,14 @@ const LOG=[
   ['Investors label contrast raised to pass AA; progress bar animates transform instead of width',''],
   ['Slide-9 phone chart rebuilt on a taller viewBox (1000\u00d7340 \u2192 1000\u00d7620) so it is no longer crushed to 112px; mill tiles span the full card so captions stop colliding',''],
   ['Cost-line reveal now guarded by a .js class so a failed observer can never leave the line invisible',''],
-  ['Polish: single h1, absolute og:image/twitter:image for link previews, three !important declarations removed, buzzword copy replaced','']]}
+  ['Polish: single h1, absolute og:image/twitter:image for link previews, three !important declarations removed, buzzword copy replaced','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Phone fixes round 2',slides:[6,7,9],req:'Cost line missing on mobile; slide 9 taller than the screen; slide 7 too big; rotation changes the slide; keep the tech slide\u2019s laptop layout in landscape; image captions may be smaller; drop the top progress line.',items:[
+  ['Fixed the missing SUPERWOOD cost line: the new .js reveal guard outranked the reduced-motion reset, so anyone with Reduce Motion enabled saw no line at all',''],
+  ['Slide 9 now fits one screen (997px \u2192 833px at 375\u00d7812): shorter chart viewBox, smaller mill tiles and captions, tighter card chrome',''],
+  ['Slide 7 and every slide now size to 100dvh, so iOS no longer adds the URL-bar strip to each slide\u2019s height',''],
+  ['Rotating the phone keeps you on the same slide instead of jumping',''],
+  ['Landscape phone keeps the tech slide\u2019s three-column laptop layout, shrinking type rather than reflowing',''],
+  ['Removed the progress indicator line at the top of the screen','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above

@@ -35,9 +35,9 @@ html{font-size:clamp(11.5px,.55vw + .55vh + 4.5px,32px)}
 @media (pointer:fine){html{font-size:clamp(6px,min(.55vw + .55vh + 4.5px,1.19vw),32px)}}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.deck{height:100vh;height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
 .deck::-webkit-scrollbar{width:0}
-section{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;padding:7vh 6vw;overflow:hidden}
+section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;padding:7vh 6vw;overflow:hidden}
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
 
 h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01em;line-height:1.04}
@@ -53,7 +53,6 @@ h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01
 .in .bg{transition:transform 9s ease-out;transform:scale(1.12)}
 .scrim{position:absolute;inset:0;z-index:1}
 
-#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;z-index:100;background:linear-gradient(90deg,var(--wood-deep),var(--wood-bright));transition:transform .15s linear;will-change:transform}
 .brand{position:fixed;bottom:20px;right:2.125rem;z-index:90;height:18px;opacity:.85;transition:opacity .4s}.brand img{height:100%}
 .conf{position:fixed;bottom:20px;left:2.125rem;z-index:90;font-size:clamp(9.5px,.62rem,.76rem);letter-spacing:.32em;color:var(--muted);text-transform:uppercase;transition:opacity .4s}
 /* the cover already carries the wordmark in the hero art — hide the fixed chrome there */
@@ -177,7 +176,7 @@ nav.dots button:hover span{opacity:1}
 .sw-split{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(1.6rem,4vw,3.4rem);align-items:center;width:100%}
 /* Slide 7 full-bleed */
 #s7{padding:0;align-items:stretch;overflow:hidden}
-.sw7{display:flex;width:100%;min-height:100vh}
+.sw7{display:flex;width:100%;min-height:100vh;min-height:100dvh}
 .sw7-left{flex:1.5;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:7vh 4vw;background:#ddd5c6}
 .sw7-left .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
 .sw7-left::after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(18,13,8,.12) 0%,rgba(18,13,8,0) 32%,rgba(18,13,8,.66) 100%);z-index:1}
@@ -239,8 +238,8 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 @keyframes cgDraw{to{stroke-dashoffset:0}}
 @keyframes cgPop{to{opacity:1}}
 @media (prefers-reduced-motion: reduce){
-  .costgraph .cg-line{stroke-dasharray:none;stroke-dashoffset:0;animation:none!important}
-  .costgraph .cg-dot,.costgraph .cg-fill{opacity:1;animation:none!important}
+  .js .costgraph .cg-line,.costgraph .cg-line{stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important}
+  .js .costgraph .cg-dot,.js .costgraph .cg-fill,.costgraph .cg-dot,.costgraph .cg-fill{opacity:1!important;animation:none!important}
 }
 .costgraph .cg-sm{display:none}
 .road{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:.8rem;align-items:stretch}
@@ -376,7 +375,7 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s6 .tech-col .tech-img{grid-column:1;grid-row:2/4}
   #s6 .tech-col h3{grid-column:2;grid-row:2;align-self:end;margin:0!important} /* feed/output titles carry inline top margins for the desktop columns */
   #s6 .tech-col .feed-meta,#s6 .tech-col .small{grid-column:2;grid-row:3;align-self:start}
-  #s6 .tech-mid .cap::before,#s6 .tech-end .cap::before{content:"↓"} /* stacked flow runs downward */
+  #s6 .tech-mid .cap::before,#s6 .tech-end .cap::before{content:"→"} /* stacked flow runs downward */
   #s6 .badges{margin-top:1rem}
 }
 @media(pointer:coarse) and (max-width:700px){
@@ -399,7 +398,13 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   /* slide-9: mill cards read text on the left; capacity, dates and images on the right */
   #s9 .wrap>p{font-size:clamp(11.5px,.78rem,.95rem)!important;margin-top:.5rem!important}
   #s9 .costgraph{margin:.4rem 0 .2rem}
-  #s9 .road{grid-template-columns:1fr;gap:.7rem;margin-top:.5rem}
+  #s9{padding-top:3vh;padding-bottom:3vh}
+  #s9 .mill{padding:.6rem .85rem}
+  #s9 .mill p{line-height:1.32}
+  #s9 h2{margin-bottom:.15rem}
+  #s9 .costgraph{margin:.35rem 0 .15rem}
+  #s9 .feedrow .f{padding:.28rem .5rem}
+  #s9 .road{grid-template-columns:1fr;gap:.5rem;margin-top:.4rem}
   #s9 .mill{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1rem;align-items:start;padding:.75rem .9rem}
   #s9 .mill h3{font-size:1.25rem}
   #s9 .mill p{font-size:clamp(11.5px,.76rem,.92rem);line-height:1.4}
@@ -412,15 +417,15 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s9 .mill .yr{grid-column:2;grid-row:2;justify-self:end;align-self:start;white-space:nowrap;margin-top:.15rem}
   #s9 .mill .mill-imgs{grid-column:2;grid-row:3;height:auto;margin:0;justify-self:end;align-self:end}
   #s9 .mill .mcell{width:3.4rem}
-  #s9 .mtile{height:2.4rem}
-  #s9 .mcap{font-size:clamp(9.5px,.5rem,.66rem)}
+  #s9 .mtile{height:1.85rem}
+  #s9 .mcap{font-size:clamp(8px,.5rem,.66rem)}
   #s9 .mill-imgs .mar{margin-top:10px;font-size:.9rem}
-  #s9 .mill .mill-imgs.two{grid-column:1/-1;grid-row:auto;justify-self:start;margin-top:.5rem}
-  #s9 .mill-imgs.two{display:flex;gap:.5rem;align-items:flex-start} /* all four images in one row, arrow between feeds and outputs */
-  #s9 .mill-imgs.two .mcell{width:5rem}
+  #s9 .mill-imgs.two{display:flex;gap:.25rem;align-items:flex-start}
+  #s9 .mill-imgs.two .mcap{font-size:clamp(7.5px,.45rem,.62rem)} /* all four images in one row, arrow between feeds and outputs */
+  #s9 .mill-imgs.two .mcell{width:3.1rem}
   #s9 .mill-imgs.two .mar{display:block;margin-top:8px;font-size:.85rem}
 
-  #s9 .feedrow{margin-top:.9rem;gap:.45rem;font-size:clamp(11px,.7rem,.88rem)}
+  #s9 .feedrow{margin-top:.6rem;gap:.35rem;font-size:clamp(10.5px,.7rem,.88rem)}
   #s9 .feedrow .f{padding:.4rem .6rem}
 }
 @media(pointer:coarse) and (max-width:700px){
@@ -528,10 +533,10 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   .m-sm .loc,.m-lg .loc{grid-column:1/-1;grid-row:5}
   .m-sm .mcell,.m-lg .mcell{flex:1 1 0;min-width:0;width:auto;max-width:3.875rem}
   /* 4-tile card stays stacked full-width, with smaller squares so they sit clear of the card edges */
-  .m-md .mcell{width:5rem}
-  .m-md .mtile{height:2.75rem}
+  .m-md .mcell{width:3.1rem}
+  .m-md .mtile{height:1.85rem}
   .m-md .mill-imgs{gap:.3rem}
-  .m-md .mill-imgs.two .mcap{width:100%;letter-spacing:-.01em;line-height:1.15}
+  .m-md .mill-imgs.two .mcap{font-size:clamp(7.5px,.4rem,.6rem);width:100%;letter-spacing:-.01em;line-height:1.15}
 }
 @media(pointer:coarse) and (orientation:portrait) and (max-width:700px){
   /* portrait hero: recomposed vertical image; no Ken Burns zoom so the floor wordmark stays uncropped */
@@ -542,7 +547,7 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 /* LANDSCAPE PHONES: restore side-by-side compositions at compact scale so slides stay near one screen.
    Placed last so it wins over the portrait/stacking rules above at equal specificity. */
 @media(pointer:coarse) and (orientation:landscape) and (max-height:500px){
-  section{padding:5vh 5vw 7vh}
+  section{padding:5vh 5vw}
   /* slides scroll past the viewport on phones, so the fixed marker needs its own ground */
   .conf{background:rgba(20,13,7,.82);padding:.3em .7em;border-radius:999px;backdrop-filter:blur(3px)}
   .split,.tr-split{grid-template-columns:1.05fr .95fr;gap:1.6rem}
@@ -584,17 +589,21 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s5 .creds{grid-column:1/-1;margin-top:0;padding-bottom:0;gap:.4rem}
   #s5 .creds li{font-size:.7rem;line-height:1.35}
   /* slide-6: strict top-to-bottom flow — feedstock band, three conversion steps across, output band */
-  #s6 h2{font-size:1.3rem!important;max-width:none}
-  #s6 .tech-flow{display:flex;flex-direction:column;gap:.45rem;margin-top:.8rem}
-  #s6 .tech-mid{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem .6rem}
-  #s6 .tech-mid .cap{grid-column:1/-1;margin-bottom:0}
-  #s6 .tech-mid .badges{grid-column:1/-1}
-  #s6 .tech-col{display:grid;grid-template-columns:5.5rem minmax(9rem,auto) 1fr;gap:.1rem 1rem;align-items:center}
-  #s6 .tech-col .cap{grid-column:1/-1;margin-bottom:.15rem}
-  #s6 .tech-col .tech-img{grid-column:1;grid-row:2}
-  #s6 .tech-col h3{grid-column:2;grid-row:2;margin:0!important;font-size:1.15rem}
+  #s6 h2{font-size:1.15rem!important;max-width:none}
+  /* landscape phone keeps the laptop three-column composition; type shrinks instead of reflowing */
+  #s6 .tech-flow{display:grid;grid-template-columns:.8fr 1.6fr .8fr;gap:.7rem;margin-top:.85rem;align-items:start}
+  #s6 .tech-mid{display:block}
+  #s6 .tech-mid .cap{margin-bottom:.3rem}
+  #s6 .tech-mid .badges{margin-top:.4rem}
+  #s6 .tech-col{display:block}
+  #s6 .tech-col .cap{margin-bottom:.3rem}
+  #s6 .tech-col .tech-img{margin-top:0}
+  #s6 .tech-end .tech-img img{transform:scale(1.18)}
+  #s6 .tech-col h3{margin:.3rem 0 .12rem!important;font-size:.95rem}
+  #s6 .tech-flow .cap{font-size:.58rem}
+  #s6 .tech-col .feed-meta,#s6 .tech-col .small{font-size:.56rem;line-height:1.35}
   #s6 .tech-col .feed-meta,#s6 .tech-col .small{grid-column:3;grid-row:2;font-size:.68rem}
-  #s6 .tech-mid .cap::before,#s6 .tech-end .cap::before{content:"↓"}
+  #s6 .tech-mid .cap::before,#s6 .tech-end .cap::before{content:"→"}
   #s6 .pstep{padding:.4rem .6rem;grid-template-columns:4rem 1fr;gap:.6rem;align-items:start}
   #s6 .pstep .diag{height:2.4rem}
   #s6 .pstep h4{font-size:.7rem}
@@ -632,7 +641,7 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s9 .mill .mill-imgs{height:auto;margin:0 0 .4rem;justify-content:flex-start}
   #s9 .mill .mcell{width:2.9rem}
   #s9 .mtile{height:2rem}
-  #s9 .mcap{font-size:clamp(9px,.42rem,.6rem)}
+  #s9 .mcap{font-size:clamp(7.5px,.42rem,.6rem)}
   #s9 .mill-imgs .mar{margin-top:6px;font-size:.8rem}
   #s9 .mill-imgs.two{display:flex;gap:.25rem}
   #s9 .out-badge{margin:0 0 .3rem}
@@ -704,7 +713,6 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 </style>
 </head>
 <body>
-<div id="prog"></div>
 <a class="brand" href="#s1"><img src="assets/logo.png" alt="InventWood"></a>
 <div class="conf">Confidential</div>
 <nav class="dots" id="dots"></nav>
@@ -993,29 +1001,29 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
           <text x="500" y="148" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">SuperMill Two</text>
           <text x="840" y="148" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">ChipMill</text>
         </svg>
-        <svg class="cg-sm" viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+        <svg class="cg-sm" viewBox="0 0 1000 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
           <defs>
             <linearGradient id="swfill2" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#aebf76" stop-opacity=".32"/>
               <stop offset="1" stop-color="#aebf76" stop-opacity="0"/>
             </linearGradient>
           </defs>
-          <text x="42" y="285" fill="#9d8d76" font-family="Inter,sans-serif" font-size="32" transform="rotate(-90 42,285)" text-anchor="middle">cost per m&#179;</text>
-          <line x1="150" y1="60" x2="150" y2="500" stroke="rgba(228,210,180,.4)" stroke-width="3"/>
-          <line x1="150" y1="500" x2="965" y2="500" stroke="rgba(228,210,180,.4)" stroke-width="3"/>
-          <rect x="150" y="95" width="815" height="44" fill="rgba(170,175,184,.42)"/>
-          <text x="958" y="82" fill="#c7cbd3" font-family="Inter,sans-serif" font-size="33" font-weight="600" text-anchor="end">Stainless steel cost</text>
-          <rect x="150" y="330" width="815" height="44" fill="rgba(178,88,64,.55)"/>
-          <text x="958" y="317" fill="#dd9078" font-family="Inter,sans-serif" font-size="33" font-weight="600" text-anchor="end">Steel cost</text>
-          <path class="cg-fill" d="M255,235 C 370,268 460,300 555,330 C 665,365 780,398 880,425 L880,500 L255,500 Z" fill="url(#swfill2)"/>
-          <path class="cg-line" pathLength="1" d="M255,235 C 370,268 460,300 555,330 C 665,365 780,398 880,425" fill="none" stroke="#aebf76" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle class="cg-dot d1" cx="255" cy="235" r="11" fill="#aebf76"/>
-          <circle class="cg-dot d2" cx="555" cy="330" r="11" fill="#aebf76"/>
-          <circle class="cg-dot d3" cx="880" cy="425" r="13" fill="#e6efce" stroke="#aebf76" stroke-width="4"/>
-          <text x="255" y="205" fill="#c3d18a" font-family="Inter,sans-serif" font-size="36" font-weight="700">SUPERWOOD cost</text>
-          <text x="255" y="556" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="32" font-weight="600" text-anchor="middle">SuperMill One</text>
-          <text x="567" y="556" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="32" font-weight="600" text-anchor="middle">SuperMill Two</text>
-          <text x="880" y="556" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="32" font-weight="600" text-anchor="middle">ChipMill</text>
+          <text x="40" y="195" fill="#9d8d76" font-family="Inter,sans-serif" font-size="30" transform="rotate(-90 40,195)" text-anchor="middle">cost per m&#179;</text>
+          <line x1="145" y1="42" x2="145" y2="340" stroke="rgba(228,210,180,.4)" stroke-width="3"/>
+          <line x1="145" y1="340" x2="965" y2="340" stroke="rgba(228,210,180,.4)" stroke-width="3"/>
+          <rect x="145" y="66" width="820" height="32" fill="rgba(170,175,184,.42)"/>
+          <text x="958" y="56" fill="#c7cbd3" font-family="Inter,sans-serif" font-size="31" font-weight="600" text-anchor="end">Stainless steel cost</text>
+          <rect x="145" y="226" width="820" height="32" fill="rgba(178,88,64,.55)"/>
+          <text x="958" y="216" fill="#dd9078" font-family="Inter,sans-serif" font-size="31" font-weight="600" text-anchor="end">Steel cost</text>
+          <path class="cg-fill" d="M255,160 C 370,186 460,206 555,226 C 665,250 780,272 880,292 L880,340 L255,340 Z" fill="url(#swfill2)"/>
+          <path class="cg-line" pathLength="1" d="M255,160 C 370,186 460,206 555,226 C 665,250 780,272 880,292" fill="none" stroke="#aebf76" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="cg-dot d1" cx="255" cy="160" r="10" fill="#aebf76"/>
+          <circle class="cg-dot d2" cx="555" cy="226" r="10" fill="#aebf76"/>
+          <circle class="cg-dot d3" cx="880" cy="292" r="12" fill="#e6efce" stroke="#aebf76" stroke-width="4"/>
+          <text x="255" y="136" fill="#c3d18a" font-family="Inter,sans-serif" font-size="34" font-weight="700">SUPERWOOD cost</text>
+          <text x="255" y="392" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="30" font-weight="600" text-anchor="middle">SuperMill One</text>
+          <text x="567" y="392" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="30" font-weight="600" text-anchor="middle">SuperMill Two</text>
+          <text x="880" y="392" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="30" font-weight="600" text-anchor="middle">ChipMill</text>
         </svg>
       </div>
       <div class="road rv">
@@ -1234,7 +1242,6 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 <script>
 const deck=document.getElementById('deck');
 const secs=[...document.querySelectorAll('section')];
-const prog=document.getElementById('prog');
 const dotsBox=document.getElementById('dots');
 
 /* Navigation gate: slides become reachable only once their images have loaded.
@@ -1268,7 +1275,6 @@ function jumpTo(t){const run=()=>{const far=Math.abs(t-idx)>2;idx=t;const done=(
 
 secs.forEach((s,i)=>{const b=document.createElement('button');b.innerHTML=String(i+1).padStart(2,'0')+'<span>'+(s.dataset.nav||'')+'</span>';b.onclick=()=>jumpTo(i);dotsBox.appendChild(b);});
 const dots=[...dotsBox.children];
-deck.addEventListener('scroll',()=>{const sc=deck.scrollTop,h=deck.scrollHeight-deck.clientHeight;prog.style.transform='scaleX('+(h>0?sc/h:0)+')';});
 deck.addEventListener('wheel',e=>{if(readyUpTo<secs.length-1&&e.deltaY>0&&deck.scrollTop+deck.clientHeight>=deck.scrollHeight-4)pulsePill();},{passive:true});
 /* visibility = max(fraction of the slide shown, fraction of the viewport it fills) — the second term is what reveals slides taller than 2x the viewport, which never reach 50% of their own height on mobile */
 const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));}}else if(!e.isIntersecting){e.target.classList.remove('in');}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
@@ -1280,6 +1286,11 @@ let idx=0;
 function go(d){const t=Math.max(0,Math.min(secs.length-1,idx+d));jumpTo(t);}
 deck.addEventListener('scroll',()=>{const c=deck.scrollTop+deck.clientHeight/2;const f=secs.findIndex(s=>s.offsetTop<=c&&s.offsetTop+s.offsetHeight>c);if(f>=0)idx=f;document.body.classList.toggle('on-cover',idx===0);});
 document.body.classList.add('on-cover');
+/* rotation and window resizes remap scrollTop, which would otherwise move the viewer to a different slide */
+{let rzT=null,rzIdx=null;
+ const restore=()=>{const t=rzIdx;rzIdx=null;if(t==null||!secs[t])return;const sb=deck.style.scrollBehavior;deck.style.scrollBehavior='auto';deck.scrollTop=secs[t].offsetTop;deck.style.scrollBehavior=sb;idx=t;};
+ const onResize=()=>{if(rzIdx===null)rzIdx=idx;clearTimeout(rzT);rzT=setTimeout(restore,260);};
+ window.addEventListener('resize',onResize);window.addEventListener('orientationchange',onResize);}
 window.addEventListener('keydown',e=>{if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(1);}if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(-1);}if(e.key==='Home'){e.preventDefault();jumpTo(0);}if(e.key==='End'){e.preventDefault();jumpTo(secs.length-1);}});
 document.querySelectorAll('.person,.advc').forEach(c=>{c.tabIndex=0;}); /* keyboard: focus opens bios via :focus-within */
 /* touch devices: hover is unavailable, so bios open on tap as a centered overlay */
