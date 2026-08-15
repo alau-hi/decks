@@ -257,12 +257,12 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 .mtile img[src*="cut-prod-board"]{width:100%;height:100%;object-fit:cover;object-position:50% 70%}
 .mcap{font-size:clamp(9.5px,.6rem,.74rem);overflow-wrap:normal;word-break:keep-all;width:calc(100% + .9rem);margin-left:-.45rem;margin-right:-.45rem;text-align:center;margin-top:.34rem;color:var(--cream-dim);line-height:1.14;letter-spacing:.01em}
 .mill-imgs .mar{color:var(--wood-bright);font-size:1.15rem;flex:none;align-self:flex-start;margin-top:18px}
-.mill-imgs.two{gap:.3rem}.mill-imgs.two .mcap{font-size:clamp(9px,.55rem,.7rem)}
+.mill-imgs.two{gap:.3rem}
 /* desktop keeps feeds together, one arrow, outputs together; phones flatten to pairwise order */
 .mill-imgs.two .o1{order:1}.mill-imgs.two .o2{order:2}.mill-imgs.two .mar-a{order:3}.mill-imgs.two .o4{order:4}.mill-imgs.two .o5{order:5}.mill-imgs.two .mar-b{display:none}
 .mill .loc{font-size:clamp(10.5px,.74rem,.9rem);color:var(--wood-bright);margin-top:.5rem;font-weight:500}
-.feedrow{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem;font-size:clamp(11px,.78rem,.95rem)}
-.feedrow .f{padding:.5rem .9rem;border-radius:8px;border:1px solid var(--line);color:var(--cream-dim)}
+.feedrow{display:flex;flex-wrap:wrap;align-items:stretch;gap:.7rem;margin-top:1.8rem;font-size:clamp(11px,.78rem,.95rem)}
+.feedrow .f{display:inline-flex;align-items:center;line-height:1.25;padding:.5rem .9rem;border-radius:8px;border:1px solid var(--line);color:var(--cream-dim)}
 .feedrow .f b{color:var(--wood-bright)}
 
 /* TRACTION (slide 10) */
@@ -424,7 +424,6 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s9 .mill-imgs.two{display:flex;flex-wrap:wrap;width:9.6rem;gap:.3rem;align-items:flex-start;justify-content:flex-end}
   #s9 .mill-imgs.two .mcell,#s9 .mill-imgs.two .mar{order:0} /* pairwise: timber → board, veneer → veneer */
   #s9 .mill-imgs.two .mar-b{display:block}
-  #s9 .mill-imgs.two .mcap{font-size:clamp(6.5px,.45rem,.62rem)} /* all four images in one row, arrow between feeds and outputs */
   #s9 .mill-imgs.two .mcell{width:3.75rem}
   #s9 .mill-imgs.two .mar{display:block;margin-top:8px;font-size:.85rem}
 
@@ -539,7 +538,7 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   .m-md .mcell{width:3.75rem}
   .m-md .mtile{height:1.85rem}
   .m-md .mill-imgs{gap:.3rem}
-  .m-md .mill-imgs.two .mcap{font-size:clamp(7.5px,.4rem,.6rem);width:100%;letter-spacing:-.01em;line-height:1.15}
+  .m-md .mill-imgs.two .mcap{width:100%;letter-spacing:-.01em;line-height:1.15}
 }
 @media(pointer:coarse) and (orientation:portrait) and (max-width:700px){
   /* portrait hero: recomposed vertical image; no Ken Burns zoom so the floor wordmark stays uncropped */
@@ -670,10 +669,10 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s9 .mill .mill-imgs.two .mcell{width:3.7rem}
   #s9 .mtile{height:1.35rem}
   #s9 .mill-imgs .mar{margin-top:4px;font-size:.7rem;align-self:flex-start}
-  #s9 .mcap{font-size:clamp(8px,.42rem,.6rem);line-height:1.15}
+  #s9 .mcap{font-size:clamp(8px,.46rem,.62rem);line-height:1.15}
   #s9 .mill .mcell{width:2.9rem}
   #s9 .mtile{height:2rem}
-  #s9 .mcap{font-size:clamp(7.5px,.42rem,.6rem)}
+
   #s9 .mill-imgs .mar{margin-top:6px;font-size:.8rem}
   #s9 .mill-imgs.two{display:flex;gap:.3rem}
   #s9 .mill-imgs.two .mcell,#s9 .mill-imgs.two .mar{order:0} /* pairwise rows: timber+board / veneer+veneer */
