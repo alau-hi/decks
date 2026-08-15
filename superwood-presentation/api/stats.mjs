@@ -21,6 +21,38 @@ const COUNTRY_CENTROIDS = {
   RU: [61.5, 105.3], UA: [48.4, 31.2], TR: [39.0, 35.2],
 };
 
+// Device class + OS from a stored user-agent. Known accepted limitation:
+// iPadOS 13+ presents a Mac UA, so modern iPads count as desktop·Mac.
+export function deviceFromUa(ua) {
+  const s = String(ua || '');
+  if (/iPhone|iPod/.test(s)) return { cls: 'phone', os: 'iOS' };
+  if (/iPad/.test(s)) return { cls: 'tablet', os: 'iOS' };
+  if (/Android/.test(s)) return /Mobile/.test(s) ? { cls: 'phone', os: 'Android' } : { cls: 'tablet', os: 'Android' };
+  if (/Macintosh/.test(s)) return { cls: 'desktop', os: 'Mac' };
+  if (/Windows/.test(s)) return { cls: 'desktop', os: 'Windows' };
+  if (/Linux|X11/.test(s)) return { cls: 'desktop', os: 'Linux' };
+  return { cls: 'unknown', os: 'other' };
+}
+
+// Glanceable screen-format bucket. scr is forward-only (older sessions have
+// none), so 'unknown' is a first-class bucket, never dropped.
+export function formatBucket(scr, cls) {
+  if (!scr || !scr.w || !scr.h) return 'unknown';
+  if (cls === 'phone') return (scr.o === 'l' || scr.w > scr.h) ? 'phone-landscape' : 'phone-portrait';
+  if (cls === 'tablet') return 'tablet';
+  return scr.w >= 1440 ? 'desktop' : 'laptop';
+}
+
+function deviceLabel(d, scr) {
+  const base = d.cls === 'phone' ? (d.os === 'iOS' ? 'iPhone' : d.os === 'Android' ? 'Android phone' : 'Phone')
+    : d.cls === 'tablet' ? (d.os === 'iOS' ? 'iPad' : d.os === 'Android' ? 'Android tablet' : 'Tablet')
+    : d.cls === 'desktop' ? d.os + ' desktop'
+    : 'Unknown device';
+  if (!scr) return base;
+  const dpr = scr.dpr && scr.dpr !== 1 ? ` @${scr.dpr}x` : '';
+  return `${base} · ${scr.w}×${scr.h}${dpr}`;
+}
+
 function keyOk(given, expected) {
   if (!given || !expected) return false;
   const a = Buffer.from(String(given));
@@ -55,7 +87,7 @@ export default async function handler(req, res) {
   // Storage-less deployment (staging): valid key, but nothing recorded here.
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     res.setHeader('Cache-Control', 'no-store');
-    return res.status(200).json({ generatedAt: new Date().toISOString(), slideOrder: SLIDES, viewers: [], slides: [], dropoff: [], totalSessions: 0, locations: [] });
+    return res.status(200).json({ generatedAt: new Date().toISOString(), slideOrder: SLIDES, viewers: [], slides: [], dropoff: [], totalSessions: 0, locations: [], deviceMix: [], formatMix: [] });
   }
 
   const [signupBlobs, dwellBlobs] = await Promise.all([
@@ -71,7 +103,7 @@ export default async function handler(req, res) {
   function ensure(email) {
     let v = viewers.get(email);
     if (!v) {
-      v = { email, opens: 0, sessions: 0, totalSeconds: 0, firstSeen: null, lastSeen: null, sections: {}, ips: [] };
+      v = { email, opens: 0, sessions: 0, totalSeconds: 0, firstSeen: null, lastSeen: null, sections: {}, ips: [], devices: [] };
       viewers.set(email, v);
     }
     return v;
@@ -94,6 +126,18 @@ export default async function handler(req, res) {
       if (rec.country) entry.country = rec.country;
     }
   }
+  function addDevice(v, rec) {
+    if (!rec.ua) return;
+    const d = deviceFromUa(rec.ua);
+    const scr = rec.scr || null;
+    const key = `${d.cls}|${d.os}|${scr ? `${scr.w}x${scr.h}@${scr.dpr || 1}` : ''}`;
+    let e = v.devices.find(x => x.key === key);
+    if (!e) {
+      e = { key, cls: d.cls, os: d.os, scr, label: deviceLabel(d, scr), lastSeen: null };
+      v.devices.push(e);
+    }
+    if (!e.lastSeen || (rec.ts && rec.ts > e.lastSeen)) e.lastSeen = rec.ts || e.lastSeen;
+  }
 
   const locations = new Map();
   function addLocation(rec) {
@@ -113,12 +157,15 @@ export default async function handler(req, res) {
   }
 
   const sessionTotals = [];
+  const deviceMix = new Map(), formatMix = new Map();
+  const bump = (m, k) => m.set(k, (m.get(k) || 0) + 1);
   for (const s of signups) {
     if (!s?.email) continue;
     const v = ensure(s.email);
     v.opens += 1;
     seen(v, s.ts);
     addIp(v, s);
+    addDevice(v, s);
   }
   for (const d of dwells) {
     if (!d?.viewer || !d.totals) continue;
@@ -127,6 +174,10 @@ export default async function handler(req, res) {
     seen(v, d.ts);
     addIp(v, d);
     addLocation(d);
+    addDevice(v, d);
+    const dev = deviceFromUa(d.ua);
+    bump(deviceMix, dev.cls === 'unknown' ? 'unknown' : `${dev.cls} · ${dev.os}`);
+    bump(formatMix, formatBucket(d.scr, dev.cls));
     sessionTotals.push(d.totals);
     for (const [section, secs] of Object.entries(d.totals)) {
       const s = Number(secs) || 0;
@@ -165,6 +216,7 @@ export default async function handler(req, res) {
 
   const out = [...viewers.values()].sort((a, b) => (b.lastSeen || '').localeCompare(a.lastSeen || ''));
   for (const v of out) v.ips.sort((a, b) => (b.lastSeen || '').localeCompare(a.lastSeen || ''));
+  for (const v of out) v.devices.sort((a, b) => (b.lastSeen || '').localeCompare(a.lastSeen || ''));
   res.setHeader('Cache-Control', 'no-store');
   return res.status(200).json({
     generatedAt: new Date().toISOString(),
@@ -174,5 +226,7 @@ export default async function handler(req, res) {
     dropoff,
     totalSessions: nSessions,
     locations: [...locations.values()].filter(l => Number.isFinite(l.lat) && Number.isFinite(l.lon)),
+    deviceMix: [...deviceMix].map(([key, sessions]) => ({ key, sessions })).sort((a, b) => b.sessions - a.sessions),
+    formatMix: [...formatMix].map(([key, sessions]) => ({ key, sessions })).sort((a, b) => b.sessions - a.sessions),
   });
 }
