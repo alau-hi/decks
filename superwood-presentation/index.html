@@ -314,6 +314,10 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 .srcclose:hover{color:var(--cream)}
 .bio-pop{position:absolute;left:0;right:0;bottom:calc(100% + 10px);background:#332314;border:1px solid var(--wood-deep);border-radius:12px;padding:1.1rem 1.2rem;font-size:.78rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 1.875rem 70px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .15s,transform .15s,visibility .15s;z-index:20;min-width:17.5rem}
 .bio-pop b{color:var(--wood-bright)}
+.bio-pop ul{list-style:none;margin:.55em 0 0;padding:0}
+.bio-pop li{position:relative;padding-left:1.05em;margin-bottom:.45em}
+.bio-pop li:last-child{margin-bottom:0}
+.bio-pop li::before{content:"\25C6";position:absolute;left:0;top:.1em;color:var(--wood);font-size:.62em}
 .bio-pop::after{content:"";position:absolute;top:100%;left:1.875rem;border:8px solid transparent;border-top-color:#332314}
 .person:hover .bio-pop,.advc:hover .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
 /* team popups: open beside the card so they never cover the person's photo */
@@ -1078,50 +1082,50 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
         <div class="person">
           <img loading="lazy" decoding="async" class="pic" src="assets/team-alex7.jpg" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-founder</div>
           <div class="bi">Technology entrepreneur and investor. 20+ years in real estate development and operations. Built world class teams. Successful IP strategist. BS Cognitive Science and Physics, Dartmouth.</div><div class="hint">Hover for full bio</div>
-          <div class="bio-pop"><b>Alex Lau — CEO / Co-founder.</b> Technology entrepreneur and investor who began his career in Silicon Valley in artificial intelligence and human-interface design. Involved in five successful manufacturing scale-ups around the world. 20+ years in real estate development and operations, leading groundbreaking development and redevelopment projects in California and Canada. Built world-class teams and is a successful IP strategist across multiple firms. BS Cognitive Science and Physics, Dartmouth.</div>
+          <div class="bio-pop"><b>Alex Lau — CEO / Co-founder.</b><ul><li>Technology entrepreneur and investor who began his career in Silicon Valley in artificial intelligence and human-interface design.</li><li>Involved in five successful manufacturing scale-ups around the world.</li><li>20+ years in real estate development and operations, leading groundbreaking development and redevelopment projects in California and Canada.</li><li>Built world-class teams and is a successful IP strategist across multiple firms.</li><li>BS Cognitive Science and Physics, Dartmouth.</li></ul></div>
         </div>
         <div class="person">
           <img loading="lazy" decoding="async" class="pic" src="assets/team-jonathan.jpg" alt="Jonathan Strimling"><div class="nm">Jonathan Strimling</div><div class="ro">COO</div>
           <div class="bi">25+ years of leadership; led an Inc. 5000 "fastest-growing manufacturer" and took a SaaS company to the NASDAQ. MS Manufacturing Management, MIT Sloan.</div><div class="hint">Hover for full bio</div>
-          <div class="bio-pop"><b>Jonathan Strimling — COO.</b> CEO of a building-materials company named America's fastest-growing manufacturer by Inc. 5000. Over 25 years of leadership and entrepreneurship, including CEO of a biomaterials manufacturing company and a SaaS company he took to the NASDAQ. Manufacturing turnaround expert at American Industrial Partners. MS Manufacturing Management, MIT Sloan.</div>
+          <div class="bio-pop"><b>Jonathan Strimling — COO.</b><ul><li>CEO of a building-materials company named America's fastest-growing manufacturer by Inc. 5000.</li><li>Over 25 years of leadership and entrepreneurship, including CEO of a biomaterials manufacturing company and a SaaS company he took to the NASDAQ.</li><li>Manufacturing turnaround expert at American Industrial Partners.</li><li>MS Manufacturing Management, MIT Sloan.</li></ul></div>
         </div>
         <div class="person">
           <img loading="lazy" decoding="async" class="pic" src="assets/team-jack2.jpg" alt="Jack Winterowd"><div class="nm">Jack Winterowd</div><div class="ro">Principal Scientist &amp; Materials Developer</div>
           <div class="bi">Head of Weyerhaeuser's chemistry platform and lead developer on almost every major product launched there over the last 25 years. 51 issued patents, 60+ pending.</div><div class="hint">Hover for full bio</div>
-          <div class="bio-pop"><b>Jack Winterowd — Principal Scientist &amp; Materials Developer.</b> One of the world's foremost experts on the behavior of wood. As head of Weyerhaeuser's chemistry platform, he was lead developer on almost every major product the company launched over the last 25 years. 51 issued patents in the US and Canada, with an additional 60 pending.</div>
+          <div class="bio-pop"><b>Jack Winterowd — Principal Scientist &amp; Materials Developer.</b><ul><li>One of the world's foremost experts on the behavior of wood.</li><li>As head of Weyerhaeuser's chemistry platform, he was lead developer on almost every major product the company launched over the last 25 years.</li><li>51 issued patents in the US and Canada, with an additional 60 pending.</li></ul></div>
         </div>
         <div class="person">
           <img loading="lazy" decoding="async" class="pic" src="assets/team-jiaqi.jpg" alt="Jiaqi Dai"><div class="nm">Jiaqi Dai</div><div class="ro">CTO / Co-founder</div>
           <div class="bi">Prof. Hu's top protégé and key inventor on the core patents. PhD in Materials Science &amp; Engineering, University of Maryland. H-index of 96; top 2% of scientists worldwide.</div><div class="hint">Hover for full bio</div>
-          <div class="bio-pop"><b>Jiaqi Dai — CTO / Co-founder.</b> Prof. Hu's top protégé and a key inventor on the core patents, both at the University of Maryland and since. PhD in Materials Science &amp; Engineering from the University of Maryland. Drives the innovations that lower cost and continually improve SUPERWOOD's performance and functionality. H-index of 96, ranked in the top 2% of scientists worldwide — and an award-winning artist.</div>
+          <div class="bio-pop"><b>Jiaqi Dai — CTO / Co-founder.</b><ul><li>Prof.</li><li>Hu's top protégé and a key inventor on the core patents, both at the University of Maryland and since.</li><li>PhD in Materials Science &amp; Engineering from the University of Maryland.</li><li>Drives the innovations that lower cost and continually improve SUPERWOOD's performance and functionality.</li><li>H-index of 96, ranked in the top 2% of scientists worldwide — and an award-winning artist.</li></ul></div>
         </div>
         <div class="person">
           <img loading="lazy" decoding="async" class="pic" src="assets/team-shaun.jpg" alt="Shaun Klopfenstein"><div class="nm">Shaun Klopfenstein</div><div class="ro">CIO</div>
           <div class="bi">Serial tech entrepreneur and investor. CTO of Marketo, the marketing-automation SaaS unicorn, helping bring it onto NASDAQ. BS Computer Information Science, U of Oregon.</div><div class="hint">Hover for full bio</div>
-          <div class="bio-pop"><b>Shaun Klopfenstein — CIO.</b> Serial technology entrepreneur and investor. Former CTO of Marketo, the marketing-automation SaaS unicorn, where he helped bring the company onto the NASDAQ. BS Computer Information Science, University of Oregon.</div>
+          <div class="bio-pop"><b>Shaun Klopfenstein — CIO.</b><ul><li>Serial technology entrepreneur and investor.</li><li>Former CTO of Marketo, the marketing-automation SaaS unicorn, where he helped bring the company onto the NASDAQ.</li><li>BS Computer Information Science, University of Oregon.</li></ul></div>
         </div>
       </div>
       <div class="adv-head rv">World-Class Advisors <span style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — hover for detail</span></div>
       <div class="adv rv">
         <div class="advc">
           <img loading="lazy" decoding="async" src="assets/adv-davies.jpg" alt="Don Davies"><div><div class="nm">Don Davies</div><div class="ro">Structural Engineering</div></div>
-          <div class="bio-pop"><b>Don Davies — Structural Engineering.</b> Former President of Magnusson Klemencic Associates, America's most highly-awarded structural-engineering firm behind the headquarters of several tech giants, and tall buildings around the world. Authored 15+ publications on tall-building systems, structural innovation and embodied-carbon optimization. Co-founder of the Carbon Leadership Forum and Building Transparency, and part of the team that created the EC3 embodied-carbon tool. Advisor to the US Special Presidential Envoy on Climate.</div>
+          <div class="bio-pop"><b>Don Davies — Structural Engineering.</b><ul><li>Former President of Magnusson Klemencic Associates, America's most highly-awarded structural-engineering firm behind the headquarters of several tech giants, and tall buildings around the world.</li><li>Authored 15+ publications on tall-building systems, structural innovation and embodied-carbon optimization.</li><li>Co-founder of the Carbon Leadership Forum and Building Transparency, and part of the team that created the EC3 embodied-carbon tool.</li><li>Advisor to the US Special Presidential Envoy on Climate.</li></ul></div>
         </div>
         <div class="advc">
           <img loading="lazy" decoding="async" src="assets/adv-hawken.jpg" alt="Paul Hawken"><div><div class="nm">Paul Hawken</div><div class="ro">Ecology, Business &amp; Design</div></div>
-          <div class="bio-pop"><b>Paul Hawken — Ecology, Business &amp; Design.</b> Environmentalist, entrepreneur and bestselling author of nine books, including <em>Drawdown</em> and <em>Regeneration</em>. Consults with governments around the world and advises many of the most prominent multinational corporations. Author of <em>Drawdown</em>, <em>Carbon</em>, <em>Natural Capitalism</em> and <em>The Ecology of Commerce</em>.</div>
+          <div class="bio-pop"><b>Paul Hawken — Ecology, Business &amp; Design.</b><ul><li>Environmentalist, entrepreneur and bestselling author of nine books, including <em>Drawdown</em> and <em>Regeneration</em>.</li><li>Consults with governments around the world and advises many of the most prominent multinational corporations.</li><li>Author of <em>Drawdown</em>, <em>Carbon</em>, <em>Natural Capitalism</em> and <em>The Ecology of Commerce</em>.</li></ul></div>
         </div>
         <div class="advc">
           <img loading="lazy" decoding="async" src="assets/adv-zsmith.jpg" alt="Z Smith"><div><div class="nm">Z Smith</div><div class="ro">High-Performance Buildings</div></div>
-          <div class="bio-pop"><b>Z Smith — High-Performance Buildings.</b> Principal and Director of Sustainability &amp; Performance at Eskew Dumez Ripple, AIA Firm of the Year in 2014. Award-winning architect and Americas representative for the UN's Architects' Union. Former CTO of Xerox. Sc.B. Physics, MIT; PhD Electrical Engineering &amp; Computer Science, Princeton; M.Arch, UC Berkeley.</div>
+          <div class="bio-pop"><b>Z Smith — High-Performance Buildings.</b><ul><li>Principal and Director of Sustainability &amp; Performance at Eskew Dumez Ripple, AIA Firm of the Year in 2014.</li><li>Award-winning architect and Americas representative for the UN's Architects' Union.</li><li>Former CTO of Xerox.</li><li>Sc.B.</li><li>Physics, MIT; PhD Electrical Engineering &amp; Computer Science, Princeton; M.Arch, UC Berkeley.</li></ul></div>
         </div>
         <div class="advc">
           <img loading="lazy" decoding="async" src="assets/adv-organschi.jpg" alt="Alan Organschi"><div><div class="nm">Alan Organschi</div><div class="ro">Architecture &amp; Urban Design</div></div>
-          <div class="bio-pop"><b>Alan Organschi — Architecture &amp; Urban Design.</b> Principal and partner at Gray Organschi Architecture, winner of multiple AIA awards, and Principal at JIG Design Build. Professor at the Yale School of Architecture and Director of the Yale Building Lab. Founded the Timber City Initiative and wrote the seminal paper "Buildings as a Global Carbon Sink." Recipient of the Arts and Letters Award in Architecture, 2012.</div>
+          <div class="bio-pop"><b>Alan Organschi — Architecture &amp; Urban Design.</b><ul><li>Principal and partner at Gray Organschi Architecture, winner of multiple AIA awards, and Principal at JIG Design Build.</li><li>Professor at the Yale School of Architecture and Director of the Yale Building Lab.</li><li>Founded the Timber City Initiative and wrote the seminal paper "Buildings as a Global Carbon Sink." Recipient of the Arts and Letters Award in Architecture, 2012.</li></ul></div>
         </div>
         <div class="advc">
           <img loading="lazy" decoding="async" src="assets/adv-bradshaw.jpg" alt="Allan Bradshaw"><div><div class="nm">Allan Bradshaw</div><div class="ro">Manufacturing &amp; Wood Industry</div></div>
-          <div class="bio-pop"><b>Allan Bradshaw — Manufacturing &amp; Wood Industry.</b> A 30-year career at Weyerhaeuser culminating as VP of Capital Projects, where he led a $1.5B fleet overhaul. Ran technology development and scaling operations from R&amp;D to mass-market sales, led manufacturing for TrusJoist (its fastest-growing product), and ran operations for the entire East Coast. Deep relationships throughout the wood-processing industry.</div>
+          <div class="bio-pop"><b>Allan Bradshaw — Manufacturing &amp; Wood Industry.</b><ul><li>A 30-year career at Weyerhaeuser culminating as VP of Capital Projects, where he led a $1.5B fleet overhaul.</li><li>Ran technology development and scaling operations from R&amp;D to mass-market sales, led manufacturing for TrusJoist (its fastest-growing product), and ran operations for the entire East Coast.</li><li>Deep relationships throughout the wood-processing industry.</li></ul></div>
         </div>
       </div>
     </div>
