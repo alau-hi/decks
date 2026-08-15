@@ -228,18 +228,15 @@ nav.dots button:hover span{opacity:1}
 .costgraph{margin:.7rem 0 .3rem}
 .costgraph svg{width:100%;height:auto;display:block}
 /* cost-decline animation: line draws left-to-right, milestones pop as it passes, fill rises after */
-.js .costgraph .cg-line{stroke-dasharray:1;stroke-dashoffset:1}
 .js .costgraph .cg-dot,.js .costgraph .cg-fill{opacity:0}
-section.in .costgraph .cg-line{animation:cgDraw 2.4s cubic-bezier(.55,.05,.35,1) .5s forwards}
+/* the line is drawn by JS (getTotalLength) — Safari mis-scales pathLength-normalized dashes */
 section.in .costgraph .cg-dot.d1{animation:cgPop .45s ease .55s forwards}
 section.in .costgraph .cg-dot.d2{animation:cgPop .45s ease 1.6s forwards}
 section.in .costgraph .cg-dot.d3{animation:cgPop .45s ease 2.7s forwards}
 section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
-@keyframes cgDraw{to{stroke-dashoffset:0}}
 @keyframes cgPop{to{opacity:1}}
 @media (prefers-reduced-motion: reduce){
-  .js .costgraph .cg-line,.costgraph .cg-line{stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important}
-  .js .costgraph .cg-dot,.js .costgraph .cg-fill,.costgraph .cg-dot,.costgraph .cg-fill{opacity:1!important;animation:none!important}
+  .js .costgraph .cg-dot,.js .costgraph .cg-fill,.costgraph .cg-dot,.costgraph .cg-fill{animation:cgPop 1s ease forwards!important}
 }
 .costgraph .cg-sm{display:none}
 .road{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:.8rem;align-items:stretch}
@@ -261,6 +258,8 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 .mcap{font-size:clamp(9.5px,.6rem,.74rem);text-align:center;margin-top:.34rem;color:var(--cream-dim);line-height:1.14;letter-spacing:.01em}
 .mill-imgs .mar{color:var(--wood-bright);font-size:1.15rem;flex:none;align-self:flex-start;margin-top:18px}
 .mill-imgs.two{gap:.3rem}.mill-imgs.two .mcap{font-size:clamp(9px,.55rem,.7rem)}
+/* desktop keeps feeds together, one arrow, outputs together; phones flatten to pairwise order */
+.mill-imgs.two .o1{order:1}.mill-imgs.two .o2{order:2}.mill-imgs.two .mar-a{order:3}.mill-imgs.two .o4{order:4}.mill-imgs.two .o5{order:5}.mill-imgs.two .mar-b{display:none}
 .mill .loc{font-size:clamp(10.5px,.74rem,.9rem);color:var(--wood-bright);margin-top:.5rem;font-weight:500}
 .feedrow{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem;font-size:clamp(11px,.78rem,.95rem)}
 .feedrow .f{padding:.5rem .9rem;border-radius:8px;border:1px solid var(--line);color:var(--cream-dim)}
@@ -420,7 +419,9 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s9 .mtile{height:1.85rem}
   #s9 .mcap{font-size:clamp(8px,.5rem,.66rem)}
   #s9 .mill-imgs .mar{margin-top:10px;font-size:.9rem}
-  #s9 .mill-imgs.two{display:flex;gap:.25rem;align-items:flex-start}
+  #s9 .mill-imgs.two{display:flex;gap:.3rem;align-items:flex-start}
+  #s9 .mill-imgs.two .mcell,#s9 .mill-imgs.two .mar{order:0} /* pairwise: timber → board, veneer → veneer */
+  #s9 .mill-imgs.two .mar-b{display:block}
   #s9 .mill-imgs.two .mcap{font-size:clamp(6.5px,.45rem,.62rem)} /* all four images in one row, arrow between feeds and outputs */
   #s9 .mill-imgs.two .mcell{width:3.75rem}
   #s9 .mill-imgs.two .mar{display:block;margin-top:8px;font-size:.85rem}
@@ -520,7 +521,7 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 }
 @media(pointer:coarse) and (max-width:35rem){
   .team,.adv{grid-template-columns:repeat(2,1fr)}
-  .brand{display:none}
+  .brand{height:12px;bottom:10px;right:12px;background:rgba(20,13,7,.82);padding:.3em .7em;border-radius:999px;backdrop-filter:blur(3px);box-sizing:content-box}
   .mill-imgs .mar{font-size:.9rem;margin-top:16px}
   .mcap{font-size:clamp(9.5px,.5rem,.66rem)}
   /* 2-tile mill cards: move the images beside the stat/year (was stacked on top, leaving the box tall with wasted side space) */
@@ -542,7 +543,7 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   /* portrait hero: recomposed vertical image; no Ken Burns zoom so the floor wordmark stays uncropped */
   #s1 .bg{background-image:url('assets/hero-portrait.jpg')!important;background-position:59% 50%;transform:none}
 }
-@media(max-height:500px){.brand{display:none}}
+@media(max-height:500px){.brand{height:10px;bottom:8px;right:12px;background:rgba(20,13,7,.82);padding:.3em .7em;border-radius:999px;backdrop-filter:blur(3px);box-sizing:content-box}}
 
 /* LANDSCAPE PHONES: restore side-by-side compositions at compact scale so slides stay near one screen.
    Placed last so it wins over the portrait/stacking rules above at equal specificity. */
@@ -673,6 +674,8 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s9 .mcap{font-size:clamp(7.5px,.42rem,.6rem)}
   #s9 .mill-imgs .mar{margin-top:6px;font-size:.8rem}
   #s9 .mill-imgs.two{display:flex;gap:.25rem}
+  #s9 .mill-imgs.two .mcell,#s9 .mill-imgs.two .mar{order:0}
+  #s9 .mill-imgs.two .mar-b{display:block}
   #s9 .out-badge{margin:0 0 .3rem}
   #s9 .out-badge .x{font-size:1.4rem}
   #s9 .mill h3{font-size:1.05rem;margin:.15rem 0 .3rem}
@@ -1058,7 +1061,7 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
           <div class="loc">90,000 sq ft facility · Frederick, Maryland</div>
         </div>
         <div class="mill m-md">
-          <div class="mill-imgs two"><div class="mcell"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-feed-timber.webp" alt="Sawn Timber"></div><span class="mcap">Sawn Timber</span></div><div class="mcell"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-feed-veneer.webp" alt="Veneer"></div><span class="mcap">Veneer</span></div><span class="mar">→</span><div class="mcell"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-prod-board.webp" alt="SUPERWOOD Board"></div><span class="mcap">SUPERWOOD Board</span></div><div class="mcell"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-prod-veneer.webp" alt="SUPERWOOD Veneer"></div><span class="mcap">SUPERWOOD Veneer</span></div></div>
+          <div class="mill-imgs two"><div class="mcell o1"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-feed-timber.webp" alt="Sawn Timber"></div><span class="mcap">Sawn Timber</span></div><span class="mar mar-a">→</span><div class="mcell o4"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-prod-board.webp" alt="SUPERWOOD Board"></div><span class="mcap">SUPERWOOD Board</span></div><div class="mcell o2"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-feed-veneer.webp" alt="Veneer"></div><span class="mcap">Veneer</span></div><span class="mar mar-b">→</span><div class="mcell o5"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-prod-veneer.webp" alt="SUPERWOOD Veneer"></div><span class="mcap">SUPERWOOD Veneer</span></div></div>
           <div class="out-badge"><span class="x">36M</span><span class="l">sf / yr</span></div>
           <div class="yr">2028 – 2030</div><h3>SuperMill Two</h3><p>Establish a strong, profitable financial foundation while maintaining the same batch process.</p>
           <div class="loc">Under development · Location TBD</div>
@@ -1301,12 +1304,20 @@ secs.forEach((s,i)=>{const b=document.createElement('button');b.innerHTML=String
 const dots=[...dotsBox.children];
 deck.addEventListener('wheel',e=>{if(readyUpTo<secs.length-1&&e.deltaY>0&&deck.scrollTop+deck.clientHeight>=deck.scrollHeight-4)pulsePill();},{passive:true});
 /* visibility = max(fraction of the slide shown, fraction of the viewport it fills) — the second term is what reveals slides taller than 2x the viewport, which never reach 50% of their own height on mobile */
-const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));}}else if(!e.isIntersecting){e.target.classList.remove('in');}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));drawCostLines(e.target);}}else if(!e.isIntersecting){e.target.classList.remove('in');}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
 secs.forEach(s=>io.observe(s));
 function animate(el){const target=parseFloat(el.dataset.count);const dec=parseInt(el.dataset.dec||0);const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';const dur=1400,t0=performance.now();
 function fmt(v){let n=dec?v.toFixed(dec):Math.round(v).toLocaleString('en-US');return pre+n+suf;}
 function step(t){let p=Math.min((t-t0)/dur,1);p=1-Math.pow(1-p,3);el.textContent=fmt(target*p);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(target);}requestAnimationFrame(step);}
 let idx=0;
+/* draw the visible cost line from its measured length; inline dash avoids Safari's pathLength dash bug */
+function drawCostLines(sec){sec.querySelectorAll('.costgraph .cg-line').forEach(l=>{
+  if(l.__drawn)return;const svg=l.closest('svg');if(getComputedStyle(svg).display==='none')return;l.__drawn=true;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const L=l.getTotalLength();l.style.strokeDasharray=L;l.style.strokeDashoffset=L;
+  if(l.animate)l.animate([{strokeDashoffset:L},{strokeDashoffset:0}],{duration:2400,delay:500,easing:'cubic-bezier(.55,.05,.35,1)',fill:'forwards'});
+  setTimeout(()=>{l.style.strokeDasharray='none';l.style.strokeDashoffset='0';},3100); /* guaranteed final state */
+});}
 function go(d){const t=Math.max(0,Math.min(secs.length-1,idx+d));jumpTo(t);}
 deck.addEventListener('scroll',()=>{const c=deck.scrollTop+deck.clientHeight/2;const f=secs.findIndex(s=>s.offsetTop<=c&&s.offsetTop+s.offsetHeight>c);if(f>=0)idx=f;document.body.classList.toggle('on-cover',idx===0);});
 document.body.classList.add('on-cover');

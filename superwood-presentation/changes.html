@@ -421,7 +421,12 @@ const LOG=[
  {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Landscape round 6',slides:[7,9],req:'Introducing SUPERWOOD: larger right-side icons and text in landscape; restore \u201cStronger than steel\u201d everywhere; confidential notice on the cost slide.',items:[
   ['Property icons ~40% larger and titles/descriptions floored bigger on the SUPERWOOD slide in landscape; right column widened',''],
   ['Claim restored to \u201cStronger than steel.\u201d on all layouts',''],
-  ['Confidential marker restored in landscape as a compact pill (was hidden entirely), visible on the cost slide and all others; claims text clears it','']]}
+  ['Confidential marker restored in landscape as a compact pill (was hidden entirely), visible on the cost slide and all others; claims text clears it','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Phone fixes: brand, cost animation, mill pairs',slides:[9],req:'InventWood mark missing bottom-right on phones; SUPERWOOD cost animation not working on the phone; SuperMill Two images should read Sawn Timber \u2192 SUPERWOOD Board, Veneer \u2192 SUPERWOOD Veneer.',items:[
+  ['InventWood wordmark restored on phones (portrait and landscape) as a compact backdrop pill bottom-right \u2014 it had been hidden entirely',''],
+  ['Cost-line animation rebuilt in JS from the measured path length \u2014 Safari mishandles pathLength-normalized dashes, which left iPhones with no line and no animation; a timed fallback guarantees the final solid line',''],
+  ['Reduced-motion users now get a gentle fade-in instead of a dead chart',''],
+  ['SuperMill Two tiles reordered pairwise on phones (timber \u2192 board, veneer \u2192 veneer, two arrows); desktop keeps its original grouping','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
