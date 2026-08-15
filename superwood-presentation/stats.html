@@ -67,8 +67,10 @@ tr:last-child td{border-bottom:none}
 .b{fill:var(--wood)}
 .b.hov{filter:brightness(1.2)}
 .blabel{font-size:10px;fill:var(--cream-dim);font-variant-numeric:tabular-nums}
-.devgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px}
-@media(max-width:700px){.devgrid{grid-template-columns:1fr}}
+.devtabs{display:flex;gap:8px;margin:0 0 12px}
+.dtab{padding:6px 14px;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--cream-dim);cursor:pointer}
+.dtab.sel{background:linear-gradient(135deg,var(--wood-deep),var(--wood));border-color:transparent;color:var(--cream)}
+.mixlist{max-width:560px}
 .hbar{display:flex;align-items:center;gap:10px;margin:5px 0;font-size:.72rem}
 .hbar .lab{flex:none;width:128px;text-align:right;color:var(--cream-dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .hbar .trk{flex:1;height:13px;background:var(--grid);border-radius:4px;overflow:hidden}
@@ -110,10 +112,12 @@ tr:last-child td{border-bottom:none}
     <div class="card wide" id="devcard">
       <h2>Devices &amp; formats</h2>
       <div class="chartsub" id="devsub">sessions by device and screen format</div>
-      <div class="devgrid">
-        <div id="c-dev"></div>
-        <div id="c-fmt"></div>
+      <div class="devtabs" id="devtabs">
+        <button class="dtab sel" data-tab="dev">Devices</button>
+        <button class="dtab" data-tab="fmt">Formats</button>
+        <button class="dtab" data-tab="brk">Breaks</button>
       </div>
+      <div id="c-mix" class="mixlist"></div>
     </div>
     <div class="card wide">
       <h2>Visit map</h2>
@@ -297,24 +301,29 @@ function renderTable(){
   tbl.append(tb);
 }
 
+let mixTab='dev';
 function renderDevices(){
-  const rows=(id,list)=>{
-    const box=document.getElementById(id);box.textContent='';
-    const max=Math.max(1,...list.map(r=>r.sessions));
-    list.forEach(r=>{
-      const row=document.createElement('div');row.className='hbar'+(r.key==='unknown'?' unk':'');
-      const lab=document.createElement('div');lab.className='lab';lab.textContent=r.key;row.append(lab);
-      const trk=document.createElement('div');trk.className='trk';
-      const fill=document.createElement('div');fill.className='fill';fill.style.width=(r.sessions/max*100)+'%';trk.append(fill);row.append(trk);
-      const n=document.createElement('div');n.className='n';n.textContent=r.sessions;row.append(n);
-      box.append(row);
-    });
-    if(!list.length){const d=document.createElement('div');d.className='hbar';d.textContent='no data yet';d.style.color='var(--muted)';box.append(d);}
-  };
-  rows('c-dev',DATA.deviceMix||[]);
-  rows('c-fmt',DATA.formatMix||[]);
-  document.getElementById('devsub').textContent='sessions by device and screen format · '+(DATA.totalSessions||0)+' visits';
+  const box=document.getElementById('c-mix');box.textContent='';
+  const list=mixTab==='fmt'?(DATA.formatMix||[]):mixTab==='brk'?(DATA.breakMix||[]):(DATA.deviceMix||[]);
+  const max=Math.max(1,...list.map(r=>r.sessions));
+  list.forEach(r=>{
+    const row=document.createElement('div');row.className='hbar'+(r.key==='unknown'?' unk':'');
+    const lab=document.createElement('div');lab.className='lab';lab.textContent=r.key;row.append(lab);
+    const trk=document.createElement('div');trk.className='trk';
+    const fill=document.createElement('div');fill.className='fill';fill.style.width=(r.sessions/max*100)+'%';trk.append(fill);row.append(trk);
+    const n=document.createElement('div');n.className='n';n.textContent=r.sessions;row.append(n);
+    box.append(row);
+  });
+  if(!list.length){const d=document.createElement('div');d.className='hbar';d.textContent='no data yet';d.style.color='var(--muted)';box.append(d);}
+  const subs={dev:'sessions by device',fmt:'sessions by screen format',brk:'sessions by closest deck breakpoint'};
+  document.getElementById('devsub').textContent=subs[mixTab]+' · '+(DATA.totalSessions||0)+' visits';
 }
+document.getElementById('devtabs').addEventListener('click',e=>{
+  const b=e.target.closest('.dtab');if(!b)return;
+  mixTab=b.dataset.tab;
+  document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('sel',t===b));
+  renderDevices();
+});
 
 function render(data){
   DATA=data;
