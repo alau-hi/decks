@@ -662,20 +662,19 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s9 .mill .loc{grid-column:1;grid-row:5}
   #s9 .mill .mill-imgs{grid-column:2;grid-row:1/6;height:auto;margin:0;justify-content:flex-end;align-items:flex-start;align-self:center;flex-wrap:nowrap;max-width:none}
   /* the 4-tile card folds to a 2x2 block so its text keeps the same width as the others */
-  #s9 .mill .mill-imgs.two{flex-wrap:wrap;width:5rem;justify-content:flex-start;gap:.25rem}
+  #s9 .mill .mill-imgs.two{flex-wrap:wrap;width:8rem;justify-content:flex-start;gap:.3rem}
   #s9 .mill .mill-imgs.two .mar{display:none}
   #s9 .mill .mcell{width:2.1rem}
-  #s9 .mill .mill-imgs.two .mcell{width:2.3rem}
+  #s9 .mill .mill-imgs.two .mcell{width:3.7rem}
   #s9 .mtile{height:1.35rem}
   #s9 .mill-imgs .mar{margin-top:4px;font-size:.7rem;align-self:flex-start}
-  #s9 .mcap{font-size:clamp(6.5px,.42rem,.6rem);line-height:1.15}
+  #s9 .mcap{font-size:clamp(8px,.42rem,.6rem);line-height:1.15;width:100%;overflow-wrap:break-word}
   #s9 .mill .mcell{width:2.9rem}
   #s9 .mtile{height:2rem}
   #s9 .mcap{font-size:clamp(7.5px,.42rem,.6rem)}
   #s9 .mill-imgs .mar{margin-top:6px;font-size:.8rem}
-  #s9 .mill-imgs.two{display:flex;gap:.25rem}
-  #s9 .mill-imgs.two .mcell,#s9 .mill-imgs.two .mar{order:0}
-  #s9 .mill-imgs.two .mar-b{display:block}
+  #s9 .mill-imgs.two{display:flex;gap:.3rem}
+  #s9 .mill-imgs.two .mcell,#s9 .mill-imgs.two .mar{order:0} /* pairwise rows: timber+board / veneer+veneer */
   #s9 .out-badge{margin:0 0 .3rem}
   #s9 .out-badge .x{font-size:1.4rem}
   #s9 .mill h3{font-size:1.05rem;margin:.15rem 0 .3rem}
