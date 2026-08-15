@@ -43,6 +43,18 @@ export function formatBucket(scr, cls) {
   return scr.w >= 1440 ? 'desktop' : 'laptop';
 }
 
+// Closest deck media tier for a session. The deck's width queries are all
+// pointer:coarse-gated, so only touch sessions (phone/tablet) ever bucket;
+// desktop windows get the base layout regardless of width.
+const BREAKS = [560, 700, 820, 900, 980, 1080];
+const BREAK_ORDER = ['≤560', '≤700', '≤820', '≤900', '≤980', '≤1080', '>1080', 'Desktop (no break)', 'unknown'];
+export function breakBucket(scr, cls) {
+  if (!scr || !scr.w) return 'unknown';
+  if (cls !== 'phone' && cls !== 'tablet') return 'Desktop (no break)';
+  const b = BREAKS.find(x => scr.w <= x);
+  return b ? `≤${b}` : '>1080';
+}
+
 function deviceLabel(d, scr) {
   const base = d.cls === 'phone' ? (d.os === 'iOS' ? 'iPhone' : d.os === 'Android' ? 'Android phone' : 'Phone')
     : d.cls === 'tablet' ? (d.os === 'iOS' ? 'iPad' : d.os === 'Android' ? 'Android tablet' : 'Tablet')
@@ -87,7 +99,7 @@ export default async function handler(req, res) {
   // Storage-less deployment (staging): valid key, but nothing recorded here.
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     res.setHeader('Cache-Control', 'no-store');
-    return res.status(200).json({ generatedAt: new Date().toISOString(), slideOrder: SLIDES, viewers: [], slides: [], dropoff: [], totalSessions: 0, locations: [], deviceMix: [], formatMix: [] });
+    return res.status(200).json({ generatedAt: new Date().toISOString(), slideOrder: SLIDES, viewers: [], slides: [], dropoff: [], totalSessions: 0, locations: [], deviceMix: [], formatMix: [], breakMix: [] });
   }
 
   const [signupBlobs, dwellBlobs] = await Promise.all([
@@ -157,7 +169,7 @@ export default async function handler(req, res) {
   }
 
   const sessionTotals = [];
-  const deviceMix = new Map(), formatMix = new Map();
+  const deviceMix = new Map(), formatMix = new Map(), breakMix = new Map();
   const bump = (m, k) => m.set(k, (m.get(k) || 0) + 1);
   for (const s of signups) {
     if (!s?.email) continue;
@@ -178,6 +190,7 @@ export default async function handler(req, res) {
     const dev = deviceFromUa(d.ua);
     bump(deviceMix, dev.cls === 'unknown' ? 'unknown' : `${dev.cls} · ${dev.os}`);
     bump(formatMix, formatBucket(d.scr, dev.cls));
+    bump(breakMix, breakBucket(d.scr, dev.cls));
     sessionTotals.push(d.totals);
     for (const [section, secs] of Object.entries(d.totals)) {
       const s = Number(secs) || 0;
@@ -228,5 +241,6 @@ export default async function handler(req, res) {
     locations: [...locations.values()].filter(l => Number.isFinite(l.lat) && Number.isFinite(l.lon)),
     deviceMix: [...deviceMix].map(([key, sessions]) => ({ key, sessions })).sort((a, b) => b.sessions - a.sessions),
     formatMix: [...formatMix].map(([key, sessions]) => ({ key, sessions })).sort((a, b) => b.sessions - a.sessions),
+    breakMix: [...breakMix].map(([key, sessions]) => ({ key, sessions })).sort((a, b) => BREAK_ORDER.indexOf(a.key) - BREAK_ORDER.indexOf(b.key)),
   });
 }
