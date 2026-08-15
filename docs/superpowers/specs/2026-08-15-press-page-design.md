@@ -5,18 +5,18 @@
 
 ## Source material
 
-The Netlify page is a fully self-contained artifact: no images, no external scripts, ~87 press entries as cards in 4 tier sections — "Mainstream Mass-Audience & Business Press", "Industry, Trade & Specialist Publications", "Syndication, Regional & International", "YouTube & Video Coverage" — with a light "newspaper" palette (cream paper, Palatino serif, rust/olive tier accents). A snapshot is saved for implementation reference; re-fetch `https://bucolic-paletas-474eff.netlify.app` if needed.
+The Netlify page is a fully self-contained artifact: no images, no external scripts, 48 press entries as cards in 4 tier sections — "Mainstream Mass-Audience & Business Press", "Industry, Trade & Specialist Publications", "Syndication, Regional & International", "YouTube & Video Coverage" — with a light "newspaper" palette (cream paper, Palatino serif, rust/olive tier accents). A snapshot is saved for implementation reference; re-fetch `https://bucolic-paletas-474eff.netlify.app` if needed.
 
 ## Design
 
 ### `press.html` (new, in `superwood-presentation/`)
 
 - Served at `/press` automatically by `cleanUrls` — same mechanism as `/stats` and `/changes`; no `vercel.json` change.
-- **Content migrated 1:1**: every entry (title, outlet, date, blurb, link), all four tier sections, same order. No editorial changes.
+- **Content migrated 1:1**: every entry (rank, outlet, headline, note, date, link), all four tier sections, the stat tiles, search box and filter buttons, the foundational-paper block, and the footnote — same order, no editorial changes. The page's existing self-contained search/filter/stat JS is kept verbatim (the restyle only replaces the `<style>` block and page chrome).
 - **Restyled to the deck's design language**: the deck's `:root` tokens (warm dark `--ink` background, cream text, wood accents, `--line` borders), Fraunces for the page headline and tier headings, Inter for card text; card treatment consistent with the stats page's bordered cards. The source's three tier-accent colors map onto deck tones (wood-bright / teal / muted) instead of rust/olive. Links keep `target="_blank" rel="noopener"`.
 - **Header row**: brand mark + "In the Press" headline + a quiet "← Back to the deck" link to `/intro`.
 - `<title>In the Press — InventWood</title>`, `<meta name="robots" content="noindex">` (consistent with stats), responsive at phone widths (single-column cards).
-- No JS needed; no tracker on this page (press-view analytics can be added later if wanted).
+- No tracker on this page (press-view analytics can be added later if wanted).
 
 ### `middleware.js`
 
@@ -40,6 +40,6 @@ The Netlify page is a fully self-contained artifact: no images, no external scri
 ## Acceptance
 
 - `https://sw.inventwood.net/press` (and investor./investors.) serves the restyled dossier with **no email gate**, in a fresh incognito window.
-- All ~87 entries and 4 tiers present; links open the original articles in new tabs.
+- All 48 entries and 4 tiers present; links open the original articles in new tabs; search and tier/year filters still work.
 - Page reads as part of the deck's family: dark wood/cream, Fraunces headings, legible at phone widths.
 - Step 2 only: the deck's "View press highlights" button opens `/press` on the viewer's current domain.
