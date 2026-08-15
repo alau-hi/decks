@@ -75,8 +75,7 @@ tr:last-child td{border-bottom:none}
 .hbar .lab{flex:none;width:128px;text-align:right;color:var(--cream-dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .hbar .trk{flex:1;height:13px;background:var(--grid);border-radius:4px;overflow:hidden}
 .hbar .fill{height:100%;background:var(--wood);border-radius:4px}
-.hbar.unk .fill{background:rgba(157,141,118,.55)}
-.hbar .n{flex:none;width:30px;color:var(--muted);font-variant-numeric:tabular-nums}
+.hbar .n{flex:none;width:64px;color:var(--muted);font-variant-numeric:tabular-nums}
 .devchip{font-size:.66rem;color:var(--muted);margin-top:2px}
 </style>
 </head>
@@ -304,19 +303,21 @@ function renderTable(){
 let mixTab='dev';
 function renderDevices(){
   const box=document.getElementById('c-mix');box.textContent='';
-  const list=mixTab==='fmt'?(DATA.formatMix||[]):mixTab==='brk'?(DATA.breakMix||[]):(DATA.deviceMix||[]);
+  const src=mixTab==='fmt'?(DATA.formatMix||[]):mixTab==='brk'?(DATA.breakMix||[]):(DATA.deviceMix||[]);
+  const list=src.filter(r=>r.key!=='unknown');
+  const total=list.reduce((a,r)=>a+r.sessions,0);
   const max=Math.max(1,...list.map(r=>r.sessions));
   list.forEach(r=>{
-    const row=document.createElement('div');row.className='hbar'+(r.key==='unknown'?' unk':'');
+    const row=document.createElement('div');row.className='hbar';
     const lab=document.createElement('div');lab.className='lab';lab.textContent=r.key;row.append(lab);
     const trk=document.createElement('div');trk.className='trk';
     const fill=document.createElement('div');fill.className='fill';fill.style.width=(r.sessions/max*100)+'%';trk.append(fill);row.append(trk);
-    const n=document.createElement('div');n.className='n';n.textContent=r.sessions;row.append(n);
+    const n=document.createElement('div');n.className='n';n.textContent=r.sessions+' · '+Math.round(r.sessions/total*100)+'%';row.append(n);
     box.append(row);
   });
   if(!list.length){const d=document.createElement('div');d.className='hbar';d.textContent='no data yet';d.style.color='var(--muted)';box.append(d);}
   const subs={dev:'sessions by device',fmt:'sessions by screen format',brk:'sessions by closest deck breakpoint'};
-  document.getElementById('devsub').textContent=subs[mixTab]+' · '+(DATA.totalSessions||0)+' visits';
+  document.getElementById('devsub').textContent=subs[mixTab]+' · '+total+' of '+(DATA.totalSessions||0)+' visits';
 }
 document.getElementById('devtabs').addEventListener('click',e=>{
   const b=e.target.closest('.dtab');if(!b)return;
