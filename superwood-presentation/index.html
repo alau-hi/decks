@@ -139,7 +139,7 @@ nav.dots button:hover span{opacity:1}
 .creds li b{color:var(--cream)}
 
 /* TECHNOLOGY (slide 6) */
-.tech-flow{display:grid;grid-template-columns:.8fr 1.6fr .8fr;gap:1.6rem;align-items:start;margin-top:2rem}
+.tech-flow{display:grid;grid-template-columns:.9fr 1.35fr .9fr;gap:1.6rem;align-items:start;margin-top:2rem}
 .tech-flow .cap{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.8rem}
 .tech-mid .cap::before,.tech-end .cap::before{content:"→";margin-right:.5rem} /* flow cue: feedstock → conversion → output */
 .tech-img{aspect-ratio:1000/1072;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 14px 30px rgba(0,0,0,.45))}
@@ -168,8 +168,8 @@ nav.dots button:hover span{opacity:1}
 .pstep p{font-size:.74rem;line-height:1.4;color:var(--cream-dim)}
 .feed-title{font-family:'Fraunces';font-size:1.9rem;color:var(--cream);margin-top:.7rem;margin-bottom:.4rem}
 .feed-meta{font-size:.95rem;color:var(--cream-dim);line-height:1.45}
-.badges{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.1rem}
-.badge{font-size:clamp(11px,.7rem,.85rem);letter-spacing:.1em;text-transform:uppercase;padding:.5rem .9rem;border:1px solid var(--line);border-radius:1.875rem;color:var(--cream-dim)}
+.badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1.1rem}
+.badge{font-size:clamp(11px,.7rem,.85rem);letter-spacing:.08em;text-transform:uppercase;padding:.5rem .62rem;border:1px solid var(--line);border-radius:1.875rem;color:var(--cream-dim)}
 .badge b{color:var(--wood-bright)}
 
 /* SUPERWOOD intro (slide 7) */
@@ -548,8 +548,8 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
    Placed last so it wins over the portrait/stacking rules above at equal specificity. */
 @media(pointer:coarse) and (orientation:landscape) and (max-height:500px){
   section{padding:5vh 5vw}
-  /* slides scroll past the viewport on phones, so the fixed marker needs its own ground */
-  .conf{background:rgba(20,13,7,.82);padding:.3em .7em;border-radius:999px;backdrop-filter:blur(3px)}
+  /* landscape phones have no spare height: the fixed marker only ever lands on content */
+  .conf{display:none}
   .split,.tr-split{grid-template-columns:1.05fr .95fr;gap:1.6rem}
   .lead{font-size:.9rem}
   nav.dots{display:none}
@@ -591,7 +591,7 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   /* slide-6: strict top-to-bottom flow — feedstock band, three conversion steps across, output band */
   #s6 h2{font-size:1.15rem!important;max-width:none}
   /* landscape phone keeps the laptop three-column composition; type shrinks instead of reflowing */
-  #s6 .tech-flow{display:grid;grid-template-columns:.8fr 1.6fr .8fr;gap:.7rem;margin-top:.85rem;align-items:start}
+  #s6 .tech-flow{display:grid;grid-template-columns:.9fr 1.35fr .9fr;gap:.7rem;margin-top:.85rem;align-items:start}
   #s6 .tech-mid{display:block}
   #s6 .tech-mid .cap{margin-bottom:.3rem}
   #s6 .tech-mid .badges{margin-top:.4rem}
@@ -609,17 +609,18 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s6 .pstep .diag{height:2.4rem}
   /* badges sit below the step titles in the hierarchy, so they must not out-size them */
   #s6 .badges{margin-top:.45rem;gap:.3rem}
-  #s6 .badge{font-size:clamp(7.5px,.45rem,.6rem);padding:.2rem .45rem;letter-spacing:.06em}
+  #s6 .badge{font-size:clamp(7px,.45rem,.6rem);padding:.18rem .4rem;letter-spacing:.04em;white-space:nowrap}
+  #s6 .badges{flex-wrap:nowrap}
   #s6 .pstep{padding:.45rem .6rem}
   #s6 .pstep h4{font-size:.8rem}
   #s6 .pstep p{font-size:.66rem;line-height:1.32}
   /* slide-7 */
   #s7 .sw7{flex-direction:row}
-  #s7 .sw7-left{min-height:0;padding:4vh 3vw}
-  #s7 .sw7-right{padding:3vh 3vw}
+  #s7 .sw7-left{flex:1;min-height:0;padding:4vh 3vw} /* narrower image panel gives the properties column room */
+  #s7 .sw7-right{flex:1.35;padding:3vh 3vw}
   #s7 .sw7-title{font-size:2.2rem}
   #s7 .sw7-tag{font-size:1rem;margin-top:.3rem}
-  #s7 .sw7-claims{font-size:1.05rem}
+  #s7 .sw7-claims{font-size:1.35rem}
   #s7 .proplist li{padding:.32rem 0;gap:.7rem}
   #s7 .proplist h4{font-size:.72rem;margin-bottom:.1rem}
   #s7 .proplist p{font-size:.66rem;line-height:1.3}
@@ -639,7 +640,17 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s9 .wrap>p{font-size:clamp(11px,.72rem,.9rem)!important;margin-top:.4rem!important}
   #s9 .costgraph .cg-lg{display:block}
   #s9 .costgraph .cg-sm{display:none}
-  #s9 .road{grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:.5rem}
+  #s9{padding-top:2.4vh;padding-bottom:2.4vh}
+  #s9 .wrap>p{font-size:clamp(9.5px,.62rem,.8rem)!important;margin-top:.25rem!important;line-height:1.3}
+  #s9 .costgraph{max-width:76%;margin:.3rem auto .1rem}
+  #s9 .road{grid-template-columns:repeat(3,1fr);gap:.45rem;margin-top:.35rem}
+  #s9 .mill{padding:.45rem .55rem}
+  #s9 .mill h3{font-size:.85rem;margin:.05rem 0 .12rem}
+  #s9 .out-badge .x{font-size:1.1rem}
+  #s9 .out-badge .l{font-size:clamp(7px,.42rem,.56rem)}
+  #s9 .mill p{font-size:clamp(9px,.55rem,.72rem);line-height:1.26}
+  #s9 .mill .loc{font-size:clamp(8.5px,.5rem,.68rem);margin-top:.15rem}
+  #s9 .mill .yr{font-size:.55rem}
   /* landscape: icons to the right of the copy so the text column gets the width */
   #s9 .mill{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto auto;column-gap:.6rem;padding:.6rem .75rem;align-items:start}
   #s9 .mill .out-badge{grid-column:1;grid-row:1;margin:0}
@@ -647,7 +658,15 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s9 .mill .yr{grid-column:1;grid-row:3;align-self:end}
   #s9 .mill p{grid-column:1;grid-row:4}
   #s9 .mill .loc{grid-column:1;grid-row:5}
-  #s9 .mill .mill-imgs{grid-column:2;grid-row:1/4;height:auto;margin:0;justify-content:flex-end;align-self:center;flex-wrap:wrap;max-width:7.5rem}
+  #s9 .mill .mill-imgs{grid-column:2;grid-row:1/6;height:auto;margin:0;justify-content:flex-end;align-items:flex-start;align-self:center;flex-wrap:nowrap;max-width:none}
+  /* the 4-tile card folds to a 2x2 block so its text keeps the same width as the others */
+  #s9 .mill .mill-imgs.two{flex-wrap:wrap;width:5rem;justify-content:flex-start;gap:.25rem}
+  #s9 .mill .mill-imgs.two .mar{display:none}
+  #s9 .mill .mcell{width:2.1rem}
+  #s9 .mill .mill-imgs.two .mcell{width:2.3rem}
+  #s9 .mtile{height:1.35rem}
+  #s9 .mill-imgs .mar{margin-top:4px;font-size:.7rem;align-self:flex-start}
+  #s9 .mcap{font-size:clamp(6.5px,.42rem,.6rem);line-height:1.15}
   #s9 .mill .mcell{width:2.9rem}
   #s9 .mtile{height:2rem}
   #s9 .mcap{font-size:clamp(7.5px,.42rem,.6rem)}
@@ -663,9 +682,11 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   #s9 .feedrow .f{padding:.3rem .55rem}
   /* slide-10 */
   #s10 h2{font-size:1.35rem!important}
-  #s10 .tr-split{grid-template-columns:1.25fr .75fr}
-  #s10 .tract{gap:.5rem;margin-top:.5rem}
-  #s10 .tcard{padding:.6rem .8rem}
+  #s10 .tr-split{grid-template-columns:1.25fr .75fr;align-items:stretch}
+  /* left column stretches to the photo column's height so no dead space collects bottom-left */
+  #s10 .tr-split>div:first-child{display:flex}
+  #s10 .tract{gap:.5rem;margin-top:.5rem;flex:1;grid-auto-rows:1fr;height:calc(100% - .5rem)}
+  #s10 .tcard{padding:.6rem .8rem;display:flex;flex-direction:column;justify-content:center}
   #s10 .tcard .n{font-size:1.35rem!important}
   #s10 .tcard .l{font-size:.62rem;margin-top:.25rem;line-height:1.3}
   #s10 .partners{margin-top:.7rem;padding:.7rem .9rem}
