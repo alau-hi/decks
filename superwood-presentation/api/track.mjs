@@ -19,6 +19,25 @@ function cookieEmail(req) {
   return null;
 }
 
+// Screen/viewport capture from the deck tracker. Reject-don't-guess: a record
+// with no usable viewport stores no scr at all.
+export function cleanScr(raw) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
+  const dim = v => {
+    const n = Math.round(Number(v));
+    return Number.isFinite(n) && n > 0 && n <= 20000 ? n : null;
+  };
+  const w = dim(raw.w), h = dim(raw.h), sw = dim(raw.sw), sh = dim(raw.sh);
+  if (!w || !h) return null;
+  const out = { w, h };
+  if (sw) out.sw = sw;
+  if (sh) out.sh = sh;
+  const dpr = Number(raw.dpr);
+  if (Number.isFinite(dpr) && dpr > 0 && dpr <= 10) out.dpr = Math.round(dpr * 100) / 100;
+  if (raw.o === 'p' || raw.o === 'l') out.o = raw.o;
+  return out;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -27,7 +46,7 @@ export default async function handler(req, res) {
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     return res.status(204).end();
   }
-  const { viewer, session, totals } = req.body || {};
+  const { viewer, session, totals, scr } = req.body || {};
   if (!/^[a-z0-9]{8,32}$/.test(String(session || ''))) {
     return res.status(400).json({ error: 'Bad session' });
   }
@@ -47,6 +66,7 @@ export default async function handler(req, res) {
     viewer: email,
     session,
     totals: clean,
+    scr: cleanScr(scr) || undefined,
     ua: req.headers['user-agent'] || '',
     ip: (req.headers['x-forwarded-for'] || '').split(',')[0].trim(),
     city: decodeURIComponent(req.headers['x-vercel-ip-city'] || ''),

@@ -1407,10 +1407,12 @@ window.addEventListener('keydown',e=>{
   },{root:deckEl,threshold:0.6});
   document.querySelectorAll('section').forEach(function(s){sio.observe(s);});
 
+  function scrNow(){ try{ return { w:innerWidth, h:innerHeight, sw:screen.width, sh:screen.height, dpr:devicePixelRatio||1, o:matchMedia('(orientation: portrait)').matches?'p':'l' }; }catch(e){ return null; } }
+
   function send(){
     flush();
     if(!Object.keys(totals).length)return;
-    try{navigator.sendBeacon('/api/track',new Blob([JSON.stringify({viewer:viewer,session:session,totals:totals})],{type:'application/json'}));}catch(e){}
+    try{navigator.sendBeacon('/api/track',new Blob([JSON.stringify({viewer:viewer,session:session,totals:totals,scr:scrNow()})],{type:'application/json'}));}catch(e){}
   }
   setInterval(function(){ if(!document.hidden) send(); },30000);
   document.addEventListener('visibilitychange',function(){
