@@ -384,7 +384,8 @@ const LOG=[
   ['Liangbing Hu\u2019s title split onto two lines (Founder & Inventor / Director, Center for Materials Innovation, Yale)','ad692ec'],
   ['Slide 7 claim: \u201cAs strong as steel\u201d shortened to \u201cStrong as steel\u201d','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Legibility',title:'IP-stats font sizing',slides:[12],req:'The three stat-card numbers and labels on slide 12 should be larger and more legible.',items:[
-  ['Stat numbers enlarged 2.4rem \u2192 2.9rem, labels .78rem \u2192 .95rem on desktop','']]}
+  ['Stat numbers enlarged 2.4rem \u2192 2.9rem, labels .78rem \u2192 .95rem on desktop','42e0bdf'],
+  ['Stat type given px floors via clamp() at every breakpoint, so shrinking the window can no longer scale the numbers and labels into illegibility (labels held at 13px on a 900px window instead of collapsing to 10px)','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
