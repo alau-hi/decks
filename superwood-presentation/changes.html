@@ -452,7 +452,11 @@ const LOG=[
   ['Line animation verified drawing 681\u21920 on desktop \u2014 if it still looks static on the laptop, it may be macOS Reduce Motion, where the chart intentionally shows complete with a fade','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Cost animation, Safari-proof round 2',slides:[9],req:'The cost-line animation still is not working on the phone.',items:[
   ['Line draw rewritten from the Web Animations API to a plain CSS transition \u2014 Safari can reject WAAPI keyframes on SVG stroke properties, and that rejection was also what could leave the line hidden',''],
-  ['Failsafe now schedules before anything risky: no matter what, the line ends solid within ~3.4s of the slide revealing','']]}
+  ['Failsafe now schedules before anything risky: no matter what, the line ends solid within ~3.4s of the slide revealing','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Cost animation \u2014 the real fix',slides:[9],req:'User diagnosis: the line is already in the graph before the animation draws it again, so it never looks like anything happens. Also: the portrait chart should be bigger with labels at least as large as the card text.',items:[
+  ['User called it: since the JS rewrite the line was fully visible on load, so the draw redrew what you had already seen \u2014 the line is now hidden until its draw starts and appears stroke-by-stroke',''],
+  ['The draw also replays each time the slide re-enters view instead of once per page load',''],
+  ['Portrait chart now fills the content width (nearly 2\u00d7 wider, taller viewBox) with labels at 11\u201312.5px \u2014 larger than the card text','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above

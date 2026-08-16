@@ -230,6 +230,7 @@ nav.dots button:hover span{opacity:1}
 .costgraph{margin:.7rem 0 .3rem}
 .costgraph svg{width:100%;height:auto;display:block}
 /* cost-decline animation: line draws left-to-right, milestones pop as it passes, fill rises after */
+.js .costgraph .cg-line{opacity:0}
 .js .costgraph .cg-dot,.js .costgraph .cg-fill{opacity:0}
 /* the line is drawn by JS (getTotalLength) — Safari mis-scales pathLength-normalized dashes */
 section.in .costgraph .cg-dot.d1{animation:cgPop .45s ease .55s forwards}
@@ -238,6 +239,7 @@ section.in .costgraph .cg-dot.d3{animation:cgPop .45s ease 2.7s forwards}
 section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 @keyframes cgPop{to{opacity:1}}
 @media (prefers-reduced-motion: reduce){
+  .js .costgraph .cg-line{animation:cgPop 1s ease forwards!important}
   .js .costgraph .cg-dot,.js .costgraph .cg-fill,.costgraph .cg-dot,.costgraph .cg-fill{animation:cgPop 1s ease forwards!important}
 }
 .costgraph .cg-sm{display:none}
@@ -399,7 +401,7 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
   /* slide-9: mill cards read text on the left; capacity, dates and images on the right */
   #s9 .wrap>p{font-size:clamp(11.5px,.78rem,.95rem)!important;margin-top:.5rem!important}
   #s9 .costgraph{margin:.35rem 0 .15rem}
-  #s9 .costgraph .cg-sm{max-width:16rem;margin:0 auto}
+  #s9 .costgraph .cg-sm{max-width:none;margin:0}
   #s9{padding-top:2vh;padding-bottom:2vh}
   #s9 .mill{padding:.5rem .8rem}
   #s9 .mill p{line-height:1.32}
@@ -1053,22 +1055,22 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
           <text x="500" y="148" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">SuperMill Two</text>
           <text x="840" y="148" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">ChipMill</text>
         </svg>
-        <svg class="cg-sm" viewBox="0 0 1000 372" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-          <text x="38" y="168" fill="#9d8d76" font-family="Inter,sans-serif" font-size="30" transform="rotate(-90 38,168)" text-anchor="middle">cost per m&#179;</text>
-          <line x1="145" y1="34" x2="145" y2="292" stroke="rgba(228,210,180,.4)" stroke-width="3"/>
-          <line x1="145" y1="292" x2="965" y2="292" stroke="rgba(228,210,180,.4)" stroke-width="3"/>
-          <rect x="145" y="56" width="820" height="30" fill="rgba(170,175,184,.42)"/>
-          <text x="958" y="47" fill="#c7cbd3" font-family="Inter,sans-serif" font-size="31" font-weight="600" text-anchor="end">Stainless steel cost</text>
-          <rect x="145" y="194" width="820" height="30" fill="rgba(178,88,64,.55)"/>
-          <text x="958" y="185" fill="#dd9078" font-family="Inter,sans-serif" font-size="31" font-weight="600" text-anchor="end">Steel cost</text>
-          <path class="cg-line" pathLength="1" d="M255,138 C 370,161 460,179 555,196 C 665,217 780,237 880,254" fill="none" stroke="#aebf76" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle class="cg-dot d1" cx="255" cy="138" r="10" fill="#aebf76"/>
-          <circle class="cg-dot d2" cx="555" cy="196" r="10" fill="#aebf76"/>
-          <circle class="cg-dot d3" cx="880" cy="254" r="12" fill="#e6efce" stroke="#aebf76" stroke-width="4"/>
-          <text x="255" y="118" fill="#c3d18a" font-family="Inter,sans-serif" font-size="33" font-weight="700">SUPERWOOD cost</text>
-          <text x="255" y="342" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="30" font-weight="600" text-anchor="middle">SuperMill One</text>
-          <text x="567" y="342" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="30" font-weight="600" text-anchor="middle">SuperMill Two</text>
-          <text x="880" y="342" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="30" font-weight="600" text-anchor="middle">ChipMill</text>
+        <svg class="cg-sm" viewBox="0 0 1000 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+          <text x="40" y="205" fill="#9d8d76" font-family="Inter,sans-serif" font-size="32" transform="rotate(-90 40,205)" text-anchor="middle">cost per m&#179;</text>
+          <line x1="150" y1="38" x2="150" y2="380" stroke="rgba(228,210,180,.4)" stroke-width="3"/>
+          <line x1="150" y1="380" x2="965" y2="380" stroke="rgba(228,210,180,.4)" stroke-width="3"/>
+          <rect x="150" y="62" width="815" height="36" fill="rgba(170,175,184,.42)"/>
+          <text x="958" y="52" fill="#c7cbd3" font-family="Inter,sans-serif" font-size="36" font-weight="600" text-anchor="end">Stainless steel cost</text>
+          <rect x="150" y="248" width="815" height="36" fill="rgba(178,88,64,.55)"/>
+          <text x="958" y="238" fill="#dd9078" font-family="Inter,sans-serif" font-size="36" font-weight="600" text-anchor="end">Steel cost</text>
+          <path class="cg-line" pathLength="1" d="M255,150 C 370,178 460,205 555,240 C 665,266 780,296 880,330" fill="none" stroke="#aebf76" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="cg-dot d1" cx="255" cy="150" r="11" fill="#aebf76"/>
+          <circle class="cg-dot d2" cx="555" cy="240" r="11" fill="#aebf76"/>
+          <circle class="cg-dot d3" cx="880" cy="330" r="13" fill="#e6efce" stroke="#aebf76" stroke-width="4"/>
+          <text x="255" y="128" fill="#c3d18a" font-family="Inter,sans-serif" font-size="38" font-weight="700">SUPERWOOD cost</text>
+          <text x="255" y="428" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="34" font-weight="600" text-anchor="middle">SuperMill One</text>
+          <text x="567" y="428" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="34" font-weight="600" text-anchor="middle">SuperMill Two</text>
+          <text x="880" y="428" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="34" font-weight="600" text-anchor="middle">ChipMill</text>
         </svg>
       </div>
       <div class="road rv">
@@ -1322,7 +1324,7 @@ secs.forEach((s,i)=>{const b=document.createElement('button');b.innerHTML=String
 const dots=[...dotsBox.children];
 deck.addEventListener('wheel',e=>{if(readyUpTo<secs.length-1&&e.deltaY>0&&deck.scrollTop+deck.clientHeight>=deck.scrollHeight-4)pulsePill();},{passive:true});
 /* visibility = max(fraction of the slide shown, fraction of the viewport it fills) — the second term is what reveals slides taller than 2x the viewport, which never reach 50% of their own height on mobile */
-const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));drawCostLines(e.target);}}else if(!e.isIntersecting){e.target.classList.remove('in');}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));drawCostLines(e.target);}}else if(!e.isIntersecting){e.target.classList.remove('in');e.target.querySelectorAll('.costgraph .cg-line').forEach(l=>{l.__drawn=false;l.style.transition='none';l.style.opacity='';});}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
 secs.forEach(s=>io.observe(s));
 function animate(el){const target=parseFloat(el.dataset.count);const dec=parseInt(el.dataset.dec||0);const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';const dur=1400,t0=performance.now();
 function fmt(v){let n=dec?v.toFixed(dec):Math.round(v).toLocaleString('en-US');return pre+n+suf;}
@@ -1333,15 +1335,16 @@ window.addEventListener('resize',()=>{document.querySelectorAll('section.in').fo
 function drawCostLines(sec){sec.querySelectorAll('.costgraph .cg-line').forEach(l=>{
   if(l.__drawn)return;const svg=l.closest('svg');if(getComputedStyle(svg).display==='none')return;l.__drawn=true;
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  /* failsafe first: whatever happens below, the line ends solid */
-  setTimeout(()=>{l.style.transition='none';l.style.strokeDasharray='none';l.style.strokeDashoffset='0';},3400);
+  /* failsafe first: whatever happens below, the line ends solid and visible */
+  setTimeout(()=>{l.style.transition='none';l.style.strokeDasharray='none';l.style.strokeDashoffset='0';l.style.opacity='1';},3400);
   try{
     const L=l.getTotalLength();
     l.style.strokeDasharray=L+'px '+L+'px';l.style.strokeDashoffset=L+'px';
+    l.style.opacity='1'; /* reveal only now — fully dashed out, so nothing shows yet */
     l.getBoundingClientRect(); /* commit start state */
-    l.style.transition='stroke-dashoffset 2.4s cubic-bezier(.55,.05,.35,1) .4s';
+    l.style.transition='stroke-dashoffset 2.4s cubic-bezier(.55,.05,.35,1) .55s';
     requestAnimationFrame(()=>{l.style.strokeDashoffset='0px';});
-  }catch(e){l.style.strokeDasharray='none';l.style.strokeDashoffset='0';}
+  }catch(e){l.style.strokeDasharray='none';l.style.strokeDashoffset='0';l.style.opacity='1';}
 });}
 function go(d){const t=Math.max(0,Math.min(secs.length-1,idx+d));jumpTo(t);}
 deck.addEventListener('scroll',()=>{const c=deck.scrollTop+deck.clientHeight/2;const f=secs.findIndex(s=>s.offsetTop<=c&&s.offsetTop+s.offsetHeight>c);if(f>=0){if(f!==idx&&secs[f].classList.contains('in'))drawCostLines(secs[f]);idx=f;}document.body.classList.toggle('on-cover',idx===0);});
