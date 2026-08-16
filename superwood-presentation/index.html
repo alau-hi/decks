@@ -772,7 +772,13 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 <div class="conf">Confidential</div>
 <nav class="dots" id="dots"></nav>
 
-<script>document.documentElement.className="js"</script>
+<script>document.documentElement.className="js";
+if(location.search.indexOf('debug')>-1){window.__dbg=[];window.dbg=function(m){__dbg.push(m);var el=document.getElementById('dbgbox');
+ if(!el){el=document.createElement('div');el.id='dbgbox';el.style.cssText='position:fixed;left:4px;top:4px;z-index:99999;background:rgba(0,0,0,.88);color:#9f9;font:10px/1.5 monospace;padding:6px 8px;max-width:78vw;max-height:45vh;overflow:auto;border-radius:6px;white-space:pre-wrap;pointer-events:none';(document.body||document.documentElement).appendChild(el);}
+ el.textContent=__dbg.join('\n');};
+ window.addEventListener('error',function(e){dbg('ERR '+e.message+' :'+e.lineno);});
+ dbg('debug on · '+navigator.userAgent.slice(0,60));
+}else{window.dbg=function(){};}</script>
 <div class="deck" id="deck">
 
   <!-- 1 COVER -->
@@ -1325,20 +1331,21 @@ secs.forEach((s,i)=>{const b=document.createElement('button');b.innerHTML=String
 const dots=[...dotsBox.children];
 deck.addEventListener('wheel',e=>{if(readyUpTo<secs.length-1&&e.deltaY>0&&deck.scrollTop+deck.clientHeight>=deck.scrollHeight-4)pulsePill();},{passive:true});
 /* visibility = max(fraction of the slide shown, fraction of the viewport it fills) — the second term is what reveals slides taller than 2x the viewport, which never reach 50% of their own height on mobile */
-const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));drawCostLines(e.target);}}else if(!e.isIntersecting){e.target.classList.remove('in');}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');dbg('in '+e.target.id);e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));drawCostLines(e.target);}}else if(!e.isIntersecting){e.target.classList.remove('in');}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
 secs.forEach(s=>io.observe(s));
 function animate(el){const target=parseFloat(el.dataset.count);const dec=parseInt(el.dataset.dec||0);const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';const dur=1400,t0=performance.now();
 function fmt(v){let n=dec?v.toFixed(dec):Math.round(v).toLocaleString('en-US');return pre+n+suf;}
 function step(t){let p=Math.min((t-t0)/dur,1);p=1-Math.pow(1-p,3);el.textContent=fmt(target*p);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(target);}requestAnimationFrame(step);}
 let idx=0;
 /* draw the visible cost line from its measured length; inline dash avoids Safari's pathLength dash bug */
-function drawCostLines(sec){sec.querySelectorAll('.costgraph .cg-line').forEach(l=>{
-  if(l.__drawn)return;l.__drawn=true; /* once per page load — the single trigger is the slide's first reveal */
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return; /* CSS fades it in complete */
+function drawCostLines(sec){dbg('drawCostLines '+sec.id+' lines='+sec.querySelectorAll('.costgraph .cg-line').length);sec.querySelectorAll('.costgraph .cg-line').forEach(l=>{
+  if(l.__drawn){dbg('skip: already drawn');return;}l.__drawn=true; /* once per page load — the single trigger is the slide's first reveal */
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){dbg('skip: reduced motion ON');return;} /* CSS fades it in complete */
   /* failsafe first: whatever happens below, the line ends solid and visible */
   setTimeout(()=>{l.style.transition='none';l.style.strokeDasharray='none';l.style.strokeDashoffset='0';l.style.opacity='1';},3400);
   try{
     const L=l.getTotalLength();
+    dbg('chart '+(l.closest('svg').getAttribute('class'))+' L='+Math.round(L)+' display='+getComputedStyle(l.closest('svg')).display);
     if(!L)throw 0; /* hidden chart in some engines — land on the solid final state */
     l.style.strokeDasharray=L+'px '+L+'px';l.style.strokeDashoffset=L+'px';
     l.style.opacity='1'; /* reveal only now — fully dashed out, nothing shows yet */
@@ -1346,8 +1353,9 @@ function drawCostLines(sec){sec.querySelectorAll('.costgraph .cg-line').forEach(
     const t0=performance.now(),DUR=2400,DELAY=500;
     (function step(t){const p=Math.min(1,Math.max(0,(t-t0-DELAY)/DUR));const e=1-Math.pow(1-p,3);
       l.style.strokeDashoffset=(L*(1-e))+'px';
-      if(p<1)requestAnimationFrame(step);else{l.style.strokeDasharray='none';l.style.strokeDashoffset='0';}})(performance.now());
-  }catch(e){l.style.transition='none';l.style.strokeDasharray='none';l.style.strokeDashoffset='0';l.style.opacity='1';}
+      if(p<1)requestAnimationFrame(step);else{l.style.strokeDasharray='none';l.style.strokeDashoffset='0';dbg('tween complete');}})(performance.now());
+    dbg('tween started');
+  }catch(e){dbg('CATCH '+e);l.style.transition='none';l.style.strokeDasharray='none';l.style.strokeDashoffset='0';l.style.opacity='1';}
 });}
 function go(d){const t=Math.max(0,Math.min(secs.length-1,idx+d));jumpTo(t);}
 deck.addEventListener('scroll',()=>{const c=deck.scrollTop+deck.clientHeight/2;const f=secs.findIndex(s=>s.offsetTop<=c&&s.offsetTop+s.offsetHeight>c);if(f>=0)idx=f;document.body.classList.toggle('on-cover',idx===0);});
