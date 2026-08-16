@@ -27,12 +27,7 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
 .title{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.9rem,4.5vw,2.9rem);line-height:1.05;margin-bottom:14px}
 .deck{font-size:.95rem;line-height:1.65;color:var(--cream-dim);max-width:640px}
 .byline{font-size:.68rem;color:var(--muted);margin-top:12px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0 18px}
-@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stat{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:rgba(244,236,223,.02)}
-.stat-num{font-family:'Fraunces',serif;font-size:1.7rem;color:var(--wood-bright)}
-.stat-label{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
-.controls{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 6px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 6px}
 .search{flex:1 1 240px;padding:10px 14px;background:rgba(244,236,223,.04);border:1px solid var(--line);border-radius:8px;color:var(--cream);font-family:'Inter',sans-serif;font-size:.85rem;outline:none}
 .search:focus{border-color:var(--wood)}
 .search::placeholder{color:var(--muted)}
@@ -51,11 +46,12 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
 .tier-title{font-family:'Fraunces',serif;font-weight:500;font-size:1.15rem}
 .tier-sub{font-size:.68rem;color:var(--muted);margin-top:3px}
 .articles{list-style:none}
-.article{display:grid;grid-template-columns:2.2rem 1fr auto auto;gap:14px;align-items:baseline;padding:16px 4px;border-bottom:1px solid var(--grid)}
+.article{display:grid;grid-template-columns:2.2rem 1fr auto auto;gap:14px;align-items:baseline;padding:16px 4px;border-bottom:1px solid var(--grid);cursor:pointer}
+.article:hover{background:rgba(244,236,223,.03)}
 .article.hidden{display:none}
 .a-rank{font-family:'Fraunces',serif;font-size:.85rem;color:var(--acc)}
 .a-outlet{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-.a-headline{display:block;font-size:.95rem;font-weight:500;color:var(--cream);text-decoration:none;line-height:1.4}
+.a-headline{display:block;font-size:1.15rem;font-weight:500;color:var(--cream);text-decoration:none;line-height:1.35}
 .a-headline:hover{color:var(--wood-bright)}
 .a-note{font-size:.78rem;line-height:1.6;color:var(--cream-dim);margin-top:6px;max-width:620px}
 .a-date{font-size:.7rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
@@ -87,13 +83,6 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
     <p class="deck">A selection of the press coverage of InventWood and its molecularly densified wood over the years — from the foundational <em>Nature</em> paper through mainstream business and consumer press, awards, and YouTube features.</p>
     <div class="byline">Compiled May 2026 · Grouped by approximate editorial reach</div>
   </header>
-
-  <div class="stats">
-    <div class="stat"><div class="stat-num" id="stat-total">—</div><div class="stat-label">Items Listed</div></div>
-    <div class="stat"><div class="stat-num" id="stat-tier1">—</div><div class="stat-label">Tier-1 Outlets</div></div>
-    <div class="stat"><div class="stat-num" id="stat-trade">—</div><div class="stat-label">Trade &amp; Industry</div></div>
-    <div class="stat"><div class="stat-num" id="stat-video">—</div><div class="stat-label">Video Features</div></div>
-  </div>
 
   <div class="controls">
     <input class="search" id="search" type="text" placeholder="Search outlet, headline, or keyword…" />
@@ -717,16 +706,6 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
   const search = document.getElementById('search');
   const empty = document.getElementById('empty');
 
-  // Populate stats
-  const total = articles.length;
-  const tier1 = document.querySelectorAll('.article[data-tier="tier1"]').length;
-  const tier2 = document.querySelectorAll('.article[data-tier="tier2"]').length;
-  const video = document.querySelectorAll('.article[data-tier="video"]').length;
-  document.getElementById('stat-total').textContent = total;
-  document.getElementById('stat-tier1').textContent = tier1;
-  document.getElementById('stat-trade').textContent = tier2;
-  document.getElementById('stat-video').textContent = video;
-
   let activeFilter = 'all';
 
   function applyFilters() {
@@ -776,6 +755,19 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
   });
 
   search.addEventListener('input', applyFilters);
+
+  // Whole-row click opens the article (native links and text selection win).
+  document.querySelectorAll('.articles').forEach(list => {
+    list.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      const row = e.target.closest('.article');
+      if (!row) return;
+      const sel = window.getSelection();
+      if (sel && !sel.isCollapsed) return;
+      const link = row.querySelector('.a-headline');
+      if (link) window.open(link.href, '_blank', 'noopener');
+    });
+  });
 })();
 </script>
 </body></html>
