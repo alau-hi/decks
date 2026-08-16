@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS dwell_sessions (
   deck    text NOT NULL DEFAULT 'superwood',
   viewer  text NOT NULL,
   totals  jsonb NOT NULL DEFAULT '{}'::jsonb,
+  scr     jsonb,
   ua      text DEFAULT '',
   ip      text DEFAULT '',
   city    text DEFAULT '',

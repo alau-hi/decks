@@ -482,8 +482,11 @@ const LOG=[
  {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Draw runs under Reduce Motion',slides:[9],req:'Force the cost-line animation even when Reduce Motion is on.',items:[
   ['The chart draw now runs regardless of the OS Reduce Motion setting \u2014 a deliberate exception for gentle, informative motion; every other deck animation still honors the setting','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Portrait chart geometry',slides:[9],req:'Portrait vertical scaling didn\u2019t match the desktop chart \u2014 the SUPERWOOD line started far too high; it should begin much closer to steel even at SuperMill One.',items:[
-  ['Portrait line re-plotted to the desktop chart\u2019s proportions: starts 70% of the way from stainless toward steel, crosses into the steel band at SuperMill Two, ends below it at ChipMill; steel band moved to the matching height','']]}
-];
+  ['Portrait line re-plotted to the desktop chart\u2019s proportions: starts 70% of the way from stainless toward steel, crosses into the steel band at SuperMill Two, ends below it at ChipMill; steel band moved to the matching height','']]},
+ {iso:'2026-08-16',date:'Aug 16',topic:'Analytics',title:'Postgres branch resync',slides:[],req:'Update the Postgres branch to the latest deck; carry the new screen-size tracking into the database.',items:[
+  ['Two weeks of deck work merged into the Postgres branch (/intro URL, press page, device analytics)',''],
+  ['Screen/viewport capture (scr) stored in its own database column; device & format cards read it from Postgres',''],
+  ['Database rebuilt from the live records \u2014 all history through today, including screen sizes','']]}
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
    (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */

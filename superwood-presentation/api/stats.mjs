@@ -84,7 +84,7 @@ export default async function handler(req, res) {
 
   const [signupRows, dwellRows] = await Promise.all([
     sql`SELECT email, ts, ua, ip, city, country, lat, lon FROM signups WHERE deck = ${DECK}`,
-    sql`SELECT session, viewer, totals, ua, ip, city, country, lat, lon, ts FROM dwell_sessions WHERE deck = ${DECK}`,
+    sql`SELECT session, viewer, totals, scr, ua, ip, city, country, lat, lon, ts FROM dwell_sessions WHERE deck = ${DECK}`,
   ]);
   // Rows carry the same fields the blobs did; normalize timestamps back to
   // the ISO strings the aggregation below compares lexicographically.

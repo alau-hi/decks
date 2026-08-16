@@ -84,8 +84,8 @@ for (const b of dwellBlobs) {
   const d = await fetchJson(b.url);
   if (!d?.session || !d.viewer) continue;
   await sql`
-    INSERT INTO dwell_sessions (session, deck, viewer, totals, ua, ip, city, country, lat, lon, ts)
-    VALUES (${d.session}, ${DECK}, ${d.viewer}, ${JSON.stringify(d.totals || {})}::jsonb, ${d.ua || ''}, ${d.ip || ''}, ${d.city || ''}, ${d.country || ''}, ${d.lat ?? null}, ${d.lon ?? null}, ${d.ts || null})
+    INSERT INTO dwell_sessions (session, deck, viewer, totals, scr, ua, ip, city, country, lat, lon, ts)
+    VALUES (${d.session}, ${DECK}, ${d.viewer}, ${JSON.stringify(d.totals || {})}::jsonb, ${d.scr ? JSON.stringify(d.scr) : null}::jsonb, ${d.ua || ''}, ${d.ip || ''}, ${d.city || ''}, ${d.country || ''}, ${d.lat ?? null}, ${d.lon ?? null}, ${d.ts || null})
     ON CONFLICT (session) DO NOTHING`;
 }
 console.log(`dwell sessions: ${dwellBlobs.length} blobs scanned`);

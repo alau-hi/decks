@@ -79,10 +79,10 @@ export default async function handler(req, res) {
     // Upsert on session: each flush overwrites the running totals, so repeat
     // beacons never double-count (same semantics as the old per-session blob).
     await sql`
-      INSERT INTO dwell_sessions (session, deck, viewer, totals, ua, ip, city, country, lat, lon, ts)
-      VALUES (${session}, ${DECK}, ${email}, ${JSON.stringify(clean)}::jsonb, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.ts})
+      INSERT INTO dwell_sessions (session, deck, viewer, totals, scr, ua, ip, city, country, lat, lon, ts)
+      VALUES (${session}, ${DECK}, ${email}, ${JSON.stringify(clean)}::jsonb, ${record.scr ? JSON.stringify(record.scr) : null}::jsonb, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.ts})
       ON CONFLICT (session) DO UPDATE SET
-        viewer = EXCLUDED.viewer, totals = EXCLUDED.totals, ua = EXCLUDED.ua, ip = EXCLUDED.ip,
+        viewer = EXCLUDED.viewer, totals = EXCLUDED.totals, scr = COALESCE(EXCLUDED.scr, dwell_sessions.scr), ua = EXCLUDED.ua, ip = EXCLUDED.ip,
         city = EXCLUDED.city, country = EXCLUDED.country, lat = EXCLUDED.lat, lon = EXCLUDED.lon, ts = EXCLUDED.ts`;
   } catch (err) {
     console.log('deck-dwell write failed:', JSON.stringify(record), err.message);
