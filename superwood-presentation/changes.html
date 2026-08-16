@@ -165,7 +165,7 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
 <body>
 <div id="wm" aria-hidden="true"></div>
 <header><div class="hin">
-  <h1><a href="/" title="Open the deck">SUPERWOOD Deck</a> — <em>Changes</em></h1>
+  <h1><a href="/intro" title="Open the deck">SUPERWOOD Deck</a> — <em>Changes</em></h1>
   <button class="btn" id="openModal">Request a change</button>
   <button id="songbtn" class="vinylbtn" title="Mute / unmute music" aria-label="Mute or unmute music">
     <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
@@ -349,7 +349,141 @@ const LOG=[
   ['Popup opening animated: backdrop fades, panel rises and settles (both versions, reduced-motion aware)','40a1741'],
   ['Popup auto-closes when the pointer leaves it (450ms grace period)','04386f4']]},
  {iso:'2026-07-22',date:'Jul 22',topic:'Content',title:'Slide-3 popup pruning',slides:[3],req:'Remove the sand-wars references from the human-health popup.',items:[
-  ['Sand-wars reference removed from the human-health popup (both versions) — it lives in the \u201csand wars\u201d hover tooltip instead','17ac33d']]}
+  ['Sand-wars reference removed from the human-health popup (both versions) — it lives in the \u201csand wars\u201d hover tooltip instead','17ac33d']]},
+ {iso:'2026-08-05',date:'Aug 5',topic:'Imagery',title:'Slide-6 cutout photos',slides:[6],req:'Remove the black backgrounds behind the slide-6 images; show the full SUPERWOOD pieces with no cropped sides; regenerate the input wood at higher resolution.',items:[
+  ['Feedstock and SUPERWOOD photos rebuilt as transparent cutouts floating on the slide (dark tiles removed, soft drop shadow)',''],
+  ['SUPERWOOD stack recomposed so every board is fully in frame; feedstock regenerated at 4K via Higgsfield','eb8d654'],
+  ['Feedstock re-rendered shadow-free to eliminate the residual light halo under the boards','056ba14'],
+  ['SUPERWOOD cutout defringed — matte eroded inward to remove the white edge halo','8789e04'],
+  ['Cutouts scaled back up to the prior deck\u2019s visual size; the SUPERWOOD stack now bleeds outside its column box','f380a76'],
+  ['Column captions and the descriptions under Ordinary Wood / SUPERWOOD enlarged; feedstock image dropped to align its top with the SUPERWOOD stack','67f727c'],
+  ['Conversion-step titles enlarged; SUPERWOOD stack trimmed slightly while still bleeding past its box','f7b4ea8'],
+  ['Column captions (Feedstock / Conversion Technology / Output) reduced back down','6945710'],
+  ['Species & form flexible pill removed — the claim already lives bolded under Ordinary Wood','d676d11'],
+  ['Remaining three pills moved from the slide footer to directly below the conversion-technology steps','0c9670a'],
+  ['Ordinary Wood and SUPERWOOD titles enlarged to 1.9rem','8bf35ea'],
+  ['SUPERWOOD stack now paints in front of the Compression & Densification card where it bleeds over it','83ebb28']]},
+ {iso:'2026-08-05',date:'Aug 5',topic:'Diagrams',title:'Animated cost decline',slides:[9],req:'Animate the cost graph line to give the feel of a cost decline.',items:[
+  ['The SUPERWOOD cost line now draws itself left-to-right over 2.4s when the slide enters, with each mill milestone popping in as the line passes and the phone variant\u2019s area fill fading up behind it; static under reduced motion','29111ee']]},
+ {iso:'2026-08-09',date:'Aug 9',topic:'Imagery',title:'Alex Lau headshot',slides:[11],req:'Replace the Alex Lau photo with the higher-res Howe Sound image from the assets folder.',items:[
+  ['Team photo upgraded from a 162px thumbnail to a 700px crop of the 4K Howe Sound original, same framing','97a9402'],
+  ['Swapped to the retouched howesound3 version of the shot','fee9ced'],
+  ['Crop tightened so the face reads larger in the team grid','d94d009'],
+  ['Jack Winterowd photo upgraded to the enhanced high-res version','991f661'],
+  ['Alex crop recentered so the head sits higher in the frame','c916304'],
+  ['Alex crop nudged so the eyes sit on the horizontal centerline',''],
+  ['Mockup: slide-6 SUPERWOOD label set in the brand wordmark (Gotham/Montserrat 900) at label scale, contrasting the Fraunces Ordinary Wood','8e996d4'],
+  ['Alex headshot raised further in the frame','a848948'],
+  ['Slide-6 SUPERWOOD wordmark enlarged to match Ordinary Wood\u2019s visual height','247833e'],
+  ['Ordinary Wood and SUPERWOOD titles vertically aligned across the columns','d2591d9'],
+  ['Don Davies bio revised: MKA described as America\u2019s most highly-awarded structural-engineering firm behind tech-giant headquarters and tall buildings worldwide','d16b232'],
+  ['All ten bio popups reformatted from prose paragraphs to name-role header plus one credential per line','24ab25a'],
+  ['Bullet glyphs replaced with the deck\u2019s own em-dash list marker (as in the sources popup) after a design pass judged the diamonds generic','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Navigation',title:'Critique fixes',slides:[],req:'Fix the critique\u2019s priority issues 2, 3 and 6: unreliable long jumps, the sequential preload gate, and hover-only content.',items:[
+  ['Long-range jumps are now reliable: snap is lifted for the ride and jumps of 3+ slides land instantly instead of fighting scroll-snap',''],
+  ['Preload gate is per-slide: each slide waits only on its own images, and jumping to an unloaded slide loads it on demand with the pill showing',''],
+  ['Keyboard access: team/advisor cards are focusable and open their bios on focus; the sand-wars tooltip opens on focus too','a7ce3f0'],
+  ['Bio popups reformatted once more: markers dropped, whitespace alone separates the credential blocks','2640114'],
+  ['Advisors heading emphasized; titles updated (Chief Operating Officer, Chief Science Officer, Chief Information Officer, VP Materials Engineering), Co-Founder capitalization, header periods dropped, Jiaqi\u2019s degree listed last in card and popup','eba048a'],
+  ['Copy: Jonathan 3\u00d7 CEO / co-founded the Inc. 5000 manufacturer; Don Davies now \u201cengineer of record\u201d; slide 7 softened to \u201cAs strong as steel\u201d','4d97455'],
+  ['Liangbing Hu\u2019s title split onto two lines (Founder & Inventor / Director, Center for Materials Innovation, Yale)','ad692ec'],
+  ['Slide 7 claim: \u201cAs strong as steel\u201d shortened to \u201cStrong as steel\u201d','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Legibility',title:'IP-stats font sizing',slides:[12],req:'The three stat-card numbers and labels on slide 12 should be larger and more legible.',items:[
+  ['Stat numbers enlarged 2.4rem \u2192 2.9rem, labels .78rem \u2192 .95rem on desktop','42e0bdf'],
+  ['Stat type given px floors via clamp() at every breakpoint, so shrinking the window can no longer scale the numbers and labels into illegibility (labels held at 13px on a 900px window instead of collapsing to 10px)','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Audit',title:'Audit fixes (all five)',slides:[9],req:'Take all five recommended actions from the impeccable audit; keep slide-12 style legibility as screens shrink. Slide-9 phone graph was out of proportion, line misplaced, not animating.',items:[
+  ['Keyboard focus rings added deck-wide (:focus-visible) \u2014 previously there were none, a WCAG 2.4.7 failure worsened by the newly focusable bio cards',''],
+  ['Text legibility floored across every slide: visible sub-11px elements cut from 182 to 18 at 375px, smallest text 6.9px \u2192 9.5px',''],
+  ['Nav dots given a 36\u00d724px invisible hit area (WCAG 2.5.8) and more breathing room',''],
+  ['Investors label contrast raised to pass AA; progress bar animates transform instead of width',''],
+  ['Slide-9 phone chart rebuilt on a taller viewBox (1000\u00d7340 \u2192 1000\u00d7620) so it is no longer crushed to 112px; mill tiles span the full card so captions stop colliding',''],
+  ['Cost-line reveal now guarded by a .js class so a failed observer can never leave the line invisible',''],
+  ['Polish: single h1, absolute og:image/twitter:image for link previews, three !important declarations removed, buzzword copy replaced','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Phone fixes round 2',slides:[6,7,9],req:'Cost line missing on mobile; slide 9 taller than the screen; slide 7 too big; rotation changes the slide; keep the tech slide\u2019s laptop layout in landscape; image captions may be smaller; drop the top progress line.',items:[
+  ['Fixed the missing SUPERWOOD cost line: the new .js reveal guard outranked the reduced-motion reset, so anyone with Reduce Motion enabled saw no line at all',''],
+  ['Slide 9 now fits one screen (997px \u2192 833px at 375\u00d7812): shorter chart viewBox, smaller mill tiles and captions, tighter card chrome',''],
+  ['Slide 7 and every slide now size to 100dvh, so iOS no longer adds the URL-bar strip to each slide\u2019s height',''],
+  ['Rotating the phone keeps you on the same slide instead of jumping',''],
+  ['Landscape phone keeps the tech slide\u2019s three-column laptop layout, shrinking type rather than reflowing',''],
+  ['Removed the progress indicator line at the top of the screen','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Phone fixes round 3',slides:[6,9],req:'Landscape tech slide: FEEDSTOCK label overlapping the image, and the claim bubbles were bigger than the step titles. Cost roadmap still too tall; move its icons right in landscape; remove the odd shading under the cost line in portrait.',items:[
+  ['Landscape tech slide: image cutouts no longer scale past their boxes, so the FEEDSTOCK label stops overlapping the photo',''],
+  ['Claim bubbles shrunk below the step titles, which were enlarged \u2014 the three conversion steps now get the extra room',''],
+  ['Removed the gradient area fill under the SUPERWOOD cost line; it implied area-under-curve, which means nothing for a cost line',''],
+  ['Cost roadmap now fits exactly one screen in portrait (997px \u2192 812px) after compressing the chart and card chrome',''],
+  ['Landscape cost roadmap puts each mill\u2019s icons to the right of its copy so the text gets the width','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Landscape round 4',slides:[6,7,9,10],req:'Narrow the tech slide\u2019s middle column; landscape: no Confidential marker, bigger Strong-as-steel, divider left on slide 7; cost roadmap still too tall with ragged icons; badges on one row; fill the dead corner on Traction.',items:[
+  ['Tech slide middle column narrowed (1.6fr \u2192 1.35fr) on desktop and landscape; claim pills tightened so they hold one row',''],
+  ['Landscape phones: Confidential marker hidden everywhere \u2014 there is no spare height it can occupy without covering content',''],
+  ['Slide 7 landscape: claims enlarged (1.05 \u2192 1.35rem) and the divider moved left, giving the properties panel the larger share',''],
+  ['Cost roadmap landscape now fits exactly one screen (533 \u2192 390px): tighter cards, the four-tile set folds to a neat 2\u00d72 block beside the text',''],
+  ['Traction landscape: stat cards stretch to the photo column\u2019s full height, filling the dead bottom-left corner','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Landscape round 5',slides:[5,6,10,12],req:'Bigger fonts on the shipping and IP slides in landscape; tech-slide center column narrower still; the Prof. Hu slide should fill the landscape screen better.',items:[
+  ['Traction: headline and stat numbers/labels enlarged in landscape',''],
+  ['IP slide: notes, callout and stat cards enlarged; donut chart trades a little size so the slide still fits one screen',''],
+  ['Tech slide landscape center column narrowed again (1.35 \u2192 1.15 share)',''],
+  ['Prof. Hu slide fills landscape: larger portrait beside the name, bigger headline, lead, credentials and chart \u2014 every landscape slide still fits one screen','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Landscape round 6',slides:[7,9],req:'Introducing SUPERWOOD: larger right-side icons and text in landscape; restore \u201cStronger than steel\u201d everywhere; confidential notice on the cost slide.',items:[
+  ['Property icons ~40% larger and titles/descriptions floored bigger on the SUPERWOOD slide in landscape; right column widened',''],
+  ['Claim restored to \u201cStronger than steel.\u201d on all layouts',''],
+  ['Confidential marker restored in landscape as a compact pill (was hidden entirely), visible on the cost slide and all others; claims text clears it','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Phone fixes: brand, cost animation, mill pairs',slides:[9],req:'InventWood mark missing bottom-right on phones; SUPERWOOD cost animation not working on the phone; SuperMill Two images should read Sawn Timber \u2192 SUPERWOOD Board, Veneer \u2192 SUPERWOOD Veneer.',items:[
+  ['InventWood wordmark restored on phones (portrait and landscape) as a compact backdrop pill bottom-right \u2014 it had been hidden entirely',''],
+  ['Cost-line animation rebuilt in JS from the measured path length \u2014 Safari mishandles pathLength-normalized dashes, which left iPhones with no line and no animation; a timed fallback guarantees the final solid line',''],
+  ['Reduced-motion users now get a gentle fade-in instead of a dead chart',''],
+  ['SuperMill Two tiles reordered pairwise on phones (timber \u2192 board, veneer \u2192 veneer, two arrows); desktop keeps its original grouping','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Landscape mill captions',slides:[9],req:'On phone landscape the mill-tile labels in the middle section run together.',items:[
+  ['Landscape 2\u00d72 mill tiles widened (26px \u2192 43px cells) with contained, wrapping captions \u2014 measured zero collisions and zero overflow; tiles pair timber+board / veneer+veneer per row with arrows off','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Landscape tile arrows',slides:[9],req:'SUPERWOOD must never split across lines; the mill tiles should show arrows from feedstock to output.',items:[
+  ['Feedstock \u2192 output arrows restored inside the landscape tile pairs (both SuperMill Two rows)',''],
+  ['Word-splitting disabled in tile captions everywhere \u2014 SUPERWOOD wraps between words only, verified against rendered line boxes','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Landscape card typography',slides:[9],req:'Make the mill-card fonts smaller so the formatting fits more nicely and elegantly.',items:[
+  ['Landscape mill cards tightened: body, year, location and output-badge type scaled down a step so the cards read cleanly beside their tile pairs','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Portrait cost slide overhaul',slides:[9],req:'Vertical alignment wrong on the phone; cost-line animation not happening; captions off-center; SuperMill Two images should stack to give words more room and keep card height down.',items:[
+  ['Portrait cost slide now fits exactly one screen (was 185px over): compacted cards, capped chart width, tighter paddings',''],
+  ['SuperMill Two pairs stacked \u2014 timber\u2192board over veneer\u2192veneer \u2014 freeing horizontal space for the card text',''],
+  ['Tile captions center under their images via symmetric overhang (measured 0px offset)',''],
+  ['Cost line re-draws after rotation or slide arrival, so the animation can no longer be lost by viewing order \u2014 verified drawing 636\u21920 on fresh arrival','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Caption and pill consistency',slides:[9],req:'Label fonts must be the same size under all mill images; the pill text at the bottom of the landscape cost slide is not vertically centered.',items:[
+  ['All eight tile captions render at one size per layout \u2014 the per-variant shrinks are gone (verified: a single computed size, all centered)',''],
+  ['Feedstock pills are flex-centered \u2014 measured identical 4.4px gaps above and below the text in every pill','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Content',title:'ASTM A36 footnote',slides:[7],req:'Add an asterisk to \u201cStronger than steel\u201d indicating the steel is ASTM A36.',items:[
+  ['Superscript asterisk on the claim with a quiet \u201c* ASTM A36 structural steel\u201d footnote beneath the claims block','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Landscape caption containment',slides:[9],req:'SUPERWOOD still not centered under the SuperMill One image in landscape; it must not bleed past the card edge.',items:[
+  ['Landscape tile cells widened to hold the unsplittable SUPERWOOD word; caption bleed removed in landscape \u2014 every caption measures centered within 1px and inside its card','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Desktop',title:'Laptop cost-slide fixes',slides:[9],req:'Cost animation not working on the laptop; bottom pills overlap CONFIDENTIAL.',items:[
+  ['Pill word-spacing restored (the flex centering was eating spaces around bold text \u2014 the likely \u201cbroken\u201d look); centering kept via uniform line-height',''],
+  ['CONFIDENTIAL gets its backdrop pill on desktop too, and short laptop windows (\u2264800px tall) get a compressed cost slide that fits without scrolling \u2014 verified 720/720 fit with no pill overlap',''],
+  ['Line animation verified drawing 681\u21920 on desktop \u2014 if it still looks static on the laptop, it may be macOS Reduce Motion, where the chart intentionally shows complete with a fade','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Cost animation, Safari-proof round 2',slides:[9],req:'The cost-line animation still is not working on the phone.',items:[
+  ['Line draw rewritten from the Web Animations API to a plain CSS transition \u2014 Safari can reject WAAPI keyframes on SVG stroke properties, and that rejection was also what could leave the line hidden',''],
+  ['Failsafe now schedules before anything risky: no matter what, the line ends solid within ~3.4s of the slide revealing','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Cost animation \u2014 the real fix',slides:[9],req:'User diagnosis: the line is already in the graph before the animation draws it again, so it never looks like anything happens. Also: the portrait chart should be bigger with labels at least as large as the card text.',items:[
+  ['User called it: since the JS rewrite the line was fully visible on load, so the draw redrew what you had already seen \u2014 the line is now hidden until its draw starts and appears stroke-by-stroke',''],
+  ['The draw also replays each time the slide re-enters view instead of once per page load',''],
+  ['Portrait chart now fills the content width (nearly 2\u00d7 wider, taller viewBox) with labels at 11\u201312.5px \u2014 larger than the card text','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Draw stability on iPhone',slides:[9],req:'The line draws twice; on iPhone portrait the milestone dots don\u2019t show up.',items:[
+  ['Both traced to Safari\u2019s URL-bar resize making the slide flicker \u201cout of view\u201d mid-animation \u2014 cancelling the dot pops and restarting the line draw',''],
+  ['Slide-exit resets are now debounced 600ms and a 4s cooldown stops any re-trigger from restarting a draw in progress \u2014 verified a single clean draw with dots intact under a simulated mid-draw resize','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'One-trigger cost animation',slides:[9],req:'The line still drew twice \u2014 once quickly line-only, then slowly with dots. Portrait: dates should share the title row; the $/m\u00b3 label sat too far from the y-axis.',items:[
+  ['Animation system simplified to a single trigger: the slide\u2019s first reveal draws once per page load \u2014 the competing resize/scroll/replay triggers and the pathLength attribute (which skews dash math per engine, the likely ghost draw) are all removed',''],
+  ['Both charts resolve on first draw, so rotating after viewing shows a solid line instead of a hidden one',''],
+  ['Portrait mill dates moved onto the title row, reclaiming a row of card height',''],
+  ['Portrait chart\u2019s cost-per-m\u00b3 label now sits 9px off the y-axis','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Safari draw start + card baselines',slides:[9],req:'Animation works on the laptop but not the phone in either orientation; portrait card title/date/SF-YR don\u2019t line up.',items:[
+  ['Safari can commit a transition and its target value in the same frame and jump straight to the end \u2014 the draw now flushes its start value via computed style and waits a full frame before moving, the standard fix',''],
+  ['Portrait mill-card title, date and output number aligned on one shared baseline (measured identical bottoms)','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Card headers + tweened draw',slides:[9],req:'Dates horizontally aligned across cards; titles as large as the SF/YR figures; the animation still doesn\u2019t work on the phone.',items:[
+  ['Line draw moved off CSS transitions entirely to a requestAnimationFrame tween \u2014 the same mechanism as the deck\u2019s count-ups, immune to engine transition quirks',''],
+  ['Portrait card headers rebuilt as three columns: title (1.3rem, matching the figure scale), date right-aligned at the same x across all cards, output figure \u2014 collision-free with shared baselines','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Phone animation: case closed',slides:[9],req:'Animation worked on the laptop but never on the phone.',items:[
+  ['Root cause found via the new ?debug readout: the phone has iOS Reduce Motion enabled, and the deck honors it by fading the completed chart in \u2014 the accessibility-correct behavior, kept as designed',''],
+  ['The ?debug flag remains available for future field diagnosis (invisible without the flag)','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Draw runs under Reduce Motion',slides:[9],req:'Force the cost-line animation even when Reduce Motion is on.',items:[
+  ['The chart draw now runs regardless of the OS Reduce Motion setting \u2014 a deliberate exception for gentle, informative motion; every other deck animation still honors the setting','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Portrait chart geometry',slides:[9],req:'Portrait vertical scaling didn\u2019t match the desktop chart \u2014 the SUPERWOOD line started far too high; it should begin much closer to steel even at SuperMill One.',items:[
+  ['Portrait line re-plotted to the desktop chart\u2019s proportions: starts 70% of the way from stainless toward steel, crosses into the steel band at SuperMill Two, ends below it at ChipMill; steel band moved to the matching height','']]}
+];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
    (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */

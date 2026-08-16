@@ -1,5 +1,11 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/", "destination": "/intro", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/intro", "destination": "/" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

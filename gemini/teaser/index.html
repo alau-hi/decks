@@ -224,7 +224,6 @@
       justify-content: center;
       box-sizing: border-box;
       overflow-y: auto;
-      position: relative;
     }
 
     .slide::before {
@@ -2156,10 +2155,10 @@
         return;
       }
       playTickSound(300, 0.05, 'triangle');
-      document.startViewTransition({
-        update: updateDOM,
-        types: [direction]
-      });
+      const transition = document.startViewTransition(updateDOM);
+      if (direction && transition.types) {
+        transition.types.add(direction);
+      }
     }
 
     function updateUI() {

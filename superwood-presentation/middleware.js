@@ -2,7 +2,7 @@ import { next, rewrite } from '@vercel/edge';
 
 // Paths reachable without authentication. og-cover.jpg stays open so link
 // previews render in email clients and chat apps.
-const OPEN_PATHS = new Set(['/gate', '/gate.html', '/api/enter', '/favicon.ico', '/assets/og-cover.jpg']);
+const OPEN_PATHS = new Set(['/gate', '/gate.html', '/api/enter', '/favicon.ico', '/assets/og-cover.jpg', '/press', '/press.html']);
 
 const enc = new TextEncoder();
 async function hmacHex(data, secret) {
@@ -35,6 +35,15 @@ export default async function middleware(req) {
   const path = url.pathname;
   if (OPEN_PATHS.has(path) || path.startsWith('/_vercel/')) return next();
 
+  // Canonical deck URL is /intro. Fallback in case platform routing order
+  // ever changes — in practice vercel.json's redirect wins (307) before the
+  // middleware runs, so this branch stays dormant on Vercel.
+  if (path === '/') {
+    const dest = new URL(url);
+    dest.pathname = '/intro';
+    return Response.redirect(dest, 302);
+  }
+
   const token = getCookie(req, 'sw_auth');
   if (token) {
     const parts = token.split('.');
@@ -55,7 +64,7 @@ export default async function middleware(req) {
         }
         // Keep the viewer identity on the URL so the deck's per-slide
         // analytics (?v=) attribute return visits too.
-        if (path === '/' && !url.searchParams.has('v')) {
+        if (path === '/intro' && !url.searchParams.has('v')) {
           try {
             const dest = new URL(url);
             dest.searchParams.set('v', b64urlDecode(emailB64));

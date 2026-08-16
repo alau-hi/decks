@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUPERWOOD — InventWood</title>
+<title>InventWood Introduction</title>
 <meta name="description" content="Reinventing wood to herald a new Age of Wood. Now shipping SUPERWOOD — beautiful, durable, stronger than steel.">
 <!-- Open Graph / link preview (cover slide). Replace the two absolute URLs below with your live domain for best previews. -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="SUPERWOOD — InventWood">
 <meta property="og:description" content="Reinventing wood to herald a new Age of Wood. Now shipping SUPERWOOD — beautiful, durable, stronger than steel.">
-<meta property="og:image" content="assets/og-cover.jpg">
+<meta property="og:image" content="https://investor.inventwood.net/assets/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SUPERWOOD — InventWood">
 <meta name="twitter:description" content="Reinventing wood to herald a new Age of Wood. Now shipping SUPERWOOD — stronger than steel.">
-<meta name="twitter:image" content="assets/og-cover.jpg">
+<meta name="twitter:image" content="https://investor.inventwood.net/assets/og-cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
@@ -35,9 +35,9 @@ html{font-size:clamp(11.5px,.55vw + .55vh + 4.5px,32px)}
 @media (pointer:fine){html{font-size:clamp(6px,min(.55vw + .55vh + 4.5px,1.19vw),32px)}}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.deck{height:100vh;height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
 .deck::-webkit-scrollbar{width:0}
-section{min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;padding:7vh 6vw;overflow:hidden}
+section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;padding:7vh 6vw;overflow:hidden}
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
 
 h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01em;line-height:1.04}
@@ -53,18 +53,23 @@ h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01
 .in .bg{transition:transform 9s ease-out;transform:scale(1.12)}
 .scrim{position:absolute;inset:0;z-index:1}
 
-#prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:linear-gradient(90deg,var(--wood-deep),var(--wood-bright));transition:width .15s linear}
 .brand{position:fixed;bottom:20px;right:2.125rem;z-index:90;height:18px;opacity:.85;transition:opacity .4s}.brand img{height:100%}
-.conf{position:fixed;bottom:20px;left:2.125rem;z-index:90;font-size:.62rem;letter-spacing:.32em;color:var(--muted);text-transform:uppercase;transition:opacity .4s}
+.conf{position:fixed;bottom:20px;left:2.125rem;z-index:90;font-size:clamp(9.5px,.62rem,.76rem);letter-spacing:.32em;color:var(--muted);background:rgba(20,13,7,.72);padding:.3em .8em;border-radius:999px;backdrop-filter:blur(3px);text-transform:uppercase;transition:opacity .4s}
 /* the cover already carries the wordmark in the hero art — hide the fixed chrome there */
 body.on-cover .brand,body.on-cover .conf{opacity:0;pointer-events:none}
-nav.dots{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:9px}
+nav.dots{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:13px}
+/* invisible 36x24 hit area so the small numerals still meet WCAG 2.5.8 target size */
+nav.dots button::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:24px}
 nav.dots button{border:none;background:transparent;cursor:pointer;padding:1px 2px;font-family:'Inter',sans-serif;font-weight:500;font-size:.6rem;line-height:1;letter-spacing:.1em;font-variant-numeric:tabular-nums;color:var(--muted);opacity:.5;transition:color .25s,opacity .25s;position:relative}
 nav.dots button:hover{color:var(--cream);opacity:1}
+/* keyboard focus: visible for keyboard users, never on mouse click (WCAG 2.4.7) */
+:focus-visible{outline:2px solid var(--wood-bright);outline-offset:3px;border-radius:3px}
+.person:focus-visible,.advc:focus-visible{outline-offset:4px;border-radius:10px}
+nav.dots button:focus-visible,a:focus-visible{outline-offset:2px}
 nav.dots button.active{color:var(--wood-bright);opacity:1;font-weight:600}
 nav.dots button span{position:absolute;right:calc(100% + 8px);top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);opacity:0;pointer-events:none;transition:opacity .25s}
 nav.dots button:hover span{opacity:1}
-.scrollcue{position:absolute;bottom:1.875rem;left:50%;transform:translateX(-50%);z-index:5;font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;color:var(--cream-dim);display:flex;flex-direction:column;align-items:center;gap:8px}
+.scrollcue{position:absolute;bottom:1.875rem;left:50%;transform:translateX(-50%);z-index:5;font-size:clamp(10px,.66rem,.8rem);letter-spacing:.25em;text-transform:uppercase;color:var(--cream-dim);display:flex;flex-direction:column;align-items:center;gap:8px}
 .scrollcue::after{content:"";width:1px;height:2.125rem;background:linear-gradient(var(--wood-bright),transparent);animation:drop 1.8s infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
@@ -119,7 +124,7 @@ nav.dots button:hover span{opacity:1}
 .vs{display:flex;align-items:stretch;margin-top:2rem;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
 .vs .side{flex:1;padding:1.6rem;background:rgba(255,255,255,.02)}
 .vs .side.win{background:linear-gradient(180deg,rgba(196,122,53,.18),rgba(196,122,53,.05))}
-.vs .lab{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim)}
+.vs .lab{font-size:clamp(11px,.72rem,.88rem);letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim)}
 .vs .num{font-family:'Fraunces';font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:300;line-height:1;margin:.5rem 0}
 .vs .win .num{color:var(--wood-bright)}
 .vs .unit{font-size:.85rem;color:var(--muted)}
@@ -134,14 +139,17 @@ nav.dots button:hover span{opacity:1}
 .creds li b{color:var(--cream)}
 
 /* TECHNOLOGY (slide 6) */
-.tech-flow{display:grid;grid-template-columns:.8fr 1.6fr .8fr;gap:1.6rem;align-items:start;margin-top:2rem}
-.tech-flow .cap{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.8rem}
+.tech-flow{display:grid;grid-template-columns:.9fr 1.35fr .9fr;gap:1.6rem;align-items:start;margin-top:2rem}
+.tech-flow .cap{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.8rem}
 .tech-mid .cap::before,.tech-end .cap::before{content:"→";margin-right:.5rem} /* flow cue: feedstock → conversion → output */
-.tech-img{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#0d0a07;aspect-ratio:1000/1072}
-.tech-img img{width:100%;height:100%;object-fit:cover;display:block}
-.tech-end .tech-img{background:radial-gradient(120% 100% at 50% 42%,#262422 0%,#100e0c 68%,#080807 100%)}
-.tech-end h3{font-family:'Fraunces';font-size:1.6rem;color:var(--wood-bright);margin-bottom:.6rem}
-.tech-end .small{font-size:.78rem;color:var(--cream-dim);line-height:1.5}
+.tech-img{aspect-ratio:1000/1072;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 14px 30px rgba(0,0,0,.45))}
+.tech-img img{width:100%;height:100%;object-fit:contain;display:block;transform:scale(1.16)}
+.tech-end .tech-img img{transform:scale(1.3)} /* cutouts carry internal air; scale to match the old cover-filled tiles, bleeding past the box */
+.tech-end .tech-img{position:relative;z-index:5} /* bleeding stack paints over the step cards */
+.tech-flow>.tech-col:first-child .tech-img{margin-top:2.15rem} /* drop the feedstock so its top aligns with the SUPERWOOD stack */
+
+.tech-end h3{font-family:'Gotham','Gotham Black','Montserrat',sans-serif;font-weight:900;font-size:1.78rem;letter-spacing:.05em;color:var(--wood-bright);margin-bottom:.6rem}
+.tech-end .small{font-size:.95rem;color:var(--cream-dim);line-height:1.5}
 .tech-mid{display:flex;flex-direction:column;gap:.7rem}
 .pstep{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;align-items:center;background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem}
 .pstep .diag{background:#17110b;border:1px solid rgba(220,185,130,.22);border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center;height:3.875rem}
@@ -149,26 +157,26 @@ nav.dots button:hover span{opacity:1}
 .pstep .diag img{max-width:100%;max-height:100%;object-fit:contain}
 .cmpanim{position:relative;display:block;width:100%;height:100%;overflow:hidden}
 .cmpanim img{position:absolute;left:0;width:100%;max-width:none;max-height:none;height:auto;display:block}
-.ca-top{top:0;height:33.74%!important;animation:caTop 16s ease-in-out infinite alternate}
-.ca-mid{top:33.74%;height:32.04%!important;transform-origin:50% 50%;animation:caMid 16s ease-in-out infinite alternate}
-.ca-bot{bottom:0;height:34.22%!important;animation:caBot 16s ease-in-out infinite alternate}
+.cmpanim img.ca-top{top:0;height:33.74%;animation:caTop 16s ease-in-out infinite alternate}
+.cmpanim img.ca-mid{top:33.74%;height:32.04%;transform-origin:50% 50%;animation:caMid 16s ease-in-out infinite alternate}
+.cmpanim img.ca-bot{bottom:0;height:34.22%;animation:caBot 16s ease-in-out infinite alternate}
 @keyframes caTop{to{transform:translateY(13.3%)}}
 @keyframes caMid{to{transform:scaleY(.72)}}
 @keyframes caBot{to{transform:translateY(-13.1%)}}
 @media (prefers-reduced-motion: reduce){.ca-top,.ca-mid,.ca-bot{animation:none}}
-.pstep h4{font-family:'Inter';font-weight:600;font-size:.82rem;letter-spacing:.02em;color:var(--cream);margin-bottom:.2rem}
+.pstep h4{font-family:'Inter';font-weight:600;font-size:.98rem;letter-spacing:.02em;color:var(--cream);margin-bottom:.2rem}
 .pstep p{font-size:.74rem;line-height:1.4;color:var(--cream-dim)}
-.feed-title{font-family:'Fraunces';font-size:1.6rem;color:var(--cream);margin-top:.7rem;margin-bottom:.4rem}
-.feed-meta{font-size:.78rem;color:var(--cream-dim);line-height:1.45}
-.badges{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.8rem}
-.badge{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem .9rem;border:1px solid var(--line);border-radius:1.875rem;color:var(--cream-dim)}
+.feed-title{font-family:'Fraunces';font-size:1.9rem;color:var(--cream);margin-top:.7rem;margin-bottom:.4rem}
+.feed-meta{font-size:.95rem;color:var(--cream-dim);line-height:1.45}
+.badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1.1rem}
+.badge{font-size:clamp(11px,.7rem,.85rem);letter-spacing:.08em;text-transform:uppercase;padding:.5rem .62rem;border:1px solid var(--line);border-radius:1.875rem;color:var(--cream-dim)}
 .badge b{color:var(--wood-bright)}
 
 /* SUPERWOOD intro (slide 7) */
 .sw-split{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(1.6rem,4vw,3.4rem);align-items:center;width:100%}
 /* Slide 7 full-bleed */
 #s7{padding:0;align-items:stretch;overflow:hidden}
-.sw7{display:flex;width:100%;min-height:100vh}
+.sw7{display:flex;width:100%;min-height:100vh;min-height:100dvh}
 .sw7-left{flex:1.5;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:7vh 4vw;background:#ddd5c6}
 .sw7-left .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
 .sw7-left::after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(18,13,8,.12) 0%,rgba(18,13,8,0) 32%,rgba(18,13,8,.66) 100%);z-index:1}
@@ -176,6 +184,8 @@ nav.dots button:hover span{opacity:1}
 .sw7-kicker{font-size:.78rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#fff;opacity:.88;margin-bottom:1rem}
 .sw7-title{font-family:'Gotham','Gotham Black','Montserrat',sans-serif;font-weight:900;font-size:clamp(3rem,7vw,6rem);line-height:.92;letter-spacing:.01em;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.28)}
 .sw7-tag{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.2rem,2.1vw,1.75rem);color:#fff;margin-top:.7rem;text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.sw7-claims .fnmark{font-weight:600;font-size:.6em;vertical-align:.5em;margin-left:.06em;color:var(--sand)}
+.sw7-claims .fnote{font-weight:400;font-size:clamp(9.5px,.68rem,.8rem);letter-spacing:.02em;color:var(--cream-dim);opacity:.85;margin-top:.6em;text-shadow:none}
 .sw7-claims{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(1.5rem,3vw,2.6rem);line-height:1.18;color:#f4ecdf;text-shadow:0 2px 18px rgba(0,0,0,.55)}
 .sw7-claims .hl{color:var(--wood-bright)}
 .sw7-right{flex:1;background:var(--ink2);display:flex;align-items:center;padding:4vh 2.8vw}
@@ -202,15 +212,15 @@ nav.dots button:hover span{opacity:1}
 
 /* MARKET (slide 8) */
 .market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:1.2rem}
-.mcol .ph{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);font-weight:600}
+.mcol .ph{font-size:clamp(11px,.7rem,.85rem);letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);font-weight:600}
 .mcol h3{font-family:'Inter';font-weight:600;font-size:1rem;margin:.35rem 0 .25rem}
 .mcol .sub{font-size:.74rem;color:var(--muted);margin-bottom:.9rem;line-height:1.35;min-height:2.4em}
-.mbox{font-size:.76rem;font-weight:500;padding:.5rem .75rem;border-radius:6px;margin-bottom:.4rem;color:#fff;line-height:1.25;transition:transform .2s}
+.mbox{font-size:clamp(11px,.76rem,.92rem);font-weight:500;padding:.5rem .75rem;border-radius:6px;margin-bottom:.4rem;color:#fff;line-height:1.25;transition:transform .2s}
 .mbox:hover{transform:translateX(4px)}
 .mbox.t1{background:var(--m100);color:#3a2616}.mbox.t5{background:var(--m50);color:#3a2616}.mbox.t10{background:var(--m10)}
 .mbox.t50{background:var(--m5)}.mbox.t100{background:var(--m1)}
 .legend{display:flex;align-items:center;gap:1rem;margin-top:1.2rem;flex-wrap:wrap}
-.legend .lab{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.legend .lab{font-size:clamp(10px,.68rem,.82rem);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .legend .scale{display:flex;flex:1;min-width:17.5rem;max-width:35rem;border-radius:6px;overflow:hidden;height:2.125rem;border:1px solid var(--line)}
 .legend .scale div{flex:1;display:flex;align-items:center;justify-content:center;font-family:'Fraunces';font-size:.8rem}
 .legend .scale .s1{background:var(--m100);color:#3a2616}.legend .scale .s5{background:var(--m50);color:#3a2616}.legend .scale .s10{background:var(--m10);color:#fff}
@@ -219,6 +229,15 @@ nav.dots button:hover span{opacity:1}
 /* ROADMAP (slide 9) */
 .costgraph{margin:.7rem 0 .3rem}
 .costgraph svg{width:100%;height:auto;display:block}
+/* cost-decline animation: line draws left-to-right, milestones pop as it passes, fill rises after */
+.js .costgraph .cg-line{opacity:0}
+.js .costgraph .cg-dot,.js .costgraph .cg-fill{opacity:0}
+/* the line is drawn by JS (getTotalLength) — Safari mis-scales pathLength-normalized dashes */
+section.in .costgraph .cg-dot.d1{animation:cgPop .45s ease .55s forwards}
+section.in .costgraph .cg-dot.d2{animation:cgPop .45s ease 1.6s forwards}
+section.in .costgraph .cg-dot.d3{animation:cgPop .45s ease 2.7s forwards}
+section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
+@keyframes cgPop{to{opacity:1}}
 .costgraph .cg-sm{display:none}
 .road{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:.8rem;align-items:stretch}
 .mill{border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.2rem;background:rgba(255,255,255,.02);position:relative}
@@ -226,22 +245,24 @@ nav.dots button:hover span{opacity:1}
 .mill.m-lg{background:linear-gradient(180deg,rgba(196,122,53,.12),rgba(255,255,255,.02));border-color:rgba(196,122,53,.4)}
 .out-badge{display:flex;align-items:baseline;gap:.5rem;margin:.1rem 0 .7rem;line-height:1}
 .out-badge .x{font-family:'Fraunces';font-weight:300;font-size:2.1rem;color:var(--wood-bright)}
-.out-badge .l{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.mill .yr{font-size:.72rem;letter-spacing:.14em;color:var(--wood-bright);text-transform:uppercase;font-weight:600}
+.out-badge .l{font-size:clamp(9.5px,.6rem,.74rem);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mill .yr{font-size:clamp(10.5px,.72rem,.88rem);letter-spacing:.14em;color:var(--wood-bright);text-transform:uppercase;font-weight:600}
 .mill h3{font-family:'Fraunces';font-size:1.5rem;margin:.3rem 0 .7rem}
-.mill p{font-size:.84rem;line-height:1.5;color:var(--cream-dim)}
+.mill p{font-size:clamp(11.5px,.84rem,1rem);line-height:1.5;color:var(--cream-dim)}
 .mill .tag{margin-top:.9rem;font-size:.72rem;color:var(--muted);border-top:1px solid var(--line);padding-top:.7rem}
 .mill-imgs{display:flex;align-items:flex-start;justify-content:center;gap:.55rem;height:6rem;margin-bottom:.6rem}
 .mcell{flex:0 0 auto;width:5.25rem;display:flex;flex-direction:column;align-items:center}
 .mtile{width:100%;background:radial-gradient(120% 135% at 50% 28%,#8a6a40 0%,#574022 55%,#3a2914 100%);border:1px solid rgba(220,185,130,.28);border-radius:9px;height:3.25rem;display:flex;align-items:center;justify-content:center;padding:4px;overflow:hidden;box-shadow:inset 0 -10px 16px -10px rgba(0,0,0,.5)}
 .mtile img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 3px 5px rgba(0,0,0,.5))}
 .mtile img[src*="cut-prod-board"]{width:100%;height:100%;object-fit:cover;object-position:50% 70%}
-.mcap{font-size:.6rem;text-align:center;margin-top:.34rem;color:var(--cream-dim);line-height:1.14;letter-spacing:.01em}
+.mcap{font-size:clamp(9.5px,.6rem,.74rem);overflow-wrap:normal;word-break:keep-all;width:calc(100% + .9rem);margin-left:-.45rem;margin-right:-.45rem;text-align:center;margin-top:.34rem;color:var(--cream-dim);line-height:1.14;letter-spacing:.01em}
 .mill-imgs .mar{color:var(--wood-bright);font-size:1.15rem;flex:none;align-self:flex-start;margin-top:18px}
-.mill-imgs.two{gap:.3rem}.mill-imgs.two .mcap{font-size:.55rem}
-.mill .loc{font-size:.74rem;color:var(--wood-bright);margin-top:.5rem;font-weight:500}
-.feedrow{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem;font-size:.78rem}
-.feedrow .f{padding:.5rem .9rem;border-radius:8px;border:1px solid var(--line);color:var(--cream-dim)}
+.mill-imgs.two{gap:.3rem}
+/* desktop keeps feeds together, one arrow, outputs together; phones flatten to pairwise order */
+.mill-imgs.two .o1{order:1}.mill-imgs.two .o2{order:2}.mill-imgs.two .mar-a{order:3}.mill-imgs.two .o4{order:4}.mill-imgs.two .o5{order:5}.mill-imgs.two .mar-b{display:none}
+.mill .loc{font-size:clamp(10.5px,.74rem,.9rem);color:var(--wood-bright);margin-top:.5rem;font-weight:500}
+.feedrow{display:flex;flex-wrap:wrap;align-items:stretch;gap:.7rem;margin-top:1.1rem;font-size:clamp(11px,.78rem,.95rem)}
+.feedrow .f{display:inline-block;line-height:1.25;padding:.5em .9em;border-radius:8px;border:1px solid var(--line);color:var(--cream-dim)}
 .feedrow .f b{color:var(--wood-bright)}
 
 /* TRACTION (slide 10) */
@@ -256,7 +277,7 @@ nav.dots button:hover span{opacity:1}
 .tr-photo img{width:100%;display:block}
 .tr-cap{position:absolute;left:0;right:0;bottom:0;padding:1.4rem 1rem .7rem;font-size:.74rem;letter-spacing:.06em;color:var(--cream);background:linear-gradient(transparent,rgba(8,5,3,.85));font-weight:500}
 .partners{margin-top:1.4rem;background:#efe6d6;border-radius:14px;padding:1.2rem 1.4rem}
-.partners .ph{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:#8a7a5f;margin-bottom:.9rem;font-weight:600}
+.partners .ph{font-size:clamp(10.5px,.64rem,.8rem);letter-spacing:.18em;text-transform:uppercase;color:#bfae90;margin-bottom:.9rem;font-weight:600}
 .plogos{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem 1.2rem;align-items:center}
 .plogos img{width:100%;height:2.375rem;object-fit:contain;object-position:center}
 
@@ -266,7 +287,7 @@ nav.dots button:hover span{opacity:1}
 .person .pic{width:6rem;height:6rem;border-radius:50%;object-fit:cover;object-position:top center;margin-bottom:.9rem;border:2px solid var(--line);transition:filter .3s,border-color .3s}
 .person:hover .pic{filter:brightness(1.08);border-color:var(--wood)}
 .person .nm{font-family:'Fraunces';font-size:1.25rem;min-height:1.2em}
-.person .ro{font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--wood-bright);margin:.18rem 0 .45rem;min-height:2em}
+.person .ro{font-size:clamp(11px,.72rem,.88rem);letter-spacing:.07em;text-transform:uppercase;color:var(--wood-bright);margin:.18rem 0 .45rem;min-height:2em}
 .person .bi{font-size:.84rem;line-height:1.55;color:var(--cream-dim)}
 .person .hint{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:auto;padding-top:1rem;opacity:.7}
 /* slide-3 sources popup */
@@ -275,7 +296,7 @@ nav.dots button:hover span{opacity:1}
 .sw-tip b{color:var(--wood-bright)}
 .sw-tip a{color:var(--wood-bright);text-decoration:none;border-bottom:1px solid rgba(205,161,101,.4)}
 .sw-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#332314}
-.sw-ref:hover .sw-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.sw-ref:hover .sw-tip,.sw-ref:focus-within .sw-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
 .srcbtn{display:block;margin-top:1.1rem;margin-left:auto;width:max-content;background:rgba(184,125,68,.16);border:1px solid var(--wood);border-radius:1.875rem;color:var(--wood-bright);font-family:'Inter';font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.5em 1.2em;cursor:pointer;transition:color .25s,border-color .25s,background .25s}
 .srcbtn:hover{color:#1a1209;background:var(--wood-bright);border-color:var(--wood-bright)}
 #srcpop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:60;background:rgba(15,9,4,.38)}
@@ -297,8 +318,11 @@ nav.dots button:hover span{opacity:1}
 .srcclose:hover{color:var(--cream)}
 .bio-pop{position:absolute;left:0;right:0;bottom:calc(100% + 10px);background:#332314;border:1px solid var(--wood-deep);border-radius:12px;padding:1.1rem 1.2rem;font-size:.78rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 1.875rem 70px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .15s,transform .15s,visibility .15s;z-index:20;min-width:17.5rem}
 .bio-pop b{color:var(--wood-bright)}
+.bio-pop ul{list-style:none;margin:.65em 0 0;padding:0}
+.bio-pop li{margin-bottom:.65em;line-height:1.5} /* no markers — whitespace does the separating */
+.bio-pop li:last-child{margin-bottom:0}
 .bio-pop::after{content:"";position:absolute;top:100%;left:1.875rem;border:8px solid transparent;border-top-color:#332314}
-.person:hover .bio-pop,.advc:hover .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
+.person:hover .bio-pop,.advc:hover .bio-pop,.person:focus-within .bio-pop,.advc:focus-within .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
 /* team popups: open beside the card so they never cover the person's photo */
 /* team bios open right beside the photo (not the whole card) so they read as attached to the person */
 /* pointer-events:none so the popup never traps the cursor — hover is decided by the card alone, and moving off the card (even onto the popup) closes it */
@@ -306,13 +330,13 @@ nav.dots button:hover span{opacity:1}
 .team .person:last-child .bio-pop{left:auto;right:calc(100% + 10px)}
 @media(pointer:coarse) and (max-width:1080px){.team .person:nth-child(4) .bio-pop{left:auto;right:calc(100% + 10px)}}
 .team .bio-pop::after{display:none}
-.adv-head{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:2.6rem 0 1.4rem;border-top:1px solid var(--line);padding-top:1.6rem}
+.adv-head{font-size:.95rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);margin:2.6rem 0 1.4rem;border-top:1px solid var(--line);padding-top:1.6rem}
 .adv{display:grid;grid-template-columns:repeat(5,1fr);gap:1.3rem}
 .advc{display:flex;gap:.7rem;align-items:center;position:relative;cursor:default}
 .advc>img{width:4.25rem;height:4.25rem;border-radius:50%;object-fit:cover;flex-shrink:0;transition:transform .3s}
 .advc:hover>img{transform:scale(1.06)}
 .advc .nm{font-family:'Fraunces';font-size:1.08rem;line-height:1.1}
-.advc .ro{font-size:.74rem;color:var(--wood-bright);margin-top:.18rem;line-height:1.3}
+.advc .ro{font-size:clamp(11px,.74rem,.9rem);color:var(--wood-bright);margin-top:.18rem;line-height:1.3}
 .advc .bio-pop{min-width:18.75rem}
 
 /* IP (slide 12) */
@@ -325,8 +349,8 @@ nav.dots button:hover span{opacity:1}
 .ip-chart{display:flex;justify-content:center;align-items:center}
 .ipstats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.2rem}
 .ipstat{display:flex;align-items:center;gap:.9rem;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:.9rem 1.3rem}
-.ipstat .n{font-family:'Fraunces';font-weight:300;font-size:2.4rem;color:var(--wood-bright);line-height:1;flex:none}
-.ipstat .l{font-size:.78rem;color:var(--cream-dim);line-height:1.3}
+.ipstat .n{font-family:'Fraunces';font-weight:300;font-size:clamp(28px,2.9rem,3.2rem);color:var(--wood-bright);line-height:1;flex:none}
+.ipstat .l{font-size:clamp(13px,.95rem,1.1rem);color:var(--cream-dim);line-height:1.35}
 @media(pointer:coarse) and (max-width:980px){.ip-grid{grid-template-columns:1fr}.ipstats{grid-template-columns:1fr}}
 @media(pointer:coarse) and (max-width:700px){
   /* slide-9: large screen keeps the compact one-page graph; phones get the taller band graph so it is legible */
@@ -350,7 +374,7 @@ nav.dots button:hover span{opacity:1}
   #s6 .tech-col .tech-img{grid-column:1;grid-row:2/4}
   #s6 .tech-col h3{grid-column:2;grid-row:2;align-self:end;margin:0!important} /* feed/output titles carry inline top margins for the desktop columns */
   #s6 .tech-col .feed-meta,#s6 .tech-col .small{grid-column:2;grid-row:3;align-self:start}
-  #s6 .tech-mid .cap::before,#s6 .tech-end .cap::before{content:"↓"} /* stacked flow runs downward */
+  #s6 .tech-mid .cap::before,#s6 .tech-end .cap::before{content:"→"} /* stacked flow runs downward */
   #s6 .badges{margin-top:1rem}
 }
 @media(pointer:coarse) and (max-width:700px){
@@ -365,36 +389,47 @@ nav.dots button:hover span{opacity:1}
   #s8 .mcol{display:grid;grid-template-columns:repeat(2,1fr);gap:0 .5rem}
   #s8 .mcol .ph,#s8 .mcol h3,#s8 .mcol .sub{grid-column:1/-1}
   #s8 .mcol .sub{min-height:0;margin-bottom:.5rem}
-  #s8 .mbox{font-size:.68rem;padding:.4rem .55rem;margin-bottom:.35rem}
+  #s8 .mbox{font-size:clamp(11px,.68rem,.85rem);padding:.4rem .55rem;margin-bottom:.35rem}
   #s8 .legend{margin-top:.8rem}
   #s8 .legend .scale{height:1.7rem;min-width:0}
 }
 @media(pointer:coarse) and (max-width:700px){
   /* slide-9: mill cards read text on the left; capacity, dates and images on the right */
-  #s9 .wrap>p{font-size:.78rem!important;margin-top:.5rem!important}
-  #s9 .costgraph{margin:.4rem 0 .2rem}
-  #s9 .road{grid-template-columns:1fr;gap:.7rem;margin-top:.5rem}
-  #s9 .mill{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1rem;align-items:start;padding:.75rem .9rem}
-  #s9 .mill h3{font-size:1.25rem}
-  #s9 .mill p{font-size:.76rem;line-height:1.4}
-  #s9 .mill .loc{font-size:.66rem}
-  #s9 .out-badge .x{font-size:1.7rem}
-  #s9 .mill h3{grid-column:1;grid-row:1;margin:0 0 .3rem}
-  #s9 .mill p{grid-column:1;grid-row:2}
-  #s9 .mill .loc{grid-column:1;grid-row:3;margin-top:.4rem}
-  #s9 .mill .out-badge{grid-column:2;grid-row:1;margin:0;justify-self:end}
-  #s9 .mill .yr{grid-column:2;grid-row:2;justify-self:end;align-self:start;white-space:nowrap;margin-top:.15rem}
-  #s9 .mill .mill-imgs{grid-column:2;grid-row:3;height:auto;margin:0;justify-self:end;align-self:end}
+  #s9 .wrap>p{font-size:clamp(11.5px,.78rem,.95rem)!important;margin-top:.5rem!important}
+  #s9 .costgraph{margin:.35rem 0 .15rem}
+  #s9 .costgraph .cg-sm{max-width:none;margin:0}
+  #s9{padding-top:2vh;padding-bottom:2vh}
+  #s9 .mill{padding:.5rem .8rem}
+  #s9 .mill p{line-height:1.32}
+  #s9 h2{margin-bottom:.1rem;font-size:1.25rem!important}
+  #s9 .costgraph{margin:.35rem 0 .15rem}
+  #s9 .feedrow .f{padding:.22rem .45rem}
+  #s9 .road{grid-template-columns:1fr;gap:.35rem;margin-top:.25rem}
+  #s9 .mill{display:grid;grid-template-columns:auto minmax(0,1fr) 9.5rem;column-gap:.8rem;align-items:start;padding:.45rem .7rem}
+  #s9 .mill h3{font-size:1.3rem}
+  #s9 .mill p{font-size:clamp(10px,.66rem,.8rem);line-height:1.3}
+  #s9 .mill .loc{font-size:clamp(10px,.6rem,.76rem)}
+  #s9 .out-badge .x{font-size:1.45rem}
+  #s9 .mill{align-items:baseline}
+  #s9 .mill h3{grid-column:1;grid-row:1;margin:0 0 .3rem;align-self:baseline;white-space:nowrap}
+  #s9 .mill p{grid-column:1/3;grid-row:2}
+  #s9 .mill .loc{grid-column:1/3;grid-row:3;margin-top:.4rem}
+  #s9 .mill .out-badge{grid-column:3;grid-row:1;margin:0;justify-self:end;align-self:baseline}
+  #s9 .mill .yr{grid-column:2;grid-row:1;justify-self:end;align-self:baseline;white-space:nowrap;margin:0;padding-left:.4rem;font-size:clamp(8.5px,.48rem,.6rem);letter-spacing:.08em} /* own column — can never collide with the title */
+  #s9 .mill .mill-imgs{grid-column:3;grid-row:2/4;height:auto;margin:0;justify-self:end;align-self:center}
   #s9 .mill .mcell{width:3.4rem}
-  #s9 .mtile{height:2.4rem}
-  #s9 .mcap{font-size:.5rem}
+  #s9 .mtile{height:1.55rem}
+  #s9 .mcap{font-size:clamp(8px,.5rem,.66rem)}
   #s9 .mill-imgs .mar{margin-top:10px;font-size:.9rem}
-  #s9 .mill-imgs.two{display:flex;gap:.25rem;align-items:flex-start} /* all four images in one row, arrow between feeds and outputs */
-  #s9 .mill-imgs.two .mcell{width:3rem}
+  /* stack the two conversion pairs: [timber → board] over [veneer → veneer] — narrower image block, more room for words */
+  #s9 .mill-imgs.two{display:flex;flex-wrap:wrap;width:9.6rem;gap:.3rem;align-items:flex-start;justify-content:flex-end}
+  #s9 .mill-imgs.two .mcell,#s9 .mill-imgs.two .mar{order:0} /* pairwise: timber → board, veneer → veneer */
+  #s9 .mill-imgs.two .mar-b{display:block}
+  #s9 .mill-imgs.two .mcell{width:3.75rem}
   #s9 .mill-imgs.two .mar{display:block;margin-top:8px;font-size:.85rem}
-  #s9 .mill-imgs.two .mcap{font-size:.45rem}
-  #s9 .feedrow{margin-top:.9rem;gap:.45rem;font-size:.7rem}
-  #s9 .feedrow .f{padding:.4rem .6rem}
+
+  #s9 .feedrow{margin-top:.35rem;gap:.25rem;font-size:clamp(9.5px,.66rem,.84rem)}
+  #s9 .feedrow .f{padding:.3rem .5rem}
 }
 @media(pointer:coarse) and (max-width:700px){
   /* slide-10: tighter stat cards, capped factory photo */
@@ -420,7 +455,7 @@ nav.dots button:hover span{opacity:1}
   #s11 .adv{grid-template-columns:1fr 1fr;gap:.7rem}
   #s11 .advc>img{width:3rem;height:3rem}
   #s11 .advc .nm{font-size:.92rem}
-  #s11 .advc .ro{font-size:.62rem}
+  #s11 .advc .ro{font-size:clamp(10.5px,.62rem,.8rem)}
   #s11 .adv-head{margin:1.2rem 0 .8rem;padding-top:1rem}
   /* tap bios open beside the tapped person, leaving their photo visible */
   #s11 .person .bio-pop{position:absolute;left:4.8rem;right:0;top:2.2rem;bottom:auto;width:auto;transform:translateY(6px);max-height:60vh;overflow-y:auto;pointer-events:auto}
@@ -433,8 +468,8 @@ nav.dots button:hover span{opacity:1}
   #s12 .ip-grid{gap:1rem;margin-top:.6rem}
   #s12 .ipstats{grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.8rem}
   #s12 .ipstat{flex-direction:column;align-items:flex-start;gap:.3rem;padding:.6rem .7rem}
-  #s12 .ipstat .n{font-size:1.5rem}
-  #s12 .ipstat .l{font-size:.62rem}
+  #s12 .ipstat .n{font-size:clamp(21px,1.5rem,2rem)}
+  #s12 .ipstat .l{font-size:clamp(11px,.62rem,.95rem)}
   #s12 .ipnotes li{font-size:.76rem}
   #s12 .ip-callout{margin-top:.8rem;font-size:.92rem}
 }
@@ -443,7 +478,7 @@ nav.dots button:hover span{opacity:1}
 .press-collage{position:relative;height:62vh;min-height:25rem;margin-top:1.4rem}
 .pc{position:absolute;display:block;background:#fff;border:6px solid #fff;border-radius:3px;box-shadow:0 18px 2.375rem rgba(0,0,0,.6);transform:rotate(var(--r));transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s}
 .pc img{display:block;width:100%;height:auto}
-.pc-cap{display:block;background:#fff;color:#1a1209;font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-align:center;padding:.4rem .3rem .2rem;line-height:1.1}
+.pc-cap{display:block;background:#fff;color:#1a1209;font-size:clamp(9.5px,.6rem,.74rem);font-weight:700;letter-spacing:.05em;text-transform:uppercase;text-align:center;padding:.4rem .3rem .2rem;line-height:1.1}
 .pc::after{content:"↗";position:absolute;top:7px;right:9px;color:#1a1209;font-size:.85rem;font-weight:700;opacity:0;transition:opacity .3s}
 .pc:hover{transform:rotate(0) scale(1.05);box-shadow:0 2.125rem 4.625rem rgba(0,0,0,.8);z-index:40!important}
 .pc:hover::after{opacity:.8}
@@ -476,7 +511,7 @@ nav.dots button:hover span{opacity:1}
   .vs{flex-direction:column}.grow{gap:2rem}
   .bio-pop{min-width:auto}
   /* compact slide-number rail instead of hiding it */
-  nav.dots{right:5px;gap:5px}
+  nav.dots{right:6px;gap:12px}
   nav.dots button{font-size:.5rem;padding:0 1px}
   nav.dots button span{display:none}
 }
@@ -488,9 +523,9 @@ nav.dots button:hover span{opacity:1}
 }
 @media(pointer:coarse) and (max-width:35rem){
   .team,.adv{grid-template-columns:repeat(2,1fr)}
-  .brand{display:none}
+  .brand{height:12px;bottom:10px;right:12px;background:rgba(20,13,7,.82);padding:.3em .7em;border-radius:999px;backdrop-filter:blur(3px);box-sizing:content-box}
   .mill-imgs .mar{font-size:.9rem;margin-top:16px}
-  .mcap{font-size:.5rem}
+  .mcap{font-size:clamp(9.5px,.5rem,.66rem)}
   /* 2-tile mill cards: move the images beside the stat/year (was stacked on top, leaving the box tall with wasted side space) */
   .road .mill.m-sm,.road .mill.m-lg{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:.9rem;align-items:center}
   .m-sm .mill-imgs,.m-lg .mill-imgs{grid-column:1;grid-row:1/3;height:auto;margin-bottom:0;gap:.3rem}
@@ -501,21 +536,37 @@ nav.dots button:hover span{opacity:1}
   .m-sm .loc,.m-lg .loc{grid-column:1/-1;grid-row:5}
   .m-sm .mcell,.m-lg .mcell{flex:1 1 0;min-width:0;width:auto;max-width:3.875rem}
   /* 4-tile card stays stacked full-width, with smaller squares so they sit clear of the card edges */
-  .m-md .mcell{width:3rem}
-  .m-md .mtile{height:2.75rem}
+  .m-md .mcell{width:3.75rem}
+  .m-md .mtile{height:1.85rem}
   .m-md .mill-imgs{gap:.3rem}
-  .m-md .mill-imgs.two .mcap{font-size:.4rem;width:100%;letter-spacing:-.02em;line-height:1.15}
+  .m-md .mill-imgs.two .mcap{width:100%;letter-spacing:-.01em;line-height:1.15}
 }
 @media(pointer:coarse) and (orientation:portrait) and (max-width:700px){
   /* portrait hero: recomposed vertical image; no Ken Burns zoom so the floor wordmark stays uncropped */
   #s1 .bg{background-image:url('assets/hero-portrait.jpg')!important;background-position:59% 50%;transform:none}
 }
-@media(max-height:500px){.brand{display:none}}
+/* short laptop windows: compress the cost roadmap so it fits without scrolling under the fixed chrome */
+@media(pointer:fine) and (max-height:800px){
+  #s9 h2{font-size:1.5rem!important}
+  #s9 .wrap>p{font-size:.78rem!important;margin-top:.35rem!important;line-height:1.45!important}
+  #s9 .costgraph{margin:.4rem 0 .15rem}
+  #s9 .costgraph .cg-lg{max-width:54rem;margin:0 auto;display:block}
+  #s9 .road{gap:.7rem;margin-top:.55rem}
+  #s9 .mill{padding:.65rem .85rem}
+  #s9 .mill h3{font-size:1.1rem;margin:.15rem 0 .35rem}
+  #s9 .mill p{font-size:.76rem;line-height:1.38}
+  #s9 .mill .loc{font-size:.68rem;margin-top:.35rem}
+  #s9 .out-badge .x{font-size:1.6rem}
+  #s9 .feedrow{margin-top:.7rem}
+}
+@media(max-height:500px){.brand{height:10px;bottom:8px;right:12px;background:rgba(20,13,7,.82);padding:.3em .7em;border-radius:999px;backdrop-filter:blur(3px);box-sizing:content-box}}
 
 /* LANDSCAPE PHONES: restore side-by-side compositions at compact scale so slides stay near one screen.
    Placed last so it wins over the portrait/stacking rules above at equal specificity. */
 @media(pointer:coarse) and (orientation:landscape) and (max-height:500px){
   section{padding:5vh 5vw}
+  /* landscape phones have no spare height: the fixed marker only ever lands on content */
+  .conf{bottom:8px;left:12px;font-size:9px;letter-spacing:.22em;background:rgba(20,13,7,.82);padding:.25em .7em;border-radius:999px;backdrop-filter:blur(3px)}
   .split,.tr-split{grid-template-columns:1.05fr .95fr;gap:1.6rem}
   .lead{font-size:.9rem}
   nav.dots{display:none}
@@ -545,44 +596,54 @@ nav.dots button:hover span{opacity:1}
   #s4 .leadin-text{font-size:1rem}
   #s4 .leadin-arrow{font-size:1.3rem;margin-top:.2rem}
   /* slide-5 */
-  #s5 h2{font-size:1.35rem!important}
-  #s5 .lead{font-size:.8rem;margin-top:.6rem!important}
-  #s5 .strength-chart{margin-top:.7rem;padding:.7rem .8rem}
-  #s5 .sc-title{margin-bottom:.5rem;font-size:.7rem}
-  #s5 .split>div:last-child{display:grid;grid-template-columns:auto 1fr;gap:.6rem .9rem;align-items:center}
-  #s5 .media-frame{max-width:6.5rem}
+  #s5 h2{font-size:1.6rem!important}
+  #s5 .lead{font-size:clamp(10.5px,.92rem,1.05rem);margin-top:.7rem!important}
+  #s5 .strength-chart{margin-top:.9rem;padding:.85rem 1rem}
+  #s5 .sc-title{margin-bottom:.6rem;font-size:.78rem}
+  #s5 .split{grid-template-columns:1.1fr .9fr;gap:1.4rem;align-items:center}
+  #s5 .split>div:last-child{display:grid;grid-template-columns:auto 1fr;gap:.6rem 1rem;align-items:center}
+  #s5 .media-frame{max-width:9rem}
   #s5 .media-frame+div{margin-top:0!important}
-  #s5 .creds{grid-column:1/-1;margin-top:0;padding-bottom:0;gap:.4rem}
-  #s5 .creds li{font-size:.7rem;line-height:1.35}
+  #s5 .creds{grid-column:1/-1;margin-top:.2rem;padding-bottom:0;gap:.5rem}
+  #s5 .creds li{font-size:clamp(10px,.78rem,.92rem);line-height:1.4}
   /* slide-6: strict top-to-bottom flow — feedstock band, three conversion steps across, output band */
-  #s6 h2{font-size:1.3rem!important;max-width:none}
-  #s6 .tech-flow{display:flex;flex-direction:column;gap:.45rem;margin-top:.8rem}
-  #s6 .tech-mid{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem .6rem}
-  #s6 .tech-mid .cap{grid-column:1/-1;margin-bottom:0}
-  #s6 .tech-col{display:grid;grid-template-columns:5.5rem minmax(9rem,auto) 1fr;gap:.1rem 1rem;align-items:center}
-  #s6 .tech-col .cap{grid-column:1/-1;margin-bottom:.15rem}
-  #s6 .tech-col .tech-img{grid-column:1;grid-row:2}
-  #s6 .tech-col h3{grid-column:2;grid-row:2;margin:0!important;font-size:1.15rem}
-  #s6 .tech-col .feed-meta,#s6 .tech-col .small{grid-column:3;grid-row:2;font-size:.68rem}
-  #s6 .tech-mid .cap::before,#s6 .tech-end .cap::before{content:"↓"}
-  #s6 .pstep{padding:.4rem .6rem;grid-template-columns:4rem 1fr;gap:.6rem;align-items:start}
+  #s6 h2{font-size:1.15rem!important;max-width:none}
+  /* landscape phone keeps the laptop three-column composition; type shrinks instead of reflowing */
+  #s6 .tech-flow{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:.7rem;margin-top:.85rem;align-items:start}
+  #s6 .tech-mid{display:block}
+  #s6 .tech-mid .cap{margin-bottom:.3rem}
+  #s6 .tech-mid .badges{margin-top:.4rem}
+  #s6 .tech-col{display:block}
+  #s6 .tech-col .cap{margin-bottom:.3rem}
+  /* the 1.16x cover scale makes the cutout bleed up into its FEEDSTOCK label at this height */
+  #s6 .tech-col .tech-img{margin-top:0;aspect-ratio:auto;height:9.5rem}
+  #s6 .tech-col .tech-img img{transform:scale(1)}
+  #s6 .tech-end .tech-img img{transform:scale(1.1)}
+  #s6 .tech-col h3{margin:.3rem 0 .12rem!important;font-size:.95rem}
+  #s6 .tech-flow .cap{font-size:.58rem}
+  #s6 .tech-col .feed-meta,#s6 .tech-col .small{font-size:.56rem;line-height:1.35}
+  #s6 .tech-mid .cap::before,#s6 .tech-end .cap::before{content:"→"}
+  #s6 .pstep{grid-template-columns:4rem 1fr;gap:.6rem;align-items:start}
   #s6 .pstep .diag{height:2.4rem}
-  #s6 .pstep h4{font-size:.7rem}
-  #s6 .pstep p{font-size:.62rem;line-height:1.3}
-  #s6 .badges{margin-top:.6rem;gap:.4rem}
-  #s6 .badge{font-size:.56rem;padding:.3rem .6rem}
+  /* badges sit below the step titles in the hierarchy, so they must not out-size them */
+  #s6 .badges{margin-top:.45rem;gap:.3rem}
+  #s6 .badge{font-size:clamp(7px,.45rem,.6rem);padding:.18rem .4rem;letter-spacing:.04em;white-space:nowrap}
+  #s6 .badges{flex-wrap:nowrap}
+  #s6 .pstep{padding:.45rem .6rem}
+  #s6 .pstep h4{font-size:.8rem}
+  #s6 .pstep p{font-size:.66rem;line-height:1.32}
   /* slide-7 */
   #s7 .sw7{flex-direction:row}
-  #s7 .sw7-left{min-height:0;padding:4vh 3vw}
-  #s7 .sw7-right{padding:3vh 3vw}
+  #s7 .sw7-left{flex:1;min-height:0;padding:4vh 3vw} /* narrower image panel gives the properties column room */
+  #s7 .sw7-right{flex:1.5;padding:3vh 3vw}
   #s7 .sw7-title{font-size:2.2rem}
   #s7 .sw7-tag{font-size:1rem;margin-top:.3rem}
-  #s7 .sw7-claims{font-size:1.05rem}
-  #s7 .proplist li{padding:.32rem 0;gap:.7rem}
-  #s7 .proplist h4{font-size:.72rem;margin-bottom:.1rem}
-  #s7 .proplist p{font-size:.66rem;line-height:1.3}
-  #s7 .pic7{width:1.3rem}
-  #s7 .pic7 svg{width:1.15rem;height:1.15rem}
+  #s7 .sw7-claims{font-size:1.35rem;margin-bottom:2.9rem} /* clears the confidential pill */
+  #s7 .proplist li{padding:.38rem 0;gap:.85rem}
+  #s7 .proplist h4{font-size:clamp(11px,.88rem,1rem);margin-bottom:.12rem}
+  #s7 .proplist p{font-size:clamp(10px,.78rem,.9rem);line-height:1.32}
+  #s7 .pic7{width:1.8rem}
+  #s7 .pic7 svg{width:1.6rem;height:1.6rem}
   /* slide-8 */
   #s8 h2{font-size:1.35rem!important}
   #s8 .legend{margin-top:.6rem}
@@ -591,35 +652,64 @@ nav.dots button:hover span{opacity:1}
   #s8 .mcol{display:block}
   #s8 .mcol h3{font-size:.8rem;margin:.2rem 0}
   #s8 .mcol .sub{min-height:0;margin-bottom:.45rem;font-size:.62rem}
-  #s8 .mbox{font-size:.62rem;padding:.3rem .45rem;margin-bottom:.25rem;border-radius:4px}
+  #s8 .mbox{font-size:clamp(11px,.62rem,.8rem);padding:.3rem .45rem;margin-bottom:.25rem;border-radius:4px}
   /* slide-9 */
   #s9 h2{font-size:1.35rem!important}
-  #s9 .wrap>p{font-size:.72rem!important;margin-top:.4rem!important}
+  #s9 .wrap>p{font-size:clamp(11px,.72rem,.9rem)!important;margin-top:.4rem!important}
   #s9 .costgraph .cg-lg{display:block}
   #s9 .costgraph .cg-sm{display:none}
-  #s9 .road{grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:.5rem}
-  #s9 .mill{display:block;padding:.7rem .8rem}
-  #s9 .mill .mill-imgs{height:auto;margin:0 0 .4rem;justify-content:flex-start}
-  #s9 .mill .mcell{width:2.9rem}
+  #s9{padding-top:2.4vh;padding-bottom:2.4vh}
+  #s9 .wrap>p{font-size:clamp(9.5px,.62rem,.8rem)!important;margin-top:.25rem!important;line-height:1.3}
+  #s9 .costgraph{max-width:76%;margin:.3rem auto .1rem}
+  #s9 .road{grid-template-columns:repeat(3,1fr);gap:.45rem;margin-top:.35rem}
+  #s9 .mill{padding:.45rem .55rem}
+  #s9 .mill h3{font-size:.85rem;margin:.05rem 0 .12rem}
+  #s9 .out-badge .x{font-size:1.1rem}
+  #s9 .out-badge .l{font-size:clamp(7px,.42rem,.56rem)}
+  #s9 .mill p{font-size:clamp(9px,.55rem,.72rem);line-height:1.26}
+  #s9 .mill .loc{font-size:clamp(8.5px,.5rem,.68rem);margin-top:.15rem}
+  #s9 .mill .yr{font-size:.55rem}
+  /* landscape: icons to the right of the copy so the text column gets the width */
+  #s9 .mill{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto auto;column-gap:.6rem;padding:.6rem .75rem;align-items:start}
+  #s9 .mill .out-badge{grid-column:1;grid-row:1;margin:0}
+  #s9 .mill h3{grid-column:1;grid-row:2}
+  #s9 .mill .yr{grid-column:1;grid-row:3;align-self:end}
+  #s9 .mill p{grid-column:1;grid-row:4}
+  #s9 .mill .loc{grid-column:1;grid-row:5}
+  #s9 .mill .mill-imgs{grid-column:2;grid-row:1/6;height:auto;margin:0;justify-content:flex-end;align-items:flex-start;align-self:center;flex-wrap:nowrap;max-width:none}
+  /* the 4-tile card folds to a 2x2 block so its text keeps the same width as the others */
+  #s9 .mill .mill-imgs.two{flex-wrap:wrap;width:11.3rem;justify-content:flex-start;gap:.3rem}
+  #s9 .mill .mill-imgs.two .mar{display:block;margin-top:8px}
+  #s9 .mill .mcell{width:2.1rem}
+  #s9 .mill .mill-imgs.two .mcell{width:4.45rem}
+  #s9 .mtile{height:1.35rem}
+  #s9 .mill-imgs .mar{margin-top:4px;font-size:.7rem;align-self:flex-start}
+  #s9 .mcap{font-size:clamp(8px,.46rem,.62rem);line-height:1.15;width:100%;margin-left:0;margin-right:0}
+  #s9 .mill .mcell{width:4.45rem}
   #s9 .mtile{height:2rem}
-  #s9 .mcap{font-size:.42rem}
+
   #s9 .mill-imgs .mar{margin-top:6px;font-size:.8rem}
-  #s9 .mill-imgs.two{display:flex;gap:.25rem}
+  #s9 .mill-imgs.two{display:flex;gap:.3rem}
+  #s9 .mill-imgs.two .mcell,#s9 .mill-imgs.two .mar{order:0} /* pairwise rows: timber+board / veneer+veneer */
   #s9 .out-badge{margin:0 0 .3rem}
-  #s9 .out-badge .x{font-size:1.4rem}
+  #s9 .out-badge .x{font-size:1.2rem}
   #s9 .mill h3{font-size:1.05rem;margin:.15rem 0 .3rem}
-  #s9 .mill p{font-size:.62rem;line-height:1.35}
-  #s9 .mill .loc{font-size:.56rem;margin-top:.3rem}
-  #s9 .mill .yr{font-size:.6rem}
-  #s9 .feedrow{margin-top:.7rem;font-size:.62rem;gap:.4rem}
+  #s9 .mill p{font-size:clamp(9.5px,.56rem,.76rem);line-height:1.32}
+  #s9 .mill .loc{font-size:clamp(10px,.56rem,.78rem);margin-top:.3rem}
+  #s9 .mill .yr{font-size:clamp(8px,.52rem,.66rem)}
+  #s9 .mill h3{font-size:1.05rem}
+  #s9 .mill .loc{font-size:clamp(9px,.5rem,.68rem);margin-top:.3rem}
+  #s9 .feedrow{margin-top:.7rem;font-size:clamp(10.5px,.62rem,.82rem);gap:.4rem}
   #s9 .feedrow .f{padding:.3rem .55rem}
   /* slide-10 */
-  #s10 h2{font-size:1.35rem!important}
-  #s10 .tr-split{grid-template-columns:1.25fr .75fr}
-  #s10 .tract{gap:.5rem;margin-top:.5rem}
-  #s10 .tcard{padding:.6rem .8rem}
-  #s10 .tcard .n{font-size:1.35rem!important}
-  #s10 .tcard .l{font-size:.62rem;margin-top:.25rem;line-height:1.3}
+  #s10 h2{font-size:1.55rem!important}
+  #s10 .tr-split{grid-template-columns:1.25fr .75fr;align-items:stretch}
+  /* left column stretches to the photo column's height so no dead space collects bottom-left */
+  #s10 .tr-split>div:first-child{display:flex}
+  #s10 .tract{gap:.5rem;margin-top:.5rem;flex:1;grid-auto-rows:1fr;height:calc(100% - .5rem)}
+  #s10 .tcard{padding:.6rem .8rem;display:flex;flex-direction:column;justify-content:center}
+  #s10 .tcard .n{font-size:1.6rem!important}
+  #s10 .tcard .l{font-size:clamp(10px,.74rem,.9rem);margin-top:.25rem;line-height:1.32}
   #s10 .partners{margin-top:.7rem;padding:.7rem .9rem}
   #s10 .partners .ph{margin-bottom:.5rem}
   #s10 .plogos{gap:.5rem .7rem}
@@ -629,14 +719,14 @@ nav.dots button:hover span{opacity:1}
   #s11 .team{grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:1.4rem}
   #s11 .person .pic{width:4rem;height:4rem;margin-bottom:.6rem}
   #s11 .person .nm{font-size:1rem;min-height:0}
-  #s11 .person .ro{font-size:.62rem;min-height:0;margin:.15rem 0 .25rem}
+  #s11 .person .ro{font-size:clamp(10.5px,.62rem,.8rem);min-height:0;margin:.15rem 0 .25rem}
   #s11 .person .bi{display:none}
   #s11 .person .hint{display:none}
   #s11 .adv{grid-template-columns:repeat(5,1fr);gap:.8rem}
   #s11 .advc{gap:.6rem}
   #s11 .advc>img{width:3.2rem;height:3.2rem}
   #s11 .advc .nm{font-size:.9rem}
-  #s11 .advc .ro{font-size:.62rem}
+  #s11 .advc .ro{font-size:clamp(10.5px,.62rem,.8rem)}
   #s11 .adv-head{margin:1.6rem 0 1rem;padding-top:1.2rem}
   /* tap bios anchor to the tapped person: leaders open below their card, advisors open above, edge columns flip inward */
   #s11 .bio-pop{font-size:.8rem;line-height:1.5;padding:1rem 1.1rem}
@@ -646,16 +736,16 @@ nav.dots button:hover span{opacity:1}
   #s11 .adv .advc:nth-child(n+4) .bio-pop{left:auto;right:0}
   #s11 .person.show .bio-pop,#s11 .advc.show .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
   /* slide-12 */
-  #s12 h2{font-size:1.3rem!important}
-  #s12 .ip-grid{grid-template-columns:.95fr 1.05fr;gap:1.2rem;margin-top:.5rem}
-  #s12 .ip-chart svg{max-width:19rem}
-  #s12 .ipnotes{gap:.5rem}
-  #s12 .ipnotes li{font-size:.68rem;line-height:1.4}
-  #s12 .ip-callout{margin-top:.7rem;font-size:.8rem}
-  #s12 .ipstats{grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.7rem}
-  #s12 .ipstat{padding:.5rem .8rem;gap:.6rem}
-  #s12 .ipstat .n{font-size:1.4rem}
-  #s12 .ipstat .l{font-size:.6rem}
+  #s12 h2{font-size:1.5rem!important}
+  #s12 .ip-grid{grid-template-columns:1.05fr .95fr;gap:1rem;margin-top:.35rem}
+  #s12 .ip-chart svg{max-width:15.5rem}
+  #s12 .ipnotes{gap:.4rem}
+  #s12 .ipnotes li{font-size:clamp(10.5px,.8rem,.95rem);line-height:1.42}
+  #s12 .ip-callout{margin-top:.5rem;font-size:clamp(11px,.9rem,1.05rem)}
+  #s12 .ipstats{grid-template-columns:repeat(3,1fr);gap:.5rem;margin-top:.45rem}
+  #s12 .ipstat{padding:.4rem .7rem;gap:.55rem}
+  #s12 .ipstat .n{font-size:clamp(24px,1.7rem,2.2rem)}
+  #s12 .ipstat .l{font-size:clamp(11.5px,.72rem,.95rem)}
   /* slide-13: restore the absolute collage (the stacked-pile rules above use !important, so positions are re-declared per card) */
   #s13 h2{font-size:1.4rem!important}
   #s13 .press-collage{position:relative;height:56vh;min-height:0;display:block;margin-top:.8rem}
@@ -674,11 +764,17 @@ nav.dots button:hover span{opacity:1}
 </style>
 </head>
 <body>
-<div id="prog"></div>
 <a class="brand" href="#s1"><img src="assets/logo.png" alt="InventWood"></a>
 <div class="conf">Confidential</div>
 <nav class="dots" id="dots"></nav>
 
+<script>document.documentElement.className="js";
+if(location.search.indexOf('debug')>-1){window.__dbg=[];window.dbg=function(m){__dbg.push(m);var el=document.getElementById('dbgbox');
+ if(!el){el=document.createElement('div');el.id='dbgbox';el.style.cssText='position:fixed;left:4px;top:4px;z-index:99999;background:rgba(0,0,0,.88);color:#9f9;font:10px/1.5 monospace;padding:6px 8px;max-width:78vw;max-height:45vh;overflow:auto;border-radius:6px;white-space:pre-wrap;pointer-events:none';(document.body||document.documentElement).appendChild(el);}
+ el.textContent=__dbg.join('\n');};
+ window.addEventListener('error',function(e){dbg('ERR '+e.message+' :'+e.lineno);});
+ dbg('debug on · '+navigator.userAgent.slice(0,60));
+}else{window.dbg=function(){};}</script>
 <div class="deck" id="deck">
 
   <!-- 1 COVER -->
@@ -819,7 +915,7 @@ nav.dots button:hover span{opacity:1}
       </div>
       <div class="rv">
         <div class="media-frame"><img loading="lazy" decoding="async" src="assets/hu.jpg" alt="Prof. Liangbing Hu" class="portrait"></div>
-        <div style="margin-top:1rem"><div style="font-family:'Fraunces';font-size:1.3rem">Prof. Liangbing Hu</div><div style="font-size:.78rem;color:var(--wood-bright);letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem">Founder &amp; Inventor · Director, Center for Materials Innovation, Yale</div></div>
+        <div style="margin-top:1rem"><div style="font-family:'Fraunces';font-size:1.3rem">Prof. Liangbing Hu</div><div style="font-size:.78rem;color:var(--wood-bright);letter-spacing:.06em;text-transform:uppercase;margin-top:.2rem">Founder &amp; Inventor<br>Director, Center for Materials Innovation, Yale</div></div>
         <ul class="creds">
           <li>One of the most-cited material scientists in the world — <b>H-index of 198</b> (Nobel laureates typically 50–100)</li>
           <li><b>4-time winner</b> of the R&amp;D 100 Award, the "Oscars of Invention"</li>
@@ -837,7 +933,7 @@ nav.dots button:hover span{opacity:1}
       <div class="tech-flow rv">
         <div class="tech-col">
           <div class="cap">Feedstock</div>
-          <div class="tech-img"><img loading="lazy" decoding="async" src="assets/feedstock.jpg" alt="Ordinary wood feedstock"></div>
+          <div class="tech-img"><img loading="lazy" decoding="async" src="assets/feedstock3.webp" alt="Ordinary wood feedstock"></div>
           <h3 class="feed-title">Ordinary Wood</h3>
           <div class="feed-meta"><b style="color:var(--cream)">Species &amp; form flexible</b> — including underutilized species and waste wood.</div>
         </div>
@@ -846,16 +942,16 @@ nav.dots button:hover span{opacity:1}
           <div class="pstep"><div class="diag"><img loading="lazy" decoding="async" src="assets/proc7-restructure.webp" alt="Molecular restructuring diagram"></div><div><h4>1 · Molecular Restructuring</h4><p>Restructuring enables the controlled collapse of the cell walls.</p></div></div>
           <div class="pstep"><div class="diag"><span class="cmpanim" role="img" aria-label="Compression and densification diagram"><img loading="lazy" decoding="async" class="ca-top" src="assets/proc9-compress-top.webp" alt=""><img loading="lazy" decoding="async" class="ca-mid" src="assets/proc8-compress-mid.webp" alt=""><img loading="lazy" decoding="async" class="ca-bot" src="assets/proc9-compress-bot.webp" alt=""></span></div><div><h4>2 · Compression &amp; Densification</h4><p>Total compression eliminates weaknesses, locking and bonding the fibers together with new hydrogen bonds.</p></div></div>
           <div class="pstep"><div class="diag"><img loading="lazy" decoding="async" src="assets/proc7-align.webp" alt="Fiber alignment diagram"></div><div><h4>3 · Fiber Alignment</h4><p>Fiber alignment is preserved, maximizing strength while retaining the wood's heritage signature.</p></div></div>
+          <div class="badges">
+            <span class="badge">No added glues</span><span class="badge">No polymer binders</span><span class="badge">No toxic chemicals</span>
+          </div>
         </div>
         <div class="tech-col tech-end">
           <div class="cap">Output</div>
-          <div class="tech-img"><img loading="lazy" decoding="async" src="assets/boards.webp" alt="SUPERWOOD" style="background:transparent"></div>
-          <h3 style="margin-top:.7rem">SUPERWOOD</h3>
+          <div class="tech-img"><img loading="lazy" decoding="async" src="assets/boards3.webp" alt="SUPERWOOD"></div>
+          <h3 style="margin-top:2.05rem">SUPERWOOD</h3>
           <div class="small">Up to <b style="color:var(--wood-bright)">50% stronger</b> and <b style="color:var(--wood-bright)">6× lighter</b> than steel.</div>
         </div>
-      </div>
-      <div class="badges rv">
-        <span class="badge">No added glues</span><span class="badge">No polymer binders</span><span class="badge">No toxic chemicals</span><span class="badge"><b>Species &amp; form flexible</b></span>
       </div>
     </div>
   </section>
@@ -870,7 +966,7 @@ nav.dots button:hover span{opacity:1}
           <h2 class="sw7-title">SUPERWOOD</h2>
           <p class="sw7-tag">The strength of steel, the soul of wood.</p>
         </div>
-        <div class="sw7-claims rv">Stronger than steel.<br><span class="hl">6 times</span> lighter.<br>Manufacturable at <span class="hl">half</span> the cost.</div>
+        <div class="sw7-claims rv">Stronger than steel.<span class="fnmark">*</span><br><span class="hl">6 times</span> lighter.<br>Manufacturable at <span class="hl">half</span> the cost.<div class="fnote">* ASTM A36 structural steel</div></div>
       </div>
       <div class="sw7-right">
         <ul class="proplist rv">
@@ -879,7 +975,7 @@ nav.dots button:hover span{opacity:1}
           <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c3.5 4 6 6.7 6 10a6 6 0 0 1-12 0c0-3.3 2.5-6 6-10z"/></svg></span><div><h4>Fights Pests, Rot &amp; Fungus</h4><p>Protects against familiar threats like termites, mold, fungus and corrosion for long-lasting performance.</p></div></li>
           <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.5V5a2 2 0 0 0-4 0v9.5a3.5 3.5 0 1 0 4 0z"/></svg></span><div><h4>Thermally Insulating</h4><p>100&times; better than steel; 400&times; better than aluminum.</p></div></li>
           <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M6 6a8.5 8.5 0 0 0 0 12M18 6a8.5 8.5 0 0 1 0 12"/></svg></span><div><h4>RF Transparent</h4><p>Wireless signals pass through unhindered. Undetectable by radar.</p></div></li>
-          <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5L13 19V5L7.5 9.5H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/></svg></span><div><h4>Sound Attenuating</h4><p>Improved sound dampening vs steel, with improved acoustic performance.</p></div></li>
+          <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c1.1-7.5 2.9-7.5 4 0c1.1 7.5 2.9 7.5 4 0c.85-4.8 2.15-4.8 3 0c.85 4.8 2.15 4.8 3 0c.7-2.6 1.8-2.6 2.5 0c.7 2.6 1.8 2.6 2.5 0"/></svg></span><div><h4>Sound Attenuating</h4><p>Improved sound dampening vs steel, with improved acoustic performance.</p></div></li>
           <li><span class="pic7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14z"/><path d="M5 19C9 15 13 11 16.5 9"/></svg></span><div><h4>Naturally Beautiful</h4><p>With the texture, colors and natural warmth of wood.</p></div></li>
         </ul>
       </div>
@@ -952,8 +1048,8 @@ nav.dots button:hover span{opacity:1}
           <text x="90" y="16" fill="#dfe1e6" font-family="Inter,sans-serif" font-size="11" font-weight="600">Stainless steel cost</text>
           <rect x="79" y="96" width="879" height="12" fill="rgba(168,80,58,.62)"/>
           <text x="90" y="92" fill="#f4ecdf" font-family="Inter,sans-serif" font-size="11" font-weight="600">Steel cost</text>
-          <path d="M160,77 C 300,90 400,99 500,102 C 640,110 740,114 840,117" fill="none" stroke="#aebf76" stroke-width="3.5" stroke-linecap="round"/>
-          <circle cx="160" cy="77" r="4.5" fill="#aebf76"/><circle cx="500" cy="102" r="4.5" fill="#aebf76"/><circle cx="840" cy="117" r="4.5" fill="#aebf76"/>
+          <path class="cg-line" d="M160,77 C 300,90 400,99 500,102 C 640,110 740,114 840,117" fill="none" stroke="#aebf76" stroke-width="3.5" stroke-linecap="round"/>
+          <circle class="cg-dot d1" cx="160" cy="77" r="4.5" fill="#aebf76"/><circle class="cg-dot d2" cx="500" cy="102" r="4.5" fill="#aebf76"/><circle class="cg-dot d3" cx="840" cy="117" r="4.5" fill="#aebf76"/>
           <text x="190" y="66" fill="#aebf76" font-family="Inter,sans-serif" font-size="11.5" font-weight="600">SUPERWOOD cost</text>
           <line x1="160" y1="128" x2="160" y2="133" stroke="rgba(228,210,180,.45)" stroke-width="1"/>
           <line x1="500" y1="128" x2="500" y2="133" stroke="rgba(228,210,180,.45)" stroke-width="1"/>
@@ -962,31 +1058,22 @@ nav.dots button:hover span{opacity:1}
           <text x="500" y="148" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">SuperMill Two</text>
           <text x="840" y="148" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="11.5" font-weight="600" text-anchor="middle">ChipMill</text>
         </svg>
-        <svg class="cg-sm" viewBox="0 0 1000 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
-          <defs>
-            <linearGradient id="swfill2" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#aebf76" stop-opacity=".3"/>
-              <stop offset="1" stop-color="#aebf76" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <text x="34" y="165" fill="#9d8d76" font-family="Inter,sans-serif" font-size="26" transform="rotate(-90 34,165)" text-anchor="middle">cost per m³</text>
-          <line x1="120" y1="35" x2="120" y2="290" stroke="rgba(228,210,180,.4)" stroke-width="2"/>
-          <line x1="120" y1="290" x2="930" y2="290" stroke="rgba(228,210,180,.4)" stroke-width="2"/>
-          <!-- cost ranges shown as bands -->
-          <rect x="120" y="52" width="810" height="30" fill="rgba(170,175,184,.42)"/>
-          <text x="924" y="44" fill="#c7cbd3" font-family="Inter,sans-serif" font-size="27" font-weight="600" text-anchor="end">Stainless steel cost</text>
-          <rect x="120" y="150" width="810" height="30" fill="rgba(178,88,64,.55)"/>
-          <text x="924" y="142" fill="#dd9078" font-family="Inter,sans-serif" font-size="27" font-weight="600" text-anchor="end">Steel cost</text>
-          <!-- SUPERWOOD cost -->
-          <path d="M250,132 C 360,163 445,185 545,206 C 650,228 735,250 830,268 L830,290 L250,290 Z" fill="url(#swfill2)"/>
-          <path d="M250,132 C 360,163 445,185 545,206 C 650,228 735,250 830,268" fill="none" stroke="#aebf76" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="250" cy="132" r="9" fill="#aebf76"/>
-          <circle cx="545" cy="206" r="9" fill="#aebf76"/>
-          <circle cx="830" cy="268" r="10" fill="#e6efce" stroke="#aebf76" stroke-width="3"/>
-          <text x="250" y="116" fill="#c3d18a" font-family="Inter,sans-serif" font-size="30" font-weight="700">SUPERWOOD cost</text>
-          <text x="250" y="322" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="27" font-weight="600" text-anchor="middle">SuperMill One</text>
-          <text x="545" y="322" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="27" font-weight="600" text-anchor="middle">SuperMill Two</text>
-          <text x="830" y="322" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="27" font-weight="600" text-anchor="middle">ChipMill</text>
+        <svg class="cg-sm" viewBox="0 0 1000 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+          <text x="116" y="205" fill="#9d8d76" font-family="Inter,sans-serif" font-size="32" transform="rotate(-90 116,205)" text-anchor="middle">cost per m&#179;</text>
+          <line x1="150" y1="38" x2="150" y2="380" stroke="rgba(228,210,180,.4)" stroke-width="3"/>
+          <line x1="150" y1="380" x2="965" y2="380" stroke="rgba(228,210,180,.4)" stroke-width="3"/>
+          <rect x="150" y="62" width="815" height="36" fill="rgba(170,175,184,.42)"/>
+          <text x="958" y="52" fill="#c7cbd3" font-family="Inter,sans-serif" font-size="36" font-weight="600" text-anchor="end">Stainless steel cost</text>
+          <rect x="150" y="270" width="815" height="36" fill="rgba(178,88,64,.55)"/>
+          <text x="958" y="260" fill="#dd9078" font-family="Inter,sans-serif" font-size="36" font-weight="600" text-anchor="end">Steel cost</text>
+          <path class="cg-line" d="M255,218 C 370,244 460,266 555,288 C 665,305 780,320 880,333" fill="none" stroke="#aebf76" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="cg-dot d1" cx="255" cy="218" r="11" fill="#aebf76"/>
+          <circle class="cg-dot d2" cx="555" cy="288" r="11" fill="#aebf76"/>
+          <circle class="cg-dot d3" cx="880" cy="333" r="13" fill="#e6efce" stroke="#aebf76" stroke-width="4"/>
+          <text x="255" y="192" fill="#c3d18a" font-family="Inter,sans-serif" font-size="38" font-weight="700">SUPERWOOD cost</text>
+          <text x="255" y="428" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="34" font-weight="600" text-anchor="middle">SuperMill One</text>
+          <text x="567" y="428" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="34" font-weight="600" text-anchor="middle">SuperMill Two</text>
+          <text x="880" y="428" fill="#cdbfa9" font-family="Inter,sans-serif" font-size="34" font-weight="600" text-anchor="middle">ChipMill</text>
         </svg>
       </div>
       <div class="road rv">
@@ -997,7 +1084,7 @@ nav.dots button:hover span{opacity:1}
           <div class="loc">90,000 sq ft facility · Frederick, Maryland</div>
         </div>
         <div class="mill m-md">
-          <div class="mill-imgs two"><div class="mcell"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-feed-timber.webp" alt="Sawn Timber"></div><span class="mcap">Sawn Timber</span></div><div class="mcell"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-feed-veneer.webp" alt="Veneer"></div><span class="mcap">Veneer</span></div><span class="mar">→</span><div class="mcell"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-prod-board.webp" alt="SUPERWOOD Board"></div><span class="mcap">SUPERWOOD Board</span></div><div class="mcell"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-prod-veneer.webp" alt="SUPERWOOD Veneer"></div><span class="mcap">SUPERWOOD Veneer</span></div></div>
+          <div class="mill-imgs two"><div class="mcell o1"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-feed-timber.webp" alt="Sawn Timber"></div><span class="mcap">Sawn Timber</span></div><span class="mar mar-a">→</span><div class="mcell o4"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-prod-board.webp" alt="SUPERWOOD Board"></div><span class="mcap">SUPERWOOD Board</span></div><div class="mcell o2"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-feed-veneer.webp" alt="Veneer"></div><span class="mcap">Veneer</span></div><span class="mar mar-b">→</span><div class="mcell o5"><div class="mtile"><img loading="lazy" decoding="async" src="assets/cut-prod-veneer.webp" alt="SUPERWOOD Veneer"></div><span class="mcap">SUPERWOOD Veneer</span></div></div>
           <div class="out-badge"><span class="x">36M</span><span class="l">sf / yr</span></div>
           <div class="yr">2028 – 2030</div><h3>SuperMill Two</h3><p>Establish a strong, profitable financial foundation while maintaining the same batch process.</p>
           <div class="loc">Under development · Location TBD</div>
@@ -1058,52 +1145,52 @@ nav.dots button:hover span{opacity:1}
       <h2 class="rv" style="font-size:clamp(1.6rem,3vw,2.5rem)">Top-tier commercial and scientific leadership.</h2>
       <div class="team rv">
         <div class="person">
-          <img loading="lazy" decoding="async" class="pic" src="assets/team-alex.jpg" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-founder</div>
-          <div class="bi">Technology entrepreneur and investor. 20+ years in real estate development and operations. Built world class teams. Successful IP strategist. BS Cognitive Science and Physics, Dartmouth.</div><div class="hint">Hover for full bio</div>
-          <div class="bio-pop"><b>Alex Lau — CEO / Co-founder.</b> Technology entrepreneur and investor who began his career in Silicon Valley in artificial intelligence and human-interface design. Involved in five successful manufacturing scale-ups around the world. 20+ years in real estate development and operations, leading groundbreaking development and redevelopment projects in California and Canada. Built world-class teams and is a successful IP strategist across multiple firms. BS Cognitive Science and Physics, Dartmouth.</div>
+          <img loading="lazy" decoding="async" class="pic" src="assets/team-alex7.jpg" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-Founder</div>
+          <div class="bi">Technology entrepreneur and investor. 20+ years in real estate development and operations. Built and led high-performing teams. Successful IP strategist. BS Cognitive Science and Physics, Dartmouth.</div><div class="hint">Hover for full bio</div>
+          <div class="bio-pop"><b>Alex Lau — CEO / Co-Founder</b><ul><li>Technology entrepreneur and investor who began his career in Silicon Valley in artificial intelligence and human-interface design.</li><li>Involved in five successful manufacturing scale-ups around the world.</li><li>20+ years in real estate development and operations, leading groundbreaking development and redevelopment projects in California and Canada.</li><li>Built world-class teams and is a successful IP strategist across multiple firms.</li><li>BS Cognitive Science and Physics, Dartmouth.</li></ul></div>
         </div>
         <div class="person">
-          <img loading="lazy" decoding="async" class="pic" src="assets/team-jonathan.jpg" alt="Jonathan Strimling"><div class="nm">Jonathan Strimling</div><div class="ro">COO</div>
-          <div class="bi">25+ years of leadership; led an Inc. 5000 "fastest-growing manufacturer" and took a SaaS company to the NASDAQ. MS Manufacturing Management, MIT Sloan.</div><div class="hint">Hover for full bio</div>
-          <div class="bio-pop"><b>Jonathan Strimling — COO.</b> CEO of a building-materials company named America's fastest-growing manufacturer by Inc. 5000. Over 25 years of leadership and entrepreneurship, including CEO of a biomaterials manufacturing company and a SaaS company he took to the NASDAQ. Manufacturing turnaround expert at American Industrial Partners. MS Manufacturing Management, MIT Sloan.</div>
+          <img loading="lazy" decoding="async" class="pic" src="assets/team-jonathan.jpg" alt="Jonathan Strimling"><div class="nm">Jonathan Strimling</div><div class="ro">Chief Operating Officer</div>
+          <div class="bi">3&times; CEO; co-founded and led an Inc. 5000 "fastest-growing manufacturer" and took a SaaS company to the NASDAQ. MS Manufacturing Management, MIT Sloan.</div><div class="hint">Hover for full bio</div>
+          <div class="bio-pop"><b>Jonathan Strimling — Chief Operating Officer</b><ul><li>3&times; CEO. Co-founded and led the building-materials company named America's fastest-growing manufacturer by Inc. 5000.</li><li>Over 25 years of leadership and entrepreneurship, including CEO of a biomaterials manufacturing company and a SaaS company he took to the NASDAQ.</li><li>Manufacturing turnaround expert at American Industrial Partners.</li><li>MS Manufacturing Management, MIT Sloan.</li></ul></div>
         </div>
         <div class="person">
-          <img loading="lazy" decoding="async" class="pic" src="assets/team-jack.jpg" alt="Jack Winterowd"><div class="nm">Jack Winterowd</div><div class="ro">Principal Scientist &amp; Materials Developer</div>
+          <img loading="lazy" decoding="async" class="pic" src="assets/team-jack2.jpg" alt="Jack Winterowd"><div class="nm">Jack Winterowd</div><div class="ro">VP Materials Engineering</div>
           <div class="bi">Head of Weyerhaeuser's chemistry platform and lead developer on almost every major product launched there over the last 25 years. 51 issued patents, 60+ pending.</div><div class="hint">Hover for full bio</div>
-          <div class="bio-pop"><b>Jack Winterowd — Principal Scientist &amp; Materials Developer.</b> One of the world's foremost experts on the behavior of wood. As head of Weyerhaeuser's chemistry platform, he was lead developer on almost every major product the company launched over the last 25 years. 51 issued patents in the US and Canada, with an additional 60 pending.</div>
+          <div class="bio-pop"><b>Jack Winterowd — VP Materials Engineering</b><ul><li>One of the world's foremost experts on the behavior of wood.</li><li>As head of Weyerhaeuser's chemistry platform, he was lead developer on almost every major product the company launched over the last 25 years.</li><li>51 issued patents in the US and Canada, with an additional 60 pending.</li></ul></div>
         </div>
         <div class="person">
-          <img loading="lazy" decoding="async" class="pic" src="assets/team-jiaqi.jpg" alt="Jiaqi Dai"><div class="nm">Jiaqi Dai</div><div class="ro">CTO / Co-founder</div>
-          <div class="bi">Prof. Hu's top protégé and key inventor on the core patents. PhD in Materials Science &amp; Engineering, University of Maryland. H-index of 96; top 2% of scientists worldwide.</div><div class="hint">Hover for full bio</div>
-          <div class="bio-pop"><b>Jiaqi Dai — CTO / Co-founder.</b> Prof. Hu's top protégé and a key inventor on the core patents, both at the University of Maryland and since. PhD in Materials Science &amp; Engineering from the University of Maryland. Drives the innovations that lower cost and continually improve SUPERWOOD's performance and functionality. H-index of 96, ranked in the top 2% of scientists worldwide — and an award-winning artist.</div>
+          <img loading="lazy" decoding="async" class="pic" src="assets/team-jiaqi.jpg" alt="Jiaqi Dai"><div class="nm">Jiaqi Dai</div><div class="ro">Chief Science Officer / Co-Founder</div>
+          <div class="bi">Prof. Hu's top protégé and key inventor on the core patents. H-index of 96; top 2% of scientists worldwide. PhD in Materials Science &amp; Engineering, University of Maryland.</div><div class="hint">Hover for full bio</div>
+          <div class="bio-pop"><b>Jiaqi Dai — Chief Science Officer / Co-Founder</b><ul><li>Prof. Hu's top protégé and a key inventor on the core patents, both at the University of Maryland and since.</li><li>Drives the innovations that lower cost and continually improve SUPERWOOD's performance and functionality.</li><li>H-index of 96, ranked in the top 2% of scientists worldwide — and an award-winning artist.</li><li>PhD in Materials Science &amp; Engineering from the University of Maryland.</li></ul></div>
         </div>
         <div class="person">
-          <img loading="lazy" decoding="async" class="pic" src="assets/team-shaun.jpg" alt="Shaun Klopfenstein"><div class="nm">Shaun Klopfenstein</div><div class="ro">CIO</div>
+          <img loading="lazy" decoding="async" class="pic" src="assets/team-shaun.jpg" alt="Shaun Klopfenstein"><div class="nm">Shaun Klopfenstein</div><div class="ro">Chief Information Officer</div>
           <div class="bi">Serial tech entrepreneur and investor. CTO of Marketo, the marketing-automation SaaS unicorn, helping bring it onto NASDAQ. BS Computer Information Science, U of Oregon.</div><div class="hint">Hover for full bio</div>
-          <div class="bio-pop"><b>Shaun Klopfenstein — CIO.</b> Serial technology entrepreneur and investor. Former CTO of Marketo, the marketing-automation SaaS unicorn, where he helped bring the company onto the NASDAQ. BS Computer Information Science, University of Oregon.</div>
+          <div class="bio-pop"><b>Shaun Klopfenstein — Chief Information Officer</b><ul><li>Serial technology entrepreneur and investor.</li><li>Former CTO of Marketo, the marketing-automation SaaS unicorn, where he helped bring the company onto the NASDAQ.</li><li>BS Computer Information Science, University of Oregon.</li></ul></div>
         </div>
       </div>
       <div class="adv-head rv">World-Class Advisors <span style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — hover for detail</span></div>
       <div class="adv rv">
         <div class="advc">
           <img loading="lazy" decoding="async" src="assets/adv-davies.jpg" alt="Don Davies"><div><div class="nm">Don Davies</div><div class="ro">Structural Engineering</div></div>
-          <div class="bio-pop"><b>Don Davies — Structural Engineering.</b> Former President of Magnusson Klemencic Associates, the top structural-engineering firm behind the headquarters of Google, Amazon and Meta. Authored 15+ publications on tall-building systems, structural innovation and embodied-carbon optimization. Co-founder of the Carbon Leadership Forum and Building Transparency, and part of the team that created the EC3 embodied-carbon tool. Advisor to the US Special Presidential Envoy on Climate.</div>
+          <div class="bio-pop"><b>Don Davies — Structural Engineering</b><ul><li>Former President of Magnusson Klemencic Associates, America's most highly-awarded structural-engineering firm, and engineer of record for the headquarters of several tech giants, and tall buildings around the world.</li><li>Authored 15+ publications on tall-building systems, structural innovation and embodied-carbon optimization.</li><li>Co-founder of the Carbon Leadership Forum and Building Transparency, and part of the team that created the EC3 embodied-carbon tool.</li><li>Advisor to the US Special Presidential Envoy on Climate.</li></ul></div>
         </div>
         <div class="advc">
           <img loading="lazy" decoding="async" src="assets/adv-hawken.jpg" alt="Paul Hawken"><div><div class="nm">Paul Hawken</div><div class="ro">Ecology, Business &amp; Design</div></div>
-          <div class="bio-pop"><b>Paul Hawken — Ecology, Business &amp; Design.</b> Environmentalist, entrepreneur and bestselling author of nine books, including <em>Drawdown</em> and <em>Regeneration</em>. Consults with governments around the world and advises many of the most prominent multinational corporations. Author of <em>Drawdown</em>, <em>Carbon</em>, <em>Natural Capitalism</em> and <em>The Ecology of Commerce</em>.</div>
+          <div class="bio-pop"><b>Paul Hawken — Ecology, Business &amp; Design</b><ul><li>Environmentalist, entrepreneur and bestselling author of nine books, including <em>Drawdown</em> and <em>Regeneration</em>.</li><li>Consults with governments around the world and advises many of the most prominent multinational corporations.</li><li>Author of <em>Drawdown</em>, <em>Carbon</em>, <em>Natural Capitalism</em> and <em>The Ecology of Commerce</em>.</li></ul></div>
         </div>
         <div class="advc">
           <img loading="lazy" decoding="async" src="assets/adv-zsmith.jpg" alt="Z Smith"><div><div class="nm">Z Smith</div><div class="ro">High-Performance Buildings</div></div>
-          <div class="bio-pop"><b>Z Smith — High-Performance Buildings.</b> Principal and Director of Sustainability &amp; Performance at Eskew Dumez Ripple, AIA Firm of the Year in 2014. Award-winning architect and Americas representative for the UN's Architects' Union. Former CTO of Xerox. Sc.B. Physics, MIT; PhD Electrical Engineering &amp; Computer Science, Princeton; M.Arch, UC Berkeley.</div>
+          <div class="bio-pop"><b>Z Smith — High-Performance Buildings</b><ul><li>Principal and Director of Sustainability &amp; Performance at Eskew Dumez Ripple, AIA Firm of the Year in 2014.</li><li>Award-winning architect and Americas representative for the UN's Architects' Union.</li><li>Former CTO of Xerox.</li><li>Sc.B. Physics, MIT; PhD Electrical Engineering &amp; Computer Science, Princeton; M.Arch, UC Berkeley.</li></ul></div>
         </div>
         <div class="advc">
           <img loading="lazy" decoding="async" src="assets/adv-organschi.jpg" alt="Alan Organschi"><div><div class="nm">Alan Organschi</div><div class="ro">Architecture &amp; Urban Design</div></div>
-          <div class="bio-pop"><b>Alan Organschi — Architecture &amp; Urban Design.</b> Principal and partner at Gray Organschi Architecture, winner of multiple AIA awards, and Principal at JIG Design Build. Professor at the Yale School of Architecture and Director of the Yale Building Lab. Founded the Timber City Initiative and wrote the seminal paper "Buildings as a Global Carbon Sink." Recipient of the Arts and Letters Award in Architecture, 2012.</div>
+          <div class="bio-pop"><b>Alan Organschi — Architecture &amp; Urban Design</b><ul><li>Principal and partner at Gray Organschi Architecture, winner of multiple AIA awards, and Principal at JIG Design Build.</li><li>Professor at the Yale School of Architecture and Director of the Yale Building Lab.</li><li>Founded the Timber City Initiative and wrote the seminal paper "Buildings as a Global Carbon Sink." Recipient of the Arts and Letters Award in Architecture, 2012.</li></ul></div>
         </div>
         <div class="advc">
           <img loading="lazy" decoding="async" src="assets/adv-bradshaw.jpg" alt="Allan Bradshaw"><div><div class="nm">Allan Bradshaw</div><div class="ro">Manufacturing &amp; Wood Industry</div></div>
-          <div class="bio-pop"><b>Allan Bradshaw — Manufacturing &amp; Wood Industry.</b> A 30-year career at Weyerhaeuser culminating as VP of Capital Projects, where he led a $1.5B fleet overhaul. Ran technology development and scaling operations from R&amp;D to mass-market sales, led manufacturing for TrusJoist (its fastest-growing product), and ran operations for the entire East Coast. Deep relationships throughout the wood-processing industry.</div>
+          <div class="bio-pop"><b>Allan Bradshaw — Manufacturing &amp; Wood Industry</b><ul><li>A 30-year career at Weyerhaeuser culminating as VP of Capital Projects, where he led a $1.5B fleet overhaul.</li><li>Ran technology development and scaling operations from R&amp;D to mass-market sales, led manufacturing for TrusJoist (its fastest-growing product), and ran operations for the entire East Coast.</li><li>Deep relationships throughout the wood-processing industry.</li></ul></div>
         </div>
       </div>
     </div>
@@ -1179,13 +1266,13 @@ nav.dots button:hover span{opacity:1}
         <a class="pc" style="left:8%;top:30%;width:17%;z-index:2;--r:3deg" href="https://www.scientificamerican.com/article/stronger-than-steel-able-to-stop-a-speeding-bullet-mdash-it-rsquo-s-super-wood/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/press55.jpg" alt="Scientific American — Stronger Than Steel"><span class="pc-cap">Scientific American</span></a>
         <a class="pc" style="left:17%;top:17%;width:18%;z-index:3;--r:-2deg" href="https://www.science.org/doi/epdf/10.1126/science.abg9556" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/press57.jpg" alt="Science — Moldable Wood"><span class="pc-cap">Science</span></a>
         <a class="pc" style="left:26%;top:31%;width:19%;z-index:4;--r:2deg" href="https://www.fastcompany.com/91334748/superwood-stronger-than-steel-its-coming-to-building-near-you" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/press58.jpg" alt="Fast Company — World Changing Ideas 2025"><span class="pc-cap">Fast Company</span></a>
-        <a class="pc" style="left:36%;top:12%;width:20%;z-index:5;--r:-3deg" href="https://bucolic-paletas-474eff.netlify.app/" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/press53.jpg" alt="Dezeen — Superwood is a chemically modified wood stronger than steel"><span class="pc-cap">Dezeen</span></a>
+        <a class="pc" style="left:36%;top:12%;width:20%;z-index:5;--r:-3deg" href="/press" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/press53.jpg" alt="Dezeen — Superwood is a chemically modified wood stronger than steel"><span class="pc-cap">Dezeen</span></a>
         <a class="pc" style="left:45%;top:34%;width:20%;z-index:6;--r:3deg" href="https://www.cnn.com/science/superwood-10-times-stronger-than-steel-spc" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/press52.jpg" alt="CNN — Scientists create Superwood that's stronger than steel"><span class="pc-cap">CNN</span></a>
         <a class="pc" style="left:36%;top:56%;width:19%;z-index:7;--r:-2deg" href="https://youtu.be/n4-v3ntYZAs" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/press60.jpg" alt="YouTube — Superwood, The Next Big Thing"><span class="pc-cap">YouTube</span></a>
         <a class="pc" style="left:60%;top:5%;width:34%;z-index:9;--r:-2deg" href="https://www.wsj.com/tech/inventwood-superwood-material-engineered-wood-f7f558e9" target="_blank" rel="noopener"><img loading="lazy" decoding="async" src="assets/press59.jpg" alt="The Wall Street Journal — It's Bulletproof, Fire-Resistant and Stronger Than Steel. It's Superwood."><span class="pc-cap">The Wall Street Journal</span></a>
       </div>
       <div class="press-cta rv">
-        <a class="btn" href="https://bucolic-paletas-474eff.netlify.app/" target="_blank" rel="noopener">View press highlights →</a>
+        <a class="btn" href="/press" target="_blank" rel="noopener">View press highlights →</a>
       </div>
     </div>
   </section>
@@ -1195,8 +1282,8 @@ nav.dots button:hover span{opacity:1}
     <div class="bg" style="background-image:url('assets/deck-dusk.jpg')"></div>
     <div class="scrim"></div>
     <div class="wrap">
-      <h1 class="rv">Join us in building the <span class="hl serif-em">Age of Wood.</span></h1>
-      <div class="contact rv">Alex Lau · CEO &amp; Co-founder &nbsp;·&nbsp; <a href="mailto:alex@inventwood.com">alex@inventwood.com</a></div>
+      <h2 class="rv">Join us in building the <span class="hl serif-em">Age of Wood.</span></h2>
+      <div class="contact rv">Alex Lau · CEO &amp; Co-Founder &nbsp;·&nbsp; <a href="mailto:alex@inventwood.com">alex@inventwood.com</a></div>
     </div>
   </section>
 
@@ -1205,7 +1292,6 @@ nav.dots button:hover span{opacity:1}
 <script>
 const deck=document.getElementById('deck');
 const secs=[...document.querySelectorAll('section')];
-const prog=document.getElementById('prog');
 const dotsBox=document.getElementById('dots');
 
 /* Navigation gate: slides become reachable only once their images have loaded.
@@ -1220,23 +1306,63 @@ function pulsePill(){pill.style.opacity='1';clearTimeout(pillT);pillT=setTimeout
 function slideAssets(s){const a=[...s.querySelectorAll('img')];s.querySelectorAll('[style*="background-image"]').forEach(el=>{const m=/url\(['"]?([^'")]+)['"]?\)/.exec(el.style.backgroundImage);if(m)a.push(m[1]);});return a;}
 function loadAsset(a){return new Promise(res=>{let im;if(typeof a==='string'){im=new Image();im.src=a;}else{im=a;im.loading='eager';}if(im.complete&&im.naturalWidth){res();return;}im.addEventListener('load',res,{once:true});im.addEventListener('error',res,{once:true});setTimeout(res,8000);});}
 secs.forEach((s,i)=>{if(i>0)s.style.display='none';});
-(async()=>{for(let i=0;i<secs.length;i++){await Promise.all(slideAssets(secs[i]).map(loadAsset));secs[i].style.display='';readyUpTo=i;}})();
+/* per-slide gate: each slide waits only on its own assets; jumps load their target on demand */
+const shown=secs.map((s,i)=>i===0),loaded=secs.map(()=>false),loadingP=secs.map(()=>null);
+function revealSlide(i){if(shown[i])return;const cur=secs[Math.min(idx,secs.length-1)];const anchor=cur.offsetTop-deck.scrollTop;secs[i].style.display='';shown[i]=true;
+  if(secs[i].offsetTop<cur.offsetTop){const sb=deck.style.scrollBehavior;deck.style.scrollBehavior='auto';deck.scrollTop=cur.offsetTop-anchor;deck.style.scrollBehavior=sb;}}
+function ensureSlide(i){if(loaded[i])return Promise.resolve();
+  if(!loadingP[i])loadingP[i]=Promise.all(slideAssets(secs[i]).map(loadAsset)).then(()=>{loaded[i]=true;revealSlide(i);});
+  return loadingP[i];}
+(async()=>{for(let i=0;i<secs.length;i++){await ensureSlide(i);if(i===readyUpTo+1||i===0)readyUpTo=Math.max(readyUpTo,i);}})();
+/* reliable long-range jumps: snap-stop:always cancels multi-viewport smooth scrolls, so lift snap for the ride */
+let snapT=null;
+function jumpTo(t){const run=()=>{const far=Math.abs(t-idx)>2;idx=t;const done=()=>{deck.style.scrollSnapType='';};
+    deck.style.scrollSnapType='none';clearTimeout(snapT);
+    deck.addEventListener('scrollend',done,{once:true});snapT=setTimeout(done,1600);
+    if(far){const sb=deck.style.scrollBehavior;deck.style.scrollBehavior='auto';deck.scrollTop=secs[t].offsetTop;deck.style.scrollBehavior=sb;}
+    else{secs[t].scrollIntoView({behavior:'smooth'});}};
+  if(loaded[t]){run();}else{pill.style.opacity='1';ensureSlide(t).then(()=>{pill.style.opacity='0';run();});}}
 
-secs.forEach((s,i)=>{const b=document.createElement('button');b.innerHTML=String(i+1).padStart(2,'0')+'<span>'+(s.dataset.nav||'')+'</span>';b.onclick=()=>{const t=Math.min(i,readyUpTo);secs[t].scrollIntoView({behavior:'smooth'});if(t<i)pulsePill();};dotsBox.appendChild(b);});
+secs.forEach((s,i)=>{const b=document.createElement('button');b.innerHTML=String(i+1).padStart(2,'0')+'<span>'+(s.dataset.nav||'')+'</span>';b.onclick=()=>jumpTo(i);dotsBox.appendChild(b);});
 const dots=[...dotsBox.children];
-deck.addEventListener('scroll',()=>{const sc=deck.scrollTop,h=deck.scrollHeight-deck.clientHeight;prog.style.width=h>0?(sc/h*100)+'%':'0%';});
 deck.addEventListener('wheel',e=>{if(readyUpTo<secs.length-1&&e.deltaY>0&&deck.scrollTop+deck.clientHeight>=deck.scrollHeight-4)pulsePill();},{passive:true});
 /* visibility = max(fraction of the slide shown, fraction of the viewport it fills) — the second term is what reveals slides taller than 2x the viewport, which never reach 50% of their own height on mobile */
-const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));}}else if(!e.isIntersecting){e.target.classList.remove('in');}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');dbg('in '+e.target.id);e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));drawCostLines(e.target);}}else if(!e.isIntersecting){e.target.classList.remove('in');}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
 secs.forEach(s=>io.observe(s));
 function animate(el){const target=parseFloat(el.dataset.count);const dec=parseInt(el.dataset.dec||0);const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';const dur=1400,t0=performance.now();
 function fmt(v){let n=dec?v.toFixed(dec):Math.round(v).toLocaleString('en-US');return pre+n+suf;}
 function step(t){let p=Math.min((t-t0)/dur,1);p=1-Math.pow(1-p,3);el.textContent=fmt(target*p);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(target);}requestAnimationFrame(step);}
 let idx=0;
-function go(d){const t=Math.max(0,Math.min(secs.length-1,idx+d));idx=Math.min(t,readyUpTo);if(idx<t)pulsePill();secs[idx].scrollIntoView({behavior:'smooth'});}
+/* draw the visible cost line from its measured length; inline dash avoids Safari's pathLength dash bug */
+function drawCostLines(sec){dbg('drawCostLines '+sec.id+' lines='+sec.querySelectorAll('.costgraph .cg-line').length);sec.querySelectorAll('.costgraph .cg-line').forEach(l=>{
+  if(l.__drawn){dbg('skip: already drawn');return;}l.__drawn=true; /* once per page load — the single trigger is the slide's first reveal */
+  /* deliberate: the chart draw runs even under Reduce Motion — gentle, informative motion; all other deck animations still honor the setting */
+  /* failsafe first: whatever happens below, the line ends solid and visible */
+  setTimeout(()=>{l.style.transition='none';l.style.strokeDasharray='none';l.style.strokeDashoffset='0';l.style.opacity='1';},3400);
+  try{
+    const L=l.getTotalLength();
+    dbg('chart '+(l.closest('svg').getAttribute('class'))+' L='+Math.round(L)+' display='+getComputedStyle(l.closest('svg')).display);
+    if(!L)throw 0; /* hidden chart in some engines — land on the solid final state */
+    l.style.strokeDasharray=L+'px '+L+'px';l.style.strokeDashoffset=L+'px';
+    l.style.opacity='1'; /* reveal only now — fully dashed out, nothing shows yet */
+    /* rAF tween — same engine-proof mechanism as the count-ups; no CSS transition semantics involved */
+    const t0=performance.now(),DUR=2400,DELAY=500;
+    (function step(t){const p=Math.min(1,Math.max(0,(t-t0-DELAY)/DUR));const e=1-Math.pow(1-p,3);
+      l.style.strokeDashoffset=(L*(1-e))+'px';
+      if(p<1)requestAnimationFrame(step);else{l.style.strokeDasharray='none';l.style.strokeDashoffset='0';dbg('tween complete');}})(performance.now());
+    dbg('tween started');
+  }catch(e){dbg('CATCH '+e);l.style.transition='none';l.style.strokeDasharray='none';l.style.strokeDashoffset='0';l.style.opacity='1';}
+});}
+function go(d){const t=Math.max(0,Math.min(secs.length-1,idx+d));jumpTo(t);}
 deck.addEventListener('scroll',()=>{const c=deck.scrollTop+deck.clientHeight/2;const f=secs.findIndex(s=>s.offsetTop<=c&&s.offsetTop+s.offsetHeight>c);if(f>=0)idx=f;document.body.classList.toggle('on-cover',idx===0);});
 document.body.classList.add('on-cover');
-window.addEventListener('keydown',e=>{if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(1);}if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(-1);}if(e.key==='Home'){e.preventDefault();idx=0;secs[0].scrollIntoView({behavior:'smooth'});}if(e.key==='End'){e.preventDefault();idx=Math.min(secs.length-1,readyUpTo);secs[idx].scrollIntoView({behavior:'smooth'});if(idx<secs.length-1)pulsePill();}});
+/* rotation and window resizes remap scrollTop, which would otherwise move the viewer to a different slide */
+{let rzT=null,rzIdx=null;
+ const restore=()=>{const t=rzIdx;rzIdx=null;if(t==null||!secs[t])return;const sb=deck.style.scrollBehavior;deck.style.scrollBehavior='auto';deck.scrollTop=secs[t].offsetTop;deck.style.scrollBehavior=sb;idx=t;};
+ const onResize=()=>{if(rzIdx===null)rzIdx=idx;clearTimeout(rzT);rzT=setTimeout(restore,260);};
+ window.addEventListener('resize',onResize);window.addEventListener('orientationchange',onResize);}
+window.addEventListener('keydown',e=>{if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(1);}if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(-1);}if(e.key==='Home'){e.preventDefault();jumpTo(0);}if(e.key==='End'){e.preventDefault();jumpTo(secs.length-1);}});
+document.querySelectorAll('.person,.advc').forEach(c=>{c.tabIndex=0;}); /* keyboard: focus opens bios via :focus-within */
 /* touch devices: hover is unavailable, so bios open on tap as a centered overlay */
 if(matchMedia('(hover: none)').matches){
   document.querySelectorAll('.hint').forEach(h=>h.textContent='Tap for full bio');
@@ -1255,7 +1381,7 @@ let numBuf='',numT;
 window.addEventListener('keydown',e=>{
   if(e.key<'0'||e.key>'9'||e.metaKey||e.ctrlKey||e.altKey)return;
   numBuf+=e.key;clearTimeout(numT);
-  const commit=()=>{const n=parseInt(numBuf,10);numBuf='';if(n>=1&&n<=secs.length){const t=n-1;idx=Math.min(t,readyUpTo);if(idx<t)pulsePill();secs[idx].scrollIntoView({behavior:'smooth'});}};
+  const commit=()=>{const n=parseInt(numBuf,10);numBuf='';if(n>=1&&n<=secs.length)jumpTo(n-1);};
   if(parseInt(numBuf,10)>Math.floor(secs.length/10)||numBuf.length>=2)commit();else numT=setTimeout(commit,650);
 });
 
@@ -1311,10 +1437,12 @@ window.addEventListener('keydown',e=>{
   },{root:deckEl,threshold:0.6});
   document.querySelectorAll('section').forEach(function(s){sio.observe(s);});
 
+  function scrNow(){ try{ return { w:innerWidth, h:innerHeight, sw:screen.width, sh:screen.height, dpr:devicePixelRatio||1, o:matchMedia('(orientation: portrait)').matches?'p':'l' }; }catch(e){ return null; } }
+
   function send(){
     flush();
     if(!Object.keys(totals).length)return;
-    try{navigator.sendBeacon('/api/track',new Blob([JSON.stringify({viewer:viewer,session:session,totals:totals})],{type:'application/json'}));}catch(e){}
+    try{navigator.sendBeacon('/api/track',new Blob([JSON.stringify({viewer:viewer,session:session,totals:totals,scr:scrNow()})],{type:'application/json'}));}catch(e){}
   }
   setInterval(function(){ if(!document.hidden) send(); },30000);
   document.addEventListener('visibilitychange',function(){

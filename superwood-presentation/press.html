@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>In the Press — InventWood</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1f150c;--ink2:#2a1d11;
+  --cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;
+  --wood:#b87d44;--wood-bright:#cda165;--wood-deep:#8a4f23;
+  --teal:#2fa38f;
+  --line:rgba(228,210,180,.16);--grid:rgba(228,210,180,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;min-height:100vh}
+.pc-root{max-width:960px;margin:0 auto;padding:6vh 5vw 60px}
+.backrow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:30px;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+.backrow a{color:var(--cream-dim);text-decoration:none;letter-spacing:.12em;font-size:.72rem;text-transform:none}
+.backrow a:hover{color:var(--cream)}
+.masthead{margin-bottom:26px}
+.kicker{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:12px}
+.title{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.9rem,4.5vw,2.9rem);line-height:1.05;margin-bottom:14px}
+.deck{font-size:.95rem;line-height:1.65;color:var(--cream-dim);max-width:640px}
+.byline{font-size:.68rem;color:var(--muted);margin-top:12px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 6px}
+.search{flex:1 1 240px;padding:10px 14px;background:rgba(244,236,223,.04);border:1px solid var(--line);border-radius:8px;color:var(--cream);font-family:'Inter',sans-serif;font-size:.85rem;outline:none}
+.search:focus{border-color:var(--wood)}
+.search::placeholder{color:var(--muted)}
+.filter-btn{padding:8px 14px;font-family:'Inter',sans-serif;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--cream-dim);cursor:pointer}
+.filter-btn:hover{color:var(--cream)}
+.filter-btn.active{background:linear-gradient(135deg,var(--wood-deep),var(--wood));border-color:transparent;color:var(--cream)}
+.empty{display:none;padding:34px;text-align:center;color:var(--muted)}
+.empty.show{display:block}
+.tier{margin-top:56px}
+.tier[data-tier="tier1"]{--acc:var(--wood-bright)}
+.tier[data-tier="tier2"]{--acc:var(--teal)}
+.tier[data-tier="tier3"]{--acc:var(--cream-dim)}
+.tier[data-tier="video"]{--acc:var(--wood)}
+.tier-head{display:flex;gap:14px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px}
+.tier-num{font-family:'Fraunces',serif;font-size:1.8rem;color:var(--acc);min-width:1.6em}
+.tier-title{font-family:'Fraunces',serif;font-weight:500;font-size:1.5rem}
+.tier-sub{font-size:.68rem;color:var(--muted);margin-top:3px}
+.articles{list-style:none}
+.article{display:grid;grid-template-columns:2.2rem 1fr auto auto;gap:14px;align-items:baseline;padding:16px 4px;border-bottom:1px solid var(--grid);cursor:pointer}
+.article:hover{background:rgba(244,236,223,.03)}
+.article.hidden{display:none}
+.a-rank{font-family:'Fraunces',serif;font-size:.85rem;color:var(--acc)}
+.a-outlet{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.a-headline{display:block;font-size:1.15rem;font-weight:500;color:var(--cream);text-decoration:none;line-height:1.35}
+.a-headline:hover{color:var(--wood-bright)}
+.a-note{font-size:.78rem;line-height:1.6;color:var(--cream-dim);margin-top:6px;max-width:620px}
+.a-date{font-size:.7rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.a-link{font-size:.72rem;color:var(--wood-bright);text-decoration:none;white-space:nowrap}
+.a-link:hover{color:var(--cream)}
+@media(max-width:700px){
+  .article{grid-template-columns:1.6rem 1fr;row-gap:6px}
+  .a-date{grid-column:2}
+  .a-link{grid-column:2}
+}
+.foundational{margin-top:48px;border:1px solid var(--line);border-radius:10px;padding:20px 22px;background:rgba(244,236,223,.02)}
+.foundational h3{font-family:'Fraunces',serif;font-weight:500;font-size:1rem;margin-bottom:10px;color:var(--wood-bright)}
+.foundational p{font-size:.82rem;line-height:1.65;color:var(--cream-dim);margin-bottom:8px}
+.foundational a{color:var(--wood-bright);text-decoration:none}
+.foundational a:hover{color:var(--cream)}
+.foundational em{color:var(--cream)}
+.footnote{margin-top:26px;font-size:.7rem;line-height:1.7;color:var(--muted)}
+</style></head><body>
+<div class="pc-root">
+
+  <div class="backrow">
+    <span>InventWood — SUPERWOOD</span>
+    <a href="/intro">← Back to the deck</a>
+  </div>
+
+  <header class="masthead">
+    <div class="kicker">InventWood × Superwood</div>
+    <h1 class="title">Press Coverage Dossier</h1>
+    <p class="deck">A selection of the press coverage of InventWood and its molecularly densified wood over the years — from the foundational <em>Nature</em> paper through mainstream business and consumer press, awards, and YouTube features.</p>
+    <div class="byline">Compiled May 2026 · Grouped by approximate editorial reach</div>
+  </header>
+
+  <div class="controls">
+    <input class="search" id="search" type="text" placeholder="Search outlet, headline, or keyword…" />
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="tier1">Tier 1</button>
+    <button class="filter-btn" data-filter="tier2">Tier 2</button>
+    <button class="filter-btn" data-filter="tier3">Tier 3</button>
+    <button class="filter-btn" data-filter="video">Video</button>
+    <button class="filter-btn" data-filter="2025">2025</button>
+    <button class="filter-btn" data-filter="2026">2026</button>
+  </div>
+
+  <div class="empty" id="empty">No articles match that filter.</div>
+
+  <!-- =================== TIER 1 =================== -->
+  <section class="tier" data-tier="tier1">
+    <div class="tier-head">
+      <div class="tier-num">I</div>
+      <div class="tier-label">
+        <h2 class="tier-title">Mainstream Mass-Audience &amp; Business Press</h2>
+        <div class="tier-sub">Highest editorial reach · investor / customer credibility anchors</div>
+      </div>
+    </div>
+    <ol class="articles">
+
+      <li class="article" data-tier="tier1" data-year="2025">
+        <div class="a-rank">01</div>
+        <div class="a-main">
+          <div class="a-outlet">Popular Science · Best of What's New 2025</div>
+          <a class="a-headline" href="https://www.popsci.com/technology/engineering-innovations-2025/" target="_blank" rel="noopener">5 Remarkable Engineering Innovations of 2025 — featuring Superwood</a>
+          <div class="a-note">The 38th annual Best of What's New award, Popular Science's flagship editorial recognition since 1988. Superwood named one of the year's five most remarkable engineering innovations. Editorial recognition of the highest order — a defining 2025 third-party validation. Includes the price-vs-steel quote: Lau aims to sell SUPERWOOD at half the price of steel at scale.</div>
+        </div>
+        <div class="a-date">Dec 2025</div>
+        <a class="a-link" href="https://www.popsci.com/technology/engineering-innovations-2025/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier1" data-year="2025">
+        <div class="a-rank">02</div>
+        <div class="a-main">
+          <div class="a-outlet">The Wall Street Journal</div>
+          <a class="a-headline" href="https://www.wsj.com/tech/inventwood-superwood-material-engineered-wood-f7f558e9" target="_blank" rel="noopener">It's Bulletproof, Fire-Resistant and Stronger Than Steel. It's Superwood.</a>
+          <div class="a-note">In-depth factory tour and feature by Christopher Mims. Captured InventWood's first commercial plant in Maryland and framed Superwood as a serious challenger to construction-grade steel. The benchmark piece for senior business audiences.</div>
+        </div>
+        <div class="a-date">Jul 1, 2025</div>
+        <a class="a-link" href="https://www.wsj.com/tech/inventwood-superwood-material-engineered-wood-f7f558e9" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier1" data-year="2025">
+        <div class="a-rank">03</div>
+        <div class="a-main">
+          <div class="a-outlet">CNN</div>
+          <a class="a-headline" href="https://www.cnn.com/science/superwood-10-times-stronger-than-steel-spc" target="_blank" rel="noopener">Scientists create 'Superwood' that's 10 times stronger than steel</a>
+          <div class="a-note">Broad consumer-facing feature with independent expert commentary from UNSW's Philip Oldfield. Drove the largest single wave of global awareness in fall 2025.</div>
+        </div>
+        <div class="a-date">Oct 14, 2025</div>
+        <a class="a-link" href="https://www.cnn.com/science/superwood-10-times-stronger-than-steel-spc" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier1" data-year="2025">
+        <div class="a-rank">04</div>
+        <div class="a-main">
+          <div class="a-outlet">TechCrunch · Exclusive</div>
+          <a class="a-headline" href="https://techcrunch.com/2025/05/12/inventwood-is-about-to-mass-produce-wood-thats-stronger-than-steel/" target="_blank" rel="noopener">Exclusive: InventWood is about to mass-produce wood that's stronger than steel</a>
+          <div class="a-note">Tim De Chant's exclusive on the $15M Series A first close — the article that broke the commercial-launch story and was syndicated across MSN, Yahoo Finance, and dozens of secondary outlets.</div>
+        </div>
+        <div class="a-date">May 12, 2025</div>
+        <a class="a-link" href="https://techcrunch.com/2025/05/12/inventwood-is-about-to-mass-produce-wood-thats-stronger-than-steel/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier1" data-year="2025">
+        <div class="a-rank">05</div>
+        <div class="a-main">
+          <div class="a-outlet">Fast Company</div>
+          <a class="a-headline" href="https://www.fastcompany.com/91334748/superwood-stronger-than-steel-its-coming-to-building-near-you" target="_blank" rel="noopener">This 'Superwood' is stronger than steel. It's coming to a building near you</a>
+          <div class="a-note">Jesús Diaz's feature including Q&amp;A with Alex Lau and electron-micrograph imagery from UMD. The article that anchored InventWood's design-press positioning.</div>
+        </div>
+        <div class="a-date">May 16, 2025</div>
+        <a class="a-link" href="https://www.fastcompany.com/91334748/superwood-stronger-than-steel-its-coming-to-building-near-you" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier1" data-year="2025">
+        <div class="a-rank">06</div>
+        <div class="a-main">
+          <div class="a-outlet">Fast Company · World Changing Ideas</div>
+          <a class="a-headline" href="https://www.fastcompany.com/" target="_blank" rel="noopener">Superwood named to Fast Company's 2025 World Changing Ideas list</a>
+          <div class="a-note">Editorial recognition — not paid placement. A meaningful third-party validation award, widely re-reported across trade press.</div>
+        </div>
+        <div class="a-date">Jun 10, 2025</div>
+        <a class="a-link" href="https://www.fastcompany.com/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier1" data-year="2025">
+        <div class="a-rank">07</div>
+        <div class="a-main">
+          <div class="a-outlet">Newsweek</div>
+          <a class="a-headline" href="https://www.newsweek.com/super-wood-inventwood-construction-production-2072071" target="_blank" rel="noopener">What is 'Super Wood'? New material strong as steel nears mass production</a>
+          <div class="a-note">Updated with on-the-record spokesperson statements; widely indexed and shared on LinkedIn.</div>
+        </div>
+        <div class="a-date">May 14, 2025</div>
+        <a class="a-link" href="https://www.newsweek.com/super-wood-inventwood-construction-production-2072071" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier1" data-year="2025">
+        <div class="a-rank">08</div>
+        <div class="a-main">
+          <div class="a-outlet">Inc. Magazine</div>
+          <a class="a-headline" href="https://www.inc.com/chloe-aiello/inventwood-invented-wood-thats-stronger-than-steel-heres-how/91189315" target="_blank" rel="noopener">This Startup Invented Wood That's Stronger Than Steel. Here's How</a>
+          <div class="a-note">Founder-and-CEO-focused feature by Chloe Aiello. Key piece for the entrepreneurial and small-business reader.</div>
+        </div>
+        <div class="a-date">May 14, 2025</div>
+        <a class="a-link" href="https://www.inc.com/chloe-aiello/inventwood-invented-wood-thats-stronger-than-steel-heres-how/91189315" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier1" data-year="2018">
+        <div class="a-rank">09</div>
+        <div class="a-main">
+          <div class="a-outlet">Scientific American</div>
+          <a class="a-headline" href="https://www.scientificamerican.com/" target="_blank" rel="noopener">A New Way to Make Wood Stronger Than Steel</a>
+          <div class="a-note">The foundational 2018 mainstream science article on Hu's <em>Nature</em> paper. Frequently cited as the moment Superwood entered public consciousness.</div>
+        </div>
+        <div class="a-date">Feb 7, 2018</div>
+        <a class="a-link" href="https://www.scientificamerican.com/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- =================== TIER 2 =================== -->
+  <section class="tier" data-tier="tier2">
+    <div class="tier-head">
+      <div class="tier-num">II</div>
+      <div class="tier-label">
+        <h2 class="tier-title">Industry, Trade &amp; Specialist Publications</h2>
+        <div class="tier-sub">Reaches architects, builders, materials specifiers, and sustainability buyers</div>
+      </div>
+    </div>
+    <ol class="articles">
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">10</div>
+        <div class="a-main">
+          <div class="a-outlet">Dezeen</div>
+          <a class="a-headline" href="https://www.dezeen.com/2025/08/01/superwood-inventwood/" target="_blank" rel="noopener">Superwood is a chemically modified wood that is stronger than steel</a>
+          <div class="a-note">The architecture-and-design world's leading publication. Includes substantive quotes from CEO Alex Lau and principal scientist Dr. Jack Winterowd. Crucial for specifier credibility.</div>
+        </div>
+        <div class="a-date">Aug 1, 2025</div>
+        <a class="a-link" href="https://www.dezeen.com/2025/08/01/superwood-inventwood/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">11</div>
+        <div class="a-main">
+          <div class="a-outlet">Building Design + Construction</div>
+          <a class="a-headline" href="https://www.bdcnetwork.com/home/news/55323539/wood-reinvented-has-steel-in-its-competitive-crosshairs" target="_blank" rel="noopener">Wood, reinvented, has steel in its competitive crosshairs</a>
+          <div class="a-note">A reflective trade piece pitched at architects, GCs, and developers — frames Superwood vs. mass timber and steel for the AEC professional.</div>
+        </div>
+        <div class="a-date">Oct 2025</div>
+        <a class="a-link" href="https://www.bdcnetwork.com/home/news/55323539/wood-reinvented-has-steel-in-its-competitive-crosshairs" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">12</div>
+        <div class="a-main">
+          <div class="a-outlet">New Atlas</div>
+          <a class="a-headline" href="https://newatlas.com/materials/superwood-stronger-steel-inventwood" target="_blank" rel="noopener">Maryland startup InventWood to launch Superwood stronger than steel</a>
+          <div class="a-note">Updated long-form revisit of an originally 2018 story — a rare two-act feature spanning research-stage and commercialization.</div>
+        </div>
+        <div class="a-date">May 24, 2025</div>
+        <a class="a-link" href="https://newatlas.com/materials/superwood-stronger-steel-inventwood" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">13</div>
+        <div class="a-main">
+          <div class="a-outlet">Gizmodo</div>
+          <a class="a-headline" href="https://gizmodo.com/this-new-superwood-is-as-strong-as-steel-and-6-times-lighter-2000672275" target="_blank" rel="noopener">This New Superwood Is as Strong as Steel and 6 Times Lighter</a>
+          <div class="a-note">A widely shared consumer-tech outlet recap. Significant for socials and SEO.</div>
+        </div>
+        <div class="a-date">Oct 15, 2025</div>
+        <a class="a-link" href="https://gizmodo.com/this-new-superwood-is-as-strong-as-steel-and-6-times-lighter-2000672275" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">14</div>
+        <div class="a-main">
+          <div class="a-outlet">Interesting Engineering</div>
+          <a class="a-headline" href="https://interestingengineering.com/innovation/revolutionary-superwood-stronger-than-steel" target="_blank" rel="noopener">US creates wood 10 times tougher than steel, can resist water, fire</a>
+          <div class="a-note">Engineering-audience write-up; later included in IE's "must-read stories of 2025" retrospective.</div>
+        </div>
+        <div class="a-date">May 13, 2025</div>
+        <a class="a-link" href="https://interestingengineering.com/innovation/revolutionary-superwood-stronger-than-steel" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">15</div>
+        <div class="a-main">
+          <div class="a-outlet">Vice</div>
+          <a class="a-headline" href="https://www.vice.com/en/article/a-startup-invented-a-superwood-thats-10-times-stronger-than-steel/" target="_blank" rel="noopener">A Startup Invented a 'Superwood' That's 10 Times Stronger Than Steel</a>
+          <div class="a-note">Reaches younger, design- and sustainability-minded readers with strong social-share dynamics.</div>
+        </div>
+        <div class="a-date">May 19, 2025</div>
+        <a class="a-link" href="https://www.vice.com/en/article/a-startup-invented-a-superwood-thats-10-times-stronger-than-steel/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">16</div>
+        <div class="a-main">
+          <div class="a-outlet">ZME Science</div>
+          <a class="a-headline" href="https://www.zmescience.com/science/news-science/meet-superwood-a-miracle-material/" target="_blank" rel="noopener">Scientists Turn Timber Into SuperWood</a>
+          <div class="a-note">Strong technical detail and direct quotes from InventWood's communications lead Christina Ra — useful for sourcing in subsequent coverage.</div>
+        </div>
+        <div class="a-date">Jun 13, 2025</div>
+        <a class="a-link" href="https://www.zmescience.com/science/news-science/meet-superwood-a-miracle-material/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">17</div>
+        <div class="a-main">
+          <div class="a-outlet">Jumpstart Magazine</div>
+          <a class="a-headline" href="https://www.jumpstartmag.com/wood-stronger-than-steel-meet-inventwoods-carbon-negative-superwood/" target="_blank" rel="noopener">Wood Stronger Than Steel? Meet InventWood's Carbon-Negative "Superwood"</a>
+          <div class="a-note">Asia-Pacific business-innovation audience; provides good detail on the chemistry and the 2018 <em>Nature</em> paper lineage.</div>
+        </div>
+        <div class="a-date">Jun 17, 2025</div>
+        <a class="a-link" href="https://www.jumpstartmag.com/wood-stronger-than-steel-meet-inventwoods-carbon-negative-superwood/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">18</div>
+        <div class="a-main">
+          <div class="a-outlet">Woodworking Network</div>
+          <a class="a-headline" href="https://www.woodworkingnetwork.com/news/woodworking-industry-news/inventwoods-superwood-named-2025-world-changing-ideas-list" target="_blank" rel="noopener">InventWood's Superwood named on 2025 World Changing Ideas list</a>
+          <div class="a-note">The wood-products industry trade journal. Important for distributor and trade-partner conversations.</div>
+        </div>
+        <div class="a-date">Jun 17, 2025</div>
+        <a class="a-link" href="https://www.woodworkingnetwork.com/news/woodworking-industry-news/inventwoods-superwood-named-2025-world-changing-ideas-list" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">19</div>
+        <div class="a-main">
+          <div class="a-outlet">Wood Floor Business</div>
+          <a class="a-headline" href="https://www.woodfloorbusiness.com/news/article/15747446/inventwood-startup-to-begin-mass-production-of-superwood" target="_blank" rel="noopener">InventWood Startup To Begin Mass Production of 'Superwood'</a>
+          <div class="a-note">Direct industry trade — reaches the flooring/distribution channel.</div>
+        </div>
+        <div class="a-date">Jun 2, 2025</div>
+        <a class="a-link" href="https://www.woodfloorbusiness.com/news/article/15747446/inventwood-startup-to-begin-mass-production-of-superwood" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">20</div>
+        <div class="a-main">
+          <div class="a-outlet">Wood &amp; Panel</div>
+          <a class="a-headline" href="https://www.woodandpanel.us/news/article/new-superwood-emerges-as-ultra-strong-low-carbon-alternative-to-steel/" target="_blank" rel="noopener">New Superwood emerges as ultra-strong, low-carbon alternative to steel</a>
+          <div class="a-note">A second wood-industry trade piece — useful for OEM, integrator, and supply-chain audiences.</div>
+        </div>
+        <div class="a-date">Oct 24, 2025</div>
+        <a class="a-link" href="https://www.woodandpanel.us/news/article/new-superwood-emerges-as-ultra-strong-low-carbon-alternative-to-steel/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">21</div>
+        <div class="a-main">
+          <div class="a-outlet">Robotics &amp; Automation News</div>
+          <a class="a-headline" href="https://roboticsandautomationnews.com/2025/05/17/superwood-a-potentially-revolutionary-material-that-could-replace-steel/90938/" target="_blank" rel="noopener">Superwood: InventWood's revolutionary wood 'stronger than steel'</a>
+          <div class="a-note">Industrial-automation audience perspective — relevant to InventWood's manufacturing-tech narrative.</div>
+        </div>
+        <div class="a-date">May 17, 2025</div>
+        <a class="a-link" href="https://roboticsandautomationnews.com/2025/05/17/superwood-a-potentially-revolutionary-material-that-could-replace-steel/90938/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">22</div>
+        <div class="a-main">
+          <div class="a-outlet">Renewable Carbon News</div>
+          <a class="a-headline" href="https://renewable-carbon.eu/news/inventwood-announces-15-million-first-close-of-series-a-to-launch-revolutionary-superwood-material/" target="_blank" rel="noopener">InventWood Announces $15M First Close of Series A to Launch SUPERWOOD</a>
+          <div class="a-note">European bioeconomy-focused outlet — useful for EU partnership and import-narrative discussions.</div>
+        </div>
+        <div class="a-date">Apr 30, 2025</div>
+        <a class="a-link" href="https://renewable-carbon.eu/news/inventwood-announces-15-million-first-close-of-series-a-to-launch-revolutionary-superwood-material/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">23</div>
+        <div class="a-main">
+          <div class="a-outlet">illuminem</div>
+          <a class="a-headline" href="https://illuminem.com/illuminemvoices/scientists-create-superwood-thats-10-times-stronger-than-steel" target="_blank" rel="noopener">Scientists create 'Superwood' that's 10 times stronger than steel</a>
+          <div class="a-note">A sustainability-focused outlet read by ESG-aligned investors and operators.</div>
+        </div>
+        <div class="a-date">Oct 14, 2025</div>
+        <a class="a-link" href="https://illuminem.com/illuminemvoices/scientists-create-superwood-thats-10-times-stronger-than-steel" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2025">
+        <div class="a-rank">24</div>
+        <div class="a-main">
+          <div class="a-outlet">BizTech Weekly</div>
+          <a class="a-headline" href="https://biztechweekly.com/superwood-by-inventwood-stronger-lighter-and-eco-friendly-steel-alternative-revolutionizing-construction-materials/" target="_blank" rel="noopener">Superwood by InventWood: Stronger, Lighter, and Eco-Friendly Steel Alternative</a>
+          <div class="a-note">Industry-analysis framing including carbon-market and capital-formation discussion — sometimes circulated by climate-tech investors.</div>
+        </div>
+        <div class="a-date">May 20, 2025</div>
+        <a class="a-link" href="https://biztechweekly.com/superwood-by-inventwood-stronger-lighter-and-eco-friendly-steel-alternative-revolutionizing-construction-materials/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier2" data-year="2026">
+        <div class="a-rank">25</div>
+        <div class="a-main">
+          <div class="a-outlet">Lancaster Farming</div>
+          <a class="a-headline" href="https://www.lancasterfarming.com/farming-news/ag-business/inventwood-startup-turns-lumber-waste-into-strong-wood-to-rival-steel/article_d3cd0e7e-3b57-4b43-870c-4cfd9bd9a409.html" target="_blank" rel="noopener">InventWood Startup Turns Lumber Waste Into Strong Wood To Rival Steel</a>
+          <div class="a-note">First major 2026 coverage — confirms 1M sq ft annual capacity, fully allocated 2025 inventory, and plans for a facility 20× current scale. Notes pursuit of CA State Fire Marshal listing for WUI applications.</div>
+        </div>
+        <div class="a-date">Apr 2, 2026</div>
+        <a class="a-link" href="https://www.lancasterfarming.com/farming-news/ag-business/inventwood-startup-turns-lumber-waste-into-strong-wood-to-rival-steel/article_d3cd0e7e-3b57-4b43-870c-4cfd9bd9a409.html" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- =================== TIER 3 =================== -->
+  <section class="tier" data-tier="tier3">
+    <div class="tier-head">
+      <div class="tier-num">III</div>
+      <div class="tier-label">
+        <h2 class="tier-title">Syndication, Regional &amp; International</h2>
+        <div class="tier-sub">Broad consumer reach · global reprints · SEO &amp; social distribution</div>
+      </div>
+    </div>
+    <ol class="articles">
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">26</div>
+        <div class="a-main">
+          <div class="a-outlet">Local12 / Sinclair</div>
+          <a class="a-headline" href="https://local12.com/news/nation-world/superwood-inventwood-american-company-unveils-strength-weight-ratio-steel-stronger-strength-durability-cincinnati-traditional-materials-lighter-construction-speed-efficiency-consumer-alerts-earthquake-resistant-journal-nature-advancement-tech-human" target="_blank" rel="noopener">Scientist create 'Superwood' stronger than steel</a>
+          <div class="a-note">Sinclair Broadcast Group syndication — reached local-TV news audiences across the US.</div>
+        </div>
+        <div class="a-date">Oct 15, 2025</div>
+        <a class="a-link" href="https://local12.com/news/nation-world/superwood-inventwood-american-company-unveils-strength-weight-ratio-steel-stronger-strength-durability-cincinnati-traditional-materials-lighter-construction-speed-efficiency-consumer-alerts-earthquake-resistant-journal-nature-advancement-tech-human" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">27</div>
+        <div class="a-main">
+          <div class="a-outlet">Yahoo News / Yahoo Finance</div>
+          <a class="a-headline" href="https://www.yahoo.com/news/articles/scientists-create-superwood-10-times-030119733.html" target="_blank" rel="noopener">Scientists create 'Superwood' that's 10 times stronger than steel</a>
+          <div class="a-note">CNN syndication on Yahoo's properties — significant reach driver in 2025.</div>
+        </div>
+        <div class="a-date">Oct 2025</div>
+        <a class="a-link" href="https://www.yahoo.com/news/articles/scientists-create-superwood-10-times-030119733.html" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">28</div>
+        <div class="a-main">
+          <div class="a-outlet">MSN</div>
+          <a class="a-headline" href="https://www.msn.com/en-us/money/markets/inventwood-is-about-to-mass-produce-wood-that-s-stronger-than-steel/ar-AA1ECzFM" target="_blank" rel="noopener">InventWood is about to mass produce wood that's stronger than steel</a>
+          <div class="a-note">TechCrunch syndication on Microsoft's MSN network.</div>
+        </div>
+        <div class="a-date">May 2025</div>
+        <a class="a-link" href="https://www.msn.com/en-us/money/markets/inventwood-is-about-to-mass-produce-wood-that-s-stronger-than-steel/ar-AA1ECzFM" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">29</div>
+        <div class="a-main">
+          <div class="a-outlet">Family Handyman</div>
+          <a class="a-headline" href="https://www.familyhandyman.com/article/superwood-stronger-than-steel/" target="_blank" rel="noopener">Scientists Create 'Superwood' 10 Times Stronger Than Steel</a>
+          <div class="a-note">Reaches DIY homeowners — a sustained awareness driver for the residential cladding and decking market.</div>
+        </div>
+        <div class="a-date">Dec 21, 2025</div>
+        <a class="a-link" href="https://www.familyhandyman.com/article/superwood-stronger-than-steel/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">30</div>
+        <div class="a-main">
+          <div class="a-outlet">Daily Galaxy</div>
+          <a class="a-headline" href="https://dailygalaxy.com/2025/12/say-goodbye-to-steel-u-s-scientists-create-a-superwood-thats-stronger-lighter-and-surprisingly-green/" target="_blank" rel="noopener">Say Goodbye to Steel: U.S. Scientists Create a "Superwood"</a>
+          <div class="a-note">Science-aggregator audience; emphasizes the lab-to-industry transition and life-cycle carbon claims.</div>
+        </div>
+        <div class="a-date">Dec 23, 2025</div>
+        <a class="a-link" href="https://dailygalaxy.com/2025/12/say-goodbye-to-steel-u-s-scientists-create-a-superwood-thats-stronger-lighter-and-surprisingly-green/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">31</div>
+        <div class="a-main">
+          <div class="a-outlet">Colombia One</div>
+          <a class="a-headline" href="https://colombiaone.com/2025/10/14/superwood-stronger-than-steel/" target="_blank" rel="noopener">Scientists Create Superwood 10 Times Stronger Than Steel</a>
+          <div class="a-note">Latin American English-language audience — useful proof of international interest.</div>
+        </div>
+        <div class="a-date">Oct 14, 2025</div>
+        <a class="a-link" href="https://colombiaone.com/2025/10/14/superwood-stronger-than-steel/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">32</div>
+        <div class="a-main">
+          <div class="a-outlet">Union Rayo</div>
+          <a class="a-headline" href="https://unionrayo.com/en/superwood-construction-material-steel/" target="_blank" rel="noopener">Goodbye to steel — the "superwood" created by InventWood</a>
+          <div class="a-note">Spanish-language outlet with English version — adds Iberian and Latin American audience.</div>
+        </div>
+        <div class="a-date">Nov 7, 2025</div>
+        <a class="a-link" href="https://unionrayo.com/en/superwood-construction-material-steel/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">33</div>
+        <div class="a-main">
+          <div class="a-outlet">Pravda USA (Sergey Mardan)</div>
+          <a class="a-headline" href="https://usa.news-pravda.com/world/2025/10/14/510510.html" target="_blank" rel="noopener">An American company has developed a new type of wood…</a>
+          <div class="a-note">Russian-language English-version coverage — notable for the geopolitical signaling around US advanced-materials manufacturing.</div>
+        </div>
+        <div class="a-date">Oct 14, 2025</div>
+        <a class="a-link" href="https://usa.news-pravda.com/world/2025/10/14/510510.html" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">34</div>
+        <div class="a-main">
+          <div class="a-outlet">Goldsea / Asian American Daily</div>
+          <a class="a-headline" href="https://goldsea.com/article_details/alex-laus-superwood-strong-as-steel-but-much-lighter" target="_blank" rel="noopener">Alex Lau's SuperWood: Strong As Steel but Much Lighter</a>
+          <div class="a-note">Asian-American business community feature on Alex Lau as founder. Useful for founder-profile distribution.</div>
+        </div>
+        <div class="a-date">Jun 29, 2025</div>
+        <a class="a-link" href="https://goldsea.com/article_details/alex-laus-superwood-strong-as-steel-but-much-lighter" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">35</div>
+        <div class="a-main">
+          <div class="a-outlet">WebProNews</div>
+          <a class="a-headline" href="https://www.webpronews.com/superwood-10x-stronger-than-steel-6x-lighter-hits-production-in-2025/" target="_blank" rel="noopener">Superwood: 10× Stronger Than Steel, 6× Lighter, Hits Production in 2025</a>
+          <div class="a-note">Tech-business audience; cites the TechCrunch exclusive.</div>
+        </div>
+        <div class="a-date">Oct 14, 2025</div>
+        <a class="a-link" href="https://www.webpronews.com/superwood-10x-stronger-than-steel-6x-lighter-hits-production-in-2025/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">36</div>
+        <div class="a-main">
+          <div class="a-outlet">Unbelievable Facts</div>
+          <a class="a-headline" href="https://unbelievable-facts.com/2025/05/superwood.html" target="_blank" rel="noopener">Maryland Startup Invents Superwood That Is Stronger Than Steel</a>
+          <div class="a-note">Viral-content site — broad casual-curiosity reach.</div>
+        </div>
+        <div class="a-date">May 19, 2025</div>
+        <a class="a-link" href="https://unbelievable-facts.com/2025/05/superwood.html" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">37</div>
+        <div class="a-main">
+          <div class="a-outlet">Burton Media</div>
+          <a class="a-headline" href="https://burtonmedia.org/2025/08/21/the-science-behind-the-new-superwood/" target="_blank" rel="noopener">The Science Behind The New "Superwood"</a>
+          <div class="a-note">Independent commentary piece referencing the WSJ feature.</div>
+        </div>
+        <div class="a-date">Aug 21, 2025</div>
+        <a class="a-link" href="https://burtonmedia.org/2025/08/21/the-science-behind-the-new-superwood/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">38</div>
+        <div class="a-main">
+          <div class="a-outlet">Mutual Assurance</div>
+          <a class="a-headline" href="https://www.mutual-assurance.com/post/maryland-scientists-create-superwood-that-s-stronger-than-steel" target="_blank" rel="noopener">Maryland Scientists Create "Superwood" That's Stronger Than Steel</a>
+          <div class="a-note">Insurance-industry blog — relevant for property and casualty actuarial conversations on building materials.</div>
+        </div>
+        <div class="a-date">May 14, 2025</div>
+        <a class="a-link" href="https://www.mutual-assurance.com/post/maryland-scientists-create-superwood-that-s-stronger-than-steel" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">39</div>
+        <div class="a-main">
+          <div class="a-outlet">My Electric Sparks</div>
+          <a class="a-headline" href="https://myelectricsparks.com/inventwood-superwood-stronger-than-steel-sustainable-building-material-launch/" target="_blank" rel="noopener">Maryland Startup InventWood Begins Mass Production of Superwood</a>
+          <div class="a-note">Engineering-news outlet with strong ballistic-test detail; quotes Liangbing Hu directly.</div>
+        </div>
+        <div class="a-date">May 28, 2025</div>
+        <a class="a-link" href="https://myelectricsparks.com/inventwood-superwood-stronger-than-steel-sustainable-building-material-launch/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">40</div>
+        <div class="a-main">
+          <div class="a-outlet">WebProNews · launch piece</div>
+          <a class="a-headline" href="https://www.webpronews.com/inventwood-unveils-superwood-a-revolutionary-wood-based-material-poised-to-transform-sustainable-construction/" target="_blank" rel="noopener">InventWood Unveils Superwood: A Revolutionary Wood-Based Material</a>
+          <div class="a-note">A second WebProNews piece — focused on the manufacturing facility commissioning.</div>
+        </div>
+        <div class="a-date">May 20, 2025</div>
+        <a class="a-link" href="https://www.webpronews.com/inventwood-unveils-superwood-a-revolutionary-wood-based-material-poised-to-transform-sustainable-construction/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+      <li class="article" data-tier="tier3" data-year="2025">
+        <div class="a-rank">41</div>
+        <div class="a-main">
+          <div class="a-outlet">The Pricer</div>
+          <a class="a-headline" href="https://www.thepricer.org/how-much-does-superwood-cost/" target="_blank" rel="noopener">How Much Does Superwood Cost?</a>
+          <div class="a-note">Pricing-focused analysis frequently shared in materials-procurement and Reddit threads.</div>
+        </div>
+        <div class="a-date">Oct 15, 2025</div>
+        <a class="a-link" href="https://www.thepricer.org/how-much-does-superwood-cost/" target="_blank" rel="noopener">Read →</a>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- =================== YOUTUBE / VIDEO =================== -->
+  <section class="tier" data-tier="video">
+    <div class="tier-head">
+      <div class="tier-num">▶</div>
+      <div class="tier-label">
+        <h2 class="tier-title">YouTube &amp; Video Coverage</h2>
+        <div class="tier-sub">Long-form explainers · CEO interviews · creator-driven reach</div>
+      </div>
+    </div>
+    <ol class="articles">
+
+      <li class="article" data-tier="video" data-year="2023">
+        <div class="a-rank">V1</div>
+        <div class="a-main">
+          <div class="a-outlet">NileRed · 10.7M subscribers</div>
+          <a class="a-headline" href="https://www.youtube.com/watch?v=CglNRNrMFGM" target="_blank" rel="noopener">Making bulletproof wood</a>
+          <div class="a-note">A three-year personal-replication of the 2018 <em>Nature</em> paper that underlies SUPERWOOD — explicitly cited in the video description. One of the most-viewed science explainers of the underlying technology in existence; predates InventWood's commercial launch but is the single biggest piece of mainstream YouTube exposure for the chemistry. Often the first thing a technical buyer or investor has actually <em>seen</em> on the topic.</div>
+        </div>
+        <div class="a-date">Oct 31, 2023</div>
+        <a class="a-link" href="https://www.youtube.com/watch?v=CglNRNrMFGM" target="_blank" rel="noopener">Watch →</a>
+      </li>
+
+      <li class="article" data-tier="video" data-year="2024">
+        <div class="a-rank">V2</div>
+        <div class="a-main">
+          <div class="a-outlet">Strange Parts (Scotty Allen)</div>
+          <a class="a-headline" href="https://www.youtube.com/watch?v=96Dz-rQtGxI" target="_blank" rel="noopener">Making wood as strong as steel!</a>
+          <div class="a-note">Scotty Allen — known for the "I built an iPhone in China" series — interviewed the InventWood team at the White House Demo Day organized by the Office of Science and Technology Policy. ~1M views. Uses the earlier "MettleWood" branding (since rebranded to SUPERWOOD). One of the highest-reach video features and adds a federal-validation thread to the story.</div>
+        </div>
+        <div class="a-date">May 21, 2024</div>
+        <a class="a-link" href="https://www.youtube.com/watch?v=96Dz-rQtGxI" target="_blank" rel="noopener">Watch →</a>
+      </li>
+
+      <li class="article" data-tier="video" data-year="2025">
+        <div class="a-rank">V3</div>
+        <div class="a-main">
+          <div class="a-outlet">DIY with Dave</div>
+          <a class="a-headline" href="https://www.youtube.com/watch?v=n4-v3ntYZAs" target="_blank" rel="noopener">Superwood is Here! This Amazing New Material Could Change The World</a>
+          <div class="a-note">DIY with Dave's first SUPERWOOD video — the one that introduced the material to his audience of DIY, woodworking, and home-improvement viewers. Reached Top 20 Trending on YouTube. Generated the thousands of comments and questions that prompted the follow-up CEO interview.</div>
+        </div>
+        <div class="a-date">May 2025</div>
+        <a class="a-link" href="https://www.youtube.com/watch?v=n4-v3ntYZAs" target="_blank" rel="noopener">Watch →</a>
+      </li>
+
+      <li class="article" data-tier="video" data-year="2025">
+        <div class="a-rank">V4</div>
+        <div class="a-main">
+          <div class="a-outlet">DIY with Dave</div>
+          <a class="a-headline" href="https://www.youtube.com/watch?v=QsQRBFt25Ew" target="_blank" rel="noopener">The TRUTH About SUPERWOOD — I Met With The CEO of InventWood</a>
+          <div class="a-note">A follow-up to Dave's first SUPERWOOD video — Alex Lau sat down on-camera and addressed the audience's top questions (termites, water resistance, machinability, raw-material sourcing).</div>
+        </div>
+        <div class="a-date">Jun 27, 2025</div>
+        <a class="a-link" href="https://www.youtube.com/watch?v=QsQRBFt25Ew" target="_blank" rel="noopener">Watch →</a>
+      </li>
+
+      <li class="article" data-tier="video" data-year="2026">
+        <div class="a-rank">V5</div>
+        <div class="a-main">
+          <div class="a-outlet">Skill Builder (Roger Bisby) · UK construction</div>
+          <a class="a-headline" href="https://www.youtube.com/watch?v=kbq6Rqi7Vik" target="_blank" rel="noopener">Could Superwood Solve Construction's Biggest Problem?</a>
+          <div class="a-note">UK trade-and-construction YouTube channel reaching builders, joiners, and trades professionals. Roger Bisby's coverage is trusted in the UK building community and signals international AEC interest.</div>
+        </div>
+        <div class="a-date">Mar 27, 2026</div>
+        <a class="a-link" href="https://www.youtube.com/watch?v=kbq6Rqi7Vik" target="_blank" rel="noopener">Watch →</a>
+      </li>
+
+      <li class="article" data-tier="video" data-year="2025">
+        <div class="a-rank">V6</div>
+        <div class="a-main">
+          <div class="a-outlet">CNN · YouTube</div>
+          <a class="a-headline" href="https://www.youtube.com/watch?v=FW1RAsu40eY" target="_blank" rel="noopener">Newly produced "Superwood" launches commercially</a>
+          <div class="a-note">The video companion to CNN's October feature. Reaches the broad CNN YouTube audience and is auto-recommended alongside related building-technology content.</div>
+        </div>
+        <div class="a-date">Oct 15, 2025</div>
+        <a class="a-link" href="https://www.youtube.com/watch?v=FW1RAsu40eY" target="_blank" rel="noopener">Watch →</a>
+      </li>
+
+      <li class="article" data-tier="video" data-year="2025">
+        <div class="a-rank">V7</div>
+        <div class="a-main">
+          <div class="a-outlet">WMAR-2 News · Baltimore (Scripps)</div>
+          <a class="a-headline" href="https://www.youtube.com/watch?v=-pXTAI5ZAdc" target="_blank" rel="noopener">Frederick-based company patents a "superwood" that's stronger than steel</a>
+          <div class="a-note">Reporter Blair Sabol's factory feature, with on-camera testing and quotes from InventWood president Jonathan Strimling. ~300K views — significantly outperformed typical local-news YouTube traffic and was widely shared regionally. Also valuable for hiring narrative and Maryland community goodwill.</div>
+        </div>
+        <div class="a-date">Oct 22, 2025</div>
+        <a class="a-link" href="https://www.youtube.com/watch?v=-pXTAI5ZAdc" target="_blank" rel="noopener">Watch →</a>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- Foundational scientific record -->
+  <div class="foundational">
+    <h3>Foundational scientific publication</h3>
+    <p>All press coverage of Superwood traces back to a single peer-reviewed paper. Worth keeping handy when speaking with technical or academic audiences.</p>
+    <p>
+      <strong>Song, J., Chen, C., Zhu, S. et al.</strong> "Processing bulk natural wood into a high-performance structural material." <em>Nature</em> <strong>554</strong>, 224–228 (2018).
+      <a href="https://www.nature.com/articles/nature25476" target="_blank" rel="noopener">DOI: 10.1038/nature25476 ↗</a>
+    </p>
+    <p style="font-size: 13px; color: var(--muted);">Co-authored by Liangbing Hu and 21 collaborators at the University of Maryland, including UMD's Center for Materials Innovation. This is the work that demonstrated the partial-delignification + hot-press densification process underlying SUPERWOOD.</p>
+  </div>
+
+  <div class="footnote">
+    A selection of press coverage compiled from web search results, May 2026 — not a definitive record. Likely missing pieces include print-only coverage, podcast appearances, and articles that didn't surface in web searches. Tier classifications reflect a rough sense of editorial influence and target-audience reach, not anything systematic. Where the same story was syndicated across many outlets (e.g., TechCrunch → MSN → Yahoo Finance), the most authoritative version is listed in Tier I or II and major syndications appear in Tier III. Major awards (Popular Science Best of What's New 2025, Fast Company World Changing Ideas 2025) appear in Tier I alongside top mainstream coverage. The YouTube section lists a few notable video features. The original 2018 Scientific American piece is included in Tier I as a foundational reference. Every link points to the original source for verification.
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const articles = document.querySelectorAll('.article');
+  const tierSections = document.querySelectorAll('.tier');
+  const buttons = document.querySelectorAll('.filter-btn');
+  const search = document.getElementById('search');
+  const empty = document.getElementById('empty');
+
+  let activeFilter = 'all';
+
+  function applyFilters() {
+    const q = (search.value || '').trim().toLowerCase();
+    let anyVisible = false;
+
+    // Track visible counts per section
+    const tierVisible = { tier1: 0, tier2: 0, tier3: 0, video: 0 };
+
+    articles.forEach(a => {
+      const tier = a.dataset.tier;
+      const year = a.dataset.year;
+      const text = a.textContent.toLowerCase();
+
+      let visible = true;
+      if (activeFilter === 'tier1' && tier !== 'tier1') visible = false;
+      if (activeFilter === 'tier2' && tier !== 'tier2') visible = false;
+      if (activeFilter === 'tier3' && tier !== 'tier3') visible = false;
+      if (activeFilter === 'video' && tier !== 'video') visible = false;
+      if (activeFilter === '2025' && year !== '2025') visible = false;
+      if (activeFilter === '2026' && year !== '2026') visible = false;
+      if (q && !text.includes(q)) visible = false;
+
+      a.classList.toggle('hidden', !visible);
+      if (visible) {
+        anyVisible = true;
+        tierVisible[tier]++;
+      }
+    });
+
+    // Hide tier sections that have no visible articles
+    tierSections.forEach(s => {
+      const t = s.dataset.tier;
+      s.style.display = tierVisible[t] > 0 ? '' : 'none';
+    });
+
+    empty.classList.toggle('show', !anyVisible);
+  }
+
+  buttons.forEach(b => {
+    b.addEventListener('click', () => {
+      buttons.forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      activeFilter = b.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  search.addEventListener('input', applyFilters);
+
+  // Whole-row click opens the article (native links and text selection win).
+  document.querySelectorAll('.articles').forEach(list => {
+    list.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      const row = e.target.closest('.article');
+      if (!row) return;
+      const sel = window.getSelection();
+      if (sel && !sel.isCollapsed) return;
+      const link = row.querySelector('.a-headline');
+      if (link) window.open(link.href, '_blank', 'noopener');
+    });
+  });
+})();
+</script>
+</body></html>

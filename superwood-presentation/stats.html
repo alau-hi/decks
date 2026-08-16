@@ -67,6 +67,16 @@ tr:last-child td{border-bottom:none}
 .b{fill:var(--wood)}
 .b.hov{filter:brightness(1.2)}
 .blabel{font-size:10px;fill:var(--cream-dim);font-variant-numeric:tabular-nums}
+.devtabs{display:flex;gap:8px;margin:0 0 12px}
+.dtab{padding:6px 14px;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--cream-dim);cursor:pointer}
+.dtab.sel{background:linear-gradient(135deg,var(--wood-deep),var(--wood));border-color:transparent;color:var(--cream)}
+.mixlist{max-width:560px}
+.hbar{display:flex;align-items:center;gap:10px;margin:5px 0;font-size:.72rem}
+.hbar .lab{flex:none;width:128px;text-align:right;color:var(--cream-dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hbar .trk{flex:1;height:13px;background:var(--grid);border-radius:4px;overflow:hidden}
+.hbar .fill{height:100%;background:var(--wood);border-radius:4px}
+.hbar .n{flex:none;width:88px;color:var(--muted);font-variant-numeric:tabular-nums}
+.devchip{font-size:.66rem;color:var(--muted);margin-top:2px}
 </style>
 </head>
 <body>
@@ -97,6 +107,16 @@ tr:last-child td{border-bottom:none}
       <h2>Drop-off</h2>
       <div class="chartsub" id="dropsub">share of visits reaching each slide</div>
       <svg id="c-drop" viewBox="0 0 560 325" role="img" aria-label="Percent of visits reaching each slide"></svg>
+    </div>
+    <div class="card wide" id="devcard">
+      <h2>Devices &amp; formats</h2>
+      <div class="chartsub" id="devsub">sessions by device and screen format</div>
+      <div class="devtabs" id="devtabs">
+        <button class="dtab sel" data-tab="dev">Devices</button>
+        <button class="dtab" data-tab="fmt">Formats</button>
+        <button class="dtab" data-tab="brk">Breaks</button>
+      </div>
+      <div id="c-mix" class="mixlist"></div>
     </div>
     <div class="card wide">
       <h2>Visit map</h2>
@@ -259,6 +279,13 @@ function renderTable(){
       loc.title=v.ips.map(e=>e.ip+(e.city?' ('+e.city+(e.country?', '+e.country:'')+')':'')).join('\n');
       tdv.append(loc);
     }
+    if(v.devices&&v.devices.length){
+      const icon=c=>c==='phone'?'📱 ':c==='tablet'?'📱 ':c==='desktop'?'💻 ':'';
+      const dv=document.createElement('div');dv.className='devchip';
+      dv.textContent=icon(v.devices[0].cls)+v.devices[0].label+(v.devices.length>1?' +'+(v.devices.length-1)+' more':'');
+      dv.title=v.devices.map(d=>d.label).join('\n');
+      tdv.append(dv);
+    }
     tr.append(tdv);
     const tt=document.createElement('td');tt.className='total';tt.textContent=v.totalSeconds?fmt(v.totalSeconds):'opened only';tr.append(tt);
     SLIDES.forEach(s=>{
@@ -273,12 +300,38 @@ function renderTable(){
   tbl.append(tb);
 }
 
+let mixTab='dev';
+function renderDevices(){
+  const box=document.getElementById('c-mix');box.textContent='';
+  const src=mixTab==='fmt'?(DATA.formatMix||[]):mixTab==='brk'?(DATA.breakMix||[]):(DATA.deviceMix||[]);
+  const list=src.filter(r=>r.key!=='unknown');
+  const total=list.reduce((a,r)=>a+r.sessions,0);
+  const max=Math.max(1,...list.map(r=>r.sessions));
+  list.forEach(r=>{
+    const row=document.createElement('div');row.className='hbar';
+    const lab=document.createElement('div');lab.className='lab';lab.textContent=r.key;row.append(lab);
+    const trk=document.createElement('div');trk.className='trk';
+    const fill=document.createElement('div');fill.className='fill';fill.style.width=(r.sessions/max*100)+'%';trk.append(fill);row.append(trk);
+    const n=document.createElement('div');n.className='n';n.textContent=(r.sessions/total*100).toFixed(1)+'% ('+r.sessions+')';row.append(n);
+    box.append(row);
+  });
+  if(!list.length){const d=document.createElement('div');d.className='hbar';d.textContent='no data yet';d.style.color='var(--muted)';box.append(d);}
+  const subs={dev:'sessions by device',fmt:'sessions by screen format',brk:'sessions by closest deck breakpoint'};
+  document.getElementById('devsub').textContent=subs[mixTab]+' · '+total+' of '+(DATA.totalSessions||0)+' visits';
+}
+document.getElementById('devtabs').addEventListener('click',e=>{
+  const b=e.target.closest('.dtab');if(!b)return;
+  mixTab=b.dataset.tab;
+  document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('sel',t===b));
+  renderDevices();
+});
+
 function render(data){
   DATA=data;
   SLIDES=data.slideOrder||FALLBACK_SLIDES;
   if(selected&&!data.viewers.some(v=>v.email===selected))selected=null;
   document.getElementById('gen').textContent='Updated '+when(data.generatedAt);
-  renderCharts();renderMap();renderTable();
+  renderCharts();renderMap();renderTable();renderDevices();
 }
 
 async function load(key){
