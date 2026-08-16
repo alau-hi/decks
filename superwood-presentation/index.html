@@ -238,10 +238,6 @@ section.in .costgraph .cg-dot.d2{animation:cgPop .45s ease 1.6s forwards}
 section.in .costgraph .cg-dot.d3{animation:cgPop .45s ease 2.7s forwards}
 section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 @keyframes cgPop{to{opacity:1}}
-@media (prefers-reduced-motion: reduce){
-  .js .costgraph .cg-line{animation:cgPop 1s ease forwards!important}
-  .js .costgraph .cg-dot,.js .costgraph .cg-fill,.costgraph .cg-dot,.costgraph .cg-fill{animation:cgPop 1s ease forwards!important}
-}
 .costgraph .cg-sm{display:none}
 .road{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:.8rem;align-items:stretch}
 .mill{border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.2rem;background:rgba(255,255,255,.02);position:relative}
@@ -1340,7 +1336,7 @@ let idx=0;
 /* draw the visible cost line from its measured length; inline dash avoids Safari's pathLength dash bug */
 function drawCostLines(sec){dbg('drawCostLines '+sec.id+' lines='+sec.querySelectorAll('.costgraph .cg-line').length);sec.querySelectorAll('.costgraph .cg-line').forEach(l=>{
   if(l.__drawn){dbg('skip: already drawn');return;}l.__drawn=true; /* once per page load — the single trigger is the slide's first reveal */
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){dbg('skip: reduced motion ON');return;} /* CSS fades it in complete */
+  /* deliberate: the chart draw runs even under Reduce Motion — gentle, informative motion; all other deck animations still honor the setting */
   /* failsafe first: whatever happens below, the line ends solid and visible */
   setTimeout(()=>{l.style.transition='none';l.style.strokeDasharray='none';l.style.strokeDashoffset='0';l.style.opacity='1';},3400);
   try{

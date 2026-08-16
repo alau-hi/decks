@@ -473,7 +473,9 @@ const LOG=[
   ['Portrait card headers rebuilt as three columns: title (1.3rem, matching the figure scale), date right-aligned at the same x across all cards, output figure \u2014 collision-free with shared baselines','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Phone animation: case closed',slides:[9],req:'Animation worked on the laptop but never on the phone.',items:[
   ['Root cause found via the new ?debug readout: the phone has iOS Reduce Motion enabled, and the deck honors it by fading the completed chart in \u2014 the accessibility-correct behavior, kept as designed',''],
-  ['The ?debug flag remains available for future field diagnosis (invisible without the flag)','']]}
+  ['The ?debug flag remains available for future field diagnosis (invisible without the flag)','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Draw runs under Reduce Motion',slides:[9],req:'Force the cost-line animation even when Reduce Motion is on.',items:[
+  ['The chart draw now runs regardless of the OS Reduce Motion setting \u2014 a deliberate exception for gentle, informative motion; every other deck animation still honors the setting','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
