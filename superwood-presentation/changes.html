@@ -445,7 +445,11 @@ const LOG=[
  {iso:'2026-08-15',date:'Aug 15',topic:'Content',title:'ASTM A36 footnote',slides:[7],req:'Add an asterisk to \u201cStronger than steel\u201d indicating the steel is ASTM A36.',items:[
   ['Superscript asterisk on the claim with a quiet \u201c* ASTM A36 structural steel\u201d footnote beneath the claims block','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Landscape caption containment',slides:[9],req:'SUPERWOOD still not centered under the SuperMill One image in landscape; it must not bleed past the card edge.',items:[
-  ['Landscape tile cells widened to hold the unsplittable SUPERWOOD word; caption bleed removed in landscape \u2014 every caption measures centered within 1px and inside its card','']]}
+  ['Landscape tile cells widened to hold the unsplittable SUPERWOOD word; caption bleed removed in landscape \u2014 every caption measures centered within 1px and inside its card','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Desktop',title:'Laptop cost-slide fixes',slides:[9],req:'Cost animation not working on the laptop; bottom pills overlap CONFIDENTIAL.',items:[
+  ['Pill word-spacing restored (the flex centering was eating spaces around bold text \u2014 the likely \u201cbroken\u201d look); centering kept via uniform line-height',''],
+  ['CONFIDENTIAL gets its backdrop pill on desktop too, and short laptop windows (\u2264800px tall) get a compressed cost slide that fits without scrolling \u2014 verified 720/720 fit with no pill overlap',''],
+  ['Line animation verified drawing 681\u21920 on desktop \u2014 if it still looks static on the laptop, it may be macOS Reduce Motion, where the chart intentionally shows complete with a fade','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above

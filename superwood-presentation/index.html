@@ -54,7 +54,7 @@ h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01
 .scrim{position:absolute;inset:0;z-index:1}
 
 .brand{position:fixed;bottom:20px;right:2.125rem;z-index:90;height:18px;opacity:.85;transition:opacity .4s}.brand img{height:100%}
-.conf{position:fixed;bottom:20px;left:2.125rem;z-index:90;font-size:clamp(9.5px,.62rem,.76rem);letter-spacing:.32em;color:var(--muted);text-transform:uppercase;transition:opacity .4s}
+.conf{position:fixed;bottom:20px;left:2.125rem;z-index:90;font-size:clamp(9.5px,.62rem,.76rem);letter-spacing:.32em;color:var(--muted);background:rgba(20,13,7,.72);padding:.3em .8em;border-radius:999px;backdrop-filter:blur(3px);text-transform:uppercase;transition:opacity .4s}
 /* the cover already carries the wordmark in the hero art — hide the fixed chrome there */
 body.on-cover .brand,body.on-cover .conf{opacity:0;pointer-events:none}
 nav.dots{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:13px}
@@ -263,8 +263,8 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 /* desktop keeps feeds together, one arrow, outputs together; phones flatten to pairwise order */
 .mill-imgs.two .o1{order:1}.mill-imgs.two .o2{order:2}.mill-imgs.two .mar-a{order:3}.mill-imgs.two .o4{order:4}.mill-imgs.two .o5{order:5}.mill-imgs.two .mar-b{display:none}
 .mill .loc{font-size:clamp(10.5px,.74rem,.9rem);color:var(--wood-bright);margin-top:.5rem;font-weight:500}
-.feedrow{display:flex;flex-wrap:wrap;align-items:stretch;gap:.7rem;margin-top:1.8rem;font-size:clamp(11px,.78rem,.95rem)}
-.feedrow .f{display:inline-flex;align-items:center;line-height:1.25;padding:.5rem .9rem;border-radius:8px;border:1px solid var(--line);color:var(--cream-dim)}
+.feedrow{display:flex;flex-wrap:wrap;align-items:stretch;gap:.7rem;margin-top:1.1rem;font-size:clamp(11px,.78rem,.95rem)}
+.feedrow .f{display:inline-block;line-height:1.25;padding:.5em .9em;border-radius:8px;border:1px solid var(--line);color:var(--cream-dim)}
 .feedrow .f b{color:var(--wood-bright)}
 
 /* TRACTION (slide 10) */
@@ -545,6 +545,20 @@ section.in .costgraph .cg-fill{animation:cgPop 1s ease 2s forwards}
 @media(pointer:coarse) and (orientation:portrait) and (max-width:700px){
   /* portrait hero: recomposed vertical image; no Ken Burns zoom so the floor wordmark stays uncropped */
   #s1 .bg{background-image:url('assets/hero-portrait.jpg')!important;background-position:59% 50%;transform:none}
+}
+/* short laptop windows: compress the cost roadmap so it fits without scrolling under the fixed chrome */
+@media(pointer:fine) and (max-height:800px){
+  #s9 h2{font-size:1.5rem!important}
+  #s9 .wrap>p{font-size:.78rem!important;margin-top:.35rem!important;line-height:1.45!important}
+  #s9 .costgraph{margin:.4rem 0 .15rem}
+  #s9 .costgraph .cg-lg{max-width:54rem;margin:0 auto;display:block}
+  #s9 .road{gap:.7rem;margin-top:.55rem}
+  #s9 .mill{padding:.65rem .85rem}
+  #s9 .mill h3{font-size:1.1rem;margin:.15rem 0 .35rem}
+  #s9 .mill p{font-size:.76rem;line-height:1.38}
+  #s9 .mill .loc{font-size:.68rem;margin-top:.35rem}
+  #s9 .out-badge .x{font-size:1.6rem}
+  #s9 .feedrow{margin-top:.7rem}
 }
 @media(max-height:500px){.brand{height:10px;bottom:8px;right:12px;background:rgba(20,13,7,.82);padding:.3em .7em;border-radius:999px;backdrop-filter:blur(3px);box-sizing:content-box}}
 
