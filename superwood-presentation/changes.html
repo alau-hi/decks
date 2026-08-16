@@ -449,7 +449,10 @@ const LOG=[
  {iso:'2026-08-15',date:'Aug 15',topic:'Desktop',title:'Laptop cost-slide fixes',slides:[9],req:'Cost animation not working on the laptop; bottom pills overlap CONFIDENTIAL.',items:[
   ['Pill word-spacing restored (the flex centering was eating spaces around bold text \u2014 the likely \u201cbroken\u201d look); centering kept via uniform line-height',''],
   ['CONFIDENTIAL gets its backdrop pill on desktop too, and short laptop windows (\u2264800px tall) get a compressed cost slide that fits without scrolling \u2014 verified 720/720 fit with no pill overlap',''],
-  ['Line animation verified drawing 681\u21920 on desktop \u2014 if it still looks static on the laptop, it may be macOS Reduce Motion, where the chart intentionally shows complete with a fade','']]}
+  ['Line animation verified drawing 681\u21920 on desktop \u2014 if it still looks static on the laptop, it may be macOS Reduce Motion, where the chart intentionally shows complete with a fade','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Cost animation, Safari-proof round 2',slides:[9],req:'The cost-line animation still is not working on the phone.',items:[
+  ['Line draw rewritten from the Web Animations API to a plain CSS transition \u2014 Safari can reject WAAPI keyframes on SVG stroke properties, and that rejection was also what could leave the line hidden',''],
+  ['Failsafe now schedules before anything risky: no matter what, the line ends solid within ~3.4s of the slide revealing','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
