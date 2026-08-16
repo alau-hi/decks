@@ -464,7 +464,10 @@ const LOG=[
   ['Animation system simplified to a single trigger: the slide\u2019s first reveal draws once per page load \u2014 the competing resize/scroll/replay triggers and the pathLength attribute (which skews dash math per engine, the likely ghost draw) are all removed',''],
   ['Both charts resolve on first draw, so rotating after viewing shows a solid line instead of a hidden one',''],
   ['Portrait mill dates moved onto the title row, reclaiming a row of card height',''],
-  ['Portrait chart\u2019s cost-per-m\u00b3 label now sits 9px off the y-axis','']]}
+  ['Portrait chart\u2019s cost-per-m\u00b3 label now sits 9px off the y-axis','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Safari draw start + card baselines',slides:[9],req:'Animation works on the laptop but not the phone in either orientation; portrait card title/date/SF-YR don\u2019t line up.',items:[
+  ['Safari can commit a transition and its target value in the same frame and jump straight to the end \u2014 the draw now flushes its start value via computed style and waits a full frame before moving, the standard fix',''],
+  ['Portrait mill-card title, date and output number aligned on one shared baseline (measured identical bottoms)','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
