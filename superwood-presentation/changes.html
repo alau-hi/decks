@@ -470,7 +470,10 @@ const LOG=[
   ['Portrait mill-card title, date and output number aligned on one shared baseline (measured identical bottoms)','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Mobile',title:'Card headers + tweened draw',slides:[9],req:'Dates horizontally aligned across cards; titles as large as the SF/YR figures; the animation still doesn\u2019t work on the phone.',items:[
   ['Line draw moved off CSS transitions entirely to a requestAnimationFrame tween \u2014 the same mechanism as the deck\u2019s count-ups, immune to engine transition quirks',''],
-  ['Portrait card headers rebuilt as three columns: title (1.3rem, matching the figure scale), date right-aligned at the same x across all cards, output figure \u2014 collision-free with shared baselines','']]}
+  ['Portrait card headers rebuilt as three columns: title (1.3rem, matching the figure scale), date right-aligned at the same x across all cards, output figure \u2014 collision-free with shared baselines','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Phone animation: case closed',slides:[9],req:'Animation worked on the laptop but never on the phone.',items:[
+  ['Root cause found via the new ?debug readout: the phone has iOS Reduce Motion enabled, and the deck honors it by fading the completed chart in \u2014 the accessibility-correct behavior, kept as designed',''],
+  ['The ?debug flag remains available for future field diagnosis (invisible without the flag)','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
