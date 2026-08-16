@@ -459,7 +459,12 @@ const LOG=[
   ['Portrait chart now fills the content width (nearly 2\u00d7 wider, taller viewBox) with labels at 11\u201312.5px \u2014 larger than the card text','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Draw stability on iPhone',slides:[9],req:'The line draws twice; on iPhone portrait the milestone dots don\u2019t show up.',items:[
   ['Both traced to Safari\u2019s URL-bar resize making the slide flicker \u201cout of view\u201d mid-animation \u2014 cancelling the dot pops and restarting the line draw',''],
-  ['Slide-exit resets are now debounced 600ms and a 4s cooldown stops any re-trigger from restarting a draw in progress \u2014 verified a single clean draw with dots intact under a simulated mid-draw resize','']]}
+  ['Slide-exit resets are now debounced 600ms and a 4s cooldown stops any re-trigger from restarting a draw in progress \u2014 verified a single clean draw with dots intact under a simulated mid-draw resize','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'One-trigger cost animation',slides:[9],req:'The line still drew twice \u2014 once quickly line-only, then slowly with dots. Portrait: dates should share the title row; the $/m\u00b3 label sat too far from the y-axis.',items:[
+  ['Animation system simplified to a single trigger: the slide\u2019s first reveal draws once per page load \u2014 the competing resize/scroll/replay triggers and the pathLength attribute (which skews dash math per engine, the likely ghost draw) are all removed',''],
+  ['Both charts resolve on first draw, so rotating after viewing shows a solid line instead of a hidden one',''],
+  ['Portrait mill dates moved onto the title row, reclaiming a row of card height',''],
+  ['Portrait chart\u2019s cost-per-m\u00b3 label now sits 9px off the y-axis','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
