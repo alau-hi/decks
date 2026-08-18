@@ -19,9 +19,6 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;min-height:100vh}
 .pc-root{max-width:960px;margin:0 auto;padding:6vh 5vw 60px}
-.backrow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:30px;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
-.backrow a{color:var(--cream-dim);text-decoration:none;letter-spacing:.12em;font-size:.72rem;text-transform:none}
-.backrow a:hover{color:var(--cream)}
 .masthead{margin-bottom:26px}
 .kicker{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:12px}
 .title{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.9rem,4.5vw,2.9rem);line-height:1.05;margin-bottom:14px}
@@ -72,11 +69,6 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
 </style></head><body>
 <div class="pc-root">
 
-  <div class="backrow">
-    <span>InventWood — SUPERWOOD</span>
-    <a href="/intro">← Back to the deck</a>
-  </div>
-
   <header class="masthead">
     <div class="kicker">InventWood × Superwood</div>
     <h1 class="title">Press Coverage Dossier</h1>
@@ -87,9 +79,9 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
   <div class="controls">
     <input class="search" id="search" type="text" placeholder="Search outlet, headline, or keyword…" />
     <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="tier1">Tier 1</button>
-    <button class="filter-btn" data-filter="tier2">Tier 2</button>
-    <button class="filter-btn" data-filter="tier3">Tier 3</button>
+    <button class="filter-btn" data-filter="tier1">Mainstream</button>
+    <button class="filter-btn" data-filter="tier2">Industry</button>
+    <button class="filter-btn" data-filter="tier3">International</button>
     <button class="filter-btn" data-filter="video">Video</button>
     <button class="filter-btn" data-filter="2025">2025</button>
     <button class="filter-btn" data-filter="2026">2026</button>
