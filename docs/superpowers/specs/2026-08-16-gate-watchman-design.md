@@ -12,10 +12,10 @@
 
 Today the gate records nothing — a visitor who sees the email form and leaves is invisible. New pieces:
 
-1. **Beacon in `gate.html`:** a small script fires on page load via `navigator.sendBeacon` (fetch keepalive fallback) to new `api/gatehit.mjs`, sending the path the visitor was trying to reach (current URL) and screen size. JS-fired means curl/crawlers/security scanners mostly never register.
+1. **Beacon in `gate.html`:** a small script fires on page load via `navigator.sendBeacon` (fetch keepalive fallback) to new `api/gatehit.mjs`, sending the path the visitor was trying to reach (current URL) and screen size. JS-fired means curl/crawlers/link-unfurlers/most email scanners never register. The script skips the beacon when `navigator.webdriver` is true (headless automation).
 2. **`api/gatehit.mjs`:** sets an anonymous browser cookie `sw_gid` (random UUID, 400-day) if absent, then inserts one row into new table `gate_hits`:
    `ts, ip, gid, ua, city, country, lat, lng, path, scr, team boolean`
-   (geo from the `x-vercel-ip-*` headers, same as existing records). Server-side UA bot-word check (bot/crawl/spider/preview etc.) drops obvious bots.
+   (geo from the `x-vercel-ip-*` headers, same as existing records). Server-side UA bot-word check (bot/crawl/spider/preview/scan etc.) drops obvious bots. Residual risk, accepted for v1: stealth headless scanners (e.g. SafeLinks-style email sandboxes) may record as bounces — recognizable in the IP list by datacenter origin + single instant hit; a datacenter-ASN auto-flag is the v2 answer if they become noise.
 3. **Team flag, not team drop:** hits from a browser carrying a valid `sw_admin` cookie are **recorded with `team = true`**, not discarded — filterable in the UI and retroactively fixable if the filter misses (incognito tests etc.). No manual exclusion UI in v1.
 4. **Conversion link:** `api/enter.mjs` additionally stamps the current `sw_gid` onto the signup record. A `gid` that appears on a signup marks all that browser's gate hits as converted; a `gid` with no signup is a bounce.
 5. **Scope:** the beacon exists only on the gate page. Authenticated deck viewing is already covered by dwell tracking; this feature watches the unauthenticated doorstep only.
