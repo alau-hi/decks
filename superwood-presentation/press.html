@@ -20,7 +20,6 @@
 body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;min-height:100vh}
 .pc-root{max-width:960px;margin:0 auto;padding:6vh 5vw 60px}
 .masthead{margin-bottom:26px}
-.kicker{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:12px}
 .title{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1.9rem,4.5vw,2.9rem);line-height:1.05;margin-bottom:14px}
 .deck{font-size:.95rem;line-height:1.65;color:var(--cream-dim);max-width:640px}
 .byline{font-size:.68rem;color:var(--muted);margin-top:12px}
@@ -70,8 +69,7 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
 <div class="pc-root">
 
   <header class="masthead">
-    <div class="kicker">InventWood × Superwood</div>
-    <h1 class="title">Press Coverage Dossier</h1>
+    <h1 class="title">Selected Press</h1>
     <p class="deck">A selection of the press coverage of InventWood and its molecularly densified wood over the years — from the foundational <em>Nature</em> paper through mainstream business and consumer press, awards, and YouTube features.</p>
     <div class="byline">Compiled May 2026 · Grouped by approximate editorial reach</div>
   </header>
@@ -83,8 +81,6 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
     <button class="filter-btn" data-filter="tier2">Industry</button>
     <button class="filter-btn" data-filter="tier3">International</button>
     <button class="filter-btn" data-filter="video">Video</button>
-    <button class="filter-btn" data-filter="2025">2025</button>
-    <button class="filter-btn" data-filter="2026">2026</button>
   </div>
 
   <div class="empty" id="empty">No articles match that filter.</div>
@@ -717,8 +713,6 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
       if (activeFilter === 'tier2' && tier !== 'tier2') visible = false;
       if (activeFilter === 'tier3' && tier !== 'tier3') visible = false;
       if (activeFilter === 'video' && tier !== 'video') visible = false;
-      if (activeFilter === '2025' && year !== '2025') visible = false;
-      if (activeFilter === '2026' && year !== '2026') visible = false;
       if (q && !text.includes(q)) visible = false;
 
       a.classList.toggle('hidden', !visible);
