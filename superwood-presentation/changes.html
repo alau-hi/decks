@@ -479,7 +479,10 @@ const LOG=[
  {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Portrait chart geometry',slides:[9],req:'Portrait vertical scaling didn\u2019t match the desktop chart \u2014 the SUPERWOOD line started far too high; it should begin much closer to steel even at SuperMill One.',items:[
   ['Portrait line re-plotted to the desktop chart\u2019s proportions: starts 70% of the way from stainless toward steel, crosses into the steel band at SuperMill Two, ends below it at ChipMill; steel band moved to the matching height','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Content',title:'Jiaqi bio',slides:[11],req:'Remove the top-prot\u00e9g\u00e9 reference from Jiaqi\u2019s bio; add award-winning artist instead.',items:[
-  ['Card now leads with key co-inventor on the core patents and adds Award-winning artist; popup already carried both','']]}
+  ['Card now leads with key co-inventor on the core patents and adds Award-winning artist; popup already carried both','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'No pre-drawn line',slides:[9],req:'Make sure no line is visible before the draw animation starts.',items:[
+  ['Dash state now set via unitless SVG attributes \u2014 the one form every engine accepts; a stricter parser rejecting the old px values is what could reveal the line early',''],
+  ['Verified lifecycle: hidden before arrival, dashed-out through the 0.5s delay, tween 681\u21920, then solid','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
