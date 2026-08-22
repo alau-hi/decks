@@ -482,7 +482,9 @@ const LOG=[
   ['Card now leads with key co-inventor on the core patents and adds Award-winning artist; popup already carried both','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'No pre-drawn line',slides:[9],req:'Make sure no line is visible before the draw animation starts.',items:[
   ['Dash state now set via unitless SVG attributes \u2014 the one form every engine accepts; a stricter parser rejecting the old px values is what could reveal the line early',''],
-  ['Verified lifecycle: hidden before arrival, dashed-out through the 0.5s delay, tween 681\u21920, then solid','']]}
+  ['Verified lifecycle: hidden before arrival, dashed-out through the 0.5s delay, tween 681\u21920, then solid','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Chart replays cleanly',slides:[9],req:'On revisiting the slide the line was already there before the animation.',items:[
+  ['The chart now resets when the slide fully leaves view and redraws on return, matching every other reveal; a mid-draw exit cannot cancel a tween in flight','']]}
 ];
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above

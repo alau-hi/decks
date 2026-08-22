@@ -1327,7 +1327,9 @@ secs.forEach((s,i)=>{const b=document.createElement('button');b.innerHTML=String
 const dots=[...dotsBox.children];
 deck.addEventListener('wheel',e=>{if(readyUpTo<secs.length-1&&e.deltaY>0&&deck.scrollTop+deck.clientHeight>=deck.scrollHeight-4)pulsePill();},{passive:true});
 /* visibility = max(fraction of the slide shown, fraction of the viewport it fills) — the second term is what reveals slides taller than 2x the viewport, which never reach 50% of their own height on mobile */
-const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');dbg('in '+e.target.id);e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));drawCostLines(e.target);}}else if(!e.isIntersecting){e.target.classList.remove('in');}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{const i=secs.indexOf(e.target);const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);if(vis>=.5){dots.forEach((d,j)=>d.classList.toggle('active',j===i));if(!e.target.classList.contains('in')){e.target.classList.add('in');dbg('in '+e.target.id);e.target.querySelectorAll('[data-count]').forEach(el=>animate(el));drawCostLines(e.target);}}else if(!e.isIntersecting){e.target.classList.remove('in');
+  /* fully out of view: arm the chart to replay on the next visit, like every other reveal in the deck */
+  e.target.querySelectorAll('.costgraph .cg-line').forEach(l=>{if(l.__drawn&&!l.__tweening){l.__drawn=false;l.style.opacity='';l.removeAttribute('stroke-dasharray');l.removeAttribute('stroke-dashoffset');}});}});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
 secs.forEach(s=>io.observe(s));
 function animate(el){const target=parseFloat(el.dataset.count);const dec=parseInt(el.dataset.dec||0);const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';const dur=1400,t0=performance.now();
 function fmt(v){let n=dec?v.toFixed(dec):Math.round(v).toLocaleString('en-US');return pre+n+suf;}
@@ -1338,7 +1340,8 @@ function drawCostLines(sec){dbg('drawCostLines '+sec.id+' lines='+sec.querySelec
   if(l.__drawn){dbg('skip: already drawn');return;}l.__drawn=true; /* once per page load — the single trigger is the slide's first reveal */
   /* deliberate: the chart draw runs even under Reduce Motion — gentle, informative motion; all other deck animations still honor the setting */
   /* failsafe first: whatever happens below, the line ends solid and visible */
-  setTimeout(()=>{l.removeAttribute('stroke-dasharray');l.removeAttribute('stroke-dashoffset');l.style.opacity='1';},3400);
+  const gen=(l.__gen=(l.__gen||0)+1);
+  setTimeout(()=>{if(l.__gen===gen&&l.__drawn){l.removeAttribute('stroke-dasharray');l.removeAttribute('stroke-dashoffset');l.style.opacity='1';}},3400);
   try{
     const L=l.getTotalLength();
     dbg('chart '+(l.closest('svg').getAttribute('class'))+' L='+Math.round(L)+' display='+getComputedStyle(l.closest('svg')).display);
@@ -1347,10 +1350,10 @@ function drawCostLines(sec){dbg('drawCostLines '+sec.id+' lines='+sec.querySelec
     l.setAttribute('stroke-dasharray',L+' '+L);l.setAttribute('stroke-dashoffset',L);
     l.style.opacity='1'; /* reveal only now — fully dashed out, nothing shows yet */
     /* rAF tween — same engine-proof mechanism as the count-ups; no CSS transition semantics involved */
-    const t0=performance.now(),DUR=2400,DELAY=500;
+    const t0=performance.now(),DUR=2400,DELAY=500;l.__tweening=true;
     (function step(t){const p=Math.min(1,Math.max(0,(t-t0-DELAY)/DUR));const e=1-Math.pow(1-p,3);
       l.setAttribute('stroke-dashoffset',L*(1-e));
-      if(p<1)requestAnimationFrame(step);else{l.removeAttribute('stroke-dasharray');l.removeAttribute('stroke-dashoffset');dbg('tween complete');}})(performance.now());
+      if(p<1)requestAnimationFrame(step);else{l.removeAttribute('stroke-dasharray');l.removeAttribute('stroke-dashoffset');l.__tweening=false;dbg('tween complete');}})(performance.now());
     dbg('tween started');
   }catch(e){dbg('CATCH '+e);l.removeAttribute('stroke-dasharray');l.removeAttribute('stroke-dashoffset');l.style.opacity='1';}
 });}
