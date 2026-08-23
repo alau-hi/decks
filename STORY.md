@@ -46,6 +46,10 @@ SUPERWOOD is "the material to build the future from — made in America."
   Fast × Fast feedstock item.
 - Policy angle (tariffs/onshoring): background hum, no dedicated slide. Confirmed by
   Alex 2026-08-23.
+- Cover reads "America's material future" (not "our"): keeps the frame explicit for a
+  global audience, and the arc is deliberately America-first → global — the Fleet slide
+  is where the story widens (international ~10x national, ChipMill JVs, >7,000 SM2
+  equivalents). Confirmed by Alex 2026-08-23.
 - Close: same $10M SAFE terms as aaron-deck. Default — flag if this audience differs.
 
 ## Rules
