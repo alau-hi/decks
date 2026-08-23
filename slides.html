@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%231f150c%27/%3E%3Cg fill=%27%23e2b877%27%3E%3Crect x=%277%27 y=%278%27 width=%2718%27 height=%273.5%27 rx=%271%27/%3E%3Crect x=%277%27 y=%2714.25%27 width=%2718%27 height=%273.5%27 rx=%271%27/%3E%3Crect x=%277%27 y=%2720.5%27 width=%2718%27 height=%273.5%27 rx=%271%27/%3E%3C/g%3E%3C/svg%3E">
+<title>InventWood — Super Mills America</title>
+<meta name="description" content="Super Mills America, August 2026. America is short the materials to build its future — SUPERMILLS make more, fast, from American wood.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1f150c;--ink2:#2a1d11;--panel:#261a0f;
+  --cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;
+  --wood:#b87d44;--wood-bright:#cda165;--wood-deep:#8a4f23;--gold:#e2b877;
+  --sand:#e6d6bd;--line:rgba(228,210,180,.16);--maxw:73.75rem;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:clamp(11.5px,.55vw + .55vh + 4.5px,32px)}
+@media (pointer:fine){html{font-size:clamp(6px,min(.55vw + .55vh + 4.5px,1.19vw),32px)}}
+body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.deck{height:100vh;height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.deck::-webkit-scrollbar{width:0}
+section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;padding:6vh max(6vw,9.5rem) 6vh 6vw;overflow:hidden}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
+h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01em;line-height:1.08}
+h2{font-size:clamp(1.5rem,3.2vw,2.5rem);font-weight:340;max-width:26ch}
+h2 em{font-style:italic;color:var(--gold)}
+.kicker{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.9rem}
+.lead{font-size:clamp(.95rem,1.4vw,1.15rem);line-height:1.6;color:var(--cream-dim);font-weight:300;max-width:52ch}
+.lead b,.li b{color:var(--cream);font-weight:600}
+.rv{opacity:0;transform:translateY(2rem);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.in .rv{opacity:1;transform:none}
+.in .rv:nth-child(2){transition-delay:.07s}.in .rv:nth-child(3){transition-delay:.14s}.in .rv:nth-child(4){transition-delay:.21s}.in .rv:nth-child(5){transition-delay:.28s}.in .rv:nth-child(6){transition-delay:.35s}
+.bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;transform:scale(1.05)}
+.in .bg{transition:transform 9s ease-out;transform:scale(1.12)}
+.scrim{position:absolute;inset:0;z-index:1}
+.dark{background:radial-gradient(120% 90% at 75% 10%,#332314 0%,var(--ink) 60%)}
+img{max-width:100%}
+/* chrome */
+.brand{position:fixed;bottom:20px;right:2.125rem;z-index:90;height:17px;opacity:.85}.brand img{height:100%}
+.pageno{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:90;font-size:.62rem;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums;transition:opacity .4s}
+body.on-cover .pageno{opacity:0}
+.conf{position:fixed;bottom:20px;left:2.125rem;z-index:90;font-size:clamp(9px,.6rem,.74rem);letter-spacing:.3em;color:var(--muted);background:rgba(20,13,7,.72);padding:.3em .8em;border-radius:999px;backdrop-filter:blur(3px);text-transform:uppercase}
+body.on-cover .brand,body.on-cover .conf{opacity:0}
+body.on-cover nav.dots{opacity:0;pointer-events:none}
+nav.dots{transition:opacity .35s ease}
+nav.dots{position:fixed;right:0;top:0;bottom:0;z-index:90;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;padding:0 14px 0 2.2rem;background:linear-gradient(270deg,rgba(24,15,8,.85),rgba(24,15,8,0));pointer-events:none}
+nav.dots button{pointer-events:auto}
+nav.dots button{border:none;background:transparent;cursor:pointer;padding:.14em .5em;border-radius:4px;font-family:'Inter';font-weight:500;font-size:.6rem;line-height:1.3;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);opacity:1;transition:color .25s,opacity .25s,background .25s;position:relative;white-space:nowrap}
+nav.dots button .pn{display:inline-block;margin-left:.55em;font-size:.85em;color:var(--muted);opacity:.9;font-variant-numeric:tabular-nums;letter-spacing:.05em}
+nav.dots button.active .pn{color:var(--gold)}
+nav.dots button.sub{display:none;font-size:.52rem;opacity:.55;padding-right:1.4em}
+body.in-apx nav.dots button.sub{display:block}
+nav.dots button:hover{color:var(--cream);opacity:1}
+nav.dots button.active{color:var(--gold);opacity:1;font-weight:600;background:rgba(226,184,119,.12)}
+nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%;transform:translateY(-50%);width:4px;height:4px;border-radius:50%;background:var(--gold)}
+:focus-visible{outline:2px solid var(--wood-bright);outline-offset:3px;border-radius:3px}
+/* zoom-proof circular clipping: Chrome can mis-clip border-radius on imgs under ancestor zoom */
+.person .pic,.advc>img,.invc img,.phase img,.step .inset,.step img.mol,.adv img{clip-path:circle(50%)}
+.scrollcue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:5;font-size:clamp(10px,.64rem,.8rem);letter-spacing:.25em;text-transform:uppercase;color:var(--cream-dim);display:flex;flex-direction:column;align-items:center;gap:8px}
+.scrollcue::after{content:"";width:1px;height:2rem;background:linear-gradient(var(--wood-bright),transparent);animation:drop 1.8s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* s1 cover */
+
+#s1 .bg{background-image:linear-gradient(100deg,rgba(24,16,9,.88) 0%,rgba(24,16,9,.45) 45%,rgba(24,16,9,.15) 75%),linear-gradient(0deg,rgba(24,16,9,.85) 0%,rgba(24,16,9,0) 45%),url(assets/supermill-two-aerial.png)}
+@media (orientation:portrait){#s1 .scrollcue{display:none}}
+#s1 .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,14,8,.55) 0%,rgba(22,14,8,.25) 45%,rgba(22,14,8,.85) 100%)}
+#s1 h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,6vw,5.4rem);font-weight:300;line-height:1.08;letter-spacing:-.01em;max-width:18ch}
+#s1 .hl{color:var(--wood-bright)}
+#s1 .serif-em{font-style:italic;font-weight:500}
+.covline{font-family:'Inter';font-size:clamp(1.2rem,2.8vw,2.1rem);font-weight:600;letter-spacing:.04em;margin-top:1.8rem;color:var(--cream)}
+.covline b{display:block;color:var(--wood-bright);font-weight:700;margin-top:.15em}
+
+/* s2 growth — exact teaser chart */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center;width:100%}
+.grow{display:flex;align-items:flex-end;gap:3.5rem;height:18.75rem;margin-top:1rem}
+.gbar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.gbar .col{width:7.5rem;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--wood-bright),var(--wood-deep));position:relative;transition:height 1.6s cubic-bezier(.16,1,.3,1);height:0}
+.in .gbar.b1 .col{height:8.125rem}.in .gbar.b2 .col{height:15.9375rem}
+.gbar .yr{margin-top:1rem;font-weight:600;letter-spacing:.1em;color:var(--cream-dim)}
+.gbar .v{position:absolute;top:-3rem;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:'Fraunces';font-size:1.7rem;color:var(--cream)}
+.gbar .v small{font-size:.9rem;color:var(--sand)}
+/* citation hover tips + sources popup (from the intro deck) */
+.mktrow{display:flex;align-items:baseline;gap:.7rem 1.7rem;flex-wrap:wrap;margin-top:1.2rem;padding-top:.85rem;border-top:1px solid rgba(228,210,180,.14);max-width:62rem}
+.mktrow .mkcap{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--wood-bright);font-weight:600}
+.mktrow .mkitem{font-size:.95rem;color:var(--cream-dim)}
+.mktrow .mkitem b{color:var(--cream);font-weight:600;letter-spacing:.02em}
+#s3 h2 .mkt{font-size:.42em;font-style:italic;color:var(--wood-bright);margin-left:.35em;white-space:nowrap;vertical-align:.25em}
+.sw-ref{position:relative;white-space:nowrap}
+.sw-tip{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%) translateY(6px);width:16rem;white-space:normal;background:#332314;border:1px solid var(--wood-deep);border-radius:12px;padding:.85rem 1rem;font-size:.72rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 1.5rem 3.5rem rgba(0,0,0,.6);opacity:0;visibility:hidden;transition:opacity .15s,transform .15s,visibility .15s;z-index:30;pointer-events:none}
+.sw-tip b{color:var(--wood-bright)}
+.sw-tip a{color:var(--wood-bright);text-decoration:none;border-bottom:1px solid rgba(205,161,101,.4)}
+.sw-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#332314}
+.sw-ref:hover .sw-tip,.sw-ref:focus-within .sw-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.srcbtn{display:block;margin-top:1.1rem;margin-left:auto;width:max-content;background:rgba(184,125,68,.16);border:1px solid var(--wood);border-radius:1.875rem;color:var(--wood-bright);font-family:'Inter';font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.5em 1.2em;cursor:pointer;transition:color .25s,border-color .25s,background .25s}
+.srcbtn:hover{color:#1a1209;background:var(--wood-bright);border-color:var(--wood-bright)}
+#srcpop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:60;background:rgba(15,9,4,.38)}
+#srcpop.show{display:flex;animation:srcFade .3s ease}
+.show .srcbox{animation:srcRise .35s cubic-bezier(.16,1,.3,1)}
+@keyframes srcFade{from{opacity:0}to{opacity:1}}
+@keyframes srcRise{from{transform:translateY(18px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion: reduce){
+  .rv,.in .rv{transition:none!important;transform:none!important;opacity:1!important}
+  .bg,.in .bg{transition:none!important;transform:scale(1.05)!important}
+  .gbar .col{transition:none!important}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important}
+  #srcpop.show,.show .srcbox{animation:none}
+}
+.srcbox{background:#2a1c10;border:1px solid var(--line);border-radius:14px;max-width:46rem;width:calc(100% - 3rem);max-height:80vh;overflow-y:auto;padding:1.8rem 2rem;box-shadow:0 30px 80px rgba(0,0,0,.65)}
+.srcbox h3{font-family:'Fraunces';font-weight:400;font-size:1.3rem;color:var(--cream);margin-bottom:1.1rem}
+.srcbox h4{font-family:'Inter';font-weight:600;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);margin:1.2rem 0 .4rem}
+.srcbox li{font-size:.8rem;line-height:1.55;color:var(--cream-dim);list-style:none;padding-left:1rem;position:relative;margin-bottom:.45rem}
+.srcbox li::before{content:"—";position:absolute;left:0;color:var(--wood)}
+.srcbox a{color:var(--wood-bright);text-decoration:none;border-bottom:1px solid rgba(205,161,101,.35)}
+.srcbox a:hover{border-bottom-color:var(--wood-bright)}
+.srcclose{position:sticky;top:0;float:right;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer;line-height:1}
+.srcclose:hover{color:var(--cream)}
+
+/* s3 shortcomings — ported from the teaser deck's Problem slide */
+.hl{color:var(--wood-bright)}
+.bignum{font-family:'Fraunces';font-weight:300;line-height:.9;color:var(--wood-bright)}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2rem;margin-top:2.4rem}
+.col-card h3{color:var(--wood-bright);font-family:'Inter';font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:1.15rem;margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid var(--line)}
+.col-card ul{list-style:none;display:flex;flex-direction:column;gap:.8rem}
+.col-card li{font-size:.9rem;line-height:1.45;color:var(--cream-dim);padding-left:1.1rem;position:relative}
+.col-card li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--wood)}
+.col-card li b{color:var(--cream);font-weight:600}
+.li{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.li li{font-size:.86rem;line-height:1.5;color:var(--cream-dim);padding-left:1rem;position:relative}
+.li li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--wood)}
+
+/* s4 wood — the teaser deck's Opportunity slide, verbatim */
+#s4 .bg{background-image:url(assets/forest.jpg)}
+.serif-em{font-style:italic;font-weight:500}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;margin-top:2.6rem}
+.pillar .pn{font-family:'Fraunces';font-size:2.2rem;color:var(--wood-bright);font-weight:300}
+.pillar h3{font-family:'Fraunces';font-size:1.5rem;margin:.4rem 0 .7rem}
+.pillar p{font-size:.92rem;line-height:1.55;color:var(--cream-dim)}
+.s4-wrap{display:flex;flex-direction:column;justify-content:space-between;min-height:78vh}
+.leadin{align-self:flex-end;text-align:right;max-width:30ch;margin-top:2.4rem;text-decoration:none;display:block;border-right:2px solid var(--wood);padding-right:1.3rem;transition:transform .4s}
+.leadin:hover{transform:translateX(-4px)}
+.leadin-text{font-family:'Fraunces';font-weight:300;font-size:clamp(1.3rem,2.6vw,2.1rem);line-height:1.3;color:var(--cream-dim)}
+.leadin-text b{color:var(--cream);font-weight:500}
+.leadin-em{display:inline-block;margin-top:.4rem;font-style:italic;font-weight:500;color:var(--wood-bright);font-size:1.15em}
+.leadin-arrow{display:block;margin-top:.5rem;font-size:2rem;line-height:1;color:var(--wood-bright);animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(7px);opacity:1}}
+
+/* s5 new age */
+#s5{position:relative}
+#s5 .bg{background:linear-gradient(90deg,rgba(31,21,12,.97) 28%,rgba(31,21,12,.55) 55%,rgba(31,21,12,.15) 100%),linear-gradient(0deg,rgba(31,21,12,.97) 0%,rgba(31,21,12,.6) 28%,rgba(31,21,12,0) 48%),url(assets/sw5-boards.webp) right 42%/cover no-repeat}
+.sw5{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:space-between;min-height:78vh}
+.sw5-lead{max-width:34rem;flex:1;display:flex;flex-direction:column}
+.sw5-kicker{font-family:'Inter';font-weight:600;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--wood-bright)}
+.sw5-title{font-family:'Inter';font-weight:700;font-size:clamp(2.4rem,6vw,4.6rem);letter-spacing:.16em;color:var(--cream);line-height:1;margin:.35rem 0 .55rem}
+.sw5-tag{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1rem,1.9vw,1.5rem);color:var(--gold);line-height:1.25}
+.sw5-claims{margin:auto 0;font-family:'Fraunces',serif;font-size:clamp(1.05rem,2.2vw,1.75rem);line-height:1.5;color:var(--cream)}
+.sw5-claims em{font-style:normal;color:var(--gold)}
+.sw5-claims .fnmark{font-size:.55em;vertical-align:super;color:var(--muted)}
+.sw5-claims .fnote{font-family:'Inter';font-size:.6rem;font-style:italic;color:var(--muted);margin-top:.9rem}
+.sw5-proof{list-style:none;margin-top:2.4rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1.6rem;border-top:1px solid var(--line);padding-top:1.1rem}
+.sw5-proof h3{font-family:'Inter';font-weight:700;font-size:.82rem;color:var(--cream);letter-spacing:.01em}
+.sw5-proof p{font-size:.68rem;line-height:1.5;color:var(--cream-dim);margin-top:.25rem}
+.checks{list-style:none;display:flex;flex-direction:column;gap:1.3rem;margin-top:1.6rem}
+.checks li{padding-left:2.3rem;position:relative}
+.checks li::before{content:"✓";position:absolute;left:.2rem;top:.05em;color:var(--gold);font-size:1.25rem;font-weight:300}
+.checks h3{font-family:'Inter';font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.checks p{font-size:.86rem;line-height:1.5;color:var(--cream-dim)}
+.defbox{background:linear-gradient(120deg,rgba(205,161,101,.28),rgba(138,79,35,.16));border-radius:12px;padding:1.3rem 1.5rem;font-size:clamp(.95rem,1.5vw,1.15rem);line-height:1.55;color:var(--cream);margin-bottom:.4rem}
+.defbox b{color:#fff}
+.media-frame{border-radius:14px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.5)}
+.media-frame img{width:100%;display:block}
+
+/* s6 timeline */
+#s6{position:relative}
+.tlarc{position:absolute;left:0;right:0;bottom:0;width:100%;height:62%;pointer-events:none;opacity:.35}
+.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem;margin-top:1.6rem;align-items:start;position:relative}
+.tl .ph img{width:6.4rem;height:6.4rem;border-radius:50%;object-fit:cover;border:2px solid var(--wood-bright);display:block;margin-bottom:.8rem;box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.tl .ph.past img{filter:saturate(.75) brightness(.85)}
+.tl .ph.current img{border-color:#e07b39;box-shadow:0 0 0 5px rgba(224,123,57,.18),0 14px 34px rgba(0,0,0,.45)}
+.tl .ph.future img{border-color:var(--gold)}
+.tl .ph h3{font-family:'Inter';font-weight:700;font-size:.86rem;line-height:1.35;margin-bottom:.4rem;color:var(--cream)}
+.tl .ph p{font-size:.74rem;line-height:1.5;color:var(--cream-dim);max-width:17rem}
+.tl .ph .yrs{font-family:'Fraunces';color:var(--wood-bright);font-size:1.15rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
+.tl .ph .now{font-family:'Inter';font-weight:700;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:#241708;background:#e07b39;border-radius:999px;padding:.2em .6em}
+.tl .ph.future h3{color:var(--gold)}
+.tl .ph.current .yrs{color:#f0a06b;font-weight:600}
+.tlaxis{position:relative;height:2px;background:linear-gradient(90deg,var(--wood-deep),var(--wood-bright));margin-top:1.4rem;border-radius:2px}
+.tlyears span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.tlaxis .dot.now{position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#e0432b;box-shadow:0 0 0 2px var(--ink);z-index:3}
+.tlaxis .nowring{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;border:2px solid #e07b39;animation:tlring 2s ease-in-out infinite;z-index:2}
+@keyframes tlring{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.7}50%{transform:translate(-50%,-50%) scale(1.8);opacity:0}}
+.tlyears{position:relative;height:1.2em;margin-top:.6rem;font-size:.62rem;letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums}
+.tlbands{position:relative;height:2.4rem;margin-top:1rem}
+.tlbands span{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(196,154,95,.8);color:#241708;font-size:.6rem;line-height:1.25;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:.3em .5em;clip-path:polygon(0 0, calc(100% - 20px) 0, calc(100% - 4px) 50%, calc(100% - 20px) 100%, 0 100%)}
+.tlbands span:not(:first-child){padding-left:1.5em;clip-path:polygon(0 0, calc(100% - 20px) 0, calc(100% - 4px) 50%, calc(100% - 20px) 100%, 0 100%, 16px 50%)}
+.tlbands span:last-child{clip-path:polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%, 16px 50%)}
+.tlbands span.fut{background:rgba(226,184,119,.22);color:var(--gold);outline:1px dashed rgba(226,184,119,.5);outline-offset:-1px}
+
+/* s7 team, s8 investors — team ported from the intro deck */
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:1.6rem 1.5rem;margin-top:1.8rem}
+.person{position:relative;cursor:default;display:flex;flex-direction:column;height:100%}
+.person .pic{width:6rem;height:6rem;border-radius:50%;object-fit:cover;object-position:top center;margin-bottom:.9rem;border:2px solid var(--line);transition:filter .3s,border-color .3s}
+.person:hover .pic{filter:brightness(1.08);border-color:var(--wood)}
+.person .nm{font-family:'Fraunces';font-size:1.25rem;min-height:1.2em}
+.person .ro{font-size:clamp(11px,.72rem,.88rem);letter-spacing:.07em;text-transform:uppercase;color:var(--wood-bright);margin:.18rem 0 .45rem;min-height:2em}
+.person .bi{font-size:.84rem;line-height:1.55;color:var(--cream-dim)}
+.person .hint{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:auto;padding-top:1rem;opacity:1}
+.bio-pop{position:absolute;left:0;right:0;bottom:calc(100% + 10px);background:#332314;border:1px solid var(--wood-deep);border-radius:12px;padding:1.1rem 1.2rem;font-size:.78rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 1.875rem 70px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .15s,transform .15s,visibility .15s;z-index:20;min-width:17.5rem}
+.bio-pop b{color:var(--wood-bright)}
+.bio-pop ul{list-style:none;margin:.65em 0 0;padding:0}
+.bio-pop li{margin-bottom:.65em;line-height:1.5}
+.bio-pop li:last-child{margin-bottom:0}
+.bio-pop::after{content:"";position:absolute;top:100%;left:1.875rem;border:8px solid transparent;border-top-color:#332314}
+.person:hover .bio-pop,.advc:hover .bio-pop,.person:focus-within .bio-pop,.advc:focus-within .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
+.team .bio-pop{bottom:auto;top:-6px;left:7rem;right:auto;width:18.125rem;pointer-events:none}
+.team .person:last-child .bio-pop{left:auto;right:calc(100% + 10px)}
+.team .bio-pop::after{display:none}
+.adv-head{font-size:.95rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);margin:2.6rem 0 1.4rem;border-top:1px solid var(--line);padding-top:1.6rem}
+.adv{display:grid;grid-template-columns:repeat(5,1fr);gap:1.3rem}
+.advc{display:flex;gap:.7rem;align-items:center;position:relative;cursor:default}
+.advc>img{width:4.25rem;height:4.25rem;border-radius:50%;object-fit:cover;flex-shrink:0;transition:transform .3s}
+.advc:hover>img{transform:scale(1.06)}
+.advc .nm{font-family:'Fraunces';font-size:1.08rem;line-height:1.1}
+.advc .ro{font-size:clamp(11px,.74rem,.9rem);color:var(--wood-bright);margin-top:.18rem;line-height:1.3}
+.advc .bio-pop{min-width:18.75rem}
+.person:focus-visible,.advc:focus-visible{outline-offset:4px;border-radius:10px}
+.invpanel{background:linear-gradient(180deg,#f7efe2,#e9dcc4);border:1px solid var(--gold);border-radius:14px;padding:1.1rem 1.6rem;margin-top:1.4rem}
+.invpanel h3{font-size:.7rem;letter-spacing:.3em;color:#3a2a18;text-align:center;font-family:'Inter';font-weight:600;margin-bottom:.9rem}
+.invlogos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.3rem 2.6rem}
+.invlogos>*{flex:0 0 auto}
+.invlogos .brk{flex:0 0 100%;height:0}
+.invlogos img{height:2.1rem;max-width:11rem;object-fit:contain}
+.invlogos img.sm{height:1.4rem}
+.invlogos img.lg{height:3rem;max-width:13rem}
+.invword{display:inline-flex;flex-direction:column;align-items:center;line-height:1.1}
+.invword.row{flex-direction:row;gap:.5rem;align-items:center}
+.invword.row b{font-size:.95rem}
+.invword b{font-family:'Fraunces';font-size:1.05rem;color:#2a1d10;font-weight:600;white-space:nowrap}
+.invword small{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:#75654e;margin-top:.2rem}
+.invgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2.6rem;margin-top:.2rem}
+.invc{display:grid;grid-template-columns:3.6rem 1fr;gap:.9rem;align-items:start}
+.invc img{width:3.6rem;height:3.6rem;border-radius:50%;object-fit:cover;border:2px solid rgba(226,184,119,.5)}
+.invc img.cut{background:radial-gradient(120% 135% at 50% 28%,#8a6a40,#574022 55%,#3a2914)}
+.invc .mono{width:3.6rem;height:3.6rem;border-radius:50%;border:2px solid rgba(226,184,119,.5);display:flex;align-items:center;justify-content:center;font-family:'Fraunces';font-size:1.2rem;color:var(--wood-bright);background:rgba(255,255,255,.04)}
+.invc h4{font-family:'Fraunces';font-size:.98rem;font-weight:500}
+.invc p{font-size:.7rem;line-height:1.45;color:var(--cream-dim);margin-top:.2rem}
+
+/* s9 supermills */
+/* graph x positions are 220/520/820 of a 1000 viewBox -> column centres must land on 22% / 52% / 82% */
+.millcols .ml{font-size:.56rem;color:var(--muted);white-space:nowrap;padding:.3rem 0;border-bottom:1px solid rgba(228,210,180,.09)}
+.millcols .mv{font-size:.72rem;font-weight:700;color:var(--cream);text-align:center;white-space:nowrap;padding:.3rem 0;border-bottom:1px solid rgba(228,210,180,.09)}
+.millcols .mv:nth-of-type(3n){}
+.millcols{display:grid;grid-template-columns:8% 24% 24% 24% 20%;margin-top:.3rem;align-items:baseline}
+.mills{display:grid;grid-template-columns:.85fr 1.3fr .85fr;gap:1.2rem;margin-top:1.8rem;align-items:stretch}
+.sizestrip{margin-top:1.3rem;display:flex;align-items:flex-end;gap:2.5rem;justify-content:center}
+.sizestrip .cap{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);align-self:flex-end;padding-bottom:1.9rem;max-width:11rem;text-align:right;line-height:1.6}
+.sizestrip .cap b{color:var(--wood-bright)}
+.sq{display:flex;flex-direction:column;align-items:center;gap:.45rem}
+.sq i{display:block;width:var(--s);height:var(--s);background:linear-gradient(180deg,var(--wood-bright),var(--wood-deep));border-radius:2px;transform:scale(0);transform-origin:bottom;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.sq.tiny i{background:var(--gold);box-shadow:0 0 10px rgba(226,184,119,.6)}
+.in .sq i{transform:scale(1)}
+.in .sq:nth-child(3) i{transition-delay:.15s}.in .sq:nth-child(4) i{transition-delay:.3s}.in .sq:nth-child(5) i{transition-delay:.45s}
+.sq b{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream)}
+.sq small{font-size:.58rem;color:var(--muted);text-align:center;line-height:1.4;min-height:1.4em}
+.mill{border:1px solid rgba(184,125,68,.55);border-radius:14px;padding:1.2rem 1.3rem}
+.mill h3{font-family:'Fraunces';font-size:1.35rem;font-weight:500}
+.mill .sub{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright);margin:.35rem 0 .9rem}
+.flowpair{display:flex;align-items:center;gap:.7rem;background:rgba(0,0,0,.25);border-radius:10px;padding:.7rem;margin-bottom:1rem}
+.flowpair figure{text-align:center;flex:1}
+.flowpair img{height:3.4rem;object-fit:contain}
+.flowpair figcaption{font-size:.58rem;color:var(--muted);margin-top:.3rem}
+.flowpair .arr{color:var(--wood-bright);font-size:1.1rem}
+.stats{display:grid;grid-template-columns:auto 1fr;gap:.4rem 1rem;align-items:baseline}
+.stats .n{font-family:'Fraunces';font-size:1.5rem;color:var(--gold);white-space:nowrap}
+.stats .l{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mill .notes{margin-top:.9rem;font-size:.74rem;line-height:1.5;color:var(--cream-dim)}
+.minimills{display:flex;flex-direction:column;gap:.9rem}
+.minimill{border:1px solid rgba(184,125,68,.55);border-radius:12px;padding:.85rem 1rem}
+.minimill h3{font-family:'Fraunces';font-size:1.05rem}
+.minimill .sub{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);margin-top:.25rem}
+.futinn{margin-top:.4rem}
+.futinn h4{font-size:.62rem;letter-spacing:.26em;color:var(--wood-bright);font-weight:600;margin-bottom:.6rem}
+.futinn .row{display:flex;align-items:center;gap:1rem;margin-bottom:.5rem}
+.futinn .row span{font-size:.68rem;font-weight:600;color:var(--cream-dim);width:4.4rem}
+.futinn img{height:2.3rem;object-fit:contain}
+.futinn figure{text-align:center}
+.futinn figcaption{font-size:.54rem;color:var(--muted);margin-top:.2rem}
+
+/* s10 network */
+.finpanel{border-radius:12px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.45);background:#efe6d6}
+.finpanel svg{width:100%;display:block}
+.finpanel .seg{transform:scaleY(0);transform-origin:bottom;transform-box:fill-box;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.in .finpanel .seg{transform:scaleY(1)}
+.finpanel .ln{stroke-dasharray:1300;stroke-dashoffset:1300;transition:stroke-dashoffset 2.2s ease .5s}
+.in .finpanel .ln{stroke-dashoffset:0}
+.fintitle{padding:.7rem 1rem 0;background:#efe6d6;font-family:'Inter';font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#3a2a18}
+.fintitle span{font-weight:500;text-transform:none;letter-spacing:0;color:#75654e;font-size:.72rem;margin-left:.5em}
+.ceshead{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem}
+:root{--cesw:56rem}
+.cesstats{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:.6rem;max-width:52rem;margin-left:auto;margin-right:auto;text-align:center}
+.cesgrid{margin-top:1.2rem;display:grid;grid-template-columns:1.25fr 1fr;gap:2.2rem;align-items:center;max-width:none}
+.cesgrid .finpanel{max-width:none}
+.cesplan h3{font-family:'Fraunces';font-weight:400;font-size:clamp(1.05rem,1.7vw,1.4rem);color:var(--cream);margin-bottom:.8rem}
+.cesplan ul{list-style:disc;padding-left:1.1rem;display:grid;gap:.55rem}
+.cesplan li{font-size:.8rem;line-height:1.5;color:var(--cream-dim)}
+.cesplan li b{color:var(--cream)}
+.cesplan .fn{font-size:.66rem;font-style:italic;color:var(--muted);margin-top:.9rem}
+.cstat .n{font-family:'Fraunces';font-size:clamp(1.15rem,1.7vw,1.45rem);color:var(--gold);line-height:1.1}
+.cstat .l{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+.cesfoot{margin-top:1.2rem;max-width:none;text-align:center}
+/* panel size encodes scale: SM One < SM Two < National Fleet. stretch is load-bearing —
+   with align-items:start the fleet card has fewest rows and ends up the shortest, cancelling the width step */
+.gnet{display:grid;grid-template-columns:.85fr 1.15fr 1.5fr 2.4fr;gap:.9rem;margin-top:1.8rem;align-items:start}
+.gcard.wide{grid-column:3/5}
+.gcard.wide>h3{min-height:0}
+.gcard.wide .grows{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem}
+.gcard.wide .gicons{gap:.4rem .6rem}
+.gcard.wide .gr{justify-content:flex-start;gap:1.4rem}.gcard.wide .gr b{text-align:left}
+.gcard{display:flex;flex-direction:column;border:1px solid rgba(184,125,68,.5);border-radius:14px;padding:1.1rem 1.2rem}
+.gcard h3{font-family:'Fraunces';font-weight:400;font-size:clamp(.95rem,1.5vw,1.25rem);color:var(--cream);line-height:1.15;letter-spacing:0;min-height:2.3em;display:flex;align-items:flex-start}
+.gcard .gsub{font-family:'Inter';font-weight:600;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);margin-top:.35rem}
+/* the real Canva factory glyph, used as a mask so one asset recolours per card */
+.gicons{display:flex;flex-wrap:wrap;align-items:flex-end;gap:.35rem .45rem;margin:1rem 0 .3rem;color:var(--wood-bright);max-width:100%;min-height:3.6rem}
+.gicons .fx{flex:none;height:var(--fh);width:calc(var(--fh) * .8875);background:currentColor;-webkit-mask:url(assets/icon-factory-hf.png) center/contain no-repeat;mask:url(assets/icon-factory-hf.png) center/contain no-repeat}
+.gicons.green{color:#8fb356}
+.gicons.orange{color:#c2571d}
+.gcard.sm .gicons{margin:.7rem 0 .2rem}
+.gicons.dense{gap:.3rem .35rem;min-height:0}
+.gicons.dense2{gap:.35rem .4rem;justify-content:space-between}
+.grows{margin-top:.7rem}
+.gr{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:.15rem .7rem;padding:.34rem 0;border-bottom:1px solid rgba(228,210,180,.1);font-size:.7rem;min-height:1.95rem}
+.gr span{color:var(--muted);flex:none;white-space:nowrap}
+.gr b{color:var(--cream);font-weight:700;text-align:right}
+.gr.full{flex-direction:column;align-items:flex-start;justify-content:center;gap:.1rem;min-height:2.9rem}
+.gr.full b{text-align:left;white-space:nowrap;font-size:.62rem}
+.gnote{font-size:.66rem;line-height:1.5;color:var(--cream-dim);font-style:italic;margin-top:.95rem}
+.askterms{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.6rem;max-width:52rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.1rem 0}
+.askterms span{display:block;font-family:'Inter';font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.askterms b{display:block;font-family:'Fraunces';font-weight:500;font-size:clamp(1.2rem,2vw,1.7rem);color:var(--gold);margin-top:.3rem}
+.cesfoot h3{font-family:'Inter';font-weight:700;font-size:.95rem;margin-bottom:.5rem}
+.cesfoot .fp{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;justify-content:space-between}
+.cesfoot .fp span{font-size:.78rem;color:var(--cream-dim)}
+.cesfoot .fp b{color:var(--cream)}
+.finpanel{position:relative}
+.finlegend{position:absolute;top:14%;left:14.5%;display:flex;gap:1.2rem;align-items:flex-start}
+.finlegend .col{display:flex;flex-direction:column;gap:.28rem}
+.finlegend span{display:flex;align-items:center;gap:.35rem;font-size:.52rem;letter-spacing:.07em;text-transform:uppercase;color:#4a3618;font-weight:600}
+.finlegend .leghead{font-weight:800;color:#3a2a18;letter-spacing:.12em;margin-bottom:.1rem}
+.finlegend i{width:.6rem;height:.6rem;border-radius:2px;display:inline-block;flex:none}
+.finlegend i.line{height:3px;width:1.1rem;border-radius:2px}
+
+/* s11 properties */
+#s11 .split{grid-template-columns:.8fr 1.2fr}
+.props{list-style:none;display:flex;flex-direction:column;justify-content:space-between;gap:.8rem;height:100%}
+#s11 .split>div{align-self:stretch;display:flex;flex-direction:column}
+#s11 .split>div:first-child{justify-content:center}
+.props{flex:1 1 auto}
+.props li{display:grid;grid-template-columns:2.4rem 1fr;gap:1rem;align-items:start}
+.props .ic{width:2.4rem;height:2.4rem;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--wood-bright);background:rgba(255,255,255,.03)}
+.props .ic svg{width:1.45rem;height:1.45rem;display:block}
+.props h3{font-family:'Inter';font-weight:700;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.25rem}
+.props p{font-size:.8rem;line-height:1.45;color:var(--cream-dim)}
+.tunable{margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--line);font-style:italic;font-size:.7rem;line-height:1.5;color:var(--muted)}
+.superword-vert{font-family:'Inter';font-weight:600;letter-spacing:.34em;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--sand);margin-bottom:1.4rem}
+
+/* s12 tech */
+.steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.6rem;margin-top:1.8rem}
+.step .num{font-size:.72rem;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.4rem;margin-bottom:.7rem;letter-spacing:.1em}
+.step h3{font-family:'Inter';font-weight:700;font-size:.86rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+.step.sw h3{color:#c77b3b;font-size:1.15rem;letter-spacing:.18em}
+.step p{font-size:.8rem;line-height:1.5;color:var(--cream-dim);margin-bottom:.9rem}
+.step img.main{width:100%;border-radius:10px;object-fit:cover;aspect-ratio:3/2}
+.step .inset{width:5.2rem;height:5.2rem;border-radius:50%;border:2px solid var(--gold);object-fit:cover;margin-top:-2.6rem;margin-left:auto;display:block;position:relative;box-shadow:0 10px 26px rgba(0,0,0,.5)}
+.step .cap{font-size:.62rem;font-style:italic;color:var(--muted);text-align:right;margin-top:.3rem}
+.step img.mol{width:78%;margin:0 auto;display:block;border-radius:50%}
+.ipline{margin:1rem auto 0;font-size:.78rem;line-height:1.5;color:var(--cream-dim);max-width:70ch;text-align:center}.ipline b{color:var(--gold);font-weight:600}
+.nochips{display:flex;justify-content:center;gap:.8rem;margin-top:1.6rem;flex-wrap:wrap}
+.nochips span{border:1px solid var(--wood);color:var(--gold);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:.4em .9em;border-radius:3px}
+
+/* s13 process */
+#s13 h2{font-size:clamp(1.1rem,1.9vw,1.5rem);max-width:46ch}
+.procflow{--pimgh:clamp(4.5rem,8.5vw,7.6rem);padding-right:.5rem;display:grid;grid-template-columns:repeat(7,1fr);gap:1.45rem;margin-top:1.4rem;align-items:end}
+.pstep{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;min-width:0}
+.pimg{position:relative;width:92%;margin:0 auto}
+.pstep:not(.end) .pimg::after{content:'';position:absolute;right:-1.7rem;top:50%;transform:translateY(-50%);width:2.3rem;height:1.4rem;opacity:.95;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2024'%3E%3Cpath%20d='M3%2012%20H23'%20stroke='%23b87d44'%20stroke-width='2.8'%20stroke-linecap='round'/%3E%3Cpath%20d='M21%204.5%20L37%2012%20L21%2019.5%20Z'%20fill='%23b87d44'/%3E%3C/svg%3E") center/contain no-repeat}
+.pann{min-height:3.6rem;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.5rem}
+.pann span{position:relative;font-size:.66rem;line-height:1.4;color:var(--cream-dim)}
+.pann span::after{content:'';position:absolute;left:50%;top:calc(100% + .3rem);width:1px;height:.85rem;background:var(--wood);opacity:.7}
+.pstep .pimg{margin-top:.9rem}
+.pstep img{width:100%;height:auto;display:block}
+.plab{font-family:'Inter';font-weight:700;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cream);
+  margin-top:.9rem;line-height:1.35;min-height:4.2em}
+.plab .pill{display:inline-block;background:linear-gradient(180deg,#6d6f77,#3c3e45);color:#fff;border-radius:999px;padding:.5em .85em;letter-spacing:.1em;max-width:100%}
+.popt{font-size:.64rem;color:var(--muted);font-style:italic;margin-top:.2rem}
+.procfoot{display:grid;grid-template-columns:repeat(7,1fr);gap:.5rem;margin-top:.6rem}
+.procdisc{position:absolute;right:max(6vw,9.5rem);bottom:6.2vh;font-size:.58rem;line-height:1.5;font-style:italic;color:var(--muted);white-space:nowrap;text-align:right;z-index:2}
+.procfoot p{grid-column:4/7;font-size:.66rem;line-height:1.5;color:var(--muted);font-style:italic;text-align:center;
+  border-top:1px solid rgba(184,125,68,.45);padding-top:.6rem}
+
+/* s14 phased */
+:root{--m1:#54300f;--m5:#7c4a1e;--m10:#9c6531;--m50:#c49a5f;--m100:#dccaa0}
+.formfactors{display:flex;align-items:center;gap:1.4rem;margin-top:1rem;flex-wrap:wrap}
+.formfactors .fflab{font-family:'Inter';font-weight:600;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);flex:none}
+.formfactors figure{margin:0;display:flex;align-items:center;gap:.6rem}
+.formfactors img{height:2.9rem;width:auto;border-radius:6px;object-fit:contain}
+.formfactors figcaption{font-size:.68rem;font-weight:700;color:var(--cream);white-space:nowrap}
+.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:1.2rem}
+.mcol .ph{font-size:clamp(11px,.7rem,.85rem);letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);font-weight:600}
+.mcol h3{font-family:'Inter';font-weight:600;font-size:1rem;margin:.35rem 0 .25rem}
+.mcol .sub{font-size:.74rem;color:var(--muted);margin-bottom:.9rem;line-height:1.35;min-height:2.4em}
+.mbox{font-size:clamp(11px,.76rem,.92rem);font-weight:500;padding:.5rem .75rem;border-radius:6px;margin-bottom:.4rem;color:#fff;line-height:1.25}
+.mbox.t1{background:var(--m100);color:#3a2616}.mbox.t5{background:var(--m50);color:#3a2616}.mbox.t10{background:var(--m10)}
+.mbox.t50{background:var(--m5)}.mbox.t100{background:var(--m1)}
+.legend{display:flex;align-items:center;gap:1rem;margin-top:1.2rem;flex-wrap:wrap}
+.legend .lab{font-size:clamp(10px,.68rem,.82rem);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.legend .scale{display:flex;flex:1;min-width:17.5rem;max-width:35rem;border-radius:6px;overflow:hidden;height:2.125rem;border:1px solid var(--line)}
+.legend .scale div{flex:1;display:flex;align-items:center;justify-content:center;font-family:'Fraunces';font-size:.8rem}
+.legend .scale .s1{background:var(--m100);color:#3a2616}.legend .scale .s5{background:var(--m50);color:#3a2616}.legend .scale .s10{background:var(--m10);color:#fff}
+.legend .scale .s50{background:var(--m5);color:#fff}.legend .scale .s100{background:var(--m1);color:#fff}
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;margin-top:2rem;text-align:center}
+.phase .pt{font-family:'Inter';font-weight:600;letter-spacing:.3em;font-size:clamp(.9rem,1.6vw,1.25rem);color:var(--sand)}
+.phase .ps{font-size:.78rem;letter-spacing:.16em;color:var(--gold);margin:.3rem 0 1.1rem}
+.phase img{width:min(15.5rem,100%);aspect-ratio:1;border-radius:50%;object-fit:cover;border:2px solid var(--gold)}
+.phase .tam{font-family:'Fraunces';font-size:clamp(1.3rem,2.4vw,1.9rem);color:var(--cream);margin-top:1rem}
+.phase .hurdle{font-family:'Inter';font-weight:700;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:.5rem}
+.phase .pd{font-size:.72rem;line-height:1.5;color:var(--cream-dim);margin:.45rem auto 0;max-width:min(15.5rem,100%)}
+.tamnote{display:flex;align-items:center;gap:1rem;margin-top:1.6rem}
+.tamnote .lab{font-size:.72rem;letter-spacing:.2em;color:var(--muted)}
+/* wedge, not a bar: thickness grows left-to-right so the shape itself reads as TAM increasing $100B+ -> $400B+ -> $700B+ */
+.steel-arrow{flex:1;height:2.7rem;background:linear-gradient(90deg,rgba(196,154,95,.25),rgba(196,154,95,.95));clip-path:polygon(0 45%,92% 16%,92% 0,100% 50%,92% 100%,92% 84%,0 55%);display:flex;align-items:center;justify-content:flex-end;padding-right:9%}
+.steel-arrow b{font-size:.76rem;color:#241708}
+
+/* s15 demand */
+.dstats{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:1.8rem}
+.dstat{border-radius:12px;padding:1.2rem 1.4rem;border:1px solid rgba(184,125,68,.4)}
+.dstat.hot{background:linear-gradient(180deg,#f2e9da,#e5d6bd);border:none}
+.dstat .n{font-family:'Fraunces';font-size:clamp(1.9rem,3.4vw,2.7rem);color:#c56c32;line-height:1}
+.dstat h3{font-family:'Inter';font-weight:700;font-size:.95rem;margin:.45rem 0 .15rem}
+.dstat.hot h3{color:#241708}
+.dstat .s{font-size:.74rem;color:var(--wood-deep)}
+.dstat:not(.hot) .s{color:var(--muted)}
+.dstat p{font-size:.74rem;line-height:1.5;margin-top:.7rem;color:var(--cream-dim)}
+.dstat.hot p{color:#4a3618}
+
+/* s16 pipeline */
+.pipes{display:grid;grid-template-columns:1.5fr 1.35fr 1fr;gap:1.3rem;margin-top:1.6rem;align-items:stretch}
+.pipe{display:flex;flex-direction:column;min-height:0}
+.pcard{border-radius:14px;padding:1rem .9rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
+.pcard.light{background:linear-gradient(180deg,#f3ebe0,#e6d9c8)}
+.pcard.tan{background:#c2a680}
+.pband{background:rgba(113,86,59,.34);color:#3a2a18;border-radius:6px;padding:.32rem .5rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;line-height:1.35;text-align:center}
+.pband.plain{background:none;border-bottom:1px solid rgba(58,42,24,.35);border-radius:0;padding:.1rem 0 .35rem}
+.plogos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;align-content:center;gap:.55rem 1.15rem;flex:1 1 auto;padding:.45rem .2rem}
+.pipe .plogos img{height:2rem;width:auto;max-width:7.5rem;object-fit:contain;display:block;border-radius:0}
+.plogos.c5 img{height:1.7rem;max-width:6.4rem}
+.plogos.c3 img{height:1.45rem;max-width:5.6rem}.plogos.c3 img[alt="U.S. Department of War"]{height:3.4rem}
+.plogos img.mul{mix-blend-mode:multiply}
+.pcard.tan .plogos{gap:.9rem 1rem;padding:.3rem 0;align-content:space-evenly;flex:1 1 auto}
+.pcard.tan .plogos img{height:1.95rem;max-width:6.6rem}
+.pipe:last-child .plogos{gap:1.3rem 1.5rem}
+.pipe:last-child .plogos img{height:2.3rem;max-width:7.2rem}
+.plogos img.inv{filter:invert(1) brightness(.35)}
+.pself{font-size:.74rem;line-height:1.35;color:#5c452c;text-align:center;font-style:italic;margin-top:-.2rem}
+.pipe h3{font-family:'Montserrat',sans-serif;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;text-align:center;font-weight:700;margin-bottom:.8rem;line-height:1.3;min-height:2.6em;display:flex;align-items:flex-end;justify-content:center}
+.pipe img{width:100%;border-radius:12px;display:block}
+
+/* s17 allocation */
+#s17 .bg{background:linear-gradient(rgba(26,17,10,.9),rgba(26,17,10,.9)),url(assets/alloc-bg.jpg) center/cover}
+/* one bar, three shares, three columns aligned to it */
+.allocbar{display:grid;grid-template-columns:1fr 1fr 1fr;height:12px;border-radius:999px;overflow:hidden;margin-top:1.8rem}
+.allocbar i{display:block}
+.allocbar i.a{background:#b87d44}.allocbar i.b{background:#e2b877}.allocbar i.c{background:#cdbfa9}
+.alloccols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.2rem;margin-top:1.1rem;align-items:stretch}
+.ac{display:flex;flex-direction:column}
+.ac .goal{display:flex;gap:.6rem;font-size:.74rem;line-height:1.4;color:var(--cream);font-weight:600;
+  padding-bottom:.7rem;margin-bottom:.7rem;border-bottom:1px solid var(--line);min-height:3.4em;align-items:flex-start}
+.ac .goal b{font-family:'Fraunces';font-weight:400;font-size:1rem;line-height:1;flex:none}
+.ac h3{font-family:'Inter';font-weight:700;font-size:1.05rem;letter-spacing:.01em;margin-bottom:.35rem}
+.ac p{font-size:.78rem;line-height:1.55;color:var(--cream-dim)}
+.ac .imgs{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-top:auto;padding-top:1.1rem}
+.ac .imgs img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:9px;box-shadow:0 14px 32px rgba(0,0,0,.45)}
+.ac.a h3,.ac.a .goal b{color:#b87d44}
+.ac.b h3,.ac.b .goal b{color:#e2b877}
+.ac.c h3,.ac.c .goal b{color:#cdbfa9}
+.overlap{margin-top:1.4rem;font-style:italic;font-size:.72rem;line-height:1.5;color:var(--muted)}
+
+/* s18 financing */
+.ucchart{margin-top:1.4rem}
+.ucchart svg{width:100%;display:block;overflow:visible}
+.ucchart svg text{font-family:'Fraunces',serif}
+.ucchart .uclab{font-family:'Inter',sans-serif}
+.ucchart .ucline{stroke-dasharray:1600;stroke-dashoffset:1600;transition:stroke-dashoffset 2s ease .2s}
+.in .ucchart .ucline{stroke-dashoffset:0}
+.ucchart .ucdot{opacity:0;transition:opacity .5s ease 1.4s}
+.in .ucchart .ucdot{opacity:1}
+.ucnote{font-size:.66rem;line-height:1.5;font-style:italic;color:var(--muted);margin-top:1rem;max-width:70ch}
+.valchart{margin-top:1.2rem}
+.valchart svg{width:100%;display:block;overflow:visible}
+.valchart .vline{stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 2s ease .2s}
+.in .valchart .vline{stroke-dashoffset:0}
+.valchart .varea{opacity:0;transition:opacity 1.2s ease .9s}
+.in .valchart .varea{opacity:1}
+.valchart .vdot,.valchart .vlab{opacity:0;transition:opacity .7s ease}
+.in .valchart .vdot,.in .valchart .vlab{opacity:1}
+.in .valchart .d1{transition-delay:.5s}.in .valchart .d2{transition-delay:.8s}.in .valchart .d3{transition-delay:1.1s}.in .valchart .d4{transition-delay:1.4s}.in .valchart .d5{transition-delay:1.7s}
+.valchart .nowring{transform-box:fill-box;transform-origin:center;animation:nowring 2s ease-in-out infinite}
+@keyframes nowring{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.8);opacity:0}}
+.msrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;margin-top:1.1rem}
+.msrow .ms h3{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--wood-bright);margin-bottom:.3rem}
+.msrow .ms.past h3{color:var(--muted)}
+.msrow .ms.now h3{color:var(--gold)}
+.msrow .ms p{font-size:.7rem;line-height:1.5;color:var(--cream-dim)}
+.msrow .ms.past p{color:var(--muted)}
+.nowpill{display:inline-block;background:#b0612d;color:#fff;font-size:.58rem;letter-spacing:.2em;font-weight:700;text-transform:uppercase;padding:.3em .8em;border-radius:999px;margin-left:.6rem;vertical-align:middle}
+
+/* s20 appendix showcase */
+.showgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem 1.6rem;margin-top:1.4rem}
+.showgrid figure{margin:0}
+.showgrid img{width:100%;aspect-ratio:16/8.5;object-fit:cover;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.showgrid b{display:inline;font-family:'Fraunces';font-weight:500;font-size:.95rem;margin-right:.5rem}
+.showgrid figcaption{margin-top:.55rem}
+.showgrid span{display:inline;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright)}
+.showgrid p{font-size:.66rem;line-height:1.45;color:var(--cream-dim);margin-top:.25rem}
+
+
+/* dc application tiles */
+#dcn h2,#dcm h2,#dcf h2{max-width:none;font-size:clamp(1.35rem,2.55vw,2rem)}
+#ask .askcta{margin-top:2.1rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.55rem 2rem}
+#ask .askcta .who{flex-basis:100%}
+#ask .note,#dcn .note,#dcm .note{font-size:.62rem;line-height:1.5;font-style:italic;color:var(--muted);margin-top:1.3rem}
+.apph{font-family:'Inter';font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:.5rem;margin-top:1.5rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.appgrid{display:grid;grid-template-columns:repeat(6,1fr);column-gap:1.1rem;row-gap:.9rem;margin-top:.9rem;align-items:start}
+.appgrid.spread{display:flex;justify-content:space-between}
+.appgrid.spread figure{width:calc((100% - 5.5rem)/6)}
+.appgrid figure{margin:0}
+.appgrid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.appgrid figcaption{font-size:.6rem;line-height:1.45;color:var(--cream-dim);margin-top:.5rem;text-align:center}
+.dccards{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.6rem}
+.dccard{display:flex;gap:1.2rem;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:1.2rem 1.4rem}
+.dccard img{width:6.2rem;aspect-ratio:1;object-fit:cover;border-radius:8px;flex:none}
+.dccard h3{font-family:'Inter';font-weight:700;font-size:.82rem;line-height:1.35;color:var(--gold);margin-bottom:.45rem}
+.dccard p{font-size:.72rem;line-height:1.6;color:var(--cream-dim)}
+
+/* appendix TOC */
+.apxtoc{max-width:44rem;margin:2.2rem auto 0;display:flex;flex-direction:column;gap:.7rem}
+.apxtoc a{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;column-gap:1rem;align-items:baseline;text-decoration:none;padding:.8rem 1.1rem;border:1px solid var(--line);border-radius:10px;background:rgba(20,13,7,.55);backdrop-filter:blur(2px);transition:border-color .25s,background .25s,transform .25s}
+.apxtoc a:hover{border-color:var(--wood);background:rgba(184,125,68,.14);transform:translateX(4px)}
+.apxtoc b{font-family:'Fraunces';font-weight:500;font-size:1.15rem;color:var(--cream)}
+.apxtoc span{grid-column:1;font-size:.74rem;color:var(--cream-dim)}
+.apxtoc small{grid-column:2;grid-row:1/3;align-self:center;font-size:.85rem;color:var(--wood-bright);font-variant-numeric:tabular-nums;letter-spacing:.1em}
+
+/* s21-23 appendices */
+.mtworld{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;margin-top:1.6rem}
+.mtworld figure{margin:0}
+.mtworld img{width:100%;aspect-ratio:3/2.6;object-fit:cover;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.mtworld figcaption{margin-top:.55rem;font-family:'Fraunces';font-size:.84rem;line-height:1.3;display:flex;flex-direction:column;justify-content:space-between;min-height:3.9em}
+#mte .mtworld figcaption{font-size:.78rem;min-height:6.7rem}
+#mtb .mtworld figcaption{display:block;font-size:.78rem;min-height:0}
+.mtworld figure{position:relative}
+.mtworld figure .why{position:absolute;left:0;right:0;top:0;aspect-ratio:3/2.6;border-radius:10px;border:1px solid rgba(196,154,95,.4);background:linear-gradient(180deg,rgba(24,15,8,.95),rgba(24,15,8,.98));display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:.3rem;padding:.6rem .7rem;overflow:hidden;font-family:'Inter';font-size:.52rem;line-height:1.5;color:var(--cream-dim);opacity:0;pointer-events:none;transition:opacity .22s ease}
+.mtworld figure:hover .why,.mtworld figure:focus .why,.mtworld figure:focus-within .why{opacity:1;pointer-events:auto}
+.mtworld figure .why a{color:var(--gold);text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+.mtworld figure:focus{outline:none}
+.mtworld figure:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:10px}
+.mtworld figure .hint{position:absolute;top:.45rem;right:.45rem;width:1.15rem;height:1.15rem;border-radius:50%;background:rgba(24,15,8,.72);border:1px solid rgba(196,154,95,.5);color:var(--gold);font-family:'Inter';font-weight:700;font-size:.6rem;display:flex;align-items:center;justify-content:center;transition:opacity .22s ease}
+.mtworld figure:hover .hint,.mtworld figure:focus-within .hint{opacity:0}
+.mtworld figcaption span{display:block;font-family:'Inter';font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);margin-top:.25rem}
+.hbgrid{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;margin-top:.8rem;align-items:center}
+.hbgrid svg{width:100%;display:block}
+.hbh{font-family:'Inter';font-weight:700;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:1.4rem 0 .7rem}
+
+.mtgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.4rem;margin-top:1rem;align-items:start}
+.mtitem{border-left:2px solid var(--wood);padding-left:1rem;margin-top:1.2rem}
+.mtitem h3{font-family:'Inter';font-weight:700;color:var(--gold);font-size:.92rem;margin-bottom:.3rem}
+.mtitem p{font-size:.82rem;line-height:1.5;color:var(--cream-dim)}
+.mtimg{width:100%;border-radius:10px;display:block;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+#s21 .mtitem h3{font-size:1.15rem}
+#s21 .mtitem p{font-size:.95rem;line-height:1.55}
+#s21 .mtitem{margin-top:1rem}
+.invimg{box-shadow:none}
+.mtlab{margin-top:1.5rem}
+.mtimg.ctbuh{border-radius:0;margin:.4rem auto 0;width:100%;max-width:none;max-height:48vh;object-fit:contain}
+#s21 .mtitem h3{font-size:1.08rem}#s21 .mtitem p{font-size:.95rem;line-height:1.5}#s21 .mtitem{margin-top:1.5rem}#s21 .mtlab b{font-size:1.35rem}#s21 .mtlab span{font-size:.95rem}
+.mtlab b{display:block;font-family:'Inter';font-weight:700;font-size:1.25rem;line-height:1.3;color:var(--gold)}
+.mtlab span{display:block;font-family:'Inter';font-weight:400;font-size:.82rem;line-height:1.45;color:var(--cream-dim);margin-top:.15rem}
+
+/* s19 thanks */
+#s19{padding:0}
+#s19 .thanks{display:grid;grid-template-columns:.9fr 1.1fr;min-height:100vh;min-height:100dvh;width:100%}
+#s19 .left{display:flex;flex-direction:column;justify-content:center;padding:0 5vw}
+#s19 .left h2{font-size:clamp(2.4rem,5.4vw,4.4rem);font-weight:500}
+#s19 .contact{margin-top:2.2rem;display:flex;flex-direction:column;gap:1.1rem}
+#s19 .contact .who,#ask .askcta .who{display:block;font-family:'Inter';font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+#s19 .contact .mail,#ask .askcta .mail{display:inline-block;margin-top:.4rem;font-family:'Fraunces';font-weight:500;font-size:clamp(1rem,1.7vw,1.35rem);color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(226,184,119,.45);padding-bottom:.15rem;transition:color .25s,border-color .25s}
+#s19 .contact .mail:hover,#s19 .contact .mail:focus-visible,#ask .askcta .mail:hover,#ask .askcta .mail:focus-visible{color:var(--cream);border-color:var(--cream)}
+#s19 .right{background:url(assets/thankyou-deck.jpg) center/cover}
+
+@media (max-width:900px), (orientation:portrait){
+  .team{grid-template-columns:repeat(3,1fr)}
+  .adv{grid-template-columns:repeat(2,1fr);row-gap:1.2rem}
+  .mills{grid-template-columns:1fr}
+  .showgrid{grid-template-columns:1fr 1fr}
+  .mtgrid,.hbgrid{grid-template-columns:1fr}
+  .mtworld{grid-template-columns:1fr 1fr}
+  .appgrid,.appgrid.spread{display:grid;grid-template-columns:1fr 1fr}
+  .appgrid.spread figure{width:auto}
+  .dccards{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr 1fr;row-gap:1.4rem}
+  .sw5-proof{grid-template-columns:1fr 1fr;gap:.8rem}
+  .sw5{min-height:0}
+  .tlbands{display:none}
+}
+@media (max-width:700px), (max-width:860px) and (orientation:portrait){
+  section{padding:5vh 10vw 5vh 7vw}
+  .split,#s11 .split{grid-template-columns:1fr}
+  .dstats,.steps,.phases,.cols3,.pillars{grid-template-columns:1fr}
+  .cesgrid{grid-template-columns:1fr}
+  nav.dots{padding:0 4px 0 1rem;gap:4px}
+  nav.dots button{font-size:.52rem;padding:.1em .35em}
+  #s19 .thanks{grid-template-columns:1fr}
+  #s19 .right{min-height:38vh;order:-1}
+  .team{grid-template-columns:1fr 1fr}
+  .adv{grid-template-columns:1fr}
+  .invgrid{grid-template-columns:1fr}
+  .grow{gap:1.6rem}
+  .gbar .col{width:4.6rem}
+}
+@media (min-width:561px) and (orientation:portrait){
+  .steps{grid-template-columns:repeat(3,1fr)}
+  #s11 .split{grid-template-columns:.8fr 1.2fr}
+}
+
+/* mach */
+.machrow{display:flex;align-items:stretch;gap:1.2rem;margin-top:2rem}
+.machbox{flex:1;border:1px solid rgba(184,125,68,.5);border-radius:14px;padding:1.2rem 1.5rem 1.4rem;display:flex;flex-direction:column;justify-content:flex-start}
+.machbox .mimg{width:calc(100% + 3rem);margin:-1.2rem -1.5rem .9rem;height:10.5rem;object-fit:cover;border-radius:13px 13px 0 0;display:block}
+.machbox .k{font-family:'Inter';font-weight:600;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.machbox .v{font-family:'Fraunces';font-size:clamp(1.1rem,1.9vw,1.55rem);color:var(--cream)}
+.machbox .d{font-size:.76rem;line-height:1.5;color:var(--cream-dim);margin-top:.5rem}
+.machbox.mill{border-color:var(--gold);background:rgba(226,184,119,.06)}
+.machbox.mill .v{color:var(--gold)}
+.machbox.mill .fx{display:block;height:3.4rem;width:calc(3.4rem * .8875);background:var(--wood-bright);-webkit-mask:url(assets/icon-factory-hf.png) center/contain no-repeat;mask:url(assets/icon-factory-hf.png) center/contain no-repeat;margin-bottom:.7rem}
+.macharrow{align-self:center;font-size:2rem;color:var(--wood-bright);flex:none}
+.machstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 2.2rem;margin-top:1.6rem}
+.machstats .gr{flex-direction:column;align-items:flex-start;gap:.15rem;border-bottom:0;border-top:1px solid rgba(228,210,180,.14);padding-top:.6rem}
+.machstats .gr b{font-family:'Fraunces';font-size:1.25rem;font-weight:400;text-align:left}
+.machstats .gr b{color:var(--gold)}
+.replrow{display:flex;align-items:center;gap:.8rem;margin-top:1.6rem}
+.replrow .fx{display:block;height:var(--fh);width:calc(var(--fh) * .8875);background:var(--wood-bright);-webkit-mask:url(assets/icon-factory-hf.png) center/contain no-repeat;mask:url(assets/icon-factory-hf.png) center/contain no-repeat}
+.replrow .macharrow{font-size:1.6rem}
+</style>
+</head>
+<body class="on-cover">
+<div class="conf">Confidential</div>
+<div class="pageno" id="pageno"></div>
+<div class="brand"><img src="assets/logo.png" alt="InventWood"></div>
+<nav class="dots" id="dots" aria-label="Slides"></nav>
+
+<div class="deck" id="deck">
+
+<section id="s1" data-nav="Cover">
+  <div class="bg"></div>
+  <div class="scrim"></div>
+  <div class="wrap">
+    <h1 class="rv">The material to build the future from &mdash; <em>made in America.</em></h1>
+    <div class="covline rv">SUPER MILLS AMERICA <b>August 2026</b></div>
+  </div>
+  <div class="scrollcue">Scroll</div>
+</section>
+
+<section id="gap" class="dark" data-nav="The Gap">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(1.7rem,3.3vw,2.9rem);max-width:none">America is building again &mdash; and it is <span class="hl">short the materials to do it.</span></h2>
+    <p class="lead rv" style="margin-top:1.4rem;max-width:64ch">Data centers, reshored factories, housing, the grid &mdash; the build-out is here. The key structural materials it runs on are increasingly not made here:</p>
+    <div class="machstats rv" style="margin-top:1.8rem">
+      <div class="gr"><span>Finished steel imported</span><b>~1 ton in 5</b></div>
+      <div class="gr"><span>Aluminum met by imports</span><b>~85%</b></div>
+      <div class="gr"><span>Primary smelters left</span><b>4, from 33</b></div>
+      <div class="gr"><span>Steel share of a data center</span><b>~60%</b></div>
+    </div>
+    <p class="gnote rv" style="max-width:72ch">Data center operators are already flagging structural-steel shortages. Two of the core materials America builds with are significantly imported &mdash; and tariffs cut imports years before new domestic capacity can replace them. The gap lands on price and lead times.</p>
+    <p class="rv" style="margin-top:1.4rem;font-size:.78rem;color:var(--muted)">Sources: <span class="sw-ref"><a href="https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">AISI (2026)</a><span class="sw-tip"><b>Steel Imports Down 12.6% in 2025</b><br>American Iron and Steel Institute &mdash; finished imports were 18% of apparent consumption in 2025, 23% in 2024.<br><a href="https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/" target="_blank" rel="noopener">Read the release &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.aluminum.org/PowerUp" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">Aluminum Association (2025)</a><span class="sw-tip"><b>Powering Up American Aluminum</b><br>~85% of US industry&rsquo;s aluminum needs met by imports; 4 primary smelters operating, down from 33.<br><a href="https://www.aluminum.org/PowerUp" target="_blank" rel="noopener">Read the roadmap &rarr;</a></span></span></p>
+  </div>
+</section>
+
+<section id="old" class="dark" data-nav="Old Mills">
+  <div class="wrap">
+    <h2 class="rv" style="max-width:32ch">More of the old mills won&rsquo;t close the gap &mdash; <em>not in time</em></h2>
+    <div class="cols3 rv" style="margin-top:2rem">
+      <div class="col-card"><h3>Decades between builds</h3><ul>
+        <li>America&rsquo;s <b>first new aluminum smelter since 1980</b> was announced in 2025 &mdash; planned for the end of the decade</li>
+        <li>Upstream is worse: a new US mine averages <b>~29 years</b> from discovery to production &mdash; and ore sits where the geology is, not where the building happens</li>
+      </ul></div>
+      <div class="col-card"><h3>Billions per plant</h3><ul>
+        <li>That one smelter is a <b>~$4B</b> joint venture &mdash; and needed a $500M federal grant to advance</li>
+        <li>Capital of that scale chases few sites, few sponsors, few balance sheets</li>
+      </ul></div>
+      <div class="col-card"><h3>A gigawatt per smelter</h3><ul>
+        <li>It needs <b>&gt;1 GW of continuous power</b> &mdash; a city the size of Nashville &mdash; on a grid already strained by data centers</li>
+        <li>As of 2026 it is still waiting on a power deal</li>
+      </ul></div>
+    </div>
+    <p class="gnote rv" style="max-width:70ch;margin-top:1.8rem">Closing America&rsquo;s materials gap needs a different kind of mill: <b style="color:var(--cream)">small enough to finance, fast enough to replicate, fed by something America already has everywhere.</b></p>
+    <p class="rv" style="margin-top:1.2rem;font-size:.78rem;color:var(--muted)">Sources: <span class="sw-ref"><a href="https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">S&amp;P Global (2024)</a><span class="sw-tip"><b>US mine development times</b><br>US mines average ~29 years from discovery to production &mdash; second-longest in the world, after Zambia.<br><a href="https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds" target="_blank" rel="noopener">Read the release &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">US DOE (2025)</a><span class="sw-tip"><b>First American Aluminum Smelter Since 1980</b><br>US Department of Energy &mdash; $500M award to the Century Aluminum / EGA smelter in Inola, OK.<br><a href="https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980" target="_blank" rel="noopener">Read the announcement &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">Canary Media (2026)</a><span class="sw-tip"><b>America&rsquo;s big new aluminum smelter is still waiting on a power deal</b><br>~$4B JV; &gt;1 GW continuous power requirement.<br><a href="https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power" target="_blank" rel="noopener">Read the article &rarr;</a></span></span></p>
+  </div>
+</section>
+
+<section id="mach" class="dark" data-nav="The Machine">
+  <div class="wrap">
+    <h2 class="rv">The answer is the SUPERMILL &mdash; <em>a machine that turns American lumber into the material to build with</em></h2>
+    <div class="machrow rv">
+      <div class="machbox"><img loading="eager" class="mimg" src="assets/lumber-stack.jpg" alt="Stacked ordinary lumber"><div class="k">In</div><div class="v">Ordinary lumber</div><div class="d">Abundant feedstock, ~25% of COGS &mdash; and wood gets cheaper over time</div></div>
+      <div class="macharrow" aria-hidden="true">&rarr;</div>
+      <div class="machbox mill"><img loading="eager" class="mimg" src="assets/factory.jpg" alt="SuperMill One production floor"><div class="v">SUPERMILL</div><div class="d">Semi-customized off-the-shelf equipment; batch process proven at SuperMill One</div></div>
+      <div class="macharrow" aria-hidden="true">&rarr;</div>
+      <div class="machbox"><img loading="eager" class="mimg" src="assets/sw-boards-floor.jpg" alt="Finished SUPERWOOD boards"><div class="k">Out</div><div class="v">SUPERWOOD</div><div class="d">Stronger than steel by weight &mdash; sold into a trillion-dollar materials market</div></div>
+    </div>
+    <div class="machstats rv">
+      <div class="gr"><span>SuperMill Two capex</span><b>$300M</b></div>
+      <div class="gr"><span>Plant-level EBITDA</span><b>65%</b></div>
+      <div class="gr"><span>ROE with project financing</span><b>175&ndash;200%</b></div>
+      <div class="gr"><span>Demand potential</span><b>&gt;7,000 SUPERMILL TWOs</b></div>
+    </div>
+    <p class="gnote rv" style="max-width:70ch">Each SUPERMILL is separately financeable (~75% debt), built from a repeatable template, and sited near feedstock &mdash; sufficient for a SUPERMILL in 48 states. No imported ore, no gigawatt power deal, no decade-long build. The question is how fast the machine can be replicated.</p>
+  </div>
+</section>
+
+<section id="fast" class="dark" data-nav="Fast &times; Fast">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(1.9rem,3.6vw,3.2rem)">Fast to build. <em>Fast to build with.</em></h2>
+    <p class="lead rv" style="margin-top:1.2rem;max-width:60ch">Speed compounds at both ends of the machine &mdash; the mill goes up fast, and what it makes goes up fast.</p>
+    <div class="mtgrid rv" style="grid-template-columns:1fr 1fr;gap:1rem 3rem;margin-top:1.2rem">
+      <div>
+        <div class="mtitem"><h3>The mill goes up fast</h3><p><b style="color:var(--cream)">~2-year build class</b> &mdash; modular construction, semi-customized off-the-shelf equipment already common in the lumber-treatment and wood-panel industries. Same batch process at every scale.</p></div>
+        <div class="mtitem"><h3>Fed by what America already has</h3><p>Trees are a domestic resource in nearly every state &mdash; feedstock sufficient for a SUPERMILL in <b style="color:var(--cream)">48 states</b>, with excess capacity in existing sawmills. An ore body is one hole in one place, ~29 years from discovery to production. No imported ore, no strained grid.</p></div>
+      </div>
+      <div>
+        <div class="mtitem"><h3>Its output goes up fast</h3><p>SUPERWOOD builds like timber: prefabricated to precision, with mass-timber projects running <b style="color:var(--cream)">20&ndash;30% faster schedules</b> than steel and concrete.</p></div>
+        <div class="mtitem"><h3>Light means quick</h3><p><b style="color:var(--cream)">6x lighter than steel</b> &mdash; smaller cranes, smaller crews, smaller foundations. And no waiting on an import order.</p></div>
+      </div>
+    </div>
+    <p class="rv" style="margin-top:1.4rem;font-size:.78rem;color:var(--muted)">Source: <span class="sw-ref"><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">ULI &amp; case studies</a><span class="sw-tip"><b>Faster Project Delivery Is a Hidden Feature of Mass Timber</b><br>Case-study reviews put mass-timber schedule savings at ~20&ndash;30% vs. concrete and steel.<br><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener">Read the article &rarr;</a></span></span></p>
+  </div>
+</section>
+
+<section id="s11" class="dark" data-nav="Properties">
+  <div class="wrap">
+    <h2 class="rv">Its product wins <em>today</em> &mdash; attractive, high-performance, premium</h2>
+    <div class="split" style="margin-top:1.4rem">
+    <div>
+      <div class="superword-vert rv">SUPERWOOD</div>
+      <div class="media-frame rv"><img loading="lazy" src="assets/cube-hero.jpg" alt="SUPERWOOD cube and I-beam"></div>
+    </div>
+    <div>
+      <ul class="props">
+        <li class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.2-3 7.4-7 8.5-4-1.1-7-4.3-7-8.5V6l7-3z"/><path d="M9 12l2 2 4-4.5"/></svg></span><div><h3>Strong and durable</h3><p>Up to <b>10x</b> the strength-to-weight ratio of steel. <b>3x harder</b> than oak. Highly impact resistant.</p></div></li>
+        <li class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5C9.5 6 8 8 8 11.5a4 4 0 0 0 8 0c0-1.7-.8-3-1.7-4.2-.3 1.2-1.1 2-2.1 2 .8-2.4-.2-5-0.2-6.8z"/></svg></span><div><h3>Fire resistant</h3><p>Forms dense natural char layer. ASTM E84 tested to <b>Class A</b> and aerospace standards.</p></div></li>
+        <li class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c3.5 4 6 6.7 6 10a6 6 0 0 1-12 0c0-3.3 2.5-6 6-10z"/></svg></span><div><h3>Fights pests, rot &amp; fungus</h3><p>Protects against familiar threats such as termites, mold and corrosion.</p></div></li>
+        <li class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.5V5a2 2 0 0 0-4 0v9.5a3.5 3.5 0 1 0 4 0z"/></svg></span><div><h3>Thermally insulating</h3><p><b>100x</b> better than steel; <b>400x</b> better than aluminum.</p></div></li>
+        <li class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c1.1-7.5 2.9-7.5 4 0c1.1 7.5 2.9 7.5 4 0c.85-4.8 2.15-4.8 3 0c.85 4.8 2.15 4.8 3 0c.7-2.6 1.8-2.6 2.5 0c.7 2.6 1.8 2.6 2.5 0"/></svg></span><div><h3>Sound attenuating</h3><p>Improved sound dampening versus steel, with improved acoustic performance.</p></div></li>
+        <li class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7M6 6a8.5 8.5 0 0 0 0 12M18 6a8.5 8.5 0 0 1 0 12"/></svg></span><div><h3>RF transparent</h3><p>Wireless signals pass through unhindered. Won't interfere with sensitive electronics.</p></div></li>
+        <li class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14z"/><path d="M5 19C9 15 13 11 16.5 9"/></svg></span><div><h3>Naturally beautiful</h3><p>With the texture, colors, and natural warmth of wood.</p></div></li>
+      </ul>
+      <p class="tunable rv">Note: SUPERWOOD's technology is tunable for certain properties like strength, moisture and fire resistance, depending on the application. Not all products will necessarily meet every test standard concurrently.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="run" class="dark" data-nav="Running">
+  <div class="wrap split">
+    <div class="rv"><div class="media-frame"><img loading="eager" src="assets/factory.jpg" alt="SuperMill One production floor, Frederick MD"></div>
+      <p class="gnote" style="margin-top:.8rem">SuperMill One &mdash; Frederick, Maryland. The first SUPERMILL.</p></div>
+    <div>
+      <h2 class="rv" style="font-size:clamp(1.6rem,3vw,2.6rem)">The first machine is already running &mdash; <em>and it is oversubscribed</em></h2>
+      <div class="machstats rv" style="grid-template-columns:1fr 1fr;gap:.4rem 2.2rem;margin-top:1.8rem">
+        <div class="gr"><span>Commercial shipments</span><b>since Dec &rsquo;25</b></div>
+        <div class="gr"><span>Paid online deposits</span><b>800+</b></div>
+        <div class="gr"><span>SuperMill One pipeline</span><b>$140M+ vs $20M capacity</b></div>
+        <div class="gr"><span>Inbound inquiries</span><b>15,000+</b></div>
+      </div>
+      <p class="gnote rv" style="margin-top:1.4rem;max-width:44ch">Demand against the first machine is <b style="color:var(--cream)">7x its capacity</b> &mdash; with virtually no marketing spend. The premium product sells today, at premium prices, while the cost roadmap does its work.</p>
+    </div>
+  </div>
+</section>
+
+<section id="s9" class="dark" data-nav="Cost Roadmap">
+  <div class="wrap">
+    <h2 class="rv" style="max-width:none;font-size:clamp(1rem,1.95vw,1.6rem)">Cost roadmap: drives <em>below the cost of steel</em>, and beyond</h2>
+    <div class="ucchart rv">
+      <svg viewBox="0 0 1000 345" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cost roadmap: SUPERWOOD price and manufacturing cost per cubic metre both fall from SuperMill One through SuperMill Two to ChipMill, crossing below the structural steel range; stainless steel sits above">
+        <defs><linearGradient id="ssg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(170,175,184,.30)"/><stop offset="1" stop-color="rgba(170,175,184,.16)"/></linearGradient></defs>
+        <text x="16" y="175" transform="rotate(-90 16 175)" text-anchor="middle" font-size="11" letter-spacing=".22em" font-weight="600" fill="#9d8d76" font-family="Inter,sans-serif">$ / m³</text>
+        <line x1="120" y1="60" x2="120" y2="290" stroke="rgba(228,210,180,.3)"/><line x1="120" y1="290" x2="960" y2="290" stroke="rgba(228,210,180,.3)"/>
+        <line x1="120" y1="60.0" x2="960" y2="60.0" stroke="rgba(228,210,180,.08)"/><text x="110" y="64.0" text-anchor="end" font-size="12" fill="#9d8d76" font-family="Inter,sans-serif">$40,000</text><line x1="120" y1="117.5" x2="960" y2="117.5" stroke="rgba(228,210,180,.08)"/><text x="110" y="121.5" text-anchor="end" font-size="12" fill="#9d8d76" font-family="Inter,sans-serif">$30,000</text><line x1="120" y1="175.0" x2="960" y2="175.0" stroke="rgba(228,210,180,.08)"/><text x="110" y="179.0" text-anchor="end" font-size="12" fill="#9d8d76" font-family="Inter,sans-serif">$20,000</text><line x1="120" y1="232.5" x2="960" y2="232.5" stroke="rgba(228,210,180,.08)"/><text x="110" y="236.5" text-anchor="end" font-size="12" fill="#9d8d76" font-family="Inter,sans-serif">$10,000</text><text x="110" y="294" text-anchor="end" font-size="12" fill="#9d8d76" font-family="Inter,sans-serif">$0</text>
+        <rect x="120" y="81.1" width="840" height="61.8" fill="url(#ssg)"/>
+        <line x1="120" y1="81.1" x2="960" y2="81.1" stroke="rgba(199,203,211,.5)" stroke-dasharray="5 5"/><line x1="120" y1="142.9" x2="960" y2="142.9" stroke="rgba(199,203,211,.5)" stroke-dasharray="5 5"/>
+        <text class="uclab" x="950" y="96.6" text-anchor="end" font-size="11" font-weight="500" letter-spacing="1.4" fill="#c7cbd3" font-family="Inter,sans-serif">STAINLESS STEEL (304)</text>
+        <rect x="120" y="226.8" width="840" height="23.0" fill="rgba(178,88,64,.22)"/>
+        <line x1="120" y1="226.8" x2="960" y2="226.8" stroke="rgba(221,144,120,.55)" stroke-dasharray="5 5"/><line x1="120" y1="249.8" x2="960" y2="249.8" stroke="rgba(221,144,120,.55)" stroke-dasharray="5 5"/>
+        <text class="uclab" x="950" y="241.3" text-anchor="end" font-size="11" font-weight="500" letter-spacing="1.4" fill="#dd9078" font-family="Inter,sans-serif">STRUCTURAL STEEL (A36)</text>
+        <path d="M200,161.1 L 440,242.7 L 680,264.2 L 900,271.2 L 900,282.5 L 680,279.4 L 440,271.3 L 200,206.8 Z" fill="rgba(226,184,119,.13)"/>
+        <path class="ucline" d="M200,161.1 L 440,242.7 L 680,264.2 L 900,271.2" fill="none" stroke="#e2b877" stroke-width="3.5" stroke-linecap="round"/>
+        <path class="ucline" d="M200,206.8 L 440,271.3 L 680,279.4 L 900,282.5" fill="none" stroke="#aebf76" stroke-width="3" stroke-dasharray="7 5" stroke-linecap="round"/>
+        <g class="ucdot"><line x1="640" y1="176" x2="672" y2="176" stroke="#e2b877" stroke-width="3.5" stroke-linecap="round"/><text x="682" y="180" font-size="11.5" font-weight="700" fill="#e2b877" font-family="Inter,sans-serif">SUPERWOOD price (structural)</text>
+        <line x1="640" y1="198" x2="672" y2="198" stroke="#aebf76" stroke-width="3" stroke-dasharray="7 5" stroke-linecap="round"/><text x="682" y="202" font-size="11.5" font-weight="700" fill="#aebf76" font-family="Inter,sans-serif">SUPERWOOD cost (structural)</text></g>
+        <circle class="ucdot" cx="200" cy="161.1" r="6" fill="#f4ecdf" stroke="#8a4f23" stroke-width="3"/><circle class="ucdot" cx="440" cy="242.7" r="6" fill="#f4ecdf" stroke="#8a4f23" stroke-width="3"/><circle class="ucdot" cx="680" cy="264.2" r="6" fill="#f4ecdf" stroke="#8a4f23" stroke-width="3"/><circle class="ucdot" cx="900" cy="271.2" r="6" fill="#f4ecdf" stroke="#8a4f23" stroke-width="3"/>
+        <circle class="ucdot" cx="200" cy="206.8" r="5" fill="#1f150c" stroke="#aebf76" stroke-width="3"/><circle class="ucdot" cx="440" cy="271.3" r="5" fill="#1f150c" stroke="#aebf76" stroke-width="3"/><circle class="ucdot" cx="680" cy="279.4" r="5" fill="#1f150c" stroke="#aebf76" stroke-width="3"/><circle class="ucdot" cx="900" cy="282.5" r="5" fill="#1f150c" stroke="#aebf76" stroke-width="3"/>
+        <line x1="200" y1="290" x2="200" y2="296" stroke="rgba(228,210,180,.3)"/><line x1="440" y1="290" x2="440" y2="296" stroke="rgba(228,210,180,.3)"/><line x1="680" y1="290" x2="680" y2="296" stroke="rgba(228,210,180,.3)"/><line x1="900" y1="290" x2="900" y2="296" stroke="rgba(228,210,180,.3)"/><text x="200" y="316" text-anchor="middle" font-size="12.5" font-weight="700" fill="#cdbfa9" font-family="Inter,sans-serif">SuperMill One</text><text x="200" y="332" text-anchor="middle" font-size="11" fill="#9d8d76" font-family="Inter,sans-serif">2025 · now shipping</text><text x="440" y="316" text-anchor="middle" font-size="12.5" font-weight="700" fill="#cdbfa9" font-family="Inter,sans-serif">SuperMill Two</text><text x="440" y="332" text-anchor="middle" font-size="11" fill="#9d8d76" font-family="Inter,sans-serif">commissioning 2029</text><text x="680" y="316" text-anchor="middle" font-size="12.5" font-weight="700" fill="#cdbfa9" font-family="Inter,sans-serif">ChipMill (batch)</text><text x="680" y="332" text-anchor="middle" font-size="11" fill="#9d8d76" font-family="Inter,sans-serif">2032+ · future plants</text><text x="900" y="316" text-anchor="middle" font-size="12.5" font-weight="700" fill="#cdbfa9" font-family="Inter,sans-serif">ChipMill (continuous)</text><text x="900" y="332" text-anchor="middle" font-size="11" fill="#9d8d76" font-family="Inter,sans-serif">future plants</text>
+      </svg>
+    </div>
+    <div class="millcols rv"><div class="ml">Output</div><div class="mv">1M sf / yr</div><div class="mv">36M sf / yr</div><div class="mv">180M sf / yr</div><div class="mv">~400M sf / yr</div><div class="ml">Capex</div><div class="mv">$48M</div><div class="mv">$300M</div><div class="mv">&mdash;</div><div class="mv">&mdash;</div><div class="ml">EBITDA</div><div class="mv">20%</div><div class="mv">65%</div><div class="mv">&mdash;</div><div class="mv">&mdash;</div><div class="ml">Price</div><div class="mv">$22,425 / m³</div><div class="mv">$8,222 / m³</div><div class="mv">$4,485 / m³</div><div class="mv">$3,275 / m³</div><div class="ml">Cost</div><div class="mv">$14,472 / m³</div><div class="mv">$3,244 / m³</div><div class="mv">$1,841 / m³</div><div class="mv">$1,310 / m³</div></div>
+    <p class="ucnote rv">Like-for-like comparison. SUPERWOOD prices are structural-board assumptions ($15.00, $5.50 and $3.00 / sf; ChipMill continuous at an assumed 60% gross margin, $2.19 / sf) converted at 7.2&nbsp;mm average board thickness; costs are COGS per m³ from the structural TEM (Jan 2026) cost roadmap, built from identified engineering savings at each scale &mdash; not from Wright&rsquo;s Law or an assumed learning rate. Steel and stainless are market prices converted at 7.85 and 8.0&nbsp;t/m³ (August 2026).</p>
+  </div>
+</section>
+
+<section id="s15" class="dark" data-nav="Demand">
+  <div class="wrap">
+    <h2 class="rv">Demand is not the constraint &mdash; <em>replication speed is</em></h2>
+    <div class="dstats">
+      <div class="dstat hot rv">
+        <div class="n" data-count="15000" data-suffix="+">15,000+</div><h3>Inbound Inquiries</h3><div class="s">with virtually no marketing spend</div>
+        <p>Including individual homeowners, builders, national distributors, global manufacturers, top architecture firms, leading engineering firms, data center hyperscalers and other commercial enterprises across industries and geographies.</p>
+      </div>
+      <div class="dstat hot rv">
+        <div class="n" data-count="800" data-suffix="+">800+</div><h3>Paid Online Deposits</h3><div class="s">reserving a place in line for product</div>
+        <p>All inbound. ~50% from homeowners, representing $14M+ of demand, and ~50% from commercial enterprises, representing $125M+. <i>Note that most commercial accounts we are in discussions with are not making an advance deposit.</i></p>
+      </div>
+      <div class="dstat rv">
+        <div class="n" data-count="140" data-prefix="$" data-suffix="M+">$140M+</div><h3>SuperMill One Pipeline</h3><div class="s">vs. production capacity of $20M</div>
+        <p>Spanning a variety of customer segments including builders, contractors, distributors, manufacturers, commercial and residential pre-orders, and one-off projects.</p>
+      </div>
+      <div class="dstat rv">
+        <div class="n" data-count="2.0" data-dec="1" data-prefix="$" data-suffix="B+">$2.0B+</div><h3>SuperMill Two Pipeline</h3><div class="s">vs. $360M capacity &middot; $320M projected</div>
+        <p>Representing larger opportunities not serviceable from SuperMill One, spanning similar customer segments and an even wider variety of applications including aerospace, military, musical instruments, marine and more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="econ" class="dark" data-nav="Economics">
+  <div class="wrap">
+    <h2 class="rv">Machine economics an <em>infrastructure investor recognizes</em></h2>
+    <div class="machstats rv" style="margin-top:2.2rem">
+      <div class="gr"><span>Capex per SUPERMILL</span><b>$300M</b></div>
+      <div class="gr"><span>Revenue (cap. &middot; proj.)</span><b>$360M &middot; $320M / yr</b></div>
+      <div class="gr"><span>Plant-level EBITDA</span><b>65%</b></div>
+      <div class="gr"><span>ROE with project financing</span><b>175&ndash;200%</b></div>
+    </div>
+    <p class="lead rv" style="margin-top:2.4rem;font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.4vw,2rem);max-width:26ch;color:var(--cream)">Steel had the minimill. Wood has the <em style="color:var(--gold)">SUPERMILL.</em></p>
+    <p class="gnote rv" style="max-width:64ch;margin-top:1rem">Like the minimills that out-earned integrated steel plant-by-plant, each SUPERMILL is a compact, separately financeable unit (~75% debt) with better unit economics than the incumbents it displaces &mdash; built to be repeated, not admired.</p>
+  </div>
+</section>
+
+<section id="gnet" class="dark" data-nav="The Fleet">
+  <div class="wrap">
+    <h2 class="rv" style="max-width:32ch">An <em>American fleet of SUPERMILLS</em> &mdash; then the template goes global</h2>
+    <div class="gnet">
+      <div class="gcard  rv"><h3>SUPERMILL ONE</h3><div class="gsub">Now shipping</div><div class="gicons" style="--fh:2.3rem" aria-hidden="true"><i class="fx"></i></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>1M</b></div><div class="gr"><span>Capex</span><b>$48M</b></div><div class="gr"><span>Revenue</span><b>$20M / yr</b></div><div class="gr"><span>EBITDA</span><b>20%</b></div><div class="gr full"><span>Primary product</span><b>SUPERWOOD Boards</b></div></div><p class="gnote">Commercialize process. Prove techno-economics. Seed demand for future SUPERMILLS.</p></div>
+      <div class="gcard  rv"><h3>SUPERMILL TWO</h3><div class="gsub">In development</div><div class="gicons" style="--fh:3.0rem" aria-hidden="true"><i class="fx"></i></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>36M</b></div><div class="gr"><span>Capex</span><b>$300M</b></div><div class="gr"><span>Revenue</span><b>$360M cap. &middot; $320M proj.</b></div><div class="gr"><span>EBITDA</span><b>65%</b></div><div class="gr full"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer</b></div></div><p class="gnote">Same batch process as SUPERMILL ONE &mdash; at increased scale.</p></div>
+      <div class="gcard  rv"><h3>NATIONAL FLEET OF SUPERMILLS</h3><div class="gsub">Using SUPERMILL TWO as a template</div><div class="gicons varied dense2" aria-hidden="true"><i class="fx" style="--fh:3.20rem"></i><i class="fx" style="--fh:2.60rem"></i><i class="fx" style="--fh:3.40rem"></i><i class="fx" style="--fh:2.40rem"></i><i class="fx" style="--fh:2.90rem"></i><i class="fx" style="--fh:2.50rem"></i><i class="fx" style="--fh:3.30rem"></i><i class="fx" style="--fh:2.80rem"></i><i class="fx" style="--fh:2.30rem"></i><i class="fx" style="--fh:3.00rem"></i></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>10B+</b></div><div class="gr"><span>ROE per SUPERMILL</span><b>175&ndash;200%</b></div><div class="gr"><span>Plant template</span><b>SUPERMILL TWO</b></div><div class="gr full"><span>Feedstock</span><b>Sufficient for a SUPERMILL in 48 states</b></div></div><p class="gnote">Modular construction and manufacturing make additional SUPERMILLS easy to site and fast to build.</p></div>
+      <div class="gcard sm rv"><h3>INTERNATIONAL</h3><div class="gsub">~10x the national fleet</div><div class="gicons orange varied dense" aria-hidden="true"><i class="fx" style="--fh:4.09rem"></i><i class="fx" style="--fh:4.12rem"></i><i class="fx" style="--fh:4.04rem"></i><i class="fx" style="--fh:2.83rem"></i><i class="fx" style="--fh:3.59rem"></i><i class="fx" style="--fh:3.34rem"></i><i class="fx" style="--fh:3.50rem"></i><i class="fx" style="--fh:2.90rem"></i><i class="fx" style="--fh:2.99rem"></i><i class="fx" style="--fh:3.37rem"></i><i class="fx" style="--fh:3.03rem"></i><i class="fx" style="--fh:3.38rem"></i><i class="fx" style="--fh:2.74rem"></i><i class="fx" style="--fh:2.83rem"></i><i class="fx" style="--fh:3.77rem"></i><i class="fx" style="--fh:3.33rem"></i><i class="fx" style="--fh:3.47rem"></i><i class="fx" style="--fh:3.80rem"></i><i class="fx" style="--fh:3.24rem"></i><i class="fx" style="--fh:2.79rem"></i><i class="fx" style="--fh:3.87rem"></i><i class="fx" style="--fh:3.58rem"></i></div><div class="grows"><div class="gr"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer, SUPER OSB</b></div></div><p class="gnote">Typically a JV with a local partner: InventWood earns a technology &amp; setup fee, an operating fee, and a brand / marketing fee.</p></div>
+      <div class="gcard sm wide rv"><h3>CHIPMILL FLEET</h3><div class="gsub">National and international</div><div class="gicons green varied dense" aria-hidden="true"><i class="fx" style="--fh:3.81rem"></i><i class="fx" style="--fh:4.01rem"></i><i class="fx" style="--fh:4.66rem"></i><i class="fx" style="--fh:3.84rem"></i><i class="fx" style="--fh:3.91rem"></i><i class="fx" style="--fh:4.06rem"></i><i class="fx" style="--fh:3.33rem"></i><i class="fx" style="--fh:3.92rem"></i><i class="fx" style="--fh:4.13rem"></i><i class="fx" style="--fh:4.43rem"></i><i class="fx" style="--fh:3.17rem"></i><i class="fx" style="--fh:3.55rem"></i><i class="fx" style="--fh:3.16rem"></i><i class="fx" style="--fh:4.46rem"></i><i class="fx" style="--fh:4.25rem"></i><i class="fx" style="--fh:3.08rem"></i><i class="fx" style="--fh:4.77rem"></i><i class="fx" style="--fh:4.74rem"></i><i class="fx" style="--fh:4.18rem"></i><i class="fx" style="--fh:4.11rem"></i></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>180M per plant</b></div><div class="gr"><span>Product</span><b>SUPER OSB</b></div></div><p class="gnote">Further scale &amp; profitability. Continuous manufacturing on low-cost wood chips &amp; wood waste. International plants as JVs with local partners &mdash; technology &amp; setup, operating, and brand / marketing fees.</p></div>
+    </div>
+    <p class="overlap rv" style="font-style:normal;font-family:'Fraunces',serif;font-size:clamp(1.1rem,1.9vw,1.6rem);color:var(--cream);margin-top:1.2rem">Global demand potential: <em style="color:var(--gold)">&gt;7,000 SUPERMILL TWO equivalents</em></p>
+  </div>
+</section>
+
+<section id="s10" class="dark" data-nav="Scaling">
+  <div class="wrap">
+    <h2 class="rv" style="max-width:none;font-size:clamp(1.4rem,2.6vw,2.2rem)">Capital efficient financing model gets us to <em>$900M of free cash flow with less than $200M in corporate equity.</em></h2>
+    <div class="cesgrid">
+      <div class="finpanel rv">
+      <div class="fintitle">4 SuperMill model</div>
+      <svg viewBox="0 0 868 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Revenue by SuperMill with EBITDA and free cash flow, 2025 to 2034; reaching $2.4B revenue, $1.1B EBITDA and $900M free cash flow in 2034">
+<rect x="0" y="0" width="868" height="430" rx="0" fill="#efe6d6"/>
+<line x1="70" y1="380" x2="750" y2="380" stroke="rgba(58,42,24,.12)" stroke-width="1"/><text x="62" y="385" text-anchor="end" font-size="13" fill="#75654e" font-family="Inter,sans-serif">$0</text><line x1="70" y1="312" x2="750" y2="312" stroke="rgba(58,42,24,.12)" stroke-width="1"/><text x="62" y="317" text-anchor="end" font-size="13" fill="#75654e" font-family="Inter,sans-serif">$0.5B</text><line x1="70" y1="244" x2="750" y2="244" stroke="rgba(58,42,24,.12)" stroke-width="1"/><text x="62" y="249" text-anchor="end" font-size="13" fill="#75654e" font-family="Inter,sans-serif">$1.0B</text><line x1="70" y1="176" x2="750" y2="176" stroke="rgba(58,42,24,.12)" stroke-width="1"/><text x="62" y="181" text-anchor="end" font-size="13" fill="#75654e" font-family="Inter,sans-serif">$1.5B</text><line x1="70" y1="108" x2="750" y2="108" stroke="rgba(58,42,24,.12)" stroke-width="1"/><text x="62" y="113" text-anchor="end" font-size="13" fill="#75654e" font-family="Inter,sans-serif">$2.0B</text><line x1="70" y1="40" x2="750" y2="40" stroke="rgba(58,42,24,.12)" stroke-width="1"/><text x="62" y="45" text-anchor="end" font-size="13" fill="#75654e" font-family="Inter,sans-serif">$2.5B</text>
+<rect class="seg" x="154" y="378.0" width="36" height="2.0" rx="3" fill="#d9b87c"/><rect class="seg" x="222" y="378.0" width="36" height="2.0" rx="3" fill="#d9b87c"/><rect class="seg" x="290" y="378.0" width="36" height="2.0" rx="3" fill="#d9b87c"/><rect class="seg" x="358" y="378.0" width="36" height="2.0" rx="3" fill="#d9b87c"/><rect class="seg" x="426" y="378.0" width="36" height="1.5" rx="0" fill="#d9b87c"/><rect class="seg" x="426" y="350.8" width="36" height="27.2" rx="3" fill="#241708"/><rect class="seg" x="494" y="378.0" width="36" height="1.5" rx="0" fill="#d9b87c"/><rect class="seg" x="494" y="330.4" width="36" height="47.6" rx="3" fill="#241708"/><rect class="seg" x="562" y="378.0" width="36" height="1.5" rx="0" fill="#d9b87c"/><rect class="seg" x="562" y="330.4" width="36" height="45.6" rx="0" fill="#241708"/><rect class="seg" x="562" y="232.4" width="36" height="97.9" rx="3" fill="#b3a077"/><rect class="seg" x="630" y="378.0" width="36" height="1.5" rx="0" fill="#d9b87c"/><rect class="seg" x="630" y="330.4" width="36" height="45.6" rx="0" fill="#241708"/><rect class="seg" x="630" y="198.4" width="36" height="131.9" rx="3" fill="#b3a077"/><rect class="seg" x="698" y="378.0" width="36" height="1.5" rx="0" fill="#d9b87c"/><rect class="seg" x="698" y="330.4" width="36" height="45.6" rx="0" fill="#241708"/><rect class="seg" x="698" y="194.4" width="36" height="134.0" rx="0" fill="#b3a077"/><rect class="seg" x="698" y="53.6" width="36" height="140.8" rx="3" fill="#f0a890"/>
+<polyline class="ln" points="104,380.0 172,380.0 240,380.0 308,380.0 376,378.6 444,369.8 512,361.6 580,302.5 648,287.5 716,230.4" fill="none" stroke="#f0a06b" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline class="ln" points="512,380.0 580,352.8 648,350.1 716,257.6" fill="none" stroke="#c2571d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="738" y="234" font-size="13" font-weight="700" fill="#97582c" font-family="Inter,sans-serif" text-anchor="start">EBITDA</text>
+<text x="738" y="274" font-size="13" font-weight="700" fill="#aa4c19" font-family="Inter,sans-serif" text-anchor="start">FCF</text>
+<text x="104" y="404" text-anchor="middle" font-size="14" fill="#4a3618" font-family="Inter,sans-serif">2025</text><text x="172" y="404" text-anchor="middle" font-size="14" fill="#4a3618" font-family="Inter,sans-serif">2026</text><text x="240" y="404" text-anchor="middle" font-size="14" fill="#4a3618" font-family="Inter,sans-serif">2027</text><text x="308" y="404" text-anchor="middle" font-size="14" fill="#4a3618" font-family="Inter,sans-serif">2028</text><text x="376" y="404" text-anchor="middle" font-size="14" fill="#4a3618" font-family="Inter,sans-serif">2029</text><text x="444" y="404" text-anchor="middle" font-size="14" fill="#4a3618" font-family="Inter,sans-serif">2030</text><text x="512" y="404" text-anchor="middle" font-size="14" fill="#4a3618" font-family="Inter,sans-serif">2031</text><text x="580" y="404" text-anchor="middle" font-size="14" fill="#4a3618" font-family="Inter,sans-serif">2032</text><text x="648" y="404" text-anchor="middle" font-size="14" fill="#4a3618" font-family="Inter,sans-serif">2033</text><text x="716" y="404" text-anchor="middle" font-size="14" fill="#4a3618" font-family="Inter,sans-serif">2034</text>
+</svg>
+      <div class="finlegend">
+        <div class="col">
+          <span class="leghead">Revenue</span>
+          <span><i style="background:#d9b87c"></i>SuperMill One</span>
+          <span><i style="background:#241708"></i>SuperMill Two</span>
+          <span><i style="background:#b3a077"></i>SuperMill Three</span>
+          <span><i style="background:#f0a890"></i>SuperMill Four</span>
+        </div>
+        <div class="col">
+          <span><i class="line" style="background:#f0a06b"></i>EBITDA</span>
+          <span><i class="line" style="background:#c2571d"></i>FCF</span>
+        </div>
+      </div>
+    </div>
+      <div class="cesplan rv">
+        <h3>Highly efficient asset-level financing plan</h3>
+        <ul>
+          <li><b>SuperMills can be financed with ~75% debt</b>, with the remainder from project equity (10&ndash;15%) and corporate equity (10&ndash;15%)</li>
+          <li>Capex for additional SuperMills expected to range from <b>$300M for SuperMill Two</b> to <b>$550M+</b> for later SuperMills</li>
+          <li><b>175&ndash;200% ROE</b> at the SuperMill level</li>
+          <li>Meaningful additional upside from grant and other non-dilutive opportunities (not included in any projections)</li>
+        </ul>
+        <p class="fn">Detailed financial model available on request</p>
+      </div>
+    </div>
+    <div class="cesfoot rv">
+      <h3>With just four SuperMills, we can achieve:</h3>
+      <div class="cesstats">
+        <div class="cstat"><div class="n">$2.4B</div><div class="l">Revenues</div></div>
+        <div class="cstat"><div class="n">$900M</div><div class="l">Free cash flow</div></div>
+        <div class="cstat"><div class="n">$1.1B</div><div class="l">EBITDA</div></div>
+        <div class="cstat"><div class="n">45&ndash;50%</div><div class="l">EBITDA margins (pricing declines at later plants)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s7" class="dark" data-nav="Team">
+  <div class="wrap">
+    <h2 class="rv">Top-tier commercial and scientific leadership.</h2>
+    <div class="team rv">
+      <div class="person" tabindex="0">
+        <img loading="eager" decoding="sync" class="pic" src="assets/team-alex7-c.jpg" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-Founder</div>
+        <div class="bi">Technology entrepreneur and investor. 20+ years in real estate development and operations. Successful IP strategist. BS Cognitive Science and Physics, Dartmouth.</div><div class="hint">Hover for full bio</div>
+        <div class="bio-pop"><b>Alex Lau — CEO / Co-Founder</b><ul><li>Technology entrepreneur and investor who began his career in Silicon Valley in artificial intelligence and human-interface design.</li><li>Involved in five successful manufacturing scale-ups around the world.</li><li>20+ years in real estate development and operations, leading groundbreaking development and redevelopment projects in California and Canada.</li><li>Built world-class teams and is a successful IP strategist across multiple firms.</li><li>BS Cognitive Science and Physics, Dartmouth.</li></ul></div>
+      </div>
+      <div class="person" tabindex="0">
+        <img loading="eager" decoding="sync" class="pic" src="assets/team-jonathan-c.jpg" alt="Jonathan Strimling"><div class="nm">Jonathan Strimling</div><div class="ro">Chief Operating Officer</div>
+        <div class="bi">3&times; CEO; co-founded and led an Inc. 5000 "fastest-growing manufacturer" and took a SaaS company to the NASDAQ. MS Manufacturing Management, MIT Sloan.</div><div class="hint">Hover for full bio</div>
+        <div class="bio-pop"><b>Jonathan Strimling — Chief Operating Officer</b><ul><li>3&times; CEO. Co-founded and led the building-materials company named America's fastest-growing manufacturer by Inc. 5000.</li><li>Over 25 years of leadership and entrepreneurship, including CEO of a biomaterials manufacturing company and a SaaS company he took to the NASDAQ.</li><li>Manufacturing turnaround expert at American Industrial Partners.</li><li>MS Manufacturing Management, MIT Sloan.</li></ul></div>
+      </div>
+      <div class="person" tabindex="0">
+        <img loading="eager" decoding="sync" class="pic" src="assets/team-jack2-c.jpg" alt="Jack Winterowd"><div class="nm">Jack Winterowd</div><div class="ro">VP Materials Engineering</div>
+        <div class="bi">Head of Weyerhaeuser's chemistry platform and lead developer on almost every major product launched there over the last 25 years. 51 issued patents, 60+ pending.</div><div class="hint">Hover for full bio</div>
+        <div class="bio-pop"><b>Jack Winterowd — VP Materials Engineering</b><ul><li>One of the world's foremost experts on the behavior of wood.</li><li>As head of Weyerhaeuser's chemistry platform, he was lead developer on almost every major product the company launched over the last 25 years.</li><li>51 issued patents in the US and Canada, with an additional 60 pending.</li></ul></div>
+      </div>
+      <div class="person" tabindex="0">
+        <img loading="eager" decoding="sync" class="pic" src="assets/team-jiaqi-c.jpg" alt="Jiaqi Dai"><div class="nm">Jiaqi Dai</div><div class="ro">Chief Science Officer / Co-Founder</div>
+        <div class="bi">Key co-inventor on the core patents. H-index of 96; top 2% of scientists worldwide. PhD in Materials Science &amp; Engineering, University of Maryland.</div><div class="hint">Hover for full bio</div>
+        <div class="bio-pop"><b>Jiaqi Dai — Chief Science Officer / Co-Founder</b><ul><li>Key co-inventor on the core patents, both at the University of Maryland and since.</li><li>Drives the innovations that lower cost and continually improve SUPERWOOD's performance and functionality.</li><li>H-index of 96, ranked in the top 2% of scientists worldwide — and an award-winning artist.</li><li>PhD in Materials Science &amp; Engineering from the University of Maryland.</li></ul></div>
+      </div>
+      <div class="person" tabindex="0">
+        <img loading="eager" decoding="sync" class="pic" src="assets/team-shaun-c.jpg" alt="Shaun Klopfenstein"><div class="nm">Shaun Klopfenstein</div><div class="ro">Chief Information Officer</div>
+        <div class="bi">Serial tech entrepreneur and investor. CTO of Marketo, the marketing-automation SaaS unicorn, helping bring it onto NASDAQ. BS Computer Information Science, U of Oregon.</div><div class="hint">Hover for full bio</div>
+        <div class="bio-pop"><b>Shaun Klopfenstein — Chief Information Officer</b><ul><li>Serial technology entrepreneur and investor.</li><li>Former CTO of Marketo, the marketing-automation SaaS unicorn, where he helped bring the company onto the NASDAQ.</li><li>BS Computer Information Science, University of Oregon.</li></ul></div>
+      </div>
+    </div>
+    <div class="adv-head rv">World-Class Advisors <span style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — hover for detail</span></div>
+    <div class="adv rv">
+      <div class="advc" tabindex="0">
+        <img loading="eager" decoding="sync" src="assets/adv-davies-c.jpg" alt="Don Davies"><div><div class="nm">Don Davies</div><div class="ro">Structural Engineering</div></div>
+        <div class="bio-pop"><b>Don Davies — Structural Engineering</b><ul><li>Former President of Magnusson Klemencic Associates, America's most highly-awarded structural-engineering firm, and engineer of record for the headquarters of several tech giants, and tall buildings around the world.</li><li>Authored 15+ publications on tall-building systems, structural innovation and embodied-carbon optimization.</li><li>Co-founder of the Carbon Leadership Forum and Building Transparency, and part of the team that created the EC3 embodied-carbon tool.</li><li>Advisor to the US Special Presidential Envoy on Climate.</li></ul></div>
+      </div>
+      <div class="advc" tabindex="0">
+        <img loading="eager" decoding="sync" src="assets/adv-hawken-c.jpg" alt="Paul Hawken"><div><div class="nm">Paul Hawken</div><div class="ro">Ecology, Business &amp; Design</div></div>
+        <div class="bio-pop"><b>Paul Hawken — Ecology, Business &amp; Design</b><ul><li>Environmentalist, entrepreneur and bestselling author of nine books, including <em>Drawdown</em> and <em>Regeneration</em>.</li><li>Consults with governments around the world and advises many of the most prominent multinational corporations.</li><li>Author of <em>Drawdown</em>, <em>Carbon</em>, <em>Natural Capitalism</em> and <em>The Ecology of Commerce</em>.</li></ul></div>
+      </div>
+      <div class="advc" tabindex="0">
+        <img loading="eager" decoding="sync" src="assets/adv-zsmith-c.jpg" alt="Z Smith"><div><div class="nm">Z Smith</div><div class="ro">High-Performance Buildings</div></div>
+        <div class="bio-pop"><b>Z Smith — High-Performance Buildings</b><ul><li>Principal and Director of Sustainability &amp; Performance at Eskew Dumez Ripple, AIA Firm of the Year in 2014.</li><li>Award-winning architect and Americas representative for the UN's Architects' Union.</li><li>Former CTO of Xerox.</li><li>Sc.B. Physics, MIT; PhD Electrical Engineering &amp; Computer Science, Princeton; M.Arch, UC Berkeley.</li></ul></div>
+      </div>
+      <div class="advc" tabindex="0">
+        <img loading="eager" decoding="sync" src="assets/adv-organschi-c.jpg" alt="Alan Organschi"><div><div class="nm">Alan Organschi</div><div class="ro">Architecture &amp; Urban Design</div></div>
+        <div class="bio-pop"><b>Alan Organschi — Architecture &amp; Urban Design</b><ul><li>Principal and partner at Gray Organschi Architecture, winner of multiple AIA awards, and Principal at JIG Design Build.</li><li>Professor at the Yale School of Architecture and Director of the Yale Building Lab.</li><li>Founded the Timber City Initiative and wrote the seminal paper "Buildings as a Global Carbon Sink." Recipient of the Arts and Letters Award in Architecture, 2012.</li></ul></div>
+      </div>
+      <div class="advc" tabindex="0">
+        <img loading="eager" decoding="sync" src="assets/adv-bradshaw-c.jpg" alt="Allan Bradshaw"><div><div class="nm">Allan Bradshaw</div><div class="ro">Manufacturing &amp; Wood Industry</div></div>
+        <div class="bio-pop"><b>Allan Bradshaw — Manufacturing &amp; Wood Industry</b><ul><li>A 30-year career at Weyerhaeuser culminating as VP of Capital Projects, where he led a $1.5B fleet overhaul.</li><li>Ran technology development and scaling operations from R&amp;D to mass-market sales, led manufacturing for TrusJoist (its fastest-growing product), and ran operations for the entire East Coast.</li><li>Deep relationships throughout the wood-processing industry.</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ask" class="dark" data-nav="The Opportunity">
+  <div class="wrap">
+    <h2 class="rv">Raising <em>$10M</em> now — to prove product-market fit and seed demand for SuperMill Two</h2>
+    <div class="askterms rv">
+      <div><span>Amount</span><b>$10M</b></div>
+      <div><span>Instrument</span><b>SAFE</b></div>
+      <div><span>Valuation cap</span><b>$170&ndash;200M</b></div>
+      <div><span>Status</span><b>Open now</b></div>
+    </div>
+    <div class="mtgrid rv" style="grid-template-columns:1fr 1fr;gap:2.6rem">
+      <div class="mtitem" style="margin-top:0"><h3>What this round proves</h3><p>Product-market fit with delighted initial customers, key manufacturing metrics at SuperMill One, and seeded demand for SuperMill Two.</p></div>
+      <div class="mtitem" style="margin-top:0"><h3>What it sets up</h3><p>A $75&ndash;100M Series B in 2027 at a $400&ndash;800M target valuation &mdash; building SuperMill Two toward $200M+/yr gross margin.</p></div>
+    </div>
+    <div class="askcta rv">
+      <span class="who">Lex Harris &middot; Director, Capital Markets &amp; IR</span>
+      <a class="mail" href="mailto:lex@inventwood.com?subject=InventWood%20%E2%80%94%20%2410M%20SAFE">lex@inventwood.com</a>
+      <a class="mail" href="mailto:lex@inventwood.com?subject=Request%3A%20financial%20model%20and%20data%20room">Request the financial model &amp; data room</a>
+    </div>
+  </div>
+</section>
+
+<section id="s19" data-nav="Thank You">
+  <div class="thanks">
+    <div class="left"><h2 class="rv">Thank you</h2><div class="contact rv"><div class="c"><span class="who">Alex Lau &middot; CEO / Co-founder</span><a class="mail" href="mailto:alex@inventwood.com">alex@inventwood.com</a></div><div class="c"><span class="who">Lex Harris &middot; Director, Capital Markets &amp; IR</span><a class="mail" href="mailto:lex@inventwood.com">lex@inventwood.com</a></div></div></div>
+    <div class="right"></div>
+  </div>
+</section>
+
+<script>
+const deck=document.getElementById('deck');
+const secs=[...document.querySelectorAll('section')];
+const dotsBox=document.getElementById('dots');
+let apxIdx=secs.indexOf(document.getElementById('apx'));if(apxIdx<0)apxIdx=secs.length;
+const subIds=['s20','mth','dch'];
+const railBtns=[];
+secs.forEach((sec,i)=>{
+  if(i>apxIdx&&!subIds.includes(sec.id))return;
+  const b=document.createElement('button');
+  b.innerHTML=(i===apxIdx?'Appendix':(sec.dataset.nav||''))+'<span class="pn">'+String(i+1).padStart(2,'0')+'</span>';
+  if(i>apxIdx)b.classList.add('sub');
+  b.dataset.idx=i;
+  b.onclick=()=>{jumpTo(i);};
+  dotsBox.appendChild(b);railBtns.push(b);
+});
+function setActive(i){
+  document.body.classList.toggle('in-apx',i>=apxIdx);
+  railBtns.forEach(b=>b.classList.remove('active'));
+  if(i<apxIdx){const m=railBtns.find(b=>+b.dataset.idx===i);if(m)m.classList.add('active');}
+  else{
+    const ab=railBtns.find(b=>+b.dataset.idx===apxIdx);if(ab)ab.classList.add('active');
+    let cand=null;railBtns.forEach(b=>{if(b.classList.contains('sub')&&+b.dataset.idx<=i)cand=b;});
+    if(cand)cand.classList.add('active');
+  }
+}
+let cur=0;
+function jumpTo(i){i=Math.max(0,Math.min(secs.length-1,i));
+  const target=()=>deck.scrollTop+secs[i].getBoundingClientRect().top-deck.getBoundingClientRect().top;
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* smooth only for adjacent slides: a smooth scroll across several mandatory-snap sections gets cancelled mid-way in Chrome */
+  const smooth=!reduce&&Math.abs(i-cur)===1;
+  deck.scrollTo({top:target(),behavior:smooth?'smooth':'instant'});
+  /* verify and hard-set — measured from the section itself, not i*height */
+  /* verify only once the scroll has come to rest — and cancel any watcher from a previous jump,
+     or a stale watcher corrects toward its old target and the deck visibly snaps back */
+  clearInterval(jumpTo._iv);
+  let last=-1,ticks=0;jumpTo._iv=setInterval(()=>{const st=deck.scrollTop;ticks++;
+    if(st===last){clearInterval(jumpTo._iv);const t=target();if(Math.abs(t-st)>2)deck.scrollTo({top:t,behavior:'instant'});}
+    else if(ticks>30)clearInterval(jumpTo._iv);
+    last=st;},120);}
+function go(d){jumpTo(cur+d);}
+function animate(el){
+  if(el.dataset.done)return;el.dataset.done=1;
+  const final=el.textContent;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;   /* show the real number, never a partial one */                                  /* markup holds the real value */
+  const end=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
+  const t0=performance.now(),dur=1400;
+  function f(t){const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);
+    el.textContent = p<1 ? pre+(end*e).toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf : final;
+    if(p<1)requestAnimationFrame(f);}
+  requestAnimationFrame(f);
+}
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{
+  const i=secs.indexOf(e.target);
+  const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);
+  if(vis>=.5){cur=i;setActive(i);document.getElementById('pageno').textContent=String(i+1).padStart(2,'0')+' / '+secs.length;
+    document.body.classList.toggle('on-cover',i===0);
+    if(!e.target.classList.contains('in')){e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(animate);}}
+  else if(!e.isIntersecting){e.target.classList.remove('in');}
+});},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
+secs.forEach(s=>io.observe(s));
+document.querySelectorAll('.apxtoc a').forEach(a=>{
+  const t=document.querySelector(a.getAttribute('href'));
+  const i=secs.indexOf(t);
+  if(i>=0){a.querySelector('small').textContent=String(i+1).padStart(2,'0');
+    a.addEventListener('click',e=>{e.preventDefault();jumpTo(i);});}
+});
+/* number keys: punch in a slide number (1–19) to jump; two digits commit instantly */
+let numBuf='',numT;
+function commitNum(){const n=parseInt(numBuf,10);numBuf='';clearTimeout(numT);
+  if(n>=1&&n<=secs.length)jumpTo(n-1);
+  document.getElementById('pageno').textContent=String((n>=1&&n<=secs.length?n-1:cur)+1).padStart(2,'0')+' / '+secs.length;}
+window.addEventListener('keydown',e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(1);}
+  else if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(-1);}
+  else if(e.key==='Home'){e.preventDefault();jumpTo(0);}
+  else if(e.key==='End'){e.preventDefault();jumpTo(secs.length-1);}
+  else if(e.key>='0'&&e.key<='9'){e.preventDefault();
+    numBuf+=e.key;clearTimeout(numT);
+    document.getElementById('pageno').textContent='go to '+numBuf+' …';
+    if(numBuf.length>=2)commitNum();else numT=setTimeout(commitNum,650);}
+});
+/* slide-3 sources popup */
+if(document.getElementById('srcpop')){
+const srcpop=document.getElementById('srcpop');
+document.getElementById('srcopenbtn').addEventListener('click',()=>srcpop.classList.add('show'));
+document.getElementById('srcclosebtn').addEventListener('click',()=>srcpop.classList.remove('show'));
+{const box=srcpop.querySelector('.srcbox');let t=null;
+ box.addEventListener('mouseleave',()=>{t=setTimeout(()=>srcpop.classList.remove('show'),450);});
+ box.addEventListener('mouseenter',()=>clearTimeout(t));}
+srcpop.addEventListener('click',e=>{if(e.target===srcpop)srcpop.classList.remove('show');});
+window.addEventListener('keydown',e=>{
+  if(!srcpop.classList.contains('show'))return;
+  if(e.key==='Escape')srcpop.classList.remove('show');
+  e.stopImmediatePropagation();
+},true);
+/* timeline dots: 14 year ticks, 2016..2029; "now" = 2026 (index 10) */
+}
+if(document.getElementById('tlaxis')){
+const ax=document.getElementById('tlaxis');
+const Y0=2016,Y1=2030,N=Y1-Y0+1;
+for(let i=0;i<N;i++){const d=document.createElement('span');d.className='dot';d.style.left=(i/(N-1)*100)+'%';ax.appendChild(d);}
+{ /* today, to the day: position between year ticks by how much of the year has elapsed */
+  const t=new Date(), y=t.getFullYear();
+  const frac=(t-new Date(y,0,1))/(new Date(y+1,0,1)-new Date(y,0,1));
+  const idx=Math.max(0,Math.min(N-1,(y-Y0)+frac)), L=(idx/(N-1)*100)+'%';
+  const d=document.createElement('span');d.className='dot now';d.style.left=L;ax.appendChild(d);
+  const r=document.createElement('span');r.className='nowring';r.style.left=L;ax.appendChild(r);
+  const row=document.querySelector('.tlyears');
+  [...row.querySelectorAll('span')].forEach((sp,i)=>{sp.style.left=(i/(N-1)*100)+'%';});
+}
+}
+/* one-slide-per-page: zoom each slide's content to FILL the available page —
+   shrink when it overflows, grow when it's sparse (upscale capped at 1.75x).
+   zoom affects layout, so re-measure and converge over a few passes. */
+function fitSlides(only){
+  (only?[only]:secs).forEach(s=>{
+    if(s.id==='s1')return;                       /* cover keeps its own scale */
+    const w=s.querySelector(':scope > .wrap');if(!w)return;
+    w.style.zoom='';
+    const cs=getComputedStyle(s);
+    const avail=deck.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+    let z=1;
+    for(let i=0;i<12;i++){
+      const h=w.offsetHeight*z;
+      if(Math.abs(h-avail)<5)break;
+      z=Math.min(1.75,z*avail/h*.995);
+      w.style.zoom=z;
+    }
+    if(w.offsetHeight*z>avail)w.style.zoom=(z*=avail/w.offsetHeight/z*.99);
+    /* measure the lowest child, not the wrap box: under zoom the wrap under-reports its content */
+    const lowest=()=>{let b=-1e9;w.querySelectorAll('*').forEach(el=>{const r=el.getBoundingClientRect();
+      if(r.height&&r.bottom>b)b=r.bottom;});return b===-1e9?w.getBoundingClientRect().bottom:b;};
+    for(let k=0;k<8;k++){
+      const sr=s.getBoundingClientRect();
+      const wr={bottom:lowest(),height:Math.max(1,lowest()-w.getBoundingClientRect().top)};
+      const over=(wr.bottom-sr.top)-(s.clientHeight-parseFloat(cs.paddingBottom));
+      if(over<=0.5)break;
+      z*=Math.max(.75,1-(over/Math.max(1,wr.height))-0.004);
+      w.style.zoom=z;
+    }
+  });
+}
+let ft;addEventListener('resize',()=>{clearTimeout(ft);ft=setTimeout(fitSlides,150);});
+/* lazy images arrive after the first fit and can push a slide past the viewport — re-fit as they land */
+let scrolling=0,scrollT;deck.addEventListener('scroll',()=>{scrolling=1;clearTimeout(scrollT);scrollT=setTimeout(()=>{scrolling=0;},200);},{passive:true});
+document.querySelectorAll('img[loading="lazy"]').forEach(i=>{if(!i.complete)i.addEventListener('load',()=>{
+  const sec=i.closest('section');const refit=()=>{if(scrolling){setTimeout(refit,200);return;}fitSlides(sec);};setTimeout(refit,60);},{once:true});});
+/* re-align to the nearest slide after fitting: restored scroll positions and pre-fit section heights otherwise land mid-slide */
+function realign(){const h=deck.clientHeight;const top=Math.round(deck.scrollTop/h)*h;if(Math.abs(deck.scrollTop-top)>1)deck.scrollTo({top,behavior:'instant'});}
+addEventListener('load',()=>{fitSlides();realign();setTimeout(()=>{fitSlides();realign();},600);});
+if(document.fonts)document.fonts.ready.then(()=>{fitSlides();realign();});
+</script>
+</body>
+</html>

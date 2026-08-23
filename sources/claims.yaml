@@ -1,0 +1,56 @@
+# Claims register — Super Mills America deck
+# New claims introduced by this deck only. Everything else (capex, EBITDA, ROE,
+# deposits, pipeline, cost roadmap, properties, feedstock-in-48-states) traces to
+# ../../investor-overview/sources/claims.yaml.
+
+claims:
+  - claim: ~1 in 5 tons of US finished steel is imported (18% of apparent consumption in 2025; 23% in 2024)
+    provenance: published
+    source: American Iron and Steel Institute, "Steel Imports Down 12.6% in 2025" (Feb 2026)
+    url: https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/
+    slide: The Gap
+    note: 2025 share fell from 23% under Section 232 tariffs (25% from Mar 2025, 50% from Jun 2025).
+
+  - claim: ~85% of US industry's aluminum needs are met by imports
+    provenance: published
+    source: The Aluminum Association, "Powering Up American Aluminum" roadmap (2025)
+    url: https://www.aluminum.org/PowerUp
+    slide: The Gap
+
+  - claim: 4 US primary aluminum smelters remain operating, down from 33 historically
+    provenance: published
+    source: The Aluminum Association PowerUp roadmap; DOE announcement
+    url: https://www.aluminum.org/PowerUp
+    slide: The Gap
+    note: One source says five; four is the Aluminum Association figure. Verify before print use.
+
+  - claim: America's first new primary aluminum smelter since 1980 — Century Aluminum / EGA JV, Inola OK; ~$4B; $500M DOE award; >1 GW continuous power; still waiting on a power deal as of 2026
+    provenance: published
+    source: US DOE (2025); Canary Media (2026)
+    url: https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980
+    url2: https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power
+    slide: Old Mills
+
+  - claim: A new US mine averages ~29 years from discovery to production, second-longest in the world
+    provenance: published
+    source: S&P Global Market Intelligence, "Mine Development Times - The US in Perspective" (Jul 2024)
+    url: https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds
+    slide: Old Mills, Fast x Fast
+
+  - claim: Mass-timber projects run 20-30% faster construction schedules than steel and concrete
+    provenance: triangulated
+    source: ULI Urban Land; case-study reviews (avg ~20% across seven case studies, 12.7 vs 15.4 months; other studies up to 25-30%)
+    url: https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber
+    slide: Fast x Fast
+    note: Range spans studies; 40% claims exist but are not used. SUPERWOOD analogized to mass timber (prefab, light, timber detailing).
+
+  - claim: Excess capacity exists in US sawmills
+    provenance: asserted-internal
+    source: Alex Lau, 2026-08-23 (industry knowledge)
+    slide: Fast x Fast
+    note: Not yet externally sourced. Plausible given 2023-2025 sawmill curtailments on weak housing demand, but find a utilization figure before print use.
+
+  - claim: ~60% of a US data center is steel; operators concerned about structural steel shortage
+    provenance: inherited
+    source: ../../investor-overview/sources/claims.yaml
+    slide: The Gap
