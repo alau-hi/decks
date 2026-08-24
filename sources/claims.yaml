@@ -239,3 +239,10 @@ claims:
     source: <4 MW per Alex (consistent with FEL2 mass & energy balance, Rev F 2026-08-19 - electric ~900-930 kWh/t, boiler self-fueled, gas make-up ~0); permitting-gates-timelines framing per Alex 2026-08-23
     slide: Fast x Fast
     note: '"No smelter-class emissions" is comparative, not absolute - the residue boiler still needs a state air permit (likely minor source). Interconnection queues for GW-class loads running years is widely reported [M]; do not print a specific queue duration without a source.'
+
+  - claim: 10+ year development timelines for incumbent heavy-materials capacity
+    provenance: published/derived
+    conf: M-H
+    source: mills comparison.csv - integrated steel ~10 yr full complex (Formosa 4.5 yr to first iron) [published]; US mine ~29 yr (S&P Global) [H]; Apple Grove 6 yr for a minimill sprint [H]; smelter development incl. site/power/permitting exceeds its ~5-yr construction window
+    slide: Old Mills
+    note: Title-level claim; the card's bullets carry the causes (power, logistics, cyclicality), each separately sourced above.
