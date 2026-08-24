@@ -174,3 +174,34 @@ claims:
     conf: M
     source: $4B / ~$340M (above)
     slide: Economics
+
+  # -- Old Mills: community pushback + imported ore (added per Alex 2026-08-23) --
+  - claim: Inola smelter faces a court challenge from the Oklahoma Attorney General (petition filed in Rogers County District Court, June 2026)
+    provenance: published
+    conf: H
+    source: Oklahoma AG press release; Manufacturing Dive; ENR
+    url: https://oklahoma.gov/oag/news/newsroom/2026/june/drummond-files-action-to-block-inola-aluminum-smelter.html
+    slide: Old Mills
+  - claim: 3,400+ verified resident petition signatures against the Inola smelter
+    provenance: published
+    conf: M-H
+    source: Change.org petition count as reported in press coverage (Radio Oklahoma News, TriplePundit, 2026)
+    slide: Old Mills
+    note: Petition counts move; refresh before print use.
+  - claim: Muscogee (Creek) National Council unanimously approved a resolution opposing the smelter
+    provenance: published
+    conf: H
+    source: press coverage of the council resolution, 2026
+    slide: Old Mills
+  - claim: Inola smelter permitted to emit more than a ton of hydrogen fluoride per day
+    provenance: published
+    conf: M
+    source: reported in AG-filing coverage and environmental explainers (News9, 2026)
+    slide: Old Mills
+    note: Verify against the actual air permit before print use.
+  - claim: Inola feedstock is imported - bauxite from EGA's Guinea operations via the port of New Orleans, refined to alumina and barged to Inola; EGA (UAE state-owned) holds 60%
+    provenance: published
+    conf: M-H
+    source: project descriptions (Frontier Map, Discovery Alert, OK Dept of Commerce, 2026); EGA/GAC Guinea operations [H]
+    slide: Old Mills
+    note: The "vertically integrated, an ocean away" line is rhetorical framing of this sourced supply chain (Alex, 2026-08-23).
