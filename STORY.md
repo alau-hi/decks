@@ -51,6 +51,13 @@ SUPERWOOD is "the material to build the future from — made in America."
   global audience, and the arc is deliberately America-first → global — the Fleet slide
   is where the story widens (international ~10x national, ChipMill JVs, >7,000 SM2
   equivalents). Confirmed by Alex 2026-08-23.
+- Demand slide must not hint at unlimited demand (invites "why no offtakes / why don't
+  customers finance it"). Reframed as staged: premium/luxury buyers today transact at
+  retail cadence (deposits, not offtakes — the printed answer to the objection);
+  application engineering in the middle (softer phrasing — "require certification and
+  application engineering", never "not a drop-in"; cite Fast + Epp and Don Davies,
+  hybrid SUPERWOOD-glulam beam pathway); structural at scale last. Fleet slide's >7,000
+  figure stays as is — "a matter of time" per Alex. Confirmed 2026-08-23.
 - Close: same $10M SAFE terms as aaron-deck. Default — flag if this audience differs.
 
 ## Rules
