@@ -47,7 +47,7 @@ body.on-cover .pageno{opacity:0}
 body.on-cover .brand,body.on-cover .conf{opacity:0}
 body.on-cover nav.dots{opacity:0;pointer-events:none}
 nav.dots{transition:opacity .35s ease}
-nav.dots{position:fixed;right:0;top:0;bottom:0;z-index:90;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;padding:0 14px 0 2.2rem;background:linear-gradient(270deg,rgba(24,15,8,.85),rgba(24,15,8,0));pointer-events:none}
+nav.dots{position:fixed;right:0;top:0;bottom:0;z-index:90;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;padding:0 14px 0 3rem;background:linear-gradient(270deg,rgba(24,15,8,.94) 55%,rgba(24,15,8,0));pointer-events:none}
 nav.dots button{pointer-events:auto}
 nav.dots button{border:none;background:transparent;cursor:pointer;padding:.14em .5em;border-radius:4px;font-family:'Inter';font-weight:500;font-size:.6rem;line-height:1.3;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);opacity:1;transition:color .25s,opacity .25s,background .25s;position:relative;white-space:nowrap}
 nav.dots button .pn{display:inline-block;margin-left:.55em;font-size:.95em;color:var(--muted);opacity:.9;font-variant-numeric:tabular-nums;letter-spacing:.05em}
@@ -499,7 +499,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .in .ucchart .ucline{stroke-dashoffset:0}
 .ucchart .ucdot{opacity:0;transition:opacity .5s ease 1.4s}
 .in .ucchart .ucdot{opacity:1}
-.ucnote{font-size:.66rem;line-height:1.5;font-style:italic;color:var(--muted);margin-top:1rem;max-width:70ch}
+.ucnote{font-size:.66rem;line-height:1.5;font-style:italic;color:var(--muted);margin-top:1rem;max-width:none}
 .valchart{margin-top:1.2rem}
 .valchart svg{width:100%;display:block;overflow:visible}
 .valchart .vline{stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 2s ease .2s}
@@ -764,7 +764,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <p class="lead rv" style="margin-top:1.2rem;max-width:60ch">Speed compounds at both ends of the machine. The mill goes up fast, and what it makes goes up fast.</p>
     <div class="mtgrid rv" style="grid-template-columns:1fr 1fr;gap:1rem 3rem;margin-top:1.2rem">
       <div>
-        <div class="mtitem"><h3>Fast to permit and build</h3><p>The 2-year build is not the point. Site development is what kills large commodity factories: power contracts, interconnection queues, major air permits, ore logistics. A SUPERMILL barely touches that list. It draws <b style="color:var(--cream)">&lt;4 MW</b> from standard industrial service, its own wood residues fuel the process heat, and it has no smelter-class emissions to permit. Then modular construction and off-the-shelf equipment deliver the build itself in <b style="color:var(--cream)">~2 years</b>.</p></div>
+        <div class="mtitem"><h3>Fast to permit and build</h3><p>The 2-year build is not the point. Site development is what kills large commodity factories: power contracts, interconnection queues, major air permits, ore logistics. A SUPERMILL barely touches that list. It draws <b style="color:var(--cream)">&lt;4 MW</b> from standard industrial service, its own wood residues fuel the process heat, and it has no smelter-class emissions to permit. Long-lead equipment runs <b style="color:var(--cream)">~18 months</b>, and modular construction delivers the build itself in <b style="color:var(--cream)">6&ndash;12 months</b> after site development.</p></div>
         <div class="mtitem"><h3>Fed by what America already has</h3><p>Trees are a domestic resource in nearly every state, with feedstock for a SUPERMILL in <b style="color:var(--cream)">48 states</b> and excess capacity in existing sawmills. An ore body is one hole in one place, ~29 years from discovery to production. No imported ore, no strained grid.</p></div>
       </div>
       <div>
@@ -801,7 +801,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <section id="s9" class="dark" data-nav="Cost Roadmap">
   <div class="wrap">
-    <h2 class="rv" style="max-width:none;font-size:clamp(1.2rem,2.2vw,1.75rem)">With a Cost Roadmap driving <em>below the cost of steel</em>, and beyond</h2>
+    <h2 class="rv" style="max-width:none">With a Cost Roadmap driving <em>below the cost of steel</em>, and beyond</h2>
     <div class="ucchart rv">
       <svg viewBox="0 0 1000 345" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cost roadmap: SUPERWOOD price and manufacturing cost per cubic metre both fall from SuperMill One through SuperMill Two to ChipMill, crossing below the structural steel range; stainless steel sits above">
         <defs><linearGradient id="ssg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(170,175,184,.30)"/><stop offset="1" stop-color="rgba(170,175,184,.16)"/></linearGradient></defs>
@@ -838,7 +838,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem)">The first machine is already running &mdash; <em>and it is oversubscribed</em></h2>
       <div class="machstats rv" style="grid-template-columns:1fr 1fr;gap:.4rem 2.2rem;margin-top:1.8rem">
         <div class="gr"><span>Commercial shipments</span><b>since Dec &rsquo;25</b></div>
-        <div class="gr"><span>Paid online deposits</span><b>800+</b></div>
+        <div class="gr"><span>Paid online deposits</span><b>700+</b></div>
         <div class="gr"><span>SuperMill One pipeline</span><b>$140M+ vs $20M capacity</b></div>
         <div class="gr"><span>Inbound inquiries</span><b>15,000+</b></div>
       </div>
@@ -849,14 +849,14 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <section id="s15" class="dark" data-nav="Demand">
   <div class="wrap">
-    <h2 class="rv" style="max-width:34ch">Demand today is premium and paid &mdash; <em>structural demand is being engineered</em></h2>
+    <h2 class="rv" style="max-width:34ch">Demand today is premium, paid, and oversubscribed &mdash; <em>structural demand is being engineered</em></h2>
     <div class="dstats" style="margin-top:1.4rem">
       <div class="dstat hot rv">
         <div class="n" data-count="15000" data-suffix="+">15,000+</div><h3>Inbound Inquiries</h3><div class="s">with virtually no marketing spend</div>
         <p>Including individual homeowners, builders, national distributors, global manufacturers, top architecture firms, leading engineering firms, data center hyperscalers and other commercial enterprises across industries and geographies.</p>
       </div>
       <div class="dstat hot rv">
-        <div class="n" data-count="800" data-suffix="+">800+</div><h3>Paid Online Deposits</h3><div class="s">reserving a place in line for product</div>
+        <div class="n" data-count="700" data-suffix="+">700+</div><h3>Paid Online Deposits</h3><div class="s">reserving a place in line for product</div>
         <p>All inbound. ~50% from homeowners, representing $14M+ of demand, and ~50% from commercial enterprises, representing $125M+. <i>Note that most commercial accounts we are in discussions with are not making an advance deposit.</i></p>
       </div>
       <div class="dstat rv">
@@ -870,8 +870,8 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     </div>
     <div class="msrow rv" style="grid-template-columns:repeat(3,1fr);margin-top:1.6rem;border-top:1px solid var(--line);padding-top:1.1rem">
       <div class="ms now"><h3>Now &mdash; premium &amp; luxury</h3><p>Interiors, furniture, marine, specialty. These buyers pay premium prices at retail cadence: deposits and purchase orders, not decade-long offtakes. That is what the signals above are.</p></div>
-      <div class="ms"><h3>In development &mdash; application engineering</h3><p>Structural applications require certification and application engineering, underway with structural engineers <b style="color:var(--cream)">Fast + Epp</b> and <b style="color:var(--cream)">Don Davies</b>. The beam pathway is designed: hybrid SUPERWOOD-glulam beams, SUPERWOOD in the outer laminations only, double a glulam&rsquo;s bending strength.</p></div>
-      <div class="ms"><h3>At scale &mdash; structural</h3><p>Beams and structural components, where offtake-scale commitments are the norm. They unlock as certified components land and the cost roadmap drives below steel.</p></div>
+      <div class="ms"><h3>In development &mdash; application engineering</h3><p>Structural applications require certification and application engineering, underway with structural engineers <b style="color:var(--cream)">Fast + Epp</b> and <b style="color:var(--cream)">Don Davies</b>.</p></div>
+      <div class="ms"><h3>At scale &mdash; structural</h3><p>Beams and structural components, where offtake-scale commitments are the norm, unlocked as cost drives below steel.</p></div>
     </div>
   </div>
 </section>
@@ -945,7 +945,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <section id="s7" class="dark" data-nav="Team">
   <div class="wrap">
-    <h2 class="rv">Top-tier commercial and scientific leadership</h2>
+    <h2 class="rv">Building the team <em>to scale</em></h2>
     <div class="team rv">
       <div class="person" tabindex="0">
         <img loading="eager" decoding="sync" class="pic" src="assets/team-alex7-c.jpg" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-Founder</div>
@@ -995,6 +995,38 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <img loading="eager" decoding="sync" src="assets/adv-bradshaw-c.jpg" alt="Allan Bradshaw"><div><div class="nm">Allan Bradshaw</div><div class="ro">Manufacturing &amp; Wood Industry</div></div>
         <div class="bio-pop"><b>Allan Bradshaw — Manufacturing &amp; Wood Industry</b><ul><li>A 30-year career at Weyerhaeuser culminating as VP of Capital Projects, where he led a $1.5B fleet overhaul.</li><li>Ran technology development and scaling operations from R&amp;D to mass-market sales, led manufacturing for TrusJoist (its fastest-growing product), and ran operations for the entire East Coast.</li><li>Deep relationships throughout the wood-processing industry.</li></ul></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="s8" class="dark" data-nav="Investors">
+  <div class="wrap">
+    <h2 class="rv">Backed by <em>deeply sophisticated</em> investors</h2>
+    <div class="invpanel rv">
+      <h3>SELECT INSTITUTIONAL INVESTORS</h3>
+      <div class="invlogos">
+        <img loading="lazy" class="sm" src="assets/logo-arpae.png" alt="ARPA-E">
+        <img loading="lazy" class="lg" src="assets/logo-newindustrial.png" alt="The New Industrial Corporation">
+        <img loading="lazy" class="lg" src="assets/logo-builders.png" alt="Builders Vision" style="height:3.7rem;max-width:15.5rem">
+        <img loading="lazy" src="assets/logo-jll3.png" alt="JLL">
+        <img loading="lazy" src="assets/logo-grantham.png" alt="Grantham Foundation">
+        <i class="brk"></i>
+        <span class="invword"><b>Smart Aviation Futures</b><small>Delta Air Lines</small></span>
+        <span class="invword row"><img loading="lazy" src="assets/logo-echelon.png" alt="Echelon mark" style="height:1.5rem"><b>Echelon</b></span>
+        <span class="invword"><b>MUUS</b><small>Climate Partners</small></span>
+        <span class="invword row"><img loading="lazy" src="assets/logo-hugoneu.png" alt="Hugo Neu" style="height:1.9rem;border-radius:4px"><b>Hugo Neu Corporation</b></span>
+      </div>
+    </div>
+    <div class="adv-head rv" style="margin-top:1.8rem;padding-top:1.4rem">Select Individual Investors</div>
+    <div class="invgrid rv">
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-rockwell-new.jpg" alt="John Rockwell"><div><h4>John Rockwell</h4><p>CEO of four companies, all with successful exits. Founder and Managing Director of Element Partners, an $800M venture capital and PE firm, and Managing Director of Advent's Silicon Valley office.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-mcglashan-new.jpg" alt="Bill McGlashan"><div><h4>Bill McGlashan</h4><p>Former co-founder, managing partner of TPG Growth and TPG Rise, leading investments into Uber and AirBnB, and board member of Fender, Creative Artists Agency, and Common Sense Media.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-koerner-new.jpg" alt="Jacqueline Koerner"><div><h4>Jacqueline Koerner</h4><p>Founder, Co-Chair of Ecotrust Canada. Vice-Chair, CIFAR. International development and microfinance consultant. Background in sustainable forestry and anthropology.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-jacobs-gc.jpg" alt="Scott Jacobs"><div><h4>Scott Jacobs</h4><p>Co-founder of McKinsey's Cleantech practice. Co-founder and former CEO of Generate Capital, one of the largest project-finance firms in the climate sector. MBA Harvard, Baker Scholar.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-bosa-new.jpg" alt="Colin Bosa"><div><h4>Colin Bosa</h4><p>Co-founder of Axiom, one of the top general contractors in BC. CEO, Bosa Properties, one of the top high-rise developers in BC.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-sant-new.jpg" alt="Roger Sant"><div><h4>Roger Sant</h4><p>Co-Founder, former CEO, and Chairman Emeritus of AES Corporation, growing it to one of the largest independent power producers in the world. Former Chair, World Wildlife Fund.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-stotmeister-new.jpg" alt="Jochen Stotmeister"><div><h4>Jochen Stotmeister</h4><p>Chairman of Sto Corporation, one of the largest premium cladding solutions companies in the world.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-sansone-new.jpg" alt="Nick Sansone"><div><h4>Nick Sansone</h4><p>CEO of Sansone Group, the #5-ranked commercial real estate developer in the U.S. and one of the largest data center developers.</p></div></div>
     </div>
   </div>
 </section>
@@ -1050,8 +1082,8 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <div class="cmp-wrap rv"><table class="cmp">
       <thead><tr><th></th><th class="hero">SUPERMILL</th><th>Steel minimill (EAF)</th><th>Aluminum smelter</th></tr></thead>
       <tbody>
-        <tr><td>Time to develop + build</td><td class="hero"><b>&lt;3 years</b> <small>&mdash; light site development + ~2-yr build</small></td><td><b>10+ years</b> <small>&mdash; site, permits, power, build (Apple Grove: 6 yrs announce-to-ship alone)</small></td><td><b>10+ years</b> <small>&mdash; first metal ~2030 at Inola; power deal still open</small></td></tr>
-        <tr><td>Power required</td><td class="hero"><b>&lt;4 MW</b> <small>&mdash; process heat self-fueled by wood residues</small></td><td><b>~300 MVA-class grid connection</b> <small>&mdash; one EAF draws 200&ndash;300 MVA, with severe flicker</small></td><td><b>&gt;1 GW continuous</b> <small>&mdash; a city&rsquo;s worth</small></td></tr>
+        <tr><td>Time to develop + build</td><td class="hero"><b>&lt;3 years</b> <small>&mdash; long-lead equipment ~18 months; build 6&ndash;12 months after site development</small></td><td><b>10+ years</b> <small>&mdash; site, permits, power, build (Apple Grove: 6 yrs announce-to-ship alone)</small></td><td><b>10+ years</b> <small>&mdash; first metal ~2030 at Inola; power deal still open</small></td></tr>
+        <tr><td>Power required</td><td class="hero"><b>&lt;4 MW</b> <small>&mdash; process heat fueled by wood residues</small></td><td><b>~300 MVA-class grid connection</b> <small>&mdash; one EAF draws 200&ndash;300 MVA, with severe flicker</small></td><td><b>&gt;1 GW continuous</b> <small>&mdash; a city&rsquo;s worth</small></td></tr>
         <tr><td>Volume output</td><td class="hero"><b>~24,000 m&sup3;/yr</b> <small>SUPERWOOD boards (36M sf)</small></td><td>~347,000 m&sup3;/yr <small>sheet steel (~3M t)</small></td><td>~278,000 m&sup3;/yr <small>primary aluminum (750K t)</small></td></tr>
         <tr><td>Cost to build</td><td class="hero"><b>$300M</b></td><td>$1.9B <small>(SDI Sinton)</small> &ndash; $4.0B <small>(Nucor Apple Grove)</small></td><td>~$4B <small>(Century/EGA Inola)</small></td></tr>
         <tr><td>Annual EBITDA</td><td class="hero"><b>~$208M</b> <small>&mdash; engineering model, 65% of projected revenue</small></td><td>~$0.6&ndash;1.2B <small>&mdash; realized, over the cycle (SDI, 14&ndash;25%)</small></td><td>~$340M <small>&mdash; record 2025 (~17%); cyclical</small></td></tr>

@@ -270,3 +270,17 @@ claims:
     source: arithmetic on registered figures - 208/300; 600-1200/4000; 340/4000
     slide: Appendix comparison
     note: Apples-to-apples design per Alex 2026-08-24 - common unlevered metric replaces mixed ROE/payback rows; ROE shown for SUPERMILL only in the footnote; bases (model vs realized) labeled per cell.
+
+  - claim: SUPERMILL long-lead equipment ~18 months; construction 6-12 months after site development; <3 years develop + build end to end
+    provenance: asserted-internal
+    conf: M-H
+    source: Alex Lau, 2026-08-25
+    slide: Appendix comparison, Fast x Fast
+    note: Supersedes the earlier "~2-yr build class" phrasing for the build itself; the ~2-year figure remains valid as the overall build-cycle class (long-lead + construction overlap).
+
+  - claim: 700+ paid online deposits
+    provenance: internal
+    conf: H (internal canonical)
+    source: Alex Lau, 2026-08-25
+    slide: Running, Demand
+    note: Supersedes the 800+ figure inherited from the investor-overview register for this deck. Parent decks (investor-overview, aaron-deck) still print 800+ - flag for alignment.
