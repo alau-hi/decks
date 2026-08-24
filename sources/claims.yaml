@@ -213,3 +213,15 @@ claims:
     url: https://www.mining.com/web/column-power-trumps-tariffs-as-another-us-aluminum-smelter-shuts/
     slide: Old Mills
     note: '"Those prices aren''t coming down" is Alex''s framing [asserted-internal, M], directionally supported by data-center-driven grid strain coverage.'
+
+  - claim: Nucor Apple Grove sheet mill ran 2021->2027 announce-to-ship
+    provenance: published
+    conf: H
+    source: mills comparison.csv / Nucor updates (announced Sep 2021, 2027 shipments per IndexBox construction update)
+    slide: Old Mills
+  - claim: No US smelter built since 1980 because domestic metal could not compete with imports smelted on cheaper power
+    provenance: derived
+    conf: M-H
+    source: closure record (Hawesville/Ravenswood/Mt. Holly, all power-cost-driven [H]) + Aluminum Association PowerUp framing; causal phrasing per Alex 2026-08-23
+    slide: Old Mills
+    note: Replaces the earlier "decades between builds" framing, which implied building is inherently slow - Alex flagged that the drought was competitiveness-driven, not capability-driven.
