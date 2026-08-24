@@ -532,6 +532,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 /* dc application tiles */
 #dcn h2,#dcm h2,#dcf h2{max-width:none;font-size:clamp(1.35rem,2.55vw,2rem)}
 #ask .askcta{margin-top:2.1rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.55rem 2rem}
+#ask .askbtn{display:inline-block;margin-top:.5rem;font-family:'Inter';font-weight:600;font-size:.82rem;letter-spacing:.06em;background:var(--gold);color:#1a1209;border-radius:999px;padding:.75em 1.7em;text-decoration:none;transition:background .25s,transform .25s}
+#ask .askbtn:hover,#ask .askbtn:focus-visible{background:var(--cream);transform:translateY(-1px)}
+.fwdlook{margin-top:1.8rem;max-width:78ch;font-size:.63rem;line-height:1.6;color:var(--muted)}
 #ask .askcta .who{flex-basis:100%}
 #ask .note,#dcn .note,#dcm .note{font-size:.62rem;line-height:1.5;font-style:italic;color:var(--muted);margin-top:1.3rem}
 .apph{font-family:'Inter';font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:.5rem;margin-top:1.5rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
@@ -1067,12 +1070,26 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <div class="ms now"><h3>$10M SAFEs<span class="nowpill">Now</span></h3><p><b>Key milestones:</b> prove product-market fit, delight initial customers, seed demand for SuperMill Two · prove key manufacturing metrics</p></div>
       <div class="ms"><h3>Series B · 2027</h3><p><b>Key milestones:</b> build SuperMill Two · prove broad market adoption and generate $200M+/yr gross margin</p></div>
     </div>
-    <div class="askterms rv" style="max-width:none">
+  </div>
+</section>
+
+<section id="ask" class="dark" data-nav="The Opportunity">
+  <div class="wrap">
+    <h2 class="rv">And are raising <em>$10M now</em>, to scale production and prepare for Series B raise</h2>
+    <div class="askterms rv">
       <div><span>Amount</span><b>$10M</b></div>
       <div><span>Instrument</span><b>SAFE</b></div>
       <div><span>Valuation cap</span><b>$170&ndash;200M</b></div>
       <div><span>Status</span><b>Open now</b></div>
     </div>
+    <div class="mtgrid rv" style="grid-template-columns:1fr 1fr;gap:2.6rem">
+      <div class="mtitem" style="margin-top:0"><h3>What this round de-risks</h3><p>Product-market fit with delighted initial customers, key manufacturing metrics at SuperMill One, and seeded demand for SuperMill Two.</p></div>
+      <div class="mtitem" style="margin-top:0"><h3>What it sets up</h3><p>A $75&ndash;100M Series B in 2027 at a $400&ndash;800M target valuation &mdash; building SuperMill Two toward $200M+/yr gross margin.</p></div>
+    </div>
+    <div class="askcta rv">
+      <a class="askbtn" href="mailto:alex@inventwood.com?subject=Request%3A%20financial%20model%20and%20data%20room">Request the financial model &amp; data room</a>
+    </div>
+    <p class="fwdlook rv">This presentation contains forward-looking statements about future plants, production, costs, revenue and financing. These reflect current expectations and assumptions, involve risks and uncertainties, and actual results may differ materially. Figures for future periods are projections, not guarantees.</p>
   </div>
 </section>
 
