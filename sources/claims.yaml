@@ -65,3 +65,33 @@ claims:
     source: Alex Lau, 2026-08-23
     slide: Demand (path-to-structural strip)
     note: Davies is a deck advisor (fmr. President, Magnusson Klemencic). Confirm Fast + Epp engagement is public/citable before wide distribution.
+
+  # Economics comparison table (Economics slide)
+  - claim: Steel minimill (EAF sheet) - build 2.5-2.75 yr (Apple Grove stretching to 5.5-6), capex $1.9-4.0B, ~3M t/yr, EBITDA 14-25% over cycle (SDI 2024/2021), capex 1.5-7.6x annual EBITDA across cycle
+    provenance: published/derived
+    source: ~/Git/mills/SUPERMILL economics/comparison.csv (compiled from published SDI/industry data)
+    slide: Economics
+
+  - claim: Minimill power ~150 MW class (EAF melt 350-500 kWh/t)
+    provenance: derived
+    source: melt intensity published (comparison.csv); site average derived for ~3M t/yr - melt only, total site higher
+    slide: Economics
+    note: Conservative direction (understates minimill power), so the contrast is safe.
+
+  - claim: Aluminum smelter ~17% EBITDA margin in a record year; capex ~13x annual EBITDA at 2025 margins
+    provenance: derived
+    source: Century Aluminum FY2025 results - net sales $2.5B, adj EBITDA $425M; Inola capex ~$4B, 750K t/yr
+    url: https://centuryaluminum.com/investors/press-releases/press-release-details/2026/Century-Aluminum-Company-Reports-Fourth-Quarter-2025-Results/default.aspx
+    slide: Economics
+    note: 2025 was tariff-supported; historical margins lower, hence "record year" qualifier.
+
+  - claim: SUPERMILL power MW-class, process heat self-fueled by wood residues
+    provenance: internal
+    source: FEL2 facility basis (~900-930 kWh/t electric + self-fueled boiler), via mills comparison.csv
+    slide: Economics
+    note: TEM-vs-FEL2 energy reconciliation open (5-7x gap); even at TEM basis still tens of MW - "MW-class" holds either way. Do not print a specific MW number until reconciled.
+
+  - claim: SUPERMILL capex ~1.4x annual EBITDA
+    provenance: derived
+    source: $300M capex / (65% of $320M projected revenue = $208M EBITDA)
+    slide: Economics

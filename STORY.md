@@ -60,6 +60,24 @@ SUPERWOOD is "the material to build the future from — made in America."
   figure stays as is — "a matter of time" per Alex. Confirmed 2026-08-23.
 - Close: same $10M SAFE terms as aaron-deck. Default — flag if this audience differs.
 
+## Economics comparison table (Economics slide)
+
+SUPERMILL vs steel minimill (EAF) vs aluminum smelter — time to build, power, volume
+output, cost to build, EBITDA margin, ROI. Data: `~/Git/mills/SUPERMILL economics/
+comparison.csv` (minimill), Century/EGA Inola + Century FY2025 (smelter), internal TEM
+(SUPERMILL). Claims registered in `sources/claims.yaml`.
+
+**Rows held in reserve** (per Alex 2026-08-23, ready if wanted):
+- Feedstock availability: 48 states / scrap — available but price-volatile (busheling
+  ~70–75% of cash cost) / alumina — imported.
+- $ output per capex: SUPERMILL ~1.07x ($320M proj / $300M) · minimill ~0.8–1.7x
+  revenue/capex cycle-dependent · smelter ~0.5x (~$2B / $4B).
+- Annual operating margin in $: SUPERMILL ~$208M plant EBITDA · minimill ~$0.6–1.2B
+  (SDI $197–411/t × ~3M t) · smelter ~$425M (Century company-wide FY2025).
+
+Do NOT print a specific SUPERMILL MW figure — TEM-vs-FEL2 energy reconciliation is
+open (see claims register); "MW-class" holds under either basis.
+
 ## Rules
 
 Parent rules apply: titles are claims; no self-grading adjectives; analogies frame but

@@ -633,6 +633,19 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   #s11 .split{grid-template-columns:.8fr 1.2fr}
 }
 
+/* econ comparison table */
+.cmp{width:100%;border-collapse:collapse;margin-top:1.6rem}
+.cmp th,.cmp td{padding:.6rem .9rem;font-size:.8rem;line-height:1.45;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp thead th{font-family:'Inter';font-weight:600;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);border-bottom:1px solid rgba(228,210,180,.3)}
+.cmp td:first-child{color:var(--muted);font-family:'Inter';font-weight:600;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;padding-left:0}
+.cmp td b{color:var(--cream);font-weight:600}
+.cmp .hero{background:rgba(226,184,119,.07);border-left:1px solid rgba(226,184,119,.3);border-right:1px solid rgba(226,184,119,.3)}
+.cmp thead .hero{color:var(--gold);border-top:1px solid rgba(226,184,119,.3)}
+.cmp .hero b{color:var(--gold)}
+.cmp tbody tr:last-child td.hero{border-bottom:1px solid rgba(226,184,119,.3)}
+.cmp small{color:var(--muted);font-size:.86em}
+@media (max-width:700px){.cmp-wrap{overflow-x:auto}.cmp{min-width:38rem}}
+
 /* mach */
 .machrow{display:flex;align-items:stretch;gap:1.2rem;margin-top:2rem}
 .machbox{flex:1;border:1px solid rgba(184,125,68,.5);border-radius:14px;padding:1.2rem 1.5rem 1.4rem;display:flex;flex-direction:column;justify-content:flex-start}
@@ -850,14 +863,19 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 <section id="econ" class="dark" data-nav="Economics">
   <div class="wrap">
     <h2 class="rv">Machine economics an <em>infrastructure investor recognizes</em></h2>
-    <div class="machstats rv" style="margin-top:2.2rem">
-      <div class="gr"><span>Capex per SUPERMILL</span><b>$300M</b></div>
-      <div class="gr"><span>Revenue (cap. &middot; proj.)</span><b>$360M &middot; $320M / yr</b></div>
-      <div class="gr"><span>Plant-level EBITDA</span><b>65%</b></div>
-      <div class="gr"><span>ROE with project financing</span><b>175&ndash;200%</b></div>
-    </div>
-    <p class="lead rv" style="margin-top:2.4rem;font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.4vw,2rem);max-width:26ch;color:var(--cream)">Steel had the minimill. Wood has the <em style="color:var(--gold)">SUPERMILL.</em></p>
-    <p class="gnote rv" style="max-width:64ch;margin-top:1rem">Like the minimills that out-earned integrated steel plant-by-plant, each SUPERMILL is a compact, separately financeable unit (~75% debt) with better unit economics than the incumbents it displaces &mdash; built to be repeated, not admired.</p>
+    <div class="cmp-wrap rv"><table class="cmp">
+      <thead><tr><th></th><th class="hero">SUPERMILL</th><th>Steel minimill (EAF)</th><th>Aluminum smelter</th></tr></thead>
+      <tbody>
+        <tr><td>Time to build</td><td class="hero"><b>~2 years</b></td><td>2.5&ndash;3 yrs <small>&mdash; recent builds stretching to 6</small></td><td>~5 yrs <small>&mdash; first new US smelter in 45 years</small></td></tr>
+        <tr><td>Power required</td><td class="hero"><b>MW-class</b> <small>&mdash; process heat self-fueled by wood residues</small></td><td>~150 MW class <small>(350&ndash;500 kWh/t melt)</small></td><td><b>&gt;1 GW continuous</b> <small>&mdash; a city&rsquo;s worth</small></td></tr>
+        <tr><td>Volume output</td><td class="hero"><b>36M sf/yr</b> <small>SUPERWOOD boards</small></td><td>~3M t/yr <small>sheet steel</small></td><td>750K t/yr <small>primary aluminum</small></td></tr>
+        <tr><td>Cost to build</td><td class="hero"><b>$300M</b></td><td>$1.9&ndash;4.0B</td><td>~$4B</td></tr>
+        <tr><td>Profit margin</td><td class="hero"><b>65%</b> <small>plant-level EBITDA</small></td><td>14&ndash;25% <small>over the cycle</small></td><td>~17% <small>in a record year; power-price dependent</small></td></tr>
+        <tr><td>Return on investment</td><td class="hero"><b>175&ndash;200% ROE</b> <small>with ~75% project debt; capex &asymp; 1.4x annual EBITDA</small></td><td>capex &asymp; 1.5&ndash;7.6x annual EBITDA <small>across the cycle</small></td><td>capex &asymp; 13x annual EBITDA <small>at 2025 margins</small></td></tr>
+      </tbody>
+    </table></div>
+    <p class="lead rv" style="margin-top:1.6rem;font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.4vw,2rem);max-width:30ch;color:var(--cream)">Steel had the minimill. Wood has the <em style="color:var(--gold)">SUPERMILL.</em></p>
+    <p class="gnote rv" style="max-width:70ch;margin-top:.9rem">Each SUPERMILL is a compact, separately financeable unit with better unit economics than the incumbents it displaces &mdash; built to be repeated, not admired. Minimill figures: published ranges (SDI, industry data 2021&ndash;2026); smelter: Century / EGA Inola project and Century FY2025 results; SUPERMILL: internal TEM &mdash; revenue $360M capacity &middot; $320M projected.</p>
   </div>
 </section>
 
