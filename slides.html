@@ -622,7 +622,8 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   .dstats,.steps,.phases,.cols3,.pillars{grid-template-columns:1fr}
   .cesgrid{grid-template-columns:1fr}
   nav.dots{padding:0 4px 0 1rem;gap:4px}
-  nav.dots button{font-size:.52rem;padding:.1em .35em}
+  nav.dots button{font-size:0;padding:.1em .35em}
+  nav.dots button .pn{font-size:.56rem;margin-left:0}
   #s19 .thanks{grid-template-columns:1fr}
   #s19 .right{min-height:38vh;order:-1}
   .team{grid-template-columns:1fr 1fr}
@@ -664,7 +665,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .machstats .gr{flex-direction:column;align-items:flex-start;gap:.15rem;border-bottom:0;border-top:1px solid rgba(228,210,180,.14);padding-top:.6rem}
 .machstats .gr b{font-family:'Fraunces';font-size:1.25rem;font-weight:400;text-align:left}
 .machstats .gr b{color:var(--gold)}
-#mach .machstats .gr{justify-content:flex-start}
+#mach .machstats .gr,#run .machstats .gr{justify-content:flex-start}
 #mach .machstats .gr span{font-size:.82rem}
 #mach .machstats .gr b{font-size:1.6rem}
 .replrow{display:flex;align-items:center;gap:.8rem;margin-top:1.6rem}
@@ -765,14 +766,10 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="wrap">
     <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem)">Fast to build. <em>Fast to build with.</em></h2>
     <p class="lead rv" style="margin-top:1.2rem;max-width:60ch">Speed compounds at both ends of the machine. The mill goes up fast, and what it makes goes up fast.</p>
-    <div class="mtgrid rv" style="grid-template-columns:1fr 1fr;gap:1rem 3rem;margin-top:1.2rem">
-      <div>
-        <div class="mtitem"><h3>Fast to permit and build</h3><p>The 2-year build is not the point. Site development is what kills large commodity factories: power contracts, interconnection queues, major air permits, ore logistics. A SUPERMILL barely touches that list. It draws <b style="color:var(--cream)">&lt;4 MW</b> from standard industrial service, its own wood residues fuel the process heat, and it has no smelter-class emissions to permit. Long-lead equipment runs <b style="color:var(--cream)">~18 months</b>, and modular construction delivers the build itself in <b style="color:var(--cream)">6&ndash;12 months</b> after site development.</p></div>
-        <div class="mtitem"><h3>Fed by what America already has</h3><p>Trees are a domestic resource in nearly every state, with feedstock for a SUPERMILL in <b style="color:var(--cream)">48 states</b> and excess capacity in existing sawmills. An ore body is one hole in one place, ~29 years from discovery to production. No imported ore, no strained grid.</p></div>
-      </div>
-      <div>
-        <div class="mtitem"><h3>Its output enables faster construction</h3><p>SUPERWOOD builds like timber: prefabricated to precision, and <b style="color:var(--cream)">6x lighter than steel</b>, which means smaller cranes, smaller crews, and smaller foundations. Mass-timber projects run <b style="color:var(--cream)">20&ndash;30% faster schedules</b> than steel and concrete. And no waiting on an import order.</p></div>
-      </div>
+    <div class="mtgrid rv" style="grid-template-columns:1fr 1fr 1fr;gap:1rem 2.4rem;margin-top:1.2rem">
+      <div class="mtitem"><h3>Fast to permit and build</h3><p>The 2-year build is not the point. Site development is what kills large commodity factories: power contracts, interconnection queues, major air permits, ore logistics. A SUPERMILL barely touches that list. It draws <b style="color:var(--cream)">&lt;4 MW</b> from standard industrial service, its own wood residues fuel the process heat, and it has no smelter-class emissions to permit. Long-lead equipment runs <b style="color:var(--cream)">~18 months</b>, and modular construction delivers the build itself in <b style="color:var(--cream)">6&ndash;12 months</b> after site development.</p></div>
+      <div class="mtitem"><h3>Fed by what America already has</h3><p>Trees are a domestic resource in nearly every state, with feedstock for a SUPERMILL in <b style="color:var(--cream)">48 states</b> and excess capacity in existing sawmills. An ore body is one hole in one place, ~29 years from discovery to production. No imported ore, no strained grid.</p></div>
+      <div class="mtitem"><h3>Its output enables faster construction</h3><p>SUPERWOOD builds like timber: prefabricated to precision, and <b style="color:var(--cream)">6x lighter than steel</b>, which means smaller cranes, smaller crews, and smaller foundations. Mass-timber projects run <b style="color:var(--cream)">20&ndash;30% faster schedules</b> than steel and concrete. And no waiting on an import order.</p></div>
     </div>
     <p class="rv" style="margin-top:1.2rem;font-size:.78rem;color:var(--muted)">Source: <span class="sw-ref"><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">ULI &amp; case studies</a><span class="sw-tip"><b>Faster Project Delivery Is a Hidden Feature of Mass Timber</b><br>Case-study reviews put mass-timber schedule savings at ~20&ndash;30% vs. concrete and steel.<br><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener">Read the article &rarr;</a></span></span></p>
   </div>
@@ -842,7 +839,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <div class="machstats rv" style="grid-template-columns:1fr 1fr;gap:.4rem 2.2rem;margin-top:1.8rem">
         <div class="gr"><span>Commercial shipments</span><b>since Dec &rsquo;25</b></div>
         <div class="gr"><span>Paid online deposits</span><b>700+</b></div>
-        <div class="gr"><span>SuperMill One pipeline</span><b>$140M+ vs $20M capacity</b></div>
+        <div class="gr"><span>SuperMill One pipeline</span><b>$140M+ &middot; 7x capacity</b></div>
         <div class="gr"><span>Inbound inquiries</span><b>15,000+</b></div>
       </div>
       <p class="gnote rv" style="margin-top:1.4rem;max-width:44ch">Demand against the first machine is <b style="color:var(--cream)">7x its capacity</b> &mdash; with virtually no marketing spend. The premium product sells today, at premium prices, while the cost roadmap does its work.</p>
@@ -1177,7 +1174,7 @@ window.addEventListener('keydown',e=>{
     if(numBuf.length>=2)commitNum();else numT=setTimeout(commitNum,650);}
 });
 /* one-slide-per-page: zoom each slide's content to FILL the available page —
-   shrink when it overflows, grow when it's sparse (upscale capped at 1.75x).
+   shrink when it overflows, grow when it's sparse (upscale capped at 1.4x).
    zoom affects layout, so re-measure and converge over a few passes. */
 function fitSlides(only){
   (only?[only]:secs).forEach(s=>{
@@ -1190,7 +1187,7 @@ function fitSlides(only){
     for(let i=0;i<12;i++){
       const h=w.offsetHeight*z;
       if(Math.abs(h-avail)<5)break;
-      z=Math.min(1.75,z*avail/h*.995);
+      z=Math.min(1.4,z*avail/h*.995);
       w.style.zoom=z;
     }
     if(w.offsetHeight*z>avail)w.style.zoom=(z*=avail/w.offsetHeight/z*.99);
