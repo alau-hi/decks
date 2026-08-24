@@ -284,3 +284,9 @@ claims:
     source: Alex Lau, 2026-08-25
     slide: Running, Demand
     note: Supersedes the 800+ figure inherited from the investor-overview register for this deck. Parent decks (investor-overview, aaron-deck) still print 800+ - flag for alignment.
+
+  - claim: SuperMill One building is 90,000 sf, ramping to 1M sf/yr of capacity
+    provenance: asserted-internal
+    conf: H (internal)
+    source: Alex Lau, 2026-08-25 (1M sf/yr capacity already registered via parent)
+    slide: Running (photo caption)
