@@ -66,32 +66,111 @@ claims:
     slide: Demand (path-to-structural strip)
     note: Davies is a deck advisor (fmr. President, Magnusson Klemencic). Confirm Fast + Epp engagement is public/citable before wide distribution.
 
-  # Economics comparison table (Economics slide)
-  - claim: Steel minimill (EAF sheet) - build 2.5-2.75 yr (Apple Grove stretching to 5.5-6), capex $1.9-4.0B, ~3M t/yr, EBITDA 14-25% over cycle (SDI 2024/2021), capex 1.5-7.6x annual EBITDA across cycle
-    provenance: published/derived
-    source: ~/Git/mills/SUPERMILL economics/comparison.csv (compiled from published SDI/industry data)
-    slide: Economics
+  # Economics comparison table (Economics slide) - per-cell provenance and confidence.
+  # Confidence markers are register-only; the slide does not print them (per Alex).
 
-  - claim: Minimill power ~150 MW class (EAF melt 350-500 kWh/t)
-    provenance: derived
-    source: melt intensity published (comparison.csv); site average derived for ~3M t/yr - melt only, total site higher
-    slide: Economics
-    note: Conservative direction (understates minimill power), so the contrast is safe.
-
-  - claim: Aluminum smelter ~17% EBITDA margin in a record year; capex ~13x annual EBITDA at 2025 margins
-    provenance: derived
-    source: Century Aluminum FY2025 results - net sales $2.5B, adj EBITDA $425M; Inola capex ~$4B, 750K t/yr
-    url: https://centuryaluminum.com/investors/press-releases/press-release-details/2026/Century-Aluminum-Company-Reports-Fourth-Quarter-2025-Results/default.aspx
-    slide: Economics
-    note: 2025 was tariff-supported; historical margins lower, hence "record year" qualifier.
-
-  - claim: SUPERMILL power MW-class, process heat self-fueled by wood residues
+  # -- Time to build row --
+  - claim: SUPERMILL build ~2 years
     provenance: internal
-    source: FEL2 facility basis (~900-930 kWh/t electric + self-fueled boiler), via mills comparison.csv
+    conf: M
+    source: internal build class (2028-2030 SM2 schedule); panel-plant analogs 1.5-2.5 yr
     slide: Economics
-    note: TEM-vs-FEL2 energy reconciliation open (5-7x gap); even at TEM basis still tens of MW - "MW-class" holds either way. Do not print a specific MW number until reconciled.
+  - claim: Minimill build 2.5-3 yrs, recent builds stretching to 6
+    provenance: published
+    conf: H
+    source: mills comparison.csv - Sinton 2019-2022; Apple Grove 2021-2027 (5.5-6 yr)
+    slide: Economics
+  - claim: Smelter build ~5 yrs; first new US smelter in 45 years
+    provenance: published
+    conf: H
+    source: US DOE 2025; Inola announced 2025, planned end of decade
+    slide: Economics
 
-  - claim: SUPERMILL capex ~1.4x annual EBITDA
+  # -- Power row --
+  - claim: SUPERMILL TWO-scale plant requires <4 MW
+    provenance: asserted-internal
+    conf: M-H
+    source: Alex Lau, 2026-08-23; independently consistent with FEL2 basis (~900-930 kWh/t x ~30K t/yr = ~27 GWh/yr = ~3.2 MW average draw)
+    slide: Economics
+    note: TEM-vs-FEL2 energy reconciliation still open in mills repo, but Alex's figure matches the FEL2 arithmetic.
+  - claim: Minimill ~150 MW class (EAF melt 350-500 kWh/t at ~3M t/yr)
     provenance: derived
-    source: $300M capex / (65% of $320M projected revenue = $208M EBITDA)
+    conf: M
+    source: melt intensity published [H]; site average derived - melt only, so understates minimill power (conservative direction for our contrast)
+    slide: Economics
+  - claim: Smelter >1 GW continuous
+    provenance: published
+    conf: H
+    source: Canary Media 2026 (Inola)
+    slide: Economics
+
+  # -- Volume output row (m3/yr) --
+  - claim: SUPERMILL ~24,000 m3/yr (36M sf at 7.2mm average board thickness)
+    provenance: derived
+    conf: M
+    source: 36M sf/yr internal capacity [M] x 7.2mm conversion (parent register) = 24,080 m3
+    slide: Economics
+  - claim: Minimill ~347,000 m3/yr (~3M short tons at 7.85 t/m3)
+    provenance: derived
+    conf: H
+    source: 3.0 Mtpa published [H] x 0.907 mt/st / 7.85 t/m3 (parent register conversion)
+    slide: Economics
+  - claim: Smelter ~278,000 m3/yr (750K t at 2.70 t/m3)
+    provenance: derived
+    conf: H
+    source: 750K t/yr published [H] / 2.70 t/m3 standard aluminum density
+    slide: Economics
+
+  # -- Cost to build row --
+  - claim: SUPERMILL capex $300M
+    provenance: internal
+    conf: H (internal canonical)
+    source: deck-canonical per Alex 2026-08-23 (investor-overview register)
+    slide: Economics
+  - claim: Minimill capex $1.9B (SDI Sinton) to $4.0B (Nucor Apple Grove board-approved Feb 2025)
+    provenance: published
+    conf: H
+    source: SDI PR 2019 / BuildSteel (Sinton $1.9B, 3.0 Mtpa); Nucor updates (Apple Grove $2.7B -> ~$4.0B)
+    slide: Economics
+  - claim: Smelter capex ~$4B (Century/EGA Inola)
+    provenance: published
+    conf: H
+    source: Canary Media / Oklahoma Energy Today 2026
+    slide: Economics
+
+  # -- Profit per year row --
+  - claim: SUPERMILL ~$208M/yr plant EBITDA (65% of $320M projected)
+    provenance: derived (internal inputs)
+    conf: M
+    source: arithmetic on deck-canonical figures; projection, not actuals
+    slide: Economics
+  - claim: Minimill ~$0.6-1.2B/yr EBITDA over the cycle (SDI $197/t 2024 to $411/t 2021, x 3M t)
+    provenance: derived
+    conf: M
+    source: SDI company-wide per-ton EBITDA published [H/M] applied to a single 3 Mtpa plant
+    note: Company-wide margin used as plant proxy - flag if challenged.
+    slide: Economics
+  - claim: Smelter ~$340M/yr at record 2025 margins (~17%), cyclical
+    provenance: estimated
+    conf: M for the record-year figure, L as a through-cycle expectation
+    source: 750K t x ~$2,700/t = ~$2.0B revenue x ~17% (Century FY2025 - net sales $2.5B, adj EBITDA $425M)
+    url: https://centuryaluminum.com/investors/press-releases/press-release-details/2026/Century-Aluminum-Company-Reports-Fourth-Quarter-2025-Results/default.aspx
+    note: 2025 was tariff-supported; smelter margins swing to near-zero in troughs [M].
+    slide: Economics
+
+  # -- Return on investment row --
+  - claim: SUPERMILL 175-200% ROE with ~75% project debt; capex ~1.4x annual EBITDA
+    provenance: internal / derived
+    conf: M (model)
+    source: deck-canonical ROE; $300M / $208M = 1.44x
+    slide: Economics
+  - claim: Minimill capex 1.5-7.6x annual EBITDA across the cycle
+    provenance: derived
+    conf: M
+    source: mills comparison.csv (2021 vs 2024 SDI endpoints)
+    slide: Economics
+  - claim: Smelter capex ~13x annual EBITDA at 2025 margins
+    provenance: derived
+    conf: M
+    source: $4B / ~$340M (above)
     slide: Economics
