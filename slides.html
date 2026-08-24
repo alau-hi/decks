@@ -205,8 +205,8 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 /* s7 team, s8 investors — team ported from the intro deck */
 .team{display:grid;grid-template-columns:repeat(5,1fr);gap:1.6rem 1.5rem;margin-top:1.8rem}
 .person{position:relative;cursor:default;display:flex;flex-direction:column;height:100%}
-.person .pic{width:6rem;height:6rem;border-radius:50%;object-fit:cover;object-position:top center;margin-bottom:.9rem;border:2px solid var(--line);transition:filter .3s,border-color .3s}
-.person:hover .pic{filter:brightness(1.08);border-color:var(--wood)}
+.person .pic{width:6rem;height:6rem;object-fit:cover;margin-bottom:.9rem;transition:filter .3s}
+.person:hover .pic{filter:brightness(1.08)}
 .person .nm{font-family:'Fraunces';font-size:1.25rem;min-height:1.2em}
 .person .ro{font-size:clamp(11px,.72rem,.88rem);letter-spacing:.07em;text-transform:uppercase;color:var(--wood-bright);margin:.18rem 0 .45rem;min-height:2em}
 .person .bi{font-size:.84rem;line-height:1.55;color:var(--cream-dim)}
@@ -224,7 +224,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .adv-head{font-size:.95rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);margin:2.6rem 0 1.4rem;border-top:1px solid var(--line);padding-top:1.6rem}
 .adv{display:grid;grid-template-columns:repeat(5,1fr);gap:1.3rem}
 .advc{display:flex;gap:.7rem;align-items:center;position:relative;cursor:default}
-.advc>img{width:4.25rem;height:4.25rem;border-radius:50%;object-fit:cover;flex-shrink:0;transition:transform .3s}
+.advc>img{width:4.25rem;height:4.25rem;object-fit:cover;flex-shrink:0;transition:transform .3s}
 .advc:hover>img{transform:scale(1.06)}
 .advc .nm{font-family:'Fraunces';font-size:1.08rem;line-height:1.1}
 .advc .ro{font-size:clamp(11px,.74rem,.9rem);color:var(--wood-bright);margin-top:.18rem;line-height:1.3}
@@ -245,7 +245,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .invword small{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:#75654e;margin-top:.2rem}
 .invgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2.6rem;margin-top:.2rem}
 .invc{display:grid;grid-template-columns:3.6rem 1fr;gap:.9rem;align-items:start}
-.invc img{width:3.6rem;height:3.6rem;border-radius:50%;object-fit:cover;border:2px solid rgba(226,184,119,.5)}
+.invc img{width:3.6rem;height:3.6rem;object-fit:cover}
 .invc img.cut{background:radial-gradient(120% 135% at 50% 28%,#8a6a40,#574022 55%,#3a2914)}
 .invc .mono{width:3.6rem;height:3.6rem;border-radius:50%;border:2px solid rgba(226,184,119,.5);display:flex;align-items:center;justify-content:center;font-family:'Fraunces';font-size:1.2rem;color:var(--wood-bright);background:rgba(255,255,255,.04)}
 .invc h4{font-family:'Fraunces';font-size:.98rem;font-weight:500}
@@ -775,9 +775,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <div class="mtitem"><h3>Fed by what America already has</h3><ul class="li">
         <li>Feedstock for a SUPERMILL in <b>48 states</b></li>
         <li><b>Excess capacity</b> in existing sawmills</li>
-        <li>An ore body: one hole, one place, <b>~29 years</b> to production</li>
+        <li>A mine takes <b>at least a decade</b> to develop</li>
       </ul></div>
-      <div class="mtitem"><h3>Its output enables faster construction</h3><ul class="li">
+      <div class="mtitem"><h3>SUPERWOOD enables faster construction</h3><ul class="li">
         <li>Builds like timber &mdash; <b>prefabricated to precision</b></li>
         <li><b>6x lighter</b> than steel &mdash; smaller cranes, crews, foundations</li>
         <li><b>20&ndash;30% faster</b> schedules than steel and concrete</li>
@@ -961,27 +961,27 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <h2 class="rv">Building the team <em>to scale</em></h2>
     <div class="team rv">
       <div class="person" tabindex="0">
-        <img loading="eager" decoding="sync" class="pic" src="assets/team-alex7-c.jpg" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-Founder</div>
+        <img loading="eager" decoding="sync" class="pic" src="assets/team-alex7-c.webp" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-Founder</div>
         <div class="bi">Technology entrepreneur and investor. 20+ years in real estate development and operations. Successful IP strategist. BS Cognitive Science and Physics, Dartmouth.</div><div class="hint">Hover for full bio</div>
         <div class="bio-pop"><b>Alex Lau — CEO / Co-Founder</b><ul><li>Technology entrepreneur and investor who began his career in Silicon Valley in artificial intelligence and human-interface design.</li><li>Involved in five successful manufacturing scale-ups around the world.</li><li>20+ years in real estate development and operations, leading groundbreaking development and redevelopment projects in California and Canada.</li><li>Built world-class teams and is a successful IP strategist across multiple firms.</li><li>BS Cognitive Science and Physics, Dartmouth.</li></ul></div>
       </div>
       <div class="person" tabindex="0">
-        <img loading="eager" decoding="sync" class="pic" src="assets/team-jonathan-c.jpg" alt="Jonathan Strimling"><div class="nm">Jonathan Strimling</div><div class="ro">Chief Operating Officer</div>
+        <img loading="eager" decoding="sync" class="pic" src="assets/team-jonathan-c.webp" alt="Jonathan Strimling"><div class="nm">Jonathan Strimling</div><div class="ro">Chief Operating Officer</div>
         <div class="bi">3&times; CEO; co-founded and led an Inc. 5000 "fastest-growing manufacturer" and took a SaaS company to the NASDAQ. MS Manufacturing Management, MIT Sloan.</div><div class="hint">Hover for full bio</div>
         <div class="bio-pop"><b>Jonathan Strimling — Chief Operating Officer</b><ul><li>3&times; CEO. Co-founded and led the building-materials company named America's fastest-growing manufacturer by Inc. 5000.</li><li>Over 25 years of leadership and entrepreneurship, including CEO of a biomaterials manufacturing company and a SaaS company he took to the NASDAQ.</li><li>Manufacturing turnaround expert at American Industrial Partners.</li><li>MS Manufacturing Management, MIT Sloan.</li></ul></div>
       </div>
       <div class="person" tabindex="0">
-        <img loading="eager" decoding="sync" class="pic" src="assets/team-jack2-c.jpg" alt="Jack Winterowd"><div class="nm">Jack Winterowd</div><div class="ro">VP Materials Engineering</div>
+        <img loading="eager" decoding="sync" class="pic" src="assets/team-jack2-c.webp" alt="Jack Winterowd"><div class="nm">Jack Winterowd</div><div class="ro">VP Materials Engineering</div>
         <div class="bi">Head of Weyerhaeuser's chemistry platform and lead developer on almost every major product launched there over the last 25 years. 51 issued patents, 60+ pending.</div><div class="hint">Hover for full bio</div>
         <div class="bio-pop"><b>Jack Winterowd — VP Materials Engineering</b><ul><li>One of the world's foremost experts on the behavior of wood.</li><li>As head of Weyerhaeuser's chemistry platform, he was lead developer on almost every major product the company launched over the last 25 years.</li><li>51 issued patents in the US and Canada, with an additional 60 pending.</li></ul></div>
       </div>
       <div class="person" tabindex="0">
-        <img loading="eager" decoding="sync" class="pic" src="assets/team-jiaqi-c.jpg" alt="Jiaqi Dai"><div class="nm">Jiaqi Dai</div><div class="ro">Chief Science Officer / Co-Founder</div>
+        <img loading="eager" decoding="sync" class="pic" src="assets/team-jiaqi-c.webp" alt="Jiaqi Dai"><div class="nm">Jiaqi Dai</div><div class="ro">Chief Science Officer / Co-Founder</div>
         <div class="bi">Key co-inventor on the core patents. H-index of 96; top 2% of scientists worldwide. PhD in Materials Science &amp; Engineering, University of Maryland.</div><div class="hint">Hover for full bio</div>
         <div class="bio-pop"><b>Jiaqi Dai — Chief Science Officer / Co-Founder</b><ul><li>Key co-inventor on the core patents, both at the University of Maryland and since.</li><li>Drives the innovations that lower cost and continually improve SUPERWOOD's performance and functionality.</li><li>H-index of 96, ranked in the top 2% of scientists worldwide — and an award-winning artist.</li><li>PhD in Materials Science &amp; Engineering from the University of Maryland.</li></ul></div>
       </div>
       <div class="person" tabindex="0">
-        <img loading="eager" decoding="sync" class="pic" src="assets/team-shaun-c.jpg" alt="Shaun Klopfenstein"><div class="nm">Shaun Klopfenstein</div><div class="ro">Head of AI</div>
+        <img loading="eager" decoding="sync" class="pic" src="assets/team-shaun-c.webp" alt="Shaun Klopfenstein"><div class="nm">Shaun Klopfenstein</div><div class="ro">Head of AI</div>
         <div class="bi">Serial tech entrepreneur and investor. Co-founder/CTO of Marketo, the marketing-automation SaaS unicorn, helping bring it onto NASDAQ. BS Computer Information Science, U of Oregon.</div><div class="hint">Hover for full bio</div>
         <div class="bio-pop"><b>Shaun Klopfenstein — Head of AI</b><ul><li>Serial technology entrepreneur and investor.</li><li>Co-founder and former CTO of Marketo, the marketing-automation SaaS unicorn, where he helped bring the company onto the NASDAQ.</li><li>BS Computer Information Science, University of Oregon.</li></ul></div>
       </div>
@@ -989,23 +989,23 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <div class="adv-head rv">World-Class Advisors <span style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — hover for detail</span></div>
     <div class="adv rv">
       <div class="advc" tabindex="0">
-        <img loading="eager" decoding="sync" src="assets/adv-davies-c.jpg" alt="Don Davies"><div><div class="nm">Don Davies</div><div class="ro">Structural Engineering</div></div>
+        <img loading="eager" decoding="sync" src="assets/adv-davies-c.webp" alt="Don Davies"><div><div class="nm">Don Davies</div><div class="ro">Structural Engineering</div></div>
         <div class="bio-pop"><b>Don Davies — Structural Engineering</b><ul><li>Former President of Magnusson Klemencic Associates, America's most highly-awarded structural-engineering firm, and engineer of record for the headquarters of several tech giants, and tall buildings around the world.</li><li>Authored 15+ publications on tall-building systems, structural innovation and embodied-carbon optimization.</li><li>Co-founder of the Carbon Leadership Forum and Building Transparency, and part of the team that created the EC3 embodied-carbon tool.</li><li>Advisor to the US Special Presidential Envoy on Climate.</li></ul></div>
       </div>
       <div class="advc" tabindex="0">
-        <img loading="eager" decoding="sync" src="assets/adv-hawken-c.jpg" alt="Paul Hawken"><div><div class="nm">Paul Hawken</div><div class="ro">Ecology, Business &amp; Design</div></div>
+        <img loading="eager" decoding="sync" src="assets/adv-hawken-c.webp" alt="Paul Hawken"><div><div class="nm">Paul Hawken</div><div class="ro">Ecology, Business &amp; Design</div></div>
         <div class="bio-pop"><b>Paul Hawken — Ecology, Business &amp; Design</b><ul><li>Environmentalist, entrepreneur and bestselling author of nine books, including <em>Drawdown</em> and <em>Regeneration</em>.</li><li>Consults with governments around the world and advises many of the most prominent multinational corporations.</li><li>Author of <em>Drawdown</em>, <em>Carbon</em>, <em>Natural Capitalism</em> and <em>The Ecology of Commerce</em>.</li></ul></div>
       </div>
       <div class="advc" tabindex="0">
-        <img loading="eager" decoding="sync" src="assets/adv-zsmith-c.jpg" alt="Z Smith"><div><div class="nm">Z Smith</div><div class="ro">High-Performance Buildings</div></div>
+        <img loading="eager" decoding="sync" src="assets/adv-zsmith-c.webp" alt="Z Smith"><div><div class="nm">Z Smith</div><div class="ro">High-Performance Buildings</div></div>
         <div class="bio-pop"><b>Z Smith — High-Performance Buildings</b><ul><li>Principal and Director of Sustainability &amp; Performance at Eskew Dumez Ripple, AIA Firm of the Year in 2014.</li><li>Award-winning architect and Americas representative for the UN's Architects' Union.</li><li>Former CTO of Xerox.</li><li>Sc.B. Physics, MIT; PhD Electrical Engineering &amp; Computer Science, Princeton; M.Arch, UC Berkeley.</li></ul></div>
       </div>
       <div class="advc" tabindex="0">
-        <img loading="eager" decoding="sync" src="assets/adv-organschi-c.jpg" alt="Alan Organschi"><div><div class="nm">Alan Organschi</div><div class="ro">Architecture &amp; Urban Design</div></div>
+        <img loading="eager" decoding="sync" src="assets/adv-organschi-c.webp" alt="Alan Organschi"><div><div class="nm">Alan Organschi</div><div class="ro">Architecture &amp; Urban Design</div></div>
         <div class="bio-pop"><b>Alan Organschi — Architecture &amp; Urban Design</b><ul><li>Principal and partner at Gray Organschi Architecture, winner of multiple AIA awards, and Principal at JIG Design Build.</li><li>Professor at the Yale School of Architecture and Director of the Yale Building Lab.</li><li>Founded the Timber City Initiative and wrote the seminal paper "Buildings as a Global Carbon Sink." Recipient of the Arts and Letters Award in Architecture, 2012.</li></ul></div>
       </div>
       <div class="advc" tabindex="0">
-        <img loading="eager" decoding="sync" src="assets/adv-bradshaw-c.jpg" alt="Allan Bradshaw"><div><div class="nm">Allan Bradshaw</div><div class="ro">Manufacturing &amp; Wood Industry</div></div>
+        <img loading="eager" decoding="sync" src="assets/adv-bradshaw-c.webp" alt="Allan Bradshaw"><div><div class="nm">Allan Bradshaw</div><div class="ro">Manufacturing &amp; Wood Industry</div></div>
         <div class="bio-pop"><b>Allan Bradshaw — Manufacturing &amp; Wood Industry</b><ul><li>A 30-year career at Weyerhaeuser culminating as VP of Capital Projects, where he led a $1.5B fleet overhaul.</li><li>Ran technology development and scaling operations from R&amp;D to mass-market sales, led manufacturing for TrusJoist (its fastest-growing product), and ran operations for the entire East Coast.</li><li>Deep relationships throughout the wood-processing industry.</li></ul></div>
       </div>
     </div>
@@ -1032,14 +1032,14 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     </div>
     <div class="adv-head rv" style="margin-top:1.8rem;padding-top:1.4rem">Select Individual Investors</div>
     <div class="invgrid rv">
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-rockwell-new.jpg" alt="John Rockwell"><div><h4>John Rockwell</h4><p>CEO of four companies, all with successful exits. Founder and Managing Director of Element Partners, an $800M venture capital and PE firm, and Managing Director of Advent's Silicon Valley office.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-mcglashan-new.jpg" alt="Bill McGlashan"><div><h4>Bill McGlashan</h4><p>Former co-founder, managing partner of TPG Growth and TPG Rise, leading investments into Uber and AirBnB, and board member of Fender, Creative Artists Agency, and Common Sense Media.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-koerner-new.jpg" alt="Jacqueline Koerner"><div><h4>Jacqueline Koerner</h4><p>Founder, Co-Chair of Ecotrust Canada. Vice-Chair, CIFAR. International development and microfinance consultant. Background in sustainable forestry and anthropology.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-jacobs-gc.jpg" alt="Scott Jacobs"><div><h4>Scott Jacobs</h4><p>Co-founder of McKinsey's Cleantech practice. Co-founder and former CEO of Generate Capital, one of the largest project-finance firms in the climate sector. MBA Harvard, Baker Scholar.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-bosa-new.jpg" alt="Colin Bosa"><div><h4>Colin Bosa</h4><p>Co-founder of Axiom, one of the top general contractors in BC. CEO, Bosa Properties, one of the top high-rise developers in BC.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-sant-new.jpg" alt="Roger Sant"><div><h4>Roger Sant</h4><p>Co-Founder, former CEO, and Chairman Emeritus of AES Corporation, growing it to one of the largest independent power producers in the world. Former Chair, World Wildlife Fund.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-stotmeister-new.jpg" alt="Jochen Stotmeister"><div><h4>Jochen Stotmeister</h4><p>Chairman of Sto Corporation, one of the largest premium cladding solutions companies in the world.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-sansone-new.jpg" alt="Nick Sansone"><div><h4>Nick Sansone</h4><p>CEO of Sansone Group, the #5-ranked commercial real estate developer in the U.S. and one of the largest data center developers.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-rockwell-new.webp" alt="John Rockwell"><div><h4>John Rockwell</h4><p>CEO of four companies, all with successful exits. Founder and Managing Director of Element Partners, an $800M venture capital and PE firm, and Managing Director of Advent's Silicon Valley office.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-mcglashan-new.webp" alt="Bill McGlashan"><div><h4>Bill McGlashan</h4><p>Former co-founder, managing partner of TPG Growth and TPG Rise, leading investments into Uber and AirBnB, and board member of Fender, Creative Artists Agency, and Common Sense Media.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-koerner-new.webp" alt="Jacqueline Koerner"><div><h4>Jacqueline Koerner</h4><p>Founder, Co-Chair of Ecotrust Canada. Vice-Chair, CIFAR. International development and microfinance consultant. Background in sustainable forestry and anthropology.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-jacobs-gc.webp" alt="Scott Jacobs"><div><h4>Scott Jacobs</h4><p>Co-founder of McKinsey's Cleantech practice. Co-founder and former CEO of Generate Capital, one of the largest project-finance firms in the climate sector. MBA Harvard, Baker Scholar.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-bosa-new.webp" alt="Colin Bosa"><div><h4>Colin Bosa</h4><p>Co-founder of Axiom, one of the top general contractors in BC. CEO, Bosa Properties, one of the top high-rise developers in BC.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-sant-new.webp" alt="Roger Sant"><div><h4>Roger Sant</h4><p>Co-Founder, former CEO, and Chairman Emeritus of AES Corporation, growing it to one of the largest independent power producers in the world. Former Chair, World Wildlife Fund.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-stotmeister-new.webp" alt="Jochen Stotmeister"><div><h4>Jochen Stotmeister</h4><p>Chairman of Sto Corporation, one of the largest premium cladding solutions companies in the world.</p></div></div>
+      <div class="invc"><img loading="lazy" src="assets/inv2/inv-sansone-new.webp" alt="Nick Sansone"><div><h4>Nick Sansone</h4><p>CEO of Sansone Group, the #5-ranked commercial real estate developer in the U.S. and one of the largest data center developers.</p></div></div>
     </div>
   </div>
 </section>
