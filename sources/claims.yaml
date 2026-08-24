@@ -205,3 +205,11 @@ claims:
     source: project descriptions (Frontier Map, Discovery Alert, OK Dept of Commerce, 2026); EGA/GAC Guinea operations [H]
     slide: Old Mills
     note: The "vertically integrated, an ocean away" line is rhetorical framing of this sourced supply chain (Alex, 2026-08-23).
+
+  - claim: US smelters closed/curtailed on power prices - Century Hawesville KY idled Jul 2022 over "soaring energy prices" (described by Century as largest producer of high-purity primary aluminum in North America); Ravenswood WV closed 2015 (energy costs); Mt. Holly SC cut to half capacity 2015 (power pricing)
+    provenance: published
+    conf: H
+    source: Century Aluminum history (Wikipedia summary of company/press reports); Mining.com column "Power trumps tariffs as another US aluminum smelter shuts" (2026)
+    url: https://www.mining.com/web/column-power-trumps-tariffs-as-another-us-aluminum-smelter-shuts/
+    slide: Old Mills
+    note: '"Those prices aren''t coming down" is Alex''s framing [asserted-internal, M], directionally supported by data-center-driven grid strain coverage.'
