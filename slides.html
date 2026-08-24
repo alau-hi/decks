@@ -58,8 +58,8 @@ nav.dots button:hover{color:var(--cream);opacity:1}
 nav.dots button.active{color:var(--gold);opacity:1;font-weight:600;background:rgba(226,184,119,.12)}
 nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%;transform:translateY(-50%);width:4px;height:4px;border-radius:50%;background:var(--gold)}
 :focus-visible{outline:2px solid var(--wood-bright);outline-offset:3px;border-radius:3px}
-/* zoom-proof circular clipping: Chrome can mis-clip border-radius on imgs under ancestor zoom */
-.person .pic,.advc>img,.invc img,.phase img,.step .inset,.step img.mol,.adv img{clip-path:circle(50%)}
+/* circular clipping via border-radius only: clip-path circle(50%) mis-anchors under
+   fractional ancestor zoom in current Chrome (the inverse of the old bug it was added for) */
 .scrollcue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:5;font-size:clamp(10px,.64rem,.8rem);letter-spacing:.25em;text-transform:uppercase;color:var(--cream-dim);display:flex;flex-direction:column;align-items:center;gap:8px}
 .scrollcue::after{content:"";width:1px;height:2rem;background:linear-gradient(var(--wood-bright),transparent);animation:drop 1.8s infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
