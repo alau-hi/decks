@@ -225,3 +225,17 @@ claims:
     source: closure record (Hawesville/Ravenswood/Mt. Holly, all power-cost-driven [H]) + Aluminum Association PowerUp framing; causal phrasing per Alex 2026-08-23
     slide: Old Mills
     note: Replaces the earlier "decades between builds" framing, which implied building is inherently slow - Alex flagged that the drought was competitiveness-driven, not capability-driven.
+
+  - claim: Aluminum is on the federal Critical Minerals List (60 minerals, final 2025 list; listed since 2022)
+    provenance: published
+    conf: H
+    source: Federal Register, "Final 2025 List of Critical Minerals" (Nov 7, 2025)
+    url: https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals
+    slide: The Gap
+
+  - claim: A SUPERMILL's site asks are light - <4 MW grid draw at standard industrial service (no transmission interconnection queue), process heat self-fueled by wood residues, no smelter-class emissions to permit
+    provenance: internal / derived
+    conf: M
+    source: <4 MW per Alex (consistent with FEL2 mass & energy balance, Rev F 2026-08-19 - electric ~900-930 kWh/t, boiler self-fueled, gas make-up ~0); permitting-gates-timelines framing per Alex 2026-08-23
+    slide: Fast x Fast
+    note: '"No smelter-class emissions" is comparative, not absolute - the residue boiler still needs a state air permit (likely minor source). Interconnection queues for GW-class loads running years is widely reported [M]; do not print a specific queue duration without a source.'
