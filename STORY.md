@@ -82,6 +82,16 @@ comparison.csv` (minimill), Century/EGA Inola + Century FY2025 (smelter), intern
 Do NOT print a specific SUPERMILL MW figure — TEM-vs-FEL2 energy reconciliation is
 open (see claims register); "MW-class" holds under either basis.
 
+
+## Naming rule (Alex-flagged, 2026-08-25)
+
+Numbered mills enter the deck at the Cost Roadmap (slide 7), where the One -> Two ->
+ChipMill axis explains itself. Before that, every slide speaks only of "the SUPERMILL"
+as a machine class - slide 4's stats are generic unit economics ($300M capex, 65%
+EBITDA, 175-200% ROE, >7,000 SUPERMILLS of demand), with no SuperMill One/Two names.
+SUPERMILL ONE is formally introduced on slide 8. Do not reintroduce numbered names
+upstream of slide 7.
+
 ## Rules
 
 Parent rules apply: titles are claims; no self-grading adjectives; analogies frame but
