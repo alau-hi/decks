@@ -1,14 +1,15 @@
 # The Super Mills America story
 
-What this deck argues, why, and how each slide earns its place. Written 2026-08-23 with
-Alex; derived from `../aaron-deck/` (same visual system) and `../investor-overview/`
-(claims discipline). Every number traces to the parent's
+What this deck argues, why, and how each slide earns its place.
+Written 2026-08-23 with Alex; derived from `../aaron-deck/` (same visual system) and `../investor-overview/`
+(claims discipline).
+Every number traces to the parent's
 `../investor-overview/sources/claims.yaml` or to this repo's `sources/claims.yaml`
 (the new America-gap claims). The deck must read with no presenter.
 
 ## The thesis
 
-**America is short the materials to build its future — and Super Mills are the fastest
+**America is short the materials to build its future — and Super Mills are the fastest, cheapest
 way to make more, at home.**
 
 Where aaron-deck's subject is *the machine as unit of investment*, this deck's subject

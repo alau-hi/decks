@@ -54,3 +54,14 @@ claims:
     provenance: inherited
     source: ../../investor-overview/sources/claims.yaml
     slide: The Gap
+
+  - claim: Hybrid SUPERWOOD-glulam beams (SUPERWOOD outer laminations, ~10% of section) increase bending stiffness ~75% and bending strength ~100%
+    provenance: inherited
+    source: ../../investor-overview/slides.html Hybrid Beams appendix / parent claims register
+    slide: Demand (path-to-structural strip)
+
+  - claim: Structural application engineering underway with Fast + Epp and Don Davies
+    provenance: asserted-internal
+    source: Alex Lau, 2026-08-23
+    slide: Demand (path-to-structural strip)
+    note: Davies is a deck advisor (fmr. President, Magnusson Klemencic). Confirm Fast + Epp engagement is public/citable before wide distribution.
