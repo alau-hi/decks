@@ -25,6 +25,7 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
 section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;padding:6vh max(6vw,9.5rem) 6vh 6vw;overflow:hidden}
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
 h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01em;line-height:1.08}
+h1,h2{text-wrap:balance}
 h2{font-size:clamp(1.5rem,3.2vw,2.5rem);font-weight:340;max-width:26ch}
 h2 em{font-style:italic;color:var(--gold)}
 .kicker{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.9rem}
@@ -365,7 +366,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .props .ic svg{width:1.45rem;height:1.45rem;display:block}
 .props h3{font-family:'Inter';font-weight:700;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.25rem}
 .props p{font-size:.8rem;line-height:1.45;color:var(--cream-dim)}
-.tunable{margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--line);font-style:italic;font-size:.7rem;line-height:1.5;color:var(--muted)}
+.tunable{margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--line);font-style:italic;font-size:.66rem;line-height:1.5;color:var(--muted)}
 .superword-vert{font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:.22em;font-size:clamp(1.7rem,3.2vw,2.6rem);color:var(--cream);margin-bottom:1.2rem}
 
 /* s12 tech */
@@ -692,7 +693,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="bg"></div>
   <div class="scrim"></div>
   <div class="wrap">
-    <h1 class="rv">SUPERMILLS &mdash; <em>fast, modular manufacturing for America&rsquo;s material future.</em></h1>
+    <h1 class="rv">SUPERMILLS &mdash; <em>fast, modular manufacturing for America&rsquo;s material future</em></h1>
     <div class="covline rv">SUPER MILLS AMERICA <b>August 2026</b></div>
     <div class="rv keyhint">Arrow keys to navigate &middot; type a slide number to jump</div>
   </div>
@@ -701,7 +702,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <section id="gap" class="dark" data-nav="The Gap">
   <div class="wrap">
-    <h2 class="rv" style="font-size:clamp(1.7rem,3.3vw,2.9rem);max-width:none">America is building again &mdash; and it is <span class="hl">short the materials to do it.</span></h2>
+    <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem);max-width:none">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
     <p class="lead rv" style="margin-top:1.4rem;max-width:64ch">Data centers, reshored factories, housing, the grid. The build-out is here, and the key structural materials it runs on are increasingly not made here:</p>
     <div class="machstats rv" style="margin-top:1.8rem">
       <div class="gr"><span>Finished steel imported</span><b>~1 ton in 5</b></div>
@@ -710,7 +711,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <div class="gr"><span>Steel share of a data center</span><b>~60%</b></div>
     </div>
     <p class="gnote rv" style="max-width:72ch">Data center operators are already flagging structural-steel shortages, and aluminum is on the federal Critical Minerals List. Two of the core materials America builds with are significantly imported, and tariffs cut imports years before new domestic capacity can replace them. The gap lands on price and lead times.</p>
-    <p class="rv" style="margin-top:1.4rem;font-size:.78rem;color:var(--muted)">Sources: <span class="sw-ref"><a href="https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">AISI (2026)</a><span class="sw-tip"><b>Steel Imports Down 12.6% in 2025</b><br>American Iron and Steel Institute &mdash; finished imports were 18% of apparent consumption in 2025, 23% in 2024.<br><a href="https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/" target="_blank" rel="noopener">Read the release &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.aluminum.org/PowerUp" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">Aluminum Association (2025)</a><span class="sw-tip"><b>Powering Up American Aluminum</b><br>~85% of US industry&rsquo;s aluminum needs met by imports; 4 primary smelters operating, down from 33.<br><a href="https://www.aluminum.org/PowerUp" target="_blank" rel="noopener">Read the roadmap &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">USGS (2025)</a><span class="sw-tip"><b>Final 2025 List of Critical Minerals</b><br>Aluminum is among the 60 minerals on the federal Critical Minerals List (Federal Register, Nov 2025; listed since 2022).<br><a href="https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals" target="_blank" rel="noopener">Read the listing &rarr;</a></span></span></p>
+    <p class="rv" style="margin-top:1.2rem;font-size:.78rem;color:var(--muted)">Sources: <span class="sw-ref"><a href="https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">AISI (2026)</a><span class="sw-tip"><b>Steel Imports Down 12.6% in 2025</b><br>American Iron and Steel Institute &mdash; finished imports were 18% of apparent consumption in 2025, 23% in 2024.<br><a href="https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/" target="_blank" rel="noopener">Read the release &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.aluminum.org/PowerUp" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">Aluminum Association (2025)</a><span class="sw-tip"><b>Powering Up American Aluminum</b><br>~85% of US industry&rsquo;s aluminum needs met by imports; 4 primary smelters operating, down from 33.<br><a href="https://www.aluminum.org/PowerUp" target="_blank" rel="noopener">Read the roadmap &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">USGS (2025)</a><span class="sw-tip"><b>Final 2025 List of Critical Minerals</b><br>Aluminum is among the 60 minerals on the federal Critical Minerals List (Federal Register, Nov 2025; listed since 2022).<br><a href="https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals" target="_blank" rel="noopener">Read the listing &rarr;</a></span></span></p>
   </div>
 </section>
 
@@ -759,7 +760,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <section id="fast" class="dark" data-nav="Fast &times; Fast">
   <div class="wrap">
-    <h2 class="rv" style="font-size:clamp(1.9rem,3.6vw,3.2rem)">Fast to build. <em>Fast to build with.</em></h2>
+    <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem)">Fast to build. <em>Fast to build with.</em></h2>
     <p class="lead rv" style="margin-top:1.2rem;max-width:60ch">Speed compounds at both ends of the machine. The mill goes up fast, and what it makes goes up fast.</p>
     <div class="mtgrid rv" style="grid-template-columns:1fr 1fr;gap:1rem 3rem;margin-top:1.2rem">
       <div>
@@ -770,7 +771,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <div class="mtitem"><h3>Its output enables faster construction</h3><p>SUPERWOOD builds like timber: prefabricated to precision, and <b style="color:var(--cream)">6x lighter than steel</b>, which means smaller cranes, smaller crews, and smaller foundations. Mass-timber projects run <b style="color:var(--cream)">20&ndash;30% faster schedules</b> than steel and concrete. And no waiting on an import order.</p></div>
       </div>
     </div>
-    <p class="rv" style="margin-top:1.4rem;font-size:.78rem;color:var(--muted)">Source: <span class="sw-ref"><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">ULI &amp; case studies</a><span class="sw-tip"><b>Faster Project Delivery Is a Hidden Feature of Mass Timber</b><br>Case-study reviews put mass-timber schedule savings at ~20&ndash;30% vs. concrete and steel.<br><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener">Read the article &rarr;</a></span></span></p>
+    <p class="rv" style="margin-top:1.2rem;font-size:.78rem;color:var(--muted)">Source: <span class="sw-ref"><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">ULI &amp; case studies</a><span class="sw-tip"><b>Faster Project Delivery Is a Hidden Feature of Mass Timber</b><br>Case-study reviews put mass-timber schedule savings at ~20&ndash;30% vs. concrete and steel.<br><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener">Read the article &rarr;</a></span></span></p>
   </div>
 </section>
 
@@ -800,7 +801,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <section id="s9" class="dark" data-nav="Cost Roadmap">
   <div class="wrap">
-    <h2 class="rv" style="max-width:none;font-size:clamp(1rem,1.95vw,1.6rem)">With a Cost Roadmap driving <em>below the cost of steel</em>, and beyond</h2>
+    <h2 class="rv" style="max-width:none;font-size:clamp(1.2rem,2.2vw,1.75rem)">With a Cost Roadmap driving <em>below the cost of steel</em>, and beyond</h2>
     <div class="ucchart rv">
       <svg viewBox="0 0 1000 345" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cost roadmap: SUPERWOOD price and manufacturing cost per cubic metre both fall from SuperMill One through SuperMill Two to ChipMill, crossing below the structural steel range; stainless steel sits above">
         <defs><linearGradient id="ssg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(170,175,184,.30)"/><stop offset="1" stop-color="rgba(170,175,184,.16)"/></linearGradient></defs>
@@ -834,7 +835,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <div class="rv"><div class="media-frame"><img loading="eager" src="assets/factory.jpg" alt="SuperMill One production floor, Frederick MD"></div>
       <p class="gnote" style="margin-top:.8rem">SuperMill One &mdash; Frederick, Maryland. The first SUPERMILL.</p></div>
     <div>
-      <h2 class="rv" style="font-size:clamp(1.6rem,3vw,2.6rem)">The first machine is already running &mdash; <em>and it is oversubscribed</em></h2>
+      <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem)">The first machine is already running &mdash; <em>and it is oversubscribed</em></h2>
       <div class="machstats rv" style="grid-template-columns:1fr 1fr;gap:.4rem 2.2rem;margin-top:1.8rem">
         <div class="gr"><span>Commercial shipments</span><b>since Dec &rsquo;25</b></div>
         <div class="gr"><span>Paid online deposits</span><b>800+</b></div>
@@ -848,7 +849,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <section id="s15" class="dark" data-nav="Demand">
   <div class="wrap">
-    <h2 class="rv" style="max-width:34ch">Demand today is premium, paid, and oversubscribed &mdash; <em>structural demand is being engineered</em></h2>
+    <h2 class="rv" style="max-width:34ch">Demand today is premium and paid &mdash; <em>structural demand is being engineered</em></h2>
     <div class="dstats" style="margin-top:1.4rem">
       <div class="dstat hot rv">
         <div class="n" data-count="15000" data-suffix="+">15,000+</div><h3>Inbound Inquiries</h3><div class="s">with virtually no marketing spend</div>
@@ -877,7 +878,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <section id="s10" class="dark" data-nav="Scaling">
   <div class="wrap">
-    <h2 class="rv" style="max-width:none;font-size:clamp(1.4rem,2.6vw,2.2rem)">Capital efficient financing model gets us to <em>$900M of free cash flow with less than $200M in corporate equity.</em></h2>
+    <h2 class="rv" style="max-width:none">Capital efficient financing model gets us to <em>$900M of free cash flow with less than $200M in corporate equity</em></h2>
     <div class="cesgrid">
       <div class="finpanel rv">
       <div class="fintitle">4 SuperMill model</div>
@@ -944,7 +945,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <section id="s7" class="dark" data-nav="Team">
   <div class="wrap">
-    <h2 class="rv">Top-tier commercial and scientific leadership.</h2>
+    <h2 class="rv">Top-tier commercial and scientific leadership</h2>
     <div class="team rv">
       <div class="person" tabindex="0">
         <img loading="eager" decoding="sync" class="pic" src="assets/team-alex7-c.jpg" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-Founder</div>
