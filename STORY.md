@@ -60,10 +60,14 @@ SUPERWOOD is "the material to build the future from — made in America."
   figure stays as is — "a matter of time" per Alex. Confirmed 2026-08-23.
 - Close: same $10M SAFE terms as aaron-deck. Default — flag if this audience differs.
 
-## Economics comparison table (Economics slide)
+## Materials manufacturing comparison (appendix, after Thank You)
 
-SUPERMILL vs steel minimill (EAF) vs aluminum smelter — time to build, power, volume
-output, cost to build, EBITDA margin, ROI. Data: `~/Git/mills/SUPERMILL economics/
+SUPERMILL vs steel minimill (EAF) vs aluminum smelter. Moved from the main deck to an
+appendix per Alex 2026-08-24. Rows: develop+build time (<3 yrs vs 10+ per Alex),
+power (minimill shown as ~300 MVA grid connection, not average draw), m³/yr volumes,
+$ capex, and — for apples-to-apples per Alex — a common unlevered basis: Annual EBITDA
+(basis labeled per cell: model vs realized) and EBITDA ÷ capex. Levered ROE appears
+only in the footnote, SUPERMILL-only. Data: `~/Git/mills/SUPERMILL economics/
 comparison.csv` (minimill), Century/EGA Inola + Century FY2025 (smelter), internal TEM
 (SUPERMILL). Claims registered in `sources/claims.yaml`.
 
