@@ -483,6 +483,13 @@ const LOG=[
   ['The chart draw now runs regardless of the OS Reduce Motion setting \u2014 a deliberate exception for gentle, informative motion; every other deck animation still honors the setting','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Portrait chart geometry',slides:[9],req:'Portrait vertical scaling didn\u2019t match the desktop chart \u2014 the SUPERWOOD line started far too high; it should begin much closer to steel even at SuperMill One.',items:[
   ['Portrait line re-plotted to the desktop chart\u2019s proportions: starts 70% of the way from stainless toward steel, crosses into the steel band at SuperMill Two, ends below it at ChipMill; steel band moved to the matching height','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Content',title:'Jiaqi bio',slides:[11],req:'Remove the top-prot\u00e9g\u00e9 reference from Jiaqi\u2019s bio; add award-winning artist instead.',items:[
+  ['Card now leads with key co-inventor on the core patents and adds Award-winning artist; popup already carried both','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'No pre-drawn line',slides:[9],req:'Make sure no line is visible before the draw animation starts.',items:[
+  ['Dash state now set via unitless SVG attributes \u2014 the one form every engine accepts; a stricter parser rejecting the old px values is what could reveal the line early',''],
+  ['Verified lifecycle: hidden before arrival, dashed-out through the 0.5s delay, tween 681\u21920, then solid','']]},
+ {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Chart replays cleanly',slides:[9],req:'On revisiting the slide the line was already there before the animation.',items:[
+  ['The chart now resets when the slide fully leaves view and redraws on return, matching every other reveal; a mid-draw exit cannot cancel a tween in flight','']]},
  {iso:'2026-08-16',date:'Aug 16',topic:'Analytics',title:'Postgres branch resync',slides:[],req:'Update the Postgres branch to the latest deck; carry the new screen-size tracking into the database.',items:[
   ['Two weeks of deck work merged into the Postgres branch (/intro URL, press page, device analytics)',''],
   ['Screen/viewport capture (scr) stored in its own database column; device & format cards read it from Postgres',''],
