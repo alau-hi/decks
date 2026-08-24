@@ -40,7 +40,7 @@ h2 em{font-style:italic;color:var(--gold)}
 img{max-width:100%}
 /* chrome */
 .brand{position:fixed;bottom:20px;right:2.125rem;z-index:90;height:17px;opacity:.85}.brand img{height:100%}
-.pageno{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:90;font-size:.62rem;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums;transition:opacity .4s}
+.pageno{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:90;font-size:.62rem;letter-spacing:.14em;color:var(--cream-dim);font-variant-numeric:tabular-nums;transition:opacity .4s;background:rgba(20,13,7,.6);padding:.3em .9em;border-radius:999px;backdrop-filter:blur(3px)}
 body.on-cover .pageno{opacity:0}
 .conf{position:fixed;bottom:20px;left:2.125rem;z-index:90;font-size:clamp(9px,.6rem,.74rem);letter-spacing:.3em;color:var(--muted);background:rgba(20,13,7,.72);padding:.3em .8em;border-radius:999px;backdrop-filter:blur(3px);text-transform:uppercase}
 body.on-cover .brand,body.on-cover .conf{opacity:0}
@@ -49,7 +49,7 @@ nav.dots{transition:opacity .35s ease}
 nav.dots{position:fixed;right:0;top:0;bottom:0;z-index:90;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;padding:0 14px 0 2.2rem;background:linear-gradient(270deg,rgba(24,15,8,.85),rgba(24,15,8,0));pointer-events:none}
 nav.dots button{pointer-events:auto}
 nav.dots button{border:none;background:transparent;cursor:pointer;padding:.14em .5em;border-radius:4px;font-family:'Inter';font-weight:500;font-size:.6rem;line-height:1.3;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);opacity:1;transition:color .25s,opacity .25s,background .25s;position:relative;white-space:nowrap}
-nav.dots button .pn{display:inline-block;margin-left:.55em;font-size:.85em;color:var(--muted);opacity:.9;font-variant-numeric:tabular-nums;letter-spacing:.05em}
+nav.dots button .pn{display:inline-block;margin-left:.55em;font-size:.95em;color:var(--muted);opacity:.9;font-variant-numeric:tabular-nums;letter-spacing:.05em}
 nav.dots button.active .pn{color:var(--gold)}
 nav.dots button.sub{display:none;font-size:.52rem;opacity:.55;padding-right:1.4em}
 body.in-apx nav.dots button.sub{display:block}
@@ -73,6 +73,8 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 #s1 .serif-em{font-style:italic;font-weight:500}
 .covline{font-family:'Inter';font-size:clamp(1.2rem,2.8vw,2.1rem);font-weight:600;letter-spacing:.04em;margin-top:1.8rem;color:var(--cream)}
 .covline b{display:block;color:var(--wood-bright);font-weight:700;margin-top:.15em}
+.keyhint{margin-top:1.6rem;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+@media (pointer:coarse){.keyhint{display:none}}
 
 /* s2 growth — exact teaser chart */
 .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center;width:100%}
@@ -593,9 +595,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 #s19 .left{display:flex;flex-direction:column;justify-content:center;padding:0 5vw}
 #s19 .left h2{font-size:clamp(2.4rem,5.4vw,4.4rem);font-weight:500}
 #s19 .contact{margin-top:2.2rem;display:flex;flex-direction:column;gap:1.1rem}
-#s19 .contact .who,#ask .askcta .who{display:block;font-family:'Inter';font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-#s19 .contact .mail,#ask .askcta .mail{display:inline-block;margin-top:.4rem;font-family:'Fraunces';font-weight:500;font-size:clamp(1rem,1.7vw,1.35rem);color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(226,184,119,.45);padding-bottom:.15rem;transition:color .25s,border-color .25s}
-#s19 .contact .mail:hover,#s19 .contact .mail:focus-visible,#ask .askcta .mail:hover,#ask .askcta .mail:focus-visible{color:var(--cream);border-color:var(--cream)}
+#s19 .contact .who,#s18 .who,#ask .askcta .who{display:block;font-family:'Inter';font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+#s19 .contact .mail,#s18 .mail,#ask .askcta .mail{display:inline-block;margin-top:.4rem;font-family:'Fraunces';font-weight:500;font-size:clamp(1rem,1.7vw,1.35rem);color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(226,184,119,.45);padding-bottom:.15rem;transition:color .25s,border-color .25s}
+#s19 .contact .mail:hover,#s19 .contact .mail:focus-visible,#s18 .mail:hover,#ask .askcta .mail:hover{color:var(--cream);border-color:var(--cream)}
 #s19 .right{background:url(assets/thankyou-deck.jpg) center/cover}
 
 @media (max-width:900px), (orientation:portrait){
@@ -664,6 +666,18 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .replrow{display:flex;align-items:center;gap:.8rem;margin-top:1.6rem}
 .replrow .fx{display:block;height:var(--fh);width:calc(var(--fh) * .8875);background:var(--wood-bright);-webkit-mask:url(assets/icon-factory-hf.png) center/contain no-repeat;mask:url(assets/icon-factory-hf.png) center/contain no-repeat}
 .replrow .macharrow{font-size:1.6rem}
+
+/* narrow screens: collapses for grids whose base rules are defined later in the sheet */
+@media (max-width:700px), (max-width:860px) and (orientation:portrait){
+  .machstats{grid-template-columns:1fr 1fr;gap:.4rem 1.4rem}
+  .gnet{grid-template-columns:1fr 1fr}
+  .gcard.wide{grid-column:1/3}
+  .gcard.wide .grows{grid-template-columns:1fr}
+  #fast .mtgrid{grid-template-columns:1fr!important}
+  #s15 .msrow{grid-template-columns:1fr!important;gap:1rem}
+  .askterms{grid-template-columns:1fr 1fr}
+  .gr b{white-space:normal}
+}
 </style>
 </head>
 <body class="on-cover">
@@ -680,6 +694,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="wrap">
     <h1 class="rv">SUPERMILLS &mdash; <em>fast, modular manufacturing for America&rsquo;s material future.</em></h1>
     <div class="covline rv">SUPER MILLS AMERICA <b>August 2026</b></div>
+    <div class="rv keyhint">Arrow keys to navigate &middot; type a slide number to jump</div>
   </div>
   <div class="scrollcue">Scroll</div>
 </section>
@@ -860,25 +875,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   </div>
 </section>
 
-<section id="econ" class="dark" data-nav="Economics">
-  <div class="wrap">
-    <h2 class="rv">Machine economics an <em>infrastructure investor recognizes</em></h2>
-    <div class="cmp-wrap rv"><table class="cmp">
-      <thead><tr><th></th><th class="hero">SUPERMILL</th><th>Steel minimill (EAF)</th><th>Aluminum smelter</th></tr></thead>
-      <tbody>
-        <tr><td>Time to build</td><td class="hero"><b>~2 years</b></td><td>2.5&ndash;3 yrs <small>&mdash; recent builds stretching to 6</small></td><td>~5 yrs <small>&mdash; first new US smelter in 45 years</small></td></tr>
-        <tr><td>Power required</td><td class="hero"><b>&lt;4 MW</b> <small>&mdash; process heat self-fueled by wood residues</small></td><td>~150 MW class <small>(350&ndash;500 kWh/t melt)</small></td><td><b>&gt;1 GW continuous</b> <small>&mdash; a city&rsquo;s worth</small></td></tr>
-        <tr><td>Volume output</td><td class="hero"><b>~24,000 m&sup3;/yr</b> <small>SUPERWOOD boards (36M sf)</small></td><td>~347,000 m&sup3;/yr <small>sheet steel (~3M t)</small></td><td>~278,000 m&sup3;/yr <small>primary aluminum (750K t)</small></td></tr>
-        <tr><td>Cost to build</td><td class="hero"><b>$300M</b></td><td>$1.9B <small>(SDI Sinton)</small> &ndash; $4.0B <small>(Nucor Apple Grove)</small></td><td>~$4B <small>(Century/EGA Inola)</small></td></tr>
-        <tr><td>Profit / yr</td><td class="hero"><b>~$208M</b> <small>plant EBITDA (65%)</small></td><td>~$0.6&ndash;1.2B <small>over the cycle (14&ndash;25%)</small></td><td>~$340M <small>at record 2025 margins (~17%) &mdash; cyclical</small></td></tr>
-        <tr><td>Return on investment</td><td class="hero"><b>175&ndash;200% ROE</b> <small>with ~75% project debt; capex &asymp; 1.4x annual EBITDA</small></td><td>capex &asymp; 1.5&ndash;7.6x annual EBITDA <small>across the cycle</small></td><td>capex &asymp; 13x annual EBITDA <small>at 2025 margins</small></td></tr>
-      </tbody>
-    </table></div>
-    <p class="lead rv" style="margin-top:1.6rem;font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.4vw,2rem);max-width:30ch;color:var(--cream)">Steel had the minimill. Wood has the <em style="color:var(--gold)">SUPERMILL.</em></p>
-    <p class="gnote rv" style="max-width:70ch;margin-top:.9rem">Each SUPERMILL is a compact, separately financeable unit with better unit economics than the incumbents it displaces. Built to be repeated, not admired. Minimill figures: published (SDI Sinton, Nucor Apple Grove, SDI results 2021&ndash;2026); smelter: Century / EGA Inola project and Century FY2025 results; SUPERMILL: internal TEM &mdash; revenue $360M capacity &middot; $320M projected. Volumes converted at 7.85 t/m&sup3; (steel), 2.70 t/m&sup3; (aluminum), 7.2&nbsp;mm average board thickness.</p>
-  </div>
-</section>
-
 <section id="s10" class="dark" data-nav="Scaling">
   <div class="wrap">
     <h2 class="rv" style="max-width:none;font-size:clamp(1.4rem,2.6vw,2.2rem)">Capital efficient financing model gets us to <em>$900M of free cash flow with less than $200M in corporate equity.</em></h2>
@@ -1014,7 +1010,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <polyline class="vline" points="110,394 290,376 470,362 650,254" fill="none" stroke="#cda165" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
         <line class="vdot d5" x1="650" y1="254" x2="830" y2="72" stroke="#cda165" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
         <g class="vdot d4"><line x1="650" y1="306" x2="650" y2="202" stroke="rgba(205,161,101,.7)" stroke-width="5" stroke-linecap="round"/><line x1="640" y1="306" x2="660" y2="306" stroke="rgba(205,161,101,.7)" stroke-width="2.5"/><line x1="640" y1="202" x2="660" y2="202" stroke="rgba(205,161,101,.7)" stroke-width="2.5"/></g>
-        <text class="vlab d1" x="110" y="342" text-anchor="middle" font-size="16" font-weight="700" fill="#f4ecdf" font-family="Fraunces,serif">$62M</text><text class="vlab d1" x="110" y="360" text-anchor="middle" font-size="11.5" fill="#cdbfa9" font-family="Inter,sans-serif">post-money</text><text class="vlab d1" x="110" y="374" text-anchor="middle" font-size="11.5" fill="#9d8d76" font-weight="400" font-family="Inter,sans-serif" letter-spacing="0">$26M Series A · 2025</text><circle class="vdot d1" cx="110" cy="394" r="7" fill="#f4ecdf" stroke="#8a4f23" stroke-width="3"/><text class="vlab d2" x="290" y="324" text-anchor="middle" font-size="16" font-weight="700" fill="#f4ecdf" font-family="Fraunces,serif">$129M</text><text class="vlab d2" x="290" y="342" text-anchor="middle" font-size="11.5" fill="#cdbfa9" font-family="Inter,sans-serif">post-money</text><text class="vlab d2" x="290" y="356" text-anchor="middle" font-size="11.5" fill="#9d8d76" font-weight="400" font-family="Inter,sans-serif" letter-spacing="0">$18M Series AA · 2026</text><circle class="vdot d2" cx="290" cy="376" r="7" fill="#f4ecdf" stroke="#8a4f23" stroke-width="3"/><text class="vlab d3" x="470" y="310" text-anchor="middle" font-size="16" font-weight="700" fill="#e2b877" font-family="Fraunces,serif">$170–200M</text><text class="vlab d3" x="470" y="328" text-anchor="middle" font-size="11.5" fill="#cdbfa9" font-family="Inter,sans-serif">valuation cap</text><text class="vlab d3" x="470" y="342" text-anchor="middle" font-size="11.5" fill="#e07b39" font-weight="700" font-family="Inter,sans-serif" letter-spacing=".18em">$10M SAFEs · NOW</text><circle class="vdot nowring d3" cx="470" cy="362" r="9" fill="none" stroke="#e2b877" stroke-width="2"/><circle class="vdot d3" cx="470" cy="362" r="9" fill="#e2b877" stroke="#8a4f23" stroke-width="3"/><text class="vlab d4" x="650" y="202" text-anchor="middle" font-size="16" font-weight="700" fill="#f4ecdf" font-family="Fraunces,serif">$400–800M</text><text class="vlab d4" x="650" y="220" text-anchor="middle" font-size="11.5" fill="#cdbfa9" font-family="Inter,sans-serif">target valuation range</text><text class="vlab d4" x="650" y="234" text-anchor="middle" font-size="11.5" fill="#9d8d76" font-weight="400" font-family="Inter,sans-serif" letter-spacing="0">$75–100M Series B · 2027</text><circle class="vdot d4" cx="650" cy="254" r="7" fill="#f4ecdf" stroke="#8a4f23" stroke-width="3"/>
+        <text class="vlab d1" x="110" y="342" text-anchor="middle" font-size="16" font-weight="700" fill="#f4ecdf" font-family="Fraunces,serif">$62M</text><text class="vlab d1" x="110" y="360" text-anchor="middle" font-size="11.5" fill="#cdbfa9" font-family="Inter,sans-serif">post-money</text><text class="vlab d1" x="110" y="374" text-anchor="middle" font-size="11.5" fill="#9d8d76" font-weight="400" font-family="Inter,sans-serif" letter-spacing="0">$26M Series A · 2025</text><circle class="vdot d1" cx="110" cy="394" r="7" fill="#f4ecdf" stroke="#8a4f23" stroke-width="3"/><text class="vlab d2" x="290" y="324" text-anchor="middle" font-size="16" font-weight="700" fill="#f4ecdf" font-family="Fraunces,serif">$129M</text><text class="vlab d2" x="290" y="342" text-anchor="middle" font-size="11.5" fill="#cdbfa9" font-family="Inter,sans-serif">post-money</text><text class="vlab d2" x="290" y="356" text-anchor="middle" font-size="11.5" fill="#9d8d76" font-weight="400" font-family="Inter,sans-serif" letter-spacing="0">$18M Series AA · 2026</text><circle class="vdot d2" cx="290" cy="376" r="7" fill="#f4ecdf" stroke="#8a4f23" stroke-width="3"/><text class="vlab d3" x="470" y="310" text-anchor="middle" font-size="16" font-weight="700" fill="#e2b877" font-family="Fraunces,serif">$170–200M</text><text class="vlab d3" x="470" y="328" text-anchor="middle" font-size="11.5" fill="#cdbfa9" font-family="Inter,sans-serif">valuation cap</text><text class="vlab d3" x="470" y="342" text-anchor="middle" font-size="11.5" fill="#e07b39" font-weight="700" font-family="Inter,sans-serif" letter-spacing=".18em">$10M SAFEs · NOW</text><circle class="vdot nowring d3" cx="470" cy="362" r="9" fill="none" stroke="#e2b877" stroke-width="2"/><circle class="vdot d3" cx="470" cy="362" r="9" fill="#e2b877" stroke="#8a4f23" stroke-width="3"/><text class="vlab d4" x="650" y="164" text-anchor="middle" font-size="16" font-weight="700" fill="#f4ecdf" font-family="Fraunces,serif">$400–800M</text><text class="vlab d4" x="650" y="182" text-anchor="middle" font-size="11.5" fill="#cdbfa9" font-family="Inter,sans-serif">target valuation range</text><text class="vlab d4" x="650" y="196" text-anchor="middle" font-size="11.5" fill="#9d8d76" font-weight="400" font-family="Inter,sans-serif" letter-spacing="0">$75–100M Series B · 2027</text><circle class="vdot d4" cx="650" cy="254" r="7" fill="#f4ecdf" stroke="#8a4f23" stroke-width="3"/>
         <text class="vlab d5" x="874" y="22" text-anchor="end" font-size="17" font-weight="700" fill="#f4ecdf" font-family="Fraunces,serif">Unicorn valuation</text><text class="vlab d5" x="830" y="42" text-anchor="middle" font-size="11.5" fill="#9d8d76" font-family="Inter,sans-serif">Target Series C or IPO</text><circle class="vdot d5" cx="830" cy="72" r="8" fill="none" stroke="#f4ecdf" stroke-width="2.5" stroke-dasharray="4 4"/>
         <line x1="70" y1="410" x2="870" y2="410" stroke="rgba(228,210,180,.25)"/>
         <text x="110" y="432" text-anchor="middle" font-size="12" fill="#9d8d76" font-family="Inter,sans-serif">2025</text>
@@ -1027,9 +1023,16 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <div class="msrow rv">
       <div class="ms past"><h3>Series A · 2025</h3><p>Secured $20M non-dilutive funding to build plant 1 · product development · lab to commercial scale (8&nbsp;ft boards)</p></div>
       <div class="ms past"><h3>Series AA · 2026</h3><p>Commissioned phase 1 · launched production &amp; sales · demonstrated overwhelming demand · strengthened team</p></div>
-      <div class="ms now"><h4>$10M SAFEs<span class="nowpill">Now</span></h4><p><b>Key milestones:</b> prove product-market fit, delight initial customers, seed demand for SuperMill Two · prove key manufacturing metrics</p></div>
+      <div class="ms now"><h3>$10M SAFEs<span class="nowpill">Now</span></h3><p><b>Key milestones:</b> prove product-market fit, delight initial customers, seed demand for SuperMill Two · prove key manufacturing metrics</p></div>
       <div class="ms"><h3>Series B · 2027</h3><p><b>Key milestones:</b> build SuperMill Two · prove broad market adoption and generate $200M+/yr gross margin</p></div>
     </div>
+    <div class="askterms rv" style="max-width:none">
+      <div><span>Amount</span><b>$10M</b></div>
+      <div><span>Instrument</span><b>SAFE</b></div>
+      <div><span>Valuation cap</span><b>$170&ndash;200M</b></div>
+      <div><span>Status</span><b>Open now</b></div>
+    </div>
+    <p class="rv" style="margin-top:1rem"><span class="who">Lex Harris &middot; Director, Capital Markets &amp; IR</span> <a class="mail" href="mailto:lex@inventwood.com?subject=InventWood%20%E2%80%94%20%2410M%20SAFE">lex@inventwood.com</a> <a class="mail" style="margin-left:1.6rem" href="mailto:lex@inventwood.com?subject=Request%3A%20financial%20model%20and%20data%20room">Request the financial model &amp; data room</a></p>
   </div>
 </section>
 
@@ -1037,6 +1040,25 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="thanks">
     <div class="left"><h2 class="rv">Thank you</h2><div class="contact rv"><div class="c"><span class="who">Alex Lau &middot; CEO / Co-founder</span><a class="mail" href="mailto:alex@inventwood.com">alex@inventwood.com</a></div><div class="c"><span class="who">Lex Harris &middot; Director, Capital Markets &amp; IR</span><a class="mail" href="mailto:lex@inventwood.com">lex@inventwood.com</a></div></div></div>
     <div class="right"></div>
+  </div>
+</section>
+
+<section id="econ" class="dark" data-nav="Appendix">
+  <div class="wrap">
+    <h2 class="rv" style="max-width:none">Appendix: <em>materials manufacturing comparison</em></h2>
+    <div class="cmp-wrap rv"><table class="cmp">
+      <thead><tr><th></th><th class="hero">SUPERMILL</th><th>Steel minimill (EAF)</th><th>Aluminum smelter</th></tr></thead>
+      <tbody>
+        <tr><td>Time to develop + build</td><td class="hero"><b>&lt;3 years</b> <small>&mdash; light site development + ~2-yr build</small></td><td><b>10+ years</b> <small>&mdash; site, permits, power, build (Apple Grove: 6 yrs announce-to-ship alone)</small></td><td><b>10+ years</b> <small>&mdash; first metal ~2030 at Inola; power deal still open</small></td></tr>
+        <tr><td>Power required</td><td class="hero"><b>&lt;4 MW</b> <small>&mdash; process heat self-fueled by wood residues</small></td><td><b>~300 MVA-class grid connection</b> <small>&mdash; one EAF draws 200&ndash;300 MVA, with severe flicker</small></td><td><b>&gt;1 GW continuous</b> <small>&mdash; a city&rsquo;s worth</small></td></tr>
+        <tr><td>Volume output</td><td class="hero"><b>~24,000 m&sup3;/yr</b> <small>SUPERWOOD boards (36M sf)</small></td><td>~347,000 m&sup3;/yr <small>sheet steel (~3M t)</small></td><td>~278,000 m&sup3;/yr <small>primary aluminum (750K t)</small></td></tr>
+        <tr><td>Cost to build</td><td class="hero"><b>$300M</b></td><td>$1.9B <small>(SDI Sinton)</small> &ndash; $4.0B <small>(Nucor Apple Grove)</small></td><td>~$4B <small>(Century/EGA Inola)</small></td></tr>
+        <tr><td>Annual EBITDA</td><td class="hero"><b>~$208M</b> <small>&mdash; engineering model, 65% of projected revenue</small></td><td>~$0.6&ndash;1.2B <small>&mdash; realized, over the cycle (SDI, 14&ndash;25%)</small></td><td>~$340M <small>&mdash; record 2025 (~17%); cyclical</small></td></tr>
+        <tr><td>EBITDA &divide; capex, unlevered</td><td class="hero"><b>~69%</b> <small>&mdash; model basis</small></td><td>~15&ndash;30% <small>&mdash; at today&rsquo;s ~$4B build cost</small></td><td>~9% <small>&mdash; record year; near zero in troughs</small></td></tr>
+      </tbody>
+    </table></div>
+    <p class="lead rv" style="margin-top:1.6rem;font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.4vw,2rem);max-width:30ch;color:var(--cream)">Steel had the minimill. Wood has the <em style="color:var(--gold)">SUPERMILL.</em></p>
+    <p class="gnote rv" style="max-width:74ch;margin-top:.9rem">The last two rows are a common, unlevered basis: annual EBITDA &divide; capital cost. Bases still differ &mdash; the SUPERMILL column is an engineering model; incumbent columns are realized results. Levered returns are not comparable across columns: with ~75% project debt, SUPERMILL plant-level ROE is 175&ndash;200% (shown here only). Minimill figures: published (SDI Sinton, Nucor Apple Grove, SDI results 2021&ndash;2026); smelter: Century / EGA Inola project and Century FY2025 results; SUPERMILL: internal TEM &mdash; revenue $360M capacity &middot; $320M projected. Volumes converted at 7.85 t/m&sup3; (steel), 2.70 t/m&sup3; (aluminum), 7.2&nbsp;mm average board thickness.</p>
   </div>
 </section>
 
@@ -1102,12 +1124,6 @@ const io=new IntersectionObserver(entries=>{entries.forEach(e=>{
   else if(!e.isIntersecting){e.target.classList.remove('in');}
 });},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
 secs.forEach(s=>io.observe(s));
-document.querySelectorAll('.apxtoc a').forEach(a=>{
-  const t=document.querySelector(a.getAttribute('href'));
-  const i=secs.indexOf(t);
-  if(i>=0){a.querySelector('small').textContent=String(i+1).padStart(2,'0');
-    a.addEventListener('click',e=>{e.preventDefault();jumpTo(i);});}
-});
 /* number keys: punch in a slide number (1–19) to jump; two digits commit instantly */
 let numBuf='',numT;
 function commitNum(){const n=parseInt(numBuf,10);numBuf='';clearTimeout(numT);
@@ -1124,36 +1140,6 @@ window.addEventListener('keydown',e=>{
     document.getElementById('pageno').textContent='go to '+numBuf+' …';
     if(numBuf.length>=2)commitNum();else numT=setTimeout(commitNum,650);}
 });
-/* slide-3 sources popup */
-if(document.getElementById('srcpop')){
-const srcpop=document.getElementById('srcpop');
-document.getElementById('srcopenbtn').addEventListener('click',()=>srcpop.classList.add('show'));
-document.getElementById('srcclosebtn').addEventListener('click',()=>srcpop.classList.remove('show'));
-{const box=srcpop.querySelector('.srcbox');let t=null;
- box.addEventListener('mouseleave',()=>{t=setTimeout(()=>srcpop.classList.remove('show'),450);});
- box.addEventListener('mouseenter',()=>clearTimeout(t));}
-srcpop.addEventListener('click',e=>{if(e.target===srcpop)srcpop.classList.remove('show');});
-window.addEventListener('keydown',e=>{
-  if(!srcpop.classList.contains('show'))return;
-  if(e.key==='Escape')srcpop.classList.remove('show');
-  e.stopImmediatePropagation();
-},true);
-/* timeline dots: 14 year ticks, 2016..2029; "now" = 2026 (index 10) */
-}
-if(document.getElementById('tlaxis')){
-const ax=document.getElementById('tlaxis');
-const Y0=2016,Y1=2030,N=Y1-Y0+1;
-for(let i=0;i<N;i++){const d=document.createElement('span');d.className='dot';d.style.left=(i/(N-1)*100)+'%';ax.appendChild(d);}
-{ /* today, to the day: position between year ticks by how much of the year has elapsed */
-  const t=new Date(), y=t.getFullYear();
-  const frac=(t-new Date(y,0,1))/(new Date(y+1,0,1)-new Date(y,0,1));
-  const idx=Math.max(0,Math.min(N-1,(y-Y0)+frac)), L=(idx/(N-1)*100)+'%';
-  const d=document.createElement('span');d.className='dot now';d.style.left=L;ax.appendChild(d);
-  const r=document.createElement('span');r.className='nowring';r.style.left=L;ax.appendChild(r);
-  const row=document.querySelector('.tlyears');
-  [...row.querySelectorAll('span')].forEach((sp,i)=>{sp.style.left=(i/(N-1)*100)+'%';});
-}
-}
 /* one-slide-per-page: zoom each slide's content to FILL the available page —
    shrink when it overflows, grow when it's sparse (upscale capped at 1.75x).
    zoom affects layout, so re-measure and converge over a few passes. */
@@ -1181,6 +1167,20 @@ function fitSlides(only){
       const over=(wr.bottom-sr.top)-(s.clientHeight-parseFloat(cs.paddingBottom));
       if(over<=0.5)break;
       z*=Math.max(.75,1-(over/Math.max(1,wr.height))-0.004);
+      w.style.zoom=z;
+    }
+    /* width cap: the loops above fit height only; wide grids can still push past the
+       viewport and get amputated by section overflow:hidden on narrow screens */
+    const rightmost=()=>{let r=-1e9;w.querySelectorAll('*').forEach(el=>{const b=el.getBoundingClientRect();
+      if(b.width&&b.right>r)r=b.right;});return r===-1e9?w.getBoundingClientRect().right:r;};
+    for(let k=0;k<8;k++){
+      const sr=s.getBoundingClientRect();
+      /* compare against the real viewport: a zoomed wrap inflates the section's own
+         layout width, so s.clientWidth reports no overflow even while content is clipped */
+      const vw=document.documentElement.clientWidth;
+      const over=(rightmost()-sr.left)-(vw-parseFloat(cs.paddingRight));
+      if(over<=0.5)break;
+      z*=Math.max(.6,1-(over/Math.max(1,vw))-0.004);
       w.style.zoom=z;
     }
   });

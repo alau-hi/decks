@@ -246,3 +246,27 @@ claims:
     source: mills comparison.csv - integrated steel ~10 yr full complex (Formosa 4.5 yr to first iron) [published]; US mine ~29 yr (S&P Global) [H]; Apple Grove 6 yr for a minimill sprint [H]; smelter development incl. site/power/permitting exceeds its ~5-yr construction window
     slide: Old Mills
     note: Title-level claim; the card's bullets carry the causes (power, logistics, cyclicality), each separately sourced above.
+
+  # Appendix table rework (2026-08-24, per Alex)
+  - claim: SUPERMILL develop + build <3 years
+    provenance: asserted-internal
+    conf: M
+    source: Alex Lau 2026-08-24; consistent with light site asks (<4 MW, minor-source permitting) + ~2-yr build class
+    slide: Appendix comparison
+  - claim: Steel minimill and aluminum smelter develop + build 10+ years
+    provenance: asserted-internal / derived
+    conf: M
+    source: Alex Lau 2026-08-24; anchors - integrated steel ~10 yr full complex [published], Apple Grove 6 yr announce-to-ship (development precedes announcement) [H], Inola first metal ~2030 with power deal open [H]
+    slide: Appendix comparison
+  - claim: Minimill needs a ~300 MVA-class grid connection; one EAF draws 200-300 MVA with severe flicker
+    provenance: published/derived
+    conf: M
+    source: Primetals / MHI Spectra / trade engineering sources - EAF up to 200-300 MVA per furnace, flicker/harmonics drive interconnection design ("the worst machine you can connect to a grid")
+    slide: Appendix comparison
+    note: Replaces the earlier ~150 MW average-draw figure with connection capacity, per Alex.
+  - claim: Unlevered cash yield (annual EBITDA / capex) - SUPERMILL ~69% (model), minimill ~15-30% at ~$4B build cost, smelter ~9% record year
+    provenance: derived
+    conf: M (SUPERMILL model basis), M (minimill), M/L (smelter through-cycle)
+    source: arithmetic on registered figures - 208/300; 600-1200/4000; 340/4000
+    slide: Appendix comparison
+    note: Apples-to-apples design per Alex 2026-08-24 - common unlevered metric replaces mixed ROE/payback rows; ROE shown for SUPERMILL only in the footnote; bases (model vs realized) labeled per cell.
