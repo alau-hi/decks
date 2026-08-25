@@ -657,7 +657,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .cmp .cw{display:flex;gap:.8rem;align-items:baseline}
 .cmp .val{flex:none;min-width:9.5ch;text-align:right}
 .cmp .cmt{text-align:left}
-@media (max-width:700px){.cmp-wrap{overflow-x:auto;padding-right:2.6rem}.cmp{min-width:38rem}.cmp .cw{flex-direction:column;gap:.15rem}.cmp .val{text-align:left;min-width:0}}
+@media (max-width:700px){.ucchart{overflow-x:auto;padding-right:2.6rem}.ucchart svg{min-width:54rem}.ucnote{display:none}.ucnote-m{display:block!important}.cmp-wrap{overflow-x:auto;padding-right:2.6rem}.cmp{min-width:38rem}.cmp .cw{flex-direction:column;gap:.15rem}.cmp .val{text-align:left;min-width:0}}
 
 /* mach */
 .machrow{display:flex;align-items:stretch;gap:1.2rem;margin-top:2rem}
@@ -861,6 +861,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     </div>
     <div class="millcols rv"><div class="ml">Output</div><div class="mv">1M sf / yr</div><div class="mv">36M sf / yr</div><div class="mv">180M sf / yr</div><div class="mv">~400M sf / yr</div><div class="ml">Capex</div><div class="mv">$48M</div><div class="mv">$300M</div><div class="mv">&mdash;</div><div class="mv">&mdash;</div><div class="ml">EBITDA</div><div class="mv">20%</div><div class="mv">65%</div><div class="mv">&mdash;</div><div class="mv">&mdash;</div><div class="ml">Price</div><div class="mv">$22,425 / m³</div><div class="mv">$8,222 / m³</div><div class="mv">$4,485 / m³</div><div class="mv">$3,275 / m³</div><div class="ml">Cost</div><div class="mv">$14,472 / m³</div><div class="mv">$3,244 / m³</div><div class="mv">$1,841 / m³</div><div class="mv">$1,310 / m³</div></div>
     <p class="gnote rv" style="margin-top:.9rem">And every square foot of it is <b style="color:var(--cream)">made in America, from American lumber.</b></p>
+    <p class="ucnote-m" style="display:none;font-size:.7rem;font-style:italic;color:var(--muted);margin-top:.8rem">Like-for-like $/m&sup3; comparison; scroll the chart sideways. Full methodology in the desktop view.</p>
     <p class="ucnote rv">CHIPMILL is the future SUPERMILL generation fed by low-cost wood chips and waste. Like-for-like comparison. SUPERWOOD prices are structural-board assumptions ($15.00, $5.50 and $3.00 / sf; ChipMill continuous at an assumed 60% gross margin, $2.19 / sf) converted at 7.2&nbsp;mm average board thickness; costs are COGS per m³ from the structural TEM (Jan 2026) cost roadmap, built from identified engineering savings at each scale &mdash; not from Wright&rsquo;s Law or an assumed learning rate. Steel and stainless are market prices converted at 7.85 and 8.0&nbsp;t/m³ (August 2026).</p>
   </div>
 </section>
@@ -884,19 +885,19 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="wrap">
     <h2 class="rv" style="max-width:34ch">Customer demand has proved <em>exceptional</em></h2>
     <div class="dstats" style="margin-top:1.4rem">
-      <div class="dstat hot rv">
+      <div class="dstat rv">
         <h3>Inbound Inquiries</h3><div class="n" data-count="15000" data-suffix="+">15,000+</div><div class="s">with virtually no marketing spend</div>
         <p>Including individual homeowners, builders, national distributors, global manufacturers, top architecture firms, leading engineering firms, data center hyperscalers and other commercial enterprises across industries and geographies.</p>
       </div>
-      <div class="dstat hot rv">
+      <div class="dstat rv">
         <h3>Paid Online Deposits</h3><div class="n" data-count="700" data-suffix="+">700+</div><div class="s">reserving a place in line for product</div>
         <p>All inbound. ~50% from homeowners, representing $14M+ of demand, and ~50% from commercial enterprises, representing $125M+. <i>Note that most commercial accounts we are in discussions with are not making an advance deposit.</i></p>
       </div>
-      <div class="dstat rv">
+      <div class="dstat hot rv">
         <h3>SUPERMILL ONE Pipeline</h3><div class="n" data-count="140" data-prefix="$" data-suffix="M+">$140M+</div><div class="s">vs. production capacity of $20M</div>
         <p>Spanning a variety of customer segments including builders, contractors, distributors, manufacturers, commercial and residential pre-orders, and one-off projects.</p>
       </div>
-      <div class="dstat rv">
+      <div class="dstat hot rv">
         <h3>SUPERMILL TWO Pipeline</h3><div class="n" data-count="2.0" data-dec="1" data-prefix="$" data-suffix="B+">$2.0B+</div><div class="s">vs. $360M capacity &middot; $320M projected</div>
         <p>Representing larger opportunities not serviceable from SuperMill One, spanning similar customer segments and an even wider variety of applications including aerospace, military, musical instruments, marine and more.</p>
       </div>
@@ -960,13 +961,13 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 <section id="gnet" class="dark" data-nav="The Fleet">
   <div class="wrap">
     <h2 class="rv" style="max-width:32ch">Enabling a <em>fleet of SUPERMILLS</em>, across America and the globe</h2>
+    <p class="lead rv" style="margin-top:.8rem;font-family:'Fraunces',serif;font-size:clamp(1.05rem,1.8vw,1.5rem);color:var(--cream)">Global demand potential: <em style="color:var(--gold)">&gt;7,000 SUPERMILL TWO equivalents</em></p>
     <div class="gnet">
       <div class="gcard  rv"><h3>SUPERMILL ONE</h3><div class="gsub">Now shipping</div><div class="gicons" style="--fh:2.3rem" aria-hidden="true"><i class="fx"></i></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>1M</b></div><div class="gr"><span>Capex</span><b>$48M</b></div><div class="gr"><span>Revenue</span><b>$20M / yr</b></div><div class="gr"><span>EBITDA</span><b>20%</b></div><div class="gr full"><span>Primary product</span><b>SUPERWOOD Boards</b></div></div><p class="gnote">Commercialize process. Prove techno-economics. Seed demand for future SUPERMILLS.</p></div>
       <div class="gcard  rv"><h3>SUPERMILL TWO</h3><div class="gsub">In development</div><div class="gicons" style="--fh:3.0rem" aria-hidden="true"><i class="fx"></i></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>36M</b></div><div class="gr"><span>Capex</span><b>$300M</b></div><div class="gr"><span>Revenue</span><b>$360M cap. &middot; $320M proj.</b></div><div class="gr"><span>EBITDA</span><b>65%</b></div><div class="gr full"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer</b></div></div><p class="gnote">Same batch process as SUPERMILL ONE &mdash; at increased scale.</p></div>
       <div class="gcard  rv"><h3>NATIONAL FLEET OF SUPERMILLS</h3><div class="gsub">Using SUPERMILL TWO as a template</div><div class="gicons varied dense2" aria-hidden="true"><i class="fx" style="--fh:3.20rem"></i><i class="fx" style="--fh:2.60rem"></i><i class="fx" style="--fh:3.40rem"></i><i class="fx" style="--fh:2.40rem"></i><i class="fx" style="--fh:2.90rem"></i><i class="fx" style="--fh:2.50rem"></i><i class="fx" style="--fh:3.30rem"></i><i class="fx" style="--fh:2.80rem"></i><i class="fx" style="--fh:2.30rem"></i><i class="fx" style="--fh:3.00rem"></i></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>10B+</b></div><div class="gr"><span>ROE per SUPERMILL</span><b>175&ndash;200%</b></div><div class="gr"><span>Plant template</span><b>SUPERMILL TWO</b></div><div class="gr full"><span>Feedstock</span><b>Sufficient for a SUPERMILL in 48 states</b></div></div><p class="gnote">Modular construction and manufacturing make additional SUPERMILLS easy to site and fast to build.</p></div>
-      <div class="gcard sm rv"><h3>INTERNATIONAL</h3><div class="gsub">~10x the national fleet</div><div class="gicons orange varied dense" aria-hidden="true"><i class="fx" style="--fh:4.09rem"></i><i class="fx" style="--fh:4.12rem"></i><i class="fx" style="--fh:4.04rem"></i><i class="fx" style="--fh:2.83rem"></i><i class="fx" style="--fh:3.59rem"></i><i class="fx" style="--fh:3.34rem"></i><i class="fx" style="--fh:3.50rem"></i><i class="fx" style="--fh:2.90rem"></i><i class="fx" style="--fh:2.99rem"></i><i class="fx" style="--fh:3.37rem"></i><i class="fx" style="--fh:3.03rem"></i><i class="fx" style="--fh:3.38rem"></i><i class="fx" style="--fh:2.74rem"></i><i class="fx" style="--fh:2.83rem"></i><i class="fx" style="--fh:3.77rem"></i><i class="fx" style="--fh:3.33rem"></i><i class="fx" style="--fh:3.47rem"></i><i class="fx" style="--fh:3.80rem"></i><i class="fx" style="--fh:3.24rem"></i><i class="fx" style="--fh:2.79rem"></i><i class="fx" style="--fh:3.87rem"></i><i class="fx" style="--fh:3.58rem"></i></div><div class="grows"><div class="gr"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer, SUPER OSB</b></div></div><p class="gnote">Typically a JV with a local partner: InventWood earns a technology &amp; setup fee, an operating fee, and a brand / marketing fee.</p></div>
-      <div class="gcard sm wide rv"><h3>CHIPMILL FLEET</h3><div class="gsub">National and international</div><div class="gicons green varied dense" aria-hidden="true"><i class="fx" style="--fh:3.81rem"></i><i class="fx" style="--fh:4.01rem"></i><i class="fx" style="--fh:4.66rem"></i><i class="fx" style="--fh:3.84rem"></i><i class="fx" style="--fh:3.91rem"></i><i class="fx" style="--fh:4.06rem"></i><i class="fx" style="--fh:3.33rem"></i><i class="fx" style="--fh:3.92rem"></i><i class="fx" style="--fh:4.13rem"></i><i class="fx" style="--fh:4.43rem"></i><i class="fx" style="--fh:3.17rem"></i><i class="fx" style="--fh:3.55rem"></i><i class="fx" style="--fh:3.16rem"></i><i class="fx" style="--fh:4.46rem"></i><i class="fx" style="--fh:4.25rem"></i><i class="fx" style="--fh:3.08rem"></i><i class="fx" style="--fh:4.77rem"></i><i class="fx" style="--fh:4.74rem"></i><i class="fx" style="--fh:4.18rem"></i><i class="fx" style="--fh:4.11rem"></i></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>180M per plant</b></div><div class="gr"><span>Product</span><b>SUPER OSB</b></div></div><p class="gnote">Further scale &amp; profitability. Continuous manufacturing on low-cost wood chips &amp; wood waste. International plants as JVs with local partners &mdash; technology &amp; setup, operating, and brand / marketing fees.</p></div>
-      <div class="rv" style="grid-column:1/-1;text-align:center;border-top:1px solid var(--line);margin-top:.4rem;padding-top:1rem;font-family:'Fraunces',serif;font-size:clamp(1.15rem,2vw,1.7rem);line-height:1.35;color:var(--cream)">Global demand potential: <em style="color:var(--gold)">&gt;7,000 SUPERMILL TWO equivalents</em></div>
+      <div class="gcard sm rv"><h3>INTERNATIONAL</h3><div class="gsub">~10x the national fleet</div><div class="gicons orange varied dense" aria-hidden="true"><i class="fx" style="--fh:4.09rem"></i><i class="fx" style="--fh:4.12rem"></i><i class="fx" style="--fh:4.04rem"></i><i class="fx" style="--fh:2.83rem"></i><i class="fx" style="--fh:3.59rem"></i><i class="fx" style="--fh:3.34rem"></i><i class="fx" style="--fh:3.50rem"></i><i class="fx" style="--fh:2.90rem"></i><i class="fx" style="--fh:2.99rem"></i><i class="fx" style="--fh:3.37rem"></i><i class="fx" style="--fh:3.03rem"></i><i class="fx" style="--fh:3.38rem"></i></div><div class="grows"><div class="gr"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer, SUPER OSB</b></div></div><p class="gnote">Typically a JV with a local partner: InventWood earns a technology &amp; setup fee, an operating fee, and a brand / marketing fee.</p></div>
+      <div class="gcard sm wide rv"><h3>CHIPMILL FLEET</h3><div class="gsub">National and international</div><div class="gicons green varied dense" aria-hidden="true"><i class="fx" style="--fh:3.81rem"></i><i class="fx" style="--fh:4.01rem"></i><i class="fx" style="--fh:4.66rem"></i><i class="fx" style="--fh:3.84rem"></i><i class="fx" style="--fh:3.91rem"></i><i class="fx" style="--fh:4.06rem"></i><i class="fx" style="--fh:3.33rem"></i><i class="fx" style="--fh:3.92rem"></i><i class="fx" style="--fh:4.13rem"></i><i class="fx" style="--fh:4.43rem"></i><i class="fx" style="--fh:3.17rem"></i><i class="fx" style="--fh:3.55rem"></i></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>180M per plant</b></div><div class="gr"><span>Product</span><b>SUPER OSB</b></div></div><p class="gnote">Further scale &amp; profitability. Continuous manufacturing on low-cost wood chips &amp; wood waste. International plants as JVs with local partners &mdash; technology &amp; setup, operating, and brand / marketing fees.</p></div>
     </div>
 
   </div>
@@ -1108,6 +1109,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <div class="mtitem" style="margin-top:0"><h3>What this round de-risks</h3><p>Product-market fit with delighted initial customers, key manufacturing metrics at SuperMill One, and seeded demand for SuperMill Two.</p></div>
       <div class="mtitem" style="margin-top:0"><h3>What it sets up</h3><p>A $75&ndash;100M Series B in 2027 at a $400&ndash;800M target valuation &mdash; building SuperMill Two toward $200M+/yr gross margin.</p></div>
     </div>
+    <p class="gnote rv" style="margin-top:1.1rem;max-width:62rem">SUPERMILLS are protected by a robust and growing IP portfolio covering the core material, key processes, and products &mdash; detailed in the data room.</p>
     <div class="askcta rv">
       <a class="askbtn" href="mailto:alex@inventwood.com?subject=Request%3A%20financial%20model%20and%20data%20room">Request the financial model &amp; data room</a>
     </div>
@@ -1246,7 +1248,7 @@ function fitSlides(only){
        viewport and get amputated by section overflow:hidden on narrow screens */
     const rightmost=()=>{let r=-1e9;w.querySelectorAll('*').forEach(el=>{
       /* children of a horizontal scroller overflow by design; measure the scroller's own box instead */
-      if(el.closest('.cmp-wrap')&&!el.classList.contains('cmp-wrap'))return;
+      if(el.closest('.cmp-wrap,.ucchart')&&!(el.classList.contains('cmp-wrap')||el.classList.contains('ucchart')))return;
       const b=el.getBoundingClientRect();
       if(b.width&&b.right>r)r=b.right;});return r===-1e9?w.getBoundingClientRect().right:r;};
     for(let k=0;k<8;k++){
