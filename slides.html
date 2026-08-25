@@ -338,7 +338,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .gr span{color:var(--muted);flex:none;white-space:nowrap}
 .gr b{color:var(--cream);font-weight:700;text-align:right}
 .gr.full{flex-direction:column;align-items:flex-start;justify-content:center;gap:.1rem;min-height:2.9rem}
-.gr.full b{text-align:left;white-space:nowrap;font-size:.62rem}
+.gr.full b{text-align:left;white-space:normal;font-size:.62rem}
 .gnote{font-size:.66rem;line-height:1.5;color:var(--cream-dim);font-style:italic;margin-top:.95rem}
 .askterms{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.6rem;max-width:52rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.1rem 0}
 .askterms span{display:block;font-family:'Inter';font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -441,8 +441,8 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .dstats{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:1.8rem}
 .dstat{border-radius:12px;padding:1.2rem 1.4rem;border:1px solid rgba(184,125,68,.4)}
 .dstat.hot{background:linear-gradient(180deg,#f2e9da,#e5d6bd);border:none}
-.dstat .n{font-family:'Fraunces';font-size:clamp(1.9rem,3.4vw,2.7rem);color:#c56c32;line-height:1}
-.dstat h3{font-family:'Inter';font-weight:700;font-size:.95rem;margin:.45rem 0 .15rem}
+.dstat .n{font-family:'Fraunces';font-size:clamp(1.5rem,2.6vw,2.1rem);color:#c56c32;line-height:1;margin-top:.1rem}
+.dstat h3{font-family:'Inter';font-weight:700;font-size:.95rem;margin:0 0 .15rem}
 .dstat.hot h3{color:#241708}
 .dstat .s{font-size:.74rem;color:var(--wood-deep)}
 .dstat:not(.hot) .s{color:var(--muted)}
@@ -616,6 +616,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   .appgrid.spread figure{width:auto}
   .dccards{grid-template-columns:1fr}
   .tl{grid-template-columns:1fr 1fr;row-gap:1.4rem}
+  .tl>*:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;max-width:22rem}
   .sw5-proof{grid-template-columns:1fr 1fr;gap:.8rem}
   .sw5{min-height:0}
   .tlbands{display:none}
@@ -655,7 +656,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .cmp .cw{display:flex;gap:.8rem;align-items:baseline}
 .cmp .val{flex:none;min-width:9.5ch;text-align:right}
 .cmp .cmt{text-align:left}
-@media (max-width:700px){.cmp-wrap{overflow-x:auto}.cmp{min-width:38rem}}
+@media (max-width:700px){.cmp-wrap{overflow-x:auto;padding-right:2.6rem}.cmp{min-width:38rem}.cmp .cw{flex-direction:column;gap:.15rem}.cmp .val{text-align:left;min-width:0}}
 
 /* mach */
 .machrow{display:flex;align-items:stretch;gap:1.2rem;margin-top:2rem}
@@ -758,7 +759,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <li><b>Oklahoma&rsquo;s AG has sued to block it</b> &mdash; 3,400-signature petition; unanimous Muscogee Nation resolution</li>
       </ul></div>
     </div>
-    <p class="gnote rv" style="max-width:70ch;margin-top:1.8rem">Closing America&rsquo;s materials gap needs a different kind of mill: <b style="color:var(--cream)">small enough to finance, fast enough to replicate, fed by something America already has everywhere.</b></p>
+    <p class="rv" style="margin-top:2rem;font-family:'Fraunces',serif;font-size:clamp(1.05rem,1.9vw,1.5rem);line-height:1.45;color:var(--cream-dim);max-width:56ch">Closing America&rsquo;s materials gap needs a different kind of mill: <b style="font-weight:500;color:var(--gold)">small enough to finance, fast enough to replicate, fed by something America already has everywhere.</b></p>
     <p class="rv" style="margin-top:1.2rem;font-size:.78rem;color:var(--muted)">Sources: <span class="sw-ref"><a href="https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">S&amp;P Global (2024)</a><span class="sw-tip"><b>US mine development times</b><br>US mines average ~29 years from discovery to production &mdash; second-longest in the world, after Zambia.<br><a href="https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds" target="_blank" rel="noopener">Read the release &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">US DOE (2025)</a><span class="sw-tip"><b>First American Aluminum Smelter Since 1980</b><br>US Department of Energy &mdash; $500M award to the Century Aluminum / EGA smelter in Inola, OK.<br><a href="https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980" target="_blank" rel="noopener">Read the announcement &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">Canary Media (2026)</a><span class="sw-tip"><b>America&rsquo;s big new aluminum smelter is still waiting on a power deal</b><br>~$4B JV; &gt;1 GW continuous power requirement; bauxite imported via the port of New Orleans.<br><a href="https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power" target="_blank" rel="noopener">Read the article &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.mining.com/web/column-power-trumps-tariffs-as-another-us-aluminum-smelter-shuts/" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">Mining.com (2026)</a><span class="sw-tip"><b>Power trumps tariffs as another US aluminum smelter shuts</b><br>US smelters keep closing on power prices even with tariff support &mdash; Hawesville idled 2022 (&ldquo;soaring energy prices&rdquo;), Ravenswood closed 2015, Mt.&nbsp;Holly halved 2015.<br><a href="https://www.mining.com/web/column-power-trumps-tariffs-as-another-us-aluminum-smelter-shuts/" target="_blank" rel="noopener">Read the column &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://oklahoma.gov/oag/news/newsroom/2026/june/drummond-files-action-to-block-inola-aluminum-smelter.html" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">Oklahoma AG (2026)</a><span class="sw-tip"><b>Drummond files action to block Inola aluminum smelter</b><br>Petition in Rogers County District Court, June 2026: &ldquo;A primary aluminum smelter does not belong in a community&rsquo;s backyard.&rdquo; 3,400+ petition signatures; unanimous Muscogee Nation resolution; permitted &gt;1 t/day hydrogen fluoride.<br><a href="https://oklahoma.gov/oag/news/newsroom/2026/june/drummond-files-action-to-block-inola-aluminum-smelter.html" target="_blank" rel="noopener">Read the filing announcement &rarr;</a></span></span></p>
   </div>
 </section>
@@ -786,8 +787,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 <section id="fast" class="dark" data-nav="Fast &times; Fast">
   <div class="wrap">
     <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem)">Fast to build. <em>Fast to build with.</em></h2>
+    <p class="lead rv" style="margin-top:1rem;max-width:70ch">Site development is what stalls big plants. A SUPERMILL barely registers.</p>
     <div class="mtgrid rv" style="grid-template-columns:1fr 1fr 1fr;gap:1rem 2.4rem;margin-top:1.2rem">
-      <div class="mtitem"><h3>Fast to permit and build</h3><p style="margin-bottom:.6rem">Site development is what stalls big plants. A SUPERMILL barely registers:</p><ul class="li">
+      <div class="mtitem"><h3>Fast to permit and build</h3><ul class="li">
         <li><b>&lt;4 MW</b> &mdash; standard industrial service, no interconnection queue</li>
         <li><b>No smelter-class emissions</b> &mdash; wood residues fuel the process heat</li>
         <li><b>~18 mo</b> long-lead equipment &middot; <b>6&ndash;12 mo</b> build</li>
@@ -870,7 +872,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem)">SUPERMILL ONE is already running &mdash; <em>and it is oversubscribed</em></h2>
       <div class="machstats rv" style="grid-template-columns:1fr 1fr;gap:.4rem 2.2rem;margin-top:1.8rem">
         <div class="gr"><span>Commercial shipments</span><b>since Dec &rsquo;25</b></div>
-        <div class="gr"><span>Demand vs capacity</span><b>7x oversubscribed</b></div>
+        <div class="gr"><span>Demand vs capacity</span><b>7x</b></div>
       </div>
       <p class="gnote rv" style="margin-top:1.4rem;max-width:44ch">The machine works, the process is proven, and the premium product sells today at premium prices, while the cost roadmap does its work.</p>
     </div>
@@ -882,19 +884,19 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <h2 class="rv" style="max-width:34ch">Customer demand has proved <em>exceptional</em></h2>
     <div class="dstats" style="margin-top:1.4rem">
       <div class="dstat hot rv">
-        <div class="n" data-count="15000" data-suffix="+">15,000+</div><h3>Inbound Inquiries</h3><div class="s">with virtually no marketing spend</div>
+        <h3>Inbound Inquiries</h3><div class="n" data-count="15000" data-suffix="+">15,000+</div><div class="s">with virtually no marketing spend</div>
         <p>Including individual homeowners, builders, national distributors, global manufacturers, top architecture firms, leading engineering firms, data center hyperscalers and other commercial enterprises across industries and geographies.</p>
       </div>
       <div class="dstat hot rv">
-        <div class="n" data-count="700" data-suffix="+">700+</div><h3>Paid Online Deposits</h3><div class="s">reserving a place in line for product</div>
+        <h3>Paid Online Deposits</h3><div class="n" data-count="700" data-suffix="+">700+</div><div class="s">reserving a place in line for product</div>
         <p>All inbound. ~50% from homeowners, representing $14M+ of demand, and ~50% from commercial enterprises, representing $125M+. <i>Note that most commercial accounts we are in discussions with are not making an advance deposit.</i></p>
       </div>
       <div class="dstat rv">
-        <div class="n" data-count="140" data-prefix="$" data-suffix="M+">$140M+</div><h3>SUPERMILL ONE Pipeline</h3><div class="s">vs. production capacity of $20M</div>
+        <h3>SUPERMILL ONE Pipeline</h3><div class="n" data-count="140" data-prefix="$" data-suffix="M+">$140M+</div><div class="s">vs. production capacity of $20M</div>
         <p>Spanning a variety of customer segments including builders, contractors, distributors, manufacturers, commercial and residential pre-orders, and one-off projects.</p>
       </div>
       <div class="dstat rv">
-        <div class="n" data-count="2.0" data-dec="1" data-prefix="$" data-suffix="B+">$2.0B+</div><h3>SUPERMILL TWO Pipeline</h3><div class="s">vs. $360M capacity &middot; $320M projected</div>
+        <h3>SUPERMILL TWO Pipeline</h3><div class="n" data-count="2.0" data-dec="1" data-prefix="$" data-suffix="B+">$2.0B+</div><div class="s">vs. $360M capacity &middot; $320M projected</div>
         <p>Representing larger opportunities not serviceable from SuperMill One, spanning similar customer segments and an even wider variety of applications including aerospace, military, musical instruments, marine and more.</p>
       </div>
     </div>
@@ -948,7 +950,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <div class="cstat"><div class="n">$2.4B</div><div class="l">Revenues</div></div>
         <div class="cstat"><div class="n">$900M</div><div class="l">Free cash flow</div></div>
         <div class="cstat"><div class="n">$1.1B</div><div class="l">EBITDA</div></div>
-        <div class="cstat"><div class="n">45&ndash;50%</div><div class="l">EBITDA margins (pricing declines at later plants)</div></div>
+        <div class="cstat"><div class="n">45&ndash;50%</div><div class="l">Consolidated EBITDA margins</div></div>
       </div>
     </div>
   </div>
@@ -1093,12 +1095,11 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <h2 class="rv">And are raising <em>$10M now</em>, to scale production and prepare for Series B raise</h2>
     <div class="askterms rv">
       <div><span>Amount</span><b>$10M</b></div>
-      <div><span>Instrument</span><b>SAFE</b></div>
+      <div><span>Instrument</span><b>SAFE</b><small style="display:block;font-size:.66rem;color:var(--muted);margin-top:.3rem">Issued by InventWood</small></div>
       <div><span>Valuation cap</span><b>$170&ndash;200M</b></div>
       <div><span>Status</span><b>Open now</b></div>
     </div>
-    <p class="gnote rv" style="margin-top:.7rem">SAFEs issued by InventWood.</p>
-    <div class="alloc rv" style="max-width:56rem">
+    <div class="alloc rv" style="max-width:62rem">
       <div style="font-family:'Inter';font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:1.6rem">What the round funds</div>
       <p style="margin-top:.6rem;font-size:.92rem;line-height:1.6;color:var(--cream-dim)"><b style="color:var(--cream)">Scaling SUPERMILL ONE production</b> over the coming months, and <b style="color:var(--cream)">preparing SUPERMILL TWO</b> &mdash; engineering design and customer engagement. The work compounds: the production ramp informs the SUPERMILL TWO engineering, and customer engagement serves both.</p>
     </div>
