@@ -652,6 +652,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .cmp .hero b{color:var(--gold)}
 .cmp tbody tr:last-child td.hero{border-bottom:1px solid rgba(226,184,119,.3)}
 .cmp small{color:var(--muted);font-size:.86em}
+.cmp .cw{display:flex;gap:.8rem;align-items:baseline}
+.cmp .val{flex:none;min-width:9.5ch;text-align:right}
+.cmp .cmt{text-align:left}
 @media (max-width:700px){.cmp-wrap{overflow-x:auto}.cmp{min-width:38rem}}
 
 /* mach */
@@ -1123,16 +1126,15 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <div class="cmp-wrap rv"><table class="cmp">
       <thead><tr><th></th><th class="hero">SUPERMILL</th><th>Steel minimill (EAF)</th><th>Aluminum smelter</th></tr></thead>
       <tbody>
-        <tr><td>Time to develop + build</td><td class="hero"><b>&lt;3 years</b> <small>&mdash; long-lead equipment ~18 months; build 6&ndash;12 months after site development</small></td><td><b>10+ years</b> <small>&mdash; site, permits, power, build (Apple Grove: 6 yrs announce-to-ship alone)</small></td><td><b>10+ years</b> <small>&mdash; first metal ~2030 at Inola; power deal still open</small></td></tr>
-        <tr><td>Power required</td><td class="hero"><b>&lt;4 MW</b> <small>&mdash; process heat fueled by wood residues</small></td><td><b>~300 MVA-class grid connection</b> <small>&mdash; one EAF draws 200&ndash;300 MVA, with severe flicker</small></td><td><b>&gt;1 GW continuous</b> <small>&mdash; a city&rsquo;s worth</small></td></tr>
-        <tr><td>Volume output</td><td class="hero"><b>~24,000 m&sup3;/yr</b> <small>SUPERWOOD boards (36M sf)</small></td><td>~347,000 m&sup3;/yr <small>sheet steel (~3M t)</small></td><td>~278,000 m&sup3;/yr <small>primary aluminum (750K t)</small></td></tr>
-        <tr><td>Cost to build</td><td class="hero"><b>$300M</b></td><td>$1.9B <small>(SDI Sinton)</small> &ndash; $4.0B <small>(Nucor Apple Grove)</small></td><td>~$4B <small>(Century/EGA Inola)</small></td></tr>
-        <tr><td>Annual EBITDA</td><td class="hero"><b>~$208M</b> <small>&mdash; engineering model, 65% of projected revenue</small></td><td>~$0.6&ndash;1.2B <small>&mdash; realized, over the cycle (SDI, 14&ndash;25%)</small></td><td>~$340M <small>&mdash; record 2025 (~17%); cyclical</small></td></tr>
-        <tr><td>EBITDA &divide; capex, unlevered</td><td class="hero"><b>~69%</b> <small>&mdash; model basis</small></td><td>~15&ndash;30% <small>&mdash; at today&rsquo;s ~$4B build cost</small></td><td>~9% <small>&mdash; record year; near zero in troughs</small></td></tr>
+        <tr><td>Time to develop + build</td><td class="hero"><div class="cw"><b class="val">&lt;3 years</b><small class="cmt">long-lead equipment ~18 months; build 6&ndash;12 months after site development</small></div></td><td><div class="cw"><b class="val">10+ years</b><small class="cmt">site, permits, power, build (Apple Grove: 6 yrs announce-to-ship alone)</small></div></td><td><div class="cw"><b class="val">10+ years</b><small class="cmt">first metal ~2030 at Inola; power deal still open</small></div></td></tr>
+        <tr><td>Power required</td><td class="hero"><div class="cw"><b class="val">&lt;4 MW</b><small class="cmt">process heat fueled by wood residues</small></div></td><td><div class="cw"><b class="val">~300 MVA</b><small class="cmt">grid connection; one EAF draws 200&ndash;300 MVA, with severe flicker</small></div></td><td><div class="cw"><b class="val">&gt;1 GW</b><small class="cmt">continuous &mdash; a city&rsquo;s worth</small></div></td></tr>
+        <tr><td>Volume output</td><td class="hero"><div class="cw"><b class="val">~24,000 m&sup3;/yr</b><small class="cmt">SUPERWOOD boards (36M sf)</small></div></td><td><div class="cw"><b class="val">~347,000 m&sup3;/yr</b><small class="cmt">sheet steel (~3M t)</small></div></td><td><div class="cw"><b class="val">~278,000 m&sup3;/yr</b><small class="cmt">primary aluminum (750K t)</small></div></td></tr>
+        <tr><td>Cost to build</td><td class="hero"><div class="cw"><b class="val">$300M</b><small class="cmt"></small></div></td><td><div class="cw"><b class="val">$1.9&ndash;4.0B</b><small class="cmt">SDI Sinton to Nucor Apple Grove</small></div></td><td><div class="cw"><b class="val">~$4B</b><small class="cmt">Century/EGA Inola</small></div></td></tr>
+        <tr><td>Annual EBITDA</td><td class="hero"><div class="cw"><b class="val">~$208M</b><small class="cmt">engineering model, 65% of projected revenue</small></div></td><td><div class="cw"><b class="val">~$0.6&ndash;1.2B</b><small class="cmt">realized, over the cycle (SDI, 14&ndash;25%)</small></div></td><td><div class="cw"><b class="val">~$340M</b><small class="cmt">record 2025 (~17%); cyclical</small></div></td></tr>
+        <tr><td>EBITDA &divide; capex, unlevered</td><td class="hero"><div class="cw"><b class="val">~69%</b><small class="cmt">model basis</small></div></td><td><div class="cw"><b class="val">~15&ndash;30%</b><small class="cmt">at today&rsquo;s ~$4B build cost</small></div></td><td><div class="cw"><b class="val">~9%</b><small class="cmt">record year; near zero in troughs</small></div></td></tr>
       </tbody>
     </table></div>
     <p class="lead rv" style="margin-top:1.6rem;font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.4vw,2rem);max-width:none;color:var(--cream)">Steel had the minimill.<br>Wood has the <em style="color:var(--gold)">SUPERMILL.</em></p>
-    <p class="gnote rv" style="max-width:74ch;margin-top:.9rem">Last two rows: common unlevered basis, annual EBITDA &divide; capital cost. SUPERMILL is modeled (internal TEM); incumbents are realized results (SDI, Nucor, Century / EGA). With ~75% project debt, SUPERMILL plant-level ROE is 175&ndash;200%.</p>
   </div>
 </section>
 
