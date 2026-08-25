@@ -1183,15 +1183,10 @@ function jumpTo(i){i=Math.max(0,Math.min(secs.length-1,i));
     last=st;},120);}
 function go(d){jumpTo(cur+d);}
 function animate(el){
+  /* the real value stays in the DOM at all times — a mid-animation capture can never show a partial number */
   if(el.dataset.done)return;el.dataset.done=1;
-  const final=el.textContent;
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;   /* show the real number, never a partial one */                                  /* markup holds the real value */
-  const end=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
-  const t0=performance.now(),dur=1400;
-  function f(t){const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);
-    el.textContent = p<1 ? pre+(end*e).toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf : final;
-    if(p<1)requestAnimationFrame(f);}
-  requestAnimationFrame(f);
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  el.animate([{opacity:0},{opacity:1}],{duration:600,easing:'ease-out'});
 }
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{
   const i=secs.indexOf(e.target);
