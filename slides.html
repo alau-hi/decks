@@ -691,6 +691,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   .gr b{white-space:normal}
 }
 @media print{
+  @page{size:letter landscape;margin:0}
   nav.dots,.pageno,.conf,.brand,.scrollcue,.keyhint{display:none!important}
   html,body,#deck{height:auto!important;overflow:visible!important}
   #deck{scroll-snap-type:none!important}
