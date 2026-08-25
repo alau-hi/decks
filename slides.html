@@ -316,28 +316,28 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .cesfoot{margin-top:1.2rem;max-width:none;text-align:center}
 /* panel size encodes scale: SM One < SM Two < National Fleet. stretch is load-bearing —
    with align-items:start the fleet card has fewest rows and ends up the shortest, cancelling the width step */
-.gnet{display:grid;grid-template-columns:.85fr 1.15fr 1.5fr 2.4fr;gap:.9rem;margin-top:1.8rem;align-items:start}
+.gnet{display:grid;grid-template-columns:.85fr 1.15fr 1.5fr 2.4fr;gap:.8rem;margin-top:1.2rem;align-items:start}
 .gcard.wide{grid-column:1/-1}
 .gcard.wide>h3{min-height:0}
 .gcard.wide .grows{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem}
 .gcard.wide .gicons{gap:.4rem .6rem}
 .gcard.wide .gr{justify-content:flex-start;gap:1.4rem}.gcard.wide .gr b{text-align:left}
-.gcard{display:flex;flex-direction:column;border:1px solid rgba(184,125,68,.5);border-radius:14px;padding:1.1rem 1.2rem}
+.gcard{display:flex;flex-direction:column;border:1px solid rgba(184,125,68,.5);border-radius:14px;padding:1rem 1.1rem}
 .gcard h3{font-family:'Fraunces';font-weight:400;font-size:clamp(.95rem,1.5vw,1.25rem);color:var(--cream);line-height:1.15;letter-spacing:0;min-height:2.3em;display:flex;align-items:flex-start}
 .gcard .gsub{font-family:'Inter';font-weight:600;font-size:clamp(10px,.58rem,.72rem);letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);margin-top:.35rem}
 /* the real Canva factory glyph, used as a mask so one asset recolours per card */
-.gicons{display:flex;flex-wrap:wrap;align-items:flex-end;gap:.35rem .45rem;margin:1rem 0 .3rem;color:var(--wood-bright);max-width:100%;min-height:3.6rem}
-.gicons .fx{flex:none;height:var(--fh);width:calc(var(--fh) * .8875);background:currentColor;-webkit-mask:url(assets/icon-factory-hf.png) center/contain no-repeat;mask:url(assets/icon-factory-hf.png) center/contain no-repeat}
+.gicons{display:flex;flex-wrap:wrap;align-items:flex-end;gap:.35rem .45rem;margin:.7rem 0 .25rem;color:var(--wood-bright);max-width:100%;min-height:3.6rem}
+.gicons .fx{flex:none;height:calc(var(--fh) * .82);width:calc(var(--fh) * .82 * .8875);background:currentColor;-webkit-mask:url(assets/icon-factory-hf.png) center/contain no-repeat;mask:url(assets/icon-factory-hf.png) center/contain no-repeat}
 .gicons.green{color:#8fb356}
 .gicons.orange{color:#c2571d}
 .gcard.sm .gicons{margin:.7rem 0 .2rem}
-.gicons.dense{gap:.3rem .35rem;min-height:0}
-.gicons.dense2{gap:.35rem .4rem;justify-content:space-between}
+.gicons.dense{gap:.28rem .32rem;min-height:0}.gicons.dense .fx{height:calc(var(--fh) * .68);width:calc(var(--fh) * .68 * .8875)}
+.gicons.dense2{gap:.3rem .35rem;justify-content:space-between}.gicons.dense2 .fx{height:calc(var(--fh) * .72);width:calc(var(--fh) * .72 * .8875)}
 .grows{margin-top:.7rem}
 .gr{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:.15rem .7rem;padding:.34rem 0;border-bottom:1px solid rgba(228,210,180,.1);font-size:.7rem;min-height:1.95rem}
 .gr span{color:var(--muted);flex:none;white-space:nowrap}
 .gr b{color:var(--cream);font-weight:700;text-align:right}
-.gr.full{flex-direction:column;align-items:flex-start;justify-content:center;gap:.1rem;min-height:2.9rem}
+.gr.full{flex-direction:column;align-items:flex-start;justify-content:center;gap:.1rem;min-height:2.2rem}
 .gr.full b{text-align:left;white-space:normal;font-size:.62rem}
 .gnote{font-size:.66rem;line-height:1.5;color:var(--cream-dim);font-style:italic;margin-top:.95rem}
 .askterms{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.6rem;max-width:52rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.1rem 0}
