@@ -690,6 +690,16 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   .askterms{grid-template-columns:1fr 1fr}
   .gr b{white-space:normal}
 }
+@media print{
+  nav.dots,.pageno,.conf,.brand,.scrollcue,.keyhint{display:none!important}
+  html,body,#deck{height:auto!important;overflow:visible!important}
+  #deck{scroll-snap-type:none!important}
+  section{display:flex!important;min-height:auto!important;height:auto!important;overflow:visible!important;break-after:page;page-break-after:always}
+  .rv{opacity:1!important;transform:none!important;transition:none!important}
+  section>.wrap{zoom:1!important}
+  *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  body{background:var(--ink)!important}
+}
 </style>
 </head>
 <body class="on-cover">
