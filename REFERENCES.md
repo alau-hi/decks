@@ -21,8 +21,46 @@ Last reconciled against the deck: **2026-08-26** (19 slides).
 | Stat | Printed | Source |
 |---|---|---|
 | Finished steel imported | ~1 ton in 5 | [AISI, "Steel Imports Down 12.6% in 2025" (Feb 2026)](https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/) — 18% of apparent consumption 2025, 23% in 2024. The 2025 fall is tariff-driven (Section 232: 25% Mar 2025, 50% Jun 2025). |
-| Aluminum met by imports | ~85% | [Aluminum Association, "Powering Up American Aluminum" (2025)](https://www.aluminum.org/PowerUp) — also the 4-smelters-from-33 figure, no longer printed as its own stat. |
+| Primary aluminum imported | ~85% | [Aluminum Association / Wittsend, "Powering Up American Aluminum" (May 2025)](https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf) ([local copy](sources/PoweringUpAluminum_WhitePaper_2025.pdf)) — US primary aluminum demand 4.4M t/yr against 683,500 t from the four remaining smelters → imports cover 84.5%. Same paper carries the 4-smelters-from-33-in-1980 figure, no longer printed as its own stat. **Label matters: this is primary (new) metal only** — see the correction note below. |
 | Steel in a data center | ~60% | Inherited from the investor-overview register (conf L — flagged there as unverified). |
+
+#### Correction, 2026-08-26 — the aluminum stat was mislabeled
+
+The deck printed "Aluminum met by imports — ~85%" and sourced it to the Aluminum
+Association. Alex flagged it as a probable misread of the referenced document, and it was.
+
+- **What the Association actually says at that number**: "recycled or 'secondary' production
+  now accounts for ~85% of U.S.-made aluminum" ([aluminum.org/PowerUp](https://www.aluminum.org/PowerUp);
+  the white paper phrases it "over 80% of total raw aluminum supply produced in the U.S. today").
+  That is a *composition-of-domestic-output* statistic. It is close to the opposite of an import
+  share — it describes what America **does** make. Checks out against USGS 2025e: 3,600 kt
+  secondary vs 660 kt primary = 84.5% of domestic output.
+- **The number the deck wanted, sourced properly**: US **primary** aluminum demand is 4.4M t/yr
+  and the four remaining US smelters produce 683,500 t — so imports cover **84.5%** of the primary
+  aluminum America uses ([PowerUp white paper](https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf),
+  pp. 3, [local copy](sources/PoweringUpAluminum_WhitePaper_2025.pdf)) [derived from published, conf: H].
+  The same paper states the gap as "around 4 million metric tons of raw (or unwrought) aluminum,"
+  which reads ~90% on the same denominator — the honest band is **85–90%**, and ~85% (the
+  conservative end) is what ships.
+- **All aluminum, not just primary**: US net import reliance is **60%** of apparent consumption
+  (2025e), 62% in 2024 ([USGS MCS 2026 — Aluminum](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-aluminum.pdf),
+  [local copy](sources/mcs2026-aluminum.pdf)) [published, conf: H]. Recycling is the whole
+  difference between 85% and 60%. Both figures now sit in the slide's Sources panel so the
+  distinction is visible without leaving the deck.
+  - *Basis warning*: MCS 2026 stopped netting exported scrap out of the calculation (its footnote
+    3), so the same 2024 year reads 62% there and 47% in MCS 2025. Do not mix the two series.
+- **Resolves an open question elsewhere**: `../investor-overview/REFERENCES.md` recorded on
+  2026-08-24 that the 85% "COULD NOT BE SOURCED" and asked whether it referred to primary
+  aluminum. It did. That deck's printed 60% (labeled as net import reliance) is correct as it
+  stands — the two decks measure different things and are now both right.
+- **Corroboration on the smelter count**: USGS MCS 2026 lists six US smelters in five States with
+  Hawesville KY (2022) and New Madrid MO (2024) idled — four operating, matching the Association.
+  The White House Section 232 proclamation (Feb 2025) gives 52% capacity utilization for 2024
+  against the Association's 53%. Mt. Holly SC announced a >50,000 t/yr restart in Aug 2025 for
+  mid-2026; recheck "four" after that.
+- **Conflict left standing, not averaged**: the Association puts 2024 US scrap recovery "above
+  5 million metric tons"; USGS puts aluminum recovered from *purchased* scrap at 3.6M t. Different
+  scopes (the Association appears to include runaround/home scrap). Neither figure is printed.
 
 **"Also imported" aside table** (bottom right):
 

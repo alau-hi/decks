@@ -19,8 +19,8 @@ SUPERWOOD is "the material to build the future from — made in America."
 ## The arc
 
 1. **The gap.** America is building again (data centers, reshoring, housing, the grid)
-   but ~1 in 5 tons of finished steel is imported, ~85% of aluminum needs are met by
-   imports, and only 4 primary smelters remain of 33. Open on the problem, not the product.
+   but ~1 in 5 tons of finished steel is imported, ~85% of primary aluminum is met by
+   imports, and only 4 primary smelters remain of the 33 running in 1980. Open on the problem, not the product.
 2. **The old mills can't close it — not in time.** First new smelter since 1980: ~$4B,
    >1 GW of continuous power, still waiting on a power deal. A new US mine averages
    ~29 years from discovery to production, and ore is centralized where the geology is.
@@ -99,10 +99,21 @@ upstream of slide 7.
 
 ## The Gap slide format (Alex, 2026-08-26)
 
-Three headline stats only (steel ~1 in 5, aluminum ~85%, steel-in-a-data-center ~60%).
+Three headline stats only (steel ~1 in 5, primary aluminum ~85%, steel-in-a-data-center ~60%).
 Everything else imported lives in a small left-justified "Also imported" table at the
 bottom right — titanium >95%, carbon fiber 66–86%, cement ~22% — tight and parallel, no
 elaboration. Cement and the smelter count were deliberately demoted from the headline row.
+
+## Aluminum stat corrected (Alex, 2026-08-26)
+
+Alex flagged the Gap slide's "~85% of aluminum needs met by imports" as a misread of the
+Aluminum Association source. It was: the Association's ~85% is the **recycled share of
+US-made aluminum**, not an import share. The stat now reads **"Primary aluminum imported
+— ~85%"**, derived from the PowerUp white paper (4.4M t/yr US primary demand vs 683,500 t
+from the four remaining smelters). The all-aluminum figure — 60% net import reliance,
+USGS MCS 2026 — sits in the Sources panel beside it so the distinction is visible on the
+slide. Full working in [REFERENCES.md](REFERENCES.md#correction-2026-08-26--the-aluminum-stat-was-mislabeled).
+The headline number did not change; only what it is a number *of*.
 
 ## Sources presentation (Alex, 2026-08-26)
 

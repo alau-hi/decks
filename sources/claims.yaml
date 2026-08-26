@@ -11,18 +11,87 @@ claims:
     slide: The Gap
     note: 2025 share fell from 23% under Section 232 tariffs (25% from Mar 2025, 50% from Jun 2025).
 
-  - claim: ~85% of US industry's aluminum needs are met by imports
-    provenance: published
-    source: The Aluminum Association, "Powering Up American Aluminum" roadmap (2025)
-    url: https://www.aluminum.org/PowerUp
+  # -- Aluminum import share. CORRECTED 2026-08-26 after Alex flagged the 85% as a
+  #    misread. It was: the Aluminum Association's "~85%" is the RECYCLED share of
+  #    US-made aluminum, not an import share. Both readings are researched below;
+  #    only the primary-aluminum one is printed. --
+  - claim: ~85% of the primary (unwrought) aluminum the US uses is imported
+    provenance: derived from published
+    conf: H
+    source: >-
+      The Aluminum Association / Wittsend, "Powering Up American Aluminum" white paper
+      (May 2025), pp. 3: "aggregate U.S. primary aluminum demand will rise from 4.4 to
+      5.1 million metric tons by 2029" and "Today, the U.S. has four aluminum smelters
+      remaining, producing 683,500 metric tons." 4.4 Mt demand less 0.6835 Mt domestic
+      primary = 3.72 Mt imported = 84.5%.
+    url: https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf
+    local: sources/PoweringUpAluminum_WhitePaper_2025.pdf
+    corroboration: >-
+      USGS MCS 2026 puts US primary production at 660 kt (2025e) against 4,400 kt of
+      crude-and-semifabricated imports. The same white paper states the import gap as
+      "around 4 million metric tons of raw (or unwrought) aluminum," which on the same
+      4.4 Mt denominator reads ~90%. The honest band is 85-90%; ~85% is the conservative
+      end and is what prints.
     slide: The Gap
+    note: >-
+      MUST be labeled "primary" (or "new") aluminum. Applied to all aluminum it is wrong
+      by a wide margin - see the next entry. Resolves the open question logged in
+      ../../investor-overview (2026-08-24): the 85% Alex supplied is real and it is the
+      primary-aluminum share, not bauxite/alumina.
 
-  - claim: 4 US primary aluminum smelters remain operating, down from 33 historically
+  - claim: US net import reliance for aluminum (all forms) is 60% of apparent consumption
     provenance: published
-    source: The Aluminum Association PowerUp roadmap; DOE announcement
+    conf: H
+    source: >-
+      USGS Mineral Commodity Summaries 2026 - Aluminum (Feb 2026): net import reliance
+      60% (2025e), 62% (2024), 63% (2023).
+    url: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-aluminum.pdf
+    local: sources/mcs2026-aluminum.pdf
+    slide: The Gap (sources panel only)
+    note: >-
+      Basis change: MCS 2026 stopped netting exported scrap out of the calculation
+      (footnote 3), which is why the same 2024 figure reads 62% here and 47% in MCS 2025.
+      Quote the MCS 2026 basis and do not mix the two series. This is the figure
+      ../../investor-overview prints on its Vs Steel supply row - the two decks are
+      consistent because they are measuring different things.
+
+  - claim: NOT AN IMPORT SHARE - the Aluminum Association's "~85%" is the recycled share of US-made aluminum
+    provenance: published
+    conf: H
+    source: >-
+      aluminum.org/PowerUp: "recycled or 'secondary' production now accounts for ~85% of
+      U.S.-made aluminum"; the white paper phrases it as "over 80% of total raw aluminum
+      supply produced in the U.S. today."
     url: https://www.aluminum.org/PowerUp
+    slide: none - do not print
+    note: >-
+      Recorded so the misread cannot recur. Arithmetic check on USGS MCS 2026 (2025e):
+      secondary 1,600 + 2,000 = 3,600 kt against 660 kt primary = 84.5% of domestic
+      output. The coincidence that the recycled share and the primary-import share are
+      both ~85% is what made the original claim look sourced.
+
+  - claim: 4 US primary aluminum smelters operating, down from 33 in 1980
+    provenance: published
+    conf: H
+    source: >-
+      Aluminum Association PowerUp white paper (May 2025): "In 1980, the U.S. produced
+      over 4.65 million metric tons at 33 sites with a nameplate capacity of 4.8 million
+      metric tons... Today, the U.S. has four aluminum smelters remaining, producing
+      683,500 metric tons. The primary aluminum segment... is operating at 53% of
+      installed capacity."
+    url: https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf
+    local: sources/PoweringUpAluminum_WhitePaper_2025.pdf
+    corroboration: >-
+      USGS MCS 2026: six smelters exist in five States, of which Hawesville KY (2022) and
+      New Madrid MO (2024) are temporarily shut - so four operating, matching the
+      Aluminum Association. The White House Section 232 proclamation (Feb 2025) gives 52%
+      capacity utilization for 2024 against the Association's 53%.
     slide: The Gap
-    note: One source says five; four is the Aluminum Association figure. Verify before print use.
+    note: >-
+      The old "one source says five" doubt is resolved: aluminum.org's landing page says
+      "24 to 4," counting from a later year than the white paper's 1980 count of 33. Date
+      the 33 to 1980 whenever it prints. Mt. Holly SC announced a >50,000 t/yr restart in
+      Aug 2025 for mid-2026 - recheck the count of four after mid-2026.
 
   - claim: America's first new primary aluminum smelter since 1980 — Century Aluminum / EGA JV, Inola OK; ~$4B; $500M DOE award; >1 GW continuous power; still waiting on a power deal as of 2026
     provenance: published
@@ -30,6 +99,25 @@ claims:
     url: https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980
     url2: https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power
     slide: Old Mills
+
+  - claim: The US is a net EXPORTER of iron ore - imports are ~11% of apparent consumption
+    provenance: published
+    conf: H
+    source: >-
+      USGS Mineral Commodity Summaries 2026 - Iron Ore (2025e): imports for consumption
+      4.0 Mt, exports 7.8 Mt, apparent consumption 37.0 Mt, domestic production 38.0 Mt
+      from eight open-pit mines in Michigan, Minnesota and Utah. Net import reliance is
+      printed as "E" - net exporter. Import sources 2021-24: Brazil 58%, Canada 21%,
+      Sweden 10%, Chile 4%.
+    url: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-iron-ore.pdf
+    local: sources/mcs2026-ironore.pdf
+    slide: none - register only (asked by Alex 2026-08-26)
+    note: >-
+      Sharpens the gap story: America's steel problem is NOT ore, it is finished and
+      semifinished product (18% of apparent consumption imported, 2025) and the cost and
+      pace of building mills. Contrast with aluminum, where both the metal (~85% of
+      primary) and the Inola smelter's bauxite feedstock are imported. Do not let a slide
+      imply US steel depends on foreign ore.
 
   - claim: A new US mine averages ~29 years from discovery to production, second-longest in the world
     provenance: published
@@ -324,10 +412,49 @@ claims:
     conf: M (volumes), M-H (aerospace-grade dependency direction)
     source: ORNL/NREL "Global Carbon Fiber Composites Supply Chain Competitiveness Analysis" (Das et al., May 2016; sources/Pub61706.pdf, supplied by Alex) - USITC trade data show imports met 66-86% of North American (mostly US) carbon fiber demand 2008-2012; Japan 43% + Europe 38% of 2012 US imports; report cautions the HTS code bundles CF with intermediates so the import share is likely overstated; aerospace-grade small-tow CF manufacturing "most concentrated in Japan" (top three firms headquartered there), Toray dominant incl. the $6B Boeing 787 prepreg contract. Astute Analytica market report (~30 kt imports, ~40% of consumption, current-era but non-primary); Lexington Institute (Grant, Apr 2025) - outside Hexcel, "most of the remaining critical aerospace carbon fiber market is served by Japanese firms"; Nandina REM (Oct 2025, supplied by Alex) - defense reliance on Japanese/European proprietary fibers, GAO visibility gap. https://www.nandinarem.com/post/carbon-fibre-a-core-us-defence-supply-chain-vulnerability
     slide: The Gap (aside table - "Carbon fiber 66-86%", the ORNL/NREL 2008-12 import share; sources panel carries the vintage caveat)
-    note: The ORNL/NREL report is government-grade provenance but 2012-vintage data; the ~30 kt / ~40% figures are current-era but market-research grade. Printable now: "imports have historically met a majority of US carbon fiber demand (66-86%, 2008-12)" [conf: H for the period stated] and the aerospace-grade Japan concentration [conf: H]. A current-year import share still lacks a primary source.
+    note: >-
+      The ORNL/NREL report is government-grade provenance but 2012-vintage data; the ~30 kt / ~40% figures are current-era but market-research grade. Printable now: "imports have historically met a majority of US carbon fiber demand (66-86%, 2008-12)" [conf: H for the period stated] and the aerospace-grade Japan concentration [conf: H]. A current-year import share still lacks a primary source.
   - claim: "US import dependence on minerals is rising: imports exceeded half of apparent consumption for 54 nonfuel mineral commodities in 2025 (100% reliant for 16), up from 46 (100% for 15) in 2024"
     provenance: published
     conf: H
     source: USGS Mineral Commodity Summaries 2026, p.11 (2025 data) and MCS 2025, p.10 (2024 data), quoted verbatim from both. Politico Pro / E&E News coverage (Feb 9, 2026, paywalled) supplied by Alex reports the same release. https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf
     slide: The Gap (gnote, added 2026-08-26; all-nonfuel-commodities basis printed)
     note: On the Critical Minerals List basis the 2025 figures are 13 at 100% plus 20 more at >=50%; the 16/54 figures are the all-nonfuel-commodities basis. Use one basis consistently if printed.
+
+  # Appendix feedstock row (added per Alex 2026-08-26)
+  - claim: Suitable wood for a SUPERMILL is abundant in almost every state
+    provenance: inherited / asserted-internal
+    conf: H (internal)
+    source: Alex Lau, 2026-08-26; restates the feedstock-in-48-states claim (parent register)
+    slide: Appendix comparison (feedstock row)
+  - claim: 80% of US pig iron is imported; emerging constraints on recycled steel supply
+    provenance: asserted-internal
+    conf: M
+    source: Alex Lau, 2026-08-26
+    corroboration: >-
+      USITC Executive Briefing on Trade (Oct 2022, "Russia, Ukraine, and Pig Iron
+      Supply") - domestic merchant pig iron production covers only ~5% of US
+      consumption; Brazil supplies the majority of imports (>60%, and rising after
+      Russian supply was sanctioned). The 80% printed is the conservative end.
+      https://www.usitc.gov/publications/332/executive_briefings/ebot_russia_ukraine_and_pig_iron_supply.pdf
+    slide: Appendix comparison (feedstock row)
+    note: >-
+      "Emerging constraints on recycled steel" is Alex's framing (industry knowledge,
+      not yet externally sourced) - consistent with busheling price volatility already
+      held in reserve in STORY.md. Find a scrap-availability source before wide
+      distribution if challenged.
+  - claim: 100% of smelter-grade bauxite is imported - no domestic smelter-grade supply
+    provenance: published (scoped)
+    conf: H
+    source: >-
+      USGS Mineral Commodity Summaries 2025 - Bauxite and Alumina: US net import
+      reliance >75% of apparent consumption; the small domestic output (Alabama,
+      Arkansas, Georgia) is bauxite and bauxitic clays for NONmetallurgical uses, so
+      metallurgical (smelter-grade) bauxite is entirely imported. Import sources
+      2020-23: Jamaica 67%, Turkey 9%, Guyana 8%, Australia 6%.
+      https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-bauxite-alumina.pdf
+    slide: Appendix comparison (feedstock row)
+    note: >-
+      Alex supplied "100% of bauxite imported"; printed scoped to smelter-grade, which
+      is the USGS-defensible form (overall bauxite reliance prints as >75% because
+      nonmetallurgical domestic output exists).
