@@ -287,10 +287,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .pipe h3{font-family:'Montserrat',sans-serif;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;text-align:center;font-weight:700;margin-bottom:.8rem;line-height:1.3;min-height:2.6em;display:flex;align-items:flex-end;justify-content:center}
 .overlap{margin-top:1.4rem;font-style:italic;font-size:.72rem;line-height:1.5;color:var(--muted)}
 
-/* jf journey + financing — experimental combined slide */
+/* jf journey — ported from investor-overview */
 .tlarc{position:absolute;left:0;right:0;bottom:0;width:100%;height:62%;pointer-events:none;opacity:.35}
-.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem;margin-top:1.6rem;align-items:stretch;position:relative}
-.tl .ph{display:flex;flex-direction:column}
+.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem;margin-top:1.6rem;align-items:start;position:relative}
 .tl .ph img{width:6.4rem;height:6.4rem;border-radius:50%;object-fit:cover;border:2px solid var(--wood-bright);display:block;margin-bottom:.8rem;box-shadow:0 14px 34px rgba(0,0,0,.45)}
 .tl .ph.past img{filter:saturate(.75) brightness(.85)}
 .tl .ph.current img{border-color:#e07b39;box-shadow:0 0 0 5px rgba(224,123,57,.18),0 14px 34px rgba(0,0,0,.45)}
@@ -301,12 +300,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .tl .ph .now{font-family:'Inter';font-weight:700;font-size:clamp(10px,.56rem,.7rem);letter-spacing:.18em;text-transform:uppercase;color:#241708;background:#e07b39;border-radius:999px;padding:.2em .6em}
 .tl .ph.future h3{color:var(--gold)}
 .tl .ph.current .yrs{color:#f0a06b;font-weight:600}
-.tl .fin{margin-top:auto;padding-top:.6rem;border-top:1px solid rgba(226,184,119,.35);display:flex;flex-direction:column;gap:.45rem}
-.tl .ph p+.fin{margin-top:.8rem}
-.tl .fin b{display:block;font-family:'Fraunces';font-weight:600;font-size:.88rem;color:var(--gold);line-height:1.3}
-.tl .fin span{display:block;font-size:.68rem;line-height:1.4;color:var(--cream-dim)}
-.tl .ph.past .fin b{color:var(--wood-bright)}
-.tl .fin .frnow b{color:#f0a06b}
 .tlaxis{position:relative;height:2px;background:linear-gradient(90deg,var(--wood-deep),var(--wood-bright));margin-top:1.4rem;border-radius:2px}
 .tlyears span{position:absolute;transform:translateX(-50%);white-space:nowrap}
 .tlaxis .dot.now{position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#e0432b;box-shadow:0 0 0 2px var(--ink);z-index:3}
@@ -863,6 +856,25 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   </div>
 </section>
 
+<section id="jf" class="dark" data-nav="Journey">
+  <svg class="tlarc" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true"><path d="M0 540 C 380 540, 700 470, 1000 60" fill="none" stroke="url(#tlg)" stroke-width="3"/><defs><linearGradient id="tlg" x1="0" x2="1"><stop offset="0" stop-color="#cda165" stop-opacity="0"/><stop offset="1" stop-color="#e2b877" stop-opacity=".55"/></linearGradient></defs></svg>
+  <div class="wrap">
+    <h2 class="rv">From university research to commercial production &mdash; <em>and ready to scale</em></h2>
+    <div class="tl rv">
+      <div class="ph past"><img loading="lazy" src="assets/molecular.webp" alt="Cellulose molecular structure"><div class="yrs">2016&ndash;2018</div><h3>The breakthrough</h3><p>Dr.&nbsp;Liangbing Hu invents SUPERWOOD at the University of Maryland.</p></div>
+      <div class="ph past"><img loading="lazy" src="assets/cube-hero.jpg" alt="Densified SUPERWOOD cube"><div class="yrs">2018&ndash;2022</div><h3>IP &amp; commercialization</h3><p>Patent portfolio built. Developed low-cost manufacturing strategy. Explored market opportunities.</p></div>
+      <div class="ph past"><img loading="lazy" src="assets/factory.jpg" alt="SuperMill One production floor"><div class="yrs">2022&ndash;2025</div><h3>SuperMill One</h3><p>First plant built in Frederick, MD. Lab to commercial scale; shipments began Dec&nbsp;'25.</p></div>
+      <div class="ph current"><img loading="lazy" src="assets/ph-deck.jpg" alt="SUPERWOOD decking installed"><div class="yrs">2025&ndash;2027 <span class="now">Now</span></div><h3>First customers</h3><p>Deliver, delight, and prove SUPERWOOD across a range of applications.</p></div>
+      <div class="ph future"><img loading="lazy" src="assets/supermill-two-aerial.webp" alt="SuperMill Two aerial rendering" style="object-position:50% 58%"><div class="yrs">2027&ndash;2030</div><h3>SuperMill Two development</h3><p>SuperMill Two ships in 2029. Highly profitable plants serve global markets as costs keep falling.</p></div>
+    </div>
+    <div class="rv">
+      <div class="tlaxis" id="tlaxis"></div>
+      <div class="tlyears"><span>2016</span><span>2017</span><span>2018</span><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span></div>
+      <div class="tlbands"><span style="left:0%;width:14.286%">Discovery</span><span style="left:14.286%;width:28.571%">Commercialization</span><span style="left:42.857%;width:28.571%">SuperMill One</span><span class="fut" style="left:71.428%;width:28.572%">SuperMill Two</span></div>
+    </div>
+  </div>
+</section>
+
 <section id="s18" class="dark" data-nav="Financing">
   <div class="wrap">
     <h2 class="rv">We&rsquo;re working to <em>build equity value</em></h2>
@@ -890,28 +902,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <div class="ms past"><h3>Series AA · 2026</h3><p>Commissioned phase 1 · launched production &amp; sales · demonstrated overwhelming demand · strengthened team</p></div>
       <div class="ms now"><h3>$10M SAFEs<span class="nowpill">Now</span></h3><p><b>Key milestones:</b> prove product-market fit, delight initial customers, seed demand for SuperMill Two · prove key manufacturing metrics</p></div>
       <div class="ms"><h3>Series B · 2027</h3><p><b>Key milestones:</b> build SuperMill Two · prove broad market adoption and generate $200M+/yr gross margin</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="jf" class="dark" data-nav="Journey">
-  <svg class="tlarc" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true"><path d="M0 540 C 380 540, 700 470, 1000 60" fill="none" stroke="url(#tlg)" stroke-width="3"/><defs><linearGradient id="tlg" x1="0" x2="1"><stop offset="0" stop-color="#cda165" stop-opacity="0"/><stop offset="1" stop-color="#e2b877" stop-opacity=".55"/></linearGradient></defs></svg>
-  <div class="wrap">
-    <h2 class="rv">From university research to commercial production &mdash; <em>building equity value at every step</em></h2>
-    <div class="tl rv">
-      <div class="ph past"><img loading="lazy" src="assets/molecular.webp" alt="Cellulose molecular structure"><div class="yrs">2016&ndash;2018</div><h3>The breakthrough</h3><p>Dr.&nbsp;Liangbing Hu invents SUPERWOOD at the University of Maryland.</p></div>
-      <div class="ph past"><img loading="lazy" src="assets/cube-hero.jpg" alt="Densified SUPERWOOD cube"><div class="yrs">2018&ndash;2022</div><h3>IP &amp; commercialization</h3><p>Patent portfolio built. Developed low-cost manufacturing strategy. Explored market opportunities.</p></div>
-      <div class="ph past"><img loading="lazy" src="assets/factory.jpg" alt="SuperMill One production floor"><div class="yrs">2022&ndash;2025</div><h3>SuperMill One</h3><p>First plant built in Frederick, MD. Lab to commercial scale; shipments began Dec&nbsp;'25.</p>
-        <div class="fin"><div class="fr"><b>$26M Series A &middot; 2025</b><span>$62M post-money &middot; plus $20M non-dilutive</span></div></div></div>
-      <div class="ph current"><img loading="lazy" src="assets/ph-deck.jpg" alt="SUPERWOOD decking installed"><div class="yrs">2025&ndash;2027 <span class="now">Now</span></div><h3>First customers</h3><p>Deliver, delight, and prove SUPERWOOD across a range of applications.</p>
-        <div class="fin"><div class="fr"><b>$18M Series AA &middot; 2026</b><span>$129M post-money</span></div><div class="fr frnow"><b>$10M SAFEs &middot; open now</b><span>$170&ndash;200M valuation cap</span></div></div></div>
-      <div class="ph future"><img loading="lazy" src="assets/supermill-two-aerial.webp" alt="SuperMill Two aerial rendering" style="object-position:50% 58%"><div class="yrs">2027&ndash;2030</div><h3>SuperMill Two development</h3><p>SuperMill Two ships in 2029. Highly profitable plants serve global markets as costs keep falling.</p>
-        <div class="fin"><div class="fr"><b>$75&ndash;100M Series B &middot; 2027</b><span>$400&ndash;800M target valuation</span></div></div></div>
-    </div>
-    <div class="rv">
-      <div class="tlaxis" id="tlaxis"></div>
-      <div class="tlyears"><span>2016</span><span>2017</span><span>2018</span><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span></div>
-      <div class="tlbands"><span style="left:0%;width:14.286%">Discovery</span><span style="left:14.286%;width:28.571%">Commercialization</span><span style="left:42.857%;width:28.571%">SuperMill One</span><span class="fut" style="left:71.428%;width:28.572%">SuperMill Two</span></div>
     </div>
   </div>
 </section>
