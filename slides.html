@@ -11,25 +11,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#1f150c;--ink2:#2a1d11;--panel:#261a0f;
+  --ink:#1f150c;
   --cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;
   --wood:#b87d44;--wood-bright:#cda165;--wood-deep:#8a4f23;--gold:#e2b877;
-  --sand:#e6d6bd;--line:rgba(228,210,180,.16);--maxw:73.75rem;
+  /* the deck's inverted world: cream panels on the dark ground, with their own ink ramp */
+  --pop-bg:#332314;--panel:#efe6d6;--panel-ink:#3a2a18;--panel-ink2:#4a3618;--panel-muted:#75654e;--ink-deep:#1a1209;
+  --line:rgba(228,210,180,.16);--maxw:73.75rem;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{font-size:clamp(11.5px,.55vw + .55vh + 4.5px,32px)}
-@media (pointer:fine){html{font-size:clamp(9px,min(.55vw + .55vh + 4.5px,1.19vw),32px)}}
+/* the small end of the type ramp is ~.55rem, so the root floor sets the deck's smallest legible
+   glyph. 11.5px put micro-labels at 6px on a phone; 15px lands them near 9px and body copy at 13px,
+   and slides that no longer fit scroll instead of shrinking (see the zoom floor in fitSlides) */
+html{font-size:clamp(15px,.55vw + .55vh + 4.5px,32px)}
+@media (pointer:fine){html{font-size:clamp(11px,min(.55vw + .55vh + 4.5px,1.19vw),32px)}}
 body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .deck{height:100vh;height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
 .deck::-webkit-scrollbar{width:0}
-::selection{background:rgba(226,184,119,.9);color:#1a1209}
+::selection{background:rgba(226,184,119,.9);color:var(--ink-deep)}
 section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;padding:6vh max(6vw,9.5rem) 6vh 6vw;overflow:hidden}
-.wrap{width:100%;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
-h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01em;line-height:1.08}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2;display:flow-root}  /* flow-root: child margins were collapsing through the wrap's bottom edge, so it under-reported
+     its own content by ~20px and fitSlides measured a slide shorter than it drew */h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01em;line-height:1.08}
 h1,h2{text-wrap:balance}
 h2{font-size:clamp(1.5rem,3.2vw,2.5rem);font-weight:340;max-width:26ch}
 h2 em{font-style:italic;color:var(--gold)}
-.kicker{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.9rem}
 .lead{font-size:clamp(.95rem,1.4vw,1.15rem);line-height:1.6;color:var(--cream-dim);font-weight:300;max-width:52ch}
 .lead b,.li b{color:var(--cream);font-weight:600}
 .rv{opacity:0;transform:translateY(2rem);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
@@ -38,10 +42,13 @@ h2 em{font-style:italic;color:var(--gold)}
 .bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;transform:scale(1.05)}
 .in .bg{transition:transform 9s ease-out;transform:scale(1.12)}
 .scrim{position:absolute;inset:0;z-index:1}
-.dark{background:radial-gradient(120% 90% at 75% 10%,#332314 0%,var(--ink) 60%)}
+.dark{background:radial-gradient(120% 90% at 75% 10%,var(--pop-bg) 0%,var(--ink) 60%)}
 img{max-width:100%}
 /* chrome */
-.brand{position:fixed;bottom:20px;right:2.125rem;z-index:95;height:20px;opacity:1}.brand img{height:100%}
+/* width:max-content — with only `right` set the box stretched the full viewport width: an invisible
+   z-index:95 strip across the bottom that swallowed pointer events, and which showed itself the
+   moment the narrow-screen rule below gave it a background */
+.brand{position:fixed;bottom:20px;right:2.125rem;z-index:95;height:20px;width:max-content;opacity:1}.brand img{height:100%;width:auto}
 .pageno{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:90;font-size:.62rem;letter-spacing:.14em;color:var(--cream-dim);font-variant-numeric:tabular-nums;transition:opacity .4s;background:rgba(20,13,7,.6);padding:.3em .9em;border-radius:999px;backdrop-filter:blur(3px)}
 body.on-cover .pageno{opacity:0}
 .conf{position:fixed;bottom:20px;left:2.125rem;z-index:90;font-size:clamp(9px,.6rem,.74rem);letter-spacing:.3em;color:var(--muted);background:rgba(20,13,7,.72);padding:.3em .8em;border-radius:999px;backdrop-filter:blur(3px);text-transform:uppercase}
@@ -53,8 +60,6 @@ nav.dots button{pointer-events:auto}
 nav.dots button{border:none;background:transparent;cursor:pointer;padding:.14em .5em;border-radius:4px;font-family:'Inter';font-weight:500;font-size:.6rem;line-height:1.3;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);opacity:1;transition:color .25s,opacity .25s,background .25s;position:relative;white-space:nowrap}
 nav.dots button .pn{display:inline-block;margin-left:.55em;font-size:.95em;color:var(--muted);opacity:.9;font-variant-numeric:tabular-nums;letter-spacing:.05em}
 nav.dots button.active .pn{color:var(--gold)}
-nav.dots button.sub{display:none;font-size:clamp(9px,.52rem,.66rem);opacity:.55;padding-right:1.4em}
-body.in-apx nav.dots button.sub{display:block}
 nav.dots button:hover{color:var(--cream);opacity:1}
 nav.dots button.active{color:var(--gold);opacity:1;font-weight:600;background:rgba(226,184,119,.12)}
 nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%;transform:translateY(-50%);width:4px;height:4px;border-radius:50%;background:var(--gold)}
@@ -67,12 +72,11 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 /* s1 cover */
 
-#s1 .bg{background-image:linear-gradient(100deg,rgba(24,16,9,.88) 0%,rgba(24,16,9,.45) 45%,rgba(24,16,9,.15) 75%),linear-gradient(0deg,rgba(24,16,9,.85) 0%,rgba(24,16,9,0) 45%),url(assets/supermill-two-aerial.png)}
+#s1 .bg{background-image:linear-gradient(100deg,rgba(24,16,9,.88) 0%,rgba(24,16,9,.45) 45%,rgba(24,16,9,.15) 75%),linear-gradient(0deg,rgba(24,16,9,.85) 0%,rgba(24,16,9,0) 45%),url(assets/supermill-two-aerial.webp)}
 @media (orientation:portrait){#s1 .scrollcue{display:none}}
 #s1 .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,14,8,.55) 0%,rgba(22,14,8,.25) 45%,rgba(22,14,8,.85) 100%)}
 #s1 h1{font-family:'Fraunces',serif;font-size:clamp(2.6rem,6vw,5.4rem);font-weight:300;line-height:1.08;letter-spacing:-.01em;max-width:18ch}
 #s1 .hl{color:var(--wood-bright)}
-#s1 .serif-em{font-style:italic;font-weight:500}
 .covline{font-family:'Inter';font-size:clamp(1.2rem,2.8vw,2.1rem);font-weight:600;letter-spacing:.04em;margin-top:1.8rem;color:var(--cream)}
 .covline b{display:block;color:var(--wood-bright);font-weight:700;margin-top:.15em}
 .keyhint{margin-top:1.6rem;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -80,52 +84,19 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 /* s2 growth — exact teaser chart */
 .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center;width:100%}
-.grow{display:flex;align-items:flex-end;gap:3.5rem;height:18.75rem;margin-top:1rem}
-.gbar{display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
-.gbar .col{width:7.5rem;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--wood-bright),var(--wood-deep));position:relative;transition:height 1.6s cubic-bezier(.16,1,.3,1);height:0}
-.in .gbar.b1 .col{height:8.125rem}.in .gbar.b2 .col{height:15.9375rem}
-.gbar .yr{margin-top:1rem;font-weight:600;letter-spacing:.1em;color:var(--cream-dim)}
-.gbar .v{position:absolute;top:-3rem;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:'Fraunces';font-size:1.7rem;color:var(--cream)}
-.gbar .v small{font-size:.9rem;color:var(--sand)}
-/* citation hover tips + sources popup (from the intro deck) */
-.mktrow{display:flex;align-items:baseline;gap:.7rem 1.7rem;flex-wrap:wrap;margin-top:1.2rem;padding-top:.85rem;border-top:1px solid rgba(228,210,180,.14);max-width:62rem}
-.mktrow .mkcap{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--wood-bright);font-weight:600}
-.mktrow .mkitem{font-size:.95rem;color:var(--cream-dim)}
-.mktrow .mkitem b{color:var(--cream);font-weight:600;letter-spacing:.02em}
-#s3 h2 .mkt{font-size:.42em;font-style:italic;color:var(--wood-bright);margin-left:.35em;white-space:nowrap;vertical-align:.25em}
 .sw-ref{position:relative;white-space:nowrap}
-.sw-tip{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%) translateY(6px);width:min(16rem,calc(100vw - 2.5rem));white-space:normal;background:#332314;border:1px solid var(--wood-deep);border-radius:12px;padding:.85rem 1rem;font-size:.72rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 1.5rem 3.5rem rgba(0,0,0,.6);opacity:0;visibility:hidden;transition:opacity .15s,transform .15s,visibility .15s;z-index:30;pointer-events:none}
+.sw-tip{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%) translateY(6px);width:min(16rem,calc(100vw - 2.5rem));white-space:normal;background:var(--pop-bg);border:1px solid var(--wood-deep);border-radius:12px;padding:.85rem 1rem;font-size:.72rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 1.5rem 3.5rem rgba(0,0,0,.6);opacity:0;visibility:hidden;transition:opacity .15s,transform .15s,visibility .15s;z-index:30;pointer-events:none}
 .sw-tip b{color:var(--wood-bright)}
 .sw-tip a{color:var(--wood-bright);text-decoration:none;border-bottom:1px solid rgba(205,161,101,.4)}
-.sw-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#332314}
+.sw-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:var(--pop-bg)}
 .sw-ref:hover .sw-tip,.sw-ref:focus-within .sw-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
-.srcbtn{display:block;margin-top:1.1rem;margin-left:auto;width:max-content;background:rgba(184,125,68,.16);border:1px solid var(--wood);border-radius:1.875rem;color:var(--wood-bright);font-family:'Inter';font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.5em 1.2em;cursor:pointer;transition:color .25s,border-color .25s,background .25s}
-.srcbtn:hover{color:#1a1209;background:var(--wood-bright);border-color:var(--wood-bright)}
-#srcpop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:60;background:rgba(15,9,4,.38)}
-#srcpop.show{display:flex;animation:srcFade .3s ease}
-.show .srcbox{animation:srcRise .35s cubic-bezier(.16,1,.3,1)}
-@keyframes srcFade{from{opacity:0}to{opacity:1}}
-@keyframes srcRise{from{transform:translateY(18px);opacity:0}to{transform:none;opacity:1}}
 @media (prefers-reduced-motion: reduce){
   .rv,.in .rv{transition:none!important;transform:none!important;opacity:1!important}
   .bg,.in .bg{transition:none!important;transform:scale(1.05)!important}
-  .gbar .col{transition:none!important}
-  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important}
-  #srcpop.show,.show .srcbox{animation:none}
-}
-.srcbox{background:#2a1c10;border:1px solid var(--line);border-radius:14px;max-width:46rem;width:calc(100% - 3rem);max-height:80vh;overflow-y:auto;padding:1.8rem 2rem;box-shadow:0 30px 80px rgba(0,0,0,.65)}
-.srcbox h3{font-family:'Fraunces';font-weight:400;font-size:1.3rem;color:var(--cream);margin-bottom:1.1rem}
-.srcbox h4{font-family:'Inter';font-weight:600;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);margin:1.2rem 0 .4rem}
-.srcbox li{font-size:.8rem;line-height:1.55;color:var(--cream-dim);list-style:none;padding-left:1rem;position:relative;margin-bottom:.45rem}
-.srcbox li::before{content:"—";position:absolute;left:0;color:var(--wood)}
-.srcbox a{color:var(--wood-bright);text-decoration:none;border-bottom:1px solid rgba(205,161,101,.35)}
-.srcbox a:hover{border-bottom-color:var(--wood-bright)}
-.srcclose{position:sticky;top:0;float:right;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer;line-height:1}
-.srcclose:hover{color:var(--cream)}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important}}
 
 /* s3 shortcomings — ported from the teaser deck's Problem slide */
 .hl{color:var(--wood-bright)}
-.bignum{font-family:'Fraunces';font-weight:300;line-height:.9;color:var(--wood-bright)}
 .cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2rem;margin-top:2.4rem}
 .col-card h3{color:var(--wood-bright);font-family:'Inter';font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:1.15rem;margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid var(--line);min-height:calc(2.6em + .7rem)}
 .col-card ul{list-style:none;display:flex;flex-direction:column;gap:.8rem}
@@ -135,73 +106,12 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .li{list-style:none;display:flex;flex-direction:column;gap:.55rem}
 .li li{font-size:.86rem;line-height:1.5;color:var(--cream-dim);padding-left:1rem;position:relative}
 .li li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--wood)}
-
-/* s4 wood — the teaser deck's Opportunity slide, verbatim */
-#s4 .bg{background-image:url(assets/forest.jpg)}
-.serif-em{font-style:italic;font-weight:500}
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;margin-top:2.6rem}
-.pillar .pn{font-family:'Fraunces';font-size:2.2rem;color:var(--wood-bright);font-weight:300}
-.pillar h3{font-family:'Fraunces';font-size:1.5rem;margin:.4rem 0 .7rem}
-.pillar p{font-size:.92rem;line-height:1.55;color:var(--cream-dim)}
-.s4-wrap{display:flex;flex-direction:column;justify-content:space-between;min-height:78vh}
-.leadin{align-self:flex-end;text-align:right;max-width:30ch;margin-top:2.4rem;text-decoration:none;display:block;border-right:2px solid var(--wood);padding-right:1.3rem;transition:transform .4s}
-.leadin:hover{transform:translateX(-4px)}
-.leadin-text{font-family:'Fraunces';font-weight:300;font-size:clamp(1.3rem,2.6vw,2.1rem);line-height:1.3;color:var(--cream-dim)}
-.leadin-text b{color:var(--cream);font-weight:500}
-.leadin-em{display:inline-block;margin-top:.4rem;font-style:italic;font-weight:500;color:var(--wood-bright);font-size:1.15em}
-.leadin-arrow{display:block;margin-top:.5rem;font-size:2rem;line-height:1;color:var(--wood-bright);animation:nudge 1.8s ease-in-out infinite}
-@keyframes nudge{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(7px);opacity:1}}
-
-/* s5 new age */
-#s5{position:relative}
-#s5 .bg{background:linear-gradient(90deg,rgba(31,21,12,.97) 28%,rgba(31,21,12,.55) 55%,rgba(31,21,12,.15) 100%),linear-gradient(0deg,rgba(31,21,12,.97) 0%,rgba(31,21,12,.6) 28%,rgba(31,21,12,0) 48%),url(assets/sw5-boards.webp) right 42%/cover no-repeat}
-.sw5{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:space-between;min-height:78vh}
-.sw5-lead{max-width:34rem;flex:1;display:flex;flex-direction:column}
-.sw5-kicker{font-family:'Inter';font-weight:600;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--wood-bright)}
-.sw5-title{font-family:'Inter';font-weight:700;font-size:clamp(2.4rem,6vw,4.6rem);letter-spacing:.16em;color:var(--cream);line-height:1;margin:.35rem 0 .55rem}
-.sw5-tag{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1rem,1.9vw,1.5rem);color:var(--gold);line-height:1.25}
-.sw5-claims{margin:auto 0;font-family:'Fraunces',serif;font-size:clamp(1.05rem,2.2vw,1.75rem);line-height:1.5;color:var(--cream)}
-.sw5-claims em{font-style:normal;color:var(--gold)}
-.sw5-claims .fnmark{font-size:.55em;vertical-align:super;color:var(--muted)}
-.sw5-claims .fnote{font-family:'Inter';font-size:.6rem;font-style:italic;color:var(--muted);margin-top:.9rem}
-.sw5-proof{list-style:none;margin-top:2.4rem;display:grid;grid-template-columns:repeat(5,1fr);gap:1.6rem;border-top:1px solid var(--line);padding-top:1.1rem}
-.sw5-proof h3{font-family:'Inter';font-weight:700;font-size:.82rem;color:var(--cream);letter-spacing:.01em}
-.sw5-proof p{font-size:.68rem;line-height:1.5;color:var(--cream-dim);margin-top:.25rem}
-.checks{list-style:none;display:flex;flex-direction:column;gap:1.3rem;margin-top:1.6rem}
-.checks li{padding-left:2.3rem;position:relative}
-.checks li::before{content:"✓";position:absolute;left:.2rem;top:.05em;color:var(--gold);font-size:1.25rem;font-weight:300}
-.checks h3{font-family:'Inter';font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
-.checks p{font-size:.86rem;line-height:1.5;color:var(--cream-dim)}
-.defbox{background:linear-gradient(120deg,rgba(205,161,101,.28),rgba(138,79,35,.16));border-radius:12px;padding:1.3rem 1.5rem;font-size:clamp(.95rem,1.5vw,1.15rem);line-height:1.55;color:var(--cream);margin-bottom:.4rem}
-.defbox b{color:#fff}
 .media-frame{border-radius:14px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.5)}
-.media-frame img{width:100%;display:block}
-
-/* s6 timeline */
-#s6{position:relative}
-.tlarc{position:absolute;left:0;right:0;bottom:0;width:100%;height:62%;pointer-events:none;opacity:.35}
-.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem;margin-top:1.6rem;align-items:start;position:relative}
-.tl .ph img{width:6.4rem;height:6.4rem;border-radius:50%;object-fit:cover;border:2px solid var(--wood-bright);display:block;margin-bottom:.8rem;box-shadow:0 14px 34px rgba(0,0,0,.45)}
-.tl .ph.past img{filter:saturate(.75) brightness(.85)}
-.tl .ph.current img{border-color:#e07b39;box-shadow:0 0 0 5px rgba(224,123,57,.18),0 14px 34px rgba(0,0,0,.45)}
-.tl .ph.future img{border-color:var(--gold)}
-.tl .ph h3{font-family:'Inter';font-weight:700;font-size:.86rem;line-height:1.35;margin-bottom:.4rem;color:var(--cream)}
-.tl .ph p{font-size:.74rem;line-height:1.5;color:var(--cream-dim);max-width:17rem}
-.tl .ph .yrs{font-family:'Fraunces';color:var(--wood-bright);font-size:1.15rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
-.tl .ph .now{font-family:'Inter';font-weight:700;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:#241708;background:#e07b39;border-radius:999px;padding:.2em .6em}
-.tl .ph.future h3{color:var(--gold)}
-.tl .ph.current .yrs{color:#f0a06b;font-weight:600}
-.tlaxis{position:relative;height:2px;background:linear-gradient(90deg,var(--wood-deep),var(--wood-bright));margin-top:1.4rem;border-radius:2px}
-.tlyears span{position:absolute;transform:translateX(-50%);white-space:nowrap}
-.tlaxis .dot.now{position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#e0432b;box-shadow:0 0 0 2px var(--ink);z-index:3}
-.tlaxis .nowring{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;border:2px solid #e07b39;animation:tlring 2s ease-in-out infinite;z-index:2}
-@keyframes tlring{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.7}50%{transform:translate(-50%,-50%) scale(1.8);opacity:0}}
-.tlyears{position:relative;height:1.2em;margin-top:.6rem;font-size:.62rem;letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums}
-.tlbands{position:relative;height:2.4rem;margin-top:1rem}
-.tlbands span{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(196,154,95,.8);color:#241708;font-size:.6rem;line-height:1.25;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:.3em .5em;clip-path:polygon(0 0, calc(100% - 20px) 0, calc(100% - 4px) 50%, calc(100% - 20px) 100%, 0 100%)}
-.tlbands span:not(:first-child){padding-left:1.5em;clip-path:polygon(0 0, calc(100% - 20px) 0, calc(100% - 4px) 50%, calc(100% - 20px) 100%, 0 100%, 16px 50%)}
-.tlbands span:last-child{clip-path:polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%, 16px 50%)}
-.tlbands span.fut{background:rgba(226,184,119,.22);color:var(--gold);outline:1px dashed rgba(226,184,119,.5);outline-offset:-1px}
+/* cube-hero is portrait (1187x1484); at width:100% it stands 816px tall and drives the whole slide
+   under the fit zoom. the cap bounds any frame image to a showcase, cropping rather than distorting.
+   before the intrinsic width/height attrs existed this was masked by a lazy-load race — the slide was
+   fitted against a 0-height image, then reflowed once it arrived. */
+.media-frame img{width:100%;display:block;max-height:58vh;object-fit:cover}
 
 /* s7 team, s8 investors — team ported from the intro deck */
 .team{display:grid;grid-template-columns:repeat(5,1fr);gap:1.6rem 1.5rem;margin-top:1.8rem}
@@ -212,12 +122,12 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .person .ro{font-size:clamp(11px,.72rem,.88rem);letter-spacing:.07em;text-transform:uppercase;color:var(--wood-bright);margin:.18rem 0 .45rem;min-height:2em}
 .person .bi{font-size:.84rem;line-height:1.55;color:var(--cream-dim)}
 .person .hint{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:auto;padding-top:1rem;opacity:1}
-.bio-pop{position:absolute;left:0;right:0;bottom:calc(100% + 10px);background:#332314;border:1px solid var(--wood-deep);border-radius:12px;padding:1.1rem 1.2rem;font-size:.78rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 1.875rem 70px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .15s,transform .15s,visibility .15s;z-index:20;min-width:min(17.5rem,calc(100vw - 2.5rem));max-width:calc(100vw - 2.5rem)}
+.bio-pop{position:absolute;left:0;right:0;bottom:calc(100% + 10px);background:var(--pop-bg);border:1px solid var(--wood-deep);border-radius:12px;padding:1.1rem 1.2rem;font-size:.78rem;line-height:1.5;color:var(--cream-dim);box-shadow:0 1.875rem 70px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .15s,transform .15s,visibility .15s;z-index:20;min-width:min(17.5rem,calc(100vw - 2.5rem));max-width:calc(100vw - 2.5rem)}
 .bio-pop b{color:var(--wood-bright)}
 .bio-pop ul{list-style:none;margin:.65em 0 0;padding:0}
 .bio-pop li{margin-bottom:.65em;line-height:1.5}
 .bio-pop li:last-child{margin-bottom:0}
-.bio-pop::after{content:"";position:absolute;top:100%;left:1.875rem;border:8px solid transparent;border-top-color:#332314}
+.bio-pop::after{content:"";position:absolute;top:100%;left:1.875rem;border:8px solid transparent;border-top-color:var(--pop-bg)}
 .person:hover .bio-pop,.advc:hover .bio-pop,.person:focus-within .bio-pop,.advc:focus-within .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
 .team .bio-pop{bottom:auto;top:-6px;left:7rem;right:auto;width:18.125rem;pointer-events:none}
 .team .person:last-child .bio-pop{left:auto;right:calc(100% + 10px)}
@@ -232,23 +142,25 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .advc .bio-pop{min-width:18.75rem}
 .person:focus-visible,.advc:focus-visible{outline-offset:4px;border-radius:10px}
 .invpanel{background:linear-gradient(180deg,#f7efe2,#e9dcc4);border:1px solid var(--gold);border-radius:14px;padding:1.1rem 1.6rem;margin-top:1.4rem}
-.invpanel h3{font-size:.7rem;letter-spacing:.3em;color:#3a2a18;text-align:center;font-family:'Inter';font-weight:600;margin-bottom:.9rem}
+.invpanel h3{font-size:.7rem;letter-spacing:.3em;color:var(--panel-ink);text-align:center;font-family:'Inter';font-weight:600;margin-bottom:.9rem}
 .invlogos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.3rem 2.6rem}
 .invlogos>*{flex:0 0 auto}
 .invlogos .brk{flex:0 0 100%;height:0}
-.invlogos img{height:2.1rem;max-width:11rem;object-fit:contain}
+/* width:auto is load-bearing — these carry intrinsic width/height attributes, and with no author
+   `width` the attribute applies as a presentational hint, pinning each logo to its full pixel width
+   (JLL at 720px) which max-width then clamps to a uniform 11rem box. object-fit:contain letterboxes
+   the mark inside that box, so the logos stop sitting on their own centres. */
+.invlogos img{height:2.1rem;width:auto;max-width:11rem;object-fit:contain}
 .invlogos img.sm{height:1.4rem}
 .invlogos img.lg{height:3rem;max-width:13rem}
 .invword{display:inline-flex;flex-direction:column;align-items:center;line-height:1.1}
 .invword.row{flex-direction:row;gap:.5rem;align-items:center}
 .invword.row b{font-size:.95rem}
 .invword b{font-family:'Fraunces';font-size:1.05rem;color:#2a1d10;font-weight:600;white-space:nowrap}
-.invword small{font-size:clamp(9px,.56rem,.7rem);letter-spacing:.18em;text-transform:uppercase;color:#75654e;margin-top:.2rem}
+.invword small{font-size:clamp(9px,.56rem,.7rem);letter-spacing:.18em;text-transform:uppercase;color:var(--panel-muted);margin-top:.2rem}
 .invgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2.6rem;margin-top:.2rem}
 .invc{display:grid;grid-template-columns:3.6rem 1fr;gap:.9rem;align-items:start}
 .invc img{width:3.6rem;height:3.6rem;object-fit:cover}
-.invc img.cut{background:radial-gradient(120% 135% at 50% 28%,#8a6a40,#574022 55%,#3a2914)}
-.invc .mono{width:3.6rem;height:3.6rem;border-radius:50%;border:2px solid rgba(226,184,119,.5);display:flex;align-items:center;justify-content:center;font-family:'Fraunces';font-size:1.2rem;color:var(--wood-bright);background:rgba(255,255,255,.04)}
 .invc h4{font-family:'Fraunces';font-size:.98rem;font-weight:500}
 .invc p{font-size:.7rem;line-height:1.45;color:var(--cream-dim);margin-top:.2rem}
 
@@ -256,54 +168,20 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 /* graph x positions are 220/520/820 of a 1000 viewBox -> column centres must land on 22% / 52% / 82% */
 .millcols .ml{font-size:clamp(10px,.56rem,.7rem);color:var(--muted);white-space:nowrap;padding:.3rem 0;border-bottom:1px solid rgba(228,210,180,.09)}
 .millcols .mv{font-size:.72rem;font-weight:700;color:var(--cream);text-align:center;white-space:nowrap;padding:.3rem 0;border-bottom:1px solid rgba(228,210,180,.09)}
-.millcols .mv:nth-of-type(3n){}
 .millcols{display:grid;grid-template-columns:8% 24% 24% 24% 20%;margin-top:.3rem;align-items:baseline}
-.mills{display:grid;grid-template-columns:.85fr 1.3fr .85fr;gap:1.2rem;margin-top:1.8rem;align-items:stretch}
-.sizestrip{margin-top:1.3rem;display:flex;align-items:flex-end;gap:2.5rem;justify-content:center}
-.sizestrip .cap{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);align-self:flex-end;padding-bottom:1.9rem;max-width:11rem;text-align:right;line-height:1.6}
-.sizestrip .cap b{color:var(--wood-bright)}
-.sq{display:flex;flex-direction:column;align-items:center;gap:.45rem}
-.sq i{display:block;width:var(--s);height:var(--s);background:linear-gradient(180deg,var(--wood-bright),var(--wood-deep));border-radius:2px;transform:scale(0);transform-origin:bottom;transition:transform 1s cubic-bezier(.16,1,.3,1)}
-.sq.tiny i{background:var(--gold);box-shadow:0 0 10px rgba(226,184,119,.6)}
-.in .sq i{transform:scale(1)}
-.in .sq:nth-child(3) i{transition-delay:.15s}.in .sq:nth-child(4) i{transition-delay:.3s}.in .sq:nth-child(5) i{transition-delay:.45s}
-.sq b{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream)}
-.sq small{font-size:.58rem;color:var(--muted);text-align:center;line-height:1.4;min-height:1.4em}
 .mill{border:1px solid rgba(184,125,68,.55);border-radius:14px;padding:1.2rem 1.3rem}
 .mill h3{font-family:'Fraunces';font-size:1.35rem;font-weight:500}
 .mill .sub{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright);margin:.35rem 0 .9rem}
-.flowpair{display:flex;align-items:center;gap:.7rem;background:rgba(0,0,0,.25);border-radius:10px;padding:.7rem;margin-bottom:1rem}
-.flowpair figure{text-align:center;flex:1}
-.flowpair img{height:3.4rem;object-fit:contain}
-.flowpair figcaption{font-size:.58rem;color:var(--muted);margin-top:.3rem}
-.flowpair .arr{color:var(--wood-bright);font-size:1.1rem}
-.stats{display:grid;grid-template-columns:auto 1fr;gap:.4rem 1rem;align-items:baseline}
-.stats .n{font-family:'Fraunces';font-size:1.5rem;color:var(--gold);white-space:nowrap}
-.stats .l{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.mill .notes{margin-top:.9rem;font-size:.74rem;line-height:1.5;color:var(--cream-dim)}
-.minimills{display:flex;flex-direction:column;gap:.9rem}
-.minimill{border:1px solid rgba(184,125,68,.55);border-radius:12px;padding:.85rem 1rem}
-.minimill h3{font-family:'Fraunces';font-size:1.05rem}
-.minimill .sub{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);margin-top:.25rem}
-.futinn{margin-top:.4rem}
-.futinn h4{font-size:.62rem;letter-spacing:.26em;color:var(--wood-bright);font-weight:600;margin-bottom:.6rem}
-.futinn .row{display:flex;align-items:center;gap:1rem;margin-bottom:.5rem}
-.futinn .row span{font-size:.68rem;font-weight:600;color:var(--cream-dim);width:4.4rem}
-.futinn img{height:2.3rem;object-fit:contain}
-.futinn figure{text-align:center}
-.futinn figcaption{font-size:.54rem;color:var(--muted);margin-top:.2rem}
 
 /* s10 network */
-.finpanel{border-radius:12px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.45);background:#efe6d6}
+.finpanel{border-radius:12px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.45);background:var(--panel)}
 .finpanel svg{width:100%;display:block}
 .finpanel .seg{transform:scaleY(0);transform-origin:bottom;transform-box:fill-box;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
 .in .finpanel .seg{transform:scaleY(1)}
 .finpanel .ln{stroke-dasharray:1300;stroke-dashoffset:1300;transition:stroke-dashoffset 2.2s ease .5s}
 .in .finpanel .ln{stroke-dashoffset:0}
-.fintitle{padding:.7rem 1rem 0;background:#efe6d6;font-family:'Inter';font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#3a2a18}
-.fintitle span{font-weight:500;text-transform:none;letter-spacing:0;color:#75654e;font-size:.72rem;margin-left:.5em}
-.ceshead{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem}
-:root{--cesw:56rem}
+.fintitle{padding:.7rem 1rem 0;background:var(--panel);font-family:'Inter';font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--panel-ink)}
+.fintitle span{font-weight:500;text-transform:none;letter-spacing:0;color:var(--panel-muted);font-size:.72rem;margin-left:.5em}
 .cesstats{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:.6rem;max-width:52rem;margin-left:auto;margin-right:auto;text-align:center}
 .cesgrid{margin-top:1.2rem;display:grid;grid-template-columns:1.25fr 1fr;gap:2.2rem;align-items:center;max-width:none}
 .cesgrid .finpanel{max-width:none}
@@ -332,8 +210,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .gicons .fx{flex:none;height:calc(var(--fh) * .82);width:calc(var(--fh) * .82 * .8875);background:currentColor;-webkit-mask:url(assets/icon-factory-hf.png) center/contain no-repeat;mask:url(assets/icon-factory-hf.png) center/contain no-repeat}
 @media (prefers-reduced-motion:no-preference){
   .in .gicons .fx{animation:millup .45s cubic-bezier(.16,1,.3,1) both}
-  @keyframes millup{from{opacity:0;transform:translateY(8px) scale(.92)}to{opacity:1;transform:none}}
-}
+  @keyframes millup{from{opacity:0;transform:translateY(8px) scale(.92)}to{opacity:1;transform:none}}}
 .gicons.green{color:#8fb356}
 .gicons.orange{color:#c2571d}
 .gcard.sm .gicons{margin:.7rem 0 .2rem}
@@ -348,16 +225,14 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .gnote{font-size:.66rem;line-height:1.5;color:var(--cream-dim);font-style:italic;margin-top:.95rem}
 .askterms{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.6rem;max-width:52rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.1rem 0}
 .askterms span{display:block;font-family:'Inter';font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.askterms small{font-size:.66rem}
 .askterms b{display:block;font-family:'Fraunces';font-weight:500;font-size:clamp(1.2rem,2vw,1.7rem);color:var(--gold);margin-top:.3rem}
 .cesfoot h3{font-family:'Inter';font-weight:700;font-size:.95rem;margin-bottom:.5rem}
-.cesfoot .fp{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;justify-content:space-between}
-.cesfoot .fp span{font-size:.78rem;color:var(--cream-dim)}
-.cesfoot .fp b{color:var(--cream)}
 .finpanel{position:relative}
 .finlegend{position:absolute;top:14%;left:14.5%;display:flex;gap:1.2rem;align-items:flex-start}
 .finlegend .col{display:flex;flex-direction:column;gap:.28rem}
-.finlegend span{display:flex;align-items:center;gap:.35rem;font-size:clamp(9px,.52rem,.66rem);letter-spacing:.07em;text-transform:uppercase;color:#4a3618;font-weight:600}
-.finlegend .leghead{font-weight:800;color:#3a2a18;letter-spacing:.12em;margin-bottom:.1rem}
+.finlegend span{display:flex;align-items:center;gap:.35rem;font-size:clamp(9px,.52rem,.66rem);letter-spacing:.07em;text-transform:uppercase;color:var(--panel-ink2);font-weight:600}
+.finlegend .leghead{font-weight:800;color:var(--panel-ink);letter-spacing:.12em;margin-bottom:.1rem}
 .finlegend i{width:.6rem;height:.6rem;border-radius:2px;display:inline-block;flex:none}
 .finlegend i.line{height:3px;width:1.1rem;border-radius:2px}
 
@@ -374,74 +249,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .props p{font-size:.8rem;line-height:1.45;color:var(--cream-dim)}
 .tunable{margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--line);font-style:italic;font-size:.66rem;line-height:1.5;color:var(--muted)}
 .superword-vert{font-family:'Montserrat',sans-serif;font-weight:800;letter-spacing:.22em;font-size:clamp(1.7rem,3.2vw,2.6rem);color:var(--cream);margin-bottom:1.2rem}
-
-/* s12 tech */
-.steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.6rem;margin-top:1.8rem}
-.step .num{font-size:.72rem;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.4rem;margin-bottom:.7rem;letter-spacing:.1em}
-.step h3{font-family:'Inter';font-weight:700;font-size:.86rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
-.step.sw h3{color:#c77b3b;font-size:1.15rem;letter-spacing:.18em}
-.step p{font-size:.8rem;line-height:1.5;color:var(--cream-dim);margin-bottom:.9rem}
-.step img.main{width:100%;border-radius:10px;object-fit:cover;aspect-ratio:3/2}
-.step .inset{width:5.2rem;height:5.2rem;border-radius:50%;border:2px solid var(--gold);object-fit:cover;margin-top:-2.6rem;margin-left:auto;display:block;position:relative;box-shadow:0 10px 26px rgba(0,0,0,.5)}
-.step .cap{font-size:.62rem;font-style:italic;color:var(--muted);text-align:right;margin-top:.3rem}
-.step img.mol{width:78%;margin:0 auto;display:block;border-radius:50%}
-.ipline{margin:1rem auto 0;font-size:.78rem;line-height:1.5;color:var(--cream-dim);max-width:70ch;text-align:center}.ipline b{color:var(--gold);font-weight:600}
-.nochips{display:flex;justify-content:center;gap:.8rem;margin-top:1.6rem;flex-wrap:wrap}
-.nochips span{border:1px solid var(--wood);color:var(--gold);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:.4em .9em;border-radius:3px}
-
-/* s13 process */
-#s13 h2{font-size:clamp(1.1rem,1.9vw,1.5rem);max-width:46ch}
 #s8 h2{max-width:none}
-.procflow{--pimgh:clamp(4.5rem,8.5vw,7.6rem);padding-right:.5rem;display:grid;grid-template-columns:repeat(7,1fr);gap:1.45rem;margin-top:1.4rem;align-items:end}
-.pstep{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;min-width:0}
-.pimg{position:relative;width:92%;margin:0 auto}
-.pstep:not(.end) .pimg::after{content:'';position:absolute;right:-1.7rem;top:50%;transform:translateY(-50%);width:2.3rem;height:1.4rem;opacity:.95;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2024'%3E%3Cpath%20d='M3%2012%20H23'%20stroke='%23b87d44'%20stroke-width='2.8'%20stroke-linecap='round'/%3E%3Cpath%20d='M21%204.5%20L37%2012%20L21%2019.5%20Z'%20fill='%23b87d44'/%3E%3C/svg%3E") center/contain no-repeat}
-.pann{min-height:3.6rem;display:flex;align-items:flex-end;justify-content:center;padding-bottom:.5rem}
-.pann span{position:relative;font-size:.66rem;line-height:1.4;color:var(--cream-dim)}
-.pann span::after{content:'';position:absolute;left:50%;top:calc(100% + .3rem);width:1px;height:.85rem;background:var(--wood);opacity:.7}
-.pstep .pimg{margin-top:.9rem}
-.pstep img{width:100%;height:auto;display:block}
-.plab{font-family:'Inter';font-weight:700;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--cream);
-  margin-top:.9rem;line-height:1.35;min-height:4.2em}
-.plab .pill{display:inline-block;background:linear-gradient(180deg,#6d6f77,#3c3e45);color:#fff;border-radius:999px;padding:.5em .85em;letter-spacing:.1em;max-width:100%}
-.popt{font-size:.64rem;color:var(--muted);font-style:italic;margin-top:.2rem}
-.procfoot{display:grid;grid-template-columns:repeat(7,1fr);gap:.5rem;margin-top:.6rem}
-.procdisc{position:absolute;right:max(6vw,9.5rem);bottom:6.2vh;font-size:.58rem;line-height:1.5;font-style:italic;color:var(--muted);white-space:nowrap;text-align:right;z-index:2}
-.procfoot p{grid-column:4/7;font-size:.66rem;line-height:1.5;color:var(--muted);font-style:italic;text-align:center;
-  border-top:1px solid rgba(184,125,68,.45);padding-top:.6rem}
 
 /* s14 phased */
-:root{--m1:#54300f;--m5:#7c4a1e;--m10:#9c6531;--m50:#c49a5f;--m100:#dccaa0}
-.formfactors{display:flex;align-items:center;gap:1.4rem;margin-top:1rem;flex-wrap:wrap}
-.formfactors .fflab{font-family:'Inter';font-weight:600;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);flex:none}
-.formfactors figure{margin:0;display:flex;align-items:center;gap:.6rem}
-.formfactors img{height:2.9rem;width:auto;border-radius:6px;object-fit:contain}
-.formfactors figcaption{font-size:.68rem;font-weight:700;color:var(--cream);white-space:nowrap}
-.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:1.2rem}
-.mcol .ph{font-size:clamp(11px,.7rem,.85rem);letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);font-weight:600}
-.mcol h3{font-family:'Inter';font-weight:600;font-size:1rem;margin:.35rem 0 .25rem}
-.mcol .sub{font-size:.74rem;color:var(--muted);margin-bottom:.9rem;line-height:1.35;min-height:2.4em}
-.mbox{font-size:clamp(11px,.76rem,.92rem);font-weight:500;padding:.5rem .75rem;border-radius:6px;margin-bottom:.4rem;color:#fff;line-height:1.25}
-.mbox.t1{background:var(--m100);color:#3a2616}.mbox.t5{background:var(--m50);color:#3a2616}.mbox.t10{background:var(--m10)}
-.mbox.t50{background:var(--m5)}.mbox.t100{background:var(--m1)}
-.legend{display:flex;align-items:center;gap:1rem;margin-top:1.2rem;flex-wrap:wrap}
-.legend .lab{font-size:clamp(10px,.68rem,.82rem);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.legend .scale{display:flex;flex:1;min-width:17.5rem;max-width:35rem;border-radius:6px;overflow:hidden;height:2.125rem;border:1px solid var(--line)}
-.legend .scale div{flex:1;display:flex;align-items:center;justify-content:center;font-family:'Fraunces';font-size:.8rem}
-.legend .scale .s1{background:var(--m100);color:#3a2616}.legend .scale .s5{background:var(--m50);color:#3a2616}.legend .scale .s10{background:var(--m10);color:#fff}
-.legend .scale .s50{background:var(--m5);color:#fff}.legend .scale .s100{background:var(--m1);color:#fff}
-.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4rem;margin-top:2rem;text-align:center}
-.phase .pt{font-family:'Inter';font-weight:600;letter-spacing:.3em;font-size:clamp(.9rem,1.6vw,1.25rem);color:var(--sand)}
-.phase .ps{font-size:.78rem;letter-spacing:.16em;color:var(--gold);margin:.3rem 0 1.1rem}
-.phase img{width:min(15.5rem,100%);aspect-ratio:1;border-radius:50%;object-fit:cover;border:2px solid var(--gold)}
-.phase .tam{font-family:'Fraunces';font-size:clamp(1.3rem,2.4vw,1.9rem);color:var(--cream);margin-top:1rem}
-.phase .hurdle{font-family:'Inter';font-weight:700;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:.5rem}
-.phase .pd{font-size:.72rem;line-height:1.5;color:var(--cream-dim);margin:.45rem auto 0;max-width:min(15.5rem,100%)}
-.tamnote{display:flex;align-items:center;gap:1rem;margin-top:1.6rem}
-.tamnote .lab{font-size:.72rem;letter-spacing:.2em;color:var(--muted)}
-/* wedge, not a bar: thickness grows left-to-right so the shape itself reads as TAM increasing $100B+ -> $400B+ -> $700B+ */
-.steel-arrow{flex:1;height:2.7rem;background:linear-gradient(90deg,rgba(196,154,95,.25),rgba(196,154,95,.95));clip-path:polygon(0 45%,92% 16%,92% 0,100% 50%,92% 100%,92% 84%,0 55%);display:flex;align-items:center;justify-content:flex-end;padding-right:9%}
-.steel-arrow b{font-size:.76rem;color:#241708}
 
 /* s15 demand */
 .dstats{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:1.8rem}
@@ -453,15 +263,15 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .dstat .s{font-size:.74rem;color:var(--wood-deep)}
 .dstat:not(.hot) .s{color:var(--muted)}
 .dstat p{font-size:.74rem;line-height:1.5;margin-top:.7rem;color:var(--cream-dim)}
-.dstat.hot p{color:#4a3618}
+.dstat.hot p{color:var(--panel-ink2)}
 
-/* s16 pipeline */
+/* s16 customers — ported from investor-overview */
 .pipes{display:grid;grid-template-columns:1.5fr 1.35fr 1fr;gap:1.3rem;margin-top:1.6rem;align-items:stretch}
 .pipe{display:flex;flex-direction:column;min-height:0}
 .pcard{border-radius:14px;padding:1rem .9rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
 .pcard.light{background:linear-gradient(180deg,#f3ebe0,#e6d9c8)}
 .pcard.tan{background:#c2a680}
-.pband{background:rgba(113,86,59,.34);color:#3a2a18;border-radius:6px;padding:.32rem .5rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;line-height:1.35;text-align:center}
+.pband{background:rgba(113,86,59,.34);color:#3a2a18;border-radius:6px;padding:.32rem .5rem;font-family:'Montserrat',sans-serif;font-weight:600;font-size:clamp(10px,.56rem,.7rem);letter-spacing:.06em;text-transform:uppercase;line-height:1.35;text-align:center}
 .pband.plain{background:none;border-bottom:1px solid rgba(58,42,24,.35);border-radius:0;padding:.1rem 0 .35rem}
 .plogos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;align-content:center;gap:.55rem 1.15rem;flex:1 1 auto;padding:.45rem .2rem}
 .pipe .plogos img{height:2rem;width:auto;max-width:7.5rem;object-fit:contain;display:block;border-radius:0}
@@ -475,27 +285,39 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .plogos img.inv{filter:invert(1) brightness(.35)}
 .pself{font-size:.74rem;line-height:1.35;color:#5c452c;text-align:center;font-style:italic;margin-top:-.2rem}
 .pipe h3{font-family:'Montserrat',sans-serif;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;text-align:center;font-weight:700;margin-bottom:.8rem;line-height:1.3;min-height:2.6em;display:flex;align-items:flex-end;justify-content:center}
-.pipe img{width:100%;border-radius:12px;display:block}
-
-/* s17 allocation */
-#s17 .bg{background:linear-gradient(rgba(26,17,10,.9),rgba(26,17,10,.9)),url(assets/alloc-bg.jpg) center/cover}
-/* one bar, three shares, three columns aligned to it */
-.allocbar{display:grid;grid-template-columns:1fr 1fr 1fr;height:12px;border-radius:999px;overflow:hidden;margin-top:1.8rem}
-.allocbar i{display:block}
-.allocbar i.a{background:#b87d44}.allocbar i.b{background:#e2b877}.allocbar i.c{background:#cdbfa9}
-.alloccols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.2rem;margin-top:1.1rem;align-items:stretch}
-.ac{display:flex;flex-direction:column}
-.ac .goal{display:flex;gap:.6rem;font-size:.74rem;line-height:1.4;color:var(--cream);font-weight:600;
-  padding-bottom:.7rem;margin-bottom:.7rem;border-bottom:1px solid var(--line);min-height:3.4em;align-items:flex-start}
-.ac .goal b{font-family:'Fraunces';font-weight:400;font-size:1rem;line-height:1;flex:none}
-.ac h3{font-family:'Inter';font-weight:700;font-size:1.05rem;letter-spacing:.01em;margin-bottom:.35rem}
-.ac p{font-size:.78rem;line-height:1.55;color:var(--cream-dim)}
-.ac .imgs{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-top:auto;padding-top:1.1rem}
-.ac .imgs img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:9px;box-shadow:0 14px 32px rgba(0,0,0,.45)}
-.ac.a h3,.ac.a .goal b{color:#b87d44}
-.ac.b h3,.ac.b .goal b{color:#e2b877}
-.ac.c h3,.ac.c .goal b{color:#cdbfa9}
 .overlap{margin-top:1.4rem;font-style:italic;font-size:.72rem;line-height:1.5;color:var(--muted)}
+
+/* jf journey + financing — experimental combined slide */
+.tlarc{position:absolute;left:0;right:0;bottom:0;width:100%;height:62%;pointer-events:none;opacity:.35}
+.tl{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem;margin-top:1.6rem;align-items:stretch;position:relative}
+.tl .ph{display:flex;flex-direction:column}
+.tl .ph img{width:6.4rem;height:6.4rem;border-radius:50%;object-fit:cover;border:2px solid var(--wood-bright);display:block;margin-bottom:.8rem;box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.tl .ph.past img{filter:saturate(.75) brightness(.85)}
+.tl .ph.current img{border-color:#e07b39;box-shadow:0 0 0 5px rgba(224,123,57,.18),0 14px 34px rgba(0,0,0,.45)}
+.tl .ph.future img{border-color:var(--gold)}
+.tl .ph h3{font-family:'Inter';font-weight:700;font-size:.86rem;line-height:1.35;margin-bottom:.4rem;color:var(--cream)}
+.tl .ph p{font-size:.74rem;line-height:1.5;color:var(--cream-dim);max-width:17rem}
+.tl .ph .yrs{font-family:'Fraunces';color:var(--wood-bright);font-size:1.15rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
+.tl .ph .now{font-family:'Inter';font-weight:700;font-size:clamp(10px,.56rem,.7rem);letter-spacing:.18em;text-transform:uppercase;color:#241708;background:#e07b39;border-radius:999px;padding:.2em .6em}
+.tl .ph.future h3{color:var(--gold)}
+.tl .ph.current .yrs{color:#f0a06b;font-weight:600}
+.tl .fin{margin-top:auto;padding-top:.6rem;border-top:1px solid rgba(226,184,119,.35);display:flex;flex-direction:column;gap:.45rem}
+.tl .ph p+.fin{margin-top:.8rem}
+.tl .fin b{display:block;font-family:'Fraunces';font-weight:600;font-size:.88rem;color:var(--gold);line-height:1.3}
+.tl .fin span{display:block;font-size:.68rem;line-height:1.4;color:var(--cream-dim)}
+.tl .ph.past .fin b{color:var(--wood-bright)}
+.tl .fin .frnow b{color:#f0a06b}
+.tlaxis{position:relative;height:2px;background:linear-gradient(90deg,var(--wood-deep),var(--wood-bright));margin-top:1.4rem;border-radius:2px}
+.tlyears span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.tlaxis .dot.now{position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#e0432b;box-shadow:0 0 0 2px var(--ink);z-index:3}
+.tlaxis .nowring{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;border:2px solid #e07b39;animation:tlring 2s ease-in-out infinite;z-index:2}
+@keyframes tlring{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.7}50%{transform:translate(-50%,-50%) scale(1.8);opacity:0}}
+.tlyears{position:relative;height:1.2em;margin-top:.6rem;font-size:clamp(10px,.62rem,.78rem);letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums}
+.tlbands{position:relative;height:2.4rem;margin-top:1rem}
+.tlbands span{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(196,154,95,.8);color:#241708;font-size:clamp(10px,.6rem,.75rem);line-height:1.25;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:.3em .5em;clip-path:polygon(0 0, calc(100% - 20px) 0, calc(100% - 4px) 50%, calc(100% - 20px) 100%, 0 100%)}
+.tlbands span:not(:first-child){padding-left:1.5em;clip-path:polygon(0 0, calc(100% - 20px) 0, calc(100% - 4px) 50%, calc(100% - 20px) 100%, 0 100%, 16px 50%)}
+.tlbands span:last-child{clip-path:polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%, 16px 50%)}
+.tlbands span.fut{background:rgba(226,184,119,.22);color:var(--gold);outline:1px dashed rgba(226,184,119,.5);outline-offset:-1px}
 
 /* s18 financing */
 .ucchart{margin-top:1.4rem}
@@ -525,80 +347,16 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .msrow .ms p{font-size:.7rem;line-height:1.5;color:var(--cream-dim)}
 .msrow .ms.past p{color:var(--muted)}
 .nowpill{display:inline-block;background:#b0612d;color:#fff;font-size:clamp(10px,.58rem,.72rem);letter-spacing:.2em;font-weight:700;text-transform:uppercase;padding:.3em .8em;border-radius:999px;margin-left:.6rem;vertical-align:middle}
-
-/* s20 appendix showcase */
-.showgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem 1.6rem;margin-top:1.4rem}
-.showgrid figure{margin:0}
-.showgrid img{width:100%;aspect-ratio:16/8.5;object-fit:cover;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
-.showgrid b{display:inline;font-family:'Fraunces';font-weight:500;font-size:.95rem;margin-right:.5rem}
-.showgrid figcaption{margin-top:.55rem}
-.showgrid span{display:inline;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright)}
-.showgrid p{font-size:.66rem;line-height:1.45;color:var(--cream-dim);margin-top:.25rem}
-
-
-/* dc application tiles */
-#dcn h2,#dcm h2,#dcf h2{max-width:none;font-size:clamp(1.35rem,2.55vw,2rem)}
 #ask .askcta{margin-top:2.1rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:.55rem 2rem}
-#ask .askbtn{display:inline-block;margin-top:.5rem;font-family:'Inter';font-weight:600;font-size:.82rem;letter-spacing:.06em;background:var(--gold);color:#1a1209;border-radius:999px;padding:.75em 1.7em;text-decoration:none;transition:background .25s,transform .25s}
+#ask .askbtn{display:inline-block;margin-top:.5rem;font-family:'Inter';font-weight:600;font-size:.82rem;letter-spacing:.06em;background:var(--gold);color:var(--ink-deep);border-radius:999px;padding:.75em 1.7em;text-decoration:none;transition:background .25s,transform .25s}
 #ask .askbtn:hover,#ask .askbtn:focus-visible{background:var(--cream);transform:translateY(-1px)}
 .fwdlook{margin-top:1.8rem;max-width:78ch;font-size:.63rem;line-height:1.6;color:var(--muted)}
 #ask .askcta .who{flex-basis:100%}
-#ask .note,#dcn .note,#dcm .note{font-size:.62rem;line-height:1.5;font-style:italic;color:var(--muted);margin-top:1.3rem}
-.apph{font-family:'Inter';font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:.5rem;margin-top:1.5rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-.appgrid{display:grid;grid-template-columns:repeat(6,1fr);column-gap:1.1rem;row-gap:.9rem;margin-top:.9rem;align-items:start}
-.appgrid.spread{display:flex;justify-content:space-between}
-.appgrid.spread figure{width:calc((100% - 5.5rem)/6)}
-.appgrid figure{margin:0}
-.appgrid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;box-shadow:0 10px 26px rgba(0,0,0,.35)}
-.appgrid figcaption{font-size:.6rem;line-height:1.45;color:var(--cream-dim);margin-top:.5rem;text-align:center}
-.dccards{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.6rem}
-.dccard{display:flex;gap:1.2rem;align-items:flex-start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:1.2rem 1.4rem}
-.dccard img{width:6.2rem;aspect-ratio:1;object-fit:cover;border-radius:8px;flex:none}
-.dccard h3{font-family:'Inter';font-weight:700;font-size:.82rem;line-height:1.35;color:var(--gold);margin-bottom:.45rem}
-.dccard p{font-size:.72rem;line-height:1.6;color:var(--cream-dim)}
-
-/* appendix TOC */
-.apxtoc{max-width:44rem;margin:2.2rem auto 0;display:flex;flex-direction:column;gap:.7rem}
-.apxtoc a{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;column-gap:1rem;align-items:baseline;text-decoration:none;padding:.8rem 1.1rem;border:1px solid var(--line);border-radius:10px;background:rgba(20,13,7,.55);backdrop-filter:blur(2px);transition:border-color .25s,background .25s,transform .25s}
-.apxtoc a:hover{border-color:var(--wood);background:rgba(184,125,68,.14);transform:translateX(4px)}
-.apxtoc b{font-family:'Fraunces';font-weight:500;font-size:1.15rem;color:var(--cream)}
-.apxtoc span{grid-column:1;font-size:.74rem;color:var(--cream-dim)}
-.apxtoc small{grid-column:2;grid-row:1/3;align-self:center;font-size:.85rem;color:var(--wood-bright);font-variant-numeric:tabular-nums;letter-spacing:.1em}
-
-/* s21-23 appendices */
-.mtworld{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;margin-top:1.6rem}
-.mtworld figure{margin:0}
-.mtworld img{width:100%;aspect-ratio:3/2.6;object-fit:cover;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
-.mtworld figcaption{margin-top:.55rem;font-family:'Fraunces';font-size:.84rem;line-height:1.3;display:flex;flex-direction:column;justify-content:space-between;min-height:3.9em}
-#mte .mtworld figcaption{font-size:.78rem;min-height:6.7rem}
-#mtb .mtworld figcaption{display:block;font-size:.78rem;min-height:0}
-.mtworld figure{position:relative}
-.mtworld figure .why{position:absolute;left:0;right:0;top:0;aspect-ratio:3/2.6;border-radius:10px;border:1px solid rgba(196,154,95,.4);background:linear-gradient(180deg,rgba(24,15,8,.95),rgba(24,15,8,.98));display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:.3rem;padding:.6rem .7rem;overflow:hidden;font-family:'Inter';font-size:.52rem;line-height:1.5;color:var(--cream-dim);opacity:0;pointer-events:none;transition:opacity .22s ease}
-.mtworld figure:hover .why,.mtworld figure:focus .why,.mtworld figure:focus-within .why{opacity:1;pointer-events:auto}
-.mtworld figure .why a{color:var(--gold);text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
-.mtworld figure:focus{outline:none}
-.mtworld figure:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:10px}
-.mtworld figure .hint{position:absolute;top:.45rem;right:.45rem;width:1.15rem;height:1.15rem;border-radius:50%;background:rgba(24,15,8,.72);border:1px solid rgba(196,154,95,.5);color:var(--gold);font-family:'Inter';font-weight:700;font-size:.6rem;display:flex;align-items:center;justify-content:center;transition:opacity .22s ease}
-.mtworld figure:hover .hint,.mtworld figure:focus-within .hint{opacity:0}
-.mtworld figcaption span{display:block;font-family:'Inter';font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);margin-top:.25rem}
-.hbgrid{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;margin-top:.8rem;align-items:center}
-.hbgrid svg{width:100%;display:block}
-.hbh{font-family:'Inter';font-weight:700;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:1.4rem 0 .7rem}
 
 .mtgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.4rem;margin-top:1rem;align-items:start}
 .mtitem{border-left:2px solid var(--wood);padding-left:1rem;margin-top:1.2rem}
 .mtitem h3{font-family:'Inter';font-weight:700;color:var(--gold);font-size:.92rem;margin-bottom:.3rem}
 .mtitem p{font-size:.82rem;line-height:1.5;color:var(--cream-dim)}
-.mtimg{width:100%;border-radius:10px;display:block;box-shadow:0 20px 50px rgba(0,0,0,.4)}
-#s21 .mtitem h3{font-size:1.15rem}
-#s21 .mtitem p{font-size:.95rem;line-height:1.55}
-#s21 .mtitem{margin-top:1rem}
-.invimg{box-shadow:none}
-.mtlab{margin-top:1.5rem}
-.mtimg.ctbuh{border-radius:0;margin:.4rem auto 0;width:100%;max-width:none;max-height:48vh;object-fit:contain}
-#s21 .mtitem h3{font-size:1.08rem}#s21 .mtitem p{font-size:.95rem;line-height:1.5}#s21 .mtitem{margin-top:1.5rem}#s21 .mtlab b{font-size:1.35rem}#s21 .mtlab span{font-size:.95rem}
-.mtlab b{display:block;font-family:'Inter';font-weight:700;font-size:1.25rem;line-height:1.3;color:var(--gold)}
-.mtlab span{display:block;font-family:'Inter';font-weight:400;font-size:.82rem;line-height:1.45;color:var(--cream-dim);margin-top:.15rem}
 
 /* s19 thanks */
 #s19{padding:0}
@@ -613,40 +371,44 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 @media (max-width:900px), (orientation:portrait){
   .team{grid-template-columns:repeat(3,1fr)}
-  .adv{grid-template-columns:repeat(2,1fr);row-gap:1.2rem}
-  .mills{grid-template-columns:1fr}
-  .showgrid{grid-template-columns:1fr 1fr}
-  .mtgrid,.hbgrid{grid-template-columns:1fr}
-  .mtworld{grid-template-columns:1fr 1fr}
-  .appgrid,.appgrid.spread{display:grid;grid-template-columns:1fr 1fr}
-  .appgrid.spread figure{width:auto}
-  .dccards{grid-template-columns:1fr}
+  .adv{grid-template-columns:repeat(2,1fr);row-gap:1.2rem}.mtgrid{grid-template-columns:1fr}
+  .pipes{grid-template-columns:1fr}
   .tl{grid-template-columns:1fr 1fr;row-gap:1.4rem}
-  .tl>*:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;max-width:22rem}
-  .sw5-proof{grid-template-columns:1fr 1fr;gap:.8rem}
-  .sw5{min-height:0}
-  .tlbands{display:none}
-}
+  .tlbands{display:none}}
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){
-  section{padding:5vh 10vw 5vh 7vw}
-  .split,#s11 .split{grid-template-columns:1fr}
-  .dstats,.steps,.phases,.cols3,.pillars{grid-template-columns:1fr}
+  /* right gutter clears the nav rail (26px targets + its own padding = 45px), bottom gutter clears
+     the fixed Confidential / page-number / brand row. both matter more now that slides scroll:
+     at rest the content must not sit under the chrome. fitSlides reads these paddings, so the fit
+     follows automatically. */
+  section{padding:5vh max(10vw,52px) max(5vh,76px) 7vw}
+  /* #gnet sets its own tighter vertical padding, and an id beats the rule above — restore the floor */
+  #gnet{padding-bottom:max(3.5vh,76px)}
+  /* slides scroll here, so the fixed chrome now passes over content rather than empty padding.
+     .conf and .pageno already carry their own pill; give the brand mark the same backing. */
+  .brand{background:rgba(20,13,7,.72);padding:.3em .6em;border-radius:999px;backdrop-filter:blur(3px);
+    height:auto;width:max-content;display:flex}
+  .brand img{height:14px;width:auto;display:block}
+  /* a phone cannot hold a desktop-density slide in one viewport at a legible size. past the zoom
+     floor the slide grows and scrolls rather than shrinking further, so snapping goes proximity —
+     mandatory + a section taller than the scrollport fights the user. overflow-x:clip (not hidden)
+     keeps the .bg scale(1.05) bleed clipped without forcing the y axis to a scroll container */
+  .deck{scroll-snap-type:y proximity}
+  section{overflow:visible;overflow-x:clip;scroll-snap-stop:normal}
+  .split,#s11 .split{grid-template-columns:1fr}.dstats,.cols3{grid-template-columns:1fr}
   .cesgrid{grid-template-columns:1fr}
   nav.dots{padding:0 4px 0 1rem;gap:4px}
-  nav.dots button{font-size:0;padding:.1em .35em}
+  /* label collapses to the numeral, but the hit area must not collapse with it:
+     WCAG 2.5.8 wants 24px, and 17 stacked targets at 12px were a coin flip per tap */
+  nav.dots button{font-size:0;padding:0;min-width:26px;min-height:26px;display:flex;align-items:center;justify-content:center}
   nav.dots button .pn{font-size:clamp(9px,.56rem,.7rem);margin-left:0}
+  nav.dots button.active::before{left:-.15rem}
   #s19 .thanks{grid-template-columns:1fr}
   #s19 .right{min-height:38vh;order:-1}
   .team{grid-template-columns:1fr 1fr}
   .adv{grid-template-columns:1fr}
-  .invgrid{grid-template-columns:1fr}
-  .grow{gap:1.6rem}
-  .gbar .col{width:4.6rem}
-}
+  .invgrid{grid-template-columns:1fr}}
 @media (min-width:561px) and (orientation:portrait){
-  .steps{grid-template-columns:repeat(3,1fr)}
-  #s11 .split{grid-template-columns:.8fr 1.2fr}
-}
+  #s11 .split{grid-template-columns:.8fr 1.2fr}}
 
 /* econ comparison table */
 .cmp{width:100%;border-collapse:collapse;margin-top:1.6rem}
@@ -670,8 +432,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 /* mach */
 .machrow{display:flex;align-items:stretch;gap:1.2rem;margin-top:2rem}
-.machbox{flex:1;border:1px solid rgba(184,125,68,.5);border-radius:14px;padding:1.2rem 1.5rem 1.4rem;display:flex;flex-direction:column;justify-content:flex-start}
-.machbox{padding:0 0 1.4rem;overflow:hidden}
+.machbox{flex:1;border:1px solid rgba(184,125,68,.5);border-radius:14px;padding:0 0 1.4rem;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
 .machbox .mimg{width:100%;margin:0 0 .9rem;height:10.5rem;object-fit:cover;display:block}
 .machbox .k,.machbox .v,.machbox .d{margin-left:1.5rem;margin-right:1.5rem}
 .machbox .k{font-family:'Inter';font-weight:600;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
@@ -687,11 +448,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .machstats .gr b{color:var(--gold)}
 #mach .machstats .gr,#run .machstats .gr{justify-content:flex-start}
 #mach .machstats .gr span{font-size:.95rem;color:var(--cream);font-weight:600}
-#mach .machstats .gr b{font-size:1.05rem}
 #mach .machstats .gr b{font-size:1.6rem}
-.replrow{display:flex;align-items:center;gap:.8rem;margin-top:1.6rem}
-.replrow .fx{display:block;height:var(--fh);width:calc(var(--fh) * .8875);background:var(--wood-bright);-webkit-mask:url(assets/icon-factory-hf.png) center/contain no-repeat;mask:url(assets/icon-factory-hf.png) center/contain no-repeat}
-.replrow .macharrow{font-size:1.6rem}
 
 /* narrow screens: collapses for grids whose base rules are defined later in the sheet */
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){
@@ -702,8 +459,16 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   #fast .mtgrid{grid-template-columns:1fr!important}
   #s15 .msrow{grid-template-columns:1fr!important;gap:1rem}
   .askterms{grid-template-columns:1fr 1fr}
-  .gr b{white-space:normal}
-}
+  /* at 386px a 2-col .machstats cannot hold nowrap labels: the track is forced past 1fr and the
+     row escapes the wrap into the nav rail. let both halves wrap. */
+  .gr span,.gr b{white-space:normal}
+  /* the micro-label tier is declared at .60–.67rem, which lands at 8–9px on a phone once the fit
+     zoom is applied. these are eyebrows, captions and footnotes carrying real content, not texture,
+     so floor them: 11.5px survives the 0.9 zoom floor at ~10px. the tier is uniform, so one rule
+     holds it rather than 13 scattered overrides. */
+  .machbox .k,.invword small,.askterms span,.askterms small,.cstat .l,.finlegend span,
+  .gr.full b,.msrow .ms h3,.fwdlook,.person .hint,.gnote,.tunable,.gsub,.nowpill,
+  .ucnote,.cesplan .fn,.advc .ro,.dstat .s{font-size:max(.76rem,11.5px)}}
 @media print{
   @page{size:letter landscape;margin:0}
   nav.dots,.pageno,.conf,.brand,.scrollcue,.keyhint{display:none!important}
@@ -713,14 +478,12 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   .rv{opacity:1!important;transform:none!important;transition:none!important}
   section>.wrap{zoom:1!important}
   *{print-color-adjust:exact;-webkit-print-color-adjust:exact}
-  body{background:var(--ink)!important}
-}
-</style>
+  body{background:var(--ink)!important}}</style>
 </head>
 <body class="on-cover">
 <div class="conf">Confidential</div>
 <div class="pageno" id="pageno"></div>
-<div class="brand"><img src="assets/logo.png" alt="InventWood"></div>
+<div class="brand"><img width="1473" height="216" src="assets/logo.png" alt="InventWood"></div>
 <nav class="dots" id="dots" aria-label="Slides"></nav>
 
 <div class="deck" id="deck">
@@ -778,11 +541,11 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="wrap">
     <h2 class="rv">SUPERMILLS turn low-value, domestically abundant feedstocks into <em>superior building materials</em></h2>
     <div class="machrow rv">
-      <div class="machbox"><img loading="eager" class="mimg" src="assets/lumber-stack.jpg" alt="Stacked ordinary lumber"><div class="k">In</div><div class="v">Woody feedstock</div><div class="d">Lumber today; wood chips and waste at ChipMill scale. ~25% of COGS, and getting cheaper over time</div></div>
+      <div class="machbox"><img width="632" height="632" loading="eager" class="mimg" src="assets/lumber-stack.jpg" alt="Stacked ordinary lumber"><div class="k">In</div><div class="v">Woody feedstock</div><div class="d">Lumber today; wood chips and waste at ChipMill scale. ~25% of COGS, and getting cheaper over time</div></div>
       <div class="macharrow" aria-hidden="true">&rarr;</div>
-      <div class="machbox mill"><img loading="eager" class="mimg" src="assets/factory.jpg" alt="SuperMill One production floor"><div class="v">SUPERMILL</div><div class="d">Semi-customized off-the-shelf equipment; batch process proven in commercial production</div></div>
+      <div class="machbox mill"><img width="1600" height="900" loading="eager" class="mimg" src="assets/factory.jpg" alt="SuperMill One production floor"><div class="v">SUPERMILL</div><div class="d">Semi-customized off-the-shelf equipment; batch process proven in commercial production</div></div>
       <div class="macharrow" aria-hidden="true">&rarr;</div>
-      <div class="machbox"><img loading="eager" class="mimg" src="assets/sw-boards-floor.jpg" alt="Finished SUPERWOOD boards"><div class="k">Out</div><div class="v">SUPERWOOD</div><div class="d">Stronger than steel by weight, sold into a trillion-dollar materials market</div></div>
+      <div class="machbox"><img width="1473" height="982" loading="eager" class="mimg" src="assets/sw-boards-floor.jpg" alt="Finished SUPERWOOD boards"><div class="k">Out</div><div class="v">SUPERWOOD</div><div class="d">Stronger than steel by weight, sold into a trillion-dollar materials market</div></div>
     </div>
     <div class="machstats rv">
       <div class="gr"><span>Capex per SUPERMILL</span><b>$300M</b></div>
@@ -824,7 +587,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <h2 class="rv">Its product wins <em>today</em> &mdash; attractive, high-performance, premium</h2>
     <div class="split" style="margin-top:1.4rem">
     <div>
-      <div class="media-frame rv"><img loading="lazy" src="assets/cube-hero.jpg" alt="SUPERWOOD cube and I-beam"></div>
+      <div class="media-frame rv"><img width="1187" height="1484" loading="lazy" src="assets/cube-hero.jpg" alt="SUPERWOOD cube and I-beam"></div>
     </div>
     <div>
       <div class="superword-vert rv">SUPERWOOD</div>
@@ -877,7 +640,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <section id="run" class="dark" data-nav="SuperMill One">
   <div class="wrap split">
-    <div class="rv"><div class="media-frame"><img loading="eager" src="assets/factory.jpg" alt="SuperMill One production floor, Frederick MD"></div>
+    <div class="rv"><div class="media-frame"><img width="1600" height="900" loading="eager" src="assets/factory.jpg" alt="SuperMill One production floor, Frederick MD"></div>
       <p class="gnote" style="margin-top:.8rem">SUPERMILL ONE &mdash; Frederick, Maryland. 90,000 sf.<br>Ramping to 1 million sf/year of capacity.</p></div>
     <div>
       <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem)">SUPERMILL ONE is already running &mdash; <em>and it is oversubscribed</em></h2>
@@ -911,6 +674,36 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <p>Representing larger opportunities not serviceable from SuperMill One, spanning similar customer segments and an even wider variety of applications including aerospace, military, musical instruments, marine and more.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="s16" class="dark" data-nav="Customers">
+  <div class="wrap">
+    <h2 class="rv">With engagement from a <em>broad set of global customers</em></h2>
+    <div class="pipes">
+      <div class="pipe rv"><h3>SuperMill One</h3>
+        <div class="pcard light">
+          <div class="pband">Inbound interest with deposits</div>
+          <div class="pself">700+ paid reservations &middot; top winery in Napa Valley &middot; personal homes of celebrities</div>
+          <div class="pband">Specifiers and manufacturers</div>
+          <div class="plogos c5"><img loading="lazy" src="assets/logos/morgansolar.png" alt="Morgan Solar"><img loading="lazy" src="assets/logos/adjaye.png" alt="Adjaye Associates"><img loading="lazy" src="assets/logos/foster.svg" alt="Foster + Partners"><img loading="lazy" src="assets/logos/eero.svg" alt="EERO Nexus"><img loading="lazy" src="assets/logos/fastepp.jpg" alt="Fast + Epp" class="mul"><img loading="lazy" src="assets/logos/assaabloy.svg" alt="ASSA ABLOY"></div>
+          <div class="pband">Distributors</div>
+          <div class="plogos center"><img loading="lazy" src="assets/logos/intectural.png" alt="Intectural"><img loading="lazy" src="assets/logos/ohc.png" alt="OHC"></div>
+          <div class="pband">Trials and pilots to qualify and seed demand for opportunities serviceable from SuperMill Two and beyond</div>
+          <div class="plogos c3"><img loading="lazy" src="assets/logos/dow.svg" alt="U.S. Department of War"><img loading="lazy" src="assets/logos/meta.png" alt="Meta"><img loading="lazy" src="assets/logos/ashley.png" alt="Ashley"><img loading="lazy" src="assets/logos/google.png" alt="Google"><img loading="lazy" src="assets/logos/microsoft.png" alt="Microsoft"><img loading="lazy" src="assets/logos/hitt.png" alt="HITT"></div>
+        </div></div>
+      <div class="pipe rv"><h3>SuperMill Two</h3>
+        <div class="pcard tan">
+          <div class="pband plain">Customers serviceable with scale</div>
+          <div class="plogos c4"><img loading="lazy" src="assets/logos/sto.png" alt="Sto"><img loading="lazy" src="assets/logos/saintgobain.png" alt="Saint-Gobain"><img loading="lazy" src="assets/logos/ucsforest.png" alt="UCS Forest Group"><img loading="lazy" src="assets/logos/nydree.png" alt="Nydree Flooring"><img loading="lazy" src="assets/logos/ahf.png" alt="AHF"><img loading="lazy" src="assets/logos/sumitomo.png" alt="Sumitomo Forestry"><img loading="lazy" src="assets/logos/sansone.png" alt="Sansone Group"><img loading="lazy" src="assets/logos/autovol.png" alt="Autovol"><img loading="lazy" src="assets/logos/boisecascade.png" alt="Boise Cascade"><img loading="lazy" src="assets/logos/kajima.png" alt="Kajima"><img loading="lazy" src="assets/logos/schueco.png" alt="Schuco"><img loading="lazy" src="assets/logos/uslbm.png" alt="U.S. LBM"><img loading="lazy" src="assets/logos/fender.png" alt="Fender"><img loading="lazy" src="assets/logos/ufp.svg" alt="UFP Industries"><img loading="lazy" src="assets/logos/concord.png" alt="Concord Flooring"><img loading="lazy" src="assets/logos/williamssonoma.png" alt="Williams Sonoma" class="inv"><img loading="lazy" src="assets/logos/mercer.png" alt="Mercer Timber Products"><img loading="lazy" src="assets/logos/apple.png" alt="Apple"><img loading="lazy" src="assets/logos/amazon.png" alt="Amazon"><img loading="lazy" src="assets/logos/resawn.png" alt="reSAWN Timber"></div>
+        </div></div>
+      <div class="pipe rv"><h3>Future SuperMills</h3>
+        <div class="pcard tan">
+          <div class="pband plain">Further volumes and adoption timelines</div>
+          <div class="plogos c3"><img loading="lazy" src="assets/logos/ikea.png" alt="IKEA"><img loading="lazy" src="assets/logos/andersen.png" alt="Andersen Windows and Doors"><img loading="lazy" src="assets/logos/audi.png" alt="Audi"><img loading="lazy" src="assets/logos/vw.png" alt="Volkswagen"><img loading="lazy" src="assets/logos/toyota.png" alt="Toyota"><img loading="lazy" src="assets/logos/jamco.png" alt="Jamco"><img loading="lazy" src="assets/logos/weyerhaeuser.png" alt="Weyerhaeuser"><img loading="lazy" src="assets/logos/boeing.png" alt="Boeing"><img loading="lazy" src="assets/logos/axiom.png" alt="Axiom Space"></div>
+        </div></div>
+    </div>
+    <p class="overlap rv">With so many opportunities, focusing execution on a few near-term opportunities is critical.</p>
   </div>
 </section>
 
@@ -987,27 +780,27 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <h2 class="rv">Building the team <em>to scale</em></h2>
     <div class="team rv">
       <div class="person" tabindex="0">
-        <img loading="eager" decoding="sync" class="pic" src="assets/team-alex7-c.webp" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-Founder</div>
+        <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-alex7-c.webp" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-Founder</div>
         <div class="bi">Technology entrepreneur and investor. 20+ years in real estate development and operations. Successful IP strategist. BS Cognitive Science and Physics, Dartmouth.</div><div class="hint">Hover or tap for full bio</div>
         <div class="bio-pop"><b>Alex Lau — CEO / Co-Founder</b><ul><li>Technology entrepreneur and investor who began his career in Silicon Valley in artificial intelligence and human-interface design.</li><li>Involved in five successful manufacturing scale-ups around the world.</li><li>20+ years in real estate development and operations, leading groundbreaking development and redevelopment projects in California and Canada.</li><li>Built world-class teams and is a successful IP strategist across multiple firms.</li><li>BS Cognitive Science and Physics, Dartmouth.</li></ul></div>
       </div>
       <div class="person" tabindex="0">
-        <img loading="eager" decoding="sync" class="pic" src="assets/team-jonathan-c.webp" alt="Jonathan Strimling"><div class="nm">Jonathan Strimling</div><div class="ro">Chief Operating Officer</div>
+        <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-jonathan-c.webp" alt="Jonathan Strimling"><div class="nm">Jonathan Strimling</div><div class="ro">Chief Operating Officer</div>
         <div class="bi">3&times; CEO; co-founded and led an Inc. 5000 "fastest-growing manufacturer" and took a SaaS company to the NASDAQ. MS Manufacturing Management, MIT Sloan.</div><div class="hint">Hover or tap for full bio</div>
         <div class="bio-pop"><b>Jonathan Strimling — Chief Operating Officer</b><ul><li>3&times; CEO. Co-founded and led the building-materials company named America's fastest-growing manufacturer by Inc. 5000.</li><li>Over 25 years of leadership and entrepreneurship, including CEO of a biomaterials manufacturing company and a SaaS company he took to the NASDAQ.</li><li>Manufacturing turnaround expert at American Industrial Partners.</li><li>MS Manufacturing Management, MIT Sloan.</li></ul></div>
       </div>
       <div class="person" tabindex="0">
-        <img loading="eager" decoding="sync" class="pic" src="assets/team-jack2-c.webp" alt="Jack Winterowd"><div class="nm">Jack Winterowd</div><div class="ro">VP Materials Engineering</div>
+        <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-jack2-c.webp" alt="Jack Winterowd"><div class="nm">Jack Winterowd</div><div class="ro">VP Materials Engineering</div>
         <div class="bi">Head of Weyerhaeuser's chemistry platform and lead developer on almost every major product launched there over the last 25 years. 51 issued patents, 60+ pending.</div><div class="hint">Hover or tap for full bio</div>
         <div class="bio-pop"><b>Jack Winterowd — VP Materials Engineering</b><ul><li>One of the world's foremost experts on the behavior of wood.</li><li>As head of Weyerhaeuser's chemistry platform, he was lead developer on almost every major product the company launched over the last 25 years.</li><li>51 issued patents in the US and Canada, with an additional 60 pending.</li></ul></div>
       </div>
       <div class="person" tabindex="0">
-        <img loading="eager" decoding="sync" class="pic" src="assets/team-jiaqi-c.webp" alt="Jiaqi Dai"><div class="nm">Jiaqi Dai</div><div class="ro">Chief Science Officer / Co-Founder</div>
+        <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-jiaqi-c.webp" alt="Jiaqi Dai"><div class="nm">Jiaqi Dai</div><div class="ro">Chief Science Officer / Co-Founder</div>
         <div class="bi">Key co-inventor on the core patents. H-index of 96; top 2% of scientists worldwide. PhD in Materials Science &amp; Engineering, University of Maryland.</div><div class="hint">Hover or tap for full bio</div>
         <div class="bio-pop"><b>Jiaqi Dai — Chief Science Officer / Co-Founder</b><ul><li>Key co-inventor on the core patents, both at the University of Maryland and since.</li><li>Drives the innovations that lower cost and continually improve SUPERWOOD's performance and functionality.</li><li>H-index of 96, ranked in the top 2% of scientists worldwide — and an award-winning artist.</li><li>PhD in Materials Science &amp; Engineering from the University of Maryland.</li></ul></div>
       </div>
       <div class="person" tabindex="0">
-        <img loading="eager" decoding="sync" class="pic" src="assets/team-shaun-c.webp" alt="Shaun Klopfenstein"><div class="nm">Shaun Klopfenstein</div><div class="ro">Head of AI</div>
+        <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-shaun-c.webp" alt="Shaun Klopfenstein"><div class="nm">Shaun Klopfenstein</div><div class="ro">Head of AI</div>
         <div class="bi">Serial tech entrepreneur and investor. Co-founder/CTO of Marketo, the marketing-automation SaaS unicorn, helping bring it onto NASDAQ. BS Computer Information Science, U of Oregon.</div><div class="hint">Hover or tap for full bio</div>
         <div class="bio-pop"><b>Shaun Klopfenstein — Head of AI</b><ul><li>Serial technology entrepreneur and investor.</li><li>Co-founder and former CTO of Marketo, the marketing-automation SaaS unicorn, where he helped bring the company onto the NASDAQ.</li><li>BS Computer Information Science, University of Oregon.</li></ul></div>
       </div>
@@ -1015,23 +808,23 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <div class="adv-head rv">World-Class Advisors <span style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — hover for detail</span></div>
     <div class="adv rv">
       <div class="advc" tabindex="0">
-        <img loading="eager" decoding="sync" src="assets/adv-davies-c.webp" alt="Don Davies"><div><div class="nm">Don Davies</div><div class="ro">Structural Engineering</div></div>
+        <img width="384" height="384" loading="eager" decoding="sync" src="assets/adv-davies-c.webp" alt="Don Davies"><div><div class="nm">Don Davies</div><div class="ro">Structural Engineering</div></div>
         <div class="bio-pop"><b>Don Davies — Structural Engineering</b><ul><li>Former President of Magnusson Klemencic Associates, America's most highly-awarded structural-engineering firm, and engineer of record for the headquarters of several tech giants, and tall buildings around the world.</li><li>Authored 15+ publications on tall-building systems, structural innovation and embodied-carbon optimization.</li><li>Co-founder of the Carbon Leadership Forum and Building Transparency, and part of the team that created the EC3 embodied-carbon tool.</li><li>Advisor to the US Special Presidential Envoy on Climate.</li></ul></div>
       </div>
       <div class="advc" tabindex="0">
-        <img loading="eager" decoding="sync" src="assets/adv-hawken-c.webp" alt="Paul Hawken"><div><div class="nm">Paul Hawken</div><div class="ro">Ecology, Business &amp; Design</div></div>
+        <img width="384" height="384" loading="eager" decoding="sync" src="assets/adv-hawken-c.webp" alt="Paul Hawken"><div><div class="nm">Paul Hawken</div><div class="ro">Ecology, Business &amp; Design</div></div>
         <div class="bio-pop"><b>Paul Hawken — Ecology, Business &amp; Design</b><ul><li>Environmentalist, entrepreneur and bestselling author of nine books, including <em>Drawdown</em> and <em>Regeneration</em>.</li><li>Consults with governments around the world and advises many of the most prominent multinational corporations.</li><li>Author of <em>Drawdown</em>, <em>Carbon</em>, <em>Natural Capitalism</em> and <em>The Ecology of Commerce</em>.</li></ul></div>
       </div>
       <div class="advc" tabindex="0">
-        <img loading="eager" decoding="sync" src="assets/adv-zsmith-c.webp" alt="Z Smith"><div><div class="nm">Z Smith</div><div class="ro">High-Performance Buildings</div></div>
+        <img width="384" height="384" loading="eager" decoding="sync" src="assets/adv-zsmith-c.webp" alt="Z Smith"><div><div class="nm">Z Smith</div><div class="ro">High-Performance Buildings</div></div>
         <div class="bio-pop"><b>Z Smith — High-Performance Buildings</b><ul><li>Principal and Director of Sustainability &amp; Performance at Eskew Dumez Ripple, AIA Firm of the Year in 2014.</li><li>Award-winning architect and Americas representative for the UN's Architects' Union.</li><li>Former CTO of Xerox.</li><li>Sc.B. Physics, MIT; PhD Electrical Engineering &amp; Computer Science, Princeton; M.Arch, UC Berkeley.</li></ul></div>
       </div>
       <div class="advc" tabindex="0">
-        <img loading="eager" decoding="sync" src="assets/adv-organschi-c.webp" alt="Alan Organschi"><div><div class="nm">Alan Organschi</div><div class="ro">Architecture &amp; Urban Design</div></div>
+        <img width="384" height="384" loading="eager" decoding="sync" src="assets/adv-organschi-c.webp" alt="Alan Organschi"><div><div class="nm">Alan Organschi</div><div class="ro">Architecture &amp; Urban Design</div></div>
         <div class="bio-pop"><b>Alan Organschi — Architecture &amp; Urban Design</b><ul><li>Principal and partner at Gray Organschi Architecture, winner of multiple AIA awards, and Principal at JIG Design Build.</li><li>Professor at the Yale School of Architecture and Director of the Yale Building Lab.</li><li>Founded the Timber City Initiative and wrote the seminal paper "Buildings as a Global Carbon Sink." Recipient of the Arts and Letters Award in Architecture, 2012.</li></ul></div>
       </div>
       <div class="advc" tabindex="0">
-        <img loading="eager" decoding="sync" src="assets/adv-bradshaw-c.webp" alt="Allan Bradshaw"><div><div class="nm">Allan Bradshaw</div><div class="ro">Manufacturing &amp; Wood Industry</div></div>
+        <img width="384" height="384" loading="eager" decoding="sync" src="assets/adv-bradshaw-c.webp" alt="Allan Bradshaw"><div><div class="nm">Allan Bradshaw</div><div class="ro">Manufacturing &amp; Wood Industry</div></div>
         <div class="bio-pop"><b>Allan Bradshaw — Manufacturing &amp; Wood Industry</b><ul><li>A 30-year career at Weyerhaeuser culminating as VP of Capital Projects, where he led a $1.5B fleet overhaul.</li><li>Ran technology development and scaling operations from R&amp;D to mass-market sales, led manufacturing for TrusJoist (its fastest-growing product), and ran operations for the entire East Coast.</li><li>Deep relationships throughout the wood-processing industry.</li></ul></div>
       </div>
     </div>
@@ -1040,32 +833,32 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <section id="s8" class="dark" data-nav="Investors">
   <div class="wrap">
-    <h2 class="rv">Backed by <em>deeply sophisticated</em> investors</h2>
+    <h2 class="rv">Backed by institutional capital <em>and industrial operators</em></h2>
     <div class="invpanel rv">
       <h3>SELECT INSTITUTIONAL INVESTORS</h3>
       <div class="invlogos">
-        <img loading="lazy" class="sm" src="assets/logo-arpae.png" alt="ARPA-E">
-        <img loading="lazy" class="lg" src="assets/logo-newindustrial.png" alt="The New Industrial Corporation">
-        <img loading="lazy" class="lg" src="assets/logo-builders.png" alt="Builders Vision" style="height:3.7rem;max-width:15.5rem">
-        <img loading="lazy" src="assets/logo-jll3.png" alt="JLL">
-        <img loading="lazy" src="assets/logo-grantham.png" alt="Grantham Foundation">
+        <img width="460" height="103" loading="lazy" class="sm" src="assets/logo-arpae.png" alt="ARPA-E">
+        <img width="266" height="140" loading="lazy" class="lg" src="assets/logo-newindustrial.png" alt="The New Industrial Corporation">
+        <img width="425" height="140" loading="lazy" class="lg" src="assets/logo-builders.png" alt="Builders Vision" style="height:3.7rem;max-width:15.5rem">
+        <img width="720" height="321" loading="lazy" src="assets/logo-jll3.png" alt="JLL">
+        <img width="460" height="53" loading="lazy" src="assets/logo-grantham.png" alt="Grantham Foundation">
         <i class="brk"></i>
         <span class="invword"><b>Smart Aviation Futures</b><small>Delta Air Lines</small></span>
-        <span class="invword row"><img loading="lazy" src="assets/logo-echelon.png" alt="Echelon mark" style="height:1.5rem"><b>Echelon</b></span>
+        <span class="invword row"><img width="200" height="200" loading="lazy" src="assets/logo-echelon.png" alt="Echelon mark" style="height:1.5rem"><b>Echelon</b></span>
         <span class="invword"><b>MUUS</b><small>Climate Partners</small></span>
-        <span class="invword row"><img loading="lazy" src="assets/logo-hugoneu.png" alt="Hugo Neu" style="height:1.9rem;border-radius:4px"><b>Hugo Neu Corporation</b></span>
+        <span class="invword row"><img width="200" height="200" loading="lazy" src="assets/logo-hugoneu.png" alt="Hugo Neu" style="height:1.9rem;border-radius:4px"><b>Hugo Neu Corporation</b></span>
       </div>
     </div>
     <div class="adv-head rv" style="margin-top:1.8rem;padding-top:1.4rem">Select Individual Investors</div>
     <div class="invgrid rv">
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-rockwell-new.webp" alt="John Rockwell"><div><h4>John Rockwell</h4><p>CEO of four companies, all with successful exits. Founder and Managing Director of Element Partners, an $800M venture capital and PE firm, and Managing Director of Advent's Silicon Valley office.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-mcglashan-new.webp" alt="Bill McGlashan"><div><h4>Bill McGlashan</h4><p>Former co-founder, managing partner of TPG Growth and TPG Rise, leading investments into Uber and AirBnB, and board member of Fender, Creative Artists Agency, and Common Sense Media.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-koerner-new.webp" alt="Jacqueline Koerner"><div><h4>Jacqueline Koerner</h4><p>Founder, Co-Chair of Ecotrust Canada. Vice-Chair, CIFAR. International development and microfinance consultant. Background in sustainable forestry and anthropology.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-jacobs-gc.webp" alt="Scott Jacobs"><div><h4>Scott Jacobs</h4><p>Co-founder of McKinsey's Cleantech practice. Co-founder and former CEO of Generate Capital, one of the largest project-finance firms in the climate sector. MBA Harvard, Baker Scholar.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-bosa-new.webp" alt="Colin Bosa"><div><h4>Colin Bosa</h4><p>Co-founder of Axiom, one of the top general contractors in BC. CEO, Bosa Properties, one of the top high-rise developers in BC.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-sant-new.webp" alt="Roger Sant"><div><h4>Roger Sant</h4><p>Co-Founder, former CEO, and Chairman Emeritus of AES Corporation, growing it to one of the largest independent power producers in the world. Former Chair, World Wildlife Fund.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-stotmeister-new.webp" alt="Jochen Stotmeister"><div><h4>Jochen Stotmeister</h4><p>Chairman of Sto Corporation, one of the largest premium cladding solutions companies in the world.</p></div></div>
-      <div class="invc"><img loading="lazy" src="assets/inv2/inv-sansone-new.webp" alt="Nick Sansone"><div><h4>Nick Sansone</h4><p>CEO of Sansone Group, the #5-ranked commercial real estate developer in the U.S. and one of the largest data center developers.</p></div></div>
+      <div class="invc"><img width="360" height="360" loading="lazy" src="assets/inv2/inv-rockwell-new.webp" alt="John Rockwell"><div><h4>John Rockwell</h4><p>CEO of four companies, all with successful exits. Founder and Managing Director of Element Partners, an $800M venture capital and PE firm, and Managing Director of Advent's Silicon Valley office.</p></div></div>
+      <div class="invc"><img width="360" height="360" loading="lazy" src="assets/inv2/inv-mcglashan-new.webp" alt="Bill McGlashan"><div><h4>Bill McGlashan</h4><p>Former co-founder, managing partner of TPG Growth and TPG Rise, leading investments into Uber and AirBnB, and board member of Fender, Creative Artists Agency, and Common Sense Media.</p></div></div>
+      <div class="invc"><img width="360" height="360" loading="lazy" src="assets/inv2/inv-koerner-new.webp" alt="Jacqueline Koerner"><div><h4>Jacqueline Koerner</h4><p>Founder, Co-Chair of Ecotrust Canada. Vice-Chair, CIFAR. International development and microfinance consultant. Background in sustainable forestry and anthropology.</p></div></div>
+      <div class="invc"><img width="360" height="360" loading="lazy" src="assets/inv2/inv-jacobs-gc.webp" alt="Scott Jacobs"><div><h4>Scott Jacobs</h4><p>Co-founder of McKinsey's Cleantech practice. Co-founder and former CEO of Generate Capital, one of the largest project-finance firms in the climate sector. MBA Harvard, Baker Scholar.</p></div></div>
+      <div class="invc"><img width="360" height="360" loading="lazy" src="assets/inv2/inv-bosa-new.webp" alt="Colin Bosa"><div><h4>Colin Bosa</h4><p>Co-founder of Axiom, one of the top general contractors in BC. CEO, Bosa Properties, one of the top high-rise developers in BC.</p></div></div>
+      <div class="invc"><img width="360" height="360" loading="lazy" src="assets/inv2/inv-sant-new.webp" alt="Roger Sant"><div><h4>Roger Sant</h4><p>Co-Founder, former CEO, and Chairman Emeritus of AES Corporation, growing it to one of the largest independent power producers in the world. Former Chair, World Wildlife Fund.</p></div></div>
+      <div class="invc"><img width="360" height="360" loading="lazy" src="assets/inv2/inv-stotmeister-new.webp" alt="Jochen Stotmeister"><div><h4>Jochen Stotmeister</h4><p>Chairman of Sto Corporation, one of the largest premium cladding solutions companies in the world.</p></div></div>
+      <div class="invc"><img width="360" height="360" loading="lazy" src="assets/inv2/inv-sansone-new.webp" alt="Nick Sansone"><div><h4>Nick Sansone</h4><p>CEO of Sansone Group, the #5-ranked commercial real estate developer in the U.S. and one of the largest data center developers.</p></div></div>
     </div>
   </div>
 </section>
@@ -1101,12 +894,34 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   </div>
 </section>
 
+<section id="jf" class="dark" data-nav="Journey">
+  <svg class="tlarc" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true"><path d="M0 540 C 380 540, 700 470, 1000 60" fill="none" stroke="url(#tlg)" stroke-width="3"/><defs><linearGradient id="tlg" x1="0" x2="1"><stop offset="0" stop-color="#cda165" stop-opacity="0"/><stop offset="1" stop-color="#e2b877" stop-opacity=".55"/></linearGradient></defs></svg>
+  <div class="wrap">
+    <h2 class="rv">From university research to commercial production &mdash; <em>building equity value at every step</em></h2>
+    <div class="tl rv">
+      <div class="ph past"><img loading="lazy" src="assets/molecular.webp" alt="Cellulose molecular structure"><div class="yrs">2016&ndash;2018</div><h3>The breakthrough</h3><p>Dr.&nbsp;Liangbing Hu invents SUPERWOOD at the University of Maryland.</p></div>
+      <div class="ph past"><img loading="lazy" src="assets/cube-hero.jpg" alt="Densified SUPERWOOD cube"><div class="yrs">2018&ndash;2022</div><h3>IP &amp; commercialization</h3><p>Patent portfolio built. Developed low-cost manufacturing strategy. Explored market opportunities.</p></div>
+      <div class="ph past"><img loading="lazy" src="assets/factory.jpg" alt="SuperMill One production floor"><div class="yrs">2022&ndash;2025</div><h3>SuperMill One</h3><p>First plant built in Frederick, MD. Lab to commercial scale; shipments began Dec&nbsp;'25.</p>
+        <div class="fin"><div class="fr"><b>$26M Series A &middot; 2025</b><span>$62M post-money &middot; plus $20M non-dilutive</span></div></div></div>
+      <div class="ph current"><img loading="lazy" src="assets/ph-deck.jpg" alt="SUPERWOOD decking installed"><div class="yrs">2025&ndash;2027 <span class="now">Now</span></div><h3>First customers</h3><p>Deliver, delight, and prove SUPERWOOD across a range of applications.</p>
+        <div class="fin"><div class="fr"><b>$18M Series AA &middot; 2026</b><span>$129M post-money</span></div><div class="fr frnow"><b>$10M SAFEs &middot; open now</b><span>$170&ndash;200M valuation cap</span></div></div></div>
+      <div class="ph future"><img loading="lazy" src="assets/supermill-two-aerial.webp" alt="SuperMill Two aerial rendering" style="object-position:50% 58%"><div class="yrs">2027&ndash;2030</div><h3>SuperMill Two development</h3><p>SuperMill Two ships in 2029. Highly profitable plants serve global markets as costs keep falling.</p>
+        <div class="fin"><div class="fr"><b>$75&ndash;100M Series B &middot; 2027</b><span>$400&ndash;800M target valuation</span></div></div></div>
+    </div>
+    <div class="rv">
+      <div class="tlaxis" id="tlaxis"></div>
+      <div class="tlyears"><span>2016</span><span>2017</span><span>2018</span><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span></div>
+      <div class="tlbands"><span style="left:0%;width:14.286%">Discovery</span><span style="left:14.286%;width:28.571%">Commercialization</span><span style="left:42.857%;width:28.571%">SuperMill One</span><span class="fut" style="left:71.428%;width:28.572%">SuperMill Two</span></div>
+    </div>
+  </div>
+</section>
+
 <section id="ask" class="dark" data-nav="The Opportunity">
   <div class="wrap">
     <h2 class="rv">And are raising <em>$10M now</em>, to scale production and prepare for Series B raise</h2>
     <div class="askterms rv">
       <div><span>Amount</span><b>$10M</b></div>
-      <div><span>Instrument</span><b>SAFE</b><small style="display:block;font-size:.66rem;color:var(--muted);margin-top:.3rem">Issued by InventWood</small></div>
+      <div><span>Instrument</span><b>SAFE</b><small style="display:block;color:var(--muted);margin-top:.3rem">Issued by InventWood</small></div>
       <div><span>Valuation cap</span><b>$170&ndash;200M</b></div>
       <div><span>Status</span><b>Open now</b></div>
     </div>
@@ -1154,29 +969,31 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 <script>
 const deck=document.getElementById('deck');
 document.querySelectorAll('#gnet .gicons').forEach((g,gi)=>{g.querySelectorAll('.fx').forEach((f,i)=>{f.style.animationDelay=(gi*160+i*70)+'ms';});});
+/* team + advisor cards are focusable divs whose .bio-pop is visibility:hidden — so the full bio sits
+   outside the a11y tree until :focus-within reveals it, and the card itself announced as nothing.
+   name each card from its own heading rows and point describedby at the bio, which focus has just
+   made visible. deliberately not role=button: these open on focus, not activation, and a button role
+   would promise Enter/Space handling that the deck's own key bindings already own. */
+document.querySelectorAll('.person,.advc').forEach((c,i)=>{
+  const pop=c.querySelector('.bio-pop'),nm=c.querySelector('.nm'),ro=c.querySelector('.ro');
+  if(!pop||!nm)return;
+  nm.id='bion'+i;pop.id='biop'+i;if(ro)ro.id='bior'+i;
+  c.setAttribute('role','group');
+  c.setAttribute('aria-labelledby','bion'+i+(ro?' bior'+i:''));
+  c.setAttribute('aria-describedby','biop'+i);
+});
 const secs=[...document.querySelectorAll('section')];
 const dotsBox=document.getElementById('dots');
-let apxIdx=secs.indexOf(document.getElementById('apx'));if(apxIdx<0)apxIdx=secs.length;
-const subIds=['s20','mth','dch'];
 const railBtns=[];
 secs.forEach((sec,i)=>{
-  if(i>apxIdx&&!subIds.includes(sec.id))return;
   const b=document.createElement('button');
-  b.innerHTML=(i===apxIdx?'Appendix':(sec.dataset.nav||''))+'<span class="pn">'+String(i+1).padStart(2,'0')+'</span>';
-  if(i>apxIdx)b.classList.add('sub');
+  b.innerHTML=(sec.dataset.nav||'')+'<span class="pn">'+String(i+1).padStart(2,'0')+'</span>';
   b.dataset.idx=i;
   b.onclick=()=>{jumpTo(i);};
   dotsBox.appendChild(b);railBtns.push(b);
 });
 function setActive(i){
-  document.body.classList.toggle('in-apx',i>=apxIdx);
-  railBtns.forEach(b=>b.classList.remove('active'));
-  if(i<apxIdx){const m=railBtns.find(b=>+b.dataset.idx===i);if(m)m.classList.add('active');}
-  else{
-    const ab=railBtns.find(b=>+b.dataset.idx===apxIdx);if(ab)ab.classList.add('active');
-    let cand=null;railBtns.forEach(b=>{if(b.classList.contains('sub')&&+b.dataset.idx<=i)cand=b;});
-    if(cand)cand.classList.add('active');
-  }
+  railBtns.forEach(b=>b.classList.toggle('active',+b.dataset.idx===i));
 }
 let cur=0;
 function jumpTo(i){i=Math.max(0,Math.min(secs.length-1,i));
@@ -1185,6 +1002,7 @@ function jumpTo(i){i=Math.max(0,Math.min(secs.length-1,i));
   /* smooth only for adjacent slides: a smooth scroll across several mandatory-snap sections gets cancelled mid-way in Chrome */
   const smooth=!reduce&&Math.abs(i-cur)===1;
   deck.scrollTo({top:target(),behavior:smooth?'smooth':'instant'});
+  reveal(secs[i]);cur=i;setActive(i);
   /* verify and hard-set — measured from the section itself, not i*height */
   /* verify only once the scroll has come to rest — and cancel any watcher from a previous jump,
      or a stale watcher corrects toward its old target and the deck visibly snaps back */
@@ -1200,12 +1018,25 @@ function animate(el){
   if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   el.animate([{opacity:0},{opacity:1}],{duration:600,easing:'ease-out'});
 }
+function reveal(sec){
+  if(!sec||sec.classList.contains('in'))return;
+  sec.classList.add('in');sec.querySelectorAll('[data-count]').forEach(animate);
+}
+/* the section covering the middle of the scrollport is the one being read. this is the authority for
+   revealing, because intersectionRatio is not: once a slide is taller than the scrollport its ratio
+   caps at scrollportH/sectionH, so a slide 2x the viewport can never reach the .5 threshold at all
+   and one just over 2x sits exactly on it — a race. that never bit while every slide was one
+   viewport tall; it does now that narrow screens let them grow. */
+function currentSection(){
+  const dr=deck.getBoundingClientRect(), mid=dr.top+deck.clientHeight/2;
+  return secs.find(s=>{const r=s.getBoundingClientRect();return r.top<=mid&&r.bottom>=mid})||null;
+}
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{
   const i=secs.indexOf(e.target);
   const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);
   if(vis>=.5){cur=i;setActive(i);document.getElementById('pageno').textContent=String(i+1).padStart(2,'0')+' / '+secs.length;
     document.body.classList.toggle('on-cover',i===0);
-    if(!e.target.classList.contains('in')){e.target.classList.add('in');e.target.querySelectorAll('[data-count]').forEach(animate);}}
+    reveal(e.target);}
   else if(!e.isIntersecting){e.target.classList.remove('in');}
 });},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
 secs.forEach(s=>io.observe(s));
@@ -1225,10 +1056,33 @@ window.addEventListener('keydown',e=>{
     document.getElementById('pageno').textContent='go to '+numBuf+' …';
     if(numBuf.length>=2)commitNum();else numT=setTimeout(commitNum,650);}
 });
+/* jf timeline: year ticks 2016..2030; the "now" dot lands to the day */
+{
+  const ax=document.getElementById('tlaxis');
+  if(ax){
+    const Y0=2016,Y1=2030,N=Y1-Y0+1;
+    const t=new Date(), y=t.getFullYear();
+    const frac=(t-new Date(y,0,1))/(new Date(y+1,0,1)-new Date(y,0,1));
+    const idx=Math.max(0,Math.min(N-1,(y-Y0)+frac)), L=(idx/(N-1)*100)+'%';
+    const d=document.createElement('span');d.className='dot now';d.style.left=L;ax.appendChild(d);
+    const r=document.createElement('span');r.className='nowring';r.style.left=L;ax.appendChild(r);
+    document.querySelectorAll('.tlyears span').forEach((sp,i)=>{sp.style.left=(i/(N-1)*100)+'%';});
+  }
+}
 /* one-slide-per-page: zoom each slide's content to FILL the available page —
    shrink when it overflows, grow when it's sparse (upscale capped at 1.4x).
    zoom affects layout, so re-measure and converge over a few passes. */
+const NARROW=()=>matchMedia('(max-width:700px), (max-width:860px) and (orientation:portrait)').matches;
 function fitSlides(only){
+  /* zoom floor. below this the slide stops being readable, so past the floor it grows and scrolls
+     instead of shrinking further — a phone can't hold a desktop-density slide in one viewport at a
+     legible size. phones floor high (10% shrink is invisible; the old unbounded path reached 46%,
+     which put the team bios at 4px); desktop keeps the wider range it was tuned on. */
+  const minz=NARROW()?.9:.55;
+  /* no upscaling on a phone. zoom scales from the origin while the flex container still sizes to the
+     LAYOUT box, so any z>1 pushes content visually past its own padding — under the fixed chrome and
+     the nav rail. filling a sparse slide is a big-screen nicety; on a phone it only causes collisions. */
+  const maxz=NARROW()?1:1.4;
   (only?[only]:secs).forEach(s=>{
     if(s.id==='s1')return;                       /* cover keeps its own scale */
     const w=s.querySelector(':scope > .wrap');if(!w)return;
@@ -1236,29 +1090,33 @@ function fitSlides(only){
     const cs=getComputedStyle(s);
     const avail=deck.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
     let z=1;
+    /* returns true once the floor is reached, so each loop stops instead of spinning against it */
+    const set=v=>{z=Math.max(minz,Math.min(maxz,v));w.style.zoom=z;return z<=minz};
     for(let i=0;i<12;i++){
       const h=w.offsetHeight*z;
       if(Math.abs(h-avail)<5)break;
-      z=Math.min(1.4,z*avail/h*.995);
-      w.style.zoom=z;
+      if(set(z*avail/h*.995))break;
     }
-    if(w.offsetHeight*z>avail)w.style.zoom=(z*=avail/w.offsetHeight/z*.99);
+    if(w.offsetHeight*z>avail)set(z*(avail/w.offsetHeight/z*.99));
+    /* the descendant list is fixed for this section — collect it once rather than re-querying
+       inside every iteration of the two loops below (that was ~2000 forced reflows on the team slide) */
+    const kids=[...w.querySelectorAll('*')];
+    /* children of a horizontal scroller overflow by design; measure the scroller's own box instead */
+    const wkids=kids.filter(el=>!(el.closest('.cmp-wrap,.ucchart')&&!(el.classList.contains('cmp-wrap')||el.classList.contains('ucchart'))));
     /* measure the lowest child, not the wrap box: under zoom the wrap under-reports its content */
-    const lowest=()=>{let b=-1e9;w.querySelectorAll('*').forEach(el=>{const r=el.getBoundingClientRect();
+    const lowest=()=>{let b=-1e9;kids.forEach(el=>{const r=el.getBoundingClientRect();
       if(r.height&&r.bottom>b)b=r.bottom;});return b===-1e9?w.getBoundingClientRect().bottom:b;};
     for(let k=0;k<8;k++){
       const sr=s.getBoundingClientRect();
-      const wr={bottom:lowest(),height:Math.max(1,lowest()-w.getBoundingClientRect().top)};
+      const lo=lowest();
+      const wr={bottom:lo,height:Math.max(1,lo-w.getBoundingClientRect().top)};
       const over=(wr.bottom-sr.top)-(s.clientHeight-parseFloat(cs.paddingBottom));
       if(over<=0.5)break;
-      z*=Math.max(.75,1-(over/Math.max(1,wr.height))-0.004);
-      w.style.zoom=z;
+      if(set(z*Math.max(.75,1-(over/Math.max(1,wr.height))-0.004)))break;
     }
     /* width cap: the loops above fit height only; wide grids can still push past the
-       viewport and get amputated by section overflow:hidden on narrow screens */
-    const rightmost=()=>{let r=-1e9;w.querySelectorAll('*').forEach(el=>{
-      /* children of a horizontal scroller overflow by design; measure the scroller's own box instead */
-      if(el.closest('.cmp-wrap,.ucchart')&&!(el.classList.contains('cmp-wrap')||el.classList.contains('ucchart')))return;
+       viewport and get amputated by section overflow clipping on narrow screens */
+    const rightmost=()=>{let r=-1e9;wkids.forEach(el=>{
       const b=el.getBoundingClientRect();
       if(b.width&&b.right>r)r=b.right;});return r===-1e9?w.getBoundingClientRect().right:r;};
     for(let k=0;k<8;k++){
@@ -1268,19 +1126,20 @@ function fitSlides(only){
       const vw=document.documentElement.clientWidth;
       const over=(rightmost()-sr.left)-(vw-parseFloat(cs.paddingRight));
       if(over<=0.5)break;
-      z*=Math.max(.6,1-(over/Math.max(1,vw))-0.004);
-      w.style.zoom=z;
+      if(set(z*Math.max(.6,1-(over/Math.max(1,vw))-0.004)))break;
     }
   });
 }
 let ft;addEventListener('resize',()=>{clearTimeout(ft);ft=setTimeout(fitSlides,150);});
 /* lazy images arrive after the first fit and can push a slide past the viewport — re-fit as they land */
-let scrolling=0,scrollT;deck.addEventListener('scroll',()=>{scrolling=1;clearTimeout(scrollT);scrollT=setTimeout(()=>{scrolling=0;},200);},{passive:true});
+let scrolling=0,scrollT;deck.addEventListener('scroll',()=>{scrolling=1;clearTimeout(scrollT);scrollT=setTimeout(()=>{scrolling=0;reveal(currentSection());},200);},{passive:true});
 document.querySelectorAll('img[loading="lazy"]').forEach(i=>{if(!i.complete)i.addEventListener('load',()=>{
   const sec=i.closest('section');const refit=()=>{if(scrolling){setTimeout(refit,200);return;}fitSlides(sec);};setTimeout(refit,60);},{once:true});});
 /* re-align to the nearest slide after fitting: restored scroll positions and pre-fit section heights otherwise land mid-slide */
-function realign(){const h=deck.clientHeight;const top=Math.round(deck.scrollTop/h)*h;if(Math.abs(deck.scrollTop-top)>1)deck.scrollTo({top,behavior:'instant'});}
-addEventListener('load',()=>{fitSlides();realign();setTimeout(()=>{fitSlides();realign();},600);});
+/* assumes every section is exactly one viewport tall — true only once the zoom floor is off,
+   so it must not run on narrow screens where tall slides are allowed to scroll */
+function realign(){if(NARROW())return;const h=deck.clientHeight;const top=Math.round(deck.scrollTop/h)*h;if(Math.abs(deck.scrollTop-top)>1)deck.scrollTo({top,behavior:'instant'});}
+addEventListener('load',()=>{fitSlides();realign();reveal(currentSection());setTimeout(()=>{fitSlides();realign();reveal(currentSection());},600);});
 if(document.fonts)document.fonts.ready.then(()=>{fitSlides();realign();});
 </script>
 </body>
