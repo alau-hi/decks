@@ -290,3 +290,10 @@ claims:
     conf: H (internal)
     source: Alex Lau, 2026-08-25 (1M sf/yr capacity already registered via parent)
     slide: Running (photo caption)
+
+  - claim: "~22% of US cement consumption met by imports (net import reliance)"
+    provenance: published
+    conf: H
+    source: USGS Mineral Commodity Summaries, January 2025, Cement - net import reliance 22% of apparent consumption in 2024e (22% in 2022-23); ~25M t cement + clinker imported; leading sources Turkey 32%, Canada 22% (2020-23). https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf
+    slide: The Gap
+    note: Added per Alex 2026-08-26 ("America imports over 20% of the cement it uses") - printed as ~22% with the USGS figure rather than the looser >20%.
