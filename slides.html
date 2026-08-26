@@ -66,10 +66,10 @@ body.on-cover .conf{opacity:0}
 .srcpanel li a:hover,.srcpanel li a:focus-visible{color:var(--cream)}
 /* gap slide footer: note left, imported-materials aside bottom right */
 .gapfoot{display:flex;justify-content:space-between;align-items:flex-end;gap:3rem;max-width:52rem}
-.gapaside{max-width:23rem;text-align:right;font-size:clamp(10px,.64rem,.8rem);line-height:1.6;color:var(--muted)}
-.gapaside .k{font-family:'Inter';font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:clamp(9px,.55rem,.7rem);color:var(--wood-bright);margin-bottom:.35rem}
-.gapaside b{color:var(--cream-dim);font-weight:600}
-.gapaside .s{margin-top:.45rem;font-style:italic}
+.gapaside{text-align:left;font-size:clamp(9px,.56rem,.7rem);line-height:1.5;color:var(--muted)}
+.gapaside .k{font-family:'Inter';font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:clamp(9px,.52rem,.66rem);color:var(--wood-bright);margin-bottom:.4rem}
+.gapaside .tbl{display:grid;grid-template-columns:auto auto;gap:.22rem 1.4rem;align-items:baseline}
+.gapaside .tbl b{color:var(--cream-dim);font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
 body.on-cover nav.dots{opacity:0;pointer-events:none}
 nav.dots{transition:opacity .35s ease}
 nav.dots{position:fixed;right:0;top:0;bottom:0;z-index:90;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;padding:0 14px 0 3rem;background:linear-gradient(270deg,rgba(24,15,8,.94) 55%,rgba(24,15,8,0));pointer-events:none}
@@ -524,9 +524,11 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       </div>
       <aside class="gapaside">
         <div class="k">Also imported</div>
-        <div>Titanium <b>&gt;95%</b></div>
-        <div>Aerospace-grade carbon fiber</div>
-        <div>Cement <b>~22%</b></div>
+        <div class="tbl">
+          <span>Titanium</span><b>&gt;95%</b>
+          <span>Aerospace-grade carbon fiber</span><b></b>
+          <span>Cement</span><b>~22%</b>
+        </div>
       </aside>
     </div>
   </div>
