@@ -53,6 +53,23 @@ img{max-width:100%}
 body.on-cover .pageno{opacity:0}
 .conf{position:fixed;bottom:20px;left:2.125rem;z-index:90;font-size:clamp(9px,.6rem,.74rem);letter-spacing:.3em;color:var(--muted);background:rgba(20,13,7,.72);padding:.3em .8em;border-radius:999px;backdrop-filter:blur(3px);text-transform:uppercase}
 body.on-cover .conf{opacity:0}
+/* per-slide sources button: sits just above the fixed brand mark, click to open */
+.srcwrap{position:absolute;right:2.125rem;bottom:52px;z-index:96}
+.srcbtn{font-family:'Inter';font-weight:600;font-size:clamp(9px,.58rem,.72rem);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);background:rgba(20,13,7,.72);border:1px solid var(--line);border-radius:999px;padding:.4em 1.05em;cursor:pointer;backdrop-filter:blur(3px);transition:color .25s,border-color .25s}
+.srcbtn:hover,.srcbtn:focus-visible,.srcwrap.open .srcbtn{color:var(--cream);border-color:rgba(226,184,119,.5)}
+.srcpanel{position:absolute;right:0;bottom:calc(100% + .8rem);width:min(34rem,calc(100vw - 3rem));max-height:62vh;overflow-y:auto;background:var(--pop-bg);border:1px solid rgba(226,184,119,.28);border-radius:12px;padding:1.05rem 1.25rem;box-shadow:0 24px 60px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .25s,transform .25s;text-align:left}
+.srcwrap.open .srcpanel{opacity:1;pointer-events:auto;transform:none}
+.srcpanel h4{font-family:'Inter';font-weight:600;font-size:clamp(9px,.55rem,.7rem);letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:.65rem}
+.srcpanel ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin:0;padding:0}
+.srcpanel li{font-size:clamp(10px,.68rem,.85rem);line-height:1.5;color:var(--cream-dim)}
+.srcpanel li a{color:var(--gold);text-decoration:none;font-weight:600}
+.srcpanel li a:hover,.srcpanel li a:focus-visible{color:var(--cream)}
+/* gap slide footer: note left, imported-materials aside bottom right */
+.gapfoot{display:flex;justify-content:space-between;align-items:flex-end;gap:3rem;max-width:52rem}
+.gapaside{max-width:23rem;text-align:right;font-size:clamp(10px,.64rem,.8rem);line-height:1.6;color:var(--muted)}
+.gapaside .k{font-family:'Inter';font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:clamp(9px,.55rem,.7rem);color:var(--wood-bright);margin-bottom:.35rem}
+.gapaside b{color:var(--cream-dim);font-weight:600}
+.gapaside .s{margin-top:.45rem;font-style:italic}
 body.on-cover nav.dots{opacity:0;pointer-events:none}
 nav.dots{transition:opacity .35s ease}
 nav.dots{position:fixed;right:0;top:0;bottom:0;z-index:90;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;padding:0 14px 0 3rem;background:linear-gradient(270deg,rgba(24,15,8,.94) 55%,rgba(24,15,8,0));pointer-events:none}
@@ -464,7 +481,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   .ucnote,.cesplan .fn,.advc .ro,.dstat .s{font-size:max(.76rem,11.5px)}}
 @media print{
   @page{size:letter landscape;margin:0}
-  nav.dots,.pageno,.conf,.brand,.scrollcue,.keyhint{display:none!important}
+  nav.dots,.pageno,.conf,.brand,.scrollcue,.keyhint,.srcwrap{display:none!important}
   html,body,#deck{height:auto!important;overflow:visible!important}
   #deck{scroll-snap-type:none!important}
   section{display:flex!important;min-height:auto!important;height:auto!important;overflow:visible!important;break-after:page;page-break-after:always}
@@ -496,16 +513,38 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="wrap">
     <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem);max-width:none">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
     <p class="lead rv" style="margin-top:1.4rem;max-width:64ch">Data centers, reshored factories, housing, the grid. The build-out is here, and the key structural materials it runs on are increasingly not made here:</p>
-    <div class="machstats rv" style="margin-top:1.8rem;grid-template-columns:repeat(6,minmax(0,1fr));gap:0 1.3rem">
+    <div class="machstats rv" style="margin-top:1.8rem;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 2.2rem;max-width:46rem">
       <div class="gr"><span>Finished steel imported</span><b>~1 ton in 5</b></div>
       <div class="gr"><span>Aluminum met by imports</span><b>~85%</b></div>
-      <div class="gr"><span>Cement met by imports</span><b>~22%</b></div>
-      <div class="gr"><span>Titanium sponge imported</span><b>&gt;95%</b></div>
-      <div class="gr"><span>Primary smelters left</span><b>4, from 33</b></div>
       <div class="gr"><span>Steel in a data center</span><b>~60%</b></div>
     </div>
-    <p class="gnote rv" style="max-width:78ch">And the dependence is broadening: imports now supply more than half of US consumption for 54 mineral commodities &mdash; 16 of them entirely &mdash; up from 46 a year earlier. Most US titanium goes to aerospace, where even aerospace-grade carbon fiber leans on Japanese suppliers. Data center operators are already flagging structural-steel shortages, and aluminum is on the federal Critical Minerals List.</p>
-    <p class="rv" style="margin-top:1.2rem;font-size:.78rem;color:var(--muted)">Sources: <span class="sw-ref"><a href="https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">AISI (2026)</a><span class="sw-tip"><b>Steel Imports Down 12.6% in 2025</b><br>American Iron and Steel Institute &mdash; finished imports were 18% of apparent consumption in 2025, 23% in 2024.<br><a href="https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/" target="_blank" rel="noopener">Read the release &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.aluminum.org/PowerUp" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">Aluminum Association (2025)</a><span class="sw-tip"><b>Powering Up American Aluminum</b><br>~85% of US industry&rsquo;s aluminum needs met by imports; 4 primary smelters operating, down from 33.<br><a href="https://www.aluminum.org/PowerUp" target="_blank" rel="noopener">Read the roadmap &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">USGS MCS (2025)</a><span class="sw-tip"><b>Mineral Commodity Summaries 2025 &mdash; Cement</b><br>Net import reliance was 22% of apparent US cement consumption in 2024 (22% in 2022&ndash;23); ~25M&nbsp;t of cement and clinker imported, led by Turkey and Canada.<br><a href="https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf" target="_blank" rel="noopener">Read the data sheet &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">USGS MCS (2024, Ti)</a><span class="sw-tip"><b>Mineral Commodity Summaries &mdash; Titanium</b><br>Net import reliance on titanium sponge &gt;95% of apparent consumption since 2021; record ~42,000&nbsp;t imported 2023, 77&ndash;86% from Japan; the majority of US titanium metal use is aerospace.<br><a href="https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf" target="_blank" rel="noopener">Read the data sheet &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">USGS MCS (2026)</a><span class="sw-tip"><b>Mineral Commodity Summaries 2026</b><br>In 2025, imports made up more than half of US apparent consumption for 54 nonfuel mineral commodities, 16 of them at 100% &mdash; up from 46 and 15 in 2024. Aerospace-grade carbon fiber reliance: Lexington Institute (2025) &mdash; outside Hexcel, most of the critical aerospace market is served by Japanese firms.<br><a href="https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf" target="_blank" rel="noopener">Read the summary &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">USGS (2025)</a><span class="sw-tip"><b>Final 2025 List of Critical Minerals</b><br>Aluminum is among the 60 minerals on the federal Critical Minerals List (Federal Register, Nov 2025; listed since 2022).<br><a href="https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals" target="_blank" rel="noopener">Read the listing &rarr;</a></span></span></p>
+    <div class="gapfoot rv">
+      <div>
+        <p class="gnote" style="max-width:64ch">Data center operators are already flagging structural-steel shortages, and aluminum is on the federal Critical Minerals List.</p>
+      </div>
+      <aside class="gapaside">
+        <div class="k">Also imported</div>
+        <div>Titanium sponge <b>&gt;95%</b> &mdash; mostly from Japan</div>
+        <div>Cement <b>~22%</b></div>
+        <div>Aerospace-grade carbon fiber &mdash; largely Japanese-supplied</div>
+        <div class="s">Imports exceed half of US consumption for 54 mineral commodities &mdash; 16 of them entirely &mdash; up from 46 a year earlier.</div>
+      </aside>
+    </div>
+  </div>
+  <div class="srcwrap">
+    <button class="srcbtn" type="button" aria-expanded="false" aria-haspopup="dialog">Sources</button>
+    <div class="srcpanel" role="dialog" aria-label="Sources for this slide">
+      <h4>Sources &mdash; The Gap</h4>
+      <ul>
+        <li><a href="https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/" target="_blank" rel="noopener">AISI (2026)</a> &mdash; finished steel imports were 18% of US apparent consumption in 2025, 23% in 2024.</li>
+        <li><a href="https://www.aluminum.org/PowerUp" target="_blank" rel="noopener">Aluminum Association (2025)</a> &mdash; ~85% of US aluminum needs met by imports; 4 primary smelters operating, down from 33.</li>
+        <li><a href="https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf" target="_blank" rel="noopener">USGS MCS 2025 &mdash; Cement</a> &mdash; net import reliance 22% of apparent consumption (2022&ndash;24); ~25M&nbsp;t/yr imported, led by Turkey and Canada.</li>
+        <li><a href="https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf" target="_blank" rel="noopener">USGS MCS 2024 &mdash; Titanium</a> &mdash; titanium sponge &gt;95% import-reliant since 2021; record ~42,000&nbsp;t imported 2023, 77&ndash;86% from Japan; the majority of US titanium metal use is aerospace.</li>
+        <li><a href="https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf" target="_blank" rel="noopener">USGS MCS 2026</a> &mdash; imports exceeded half of US apparent consumption for 54 nonfuel mineral commodities in 2025, 16 at 100% &mdash; up from 46 and 15 in 2024.</li>
+        <li><a href="https://lexingtoninstitute.org/american-advantage/" target="_blank" rel="noopener">Lexington Institute (2025)</a> &mdash; outside Hexcel, most of the critical aerospace carbon fiber market is served by Japanese firms.</li>
+        <li><a href="https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals" target="_blank" rel="noopener">Federal Register (Nov 2025)</a> &mdash; aluminum is among the 60 minerals on the final 2025 Critical Minerals List.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -528,7 +567,19 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       </ul></div>
     </div>
     <p class="rv" style="margin-top:2rem;font-family:'Fraunces',serif;font-size:clamp(1.05rem,1.9vw,1.5rem);line-height:1.45;color:var(--cream-dim);max-width:56ch">Closing America&rsquo;s materials gap needs a different kind of mill: <b style="font-weight:500;color:var(--gold)">small enough to site easily, fast enough to replicate, fed by something America already has everywhere.</b></p>
-    <p class="rv" style="margin-top:1.2rem;font-size:.78rem;color:var(--muted)">Sources: <span class="sw-ref"><a href="https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">S&amp;P Global (2024)</a><span class="sw-tip"><b>US mine development times</b><br>US mines average ~29 years from discovery to production &mdash; second-longest in the world, after Zambia.<br><a href="https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds" target="_blank" rel="noopener">Read the release &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">US DOE (2025)</a><span class="sw-tip"><b>First American Aluminum Smelter Since 1980</b><br>US Department of Energy &mdash; $500M award to the Century Aluminum / EGA smelter in Inola, OK.<br><a href="https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980" target="_blank" rel="noopener">Read the announcement &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">Canary Media (2026)</a><span class="sw-tip"><b>America&rsquo;s big new aluminum smelter is still waiting on a power deal</b><br>~$4B JV; &gt;1 GW continuous power requirement; bauxite imported via the port of New Orleans.<br><a href="https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power" target="_blank" rel="noopener">Read the article &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://www.mining.com/web/column-power-trumps-tariffs-as-another-us-aluminum-smelter-shuts/" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">Mining.com (2026)</a><span class="sw-tip"><b>Power trumps tariffs as another US aluminum smelter shuts</b><br>US smelters keep closing on power prices even with tariff support &mdash; Hawesville idled 2022 (&ldquo;soaring energy prices&rdquo;), Ravenswood closed 2015, Mt.&nbsp;Holly halved 2015.<br><a href="https://www.mining.com/web/column-power-trumps-tariffs-as-another-us-aluminum-smelter-shuts/" target="_blank" rel="noopener">Read the column &rarr;</a></span></span> &middot; <span class="sw-ref"><a href="https://oklahoma.gov/oag/news/newsroom/2026/june/drummond-files-action-to-block-inola-aluminum-smelter.html" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">Oklahoma AG (2026)</a><span class="sw-tip"><b>Drummond files action to block Inola aluminum smelter</b><br>Petition in Rogers County District Court, June 2026: &ldquo;A primary aluminum smelter does not belong in a community&rsquo;s backyard.&rdquo; 3,400+ petition signatures; unanimous Muscogee Nation resolution; permitted &gt;1 t/day hydrogen fluoride.<br><a href="https://oklahoma.gov/oag/news/newsroom/2026/june/drummond-files-action-to-block-inola-aluminum-smelter.html" target="_blank" rel="noopener">Read the filing announcement &rarr;</a></span></span></p>
+  </div>
+  <div class="srcwrap">
+    <button class="srcbtn" type="button" aria-expanded="false" aria-haspopup="dialog">Sources</button>
+    <div class="srcpanel" role="dialog" aria-label="Sources for this slide">
+      <h4>Sources &mdash; Old Mills</h4>
+      <ul>
+        <li><a href="https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980" target="_blank" rel="noopener">US DOE (2025)</a> &mdash; $500M award to the Century Aluminum / EGA smelter in Inola, OK &mdash; the first American primary smelter since 1980.</li>
+        <li><a href="https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power" target="_blank" rel="noopener">Canary Media (2026)</a> &mdash; ~$4B JV; &gt;1 GW continuous power requirement; still waiting on a power deal; bauxite imported via the port of New Orleans.</li>
+        <li><a href="https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds" target="_blank" rel="noopener">S&amp;P Global (2024)</a> &mdash; US mines average ~29 years from discovery to production, second-longest in the world.</li>
+        <li><a href="https://www.mining.com/web/column-power-trumps-tariffs-as-another-us-aluminum-smelter-shuts/" target="_blank" rel="noopener">Mining.com (2026)</a> &mdash; smelters keep closing on power prices: Hawesville idled 2022 (&ldquo;soaring energy prices&rdquo;), Ravenswood closed 2015, Mt.&nbsp;Holly halved 2015.</li>
+        <li><a href="https://oklahoma.gov/oag/news/newsroom/2026/june/drummond-files-action-to-block-inola-aluminum-smelter.html" target="_blank" rel="noopener">Oklahoma AG (2026)</a> &mdash; petition to block the Inola smelter (Rogers County District Court, Jun 2026); 3,400+ signatures; unanimous Muscogee Nation resolution; permitted &gt;1&nbsp;t/day hydrogen fluoride.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -573,7 +624,17 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <li><b>20&ndash;30% faster</b> schedules than steel and concrete</li>
       </ul></div>
     </div>
-    <p class="rv" style="margin-top:1.2rem;font-size:.78rem;color:var(--muted)">Source: <span class="sw-ref"><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener" style="color:var(--wood-bright);text-decoration:none">ULI &amp; case studies</a><span class="sw-tip"><b>Faster Project Delivery Is a Hidden Feature of Mass Timber</b><br>Case-study reviews put mass-timber schedule savings at ~20&ndash;30% vs. concrete and steel.<br><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener">Read the article &rarr;</a></span></span></p>
+  </div>
+  <div class="srcwrap">
+    <button class="srcbtn" type="button" aria-expanded="false" aria-haspopup="dialog">Sources</button>
+    <div class="srcpanel" role="dialog" aria-label="Sources for this slide">
+      <h4>Sources &mdash; Fast &times; Fast</h4>
+      <ul>
+        <li><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener">ULI Urban Land &amp; case studies</a> &mdash; mass-timber schedule savings run ~20&ndash;30% vs. concrete and steel across case-study reviews.</li>
+        <li><a href="https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds" target="_blank" rel="noopener">S&amp;P Global (2024)</a> &mdash; a new US mine averages ~29 years from discovery to production.</li>
+        <li>Build cycle (~18-month long-lead equipment, 6&ndash;12-month construction, &lt;3 years develop + build) and site figures (&lt;4&nbsp;MW grid draw, self-fueled process heat): InventWood engineering basis.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -956,10 +1017,33 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     </table></div>
     <p class="lead rv" style="margin-top:1.6rem;font-family:'Fraunces',serif;font-size:clamp(1.3rem,2.4vw,2rem);max-width:none;color:var(--cream)">Steel had the minimill.<br>Wood has the <em style="color:var(--gold)">SUPERMILL.</em></p>
   </div>
+  <div class="srcwrap">
+    <button class="srcbtn" type="button" aria-expanded="false" aria-haspopup="dialog">Sources</button>
+    <div class="srcpanel" role="dialog" aria-label="Sources for this slide">
+      <h4>Sources &mdash; Materials manufacturing comparison</h4>
+      <ul>
+        <li><b style="color:var(--gold)">Steel minimill</b> &mdash; SDI Sinton: $1.9B, 3.0M&nbsp;tons/yr, 2019&ndash;2022 build (SDI announcements); Nucor Apple Grove: ~$4.0B, 2021&ndash;2027 announce-to-ship (Nucor updates); SDI EBITDA $197&ndash;411/ton across the cycle (company filings). EAF grid connection: 200&ndash;300&nbsp;MVA per furnace (Primetals / MHI Spectra engineering sources).</li>
+        <li><b style="color:var(--gold)">Aluminum smelter</b> &mdash; Century Aluminum / EGA Inola: ~$4B, &gt;1&nbsp;GW continuous (<a href="https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power" target="_blank" rel="noopener">Canary Media 2026</a>; <a href="https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980" target="_blank" rel="noopener">US DOE</a>); margins from <a href="https://centuryaluminum.com/investors/press-releases/press-release-details/2026/Century-Aluminum-Company-Reports-Fourth-Quarter-2025-Results/default.aspx" target="_blank" rel="noopener">Century FY2025 results</a> (net sales $2.5B, adj. EBITDA $425M &mdash; a record, tariff-supported year).</li>
+        <li><b style="color:var(--gold)">SUPERMILL</b> &mdash; InventWood techno-economic model: capex, EBITDA and build figures are projections, not actuals; detail in the data room.</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <script>
 const deck=document.getElementById('deck');
+/* per-slide sources buttons: click toggles the panel; outside click or Escape closes */
+{
+  const closeAll=()=>document.querySelectorAll('.srcwrap.open').forEach(w=>{w.classList.remove('open');w.querySelector('.srcbtn').setAttribute('aria-expanded','false');});
+  document.querySelectorAll('.srcbtn').forEach(b=>b.addEventListener('click',e=>{
+    e.stopPropagation();
+    const w=b.closest('.srcwrap'),was=w.classList.contains('open');
+    closeAll();
+    if(!was){w.classList.add('open');b.setAttribute('aria-expanded','true');}
+  }));
+  document.addEventListener('click',e=>{if(!e.target.closest('.srcwrap'))closeAll();});
+  addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();});
+}
 document.querySelectorAll('#gnet .gicons').forEach((g,gi)=>{g.querySelectorAll('.fx').forEach((f,i)=>{f.style.animationDelay=(gi*160+i*70)+'ms';});});
 /* team + advisor cards are focusable divs whose .bio-pop is visibility:hidden — so the full bio sits
    outside the a11y tree until :focus-within reveals it, and the card itself announced as nothing.

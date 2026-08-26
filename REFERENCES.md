@@ -8,6 +8,10 @@ listed here (capex, EBITDA, ROE, deposits, cost roadmap, properties, team bios) 
 
 Deck narrative and slide-by-slide rationale: [STORY.md](STORY.md).
 
+On-slide, sources live behind a **Sources button** at the bottom right of each data-heavy slide
+(The Gap, Old Mills, Fast × Fast, Appendix) — click to open a panel listing the sources for that
+slide's key data. This document is the fuller companion.
+
 Last reconciled against the deck: **2026-08-26** (19 slides).
 
 ## 02 · The Gap
