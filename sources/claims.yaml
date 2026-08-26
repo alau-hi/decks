@@ -458,3 +458,13 @@ claims:
       Alex supplied "100% of bauxite imported"; printed scoped to smelter-grade, which
       is the USGS-defensible form (overall bauxite reliance prints as >75% because
       nonmetallurgical domestic output exists).
+
+  - claim: Plant-level EBITDA 45-65%, depending on the blend of commodity structural vs premium products
+    provenance: asserted-internal
+    conf: H (internal)
+    source: Alex Lau, 2026-08-26
+    slide: SUPERMILLS (machine-class stats + gnote footnote)
+    note: >-
+      Supersedes the flat 65% on the SUPERMILLS slide only. The 65% elsewhere
+      (Cost Roadmap table, Fleet card, Appendix ~$208M = 65% of $320M) is the
+      SUPERMILL TWO-specific projection and stands.
