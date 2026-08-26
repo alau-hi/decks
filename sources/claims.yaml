@@ -304,16 +304,16 @@ claims:
     provenance: published
     conf: H
     source: USGS Mineral Commodity Summaries, January 2024, Titanium and Titanium Dioxide - net import reliance >95% of apparent consumption 2021-2023e (>50% in 2019-20); only active US sponge plant is electronic-grade, ~500 t/yr capacity (Salt Lake City); Henderson NV (12,600 t/yr) idled since 2020. https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf
-    slide: none (reference doc only)
+    slide: The Gap (stat row + gnote, added 2026-08-26)
   - claim: "US imports roughly 30,000 t/yr of carbon fiber - ~40% of ~75,000 t consumption - concentrated in intermediate/high-modulus aerospace grades from Japan"
     provenance: triangulated
     conf: M (volumes), M-H (aerospace-grade dependency direction)
     source: Astute Analytica carbon fiber market report (~30 kt imports, ~45 kt domestic capacity, ~75 kt consumption); Lexington Institute (Grant, Apr 2025) - Hexcel is the top aerospace-grade producer with a US supply chain, but "most of the remaining critical aerospace carbon fiber market is served by Japanese firms"; Toray (Japan) is the dominant global supplier; Nandina REM (Oct 2025, supplied by Alex) - US "heavily reliant on foreign sources of proprietary carbon fibres from Japan and Europe", nearly all military programs use CF composites, no ready substitutes, GAO flagged lack of visibility into the CF raw-material supply chain. https://www.nandinarem.com/post/carbon-fibre-a-core-us-defence-supply-chain-vulnerability
-    slide: none (reference doc only)
+    slide: The Gap (gnote - qualitative direction only, "aerospace-grade carbon fiber leans on Japanese suppliers"; no volumes printed)
     note: No USGS/government series exists for carbon fiber; volumes are market-research figures, not primary data. Do not print the tonnage without a stronger source; the aerospace-grade dependency direction is well supported.
   - claim: "US import dependence on minerals is rising: imports exceeded half of apparent consumption for 54 nonfuel mineral commodities in 2025 (100% reliant for 16), up from 46 (100% for 15) in 2024"
     provenance: published
     conf: H
     source: USGS Mineral Commodity Summaries 2026, p.11 (2025 data) and MCS 2025, p.10 (2024 data), quoted verbatim from both. Politico Pro / E&E News coverage (Feb 9, 2026, paywalled) supplied by Alex reports the same release. https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf
-    slide: none (reference doc only)
+    slide: The Gap (gnote, added 2026-08-26; all-nonfuel-commodities basis printed)
     note: On the Critical Minerals List basis the 2025 figures are 13 at 100% plus 20 more at >=50%; the 16/54 figures are the all-nonfuel-commodities basis. Use one basis consistently if printed.

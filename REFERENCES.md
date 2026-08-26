@@ -19,16 +19,22 @@ Stat row (all printed on-slide, with tooltip sources):
 | Finished steel imported | ~1 ton in 5 | [AISI, "Steel Imports Down 12.6% in 2025" (Feb 2026)](https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/) — 18% of apparent consumption 2025, 23% in 2024. The 2025 fall is tariff-driven (Section 232: 25% Mar 2025, 50% Jun 2025). |
 | Aluminum met by imports | ~85% | [Aluminum Association, "Powering Up American Aluminum" (2025)](https://www.aluminum.org/PowerUp) |
 | Cement met by imports | ~22% | [USGS Mineral Commodity Summaries 2025 — Cement](https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf) — net import reliance 22% of apparent consumption 2022–24e; ~25M t of cement and clinker imported per year, led by Turkey (32%) and Canada (22%). |
+| Titanium sponge imported | >95% | [USGS MCS 2024 — Titanium](https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf) — net import reliance >95% of apparent consumption since 2021; record ~42,000 t imported 2023, 77–86% from Japan; majority of US titanium metal use is aerospace. |
 | Primary smelters left | 4, from 33 | [Aluminum Association PowerUp](https://www.aluminum.org/PowerUp). One source says five; four is the Association's figure. |
-| Steel share of a data center | ~60% | Inherited from the investor-overview register (conf L — flagged there as unverified). |
+| Steel in a data center | ~60% | Inherited from the investor-overview register (conf L — flagged there as unverified). |
 
-On-slide note: data center operators flagging structural-steel shortages (inherited claim, conf L);
-aluminum is on the federal Critical Minerals List — [Federal Register, "Final 2025 List of Critical
-Minerals" (Nov 2025)](https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals), listed since 2022.
+On-slide note (gnote): the broadening-dependence trend — imports supply more than half of US
+consumption for 54 mineral commodities, 16 entirely, up from 46 a year earlier
+([USGS MCS 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf) vs MCS 2025, both quoted
+verbatim); aerospace-grade carbon fiber "leans on Japanese suppliers" (qualitative only — see
+background notes; no volumes printed); data center operators flagging structural-steel shortages
+(inherited claim, conf L); aluminum is on the federal Critical Minerals List —
+[Federal Register, "Final 2025 List of Critical Minerals" (Nov 2025)](https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals), listed since 2022.
 
-### Background notes — not printed on the slide
+### Background notes
 
-Researched 2026-08-26 for possible use; see the register for full provenance.
+Researched 2026-08-26. Titanium and the critical-minerals trend are now printed on the slide
+(above); carbon fiber volumes remain reference-only.
 
 - **Titanium** — the US is **>95% net import reliant on titanium sponge** (2021–2023e, up from
   >50% in 2019–20), with a record ~42,000 t imported in 2023, 77–86% from Japan. The only
