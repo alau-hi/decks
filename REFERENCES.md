@@ -1,0 +1,184 @@
+# References
+
+Every source and piece of commentary behind [slides.html](slides.html), indexed by slide.
+Maintained by hand alongside [sources/claims.yaml](sources/claims.yaml) — the register is the
+authority on provenance and confidence; this document is the readable companion. Claims not
+listed here (capex, EBITDA, ROE, deposits, cost roadmap, properties, team bios) inherit from
+[../investor-overview/sources/claims.yaml](../investor-overview/sources/claims.yaml).
+
+Deck narrative and slide-by-slide rationale: [STORY.md](STORY.md).
+
+Last reconciled against the deck: **2026-08-26** (19 slides).
+
+## 02 · The Gap
+
+Stat row (all printed on-slide, with tooltip sources):
+
+| Stat | Printed | Source |
+|---|---|---|
+| Finished steel imported | ~1 ton in 5 | [AISI, "Steel Imports Down 12.6% in 2025" (Feb 2026)](https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/) — 18% of apparent consumption 2025, 23% in 2024. The 2025 fall is tariff-driven (Section 232: 25% Mar 2025, 50% Jun 2025). |
+| Aluminum met by imports | ~85% | [Aluminum Association, "Powering Up American Aluminum" (2025)](https://www.aluminum.org/PowerUp) |
+| Cement met by imports | ~22% | [USGS Mineral Commodity Summaries 2025 — Cement](https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf) — net import reliance 22% of apparent consumption 2022–24e; ~25M t of cement and clinker imported per year, led by Turkey (32%) and Canada (22%). |
+| Primary smelters left | 4, from 33 | [Aluminum Association PowerUp](https://www.aluminum.org/PowerUp). One source says five; four is the Association's figure. |
+| Steel share of a data center | ~60% | Inherited from the investor-overview register (conf L — flagged there as unverified). |
+
+On-slide note: data center operators flagging structural-steel shortages (inherited claim, conf L);
+aluminum is on the federal Critical Minerals List — [Federal Register, "Final 2025 List of Critical
+Minerals" (Nov 2025)](https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals), listed since 2022.
+
+### Background notes — not printed on the slide
+
+Researched 2026-08-26 for possible use; see the register for full provenance.
+
+- **Titanium** — the US is **>95% net import reliant on titanium sponge** (2021–2023e, up from
+  >50% in 2019–20), with a record ~42,000 t imported in 2023, 77–86% from Japan. The only
+  active US sponge plant is electronic-grade at ~500 t/yr (Salt Lake City); the 12,600 t/yr
+  Henderson NV plant has been idle since 2020. The **majority of US titanium metal use is
+  aerospace**. [USGS MCS 2024 — Titanium](https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf) [conf: H]
+- **Carbon fiber** — no government data series exists. Market research (Astute Analytica) puts US
+  imports at ~30,000 t/yr against ~75,000 t consumption (~40%), concentrated in
+  **intermediate/high-modulus aerospace grades from Japan** (Toray is the dominant global
+  supplier). Hexcel (US) is the top aerospace-grade producer with a domestic supply chain, but
+  "most of the remaining critical aerospace carbon fiber market is served by Japanese firms"
+  ([Lexington Institute, Apr 2025](https://lexingtoninstitute.org/american-advantage/)).
+  Volumes [conf: M — market-research, not primary data; do not print without a stronger source];
+  aerospace-grade dependency direction [conf: M-H].
+- **Cement volume** — ~25M t of cement and clinker imported per year (2022–24e), against ~110M t
+  shipments. Same USGS MCS 2025 sheet as the ~22% stat. [conf: H]
+
+## 03 · Old Mills
+
+Column cards, each fact tooltip-sourced on-slide:
+
+- **~$4B Inola smelter (Century Aluminum / EGA JV)** — first US primary smelter since 1980;
+  $500M DOE award; >1 GW continuous power; still waiting on a power deal.
+  [US DOE (2025)](https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980) ·
+  [Canary Media (2026)](https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power)
+- **Nucor Apple Grove sheet mill** — $4.0B, 2021→2027 announce-to-ship (mills repo comparison.csv; Nucor updates).
+- **US mine development ~29 years** discovery-to-production, second-longest in the world —
+  [S&P Global (Jul 2024)](https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds)
+- **Power-driven closures** — Hawesville idled Jul 2022 ("soaring energy prices"), Ravenswood
+  closed 2015, Mt. Holly halved 2015 —
+  [Mining.com, "Power trumps tariffs…" (2026)](https://www.mining.com/web/column-power-trumps-tariffs-as-another-us-aluminum-smelter-shuts/)
+- **Imported feedstock** — Inola runs on Guinean bauxite via the port of New Orleans; EGA (UAE
+  state-owned) holds 60%. "Vertically integrated, an ocean away" is framing of this sourced
+  supply chain.
+- **Community pushback** — Oklahoma AG petition to block Inola (Rogers County District Court,
+  Jun 2026): "A primary aluminum smelter does not belong in a community's backyard"; 3,400+
+  petition signatures; unanimous Muscogee (Creek) Nation resolution; permitted >1 t/day hydrogen
+  fluoride. [Oklahoma AG (2026)](https://oklahoma.gov/oag/news/newsroom/2026/june/drummond-files-action-to-block-inola-aluminum-smelter.html).
+  Petition counts move — refresh before print use; HF figure should be verified against the air permit.
+- Payoff line ("small enough to site easily, fast enough to replicate, fed by something America
+  already has everywhere") — the siting/replication contrast is the deck's own framing; feedstock
+  ubiquity inherits the 48-states claim (register: unverified, conf L).
+
+## 04 · SUPERMILLS
+
+Unit economics ($300M capex, 65% EBITDA, 175–200% ROE, >7,000 SUPERMILLS of demand) —
+all deck-canonical, inherited from the investor-overview register (internal model figures;
+the >7,000 is estimated, conf L). On-slide note about separate financeability (~75% project
+debt) and the repeatable template: internal framing.
+
+## 05 · Fast × Fast
+
+- **Mass-timber schedules 20–30% faster** than concrete and steel —
+  [ULI Urban Land case-study reviews](https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber)
+  (avg ~20% across seven case studies; other studies to 25–30%; 40% claims exist but are not
+  used). SUPERWOOD is analogized to mass timber (prefab, light, timber detailing). [conf: triangulated]
+- **Light site asks** — <4 MW grid draw at standard industrial service, process heat self-fueled
+  by wood residues, no smelter-class emissions to permit (internal, consistent with FEL2 mass &
+  energy balance; "no smelter-class emissions" is comparative — the residue boiler still needs a
+  minor-source state air permit).
+- **Long-lead equipment ~18 months; construction 6–12 months; <3 years develop + build** (Alex, 2026-08-25).
+- **Excess sawmill capacity** — asserted (Alex, industry knowledge); plausible given 2023–25
+  curtailments, but find a utilization figure before print use. [needs source]
+- Feedstock in 48 states — inherited (register: unverified, conf L).
+
+## 06 · Properties / 07 · Cost Roadmap / 08 · SuperMill One
+
+All inherited from the investor-overview register (material properties, cost-curve assumptions,
+plant status). New here: SuperMill One building is 90,000 sf, ramping to 1M sf/yr of capacity
+(Alex, 2026-08-25). Cost Roadmap chart note spells out the price assumptions: structural-board
+$15.00 / $5.50 / $3.00 per sf; ChipMill continuous at an assumed 60% gross margin ($2.19/sf);
+7.2mm average board thickness conversion.
+
+## 09 · Demand
+
+15,000+ inquiries, 700+ paid deposits (canonical for this deck since 2026-08-25 — parent decks
+still print 800+ and need aligning), $140M+ SuperMill One pipeline vs $20M capacity, $2.0B+
+SuperMill Two pipeline vs $360M capacity ($320M projected) — all internal (CRM/model).
+Path-to-structural: hybrid SUPERWOOD-glulam beams (~10% of section) add ~75% bending stiffness /
+~100% bending strength (inherited, lab data); structural application engineering with Fast + Epp
+and Don Davies (asserted — confirm the Fast + Epp engagement is public/citable before wide
+distribution).
+
+## 10 · Customers
+
+Ported from the investor-overview Customers slide; logo wall and pipeline staging inherit from
+the parent register (customer names and engagement stages are internal CRM facts). The 700+
+reservations line matches this deck's canonical figure. On-slide commentary about focusing
+execution on near-term opportunities: internal framing.
+
+## 11 · Scaling / 12 · The Fleet
+
+Capital flywheel ($900M free cash flow from <$200M corporate equity) and fleet economics —
+internal model, inherited. Fleet slide commentary (JV structure: technology & setup fee,
+operating fee, brand/marketing fee; modular construction; ChipMill continuous processing on
+chips and waste) — internal strategy. Global demand potential >7,000 SUPERMILL TWO equivalents —
+estimated, conf L ("a matter of time" framing per Alex).
+
+## 13 · Team / 14 · Investors
+
+Bios and investor descriptions inherit from the investor-overview register (several are flagged
+unverified there — Element Partners $800M, Sansone #5 ranking). Shaun Klopfenstein is Head of AI
+(was CIO) per Alex 2026-08-25.
+
+## 15 · Journey
+
+Timeline facts (2016–18 UMD invention by Dr. Liangbing Hu; 2018–22 IP & commercialization;
+2022–25 SuperMill One built in Frederick MD, shipments Dec '25; SuperMill Two ships 2029) —
+inherited from the parent register (Nature publication, patent portfolio, plant milestones).
+
+## 16 · Financing
+
+Valuation chart and milestones — internal cap-table facts and targets: $26M Series A · 2025
+($62M post, plus $20M non-dilutive), $18M Series AA · 2026 ($129M post), $10M SAFEs now
+($170–200M cap), Series B 2027 target $75–100M at $400–800M. Forward valuations are targets,
+not commitments (the slide's chart labels them as such).
+
+## 17 · The Opportunity
+
+Terms (internal): $10M SAFE, issued by InventWood, $170–200M cap, open now. Use of proceeds is
+deliberately prose, not a segmented bar — the workstreams overlap (production ramp informs
+SuperMill Two engineering; customer engagement serves both). IP note: portfolio detail lives in
+the data room; the deck states no patent counts.
+
+## 19 · Appendix — Materials manufacturing comparison
+
+Per-cell provenance and confidence live in the register (Economics/Appendix entries). Key sources:
+
+- **Minimill** — SDI Sinton ($1.9B, 3.0 Mtpa, 2019–2022 build; SDI PR / BuildSteel); Nucor Apple
+  Grove ($2.7B → ~$4.0B, 2021–2027); SDI per-ton EBITDA $197–411/t across the cycle
+  (company-wide margin used as single-plant proxy — flag if challenged). EAF grid connection
+  ~300 MVA-class, 200–300 MVA per furnace with severe flicker (Primetals / MHI Spectra / trade
+  engineering sources).
+- **Smelter** — Century/EGA Inola (~$4B, >1 GW, first metal ~end of decade);
+  [Century Aluminum FY2025 results](https://centuryaluminum.com/investors/press-releases/press-release-details/2026/Century-Aluminum-Company-Reports-Fourth-Quarter-2025-Results/default.aspx)
+  (net sales $2.5B, adj EBITDA $425M → ~17% record-year margin, tariff-supported; through-cycle
+  margins swing to near-zero).
+- **SUPERMILL** — internal TEM; $208M/yr plant EBITDA is 65% of $320M projected (projection, not
+  actuals); develop+build <3 yrs (Alex). Do NOT print a specific SUPERMILL MW figure — the
+  TEM-vs-FEL2 energy reconciliation is open; "MW-class" holds under either basis.
+- **Unlevered cash yield** (EBITDA ÷ capex): SUPERMILL ~69% (model) · minimill ~15–30% at $4B ·
+  smelter ~9% record year — arithmetic on the registered figures; bases labeled per cell on-slide.
+
+## Open items
+
+- Fast + Epp engagement — confirm public/citable before wide distribution.
+- "Excess sawmill capacity" — needs a utilization figure.
+- Inola HF permit figure — verify against the actual air permit before print use.
+- Petition signature count — moves; refresh before print use.
+- 4-vs-5 smelter count — four is the Aluminum Association figure; one source says five.
+- ~60% steel share of a data center — inherited conf L, unverified.
+- Parent decks (investor-overview, aaron-deck) still print 800+ deposits; this deck's canonical is 700+.
+- Carbon fiber import tonnage — market-research only; find primary data before printing.
