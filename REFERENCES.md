@@ -16,57 +16,48 @@ Last reconciled against the deck: **2026-08-26** (19 slides).
 
 ## 02 · The Gap
 
-Stat row (all printed on-slide, with tooltip sources):
+**Headline stat row** (3 stats):
 
 | Stat | Printed | Source |
 |---|---|---|
 | Finished steel imported | ~1 ton in 5 | [AISI, "Steel Imports Down 12.6% in 2025" (Feb 2026)](https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/) — 18% of apparent consumption 2025, 23% in 2024. The 2025 fall is tariff-driven (Section 232: 25% Mar 2025, 50% Jun 2025). |
-| Aluminum met by imports | ~85% | [Aluminum Association, "Powering Up American Aluminum" (2025)](https://www.aluminum.org/PowerUp) |
-| Cement met by imports | ~22% | [USGS Mineral Commodity Summaries 2025 — Cement](https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf) — net import reliance 22% of apparent consumption 2022–24e; ~25M t of cement and clinker imported per year, led by Turkey (32%) and Canada (22%). |
-| Titanium sponge imported | >95% | [USGS MCS 2024 — Titanium](https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf) — net import reliance >95% of apparent consumption since 2021; record ~42,000 t imported 2023, 77–86% from Japan; majority of US titanium metal use is aerospace. |
-| Primary smelters left | 4, from 33 | [Aluminum Association PowerUp](https://www.aluminum.org/PowerUp). One source says five; four is the Association's figure. |
+| Aluminum met by imports | ~85% | [Aluminum Association, "Powering Up American Aluminum" (2025)](https://www.aluminum.org/PowerUp) — also the 4-smelters-from-33 figure, no longer printed as its own stat. |
 | Steel in a data center | ~60% | Inherited from the investor-overview register (conf L — flagged there as unverified). |
 
-On-slide note (gnote): the broadening-dependence trend — imports supply more than half of US
-consumption for 54 mineral commodities, 16 entirely, up from 46 a year earlier
-([USGS MCS 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf) vs MCS 2025, both quoted
-verbatim); aerospace-grade carbon fiber "leans on Japanese suppliers" (qualitative only — see
-background notes; no volumes printed); data center operators flagging structural-steel shortages
-(inherited claim, conf L); aluminum is on the federal Critical Minerals List —
-[Federal Register, "Final 2025 List of Critical Minerals" (Nov 2025)](https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals), listed since 2022.
+**"Also imported" aside table** (bottom right):
 
-### Background notes
+| Row | Source |
+|---|---|
+| Titanium >95% | [USGS MCS 2024 — Titanium](https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf) — sponge net import reliance >95% since 2021; record ~42,000 t imported 2023, 77–86% from Japan; majority of US titanium metal use is aerospace. USGS holds at >95% (not 100%) because one small electronic-grade sponge plant (~500 t/yr, Salt Lake City) still operates; Henderson NV idled 2020, Rowley UT idle since 2016. |
+| Carbon fiber 66–86% | [ORNL/NREL 2016 (Das et al.)](https://docs.nrel.gov/docs/fy16osti/66071.pdf) ([local copy](sources/Pub61706.pdf)) — USITC data, imports met 66–86% of North American CF demand 2008–2012; 2012-vintage, and the HTS code bundles fiber with intermediates (share likely overstated) — caveat carried in the on-slide sources panel. |
+| Cement ~22% | [USGS MCS 2025 — Cement](https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf) — net import reliance 22% of apparent consumption 2022–24e; ~25M t/yr imported, led by Turkey and Canada. |
 
-Researched 2026-08-26. Titanium and the critical-minerals trend are now printed on the slide
-(above); carbon fiber volumes remain reference-only.
+**Note line (gnote)**: data center operators flagging structural-steel shortages (inherited, conf L);
+aluminum on the federal Critical Minerals List — [Federal Register, Nov 2025](https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals).
 
-- **Titanium** — the US is **>95% net import reliant on titanium sponge** (2021–2023e, up from
-  >50% in 2019–20), with a record ~42,000 t imported in 2023, 77–86% from Japan. The only
-  active US sponge plant is electronic-grade at ~500 t/yr (Salt Lake City); the 12,600 t/yr
-  Henderson NV plant has been idle since 2020. The **majority of US titanium metal use is
-  aerospace**. [USGS MCS 2024 — Titanium](https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf) [conf: H]
-- **Carbon fiber** — best source: ORNL/NREL, "Global Carbon Fiber Composites Supply Chain
-  Competitiveness Analysis" (Das et al., May 2016 — [sources/Pub61706.pdf](sources/Pub61706.pdf)).
-  USITC trade data: **imports met 66–86% of North American (mostly US) carbon fiber demand,
-  2008–2012**, with Japan (43%) and Europe (38%) the dominant 2012 import sources; the report
-  cautions the HTS code bundles CF with intermediates, so the share is likely overstated.
-  **Aerospace-grade small-tow CF manufacturing is "most concentrated in Japan"** — the top three
-  firms are headquartered there; Toray dominant, including the $6B Boeing 787 prepreg contract.
-  [conf: H for the 2008–12 period; the data is 2012-vintage]. Current-era corroboration
-  (non-primary): ~30 kt/yr imports, ~40% of consumption (Astute Analytica); outside Hexcel, "most
-  of the remaining critical aerospace carbon fiber market is served by Japanese firms"
-  ([Lexington Institute, Apr 2025](https://lexingtoninstitute.org/american-advantage/)); defense
-  reliance on Japanese/European proprietary fibers and a GAO visibility gap
+**Sources panel** (the bottom-right Sources button) lists: AISI 2026 · Aluminum Association 2025 ·
+USGS MCS 2025 Cement · USGS MCS 2024 Titanium · USGS MCS 2026 · ORNL/NREL 2016 · Lexington
+Institute 2025 · Federal Register Nov 2025.
+
+### Background notes — researched, register-only
+
+- **Carbon fiber, current era** — no primary current-year series. Corroboration: ~30 kt/yr imports,
+  ~40% of consumption (Astute Analytica, market-research grade); outside Hexcel, "most of the
+  remaining critical aerospace carbon fiber market is served by Japanese firms"
+  ([Lexington Institute, Apr 2025](https://lexingtoninstitute.org/american-advantage/)); aerospace-grade
+  small-tow production "most concentrated in Japan," Toray dominant incl. the $6B Boeing 787 prepreg
+  deal (ORNL/NREL); defense reliance on Japanese/European proprietary fibers and a GAO visibility gap
   ([Nandina REM, Oct 2025](https://www.nandinarem.com/post/carbon-fibre-a-core-us-defence-supply-chain-vulnerability)).
-  A current-year import share still lacks a primary source.
-- **Critical minerals, broad trend** — US import dependence is rising: imports exceeded half of
-  apparent consumption for **54 nonfuel mineral commodities in 2025 (100% reliant for 16)**, up
-  from 46 (100% for 15) in 2024. [USGS MCS 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf)
-  vs MCS 2025, both quoted verbatim [conf: H]. (E&E News / Politico Pro covered the release
-  Feb 9, 2026 — paywalled.) On the Critical Minerals List basis the 2025 figures are 13 at 100%
-  plus 20 more at ≥50% — use one basis consistently if printed.
-- **Cement volume** — ~25M t of cement and clinker imported per year (2022–24e), against ~110M t
-  shipments. Same USGS MCS 2025 sheet as the ~22% stat. [conf: H]
+- **Critical minerals, broad trend** — imports exceeded half of apparent consumption for **54
+  nonfuel mineral commodities in 2025 (100% reliant for 16)**, up from 46 (100% for 15) in 2024.
+  [USGS MCS 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf) vs MCS 2025, both quoted
+  verbatim [conf: H]. On the Critical Minerals List basis: 13 at 100% plus 20 more at ≥50% — use
+  one basis consistently if printed. (E&E News / Politico Pro covered the release Feb 9, 2026.)
+- **Cement volume** — ~25M t/yr imported against ~110M t shipments (2022–24e), same USGS sheet. [conf: H]
+- **Titanium sponge context** — all primary (new) titanium metal routes through sponge (Kroll
+  process); mill products blend sponge with recycled scrap (US 2023: ~42 kt sponge + ~26 kt
+  imported scrap; the split is withheld by USGS). ~90%+ of titanium mineral consumption goes to
+  TiO2 pigment, not metal.
 
 ## 03 · Old Mills
 

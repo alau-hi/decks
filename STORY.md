@@ -35,8 +35,13 @@ SUPERWOOD is "the material to build the future from — made in America."
 5. **The product wins today** (properties) → **it's already running, oversubscribed** →
    **cost roadmap below steel** → **demand without ceiling**. Premium first, ubiquity
    next — the Roadster→Model 3 arc.
-6. **Economics** (minimill rhyme) → **the American fleet, then global** → **capital
-   flywheel** → **team** → **$10M SAFE close**.
+6. **Customers** (ported from investor-overview, added 2026-08-25 per Alex): credibility
+   and breadth right after Demand — the three-pipe logo wall answers "who, concretely?"
+7. **Economics** (minimill rhyme) → **the American fleet, then global** → **capital
+   flywheel** → **team** → **journey** → **financing** → **$10M SAFE close**.
+   The Journey slide (overview-deck version) sits BEFORE Financing per Alex 2026-08-26:
+   technical story first, then the funding journey. A combined journey+financing slide
+   was tried and rejected as too dense (2026-08-26).
 
 ## Decisions (Alex, 2026-08-23)
 
@@ -91,6 +96,21 @@ as a machine class - slide 4's stats are generic unit economics ($300M capex, 65
 EBITDA, 175-200% ROE, >7,000 SUPERMILLS of demand), with no SuperMill One/Two names.
 SUPERMILL ONE is formally introduced on slide 8. Do not reintroduce numbered names
 upstream of slide 7.
+
+## The Gap slide format (Alex, 2026-08-26)
+
+Three headline stats only (steel ~1 in 5, aluminum ~85%, steel-in-a-data-center ~60%).
+Everything else imported lives in a small left-justified "Also imported" table at the
+bottom right — titanium >95%, carbon fiber 66–86%, cement ~22% — tight and parallel, no
+elaboration. Cement and the smelter count were deliberately demoted from the headline row.
+
+## Sources presentation (Alex, 2026-08-26)
+
+No visible "Sources:" lines on slides. Each data-heavy slide (Gap, Old Mills, Fast × Fast,
+Appendix) carries a click-to-open **Sources button** at the bottom right; the panel lists
+that slide's sources with links and one-line summaries. The full companion is
+[REFERENCES.md](REFERENCES.md); the register ([sources/claims.yaml](sources/claims.yaml))
+stays the authority. Format rules and deck mechanics live in [DESIGN.md](DESIGN.md).
 
 ## Rules
 
