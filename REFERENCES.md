@@ -45,18 +45,20 @@ Researched 2026-08-26. Titanium and the critical-minerals trend are now printed 
   active US sponge plant is electronic-grade at ~500 t/yr (Salt Lake City); the 12,600 t/yr
   Henderson NV plant has been idle since 2020. The **majority of US titanium metal use is
   aerospace**. [USGS MCS 2024 — Titanium](https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf) [conf: H]
-- **Carbon fiber** — no government data series exists. Market research (Astute Analytica) puts US
-  imports at ~30,000 t/yr against ~75,000 t consumption (~40%), concentrated in
-  **intermediate/high-modulus aerospace grades from Japan** (Toray is the dominant global
-  supplier). Hexcel (US) is the top aerospace-grade producer with a domestic supply chain, but
-  "most of the remaining critical aerospace carbon fiber market is served by Japanese firms"
-  ([Lexington Institute, Apr 2025](https://lexingtoninstitute.org/american-advantage/)).
-  Defense angle: the US is "heavily reliant on foreign sources of proprietary carbon fibres from
-  Japan and Europe," nearly all military programs use CF composites, no ready substitutes, and
-  GAO has flagged a lack of visibility into the CF raw-material supply chain
+- **Carbon fiber** — best source: ORNL/NREL, "Global Carbon Fiber Composites Supply Chain
+  Competitiveness Analysis" (Das et al., May 2016 — [sources/Pub61706.pdf](sources/Pub61706.pdf)).
+  USITC trade data: **imports met 66–86% of North American (mostly US) carbon fiber demand,
+  2008–2012**, with Japan (43%) and Europe (38%) the dominant 2012 import sources; the report
+  cautions the HTS code bundles CF with intermediates, so the share is likely overstated.
+  **Aerospace-grade small-tow CF manufacturing is "most concentrated in Japan"** — the top three
+  firms are headquartered there; Toray dominant, including the $6B Boeing 787 prepreg contract.
+  [conf: H for the 2008–12 period; the data is 2012-vintage]. Current-era corroboration
+  (non-primary): ~30 kt/yr imports, ~40% of consumption (Astute Analytica); outside Hexcel, "most
+  of the remaining critical aerospace carbon fiber market is served by Japanese firms"
+  ([Lexington Institute, Apr 2025](https://lexingtoninstitute.org/american-advantage/)); defense
+  reliance on Japanese/European proprietary fibers and a GAO visibility gap
   ([Nandina REM, Oct 2025](https://www.nandinarem.com/post/carbon-fibre-a-core-us-defence-supply-chain-vulnerability)).
-  Volumes [conf: M — market-research, not primary data; do not print without a stronger source];
-  aerospace-grade dependency direction [conf: M-H].
+  A current-year import share still lacks a primary source.
 - **Critical minerals, broad trend** — US import dependence is rising: imports exceeded half of
   apparent consumption for **54 nonfuel mineral commodities in 2025 (100% reliant for 16)**, up
   from 46 (100% for 15) in 2024. [USGS MCS 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf)
