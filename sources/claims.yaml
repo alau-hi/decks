@@ -285,6 +285,20 @@ claims:
     slide: Running, Demand
     note: Supersedes the 800+ figure inherited from the investor-overview register for this deck. Parent decks (investor-overview, aaron-deck) still print 800+ - flag for alignment.
 
+  - claim: SUPERMILL ONE was designed as a subscale pilot facility for SUPERMILL TWO
+    provenance: asserted-internal
+    conf: H (internal)
+    source: Alex Lau, 2026-08-26
+    slide: Cost Roadmap (ucnote), The Fleet (SM One card)
+    note: Printed as the explanation for the 20% -> 65% EBITDA step; the driver is scale, per Alex.
+
+  - claim: SUPERMILL TWO economics assume selling into a blend of premium and structural markets; projected revenue reflects a blended realized price above the structural-board assumption in the cost roadmap chart
+    provenance: asserted-internal
+    conf: H (internal)
+    source: Alex Lau, 2026-08-26
+    slide: Cost Roadmap (ucnote)
+    note: Reconciles 36M sf x $5.50/sf structural-board assumption ($198M) with the $320M projected revenue printed on Demand and The Fleet.
+
   - claim: SuperMill One building is 90,000 sf, ramping to 1M sf/yr of capacity
     provenance: asserted-internal
     conf: H (internal)
