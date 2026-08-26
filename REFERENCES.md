@@ -41,8 +41,18 @@ Researched 2026-08-26 for possible use; see the register for full provenance.
   supplier). Hexcel (US) is the top aerospace-grade producer with a domestic supply chain, but
   "most of the remaining critical aerospace carbon fiber market is served by Japanese firms"
   ([Lexington Institute, Apr 2025](https://lexingtoninstitute.org/american-advantage/)).
+  Defense angle: the US is "heavily reliant on foreign sources of proprietary carbon fibres from
+  Japan and Europe," nearly all military programs use CF composites, no ready substitutes, and
+  GAO has flagged a lack of visibility into the CF raw-material supply chain
+  ([Nandina REM, Oct 2025](https://www.nandinarem.com/post/carbon-fibre-a-core-us-defence-supply-chain-vulnerability)).
   Volumes [conf: M — market-research, not primary data; do not print without a stronger source];
   aerospace-grade dependency direction [conf: M-H].
+- **Critical minerals, broad trend** — US import dependence is rising: imports exceeded half of
+  apparent consumption for **54 nonfuel mineral commodities in 2025 (100% reliant for 16)**, up
+  from 46 (100% for 15) in 2024. [USGS MCS 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf)
+  vs MCS 2025, both quoted verbatim [conf: H]. (E&E News / Politico Pro covered the release
+  Feb 9, 2026 — paywalled.) On the Critical Minerals List basis the 2025 figures are 13 at 100%
+  plus 20 more at ≥50% — use one basis consistently if printed.
 - **Cement volume** — ~25M t of cement and clinker imported per year (2022–24e), against ~110M t
   shipments. Same USGS MCS 2025 sheet as the ~22% stat. [conf: H]
 
