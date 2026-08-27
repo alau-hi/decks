@@ -100,11 +100,12 @@ upstream of slide 7.
 ## The Gap slide format (Alex, 2026-08-26)
 
 Three headline stats only. Revised 2026-08-27 (Alex): labels are bigger and name the
-material with it highlighted — **Steel** imports 20% · Primary **aluminum** imports 85% ·
-**Steel** in a data center 60% — plain percentages, no "~" and no "1 ton in 5" phrasing.
-Footnotes moved out of a shared note line and under the number each belongs to: aluminum
-gets "* Now on the federal Critical Minerals List", the data-center stat gets "Data center
-developers are already flagging structural steel shortages", steel imports carries none.
+material with it highlighted, title-cased — **Steel** Imports 20% · Primary **Aluminum**
+Imports 85% · Steel in a **Data Center** 60% — plain percentages, no "~" and no "1 ton in
+5" phrasing. The third label highlights "Data Center", not the repeated "Steel". Footnotes
+moved out of a shared note line and under the number each belongs to, both asterisked:
+aluminum gets "* Now on the federal Critical Minerals List", the data-center stat gets
+"* data center developers flagging structural steel shortages", steel imports carries none.
 Everything else imported lives in a small left-justified "Also imported" table at the
 bottom right — titanium >95%, carbon fiber 66–86%, cement ~22% — tight and parallel, no
 elaboration. Cement and the smelter count were deliberately demoted from the headline row.

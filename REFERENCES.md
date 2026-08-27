@@ -20,9 +20,9 @@ Last reconciled against the deck: **2026-08-26** (19 slides).
 
 | Stat | Printed | Source |
 |---|---|---|
-| **Steel** imports | 20% | [AISI, "Steel Imports Down 12.6% in 2025" (Feb 2026)](https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/) — 18% of apparent consumption 2025, 23% in 2024. The 2025 fall is tariff-driven (Section 232: 25% Mar 2025, 50% Jun 2025). **Printed as 20% per Alex 2026-08-27** — the round midpoint of the 2024–25 pair, honest as a recent-period figure but not the 2025 number. Cite 18% with its year if a single year is ever named. |
-| Primary **aluminum** imports | 85% | [Aluminum Association / Wittsend, "Powering Up American Aluminum" (May 2025)](https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf) ([local copy](sources/PoweringUpAluminum_WhitePaper_2025.pdf)) — US primary aluminum demand 4.4M t/yr against 683,500 t from the four remaining smelters → imports cover 84.5%. Same paper carries the 4-smelters-from-33-in-1980 figure, no longer printed as its own stat. **Label matters: this is primary (new) metal only** — see the correction note below. |
-| **Steel** in a data center | 60% | Inherited from the investor-overview register (conf L — flagged there as unverified). |
+| **Steel** Imports | 20% | [AISI, "Steel Imports Down 12.6% in 2025" (Feb 2026)](https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/) — 18% of apparent consumption 2025, 23% in 2024. The 2025 fall is tariff-driven (Section 232: 25% Mar 2025, 50% Jun 2025). **Printed as 20% per Alex 2026-08-27** — the round midpoint of the 2024–25 pair, honest as a recent-period figure but not the 2025 number. Cite 18% with its year if a single year is ever named. |
+| Primary **Aluminum** Imports | 85% | [Aluminum Association / Wittsend, "Powering Up American Aluminum" (May 2025)](https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf) ([local copy](sources/PoweringUpAluminum_WhitePaper_2025.pdf)) — US primary aluminum demand 4.4M t/yr against 683,500 t from the four remaining smelters → imports cover 84.5%. Same paper carries the 4-smelters-from-33-in-1980 figure, no longer printed as its own stat. **Label matters: this is primary (new) metal only** — see the correction note below. |
+| Steel in a **Data Center** | 60% | Inherited from the investor-overview register (conf L — flagged there as unverified). |
 
 #### Correction, 2026-08-26 — the aluminum stat was mislabeled
 
@@ -72,7 +72,7 @@ Association. Alex flagged it as a probable misread of the referenced document, a
 
 **Per-stat footnotes** (moved under their own number, Alex 2026-08-27; the shared note line is gone):
 aluminum carries "* Now on the federal Critical Minerals List" — [Federal Register, Nov 2025](https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals);
-the data-center stat carries "Data center developers are already flagging structural steel shortages" (inherited, conf L).
+the data-center stat carries "* data center developers flagging structural steel shortages" (inherited, conf L).
 
 **Sources panel** (the bottom-right Sources button) lists: AISI 2026 · Aluminum Association 2025 ·
 USGS MCS 2025 Cement · USGS MCS 2024 Titanium · USGS MCS 2026 · ORNL/NREL 2016 · Lexington
