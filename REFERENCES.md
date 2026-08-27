@@ -20,9 +20,9 @@ Last reconciled against the deck: **2026-08-26** (19 slides).
 
 | Stat | Printed | Source |
 |---|---|---|
-| Finished steel imported | ~1 ton in 5 | [AISI, "Steel Imports Down 12.6% in 2025" (Feb 2026)](https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/) — 18% of apparent consumption 2025, 23% in 2024. The 2025 fall is tariff-driven (Section 232: 25% Mar 2025, 50% Jun 2025). |
-| Primary aluminum imported | ~85% | [Aluminum Association / Wittsend, "Powering Up American Aluminum" (May 2025)](https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf) ([local copy](sources/PoweringUpAluminum_WhitePaper_2025.pdf)) — US primary aluminum demand 4.4M t/yr against 683,500 t from the four remaining smelters → imports cover 84.5%. Same paper carries the 4-smelters-from-33-in-1980 figure, no longer printed as its own stat. **Label matters: this is primary (new) metal only** — see the correction note below. |
-| Steel in a data center | ~60% | Inherited from the investor-overview register (conf L — flagged there as unverified). |
+| **Steel** imports | 20% | [AISI, "Steel Imports Down 12.6% in 2025" (Feb 2026)](https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/) — 18% of apparent consumption 2025, 23% in 2024. The 2025 fall is tariff-driven (Section 232: 25% Mar 2025, 50% Jun 2025). **Printed as 20% per Alex 2026-08-27** — the round midpoint of the 2024–25 pair, honest as a recent-period figure but not the 2025 number. Cite 18% with its year if a single year is ever named. |
+| Primary **aluminum** imports | 85% | [Aluminum Association / Wittsend, "Powering Up American Aluminum" (May 2025)](https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf) ([local copy](sources/PoweringUpAluminum_WhitePaper_2025.pdf)) — US primary aluminum demand 4.4M t/yr against 683,500 t from the four remaining smelters → imports cover 84.5%. Same paper carries the 4-smelters-from-33-in-1980 figure, no longer printed as its own stat. **Label matters: this is primary (new) metal only** — see the correction note below. |
+| **Steel** in a data center | 60% | Inherited from the investor-overview register (conf L — flagged there as unverified). |
 
 #### Correction, 2026-08-26 — the aluminum stat was mislabeled
 
@@ -70,8 +70,9 @@ Association. Alex flagged it as a probable misread of the referenced document, a
 | Carbon fiber 66–86% | [ORNL/NREL 2016 (Das et al.)](https://docs.nrel.gov/docs/fy16osti/66071.pdf) ([local copy](sources/Pub61706.pdf)) — USITC data, imports met 66–86% of North American CF demand 2008–2012; 2012-vintage, and the HTS code bundles fiber with intermediates (share likely overstated) — caveat carried in the on-slide sources panel. |
 | Cement ~22% | [USGS MCS 2025 — Cement](https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf) — net import reliance 22% of apparent consumption 2022–24e; ~25M t/yr imported, led by Turkey and Canada. |
 
-**Note line (gnote)**: data center operators flagging structural-steel shortages (inherited, conf L);
-aluminum on the federal Critical Minerals List — [Federal Register, Nov 2025](https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals).
+**Per-stat footnotes** (moved under their own number, Alex 2026-08-27; the shared note line is gone):
+aluminum carries "* Now on the federal Critical Minerals List" — [Federal Register, Nov 2025](https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals);
+the data-center stat carries "Data center developers are already flagging structural steel shortages" (inherited, conf L).
 
 **Sources panel** (the bottom-right Sources button) lists: AISI 2026 · Aluminum Association 2025 ·
 USGS MCS 2025 Cement · USGS MCS 2024 Titanium · USGS MCS 2026 · ORNL/NREL 2016 · Lexington
@@ -119,9 +120,11 @@ Column cards, each fact tooltip-sourced on-slide:
   petition signatures; unanimous Muscogee (Creek) Nation resolution; permitted >1 t/day hydrogen
   fluoride. [Oklahoma AG (2026)](https://oklahoma.gov/oag/news/newsroom/2026/june/drummond-files-action-to-block-inola-aluminum-smelter.html).
   Petition counts move — refresh before print use; HF figure should be verified against the air permit.
-- Payoff line ("small enough to site easily, fast enough to replicate, fed by something America
-  already has everywhere") — the siting/replication contrast is the deck's own framing; feedstock
-  ubiquity inherits the 48-states claim (register: unverified, conf L).
+- Payoff line ("small enough to site easily, fast enough to scale to the need, using raw materials
+  that continuously grow everywhere" — Alex's wording, 2026-08-27) — the siting/scaling contrast is
+  the deck's own framing; feedstock ubiquity inherits the 48-states claim (register: unverified,
+  conf L). "Continuously grow" is a renewability claim, not just an availability one, and is
+  likewise unsourced framing rather than a registered number.
 
 ## 04 · SUPERMILLS
 

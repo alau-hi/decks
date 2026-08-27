@@ -9,7 +9,13 @@ claims:
     source: American Iron and Steel Institute, "Steel Imports Down 12.6% in 2025" (Feb 2026)
     url: https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/
     slide: The Gap
-    note: 2025 share fell from 23% under Section 232 tariffs (25% from Mar 2025, 50% from Jun 2025).
+    note: >-
+      2025 share fell from 23% under Section 232 tariffs (25% from Mar 2025, 50% from
+      Jun 2025). PRINTED AS 20% from 2026-08-27 at Alex's direction (he specified 20%
+      here and in ../../investor-overview on 2026-08-24). 20% is the round midpoint of
+      the sourced 2024-25 pair (23% and 18%, mean 20.5%) and is honest as a
+      recent-period figure; it is NOT the 2025 number, which is 18%. If a single year
+      is ever cited on a slide, use 18% (2025) and say the year.
 
   # -- Aluminum import share. CORRECTED 2026-08-26 after Alex flagged the 85% as a
   #    misread. It was: the Aluminum Association's "~85%" is the RECYCLED share of

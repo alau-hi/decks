@@ -65,7 +65,11 @@ body.on-cover .conf{opacity:0}
 .srcpanel li a{color:var(--gold);text-decoration:none;font-weight:600}
 .srcpanel li a:hover,.srcpanel li a:focus-visible{color:var(--cream)}
 /* gap slide footer: note left, imported-materials aside bottom right */
-.gapfoot{display:flex;justify-content:space-between;align-items:flex-end;gap:3rem;max-width:52rem}
+.gapfoot{display:flex;justify-content:flex-end;align-items:flex-end;gap:3rem;max-width:52rem}
+#gap .machstats .gr{align-items:flex-start}
+#gap .machstats .gr span{font-size:clamp(11px,.86rem,1.05rem);color:var(--cream-dim);font-weight:600;letter-spacing:.01em}
+#gap .machstats .gr .hl{color:var(--wood-bright)}
+#gap .gfn{display:block;font-style:italic;font-weight:400;font-size:clamp(9px,.62rem,.76rem);line-height:1.5;color:var(--muted);margin-top:.55rem;max-width:26ch;white-space:normal}
 .gapaside{text-align:left;font-size:clamp(9px,.56rem,.7rem);line-height:1.5;color:var(--muted)}
 .gapaside .k{font-family:'Inter';font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:clamp(9px,.52rem,.66rem);color:var(--wood-bright);margin-bottom:.4rem}
 .gapaside .tbl{display:grid;grid-template-columns:auto auto;gap:.22rem 1.4rem;align-items:baseline}
@@ -96,8 +100,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 #s1 .hl{color:var(--wood-bright)}
 .covline{font-family:'Inter';font-size:clamp(1.2rem,2.8vw,2.1rem);font-weight:600;letter-spacing:.04em;margin-top:1.8rem;color:var(--cream)}
 .covline b{display:block;color:var(--wood-bright);font-weight:700;margin-top:.15em}
-.keyhint{margin-top:1.6rem;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-@media (pointer:coarse){.keyhint{display:none}}
 
 /* s2 growth — exact teaser chart */
 .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center;width:100%}
@@ -456,7 +458,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .machstats .gr{flex-direction:column;align-items:flex-start;gap:.15rem;border-bottom:0;border-top:1px solid rgba(228,210,180,.14);padding-top:.6rem}
 .machstats .gr b{font-family:'Fraunces';font-size:1.25rem;font-weight:400;text-align:left}
 .machstats .gr b{color:var(--gold)}
-#mach .machstats .gr,#run .machstats .gr{justify-content:flex-start}
+#mach .machstats .gr,#run .machstats .gr,#gap .machstats .gr{justify-content:flex-start}
 #mach .machstats .gr span{font-size:.95rem;color:var(--cream);font-weight:600}
 #mach .machstats .gr b{font-size:1.6rem}
 
@@ -481,7 +483,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   .ucnote,.cesplan .fn,.advc .ro,.dstat .s{font-size:max(.76rem,11.5px)}}
 @media print{
   @page{size:letter landscape;margin:0}
-  nav.dots,.pageno,.conf,.brand,.scrollcue,.keyhint,.srcwrap{display:none!important}
+  nav.dots,.pageno,.conf,.brand,.scrollcue,.srcwrap{display:none!important}
   html,body,#deck{height:auto!important;overflow:visible!important}
   #deck{scroll-snap-type:none!important}
   section{display:flex!important;min-height:auto!important;height:auto!important;overflow:visible!important;break-after:page;page-break-after:always}
@@ -504,7 +506,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="wrap">
     <h1 class="rv">SUPERMILLS &mdash; <em>fast, modular manufacturing for America&rsquo;s material future</em></h1>
     <div class="covline rv"><b>August 2026</b></div>
-    <div class="rv keyhint">Arrow keys to navigate &middot; type a slide number to jump</div>
   </div>
   <div class="scrollcue">Scroll</div>
 </section>
@@ -513,15 +514,12 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="wrap">
     <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem);max-width:none">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
     <p class="lead rv" style="margin-top:1.4rem;max-width:64ch">Data centers, reshored factories, housing, the grid. The build-out is here, and the key structural materials it runs on are increasingly not made here:</p>
-    <div class="machstats rv" style="margin-top:1.8rem;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 2.2rem;max-width:46rem">
-      <div class="gr"><span>Finished steel imported</span><b>~1 ton in 5</b></div>
-      <div class="gr"><span>Primary aluminum imported</span><b>~85%</b></div>
-      <div class="gr"><span>Steel in a data center</span><b>~60%</b></div>
+    <div class="machstats rv" style="margin-top:1.8rem;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 2.6rem;max-width:50rem">
+      <div class="gr"><span><span class="hl">Steel</span> imports</span><b>20%</b></div>
+      <div class="gr"><span>Primary <span class="hl">aluminum</span> imports</span><b>85%</b><em class="gfn">* Now on the federal Critical Minerals List</em></div>
+      <div class="gr"><span><span class="hl">Steel</span> in a data center</span><b>60%</b><em class="gfn">Data center developers are already flagging structural steel shortages</em></div>
     </div>
     <div class="gapfoot rv">
-      <div>
-        <p class="gnote" style="max-width:64ch">Data center operators are already flagging structural-steel shortages, and aluminum is on the federal Critical Minerals List.</p>
-      </div>
       <aside class="gapaside">
         <div class="k">Also imported</div>
         <div class="tbl">
@@ -569,7 +567,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <li><b>Oklahoma&rsquo;s AG has sued to block it</b> &mdash; 3,400-signature petition; unanimous Muscogee Nation resolution</li>
       </ul></div>
     </div>
-    <p class="rv" style="margin-top:2rem;font-family:'Fraunces',serif;font-size:clamp(1.05rem,1.9vw,1.5rem);line-height:1.45;color:var(--cream-dim);max-width:56ch">Closing America&rsquo;s materials gap needs a different kind of mill: <b style="font-weight:500;color:var(--gold)">small enough to site easily, fast enough to scale to the need, and fed by inputs that grow everywhere in America.</b></p>
+    <p class="rv" style="margin-top:2rem;font-family:'Fraunces',serif;font-size:clamp(1.05rem,1.9vw,1.5rem);line-height:1.45;color:var(--cream-dim);max-width:56ch">Closing America&rsquo;s materials gap needs a different kind of mill: <b style="font-weight:500;color:var(--gold)">small enough to site easily, fast enough to scale to the need, using raw materials that continuously grow everywhere.</b></p>
   </div>
   <div class="srcwrap">
     <button class="srcbtn" type="button" aria-expanded="false" aria-haspopup="dialog">Sources</button>

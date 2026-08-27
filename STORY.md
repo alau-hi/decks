@@ -19,8 +19,8 @@ SUPERWOOD is "the material to build the future from — made in America."
 ## The arc
 
 1. **The gap.** America is building again (data centers, reshoring, housing, the grid)
-   but ~1 in 5 tons of finished steel is imported, ~85% of primary aluminum is met by
-   imports, and only 4 primary smelters remain of the 33 running in 1980. Open on the problem, not the product.
+   but 20% of finished steel is imported, 85% of primary aluminum is met by imports,
+   and only 4 primary smelters remain of the 33 running in 1980. Open on the problem, not the product.
 2. **The old mills can't close it — not in time.** First new smelter since 1980: ~$4B,
    >1 GW of continuous power, still waiting on a power deal. A new US mine averages
    ~29 years from discovery to production, and ore is centralized where the geology is.
@@ -99,10 +99,16 @@ upstream of slide 7.
 
 ## The Gap slide format (Alex, 2026-08-26)
 
-Three headline stats only (steel ~1 in 5, primary aluminum ~85%, steel-in-a-data-center ~60%).
+Three headline stats only. Revised 2026-08-27 (Alex): labels are bigger and name the
+material with it highlighted — **Steel** imports 20% · Primary **aluminum** imports 85% ·
+**Steel** in a data center 60% — plain percentages, no "~" and no "1 ton in 5" phrasing.
+Footnotes moved out of a shared note line and under the number each belongs to: aluminum
+gets "* Now on the federal Critical Minerals List", the data-center stat gets "Data center
+developers are already flagging structural steel shortages", steel imports carries none.
 Everything else imported lives in a small left-justified "Also imported" table at the
 bottom right — titanium >95%, carbon fiber 66–86%, cement ~22% — tight and parallel, no
 elaboration. Cement and the smelter count were deliberately demoted from the headline row.
+The printed 20% is a rounded 2024–25 figure, not the 2025 number (18%) — see REFERENCES.
 
 ## Aluminum stat corrected (Alex, 2026-08-26)
 
