@@ -53,11 +53,11 @@ img{max-width:100%}
 body.on-cover .pageno{opacity:0}
 .conf{position:fixed;bottom:20px;left:2.125rem;z-index:90;font-size:clamp(9px,.6rem,.74rem);letter-spacing:.3em;color:var(--muted);background:rgba(20,13,7,.72);padding:.3em .8em;border-radius:999px;backdrop-filter:blur(3px);text-transform:uppercase}
 body.on-cover .conf{opacity:0}
-/* per-slide sources button: sits just above the fixed brand mark, click to open */
-.srcwrap{position:absolute;right:2.125rem;bottom:52px;z-index:96}
+/* per-slide sources button: bottom-left corner, just above the Confidential pill; click to open */
+.srcwrap{position:absolute;left:2.125rem;bottom:52px;z-index:96}
 .srcbtn{font-family:'Inter';font-weight:600;font-size:clamp(9px,.58rem,.72rem);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);background:rgba(20,13,7,.72);border:1px solid var(--line);border-radius:999px;padding:.4em 1.05em;cursor:pointer;backdrop-filter:blur(3px);transition:color .25s,border-color .25s}
 .srcbtn:hover,.srcbtn:focus-visible,.srcwrap.open .srcbtn{color:var(--cream);border-color:rgba(226,184,119,.5)}
-.srcpanel{position:absolute;right:0;bottom:calc(100% + .8rem);width:min(34rem,calc(100vw - 3rem));max-height:62vh;overflow-y:auto;background:var(--pop-bg);border:1px solid rgba(226,184,119,.28);border-radius:12px;padding:1.05rem 1.25rem;box-shadow:0 24px 60px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .25s,transform .25s;text-align:left}
+.srcpanel{position:absolute;left:0;bottom:calc(100% + .8rem);width:min(34rem,calc(100vw - 3rem));max-height:62vh;overflow-y:auto;background:var(--pop-bg);border:1px solid rgba(226,184,119,.28);border-radius:12px;padding:1.05rem 1.25rem;box-shadow:0 24px 60px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .25s,transform .25s;text-align:left}
 .srcwrap.open .srcpanel{opacity:1;pointer-events:auto;transform:none}
 .srcpanel h4{font-family:'Inter';font-weight:600;font-size:clamp(9px,.55rem,.7rem);letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:.65rem}
 .srcpanel ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin:0;padding:0}
@@ -65,7 +65,7 @@ body.on-cover .conf{opacity:0}
 .srcpanel li a{color:var(--gold);text-decoration:none;font-weight:600}
 .srcpanel li a:hover,.srcpanel li a:focus-visible{color:var(--cream)}
 /* gap slide footer: note left, imported-materials aside bottom right */
-.gapfoot{display:flex;justify-content:flex-end;align-items:flex-end;gap:3rem;max-width:52rem}
+.gapfoot{display:flex;justify-content:flex-start;align-items:flex-end;gap:3rem;max-width:52rem}
 #gap .machstats .gr{align-items:flex-start}
 #gap .machstats .gr span{font-size:clamp(11px,.86rem,1.05rem);color:var(--cream-dim);font-weight:600;letter-spacing:.01em}
 #gap .machstats .gr .hl{color:var(--wood-bright)}
@@ -116,6 +116,12 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 /* s3 shortcomings — ported from the teaser deck's Problem slide */
 .hl{color:var(--wood-bright)}
+/* Old Mills data-point tooltips: reuse the sw-ref/sw-tip pattern; refs inside list items must
+   wrap normally (the base .sw-ref nowrap would blow the column), and get a hover affordance */
+.col-card .sw-ref{white-space:normal;border-bottom:1px dotted rgba(226,184,119,.5);cursor:help}
+.sw-tip.tipr{left:auto;right:0;transform:translateY(6px)}
+.sw-ref:hover .sw-tip.tipr,.sw-ref:focus-within .sw-tip.tipr{transform:translateY(0)}
+.sw-tip.tipr::after{left:auto;right:1.2rem;transform:none}
 .cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2rem;margin-top:2.4rem}
 .col-card h3{color:var(--wood-bright);font-family:'Inter';font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:1.15rem;margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid var(--line);min-height:calc(2.6em + .7rem)}
 .col-card ul{list-style:none;display:flex;flex-direction:column;gap:.8rem}
@@ -515,7 +521,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem);max-width:none">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
     <p class="lead rv" style="margin-top:1.4rem;max-width:64ch">Data centers, reshored factories, housing, the grid. The build-out is here, and the key structural materials it runs on are increasingly not made here:</p>
     <div class="machstats rv" style="margin-top:1.8rem;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 2.6rem;max-width:50rem">
-      <div class="gr"><span><span class="hl">Steel</span> Imports</span><b>20%</b></div>
+      <div class="gr"><span><span class="hl">Steel</span> Imports</span><b>18%</b></div>
       <div class="gr"><span>Primary <span class="hl">Aluminum</span> Imports</span><b>85%</b><em class="gfn">* Now on the federal Critical Minerals List</em></div>
       <div class="gr"><span>Steel in a <span class="hl">Data Center</span></span><b>60%</b><em class="gfn">* data center developers flagging structural steel shortages</em></div>
     </div>
@@ -554,17 +560,17 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <h2 class="rv" style="max-width:32ch">More of the old mills won&rsquo;t close the gap &mdash; <em>not in time</em></h2>
     <div class="cols3 rv" style="margin-top:2rem">
       <div class="col-card"><h3>Billions per plant</h3><ul>
-        <li><b>Aluminum:</b> the Inola smelter is a <b>~$4B</b> JV &mdash; needed a $500M federal grant to advance</li>
-        <li><b>Steel:</b> Nucor&rsquo;s Apple Grove sheet mill: <b>$4.0B</b>, <b>2021&rarr;2027</b> announce-to-ship</li>
+        <li><b>Aluminum:</b> the Inola smelter is a <span class="sw-ref" tabindex="0"><b>~$4B</b> JV<span class="sw-tip">Century Aluminum / EGA joint venture in Inola, OK &mdash; the first new US primary smelter since 1980. A <b>$500M DOE award</b> moved it forward; first metal is expected ~2030, and its power deal was still open in 2026.</span></span> &mdash; needed a $500M federal grant to advance</li>
+        <li><b>Steel:</b> Nucor&rsquo;s Apple Grove sheet mill: <span class="sw-ref" tabindex="0"><b>$4.0B</b>, <b>2021&rarr;2027</b> announce-to-ship<span class="sw-tip">Announced September 2021 at $2.7B; the board-approved cost grew to <b>~$4.0B</b>, with first shipments expected 2027 &mdash; six years announce-to-ship.</span></span></li>
       </ul></div>
       <div class="col-card"><h3>10+ year development timelines</h3><ul>
-        <li><b>Massive power needs</b> &mdash; &gt;1 GW continuous per smelter, competing with data centers</li>
-        <li><b>Complex logistics</b> &mdash; Inola runs on Guinean bauxite, &ldquo;vertically integrated&rdquo; an ocean away</li>
-        <li><b>Cyclical economics</b> &mdash; Century idled Hawesville over &ldquo;soaring energy prices&rdquo;</li>
+        <li><b>Massive power needs</b> &mdash; <span class="sw-ref" tabindex="0">&gt;1 GW continuous<span class="sw-tip">Roughly <b>a city&rsquo;s worth</b> of continuous load, secured before first metal. Inola&rsquo;s power deal was still open in 2026, competing with data-center demand for the same grid capacity.</span></span> per smelter, competing with data centers</li>
+        <li><b>Complex logistics</b> &mdash; Inola runs on <span class="sw-ref" tabindex="0">Guinean bauxite<span class="sw-tip">EGA mines the bauxite in <b>Guinea</b>, refines it to alumina, and barges it to Oklahoma via the port of New Orleans. EGA &mdash; UAE state-owned &mdash; holds 60% of the JV.</span></span>, &ldquo;vertically integrated&rdquo; an ocean away</li>
+        <li><b>Cyclical economics</b> &mdash; Century idled <span class="sw-ref" tabindex="0">Hawesville<span class="sw-tip">Idled July 2022 over &ldquo;soaring energy prices&rdquo; &mdash; then <b>North America&rsquo;s largest producer of high-purity primary aluminum</b>. Ravenswood, WV closed 2015; Mt.&nbsp;Holly, SC cut to half capacity 2015 &mdash; all power-cost-driven.</span></span> over &ldquo;soaring energy prices&rdquo;</li>
       </ul></div>
       <div class="col-card"><h3>Community pushback</h3><ul>
-        <li><b>Pollution and power</b> &mdash; Inola is permitted &gt;1 t/day of hydrogen fluoride</li>
-        <li><b>Oklahoma&rsquo;s AG has sued to block it</b> &mdash; 3,400-signature petition; unanimous Muscogee Nation resolution</li>
+        <li><b>Pollution and power</b> &mdash; Inola is permitted <span class="sw-ref" tabindex="0">&gt;1 t/day of hydrogen fluoride<span class="sw-tip tipr">The air permit allows <b>more than a ton of hydrogen fluoride per day</b> &mdash; the emissions figure at the center of local opposition to the smelter.</span></span></li>
+        <li><span class="sw-ref" tabindex="0"><b>Oklahoma&rsquo;s AG has sued to block it</b><span class="sw-tip tipr">Petition filed in <b>Rogers County District Court, June 2026</b>, alongside a 3,400+ signature resident petition and a unanimous Muscogee (Creek) Nation resolution opposing the smelter.</span></span> &mdash; 3,400-signature petition; unanimous Muscogee Nation resolution</li>
       </ul></div>
     </div>
     <p class="rv" style="margin-top:2rem;font-family:'Fraunces',serif;font-size:clamp(1.05rem,1.9vw,1.5rem);line-height:1.45;color:var(--cream-dim);max-width:56ch">Closing America&rsquo;s materials gap needs a different kind of mill: <b style="font-weight:500;color:var(--gold)">small enough to site easily, fast enough to scale to the need, using raw materials that continuously grow everywhere.</b></p>

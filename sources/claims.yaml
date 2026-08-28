@@ -145,9 +145,33 @@ claims:
     note: Not yet externally sourced. Plausible given 2023-2025 sawmill curtailments on weak housing demand, but find a utilization figure before print use.
 
   - claim: ~60% of a US data center is steel; operators concerned about structural steel shortage
-    provenance: inherited
-    source: ../../investor-overview/sources/claims.yaml
+    provenance: inherited / asserted-internal
+    conf: L
+    source: ../../investor-overview/sources/claims.yaml (registered there as unverified, conf L, NEEDS SOURCE)
     slide: The Gap
+    basis: >-
+      Alex 2026-08-27: the 60% denominator is the BUILDING AND ITS CONTENTS EXCLUDING
+      CONCRETE - foundations and slab, where most of the concrete goes, are out of scope.
+      That basis was never stated on the slide or in either register, which is why the
+      claim kept reading as "60% of a data center by mass" and failing review.
+    note: >-
+      TRACED 2026-08-27. Origin is ../superwood-datacenter slide 16 ("About 60% of the mass
+      of a typical US data center is steel"), where reviews/REVIEW-2026-07-24.md flagged it
+      three times as unsourced and "almost certainly wrong" ON THE ALL-IN MASS BASIS
+      (concrete dominates). It entered investor-overview as unverified/conf L with
+      "NEEDS SOURCE - load-bearing for the entire data-center appendix" and was inherited
+      here without ever being sourced. On Alex's ex-concrete basis the review's objection
+      does not apply.
+      NO PUBLISHED SOURCE STATES A STEEL SHARE ON ANY BASIS. Searched 2026-08-27: LCA
+      literature, Schneider Electric Scope 3 white paper (carbon only, no mass inventory),
+      Gensler Research Institute 2023 (carbon only), Vertiv modular white paper (gated,
+      no quantities on the public page), WEF Dec 2025 (403). What does exist, per MW:
+      structural steel 500-1,000 t per 10 MW facility and concrete 5,000-10,000 m3 per
+      10 MW (~12,000-24,000 t at 2.4 t/m3) - arXiv 2509.21312 (Sep 2025) citing Hasan
+      et al. 2022 and Sharma et al. 2023 [preprint, secondary citations, conf M]. A
+      "~250 t/MW" figure circulates in trade press with no traceable origin [conf L,
+      do not print]. Until the ex-concrete share is either sourced or derived bottom-up
+      with stated assumptions, print it as Alex-asserted or not at all.
 
   - claim: Hybrid SUPERWOOD-glulam beams (SUPERWOOD outer laminations, ~10% of section) increase bending stiffness ~75% and bending strength ~100%
     provenance: inherited

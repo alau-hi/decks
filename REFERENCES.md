@@ -22,7 +22,7 @@ Last reconciled against the deck: **2026-08-26** (19 slides).
 |---|---|---|
 | **Steel** Imports | 20% | [AISI, "Steel Imports Down 12.6% in 2025" (Feb 2026)](https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/) — 18% of apparent consumption 2025, 23% in 2024. The 2025 fall is tariff-driven (Section 232: 25% Mar 2025, 50% Jun 2025). **Printed as 20% per Alex 2026-08-27** — the round midpoint of the 2024–25 pair, honest as a recent-period figure but not the 2025 number. Cite 18% with its year if a single year is ever named. |
 | Primary **Aluminum** Imports | 85% | [Aluminum Association / Wittsend, "Powering Up American Aluminum" (May 2025)](https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf) ([local copy](sources/PoweringUpAluminum_WhitePaper_2025.pdf)) — US primary aluminum demand 4.4M t/yr against 683,500 t from the four remaining smelters → imports cover 84.5%. Same paper carries the 4-smelters-from-33-in-1980 figure, no longer printed as its own stat. **Label matters: this is primary (new) metal only** — see the correction note below. |
-| Steel in a **Data Center** | 60% | Inherited from the investor-overview register (conf L — flagged there as unverified). |
+| Steel in a **Data Center** | 60% | **Basis (Alex, 2026-08-27): the building and its contents, EXCLUDING concrete** — foundations and slab, where most of the concrete goes, are out of scope. Traced 2026-08-27: originates in `../superwood-datacenter` slide 16, flagged unsourced there and inherited through investor-overview (unverified, conf L) without ever being sourced. No published source states a steel share on any basis — see the note below. |
 
 #### Correction, 2026-08-26 — the aluminum stat was mislabeled
 
@@ -69,6 +69,26 @@ Association. Alex flagged it as a probable misread of the referenced document, a
 | Titanium >95% | [USGS MCS 2024 — Titanium](https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf) — sponge net import reliance >95% since 2021; record ~42,000 t imported 2023, 77–86% from Japan; majority of US titanium metal use is aerospace. USGS holds at >95% (not 100%) because one small electronic-grade sponge plant (~500 t/yr, Salt Lake City) still operates; Henderson NV idled 2020, Rowley UT idle since 2016. |
 | Carbon fiber 66–86% | [ORNL/NREL 2016 (Das et al.)](https://docs.nrel.gov/docs/fy16osti/66071.pdf) ([local copy](sources/Pub61706.pdf)) — USITC data, imports met 66–86% of North American CF demand 2008–2012; 2012-vintage, and the HTS code bundles fiber with intermediates (share likely overstated) — caveat carried in the on-slide sources panel. |
 | Cement ~22% | [USGS MCS 2025 — Cement](https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf) — net import reliance 22% of apparent consumption 2022–24e; ~25M t/yr imported, led by Turkey and Canada. |
+
+#### The 60% data-center figure — what the search turned up, 2026-08-27
+
+No published source states steel's share of a data center on any basis (all-in mass, or
+ex-concrete). Checked: data-center LCA literature, Schneider Electric's *Quantifying Data
+Center Scope 3 GHG Emissions* white paper (carbon by subsystem, no mass inventory),
+Gensler Research Institute 2023 (carbon only), Vertiv's steel-frame modular white paper
+(quantities gated behind registration), WEF Dec 2025 (blocked). What is citable, per MW:
+
+| Quantity | Figure | Source |
+|---|---|---|
+| Structural steel, 10 MW facility | 500–1,000 t (50–100 t/MW) | [arXiv 2509.21312](https://arxiv.org/pdf/2509.21312) (Sep 2025), citing Hasan et al. 2022, Sharma et al. 2023 [conf: M — preprint, secondary citations] |
+| Concrete, 10 MW facility | 5,000–10,000 m³ (~12,000–24,000 t) | same [conf: M] |
+| Structural steel per MW, trade press | "~250 t/MW" | No traceable origin [conf: L — **do not print**] |
+
+The concrete row is why the basis matters: on all-in mass, concrete outweighs structural
+steel by roughly an order of magnitude, which is exactly what the 2026-07-24 review of
+`../superwood-datacenter` objected to. On Alex's ex-concrete basis that objection does not
+apply, but the 60% share itself remains unsourced — print it as Alex-asserted, derive it
+bottom-up with stated assumptions, or drop it.
 
 **Per-stat footnotes** (moved under their own number, Alex 2026-08-27; the shared note line is gone):
 aluminum carries "* Now on the federal Critical Minerals List" — [Federal Register, Nov 2025](https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals);
