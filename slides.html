@@ -98,13 +98,10 @@ body.on-cover .conf{opacity:0}
 #gapalt .trip{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr 1.06fr}
 #gapalt .trip figure{position:relative;overflow:hidden}
 #gapalt .trip figure + figure{border-left:1px solid rgba(31,21,12,.9)}
-/* the demand signal is not a material: its panel steps out of the full bleed and sits as an
-   inset card on the ground, so the difference in kind is visible before the labels are read */
-#gapalt .trip figure:last-child{margin-left:.55rem;border-left:0;display:flex;align-items:center;
-  justify-content:flex-start;padding:0 max(6vw,9.5rem) 5.5rem 1.4rem}
-#gapalt .trip figure:last-child::after{display:none}
-#gapalt .trip figure:last-child img{width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;
-  border-radius:16px;filter:saturate(.92) brightness(.9);box-shadow:0 1.6rem 3.4rem rgba(0,0,0,.6)}
+/* the demand signal keeps its own panel, separated by the gap and given a little extra width,
+   but it bleeds like the others: on this slide the data centre is carrying scale of opportunity
+   (Alex, 2026-08-29), and an inset card argues the opposite of scale */
+#gapalt .trip figure:last-child{margin-left:.55rem;border-left:0}
 #gapalt .trip img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) brightness(.82)}
 /* the cold-aisle frame carries its LED banks at the edges; a centred tall crop lands on the
    empty aisle and reads as a doorway, so this panel biases onto the left bank and lifts */
@@ -243,6 +240,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .bio-pop li:last-child{margin-bottom:0}
 .bio-pop::after{content:"";position:absolute;top:100%;left:1.875rem;border:8px solid transparent;border-top-color:var(--pop-bg)}
 .person:hover .bio-pop,.advc:hover .bio-pop,.person:focus-within .bio-pop,.advc:focus-within .bio-pop{opacity:1;visibility:visible;transform:translateY(0)}
+/* clicking a card focuses it, and focus outlives the pointer: without this the popup from a
+   clicked card stays up while you move onto the next one, and two bios show at once */
+.team:hover .person:not(:hover) .bio-pop,.advs:hover .advc:not(:hover) .bio-pop{opacity:0;visibility:hidden}
 .team .bio-pop{bottom:auto;top:-6px;left:7rem;right:auto;width:18.125rem;pointer-events:none}
 .team .person:last-child .bio-pop{left:auto;right:calc(100% + 10px)}
 .team .bio-pop::after{display:none}
@@ -959,9 +959,14 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <div class="bio-pop"><b>Alex Lau — CEO / Co-Founder</b><ul><li>Technology entrepreneur and investor who began his career in Silicon Valley in artificial intelligence and human-interface design.</li><li>Involved in five successful manufacturing scale-ups around the world.</li><li>20+ years in real estate development and operations, leading groundbreaking development and redevelopment projects in California and Canada.</li><li>Built world-class teams and is a successful IP strategist across multiple firms.</li><li>BS Cognitive Science and Physics, Dartmouth.</li></ul></div>
       </div>
       <div class="person" tabindex="0">
-        <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-jonathan-c.webp" alt="Jonathan Strimling"><div class="nm">Jonathan Strimling</div><div class="ro">Chief Operating Officer</div>
+        <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-jonathan-c.webp" alt="Jon Strimling"><div class="nm">Jon Strimling</div><div class="ro">Chief Operating Officer</div>
         <div class="bi">3&times; CEO; co-founded and led an Inc. 5000 "fastest-growing manufacturer" and took a SaaS company to the NASDAQ. MS Manufacturing Management, MIT Sloan.</div><div class="hint">Hover or tap for full bio</div>
-        <div class="bio-pop"><b>Jonathan Strimling — Chief Operating Officer</b><ul><li>3&times; CEO. Co-founded and led the building-materials company named America's fastest-growing manufacturer by Inc. 5000.</li><li>Over 25 years of leadership and entrepreneurship, including CEO of a biomaterials manufacturing company and a SaaS company he took to the NASDAQ.</li><li>Manufacturing turnaround expert at American Industrial Partners.</li><li>MS Manufacturing Management, MIT Sloan.</li></ul></div>
+        <div class="bio-pop"><b>Jon Strimling — Chief Operating Officer</b><ul><li>3&times; CEO. Co-founded and led the building-materials company named America's fastest-growing manufacturer by Inc. 5000.</li><li>Over 25 years of leadership and entrepreneurship, including CEO of a biomaterials manufacturing company and a SaaS company he took to the NASDAQ.</li><li>Manufacturing turnaround expert at American Industrial Partners.</li><li>MS Manufacturing Management, MIT Sloan.</li></ul></div>
+      </div>
+      <div class="person" tabindex="0">
+        <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-neal-c.webp" alt="Neal Parikh"><div class="nm">Neal Parikh</div><div class="ro">Chief Financial Officer</div>
+        <div class="bi">Climate and infrastructure investor and operator across project finance and corporate equity. Led finance at a sustainable-greenhouses scale-up through to acquisition. Earlier background in banking. Advisor to Mayor Michael Bloomberg.</div><div class="hint">Hover or tap for full bio</div>
+        <div class="bio-pop"><b>Neal Parikh &mdash; Chief Financial Officer</b><ul><li>Climate and infrastructure investor and operator, across both project finance and corporate equity.</li><li>Led finance at a sustainable-greenhouses scale-up through to a successful acquisition.</li><li>Earlier background in banking.</li><li>Advisor to Mayor Michael Bloomberg, New York City.</li><li>BA, Brown, magna cum laude. MA, Harvard.</li></ul></div>
       </div>
       <div class="person" tabindex="0">
         <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-tom-c.webp" alt="Tom Dorsch"><div class="nm">Tom Dorsch</div><div class="ro">VP Engineering &amp; Capital Projects</div>
@@ -972,11 +977,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-jiaqi-c.webp" alt="Jiaqi Dai"><div class="nm">Jiaqi Dai</div><div class="ro">Chief Science Officer / Co-Founder</div>
         <div class="bi">Key co-inventor on the core patents. H-index of 96; top 2% of scientists worldwide. PhD in Materials Science &amp; Engineering, University of Maryland.</div><div class="hint">Hover or tap for full bio</div>
         <div class="bio-pop"><b>Jiaqi Dai — Chief Science Officer / Co-Founder</b><ul><li>Key co-inventor on the core patents, both at the University of Maryland and since.</li><li>Drives the innovations that lower cost and continually improve SUPERWOOD's performance and functionality.</li><li>H-index of 96, ranked in the top 2% of scientists worldwide — and an award-winning artist.</li><li>PhD in Materials Science &amp; Engineering from the University of Maryland.</li></ul></div>
-      </div>
-      <div class="person" tabindex="0">
-        <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-neal-c.webp" alt="Neal Parikh"><div class="nm">Neal Parikh</div><div class="ro">Chief Financial Officer</div>
-        <div class="bi">Climate and infrastructure investor and operator across project finance and corporate equity. Led finance at an acquired sustainable-greenhouses startup. Advisor to Mayor Michael Bloomberg.</div><div class="hint">Hover or tap for full bio</div>
-        <div class="bio-pop"><b>Neal Parikh &mdash; Chief Financial Officer</b><ul><li>Climate and infrastructure investor and operator, across both project finance and corporate equity.</li><li>Led finance at a sustainable-greenhouses startup through to a successful acquisition.</li><li>Advisor to Mayor Michael Bloomberg, New York City.</li><li>BA, Brown. MA, Harvard.</li></ul></div>
       </div>
       <div class="person" tabindex="0">
         <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-shaun-c.webp" alt="Shaun Klopfenstein"><div class="nm">Shaun Klopfenstein</div><div class="ro">Head of AI</div>

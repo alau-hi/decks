@@ -92,13 +92,12 @@ throws its headline into the nav rail. Two consequences to respect when editing 
 
 - Absolute layers ignore the section's `padding-right:max(6vw,9.5rem)` rail reserve, so the
   last panel's caption re-applies that exact expression itself. Keep them in step.
-- **The third panel is not full-bleed.** Steel and aluminum run edge to edge; the data-centre
-  panel steps out of the bleed and sits as a smaller rounded card on the ground (Alex,
-  2026-08-29), because it is a demand signal rather than an import share and the difference in
-  kind should be visible before the labels are read. Its column is `1.06fr` against the
-  materials' `1fr` and it fills that column — inset and rounded, but big — its scrim is off
-  (nothing is overlaid on it any more), and its right padding is the `max(6vw,9.5rem)` rail
-  reserve. The caption stays on the shared baseline with the other two.
+- **All three panels bleed.** An inset card for the data centre was tried on 2026-08-29 and
+  reverted the same day: on this slide the data centre carries *scale of opportunity*, and a
+  card set into the ground argues the opposite of scale. The separation is carried instead by
+  the `.55rem` gap and the slightly wider `1.06fr` column, which is as much differentiation as
+  this slide can take without undercutting its own point. Slide 2 is where the distinction can
+  be drawn more strongly, because nothing there depends on the image conveying scale.
 - **Measuring rail clearance: compare against the widest nav label that overlaps vertically,
   not the first one.** The nav is right-aligned, so `nav.dots a:first-child` ("Cover 01") starts
   furthest right of any label and reports a comfortable gap while a long mid-list label like
