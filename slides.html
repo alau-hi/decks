@@ -14,6 +14,8 @@
   --ink:#1f150c;
   --cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;
   --wood:#b87d44;--wood-bright:#cda165;--wood-deep:#8a4f23;--gold:#e2b877;
+  /* material tints, Gap slide stat labels: each material wears its own metal */
+  --mat-steel:#c4603a;--mat-alu:#bcc9d4;--mat-dc:#f2f2ef;
   /* the deck's inverted world: cream panels on the dark ground, with their own ink ramp */
   --pop-bg:#332314;--panel:#efe6d6;--panel-ink:#3a2a18;--panel-ink2:#4a3618;--panel-muted:#75654e;--ink-deep:#1a1209;
   --line:rgba(228,210,180,.16);--maxw:73.75rem;
@@ -69,6 +71,9 @@ body.on-cover .conf{opacity:0}
 #gap .machstats .gr{align-items:flex-start}
 #gap .machstats .gr span{font-size:clamp(11px,.86rem,1.05rem);color:var(--cream-dim);font-weight:600;letter-spacing:.01em}
 #gap .machstats .gr .hl{color:var(--wood-bright)}
+#gap .machstats .gr .m-steel{color:var(--mat-steel)}
+#gap .machstats .gr .m-alu{color:var(--mat-alu)}
+#gap .machstats .gr .m-dc{color:var(--mat-dc)}
 /* C-variant image strip: thirds that line up with the stat columns under them */
 #gap .gapcols{max-width:62rem;margin-top:1.5rem}
 #gap .gapstrip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 2.6rem}
@@ -538,9 +543,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <figure><img src="assets/gap-datacenter.webp" alt="Hyperscale data center campus at dusk"></figure>
       </div>
       <div class="machstats rv" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:0 2.6rem">
-        <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
-        <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em></div>
-        <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em></div>
+        <div class="gr"><span class="m-steel">Steel</span><b>18% imported</b></div>
+        <div class="gr"><span>Primary <span class="m-alu">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em></div>
+        <div class="gr"><span class="m-dc">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em></div>
       </div>
     </div>
     <div class="gapfoot rv">

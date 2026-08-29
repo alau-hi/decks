@@ -12,7 +12,11 @@ Alex, 2026-08-23 → 26.
 - **Palette**: dark wood ground (`--ink #1f150c`) with cream type (`--cream/--cream-dim/--muted`)
   and wood/gold accents (`--wood #b87d44`, `--wood-bright #cda165`, `--gold #e2b877`).
   Inverted "cream panel" world for cards that need lift (`--panel*` vars). Always use the
-  variables, never hardcoded colors.
+  variables, never hardcoded colors. **Material tints** (Alex, 2026-08-29) are the one place
+  the deck leaves the wood/gold accent range: on the Gap slide each stat label wears its own
+  metal — `--mat-steel #c4603a` (rust), `--mat-alu #bcc9d4` (silver, deliberately the deck's
+  only cool hue so it separates from the warm cream beside it), `--mat-dc #f2f2ef` (white).
+  Labels only; the figures stay `--gold` like every other number in the deck.
 - **Type**: Fraunces for display/figures, Inter for text/labels, Montserrat for
   small-caps band labels. Root font clamps with a **9px floor** — nothing on the deck may
   render smaller (sub-.6rem styles carry their own `clamp(10px,…)`).
