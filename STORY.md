@@ -123,6 +123,20 @@ USGS MCS 2026 — sits in the Sources panel beside it so the distinction is visi
 slide. Full working in [REFERENCES.md](REFERENCES.md#correction-2026-08-26--the-aluminum-stat-was-mislabeled).
 The headline number did not change; only what it is a number *of*.
 
+## The Gap slide goes image-led (Alex, 2026-08-29)
+
+Three alternatives were built as a review file (`alt-slide2.html`, kept in the repo and out
+of the deployment): **A triptych** (full-bleed panels, headline over the image), **B split**
+(argument left, image mosaic right), **C banded** (headline, image strip in thirds, existing
+stat row underneath). Alex picked **C** — the lowest-risk of the three: nothing moves except
+the addition of the strip, so the headline, lead, stat row, aside and Sources button all keep
+their positions and the slide still reads as the deck's own.
+
+The images: steel and aluminum are reused from `../supermill-presentation` (ladle pour,
+smelter potline). The data center had to be generated, because every data-center image in the
+deck family is a SUPERWOOD wood-hall render — the aspiration, not the problem. Putting one on
+the problem slide answers the question eight slides before the deck earns it.
+
 ## Sources presentation (Alex, 2026-08-26)
 
 No visible "Sources:" lines on slides. Each data-heavy slide (Gap, Old Mills, Fast × Fast,

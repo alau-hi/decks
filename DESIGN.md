@@ -25,6 +25,15 @@ Alex, 2026-08-23 → 26.
   worded header; figures play a supporting role in context (a sentence, a labelled row, a
   chart). On stat rows, labels sit above values at comparable weight.
 - **Tables over cards** for anything comparative; compact, dense presentation generally.
+- **The Gap slide carries an image strip** (added 2026-08-29, Alex picked variant C from
+  `alt-slide2.html`): three photographs in thirds between the lead and the stat row, each
+  column lining up with the stat beneath it. `#gap .gapcols` caps strip and stats to the
+  same width and gap so the thirds stay registered — change one, change both. No scrim on
+  these images: nothing is overlaid on them, so they only need `brightness(.96)` to sit in
+  the palette. The strip is hidden below 700px (three sixteenths of a photo are unreadable
+  at phone width; the slide reverts to the text-only row that already worked there) — and
+  that media query is **`@media screen`-scoped on purpose**: unscoped, the print page box
+  reports portrait and swallows the strip out of the PDF. Verified by printing the slide.
 - **Legends and asides live in empty side space** (e.g. the Gap slide's "Also imported"
   table bottom-right; chart legends beside, not below).
 - **Casing canon**: SUPERMILL ONE / SUPERMILL TWO / CHIPMILL in display (titles, nav,

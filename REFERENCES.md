@@ -90,6 +90,14 @@ steel by roughly an order of magnitude, which is exactly what the 2026-07-24 rev
 apply, but the 60% share itself remains unsourced — print it as Alex-asserted, derive it
 bottom-up with stated assumptions, or drop it.
 
+**Slide imagery** (added 2026-08-29): `assets/gap-steel.webp` and `assets/gap-aluminum.webp`
+are re-encodes of `../supermill-presentation/assets/ind-steel-pour.jpg` and `ind-alum-potline.jpg`
+— already ours. `assets/gap-datacenter.webp` (and `gap-datahall.webp`, used only in the review
+file) were generated 2026-08-29 with Higgsfield `soul_location`; prompts and the reasoning are in
+[render/slide2-datacenter.md](render/slide2-datacenter.md). Nothing here is licensed stock, so
+there is nothing to clear before the deck goes out. The photographs illustrate the industries;
+they are not evidence for any figure on the slide.
+
 **Per-stat footnotes** (moved under their own number, Alex 2026-08-27; the shared note line is gone):
 aluminum carries "* Now on the federal Critical Minerals List" — [Federal Register, Nov 2025](https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals);
 the data-center stat carries "* data center developers flagging structural steel shortages" (inherited, conf L).
