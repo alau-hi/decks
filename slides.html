@@ -101,7 +101,8 @@ body.on-cover .conf{opacity:0}
 /* the demand signal keeps its own panel, separated by the gap and given a little extra width,
    but it bleeds like the others: on this slide the data centre is carrying scale of opportunity
    (Alex, 2026-08-29), and an inset card argues the opposite of scale */
-#gapalt .trip figure:last-child{margin-left:.55rem;border-left:0}
+#gapalt .trip{background:rgba(228,210,180,.5)}
+#gapalt .trip figure:last-child{margin-left:.5rem;border-left:0}
 #gapalt .trip img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) brightness(.82)}
 /* the cold-aisle frame carries its LED banks at the edges; a centred tall crop lands on the
    empty aisle and reads as a doorway, so this panel biases onto the left bank and lifts */
@@ -150,7 +151,9 @@ body.on-cover .conf{opacity:0}
 #gap .gapcols .machstats .gr{padding-right:2.6rem}
 /* materials read as a pair; the demand signal is set slightly apart (Alex, 2026-08-29).
    Both grids take the same offset on their third column so stat and photo stay registered. */
-#gap .gapstrip figure:nth-child(3),#gap .gapcols .machstats .gr:nth-child(3){margin-left:.55rem}
+#gap .gapstrip figure:nth-child(3),#gap .gapcols .machstats .gr:nth-child(3){margin-left:.5rem}
+/* the strip's own background shows only through that margin, so it renders as a light rule */
+#gap .gapstrip{background:rgba(228,210,180,.5)}
 /* narrow screens fall back to the text-only stat row: three thirds of a 16:9 photo
    are unreadable at phone width, and the slide already worked without them */
 /* screen-only: in print the page box can report portrait and swallow the strip */
