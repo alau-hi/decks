@@ -100,9 +100,10 @@ upstream of slide 7.
 ## The Gap slide format (Alex, 2026-08-26)
 
 Three headline stats only. Revised 2026-08-27 (Alex): labels are bigger and name the
-material with it highlighted, title-cased — **Steel** Imports 20% · Primary **Aluminum**
-Imports 85% · Steel in a **Data Center** 60% — plain percentages, no "~" and no "1 ton in
-5" phrasing. The third label highlights "Data Center", not the repeated "Steel". Footnotes
+material with it highlighted — **Steel** / 18% imported · Primary **Aluminum** /
+85% imported · **Data Centers** / 60% steel (Alex 2026-08-29: the material is the label,
+the figure carries its own verb). No "~" and no "1 ton in 5" phrasing. Steel reverted from
+the rounded 20% to the sourced 18% (2025) on 2026-08-29. Footnotes
 moved out of a shared note line and under the number each belongs to, both asterisked:
 aluminum gets "* Now on the federal Critical Minerals List", the data-center stat gets
 "* data center developers flagging structural steel shortages", steel imports carries none.
