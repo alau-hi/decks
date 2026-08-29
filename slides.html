@@ -119,15 +119,19 @@ body.on-cover .conf{opacity:0}
   display:flex;justify-content:space-between;align-items:flex-start;gap:3rem}
 /* the other imported materials ride opposite the headline, inside the same rail reserve */
 #gapalt .triphead .gapaside{flex:none;text-shadow:0 .12em .7em rgba(20,13,7,.95)}
+#gapalt .tripcopy{min-width:0}
 #gapalt .triphead h2{font-size:clamp(1.6rem,3vw,2.7rem);line-height:1.12;max-width:24ch;
   text-shadow:0 .12em .7em rgba(20,13,7,.9)}
+/* the lead sits over the photographs, so it carries the same shadow the headline does */
+#gapalt .triphead .lead{margin-top:1.1rem;max-width:46ch;text-shadow:0 .1em .6em rgba(20,13,7,.95)}
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){
   #gapalt .trip{grid-template-columns:1fr;grid-template-rows:repeat(3,1fr)}
   #gapalt .trip figure + figure{border-left:0;border-top:1px solid rgba(31,21,12,.9)}
   #gapalt figcaption{padding:0 6vw 2.5vh;grid-template-rows:auto auto auto}
   #gapalt .trip figure:last-child figcaption{padding-right:6vw}
   #gapalt .triphead{flex-direction:column;gap:.9rem;padding:4vh 6vw 0}
-  #gapalt .triphead h2{font-size:clamp(1.15rem,4.6vw,1.7rem);max-width:none}}
+  #gapalt .triphead h2{font-size:clamp(1.15rem,4.6vw,1.7rem);max-width:none}
+  #gapalt .triphead .lead{margin-top:.7rem;max-width:none;font-size:clamp(.8rem,3.2vw,1rem)}}
 
 /* C-variant image strip: thirds that line up with the stat columns under them */
 #gap .gapcols{max-width:62rem;margin-top:1.5rem}
@@ -636,7 +640,10 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     </figure>
   </div>
   <div class="triphead">
-    <h2 class="rv">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
+    <div class="tripcopy">
+      <h2 class="rv">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
+      <p class="lead rv">Data centers, reshored factories, housing, the grid. The build-out is here, and the key structural materials it runs on are increasingly not made here.</p>
+    </div>
     <aside class="gapaside rv">
       <div class="k">Also imported</div>
       <div class="tbl">

@@ -142,7 +142,9 @@ the problem slide answers the question eight slides before the deck earns it.
 Variant A from the review file was added as its own slide rather than replacing anything:
 **slide 3, "The Gap (alt)"**, immediately after The Gap. Three full-bleed panels, one material
 each, headline overlaid top-left, stat captions on a shared baseline at the foot of each panel.
-It argues exactly the same three claims as slide 2, carries the same "Also imported" list
+It carries the same lead paragraph as slide 2 (added 2026-08-29, ending in a full stop rather
+than slide 2's colon &mdash; on the triptych nothing follows it directly, the stats sit at the foot
+of each panel). It argues exactly the same three claims as slide 2, carries the same "Also imported" list
 (titanium, carbon fiber, cement — added 2026-08-29, opposite the headline) and the same sources — it is a
 presentation choice, not a different argument, and the two are not meant to both be shown.
 
