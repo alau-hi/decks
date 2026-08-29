@@ -95,10 +95,16 @@ throws its headline into the nav rail. Two consequences to respect when editing 
 - **The third panel is not full-bleed.** Steel and aluminum run edge to edge; the data-centre
   panel steps out of the bleed and sits as a smaller rounded card on the ground (Alex,
   2026-08-29), because it is a demand signal rather than an import share and the difference in
-  kind should be visible before the labels are read. Its column is `.82fr` against the
-  materials' `1fr`, its scrim is off (nothing is overlaid on it any more), and its right padding
-  is the `max(6vw,9.5rem)` rail reserve — measured at 82px clear of the nav links. The caption
-  stays on the shared baseline with the other two.
+  kind should be visible before the labels are read. Its column is `1.06fr` against the
+  materials' `1fr` and it fills that column — inset and rounded, but big — its scrim is off
+  (nothing is overlaid on it any more), and its right padding is the `max(6vw,9.5rem)` rail
+  reserve. The caption stays on the shared baseline with the other two.
+- **Measuring rail clearance: compare against the widest nav label that overlaps vertically,
+  not the first one.** The nav is right-aligned, so `nav.dots a:first-child` ("Cover 01") starts
+  furthest right of any label and reports a comfortable gap while a long mid-list label like
+  "Cost Roadmap 08" is already overlapping. A first-link measurement here read 41px clear when
+  the true figure was −18px. Iterate every link, keep those whose vertical band intersects the
+  element, and take the minimum.
 - The headline block is a flex row: headline left, the "Also imported" table right (added
   2026-08-29 so the alt slide carries the same other-materials list as The Gap). Because that
   block already sits inside the rail reserve, the table clears the nav links at every size

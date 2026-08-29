@@ -95,16 +95,16 @@ body.on-cover .conf{opacity:0}
 /* The Gap (alt): full-bleed triptych. Deliberately has NO direct-child .wrap, which is how
    fitSlides skips it (`if(!w)return`) - a full-bleed slide wants viewport sizing, not zoom. */
 #gapalt{padding:0}
-#gapalt .trip{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr .82fr}
+#gapalt .trip{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr 1.06fr}
 #gapalt .trip figure{position:relative;overflow:hidden}
 #gapalt .trip figure + figure{border-left:1px solid rgba(31,21,12,.9)}
 /* the demand signal is not a material: its panel steps out of the full bleed and sits as an
    inset card on the ground, so the difference in kind is visible before the labels are read */
 #gapalt .trip figure:last-child{margin-left:.55rem;border-left:0;display:flex;align-items:center;
-  justify-content:flex-start;padding:0 max(6vw,9.5rem) 9rem 2.1rem}
+  justify-content:flex-start;padding:0 max(6vw,9.5rem) 5.5rem 1.4rem}
 #gapalt .trip figure:last-child::after{display:none}
-#gapalt .trip figure:last-child img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
-  border-radius:14px;filter:saturate(.92) brightness(.9);box-shadow:0 1.4rem 3rem rgba(0,0,0,.55)}
+#gapalt .trip figure:last-child img{width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;
+  border-radius:16px;filter:saturate(.92) brightness(.9);box-shadow:0 1.6rem 3.4rem rgba(0,0,0,.6)}
 #gapalt .trip img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) brightness(.82)}
 /* the cold-aisle frame carries its LED banks at the edges; a centred tall crop lands on the
    empty aisle and reads as a doorway, so this panel biases onto the left bank and lifts */
