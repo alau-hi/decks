@@ -91,7 +91,10 @@ body.on-cover .conf{opacity:0}
   font-size:clamp(1.1rem,1.55rem,2rem);color:var(--gold);margin-top:.12em}
 #gapalt figcaption .gfn{display:block;font-style:italic;font-weight:400;
   font-size:clamp(9px,.62rem,.76rem);line-height:1.5;color:var(--cream-dim);margin-top:.5rem;max-width:26ch}
-#gapalt .triphead{position:absolute;left:0;right:0;top:0;z-index:3;padding:7vh max(6vw,9.5rem) 0 6vw}
+#gapalt .triphead{position:absolute;left:0;right:0;top:0;z-index:3;padding:7vh max(6vw,9.5rem) 0 6vw;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:3rem}
+/* the other imported materials ride opposite the headline, inside the same rail reserve */
+#gapalt .triphead .gapaside{flex:none;text-shadow:0 .12em .7em rgba(20,13,7,.95)}
 #gapalt .triphead h2{font-size:clamp(1.6rem,3vw,2.7rem);line-height:1.12;max-width:24ch;
   text-shadow:0 .12em .7em rgba(20,13,7,.9)}
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){
@@ -99,6 +102,7 @@ body.on-cover .conf{opacity:0}
   #gapalt .trip figure + figure{border-left:0;border-top:1px solid rgba(31,21,12,.9)}
   #gapalt figcaption{padding:0 6vw 2.5vh;grid-template-rows:auto auto auto}
   #gapalt .trip figure:last-child figcaption{padding-right:6vw}
+  #gapalt .triphead{flex-direction:column;gap:.9rem;padding:4vh 6vw 0}
   #gapalt .triphead h2{font-size:clamp(1.15rem,4.6vw,1.7rem);max-width:none}}
 
 /* C-variant image strip: thirds that line up with the stat columns under them */
@@ -626,6 +630,14 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   </div>
   <div class="triphead">
     <h2 class="rv">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
+    <aside class="gapaside rv">
+      <div class="k">Also imported</div>
+      <div class="tbl">
+        <span>Titanium</span><b>&gt;95%</b>
+        <span>Carbon fiber</span><b>66&ndash;86%</b>
+        <span>Cement</span><b>~22%</b>
+      </div>
+    </aside>
   </div>
 </section>
 

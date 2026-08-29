@@ -71,6 +71,11 @@ throws its headline into the nav rail. Two consequences to respect when editing 
 
 - Absolute layers ignore the section's `padding-right:max(6vw,9.5rem)` rail reserve, so the
   last panel's caption re-applies that exact expression itself. Keep them in step.
+- The headline block is a flex row: headline left, the "Also imported" table right (added
+  2026-08-29 so the alt slide carries the same other-materials list as The Gap). Because that
+  block already sits inside the rail reserve, the table clears the nav links at every size
+  tested — measured, not eyeballed: 86px at the tightest (1600x700, where the taller 20-slide
+  nav list climbs highest). Re-measure if the deck gains slides.
 - Its Sources panel is **cloned from `#gap` at load**, not duplicated in the markup — the two
   slides argue the same three claims, and two hand-maintained copies of one citation list
   drift. Edit the Gap panel; the alt follows.
