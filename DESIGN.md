@@ -29,13 +29,14 @@ Alex, 2026-08-23 → 26.
 - **The Gap slide carries an image strip** (added 2026-08-29, Alex picked variant C from
   `alt-slide2.html`): three photographs between the lead and the stat row, each column lining
   up with the stat beneath it. The first two photographs **abut** — zero gutter (Alex, 2026-08-29: "to create the sense
-  of intensity") — and the third is set **`.5rem` apart on a light rule**, because steel and aluminum are
+  of intensity") — and the third is set **`.5rem` apart with rounded corners**, because steel and aluminum are
   import shares of a material while the data-centre figure is a demand signal, and Jon's
   feedback was that running all three flush implied a parallel that is not there. Both grids
-  take the same offset on their third column, which is what keeps stat and photo registered. The
-  rule itself is the strip's own `background:rgba(228,210,180,.5)` showing through that single
-  margin — dark-on-dark spacing read as a coincidence of layout rather than a deliberate break
-  (Alex, 2026-08-29). Slide 3 gets the same treatment, full panel height. Both grids therefore run at
+  take the same offset on their third column, which is what keeps stat and photo registered. A light
+  rule in that margin was tried on 2026-08-29 and rejected as ugly: **slide 2 separates on
+  shape**, with the ground showing through as a brown gap and an `18px` radius on the
+  demand-signal photograph alone. Slide 3 keeps the light rule, because its panels bleed to the
+  slide edge and have no corners to round. Both grids therefore run at
   `gap:0` and the gutter moves inside each `.gr` as `padding-right`, which is what keeps every
   stat registered to its own photo's left edge. `#gap .gapcols` caps strip and stats to the
   same width — change one, change both. No scrim on

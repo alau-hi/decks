@@ -152,8 +152,9 @@ body.on-cover .conf{opacity:0}
 /* materials read as a pair; the demand signal is set slightly apart (Alex, 2026-08-29).
    Both grids take the same offset on their third column so stat and photo stay registered. */
 #gap .gapstrip figure:nth-child(3),#gap .gapcols .machstats .gr:nth-child(3){margin-left:.5rem}
-/* the strip's own background shows only through that margin, so it renders as a light rule */
-#gap .gapstrip{background:rgba(228,210,180,.5)}
+/* slide 2 separates on shape, not on a rule: the ground shows through the margin as a brown
+   gap and the demand-signal photograph is the only one with rounded corners */
+#gap .gapstrip figure:nth-child(3){border-radius:18px;overflow:hidden}
 /* narrow screens fall back to the text-only stat row: three thirds of a 16:9 photo
    are unreadable at phone width, and the slide already worked without them */
 /* screen-only: in print the page box can report portrait and swallow the strip */
