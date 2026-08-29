@@ -56,8 +56,12 @@ Alex, 2026-08-23 → 26.
 - [REFERENCES.md](REFERENCES.md) is the readable per-slide companion; register entries are
   the authority. Claims researched but not print-ready stay register-only with a
   do-not-print note (e.g. carbon fiber tonnage).
-- **Stat tooltips**: every stat on both Gap slides is a hover/focus `sw-ref` carrying a
-  `sw-tip` with the figure's basis and corroboration (Alex, 2026-08-29). Hover is right here
+- **Stat tooltips**: every figure on both Gap slides — the three headline stats *and* the three
+  "Also imported" rows — is a hover/focus `sw-ref` carrying a `sw-tip` with that figure's basis
+  and corroboration (Alex, 2026-08-29). The aside rows are `subgrid` so each material is its own
+  hover target while the two columns stay aligned across all three rows, and they use the
+  `tipd` (open-downward) variant on the alt slide, where the aside sits at the top of the frame
+  with nothing above it. Hover is right here
   and click is right for the Sources button — the tooltip explains one number, the panel lists
   a slide's provenance. Two specificity traps when extending this pattern into a stat block:
   `.gr span{white-space:nowrap}` outranks `.sw-tip`'s own `white-space:normal`, and the stat's
@@ -66,8 +70,13 @@ Alex, 2026-08-23 → 26.
   padding box, which reaches the panel edge — the right-aligned tip steps back by the rail
   reserve or it lands under the nav.
 - **On-slide sources live behind the Sources button** — a click-to-open pill bottom-right
-  of each data-heavy slide (The Gap, Old Mills, Fast × Fast, Appendix), listing that
-  slide's sources with links and one-line summaries. No visible "Sources:" lines on slides.
+  of Old Mills, Fast × Fast and the Appendix, listing that slide's sources with links and
+  one-line summaries. No visible "Sources:" lines on slides. **The two Gap slides no longer
+  carry one** (Alex, 2026-08-29): every figure on them, headline stat and aside row alike, now
+  explains itself on hover, so the panel was duplicating its own slide. The trade-off to know:
+  the panel carried clickable source *links*, and the tooltips do not — for the Gap slides the
+  URLs now live only in [REFERENCES.md](REFERENCES.md), which is repo-private. If a viewer ever
+  needs to click through to AISI or USGS from the deck itself, the button has to come back.
 - Conflicting data is surfaced honestly, never averaged into convenience.
 
 ## Full-bleed slides
@@ -85,9 +94,10 @@ throws its headline into the nav rail. Two consequences to respect when editing 
   block already sits inside the rail reserve, the table clears the nav links at every size
   tested — measured, not eyeballed: 86px at the tightest (1600x700, where the taller 20-slide
   nav list climbs highest). Re-measure if the deck gains slides.
-- Its Sources panel is **cloned from `#gap` at load**, not duplicated in the markup — the two
-  slides argue the same three claims, and two hand-maintained copies of one citation list
-  drift. Edit the Gap panel; the alt follows.
+- It carried a Sources panel cloned from `#gap` at load; both were removed on 2026-08-29 when
+  the stats became self-explaining on hover. If a panel ever returns to these slides, clone it
+  again rather than duplicating the markup — two hand-maintained copies of one citation list
+  drift.
 
 ## Deck mechanics
 

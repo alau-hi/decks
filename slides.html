@@ -73,7 +73,15 @@ body.on-cover .conf{opacity:0}
    so its footnote must be allowed to wrap - the base .sw-ref nowrap would blow the column. */
 #gap .gr.sw-ref,#gapalt figcaption.sw-ref{white-space:normal;cursor:help}
 /* .gr span{white-space:nowrap} outranks .sw-tip's own normal, so the tip has to win it back */
-#gap .gr .sw-tip,#gapalt figcaption .sw-tip{white-space:normal}
+#gap .gr .sw-tip,#gapalt figcaption .sw-tip,.gapaside .sw-tip{white-space:normal}
+/* aside rows become subgrid rows so each material is its own hover target while the two
+   columns stay aligned across all three rows */
+.gapaside .tbl .r{display:grid;grid-column:1/-1;grid-template-columns:subgrid;align-items:baseline;cursor:help}
+.gapaside .tbl .r:hover span,.gapaside .tbl .r:focus-visible span{color:var(--cream-dim)}
+.gapaside .tbl .r:hover b,.gapaside .tbl .r:focus-visible b{color:var(--cream)}
+/* opens downward: the alt slide's aside sits at the top of the frame, with nothing above it */
+.sw-tip.tipd{top:calc(100% + 10px);bottom:auto}
+.sw-tip.tipd::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--pop-bg)}
 /* likewise the stat's own <b> styling (Fraunces, gold, 1.25rem) leaks into the tip's <b> */
 #gap .gr .sw-tip b,#gapalt figcaption .sw-tip b{font-family:'Inter',sans-serif;font-size:inherit;
   font-weight:600;color:var(--wood-bright);border-bottom:0;display:inline;margin:0;text-align:left}
@@ -91,9 +99,7 @@ body.on-cover .conf{opacity:0}
 #gapalt .trip figure{position:relative;overflow:hidden}
 #gapalt .trip figure + figure{border-left:1px solid rgba(31,21,12,.9)}
 #gapalt .trip img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) brightness(.82)}
-/* the rack image carries its LED banks at the edges; a centred tall crop lands on the empty
-   aisle and reads as a doorway, so this panel biases its crop onto the left bank */
-#gapalt .trip figure:last-child img{object-position:20% center;filter:saturate(.92) brightness(1.08)}
+
 #gapalt .trip figure::after{content:"";position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(24,16,9,.78) 0%,rgba(24,16,9,.16) 34%,rgba(24,16,9,.94) 100%)}
 #gapalt figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 2.4rem 7vh;
@@ -590,7 +596,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <div class="gapstrip rv">
         <figure><img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill"></figure>
         <figure><img src="assets/gap-aluminum.webp" alt="Potline in an aluminum smelter"></figure>
-        <figure><img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall"></figure>
+        <figure><img src="assets/gap-datacenter-warm.webp" alt="Rows of server racks in a data center hall"></figure>
       </div>
       <div class="machstats rv" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:0">
         <div class="gr sw-ref" tabindex="0"><span class="hl">Steel</span><b>18% imported</b><span class="sw-tip">Finished steel imports were <b>18%</b> of US apparent consumption in 2025, down from <b>23%</b> in 2024 as Section&nbsp;232 tariffs rose from 25% to 50%. USGS reaches the same place from its own data: 19M&nbsp;t of finished imports against 95M&nbsp;t of apparent consumption.</span></div>
@@ -602,28 +608,11 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <aside class="gapaside">
         <div class="k">Also imported</div>
         <div class="tbl">
-          <span>Titanium</span><b>&gt;95%</b>
-          <span>Carbon fiber</span><b>66&ndash;86%</b>
-          <span>Cement</span><b>~22%</b>
+          <div class="r sw-ref" tabindex="0"><span>Titanium</span><b>&gt;95%</b><span class="sw-tip">Titanium sponge &mdash; every route to new titanium metal runs through it. US net import reliance has exceeded <b>95%</b> since 2021; about 42,000&nbsp;t was imported in 2023, 77&ndash;86% of it from Japan. One small electronic-grade plant still operates, which is why USGS holds at &gt;95% rather than 100%.</span></div>
+          <div class="r sw-ref" tabindex="0"><span>Carbon fiber</span><b>66&ndash;86%</b><span class="sw-tip">Imports met <b>66&ndash;86%</b> of North American carbon fiber demand across 2008&ndash;12 (USITC data). That is the most recent primary source that exists &mdash; and the trade code bundles fiber with intermediates, so the true share is likely lower. Aerospace-grade production is most concentrated in Japan.</span></div>
+          <div class="r sw-ref" tabindex="0"><span>Cement</span><b>~22%</b><span class="sw-tip">Net import reliance of <b>22%</b> of US apparent consumption, 2022&ndash;24 &mdash; about 25M&nbsp;t a year, led by Turkey and Canada.</span></div>
         </div>
       </aside>
-    </div>
-  </div>
-  <div class="srcwrap">
-    <button class="srcbtn" type="button" aria-expanded="false" aria-haspopup="dialog">Sources</button>
-    <div class="srcpanel" role="dialog" aria-label="Sources for this slide">
-      <h4>Sources &mdash; The Gap</h4>
-      <ul>
-        <li><a href="https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/" target="_blank" rel="noopener">AISI (2026)</a> &mdash; finished steel imports were 18% of US apparent consumption in 2025, 23% in 2024.</li>
-        <li><a href="https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf" target="_blank" rel="noopener">Aluminum Association / Wittsend, &ldquo;Powering Up American Aluminum&rdquo; (May 2025)</a> &mdash; US primary aluminum demand is 4.4M&nbsp;t/yr; the four remaining US smelters produce 683,500&nbsp;t, at 53% of installed capacity, down from 33 smelters and 4.65M&nbsp;t in 1980. Imports therefore cover ~85% of the primary (new, non-recycled) aluminum America uses; the paper puts the import gap at &ldquo;around 4 million metric tons of raw&nbsp;(or unwrought) aluminum,&rdquo; which reads 90% on the same denominator.</li>
-        <li><a href="https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-aluminum.pdf" target="_blank" rel="noopener">USGS MCS 2026 &mdash; Aluminum</a> &mdash; across <em>all</em> aluminum, not just primary, US net import reliance is 60% of apparent consumption (2025e); domestic primary production is 660,000&nbsp;t against 4.4M&nbsp;t of crude and semi-fabricated imports, 56% of them from Canada. Recycling is why the all-in figure is lower: secondary production is ~85% of US-made aluminum &mdash; a separate statistic, and not an import share.</li>
-        <li><a href="https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf" target="_blank" rel="noopener">USGS MCS 2025 &mdash; Cement</a> &mdash; net import reliance 22% of apparent consumption (2022&ndash;24); ~25M&nbsp;t/yr imported, led by Turkey and Canada.</li>
-        <li><a href="https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf" target="_blank" rel="noopener">USGS MCS 2024 &mdash; Titanium</a> &mdash; titanium sponge &gt;95% import-reliant since 2021; record ~42,000&nbsp;t imported 2023, 77&ndash;86% from Japan; the majority of US titanium metal use is aerospace.</li>
-        <li><a href="https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf" target="_blank" rel="noopener">USGS MCS 2026</a> &mdash; imports exceeded half of US apparent consumption for 54 nonfuel mineral commodities in 2025, 16 at 100% &mdash; up from 46 and 15 in 2024.</li>
-        <li><a href="https://docs.nrel.gov/docs/fy16osti/66071.pdf" target="_blank" rel="noopener">ORNL/NREL (2016)</a> &mdash; imports met 66&ndash;86% of North American carbon fiber demand, 2008&ndash;12 (USITC data; Japan and Europe the leading sources; the HTS code bundles fiber with intermediates, so the share may be overstated). Aerospace-grade production is most concentrated in Japan.</li>
-        <li><a href="https://lexingtoninstitute.org/american-advantage/" target="_blank" rel="noopener">Lexington Institute (2025)</a> &mdash; outside Hexcel, most of the critical aerospace carbon fiber market is served by Japanese firms.</li>
-        <li><a href="https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals" target="_blank" rel="noopener">Federal Register (Nov 2025)</a> &mdash; aluminum is among the 60 minerals on the final 2025 Critical Minerals List.</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -639,7 +628,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <figcaption class="rv sw-ref" tabindex="0"><span class="lb">Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em><span class="sw-tip"><b>Primary metal only</b> &mdash; new aluminum, not recycled. US primary demand is 4.4M&nbsp;t/yr against 683,500&nbsp;t from the four remaining US smelters, so imports cover about 85%. Counting all aluminum, including the ~85% of US output that is recycled, net import reliance is <b>60%</b>.</span></figcaption>
     </figure>
     <figure>
-      <img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall">
+      <img src="assets/gap-datacenter-warm.webp" alt="Rows of server racks in a data center hall">
       <figcaption class="rv sw-ref" tabindex="0"><span class="lb hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em><span class="sw-tip tipr">Steel&rsquo;s share of a data center&rsquo;s <b>building and contents</b> by mass. Foundations are excluded &mdash; that is where most of the concrete goes. Data center developers are already flagging structural steel shortages.</span></figcaption>
     </figure>
   </div>
@@ -648,9 +637,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <aside class="gapaside rv">
       <div class="k">Also imported</div>
       <div class="tbl">
-        <span>Titanium</span><b>&gt;95%</b>
-        <span>Carbon fiber</span><b>66&ndash;86%</b>
-        <span>Cement</span><b>~22%</b>
+        <div class="r sw-ref" tabindex="0"><span>Titanium</span><b>&gt;95%</b><span class="sw-tip tipd tipr">Titanium sponge &mdash; every route to new titanium metal runs through it. US net import reliance has exceeded <b>95%</b> since 2021; about 42,000&nbsp;t was imported in 2023, 77&ndash;86% of it from Japan. One small electronic-grade plant still operates, which is why USGS holds at &gt;95% rather than 100%.</span></div>
+        <div class="r sw-ref" tabindex="0"><span>Carbon fiber</span><b>66&ndash;86%</b><span class="sw-tip tipd tipr">Imports met <b>66&ndash;86%</b> of North American carbon fiber demand across 2008&ndash;12 (USITC data). That is the most recent primary source that exists &mdash; and the trade code bundles fiber with intermediates, so the true share is likely lower. Aerospace-grade production is most concentrated in Japan.</span></div>
+        <div class="r sw-ref" tabindex="0"><span>Cement</span><b>~22%</b><span class="sw-tip tipd tipr">Net import reliance of <b>22%</b> of US apparent consumption, 2022&ndash;24 &mdash; about 25M&nbsp;t a year, led by Turkey and Canada.</span></div>
       </div>
     </aside>
   </div>
@@ -1142,18 +1131,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 
 <script>
 const deck=document.getElementById('deck');
-/* The Gap (alt) argues the same three claims as The Gap, so it carries the same sources.
-   Cloned rather than duplicated in the markup: two panels of the same citations would drift. */
-{
-  const src=document.querySelector('#gap .srcwrap'), alt=document.getElementById('gapalt');
-  if(src&&alt){
-    const c=src.cloneNode(true);
-    c.classList.remove('open');
-    c.querySelector('.srcbtn').setAttribute('aria-expanded','false');
-    c.querySelector('.srcpanel h4').textContent='Sources \u2014 The Gap (alt)';
-    alt.appendChild(c);
-  }
-}
 /* per-slide sources buttons: click toggles the panel; outside click or Escape closes */
 {
   const closeAll=()=>document.querySelectorAll('.srcwrap.open').forEach(w=>{w.classList.remove('open');w.querySelector('.srcbtn').setAttribute('aria-expanded','false');});

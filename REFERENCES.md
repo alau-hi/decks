@@ -90,8 +90,13 @@ steel by roughly an order of magnitude, which is exactly what the 2026-07-24 rev
 apply, but the 60% share itself remains unsourced — print it as Alex-asserted, derive it
 bottom-up with stated assumptions, or drop it.
 
-**Slide 03 · The Gap (alt)** carries the same three claims and the same sources as The Gap; its
-panel is cloned from slide 02's at load, so this section covers both.
+**Slide 03 · The Gap (alt)** carries the same three claims and the same sources as The Gap, so this
+section covers both.
+
+> **Neither Gap slide has a Sources button any more** (Alex, 2026-08-29). Every figure on them
+> explains itself on hover instead. That makes this file the *only* place the Gap sources and their
+> URLs live — and this file is repo-private, kept off the deployment by `.vercelignore`. Keep it
+> current: a viewer asking "where does 18% come from?" can no longer answer it from the deck.
 
 **Slide imagery** (added 2026-08-29): `assets/gap-steel.webp` and `assets/gap-aluminum.webp`
 are re-encodes of `../supermill-presentation/assets/ind-steel-pour.jpg` and `ind-alum-potline.jpg`
