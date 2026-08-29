@@ -138,6 +138,14 @@ throws its headline into the nav rail. Two consequences to respect when editing 
   Default state must be presentable — print, headless, and reduced-motion all see it.
 - **Counters never fabricate**: real final values always in the DOM; animation is a
   600ms opacity fade only — no intermediate numbers ever exist.
+- **Icons are inline SVG, not CSS masks** (converted 2026-08-29). One `<symbol id="ic-factory">`
+  sits just after `<body>`; every glyph is a `<svg class="fx"><use href="#ic-factory"/></svg>`,
+  filled with `currentColor` so the per-group tints (`.gicons.green`, `.gicons.orange`) still
+  work and per-icon `--fh` sizing is unchanged. The mask version painted in normal Chrome but
+  vanished in headless **and in print/PDF**, and a failed mask leaves an invisible box rather
+  than a broken-image marker — 36 glyphs silently disappeared from the exported deck with
+  nothing in the DOM to show for it. `assets/icon-factory-hf.png` is retained as the master
+  artwork the path was traced from; it is no longer loaded at runtime.
 - **Sequential image gate**: slide N reveals once its images load; new `<img>`s
   participate automatically.
 - **Circles**: `border-radius:50%` only — `clip-path:circle(50%)` mis-anchors under
@@ -161,7 +169,7 @@ here are derived crops.
   before `</head>`, screenshot with Chrome
   `--headless --window-size=1600,900 --virtual-time-budget=8000 --screenshot=…`.
   Screenshot every layout change before calling it done.
-- Headless lies about: CSS-mask glyphs (don't paint), reveal animations, sub-500px widths
+- Headless lies about: reveal animations, sub-500px widths
   (window floor). Verify avatars/masks/interactions in real Chrome.
 - Measure, don't eyeball, nav-rail clearance (getBoundingClientRect via `--dump-dom`
   with an injected measuring script).
