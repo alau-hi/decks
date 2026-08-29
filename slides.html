@@ -29,7 +29,10 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
 .deck::-webkit-scrollbar{width:0}
 ::selection{background:rgba(226,184,119,.9);color:var(--ink-deep)}
 section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;padding:6vh max(6vw,9.5rem) 6vh 6vw;overflow:hidden}
-.wrap{width:100%;max-width:var(--maxw);margin:0 auto;position:relative;z-index:2;display:flow-root}  /* flow-root: child margins were collapsing through the wrap's bottom edge, so it under-reported
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto 0 0;position:relative;z-index:2;display:flow-root}
+/* left-aligned, not centred: CSS zoom scales the wrap's layout width, so a slide that fitSlides
+   shrinks became narrower than the space and `margin:0 auto` walked it right - the Fleet slide
+   sat 169px further in than The Gap. Every slide now starts at the section's own left padding. */  /* flow-root: child margins were collapsing through the wrap's bottom edge, so it under-reported
      its own content by ~20px and fitSlides measured a slide shorter than it drew */h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01em;line-height:1.08}
 h1,h2{text-wrap:balance}
 h2{font-size:clamp(1.5rem,3.2vw,2.5rem);font-weight:340;max-width:26ch}

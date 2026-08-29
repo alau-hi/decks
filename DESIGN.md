@@ -123,6 +123,12 @@ throws its headline into the nav rail. Two consequences to respect when editing 
 - **Scroll-snap sections**, one per `<section id data-nav>`; right-hand **nav dock** built
   from `data-nav` (keyword labels, scroll-spy `.active`, first/last edge handling);
   left/right arrows jump slides, up/down scroll; type a number to jump.
+- **`.wrap` is left-aligned, not centred** (`margin:0 auto 0 0`). CSS `zoom` scales the wrap's
+  *layout* width, so any slide `fitSlides` shrinks becomes narrower than the space available and
+  a centring `margin:0 auto` walks it rightwards — the more a slide shrank, the further in its
+  text started. Measured before the fix: The Gap and most slides at 96px, Team at 176, Financing
+  197, Cost Roadmap 183, The Fleet 265. Every slide now starts at the section's own left padding.
+  Do not restore `auto` on the left.
 - **`fitSlides()`** zooms each slide's `.wrap` to fill the viewport (shrink on overflow,
   grow to 1.4x cap; width-capped against the viewport). Quirks that bite: rem lengths
   scale under zoom; right-aligned content can ride into the nav rail on sparse slides —
