@@ -12,11 +12,8 @@ Alex, 2026-08-23 → 26.
 - **Palette**: dark wood ground (`--ink #1f150c`) with cream type (`--cream/--cream-dim/--muted`)
   and wood/gold accents (`--wood #b87d44`, `--wood-bright #cda165`, `--gold #e2b877`).
   Inverted "cream panel" world for cards that need lift (`--panel*` vars). Always use the
-  variables, never hardcoded colors. **Material tints** (Alex, 2026-08-29) are the one place
-  the deck leaves the wood/gold accent range: on the Gap slide each stat label wears its own
-  metal — `--mat-steel #c4603a` (rust), `--mat-alu #bcc9d4` (silver, deliberately the deck's
-  only cool hue so it separates from the warm cream beside it), `--mat-dc #f2f2ef` (white).
-  Labels only; the figures stay `--gold` like every other number in the deck.
+  variables, never hardcoded colors. Per-material tints (rust / silver / white on the Gap
+  stat labels) were tried on 2026-08-29 and reverted the same day — the deck keeps one accent.
 - **Type**: Fraunces for display/figures, Inter for text/labels, Montserrat for
   small-caps band labels. Root font clamps with a **9px floor** — nothing on the deck may
   render smaller (sub-.6rem styles carry their own `clamp(10px,…)`).
@@ -30,9 +27,12 @@ Alex, 2026-08-23 → 26.
   chart). On stat rows, labels sit above values at comparable weight.
 - **Tables over cards** for anything comparative; compact, dense presentation generally.
 - **The Gap slide carries an image strip** (added 2026-08-29, Alex picked variant C from
-  `alt-slide2.html`): three photographs in thirds between the lead and the stat row, each
-  column lining up with the stat beneath it. `#gap .gapcols` caps strip and stats to the
-  same width and gap so the thirds stay registered — change one, change both. No scrim on
+  `alt-slide2.html`): three photographs between the lead and the stat row, each column lining
+  up with the stat beneath it. The photographs **abut** — zero gutter, one unbroken band of
+  industry (Alex, 2026-08-29: "to create the sense of intensity"). Both grids therefore run at
+  `gap:0` and the gutter moves inside each `.gr` as `padding-right`, which is what keeps every
+  stat registered to its own photo's left edge. `#gap .gapcols` caps strip and stats to the
+  same width — change one, change both. No scrim on
   these images: nothing is overlaid on them, so they only need `brightness(.96)` to sit in
   the palette. The strip is hidden below 700px (three sixteenths of a photo are unreadable
   at phone width; the slide reverts to the text-only row that already worked there) — and
@@ -60,6 +60,20 @@ Alex, 2026-08-23 → 26.
   of each data-heavy slide (The Gap, Old Mills, Fast × Fast, Appendix), listing that
   slide's sources with links and one-line summaries. No visible "Sources:" lines on slides.
 - Conflicting data is surfaced honestly, never averaged into convenience.
+
+## Full-bleed slides
+
+`#gapalt` (The Gap (alt), added 2026-08-29) is the deck's only edge-to-edge slide, and it
+works by **having no direct-child `.wrap`** — `fitSlides()` bails on such a section
+(`if(!w)return`), so nothing is zoomed and the layout sizes off the viewport instead. That is
+deliberate: a sparse full-bleed slide handed to `fitSlides` upscales to the 1.4x cap and
+throws its headline into the nav rail. Two consequences to respect when editing it:
+
+- Absolute layers ignore the section's `padding-right:max(6vw,9.5rem)` rail reserve, so the
+  last panel's caption re-applies that exact expression itself. Keep them in step.
+- Its Sources panel is **cloned from `#gap` at load**, not duplicated in the markup — the two
+  slides argue the same three claims, and two hand-maintained copies of one citation list
+  drift. Edit the Gap panel; the alt follows.
 
 ## Deck mechanics
 

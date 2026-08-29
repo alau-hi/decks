@@ -90,6 +90,9 @@ steel by roughly an order of magnitude, which is exactly what the 2026-07-24 rev
 apply, but the 60% share itself remains unsourced — print it as Alex-asserted, derive it
 bottom-up with stated assumptions, or drop it.
 
+**Slide 03 · The Gap (alt)** carries the same three claims and the same sources as The Gap; its
+panel is cloned from slide 02's at load, so this section covers both.
+
 **Slide imagery** (added 2026-08-29): `assets/gap-steel.webp` and `assets/gap-aluminum.webp`
 are re-encodes of `../supermill-presentation/assets/ind-steel-pour.jpg` and `ind-alum-potline.jpg`
 — already ours. `assets/gap-datacenter.webp` (and `gap-datahall.webp`, used only in the review
