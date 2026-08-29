@@ -76,6 +76,9 @@ body.on-cover .conf{opacity:0}
 #gapalt .trip figure{position:relative;overflow:hidden}
 #gapalt .trip figure + figure{border-left:1px solid rgba(31,21,12,.9)}
 #gapalt .trip img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) brightness(.82)}
+/* the rack image carries its LED banks at the edges; a centred tall crop lands on the empty
+   aisle and reads as a doorway, so this panel biases its crop onto the left bank */
+#gapalt .trip figure:last-child img{object-position:20% center;filter:saturate(.92) brightness(1.08)}
 #gapalt .trip figure::after{content:"";position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(24,16,9,.78) 0%,rgba(24,16,9,.16) 34%,rgba(24,16,9,.94) 100%)}
 #gapalt figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 2.4rem 7vh;
@@ -568,7 +571,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <div class="gapstrip rv">
         <figure><img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill"></figure>
         <figure><img src="assets/gap-aluminum.webp" alt="Potline in an aluminum smelter"></figure>
-        <figure><img src="assets/gap-datacenter.webp" alt="Hyperscale data center campus at dusk"></figure>
+        <figure><img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall"></figure>
       </div>
       <div class="machstats rv" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:0">
         <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
@@ -617,7 +620,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <figcaption class="rv"><span class="lb">Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em></figcaption>
     </figure>
     <figure>
-      <img src="assets/gap-datacenter.webp" alt="Hyperscale data center campus at dusk">
+      <img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall">
       <figcaption class="rv"><span class="lb hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em></figcaption>
     </figure>
   </div>

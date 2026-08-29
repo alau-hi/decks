@@ -95,8 +95,9 @@ panel is cloned from slide 02's at load, so this section covers both.
 
 **Slide imagery** (added 2026-08-29): `assets/gap-steel.webp` and `assets/gap-aluminum.webp`
 are re-encodes of `../supermill-presentation/assets/ind-steel-pour.jpg` and `ind-alum-potline.jpg`
-— already ours. `assets/gap-datacenter.webp` (and `gap-datahall.webp`, used only in the review
-file) were generated 2026-08-29 with Higgsfield `soul_location`; prompts and the reasoning are in
+— already ours. `assets/gap-datacenter-racks.webp` — the shipping data-center panel, a hall of server racks,
+chosen 2026-08-29 over the campus exterior it replaced — and the earlier `gap-datacenter.webp` /
+`gap-datahall.webp` (now used only by the review file) were generated with Higgsfield `soul_location`; prompts and the reasoning are in
 [render/slide2-datacenter.md](render/slide2-datacenter.md). Nothing here is licensed stock, so
 there is nothing to clear before the deck goes out. The photographs illustrate the industries;
 they are not evidence for any figure on the slide.
