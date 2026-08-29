@@ -70,7 +70,11 @@ body.on-cover .conf{opacity:0}
 /* gap slide footer: note left, imported-materials aside bottom right */
 .gapfoot{display:flex;justify-content:flex-start;align-items:flex-end;gap:3rem;max-width:52rem}
 #gap .machstats .gr{align-items:flex-start}
-#gap .machstats .gr span{font-size:clamp(11px,.86rem,1.05rem);color:var(--cream-dim);font-weight:600;letter-spacing:.01em}
+#gap .machstats .gr > span:not(.sw-tip){font-size:clamp(11px,.86rem,1.05rem);color:var(--cream-dim);font-weight:600;letter-spacing:.01em}
+/* the stat label rule outranks .sw-tip, and .gapaside sets its own small type - so tooltips in
+   both places drifted off the deck's tooltip style. Normalise them back to it explicitly. */
+#gap .gr .sw-tip,#gapalt figcaption .sw-tip,.gapaside .sw-tip{font-size:.72rem;font-weight:400;
+  line-height:1.5;letter-spacing:normal;color:var(--cream-dim);font-style:normal}
 #gap .machstats .gr .hl{color:var(--wood-bright)}
 /* Gap stat tooltips: reuse the sw-ref/sw-tip pattern. The trigger is the whole stat block,
    so its footnote must be allowed to wrap - the base .sw-ref nowrap would blow the column. */
