@@ -297,6 +297,85 @@ claims:
     source: $4B / ~$340M (above)
     slide: Economics
 
+  # ================= Jon Strimling feedback pass, 2026-08-29 =================
+  # Source doc: feedback/NIC_Deck_Feedback_2026-08-29.docx (Jon's notes, Alex's
+  # bracketed replies and margin comments). New printed claims registered below.
+
+  - claim: SUPERWOOD is stronger than steel, half the weight of aluminum, scalable to half the cost of steel
+    provenance: asserted-internal
+    conf: L
+    source: Jon Strimling, deck feedback 2026-08-29; printed on the SUPERMILLS slide at his direction
+    slide: SUPERMILLS
+    note: >-
+      THREE claims in one line and none is yet registered with a basis.
+      "Stronger than steel" inherits the parent register's ASTM A36 footnote and is the
+      deck's oldest known consistency problem (investor-overview REFERENCES logs it stated
+      five ways on four bases). "Half the weight of aluminum" needs a density pair -
+      aluminum is 2.70 t/m3, so this asserts SUPERWOOD at ~1.35; confirm against the
+      properties register before this ships to anyone technical. "Scalable to half the cost
+      of steel" is the cost-roadmap endpoint (ChipMill $1,310/m3 against steel at market),
+      so it is a projection, not a current fact - the word "scalable" is carrying that and
+      should not be dropped in any future edit.
+
+  - claim: ">7,000 SUPERMILL TWO equivalents of global demand, collectively over $500B in combined revenue"
+    provenance: derived (internal inputs)
+    conf: L
+    source: Jon Strimling 2026-08-29; >7,000 figure inherited from the investor-overview register (estimated, conf L)
+    slide: The Fleet
+    note: >-
+      Alex 2026-08-29 (margin comment): the $500B assumes roughly a 4x price reduction with
+      CHIPMILLS versus SUPERMILL TWO, and he does not want that assumption on the slide.
+      Arithmetic check: 7,000 x $360M at SM2 pricing is ~$2.5T, so $500B is consistent with
+      a ~4-5x lower realised price. The assumption is load-bearing and lives only here -
+      anyone reworking this slide must not "correct" $500B upward against SM2 pricing.
+
+  - claim: The fleet figure assumes eventual replacement of more than 50% of the world's current steel production
+    provenance: asserted-internal
+    conf: L
+    source: Jon Strimling 2026-08-29, printed as the asterisked footnote on The Fleet
+    slide: The Fleet
+    note: Printed as the stated assumption behind >7,000 mills. Not independently sized.
+
+  - claim: SUPERMILL TWO volume output is ~20,000 m3/yr
+    provenance: internal
+    conf: M
+    source: Jon Strimling 2026-08-29 ("actually 20k, not 24k"); confirmed by Alex 2026-08-29
+    slide: Appendix
+    note: >-
+      SUPERSEDES the 24,000 m3/yr previously printed. UNRESOLVED ARITHMETIC: 24,000 was not
+      an independent figure, it was derived - 36M sf at 7.2 mm average board thickness gives
+      24,077 m3. Moving to 20,000 breaks that identity, so one of the other two must move:
+      either output is ~30M sf at 7.2 mm, or it is 36M sf at ~6.0 mm. The second choice
+      cascades, because the same 7.2 mm converts the whole $/sf price ladder to $/m3 on the
+      Cost Roadmap ($5.50/sf = $8,222/m3 only at 7.2 mm). The appendix now prints 20,000 with
+      the "(36M sf)" parenthetical REMOVED so the deck states no contradiction, but 36M sf is
+      still printed on the Cost Roadmap and The Fleet. Alex to pick which figure moves.
+
+  - claim: SUPERWOOD prices are per-market, not one product at three prices
+    provenance: internal
+    conf: M
+    source: >-
+      Alex 2026-08-29, replying to Jon: $15.00/sf is premium interior (mullions, blinds,
+      luxury furniture structures); $5.50/sf interior board; $3.00/sf commodity structural.
+    slide: Cost Roadmap
+    note: >-
+      Jon: "$15 out of the gate for structural boards is aggressive - that price has been
+      proposed to customers and they are walking away. Exterior board holds at $25/sf."
+      Alex's instruction was to RELABEL rather than reduce, which is what shipped: the ladder
+      keeps its numbers and now names the market each one belongs to. The $25/sf exterior
+      price is NOT printed anywhere and is registered here only as context.
+
+  - claim: First SUPERMILL electrical load is under 5 MW
+    provenance: internal
+    conf: M
+    source: Alex Lau, margin comment 2026-08-29
+    slide: none yet - Fast x Fast when added
+    note: >-
+      Jon estimated 5-10 MW in the same document; Alex's comment is the later and narrower
+      instruction - "I can say < 5 MW electrical load, and stay silent on the exact grid
+      connection number." Use <5 MW and do not print a grid-connection figure. Consistent
+      with the parent register's SM2-scale power <4 MW.
+
   # -- Old Mills: community pushback + imported ore (added per Alex 2026-08-23) --
   - claim: Inola smelter faces a court challenge from the Oklahoma Attorney General (petition filed in Rogers County District Court, June 2026)
     provenance: published
