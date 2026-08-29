@@ -6,7 +6,29 @@ every data-center image in the deck family (`dc-hall2.jpg`, `app_hall_servers.we
 aspiration, not the problem. A wood data hall on the problem slide gives the answer away
 eight slides early.
 
-## gap-datacenter-racks.webp — SHIPPING (both Gap slides, from 2026-08-29)
+## gap-datacenter-amber.webp — SHIPPING (both Gap slides, from 2026-08-29)
+
+Third and final frame for this panel. The path there is the useful part:
+
+1. **Campus exterior** — no racks at all. Alex: "find an image which shows a lot of server racks."
+2. **Cold aisle** — racks, unmistakably, but the only cool frame in a warm band. Alex: "find
+   another data center image that can match the other images better."
+3. **Clerestory hall** — matched on hue by washing everything sepia. Alex: "the data center
+   shouldn't look like rust." Correct: warming the *subject* until it harmonised turned a data
+   hall into a foundry.
+4. **Amber walls (shipped)** — Alex: "it's still fundamentally a lot of black boxes, but maybe
+   the lights can be more compatible?" That is the resolution. Keep the cabinets black, because
+   a data centre *is* black boxes, and match the band on **light** rather than on hue.
+
+> Photorealistic wide view down a data center hot aisle, twin walls of black server cabinets in
+> neutral dark grey, rows of warm amber indicator lights running the length of both walls like
+> furnace glow, warm light spilling across the floor from overhead fixtures, exposed steel
+> trusses, dark atmospheric haze, no cool colours, cinematic industrial photography, 16:9
+
+The lesson for any future panel in this band: match on light, not on colour grade. Seven
+candidates and their side-by-side strips are in `alt-datacenter.html`.
+
+## gap-datacenter-racks.webp — superseded 2026-08-29 (cool cold aisle)
 
 Alex asked for a data-center image showing a lot of server racks; the campus exterior below
 showed none. Three candidates were generated and compared *in place* in the strip rather than
