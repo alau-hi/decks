@@ -56,6 +56,15 @@ Alex, 2026-08-23 → 26.
 - [REFERENCES.md](REFERENCES.md) is the readable per-slide companion; register entries are
   the authority. Claims researched but not print-ready stay register-only with a
   do-not-print note (e.g. carbon fiber tonnage).
+- **Stat tooltips**: every stat on both Gap slides is a hover/focus `sw-ref` carrying a
+  `sw-tip` with the figure's basis and corroboration (Alex, 2026-08-29). Hover is right here
+  and click is right for the Sources button — the tooltip explains one number, the panel lists
+  a slide's provenance. Two specificity traps when extending this pattern into a stat block:
+  `.gr span{white-space:nowrap}` outranks `.sw-tip`'s own `white-space:normal`, and the stat's
+  `b` styling (Fraunces, gold, 1.25rem) leaks into the tooltip's `<b>`; both need winning back
+  explicitly. On the full-bleed slide, a tip's absolute offsets resolve against the figcaption's
+  padding box, which reaches the panel edge — the right-aligned tip steps back by the rail
+  reserve or it lands under the nav.
 - **On-slide sources live behind the Sources button** — a click-to-open pill bottom-right
   of each data-heavy slide (The Gap, Old Mills, Fast × Fast, Appendix), listing that
   slide's sources with links and one-line summaries. No visible "Sources:" lines on slides.

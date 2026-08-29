@@ -154,6 +154,10 @@ claims:
       CONCRETE - foundations and slab, where most of the concrete goes, are out of scope.
       That basis was never stated on the slide or in either register, which is why the
       claim kept reading as "60% of a data center by mass" and failing review.
+      PRINTED FROM 2026-08-29: the basis now appears on both Gap slides, in the hover
+      tooltip on the Data Centers stat - so the slide no longer states the figure without
+      its denominator. The share itself is still Alex-asserted and unsourced; the tooltip
+      explains what it measures, not where it comes from.
     note: >-
       TRACED 2026-08-27. Origin is ../superwood-datacenter slide 16 ("About 60% of the mass
       of a typical US data center is steel"), where reviews/REVIEW-2026-07-24.md flagged it

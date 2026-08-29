@@ -69,6 +69,21 @@ body.on-cover .conf{opacity:0}
 #gap .machstats .gr{align-items:flex-start}
 #gap .machstats .gr span{font-size:clamp(11px,.86rem,1.05rem);color:var(--cream-dim);font-weight:600;letter-spacing:.01em}
 #gap .machstats .gr .hl{color:var(--wood-bright)}
+/* Gap stat tooltips: reuse the sw-ref/sw-tip pattern. The trigger is the whole stat block,
+   so its footnote must be allowed to wrap - the base .sw-ref nowrap would blow the column. */
+#gap .gr.sw-ref,#gapalt figcaption.sw-ref{white-space:normal;cursor:help}
+/* .gr span{white-space:nowrap} outranks .sw-tip's own normal, so the tip has to win it back */
+#gap .gr .sw-tip,#gapalt figcaption .sw-tip{white-space:normal}
+/* likewise the stat's own <b> styling (Fraunces, gold, 1.25rem) leaks into the tip's <b> */
+#gap .gr .sw-tip b,#gapalt figcaption .sw-tip b{font-family:'Inter',sans-serif;font-size:inherit;
+  font-weight:600;color:var(--wood-bright);border-bottom:0;display:inline;margin:0;text-align:left}
+#gap .gr.sw-ref > b,#gapalt figcaption.sw-ref > b{border-bottom:1px dotted rgba(226,184,119,.45)}
+#gap .gr.sw-ref:hover > b,#gapalt figcaption.sw-ref:hover > b{border-bottom-color:var(--gold)}
+#gapalt figcaption .sw-tip{font-style:normal;text-shadow:none}
+/* absolute offsets resolve against the figcaption's padding box, which reaches the panel edge -
+   so the right-aligned tip has to step back by the rail reserve itself or it lands under the nav */
+#gapalt .trip figure:last-child .sw-tip.tipr{right:max(6vw,9.5rem)}
+#gapalt .trip figure:last-child .sw-tip.tipr::after{right:1.2rem}
 /* The Gap (alt): full-bleed triptych. Deliberately has NO direct-child .wrap, which is how
    fitSlides skips it (`if(!w)return`) - a full-bleed slide wants viewport sizing, not zoom. */
 #gapalt{padding:0}
@@ -578,9 +593,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <figure><img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall"></figure>
       </div>
       <div class="machstats rv" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:0">
-        <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
-        <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em></div>
-        <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em></div>
+        <div class="gr sw-ref" tabindex="0"><span class="hl">Steel</span><b>18% imported</b><span class="sw-tip">Finished steel imports were <b>18%</b> of US apparent consumption in 2025, down from <b>23%</b> in 2024 as Section&nbsp;232 tariffs rose from 25% to 50%. USGS reaches the same place from its own data: 19M&nbsp;t of finished imports against 95M&nbsp;t of apparent consumption.</span></div>
+        <div class="gr sw-ref" tabindex="0"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em><span class="sw-tip"><b>Primary metal only</b> &mdash; new aluminum, not recycled. US primary demand is 4.4M&nbsp;t/yr against 683,500&nbsp;t from the four remaining US smelters, so imports cover about 85%. Counting all aluminum, including the ~85% of US output that is recycled, net import reliance is <b>60%</b>.</span></div>
+        <div class="gr sw-ref" tabindex="0"><span class="hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em><span class="sw-tip">Steel&rsquo;s share of a data center&rsquo;s <b>building and contents</b> by mass. Foundations are excluded &mdash; that is where most of the concrete goes. Data center developers are already flagging structural steel shortages.</span></div>
       </div>
     </div>
     <div class="gapfoot rv">
@@ -617,15 +632,15 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="trip">
     <figure>
       <img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill">
-      <figcaption class="rv"><span class="lb hl">Steel</span><b>18% imported</b></figcaption>
+      <figcaption class="rv sw-ref" tabindex="0"><span class="lb hl">Steel</span><b>18% imported</b><span class="sw-tip">Finished steel imports were <b>18%</b> of US apparent consumption in 2025, down from <b>23%</b> in 2024 as Section&nbsp;232 tariffs rose from 25% to 50%. USGS reaches the same place from its own data: 19M&nbsp;t of finished imports against 95M&nbsp;t of apparent consumption.</span></figcaption>
     </figure>
     <figure>
       <img src="assets/gap-aluminum.webp" alt="Potline in an aluminum smelter">
-      <figcaption class="rv"><span class="lb">Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em></figcaption>
+      <figcaption class="rv sw-ref" tabindex="0"><span class="lb">Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em><span class="sw-tip"><b>Primary metal only</b> &mdash; new aluminum, not recycled. US primary demand is 4.4M&nbsp;t/yr against 683,500&nbsp;t from the four remaining US smelters, so imports cover about 85%. Counting all aluminum, including the ~85% of US output that is recycled, net import reliance is <b>60%</b>.</span></figcaption>
     </figure>
     <figure>
       <img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall">
-      <figcaption class="rv"><span class="lb hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em></figcaption>
+      <figcaption class="rv sw-ref" tabindex="0"><span class="lb hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em><span class="sw-tip tipr">Steel&rsquo;s share of a data center&rsquo;s <b>building and contents</b> by mass. Foundations are excluded &mdash; that is where most of the concrete goes. Data center developers are already flagging structural steel shortages.</span></figcaption>
     </figure>
   </div>
   <div class="triphead">
