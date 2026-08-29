@@ -6,7 +6,41 @@ every data-center image in the deck family (`dc-hall2.jpg`, `app_hall_servers.we
 aspiration, not the problem. A wood data hall on the problem slide gives the answer away
 eight slides early.
 
-## gap-datacenter-amber.webp — SHIPPING (both Gap slides, from 2026-08-29)
+## gap-datacenter-hall.webp — SHIPPING (both Gap slides, from 2026-08-29)
+
+Fifth and final frame. The path, and the two wrong lessons drawn along the way:
+
+1. **Campus exterior** — no racks at all. Alex: "find an image which shows a lot of server racks."
+2. **Cold aisle** — racks, unmistakably, but the only cool frame in a warm band. Alex: "find
+   another data center image that can match the other images better."
+3. **Clerestory hall** — matched on hue by washing everything sepia. Alex: "the data center
+   shouldn't look like rust."
+4. **Amber walls** — kept the cabinets black and made the *lights* amber. Alex: "is that really a
+   modern AI data center? the red/orange lighting is not appropriate." **He was right.** Rows of
+   amber and red light in a real hall read as fault indication or emergency lighting; a modern AI
+   facility is neutral white LED, cold-aisle containment, green-white status LEDs, dense GPU racks.
+   The frame harmonised beautifully and was not a data centre.
+5. **Neutral hall (shipped)** — an authentic contemporary compute hall: linear white ceiling
+   fixture, long row of black cabinets, green status LEDs, tiled floor.
+
+> Photorealistic modern AI data center, long row of black GPU server cabinets with perforated
+> doors, neutral white overhead lighting from linear fixtures, dense orderly fiber cabling in
+> overhead trays, small green and white status LEDs, no coloured mood lighting, dark floor,
+> restrained realistic documentary photograph of a hyperscale compute hall, 16:9
+
+**The corrected lesson.** I twice wrote down a rule that was wrong. "Match on hue" produced rust;
+"match on light rather than hue" produced a data centre lit like a furnace. The rule that actually
+holds: **match on value — how dark the frame is — and never adjust the subject to fit the band.**
+The steel and aluminum panels are dark images with small bright incidents; this one now is too,
+and it stays a truthful photograph of the thing it claims to show. When the subject genuinely will
+not harmonise, the honest move is to accept the difference, not to restyle the subject until an
+expert in the room stops believing it.
+
+Candidates and their in-band strips: `alt-datacenter.html`. Two authentic alternates kept in
+assets: `dc-opt9-containment.webp` (containment aisle, brighter — punches a hole in the band) and
+`dc-opt4-cold-aisle.webp` (authentic but heavily blue).
+
+## gap-datacenter-amber.webp — REJECTED 2026-08-29 (amber lighting reads as fault indication)
 
 Third and final frame for this panel. The path there is the useful part:
 
