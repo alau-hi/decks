@@ -29,10 +29,13 @@ Alex, 2026-08-23 → 26.
 - **The Gap slide carries an image strip** (added 2026-08-29, Alex picked variant C from
   `alt-slide2.html`): three photographs between the lead and the stat row, each column lining
   up with the stat beneath it. The first two photographs **abut** — zero gutter (Alex, 2026-08-29: "to create the sense
-  of intensity") — and the third is set **`.55rem` apart**, because steel and aluminum are
+  of intensity") — and the third is set **`.5rem` apart on a light rule**, because steel and aluminum are
   import shares of a material while the data-centre figure is a demand signal, and Jon's
   feedback was that running all three flush implied a parallel that is not there. Both grids
-  take the same offset on their third column, which is what keeps stat and photo registered. Both grids therefore run at
+  take the same offset on their third column, which is what keeps stat and photo registered. The
+  rule itself is the strip's own `background:rgba(228,210,180,.5)` showing through that single
+  margin — dark-on-dark spacing read as a coincidence of layout rather than a deliberate break
+  (Alex, 2026-08-29). Slide 3 gets the same treatment, full panel height. Both grids therefore run at
   `gap:0` and the gutter moves inside each `.gr` as `padding-right`, which is what keeps every
   stat registered to its own photo's left edge. `#gap .gapcols` caps strip and stats to the
   same width — change one, change both. No scrim on
@@ -95,7 +98,7 @@ throws its headline into the nav rail. Two consequences to respect when editing 
 - **All three panels bleed.** An inset card for the data centre was tried on 2026-08-29 and
   reverted the same day: on this slide the data centre carries *scale of opportunity*, and a
   card set into the ground argues the opposite of scale. The separation is carried instead by
-  the `.55rem` gap and the slightly wider `1.06fr` column, which is as much differentiation as
+  the `.5rem` light rule and the slightly wider `1.06fr` column, which is as much differentiation as
   this slide can take without undercutting its own point. Slide 2 is where the distinction can
   be drawn more strongly, because nothing there depends on the image conveying scale.
 - **Measuring rail clearance: compare against the widest nav label that overlaps vertically,
