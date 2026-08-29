@@ -332,9 +332,13 @@ claims:
   - claim: The fleet figure assumes eventual replacement of more than 50% of the world's current steel production
     provenance: asserted-internal
     conf: L
-    source: Jon Strimling 2026-08-29, printed as the asterisked footnote on The Fleet
-    slide: The Fleet
-    note: Printed as the stated assumption behind >7,000 mills. Not independently sized.
+    source: Jon Strimling 2026-08-29
+    slide: none - register only (removed from The Fleet by Alex, 2026-08-29)
+    note: >-
+      Briefly printed as a footnote on The Fleet, then removed. It remains the assumption the
+      >7,000-mill figure rests on, alongside the ~4x CHIPMILL price reduction behind the $500B -
+      so BOTH load-bearing assumptions behind that slide's headline now live only here. Anyone
+      asked to defend the $500B in diligence needs this entry.
 
   - claim: SUPERMILL TWO volume output is ~20,000 m3/yr
     provenance: internal
