@@ -507,7 +507,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 #ask .askbtn{display:inline-block;margin-top:.5rem;font-family:'Inter';font-weight:600;font-size:.82rem;letter-spacing:.06em;background:var(--gold);color:var(--ink-deep);border-radius:999px;padding:.75em 1.7em;text-decoration:none;transition:background .25s,transform .25s}
 #ask .askbtn:hover,#ask .askbtn:focus-visible{background:var(--cream);transform:translateY(-1px)}
 .fwdlook{margin-top:1.8rem;max-width:78ch;font-size:.63rem;line-height:1.6;color:var(--muted)}
-#fls .fwdlook{margin-top:1.5rem;max-width:64ch;font-size:clamp(.85rem,1.2vw,1rem);line-height:1.75;color:var(--cream-dim)}
 #ask .askcta .who{flex-basis:100%}
 
 .mtgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.4rem;margin-top:1rem;align-items:start}
@@ -1196,6 +1195,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <div class="askcta rv">
       <a class="askbtn" href="mailto:alex@inventwood.com?subject=Request%3A%20financial%20model%20and%20data%20room">Request the financial model &amp; data room</a>
     </div>
+    <p class="fwdlook rv">This presentation contains forward-looking statements about future plants, production, costs, revenue and financing. These reflect current expectations and assumptions, involve risks and uncertainties, and actual results may differ materially. Figures for future periods are projections, not guarantees.</p>
     </div>
 </section>
 
@@ -1203,14 +1203,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="thanks">
     <div class="left"><h2 class="rv">Thank you</h2><div class="contact rv"><div class="c"><span class="who">Alex Lau &middot; CEO / Co-founder</span><a class="mail" href="mailto:alex@inventwood.com">alex@inventwood.com</a></div><div class="c"><span class="who">Lex Harris &middot; Director, Capital Markets &amp; IR</span><a class="mail" href="mailto:lex@inventwood.com">lex@inventwood.com</a></div></div></div>
     <div class="right"></div>
-  </div>
-</section>
-
-<section id="fls" class="dark" data-nav="Forward-Looking">
-  <div class="wrap">
-    <h2 class="rv">Forward-looking statements</h2>
-    <p class="fwdlook rv">This presentation contains forward-looking statements about future plants, production, costs, revenue and financing.</p>
-    <p class="fwdlook rv">These reflect current expectations and assumptions, involve risks and uncertainties, and actual results may differ materially. Figures for future periods are projections, not guarantees.</p>
   </div>
 </section>
 
@@ -1244,8 +1236,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     </div>
   </div>
 </section>
-
-
 
 <script>
 const deck=document.getElementById('deck');
