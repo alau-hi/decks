@@ -9,6 +9,15 @@ async function hmacHex(data, secret) {
   return [...new Uint8Array(sig)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
+function getCookie(req, name) {
+  const header = req.headers.cookie || '';
+  for (const part of header.split(/;\s*/)) {
+    const i = part.indexOf('=');
+    if (i > 0 && part.slice(0, i) === name) return part.slice(i + 1);
+  }
+  return null;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -25,6 +34,9 @@ export default async function handler(req, res) {
   }
 
   const ts = new Date().toISOString();
+  const rawGid = String(getCookie(req, 'sw_gid') || '');
+  const gid = /^[0-9a-f-]{36}$/.test(rawGid) ? rawGid : null;
+
   const record = {
     email: cleanEmail,
     ts,
@@ -38,8 +50,8 @@ export default async function handler(req, res) {
   try {
     if (!sql) throw new Error('DATABASE_URL not configured');
     await sql`
-      INSERT INTO signups (deck, email, ts, ua, ip, city, country, lat, lon)
-      VALUES (${DECK}, ${record.email}, ${record.ts}, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon})
+      INSERT INTO signups (deck, email, ts, ua, ip, city, country, lat, lon, gid)
+      VALUES (${DECK}, ${record.email}, ${record.ts}, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${gid})
       ON CONFLICT (deck, email, ts) DO NOTHING`;
   } catch (err) {
     // DB unavailable — keep the signup in function logs and let the viewer in.

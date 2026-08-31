@@ -49,3 +49,26 @@ CREATE TABLE IF NOT EXISTS change_requests (
   updated_at timestamptz NOT NULL DEFAULT now(),
   PRIMARY KEY (deck, id)
 );
+
+-- Gate watchman: one row per gate-page beacon. gid is the anonymous browser
+-- cookie; a gid that later appears on signups.gid marks conversion.
+CREATE TABLE IF NOT EXISTS gate_hits (
+  id      bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  deck    text NOT NULL DEFAULT 'superwood',
+  ts      timestamptz NOT NULL,
+  gid     text NOT NULL,
+  ip      text DEFAULT '',
+  ua      text DEFAULT '',
+  city    text DEFAULT '',
+  country text DEFAULT '',
+  lat     double precision,
+  lon     double precision,
+  path    text DEFAULT '',
+  scr     jsonb,
+  team    boolean NOT NULL DEFAULT false
+);
+
+CREATE INDEX IF NOT EXISTS gate_hits_deck_idx ON gate_hits (deck);
+
+-- Conversion link: which anonymous browser this signup came from.
+ALTER TABLE signups ADD COLUMN IF NOT EXISTS gid text;

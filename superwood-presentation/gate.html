@@ -45,6 +45,15 @@ button:disabled{opacity:.55;cursor:default}
   </form>
 </div>
 <script>
+// Watchman beacon: one fire per gate view. JS-only (curl/crawlers never run
+// it); skipped for declared automation; failure-silent everywhere.
+try{
+  if(!navigator.webdriver){
+    const payload=JSON.stringify({path:location.pathname+location.search,scr:{w:innerWidth,h:innerHeight,sw:screen.width,sh:screen.height,dpr:devicePixelRatio,o:matchMedia('(orientation: portrait)').matches?'p':'l'}});
+    if(!(navigator.sendBeacon&&navigator.sendBeacon('/api/gatehit',new Blob([payload],{type:'application/json'}))))
+      fetch('/api/gatehit',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:payload}).catch(()=>{});
+  }
+}catch(_){}
 const f=document.getElementById('f'),go=document.getElementById('go'),err=document.getElementById('err');
 f.addEventListener('submit',async e=>{
   e.preventDefault();
