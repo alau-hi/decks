@@ -79,17 +79,19 @@ export default async function handler(req, res) {
   // Storage-less deployment (staging-open, collaborators): valid key, but nothing recorded here.
   if (!sql) {
     res.setHeader('Cache-Control', 'no-store');
-    return res.status(200).json({ generatedAt: new Date().toISOString(), slideOrder: SLIDES, viewers: [], slides: [], dropoff: [], totalSessions: 0, locations: [], deviceMix: [], formatMix: [], breakMix: [] });
+    return res.status(200).json({ generatedAt: new Date().toISOString(), slideOrder: SLIDES, viewers: [], slides: [], dropoff: [], totalSessions: 0, locations: [], deviceMix: [], formatMix: [], breakMix: [], gate: { funnel: { visits: 0, converted: 0, bounced: 0 }, locations: [], ips: [] } });
   }
 
-  const [signupRows, dwellRows] = await Promise.all([
-    sql`SELECT email, ts, ua, ip, city, country, lat, lon FROM signups WHERE deck = ${DECK}`,
+  const [signupRows, dwellRows, gateRows] = await Promise.all([
+    sql`SELECT email, ts, ua, ip, city, country, lat, lon, gid FROM signups WHERE deck = ${DECK}`,
     sql`SELECT session, viewer, totals, scr, ua, ip, city, country, lat, lon, ts FROM dwell_sessions WHERE deck = ${DECK}`,
+    sql`SELECT ts, gid, ip, ua, city, country, lat, lon, team FROM gate_hits WHERE deck = ${DECK} ORDER BY ts`,
   ]);
   // Rows carry the same fields the blobs did; normalize timestamps back to
   // the ISO strings the aggregation below compares lexicographically.
   const signups = signupRows.map(r => ({ ...r, ts: iso(r.ts) }));
   const dwells = dwellRows.map(r => ({ ...r, ts: iso(r.ts) }));
+  const gateHits = gateRows.map(r => ({ ...r, ts: iso(r.ts) }));
 
   const viewers = new Map();
   function ensure(email) {
@@ -207,6 +209,92 @@ export default async function handler(req, res) {
     visits: reachedIdx.filter(r => r >= i).length,
   }));
 
+  /* ---- Gate watch: bounce/conversion funnel + per-IP roll-up ---------- */
+  const VISIT_GAP = 30 * 60 * 1000; // hits within 30 min = one visit
+  const gidEmail = new Map(); // converted browsers
+  for (const s of signups) if (s.gid) gidEmail.set(s.gid, s.email);
+
+  const byGid = new Map();
+  for (const h of gateHits) {
+    let g = byGid.get(h.gid);
+    if (!g) { g = { hits: [], team: true }; byGid.set(h.gid, g); }
+    g.hits.push(h);
+    if (!h.team) g.team = false; // a browser is team only if every hit was flagged
+  }
+  const countVisits = hits => {
+    let visits = 0, last = -Infinity;
+    for (const h of hits) {
+      const ms = Date.parse(h.ts);
+      if (ms - last > VISIT_GAP) visits++;
+      last = ms;
+    }
+    return visits;
+  };
+
+  const nonTeamGids = [...byGid.entries()].filter(([, g]) => !g.team);
+  const gateFunnel = {
+    visits: nonTeamGids.length,
+    converted: nonTeamGids.filter(([gid]) => gidEmail.has(gid)).length,
+  };
+  gateFunnel.bounced = gateFunnel.visits - gateFunnel.converted;
+
+  // Map dots: location + outcome (uses the same centroid fallback as visits).
+  const gateLocs = new Map();
+  for (const [gid, g] of byGid) {
+    if (g.team) continue;
+    const converted = gidEmail.has(gid);
+    for (const h of g.hits) {
+      if (!h.city && !h.country) continue;
+      const key = `${h.city || ''}|${h.country || ''}|${converted}`;
+      let loc = gateLocs.get(key);
+      if (!loc) {
+        const c = COUNTRY_CENTROIDS[h.country] || [null, null];
+        loc = { city: h.city || '', country: h.country || '', lat: c[0], lon: c[1], visits: 0, converted };
+        gateLocs.set(key, loc);
+      }
+      if (Number.isFinite(h.lat) && Number.isFinite(h.lon)) { loc.lat = h.lat; loc.lon = h.lon; }
+      loc.visits += 1;
+    }
+  }
+
+  // IP rows, browsers within.
+  const byIp = new Map();
+  for (const [gid, g] of byGid) {
+    for (const h of g.hits) {
+      const ip = h.ip || 'unknown';
+      let row = byIp.get(ip);
+      if (!row) { row = { ip, city: '', country: '', firstSeen: null, lastSeen: null, team: true, gids: new Map() }; byIp.set(ip, row); }
+      let b = row.gids.get(gid);
+      if (!b) { b = { hits: [], team: g.team, email: gidEmail.get(gid) || null }; row.gids.set(gid, b); }
+      b.hits.push(h);
+      if (!h.team) row.team = false;
+      if (!row.firstSeen || h.ts < row.firstSeen) row.firstSeen = h.ts;
+      if (!row.lastSeen || h.ts > row.lastSeen) { row.lastSeen = h.ts; if (h.city) row.city = h.city; if (h.country) row.country = h.country; }
+    }
+  }
+  const gateIps = [...byIp.values()].map(row => {
+    const detail = [...row.gids.entries()].map(([gid, b]) => {
+      const d = deviceFromUa(b.hits[b.hits.length - 1].ua);
+      return {
+        gid8: gid.slice(0, 8),
+        hits: b.hits.length,
+        firstSeen: b.hits[0].ts,
+        lastSeen: b.hits[b.hits.length - 1].ts,
+        device: d.cls === 'unknown' ? 'unknown device' : `${d.cls} · ${d.os}`,
+        email: b.email,
+      };
+    }).sort((a, b) => (b.lastSeen || '').localeCompare(a.lastSeen || ''));
+    return {
+      ip: row.ip, city: row.city, country: row.country,
+      firstSeen: row.firstSeen, lastSeen: row.lastSeen,
+      visits: [...row.gids.values()].reduce((a, b) => a + countVisits(b.hits), 0),
+      browsers: row.gids.size,
+      team: row.team,
+      emails: [...new Set(detail.map(d => d.email).filter(Boolean))],
+      detail,
+    };
+  }).sort((a, b) => (b.lastSeen || '').localeCompare(a.lastSeen || ''));
+
   const out = [...viewers.values()].sort((a, b) => (b.lastSeen || '').localeCompare(a.lastSeen || ''));
   for (const v of out) v.ips.sort((a, b) => (b.lastSeen || '').localeCompare(a.lastSeen || ''));
   for (const v of out) v.devices.sort((a, b) => (b.lastSeen || '').localeCompare(a.lastSeen || ''));
@@ -222,5 +310,10 @@ export default async function handler(req, res) {
     deviceMix: [...deviceMix].map(([key, sessions]) => ({ key, sessions })).sort((a, b) => b.sessions - a.sessions),
     formatMix: [...formatMix].map(([key, sessions]) => ({ key, sessions })).sort((a, b) => b.sessions - a.sessions),
     breakMix: [...breakMix].map(([key, sessions]) => ({ key, sessions })).sort((a, b) => BREAK_ORDER.indexOf(a.key) - BREAK_ORDER.indexOf(b.key)),
+    gate: {
+      funnel: gateFunnel,
+      locations: [...gateLocs.values()].filter(l => Number.isFinite(l.lat) && Number.isFinite(l.lon)),
+      ips: gateIps,
+    },
   });
 }
