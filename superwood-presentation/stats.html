@@ -77,6 +77,21 @@ tr:last-child td{border-bottom:none}
 .hbar .fill{height:100%;background:var(--wood);border-radius:4px}
 .hbar .n{flex:none;width:88px;color:var(--muted);font-variant-numeric:tabular-nums}
 .devchip{font-size:.66rem;color:var(--muted);margin-top:2px}
+.legend .dot.conv{background:var(--wood-bright);border-color:var(--ink)}
+.legend .dot.bnc{background:#6b5a45;border-color:var(--ink)}
+.gaterow{border-top:1px solid var(--line);padding:9px 2px;font-size:.78rem;cursor:pointer}
+.gaterow:hover{background:rgba(244,236,223,.03)}
+.gaterow .line1{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.gaterow .ip{font-weight:600;font-variant-numeric:tabular-nums}
+.gaterow .meta{color:var(--muted);font-size:.68rem}
+.gaterow.team{opacity:.45}
+.badge{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;border:1px solid}
+.badge.bnc{color:#d9906b;border-color:rgba(217,144,107,.4)}
+.badge.conv{color:var(--teal);border-color:rgba(47,163,143,.4)}
+.badge.team{color:var(--cream-dim);border-color:var(--line)}
+.gdetail{margin:6px 0 2px 12px;color:var(--cream-dim);font-size:.7rem}
+.gdetail div{padding:2px 0}
+#gateteam.sel{background:linear-gradient(135deg,var(--wood-deep),var(--wood));border-color:transparent;color:var(--cream)}
 </style>
 </head>
 <body>
@@ -122,6 +137,13 @@ tr:last-child td{border-bottom:none}
       <h2>Visit map</h2>
       <div class="chartsub" id="mapsub"></div>
       <svg id="c-map" viewBox="0 40 1000 372" role="img" aria-label="World map of visit locations"></svg>
+    </div>
+    <div class="card wide">
+      <h2>Gate watch</h2>
+      <div class="chartsub" id="gatefunnel"></div>
+      <div class="legend" id="gatelegend"><span><i class="dot conv"></i>Converted</span><span><i class="dot bnc"></i>Turned away</span><button id="gateteam" class="dtab" style="margin-left:auto">Show team</button></div>
+      <svg id="c-gate" viewBox="0 40 1000 372" role="img" aria-label="World map of gate visits"></svg>
+      <div id="gateips"></div>
     </div>
   </div>
   <div class="hint">Click a viewer row to overlay their slide times on the chart; click again to clear.</div>
@@ -325,13 +347,72 @@ document.getElementById('devtabs').addEventListener('click',e=>{
   document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('sel',t===b));
   renderDevices();
 });
+/* -- gate watch -------------------------------------------------------- */
+let gateShowTeam=false,gateOpen=null;
+function renderGate(){
+  const g=DATA.gate||{funnel:{visits:0,converted:0,bounced:0},locations:[],ips:[]};
+  const f=g.funnel;
+  document.getElementById('gatefunnel').textContent=
+    f.visits+' gate visit'+(f.visits===1?'':'s')+' · '+f.converted+' converted · '+f.bounced+' turned away — unique browsers, excluding team';
+  const svg=document.getElementById('c-gate');
+  svg.textContent='';
+  svg.append(el('path',{d:WORLD_PATH,fill:'var(--ink2)',stroke:'var(--grid)','stroke-width':1}));
+  const px=(lon,lat)=>[(lon+180)/360*1000,(90-lat)/180*500];
+  (g.locations||[]).forEach(loc=>{
+    const [cx,cy]=px(loc.lon,loc.lat);
+    const r=Math.min(20,6+Math.sqrt(loc.visits)*3);
+    const dot=el('g',{cursor:'pointer',tabindex:0});
+    dot.append(el('circle',{cx,cy,r,fill:loc.converted?'var(--wood-bright)':'#6b5a45',stroke:'var(--ink)','stroke-width':2,opacity:.92}));
+    const name=(loc.city?loc.city+', ':'')+loc.country;
+    const enter=e=>showTip(e,loc.visits+' hit'+(loc.visits===1?'':'s')+(loc.converted?' · converted':' · turned away'),name);
+    dot.addEventListener('pointermove',enter);
+    dot.addEventListener('pointerleave',hideTip);
+    svg.append(dot);
+  });
+  const box=document.getElementById('gateips');
+  box.textContent='';
+  const rows=(g.ips||[]).filter(r=>gateShowTeam||!r.team);
+  if(!rows.length){const d=document.createElement('div');d.className='gaterow';d.style.cursor='default';d.textContent=g.ips&&g.ips.length?'only team traffic so far':'no gate traffic recorded yet';d.style.color='var(--muted)';box.append(d);return;}
+  rows.forEach(r=>{
+    const row=document.createElement('div');row.className='gaterow'+(r.team?' team':'');
+    const l1=document.createElement('div');l1.className='line1';
+    const ip=document.createElement('span');ip.className='ip';ip.textContent=r.ip;l1.append(ip);
+    const badge=document.createElement('span');
+    if(r.team){badge.className='badge team';badge.textContent='team';}
+    else if(r.emails.length){badge.className='badge conv';badge.textContent='converted → '+r.emails.join(', ');}
+    else{badge.className='badge bnc';badge.textContent='bounced';}
+    l1.append(badge);
+    const meta=document.createElement('span');meta.className='meta';
+    meta.textContent=r.visits+' visit'+(r.visits===1?'':'s')+' · '+r.browsers+' browser'+(r.browsers===1?'':'s')
+      +(r.city||r.country?' · '+(r.city?r.city+', ':'')+r.country:'')
+      +' · first '+when(r.firstSeen)+' · last '+when(r.lastSeen);
+    l1.append(meta);row.append(l1);
+    if(gateOpen===r.ip){
+      const det=document.createElement('div');det.className='gdetail';
+      r.detail.forEach(b=>{
+        const d=document.createElement('div');
+        d.textContent='⌁ '+b.gid8+' · '+b.device+' · '+b.hits+' hit'+(b.hits===1?'':'s')+' · '+when(b.firstSeen)+' → '+when(b.lastSeen)+(b.email?' · '+b.email:'');
+        det.append(d);
+      });
+      row.append(det);
+    }
+    row.addEventListener('click',()=>{gateOpen=(gateOpen===r.ip?null:r.ip);renderGate();});
+    box.append(row);
+  });
+}
+document.getElementById('gateteam').addEventListener('click',e=>{
+  e.stopPropagation();
+  gateShowTeam=!gateShowTeam;
+  e.target.classList.toggle('sel',gateShowTeam);
+  renderGate();
+});
 
 function render(data){
   DATA=data;
   SLIDES=data.slideOrder||FALLBACK_SLIDES;
   if(selected&&!data.viewers.some(v=>v.email===selected))selected=null;
   document.getElementById('gen').textContent='Updated '+when(data.generatedAt);
-  renderCharts();renderMap();renderTable();renderDevices();
+  renderCharts();renderMap();renderTable();renderDevices();renderGate();
 }
 
 async function load(key){
