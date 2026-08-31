@@ -152,6 +152,12 @@ where a row has nowhere to go. Only the `.gapfoot` copies are rows.
 
 ## Deck mechanics
 
+- **The deck closes Thank You → Forward-looking statements → Appendix** (Alex, 2026-08-31).
+  The forward-looking paragraph used to sit as a `.fwdlook` footnote under the Thank You contact
+  block, where it overflowed the 100vh `.thanks` grid and read as small print. It is now its own
+  `#fls` slide between the two, at body size rather than footnote size (`#fls .fwdlook` overrides
+  the `.63rem` base, and outranks the mobile micro-label floor on specificity). Wording unchanged.
+
 - **Scroll-snap sections**, one per `<section id data-nav>`; right-hand **nav dock** built
   from `data-nav` (keyword labels, scroll-spy `.active`, first/last edge handling);
   left/right arrows jump slides, up/down scroll; type a number to jump.
