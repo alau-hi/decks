@@ -118,6 +118,38 @@ throws its headline into the nav rail. Two consequences to respect when editing 
   again rather than duplicating the markup — two hand-maintained copies of one citation list
   drift.
 
+## The three Gap slides
+
+The deck now carries three treatments of the same content, all live, kept in step by hand:
+
+| | image size | stats | notes |
+|---|---|---|---|
+| `#gap` (2) | 62rem strip, 3:2 | below the images | the working default |
+| `#gapmid` (2b, 2026-08-30) | full padding box, 1:1 | **on** the images | middle setting |
+| `#gapalt` (2a) | full bleed | on the images | scale of opportunity |
+
+2b exists because 2's images are small and 2a's are the whole slide (Alex, 2026-08-30). Its
+extra image height is bought by moving the stat row onto the photographs, not by growing the
+slide. Two things to keep if it is edited:
+
+- **Only the first figure carries `aspect-ratio`.** The third loses 8px of width to its
+  `.5rem` separation margin, so a ratio on it makes it 8px shorter and drops its caption off
+  the shared baseline. The others stretch to the grid row instead.
+- The footnote row is reserved (`grid-template-rows:auto auto 3.3rem`) so all three labels
+  share a baseline whether or not a panel has a footnote. Lengthen a footnote past two lines
+  and that reserve has to grow with it.
+
+The "Also imported" table on 2 and 2b is **one horizontal row**, kicker inline, running the
+width of the slide. It has been through both failure modes in one sitting (Alex, 2026-08-30):
+as a block under column one it read as a footnote to steel, and split across the Steel and
+Aluminum columns it read as a spread-out table. One row belongs to the slide, not to a column.
+The shared `.gapaside .tbl` is a two-column subgrid and sits later in the stylesheet, so the
+row overrides need `.gapfoot .gapaside`-depth selectors to win on specificity — `.gapfoot .tbl`
+alone loses the tie and the list silently goes back to a column.
+
+`#gapalt` keeps the stacked two-column table: it rides beside the headline in the rail reserve,
+where a row has nowhere to go. Only the `.gapfoot` copies are rows.
+
 ## Deck mechanics
 
 - **Scroll-snap sections**, one per `<section id data-nav>`; right-hand **nav dock** built

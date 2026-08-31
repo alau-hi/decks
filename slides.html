@@ -67,20 +67,30 @@ body.on-cover .conf{opacity:0}
 .srcpanel li{font-size:clamp(10px,.68rem,.85rem);line-height:1.5;color:var(--cream-dim)}
 .srcpanel li a{color:var(--gold);text-decoration:none;font-weight:600}
 .srcpanel li a:hover,.srcpanel li a:focus-visible{color:var(--cream)}
-/* gap slide footer: note left, imported-materials aside bottom right */
-.gapfoot{display:flex;justify-content:flex-start;align-items:flex-end;gap:3rem;max-width:52rem}
+/* gap slide footer: one list of also-imported materials, headed across the two material
+   columns and split beneath them. As a single block under column one it read as a footnote
+   to Steel (Alex, 2026-08-30); the demand-signal column stays empty. */
+.gapfoot{display:flex;align-items:baseline;max-width:62rem;margin-top:1.7rem}
+/* one unbroken row, kicker inline: split across columns it read as a footnote to whichever
+   column it sat under, and spread over two rows it read as a table (Alex, 2026-08-30) */
+.gapfoot .gapaside{display:flex;align-items:baseline;gap:1.5rem;flex-wrap:wrap}
+.gapfoot .gapaside .k{margin-bottom:0}
+.gapfoot .gapaside .tbl{display:flex;flex-wrap:wrap;gap:.25rem 1.9rem}
+/* the shared .tbl is a two-column subgrid; in a row each material is its own inline pair */
+.gapfoot .gapaside .tbl .r{display:flex;grid-column:auto;gap:.5rem}
+@media screen and (max-width:700px){.gapfoot .gapaside{gap:.35rem 1.2rem}.gapfoot .gapaside .tbl{gap:.25rem 1.2rem}}
 #gap .machstats .gr{align-items:flex-start}
 #gap .machstats .gr > span:not(.sw-tip){font-size:clamp(11px,.86rem,1.05rem);color:var(--cream-dim);font-weight:600;letter-spacing:.01em}
 /* the stat label rule outranks .sw-tip, and .gapaside sets its own small type - so tooltips in
    both places drifted off the deck's tooltip style. Normalise them back to it explicitly. */
-#gap .gr .sw-tip,#gapalt figcaption .sw-tip,.gapaside .sw-tip{font-size:.72rem;font-weight:400;
+#gap .gr .sw-tip,#gapalt figcaption .sw-tip,#gapmid figcaption .sw-tip,.gapaside .sw-tip{font-size:.72rem;font-weight:400;
   line-height:1.5;letter-spacing:normal;color:var(--cream-dim);font-style:normal}
 #gap .machstats .gr .hl{color:var(--wood-bright)}
 /* Gap stat tooltips: reuse the sw-ref/sw-tip pattern. The trigger is the whole stat block,
    so its footnote must be allowed to wrap - the base .sw-ref nowrap would blow the column. */
-#gap .gr.sw-ref,#gapalt figcaption.sw-ref{white-space:normal;cursor:help}
+#gap .gr.sw-ref,#gapalt figcaption.sw-ref,#gapmid figcaption.sw-ref{white-space:normal;cursor:help}
 /* .gr span{white-space:nowrap} outranks .sw-tip's own normal, so the tip has to win it back */
-#gap .gr .sw-tip,#gapalt figcaption .sw-tip,.gapaside .sw-tip{white-space:normal}
+#gap .gr .sw-tip,#gapalt figcaption .sw-tip,#gapmid figcaption .sw-tip,.gapaside .sw-tip{white-space:normal}
 /* aside rows become subgrid rows so each material is its own hover target while the two
    columns stay aligned across all three rows */
 .gapaside .tbl .r{display:grid;grid-column:1/-1;grid-template-columns:subgrid;align-items:baseline;cursor:help}
@@ -90,9 +100,9 @@ body.on-cover .conf{opacity:0}
 .sw-tip.tipd{top:calc(100% + 10px);bottom:auto}
 .sw-tip.tipd::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--pop-bg)}
 /* likewise the stat's own <b> styling (Fraunces, gold, 1.25rem) leaks into the tip's <b> */
-#gap .gr .sw-tip b,#gapalt figcaption .sw-tip b{font-family:'Inter',sans-serif;font-size:inherit;
+#gap .gr .sw-tip b,#gapalt figcaption .sw-tip b,#gapmid figcaption .sw-tip b{font-family:'Inter',sans-serif;font-size:inherit;
   font-weight:600;color:var(--wood-bright);border-bottom:0;display:inline;margin:0;text-align:left}
-#gap .gr.sw-ref > b,#gapalt figcaption.sw-ref > b{border-bottom:1px dotted rgba(226,184,119,.45)}
+#gap .gr.sw-ref > b,#gapalt figcaption.sw-ref > b,#gapmid figcaption.sw-ref > b{border-bottom:1px dotted rgba(226,184,119,.45)}
 #gap .gr.sw-ref:hover > b,#gapalt figcaption.sw-ref:hover > b{border-bottom-color:var(--gold)}
 #gapalt figcaption .sw-tip{font-style:normal;text-shadow:none}
 /* absolute offsets resolve against the figcaption's padding box, which reaches the panel edge -
@@ -122,10 +132,10 @@ body.on-cover .conf{opacity:0}
   display:grid;grid-template-rows:auto auto 3.2rem;align-content:end}
 /* the last panel runs under the nav rail, so it borrows the section's own rail reserve */
 #gapalt .trip figure:last-child figcaption{padding-right:max(6vw,9.5rem)}
-#gapalt figcaption .lb{font-weight:600;font-size:clamp(11px,.86rem,1.05rem);letter-spacing:.01em}
-#gapalt figcaption b{display:block;font-family:'Fraunces',serif;font-weight:400;
+#gapalt figcaption .lb,#gapmid figcaption .lb{font-weight:600;font-size:clamp(11px,.86rem,1.05rem);letter-spacing:.01em}
+#gapalt figcaption b,#gapmid figcaption b{display:block;font-family:'Fraunces',serif;font-weight:400;
   font-size:clamp(1.1rem,1.55rem,2rem);color:var(--gold);margin-top:.12em}
-#gapalt figcaption .gfn{display:block;font-style:italic;font-weight:400;
+#gapalt figcaption .gfn,#gapmid figcaption .gfn{display:block;font-style:italic;font-weight:400;
   font-size:clamp(9px,.62rem,.76rem);line-height:1.5;color:var(--cream-dim);margin-top:.5rem;max-width:26ch}
 #gapalt .triphead{position:absolute;left:0;right:0;top:0;z-index:3;padding:7vh max(6vw,9.5rem) 0 6vw;
   display:flex;justify-content:space-between;align-items:flex-start;gap:3rem}
@@ -167,8 +177,33 @@ body.on-cover .conf{opacity:0}
 /* screen-only: in print the page box can report portrait and swallow the strip */
 @media screen and (max-width:700px), screen and (max-width:860px) and (orientation:portrait){#gap .gapstrip{display:none}}
 #gap .gfn{display:block;font-style:italic;font-weight:400;font-size:clamp(9px,.62rem,.76rem);line-height:1.5;color:var(--muted);margin-top:.55rem;max-width:26ch;white-space:normal}
+/* B variant: bigger than slide 2's strip, short of 2a's full bleed. It stays inside the
+   section's padding box, but takes the whole of it and a taller crop - and the stats move
+   onto the photographs, so the height freed by dropping the stat row goes to the image. */
+#gapmid .midstrip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:1.4rem}
+/* only the first frame carries the ratio: the third loses 8px of width to its margin, and
+   an aspect-ratio on it would make it 8px shorter, dropping its caption off the baseline */
+#gapmid .midstrip figure{position:relative;overflow:hidden}
+#gapmid .midstrip figure:first-child{aspect-ratio:1/1}
+#gapmid .midstrip img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) brightness(.9)}
+/* same separation grammar as slide 2: brown ground through the margin, rounded demand signal */
+#gapmid .midstrip figure:nth-child(3){margin-left:.5rem;border-radius:18px}
+#gapmid .midstrip figure:nth-child(3) img{object-position:20% center;filter:saturate(.92) brightness(1.02)}
+/* the captions sit on the photograph, so each frame carries its own foot of shade */
+#gapmid .midstrip figure::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(24,16,9,0) 38%,rgba(24,16,9,.62) 66%,rgba(24,16,9,.95) 100%)}
+#gapmid figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 1.4rem 1.3rem;
+  /* reserve the footnote row so the three labels share one baseline, as on 2a */
+  display:grid;grid-template-rows:auto auto 3.3rem;align-content:end;
+  text-shadow:0 .12em .7em rgba(20,13,7,.9)}
+#gapmid figcaption .gfn{color:var(--cream-dim)}
+#gapmid .gapfoot{margin-top:1.3rem}
+@media screen and (max-width:700px), screen and (max-width:860px) and (orientation:portrait){
+  #gapmid .midstrip{grid-template-columns:1fr;gap:.5rem}
+  #gapmid .midstrip figure,#gapmid .midstrip figure:first-child{aspect-ratio:16/9}
+  #gapmid .midstrip figure:nth-child(3){margin-left:0}}
 .gapaside{text-align:left;font-size:clamp(9px,.56rem,.7rem);line-height:1.5;color:var(--muted)}
-.gapaside .k{font-family:'Inter';font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:clamp(9px,.52rem,.66rem);color:var(--wood-bright);margin-bottom:.4rem}
+.gapaside .k,.gapfoot > .k{font-family:'Inter';font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:clamp(9px,.52rem,.66rem);color:var(--wood-bright);margin-bottom:.4rem}
 .gapaside .tbl{display:grid;grid-template-columns:auto auto;gap:.22rem 1.4rem;align-items:baseline}
 .gapaside .tbl b{color:var(--cream-dim);font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
 body.on-cover nav.dots{opacity:0;pointer-events:none}
@@ -677,6 +712,38 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <div class="r sw-ref" tabindex="0"><span>Cement</span><b>~22%</b><span class="sw-tip tipd tipr">Net import reliance of <b>22%</b> of US apparent consumption, 2022&ndash;24 &mdash; about 25M&nbsp;t a year, led by Turkey and Canada.</span></div>
       </div>
     </aside>
+  </div>
+</section>
+
+
+<section id="gapmid" class="dark" data-nav="The Gap (b)">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(1.6rem,2.9vw,2.5rem);max-width:none">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
+    <p class="lead rv" style="margin-top:1rem;max-width:70ch">Data centers, reshored factories, housing, the grid. The build-out is here, and the key structural materials it runs on are increasingly not made here.</p>
+    <div class="midstrip rv">
+      <figure>
+        <img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill">
+        <figcaption class="sw-ref" tabindex="0"><span class="lb hl">Steel</span><b>18% imported</b><span class="sw-tip">Finished steel imports were <b>18%</b> of US apparent consumption in 2025, down from <b>23%</b> in 2024 as Section&nbsp;232 tariffs rose from 25% to 50%. USGS reaches the same place from its own data: 19M&nbsp;t of finished imports against 95M&nbsp;t of apparent consumption.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/gap-aluminum.webp" alt="Potline in an aluminum smelter">
+        <figcaption class="sw-ref" tabindex="0"><span class="lb">Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em><span class="sw-tip"><b>Primary metal only</b> &mdash; new aluminum, not recycled. US primary demand is 4.4M&nbsp;t/yr against 683,500&nbsp;t from the four remaining US smelters, so imports cover about 85%. Counting all aluminum, including the ~85% of US output that is recycled, net import reliance is <b>60%</b>.</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall">
+        <figcaption class="sw-ref" tabindex="0"><span class="lb hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em><span class="sw-tip tipr">Steel&rsquo;s share of a <b>US data center&rsquo;s</b> building and contents by mass. Foundations are excluded &mdash; that is where most of the concrete goes. Data center developers are already flagging structural steel shortages.</span></figcaption>
+      </figure>
+    </div>
+    <div class="gapfoot rv">
+      <aside class="gapaside">
+        <div class="k">Also imported</div>
+        <div class="tbl">
+          <div class="r sw-ref" tabindex="0"><span>Titanium</span><b>&gt;95%</b><span class="sw-tip">Titanium sponge &mdash; every route to new titanium metal runs through it. US net import reliance has exceeded <b>95%</b> since 2021; about 42,000&nbsp;t was imported in 2023, 77&ndash;86% of it from Japan. One small electronic-grade plant still operates, which is why USGS holds at &gt;95% rather than 100%.</span></div>
+          <div class="r sw-ref" tabindex="0"><span>Carbon fiber</span><b>66&ndash;86%</b><span class="sw-tip">Imports met <b>66&ndash;86%</b> of North American carbon fiber demand across 2008&ndash;12 (USITC data). That is the most recent primary source that exists &mdash; and the trade code bundles fiber with intermediates, so the true share is likely lower. Aerospace-grade production is most concentrated in Japan.</span></div>
+          <div class="r sw-ref" tabindex="0"><span>Cement</span><b>~22%</b><span class="sw-tip">Net import reliance of <b>22%</b> of US apparent consumption, 2022&ndash;24 &mdash; about 25M&nbsp;t a year, led by Turkey and Canada.</span></div>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 
