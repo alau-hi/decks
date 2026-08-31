@@ -88,6 +88,20 @@ Alex, 2026-08-23 → 26.
 
 ## Full-bleed slides
 
+Two rules that hold on `#gapalt` specifically (Alex, 2026-08-31):
+
+- **Also imported sits under the two materials it extends**, in a `.tripfoot` that repeats
+  `.trip`'s own `grid-template-columns` and spans the first two cells — so the row ends exactly
+  where the aluminum panel does, and stays there if the columns are ever retuned. Change one
+  template, change both. Opposite the headline in the far corner it read as unrelated to anything
+  on the slide. It uses the same one-row `.gapfoot` markup as slides 2 and 2b rather than restating
+  those rules, and its tooltips drop `tipd tipr` because the row now opens upward from the foot.
+- **The panel divider fades before it reaches the footer.** A hard rule running the full height
+  cuts straight through the captions and the Also-imported row. A border cannot carry a gradient,
+  so the seam is drawn as a `::before` with no `z-index` — which keeps it under the `::after` scrim
+  exactly where the border used to sit. Only the steel|aluminum seam needs it; the third panel
+  separates on its `.5rem` margin.
+
 `#gapalt` (The Gap (alt), added 2026-08-29) is the deck's only edge-to-edge slide, and it
 works by **having no direct-child `.wrap`** — `fitSlides()` bails on such a section
 (`if(!w)return`), so nothing is zoomed and the layout sizes off the viewport instead. That is
