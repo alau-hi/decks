@@ -493,7 +493,11 @@ const LOG=[
  {iso:'2026-08-16',date:'Aug 16',topic:'Analytics',title:'Postgres branch resync',slides:[],req:'Update the Postgres branch to the latest deck; carry the new screen-size tracking into the database.',items:[
   ['Two weeks of deck work merged into the Postgres branch (/intro URL, press page, device analytics)',''],
   ['Screen/viewport capture (scr) stored in its own database column; device & format cards read it from Postgres',''],
-  ['Database rebuilt from the live records \u2014 all history through today, including screen sizes','']]}
+  ['Database rebuilt from the live records \u2014 all history through today, including screen sizes','']]},
+ {iso:'2026-08-24',date:'Aug 24',topic:'Analytics',title:'Postgres goes live',slides:[],req:'Downmerge the Postgres branch and switch production analytics and the shared request board to the database.',items:[
+  ['Production signups, per-slide dwell and the /changes board now read and write Neon Postgres; the Blob store is retired as a frozen archive',''],
+  ['Full history migrated: every signup and viewing session recorded since July 14, including screen sizes where captured',''],
+  ['The request board is shared across the team \u2014 statuses and edits are the same for everyone, everywhere','']]}
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
    (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */
