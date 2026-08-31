@@ -128,6 +128,7 @@ header .deck{margin-left:auto;font-size:.74rem;letter-spacing:.1em;text-transfor
 .logbody li::before{content:"◆";position:absolute;left:0;top:.45em;font-size:.45rem;color:var(--wood)}
 code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);padding:.06em .35em;border-radius:4px}
 .hintline{font-size:.72rem;color:var(--muted);margin:.6rem 0}
+.importbar{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;font-size:.78rem;color:var(--cream);background:rgba(214,164,86,.12);border:1px solid rgba(214,164,86,.4);border-radius:8px;padding:.55rem .8rem;margin:.6rem 0}
 /* modal */
 #overlay,#idoverlay{position:fixed;inset:0;background:rgba(15,10,6,.72);backdrop-filter:blur(3px);display:none;z-index:100}
 #overlay.show,#idoverlay.show{display:flex;align-items:center;justify-content:center}
@@ -205,7 +206,7 @@ code{font-size:.72rem;color:var(--muted);background:rgba(255,255,255,.04);paddin
         </div>
       </div>
       <div id="board"></div>
-      <p class="hintline">Click a request to expand; Edit changes wording or status. Edits and new requests are saved in this browser.</p>
+      <p class="hintline">Click a request to expand; Edit changes wording or status. Edits and new requests are saved to the shared board — everyone sees the same state.</p>
     </div>
   </div>
   <div id="divider" title="Drag to resize"></div>
@@ -333,6 +334,10 @@ const LOG=[
  {iso:'2026-07-18',date:'Jul 18',topic:'Meta',title:'This page: tree-ring record',slides:[],req:'Use the tree-rings image (Pinterest reference) as the record in the phonograph.',items:[
   ['The turntable disc is now a warm orange tree-ring cross-section — generated in the style of the reference so we host our own artwork — clipped into the spinning disc','0779cc0'],
   ['Second pass from a new reference: wider, bolder amber/tan ring bands with a darker gray-brown heart','']]},
+ {iso:'2026-07-20',date:'Jul 20',topic:'Meta',title:'Shared board & Postgres backend',slides:[],req:'Migrate the deck stats and changes backends to a Neon-hosted Postgres; the request board should be shared across the team.',items:[
+  ['Request board now saves to a shared database — statuses, edits and new requests are the same for everyone',''],
+  ['One-time banner imports edits previously stuck in this browser’s localStorage',''],
+  ['Signup and per-slide dwell analytics moved from Vercel Blob to Postgres; old blobs kept as a frozen archive','']]},
  {iso:'2026-07-20',date:'Jul 20',topic:'Content',title:'Slide-3 sources popup',slides:[3],req:'Add links and references to slide 3 without polluting the clean display — a single popup with all references, clickable where possible.',items:[
   ['Deep research pass across the seven concrete health impacts; 18 claims survived adversarial verification',''],
   ['A discreet Sources & further reading button on slide 3 opens a modal with 9 grouped, clickable references (Pulitzer sand wars, Evans 2003, Kaplan 1995, Berman 2008, Ulrich 1984, Glass & Singer 1972, wood-cortisol RCT review 2020, wooden-room affect 2024, Lancet urban-heat 2023)','']]},
@@ -484,8 +489,15 @@ const LOG=[
   ['Dash state now set via unitless SVG attributes \u2014 the one form every engine accepts; a stricter parser rejecting the old px values is what could reveal the line early',''],
   ['Verified lifecycle: hidden before arrival, dashed-out through the 0.5s delay, tween 681\u21920, then solid','']]},
  {iso:'2026-08-15',date:'Aug 15',topic:'Diagrams',title:'Chart replays cleanly',slides:[9],req:'On revisiting the slide the line was already there before the animation.',items:[
-  ['The chart now resets when the slide fully leaves view and redraws on return, matching every other reveal; a mid-draw exit cannot cancel a tween in flight','']]}
-];
+  ['The chart now resets when the slide fully leaves view and redraws on return, matching every other reveal; a mid-draw exit cannot cancel a tween in flight','']]},
+ {iso:'2026-08-16',date:'Aug 16',topic:'Analytics',title:'Postgres branch resync',slides:[],req:'Update the Postgres branch to the latest deck; carry the new screen-size tracking into the database.',items:[
+  ['Two weeks of deck work merged into the Postgres branch (/intro URL, press page, device analytics)',''],
+  ['Screen/viewport capture (scr) stored in its own database column; device & format cards read it from Postgres',''],
+  ['Database rebuilt from the live records \u2014 all history through today, including screen sizes','']]},
+ {iso:'2026-08-24',date:'Aug 24',topic:'Analytics',title:'Postgres goes live',slides:[],req:'Downmerge the Postgres branch and switch production analytics and the shared request board to the database.',items:[
+  ['Production signups, per-slide dwell and the /changes board now read and write Neon Postgres; the Blob store is retired as a frozen archive',''],
+  ['Full history migrated: every signup and viewing session recorded since July 14, including screen sizes where captured',''],
+  ['The request board is shared across the team \u2014 statuses and edits are the same for everyone, everywhere','']]}
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
    (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */
@@ -493,16 +505,70 @@ const LOG=[
 const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const STATUS_LABEL={submitted:'Submitted',consideration:'Under consideration',planned:'Planned',rejected:'Rejected'};
 const LS='swchg-requests-v1';
-function loadRequests(){
-  let ov={};try{ov=JSON.parse(localStorage.getItem(LS))||{}}catch(e){}
+const MIGRATED='swchg-migrated-v1';
+let liveBoard=false; // true once /api/changes answers with DB-backed data
+function localOverrides(){let ov={};try{ov=JSON.parse(localStorage.getItem(LS))||{}}catch(e){}return ov;}
+function mergeLocal(){
+  const ov=localOverrides();
   const merged=SEED_REQUESTS.map(r=>Object.assign({},r,ov[r.id]||{}));
   Object.keys(ov).forEach(id=>{if(!SEED_REQUESTS.find(r=>r.id===id)&&!ov[id]._deleted)merged.push(Object.assign({id},ov[id]));});
   return merged.filter(r=>!r._deleted);
 }
+let REQUESTS=mergeLocal();
+function loadRequests(){return REQUESTS.filter(r=>!r._deleted&&!r.deleted);}
 function saveOverride(id,patch){
-  let ov={};try{ov=JSON.parse(localStorage.getItem(LS))||{}}catch(e){}
-  ov[id]=Object.assign({},ov[id]||{},patch);
-  localStorage.setItem(LS,JSON.stringify(ov));
+  if(!liveBoard){ // no DB behind the API — keep the legacy per-browser behavior
+    const ov=localOverrides();ov[id]=Object.assign({},ov[id]||{},patch);
+    localStorage.setItem(LS,JSON.stringify(ov));REQUESTS=mergeLocal();return;
+  }
+  // optimistic local apply, then sync to the shared board
+  const i=REQUESTS.findIndex(r=>r.id===id);
+  if(i>=0)REQUESTS[i]=Object.assign({},REQUESTS[i],patch);else REQUESTS.push(Object.assign({id},patch));
+  postChanges(Object.assign({id:id},patch));
+}
+async function postChanges(payload){
+  try{
+    const r=await fetch('/api/changes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(!r.ok)throw new Error(r.status);
+    const data=await r.json();
+    if(data&&data.requests){REQUESTS=data.requests;renderBoard();}
+  }catch(e){toast('Save failed — check your connection and reload.');}
+}
+async function refreshBoard(){
+  try{
+    const r=await fetch('/api/changes');
+    if(!r.ok)throw new Error(r.status);
+    const data=await r.json();
+    liveBoard=!data.fallback;
+    REQUESTS=liveBoard?data.requests:mergeLocal();
+  }catch(e){REQUESTS=mergeLocal();}
+  renderBoard();
+  offerImport();
+}
+/* one-time rescue of pre-shared-board edits stuck in this browser's localStorage */
+function offerImport(){
+  if(!liveBoard||localStorage.getItem(MIGRATED))return;
+  const ov=localOverrides();const n=Object.keys(ov).length;
+  if(!n)return;
+  const bar=document.createElement('div');bar.className='importbar';
+  bar.innerHTML='<span>This browser has '+n+' local edit'+(n>1?'s':'')+' from before the shared board — import into the shared board?</span> <button class="btn imp-yes">Import</button> <button class="btn ghost imp-no">Dismiss</button>';
+  const board=document.getElementById('board');board.parentNode.insertBefore(bar,board);
+  bar.querySelector('.imp-no').addEventListener('click',()=>{localStorage.setItem(MIGRATED,'dismissed');bar.remove();});
+  bar.querySelector('.imp-yes').addEventListener('click',async()=>{
+    const bulk=Object.keys(ov).map(id=>{
+      const p=Object.assign({id:id},ov[id]);
+      if(p._deleted){p.deleted=true;delete p._deleted;}
+      return p;
+    });
+    try{
+      const r=await fetch('/api/changes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({bulk:bulk})});
+      if(!r.ok)throw new Error(r.status);
+      const data=await r.json();
+      if(data&&data.requests)REQUESTS=data.requests;
+      localStorage.setItem(MIGRATED,'imported');bar.remove();renderBoard();
+      toast('Imported '+n+' local edit'+(n>1?'s':'')+' into the shared board.');
+    }catch(e){toast('Import failed — try again later.');}
+  });
 }
 /* ---------- request board ---------- */
 let filter='all';
@@ -756,7 +822,7 @@ songbtn.addEventListener('click',e=>{
   if(ytPlayer.isMuted()){userMuted=false;ytPlayer.unMute();}else{userMuted=true;ytPlayer.mute();}
   setTimeout(songLabel,80);
 });
-renderBoard();renderLog();
+renderBoard();renderLog();refreshBoard();
 </script>
 </body>
 </html>
