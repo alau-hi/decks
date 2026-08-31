@@ -120,6 +120,39 @@ throws its headline into the nav rail. Two consequences to respect when editing 
 
 ## The three Gap slides
 
+### Live images (Alex, 2026-08-31)
+
+All three Gap slides animate their photographs. Each `<img>` is followed by a duplicate of
+itself, `class="glow"`, at `mix-blend-mode:screen` with `opacity` animated up from 0:
+
+| layer | image | motion |
+|---|---|---|
+| `.pour` | steel | 3.4s smooth flare — the molten pour and sparks swell and settle |
+| `.hall` | aluminum | 7.2s slow breathe on the overhead lamps |
+| `.dc-l` / `.dc-r` | data centre | two clipped bands, 4.1s and 5.3s, `steps(1,end)` — the racks blink |
+
+The mechanism to preserve if you touch this: **screen against a near-black backdrop is a
+no-op**, so the pulse is luminance-weighted for free. Only what is already bright in the frame
+moves; the dark plant structure does not lift. That is why no masks are needed, and why the
+same two clip bands work on all three slides even though each crops the photograph differently
+(`object-fit:cover` at 3:2, 1:1 and full-bleed) — where a band lands on the corridor instead of
+a rack, the blend simply does nothing. Do not swap `screen` for an opacity fade of a brightened
+copy; that lifts the blacks and the images go milky.
+
+Three details that are load-bearing:
+
+- **Blink timings are irregular on purpose.** Evenly spaced keyframes read as a loading spinner.
+  The two data-centre bands run on unrelated periods so the racks never blink in unison.
+- **`animation-play-state` rides the `.in` class.** A screen-blended layer repaints rather than
+  composites, so three of them animating on three off-screen slides is jank charged to every
+  scroll. The reveal observer already adds `.in` on entry *and removes it on exit*, which makes
+  it a real two-way viewport gate — only the Gap slide on screen is running.
+- **Print and reduced motion are both handled.** `@media print{.glow{display:none}}` (a still has
+  nothing to blink and the screen layer only washes it out), and the global reduced-motion block
+  collapses the animations, leaving the layers at their `opacity:0` base — the photographs render
+  exactly as they did before this change.
+
+
 The deck now carries three treatments of the same content, all live, kept in step by hand:
 
 | | image size | stats | notes |

@@ -176,6 +176,38 @@ body.on-cover .conf{opacity:0}
    are unreadable at phone width, and the slide already worked without them */
 /* screen-only: in print the page box can report portrait and swallow the strip */
 @media screen and (max-width:700px), screen and (max-width:860px) and (orientation:portrait){#gap .gapstrip{display:none}}
+
+/* --- live images on the Gap slides (Alex, 2026-08-31) ---------------------
+   Each photograph carries a duplicate of itself at mix-blend-mode:screen with
+   opacity animated from 0. Screen against a near-black backdrop is a no-op, so
+   the pulse is luminance-weighted for free: only what is already bright in the
+   frame - the rack LEDs, the pour, the hall lamps - visibly moves, and it keeps
+   working under every crop the three slides apply. No masks to keep in register.
+   The data centre takes two vertical bands on unrelated periods so the racks
+   blink independently rather than the whole hall flashing at once; steel and
+   aluminum take one smooth layer each, because a furnace breathes, it does not
+   strobe. prefers-reduced-motion is already handled globally (line ~247): the
+   animations collapse and the layers rest at the opacity:0 base. */
+.glow{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:0;
+  /* a screen-blended layer repaints rather than composites, so three of them animating on
+     three off-screen slides is jank you pay for during every scroll. ride the .in class the
+     reveal observer already sets: only the Gap slide on screen is actually running. */
+  animation-play-state:paused}
+.in .glow{animation-play-state:running}
+.glow.dc-l{clip-path:inset(0 56% 0 0);animation:dcblink-a 4.1s steps(1,end) infinite}
+.glow.dc-r{clip-path:inset(0 0 0 52%);animation:dcblink-b 5.3s steps(1,end) infinite .7s}
+.glow.pour{animation:pourflare 3.4s ease-in-out infinite}
+.glow.hall{animation:hallbreathe 7.2s ease-in-out infinite}
+/* irregular on purpose - evenly spaced blinks read as a loading spinner */
+@keyframes dcblink-a{0%,14%{opacity:0}16%,22%{opacity:.50}24%,51%{opacity:0}
+  53%,57%{opacity:.34}59%,76%{opacity:0}78%,83%{opacity:.50}85%,100%{opacity:0}}
+@keyframes dcblink-b{0%,9%{opacity:0}11%,16%{opacity:.42}18%,38%{opacity:0}
+  40%,44%{opacity:.55}46%,64%{opacity:0}66%,71%{opacity:.36}73%,100%{opacity:0}}
+@keyframes pourflare{0%,100%{opacity:0}22%{opacity:.30}38%{opacity:.12}61%{opacity:.34}79%{opacity:.16}}
+@keyframes hallbreathe{0%,100%{opacity:0}50%{opacity:.22}}
+/* a print is a still - nothing to blink, and a screen layer only washes it out */
+@media print{.glow{display:none}}
+
 #gap .gfn{display:block;font-style:italic;font-weight:400;font-size:clamp(9px,.62rem,.76rem);line-height:1.5;color:var(--muted);margin-top:.55rem;max-width:26ch;white-space:normal}
 /* B variant: bigger than slide 2's strip, short of 2a's full bleed. It stays inside the
    section's padding box, but takes the whole of it and a taller crop - and the stats move
@@ -661,9 +693,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <p class="lead rv" style="margin-top:1.4rem;max-width:64ch">Data centers, reshored factories, housing, the grid. The build-out is here, and the key structural materials it runs on are increasingly not made here:</p>
     <div class="gapcols">
       <div class="gapstrip rv">
-        <figure><img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill"></figure>
-        <figure><img src="assets/gap-aluminum.webp" alt="Potline in an aluminum smelter"></figure>
-        <figure><img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall"></figure>
+        <figure><img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill"><img class="glow pour" src="assets/gap-steel.webp" alt="" aria-hidden="true"></figure>
+        <figure><img src="assets/gap-aluminum.webp" alt="Potline in an aluminum smelter"><img class="glow hall" src="assets/gap-aluminum.webp" alt="" aria-hidden="true"></figure>
+        <figure><img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall"><img class="glow dc-l" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true"><img class="glow dc-r" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true"></figure>
       </div>
       <div class="machstats rv" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:0">
         <div class="gr sw-ref" tabindex="0"><span class="hl">Steel</span><b>18% imported</b><span class="sw-tip">Finished steel imports were <b>18%</b> of US apparent consumption in 2025, down from <b>23%</b> in 2024 as Section&nbsp;232 tariffs rose from 25% to 50%. USGS reaches the same place from its own data: 19M&nbsp;t of finished imports against 95M&nbsp;t of apparent consumption.</span></div>
@@ -687,15 +719,15 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 <section id="gapalt" class="dark" data-nav="The Gap (alt)">
   <div class="trip">
     <figure>
-      <img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill">
+      <img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill"><img class="glow pour" src="assets/gap-steel.webp" alt="" aria-hidden="true">
       <figcaption class="rv sw-ref" tabindex="0"><span class="lb hl">Steel</span><b>18% imported</b><span class="sw-tip">Finished steel imports were <b>18%</b> of US apparent consumption in 2025, down from <b>23%</b> in 2024 as Section&nbsp;232 tariffs rose from 25% to 50%. USGS reaches the same place from its own data: 19M&nbsp;t of finished imports against 95M&nbsp;t of apparent consumption.</span></figcaption>
     </figure>
     <figure>
-      <img src="assets/gap-aluminum.webp" alt="Potline in an aluminum smelter">
+      <img src="assets/gap-aluminum.webp" alt="Potline in an aluminum smelter"><img class="glow hall" src="assets/gap-aluminum.webp" alt="" aria-hidden="true">
       <figcaption class="rv sw-ref" tabindex="0"><span class="lb">Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em><span class="sw-tip"><b>Primary metal only</b> &mdash; new aluminum, not recycled. US primary demand is 4.4M&nbsp;t/yr against 683,500&nbsp;t from the four remaining US smelters, so imports cover about 85%. Counting all aluminum, including the ~85% of US output that is recycled, net import reliance is <b>60%</b>.</span></figcaption>
     </figure>
     <figure>
-      <img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall">
+      <img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall"><img class="glow dc-l" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true"><img class="glow dc-r" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true">
       <figcaption class="rv sw-ref" tabindex="0"><span class="lb hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em><span class="sw-tip tipr">Steel&rsquo;s share of a <b>US data center&rsquo;s</b> building and contents by mass. Foundations are excluded &mdash; that is where most of the concrete goes. Data center developers are already flagging structural steel shortages.</span></figcaption>
     </figure>
   </div>
@@ -722,15 +754,15 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     <p class="lead rv" style="margin-top:1rem;max-width:70ch">Data centers, reshored factories, housing, the grid. The build-out is here, and the key structural materials it runs on are increasingly not made here.</p>
     <div class="midstrip rv">
       <figure>
-        <img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill">
+        <img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill"><img class="glow pour" src="assets/gap-steel.webp" alt="" aria-hidden="true">
         <figcaption class="sw-ref" tabindex="0"><span class="lb hl">Steel</span><b>18% imported</b><span class="sw-tip">Finished steel imports were <b>18%</b> of US apparent consumption in 2025, down from <b>23%</b> in 2024 as Section&nbsp;232 tariffs rose from 25% to 50%. USGS reaches the same place from its own data: 19M&nbsp;t of finished imports against 95M&nbsp;t of apparent consumption.</span></figcaption>
       </figure>
       <figure>
-        <img src="assets/gap-aluminum.webp" alt="Potline in an aluminum smelter">
+        <img src="assets/gap-aluminum.webp" alt="Potline in an aluminum smelter"><img class="glow hall" src="assets/gap-aluminum.webp" alt="" aria-hidden="true">
         <figcaption class="sw-ref" tabindex="0"><span class="lb">Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em><span class="sw-tip"><b>Primary metal only</b> &mdash; new aluminum, not recycled. US primary demand is 4.4M&nbsp;t/yr against 683,500&nbsp;t from the four remaining US smelters, so imports cover about 85%. Counting all aluminum, including the ~85% of US output that is recycled, net import reliance is <b>60%</b>.</span></figcaption>
       </figure>
       <figure>
-        <img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall">
+        <img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall"><img class="glow dc-l" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true"><img class="glow dc-r" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true">
         <figcaption class="sw-ref" tabindex="0"><span class="lb hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em><span class="sw-tip tipr">Steel&rsquo;s share of a <b>US data center&rsquo;s</b> building and contents by mass. Foundations are excluded &mdash; that is where most of the concrete goes. Data center developers are already flagging structural steel shortages.</span></figcaption>
       </figure>
     </div>
