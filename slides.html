@@ -728,7 +728,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   </div>
 </section>
 
-<section id="gapalt" class="dark" data-nav="The Gap (alt)">
+<section id="gapalt" data-num="2a" class="dark" data-nav="The Gap (alt)">
   <div class="trip">
     <figure>
       <img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill"><img class="glow pour" src="assets/gap-steel.webp" alt="" aria-hidden="true">
@@ -760,7 +760,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 </section>
 
 
-<section id="gapmid" class="dark" data-nav="The Gap (b)">
+<section id="gapmid" data-num="2b" class="dark" data-nav="The Gap (b)">
   <div class="wrap">
     <h2 class="rv" style="font-size:clamp(1.6rem,2.9vw,2.5rem);max-width:none">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
     <p class="lead rv" style="margin-top:1rem;max-width:70ch">Data centers, reshored factories, housing, the grid. The build-out is here, and the key structural materials it runs on are increasingly not made here.</p>
@@ -1305,11 +1305,19 @@ document.querySelectorAll('.person,.advc').forEach((c,i)=>{
   c.setAttribute('aria-describedby','biop'+i);
 });
 const secs=[...document.querySelectorAll('section')];
+/* slide numbers are labels, not indices. The two extra Gap treatments are 2a and 2b so the deck's
+   third idea is still slide 3, on the rail, in the page counter and on the number keys alike
+   (Alex, 2026-08-31). A section carrying data-num takes that label and does not advance the count;
+   everything else numbers itself in order, so inserting or removing a slide needs no bookkeeping. */
+const slideNums=(()=>{let n=0;return secs.map(s=>s.dataset.num||String(++n));})();
+const lastNum=slideNums[slideNums.length-1];
+const numIdx=new Map(slideNums.map((l,i)=>[l,i]));
+const padNum=l=>l.padStart(2,'0');
 const dotsBox=document.getElementById('dots');
 const railBtns=[];
 secs.forEach((sec,i)=>{
   const b=document.createElement('button');
-  b.innerHTML=(sec.dataset.nav||'')+'<span class="pn">'+String(i+1).padStart(2,'0')+'</span>';
+  b.innerHTML=(sec.dataset.nav||'')+'<span class="pn">'+padNum(slideNums[i])+'</span>';
   b.dataset.idx=i;
   b.onclick=()=>{jumpTo(i);};
   dotsBox.appendChild(b);railBtns.push(b);
@@ -1356,7 +1364,7 @@ function currentSection(){
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{
   const i=secs.indexOf(e.target);
   const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);
-  if(vis>=.5){cur=i;setActive(i);document.getElementById('pageno').textContent=String(i+1).padStart(2,'0')+' / '+secs.length;
+  if(vis>=.5){cur=i;setActive(i);document.getElementById('pageno').textContent=padNum(slideNums[i])+' / '+lastNum;
     document.body.classList.toggle('on-cover',i===0);
     reveal(e.target);}
   else if(!e.isIntersecting){e.target.classList.remove('in');}
@@ -1364,9 +1372,9 @@ const io=new IntersectionObserver(entries=>{entries.forEach(e=>{
 secs.forEach(s=>io.observe(s));
 /* number keys: punch in a slide number (1–19) to jump; two digits commit instantly */
 let numBuf='',numT;
-function commitNum(){const n=parseInt(numBuf,10);numBuf='';clearTimeout(numT);
-  if(n>=1&&n<=secs.length)jumpTo(n-1);
-  document.getElementById('pageno').textContent=String((n>=1&&n<=secs.length?n-1:cur)+1).padStart(2,'0')+' / '+secs.length;}
+function commitNum(){const i=numIdx.get(String(parseInt(numBuf,10)));numBuf='';clearTimeout(numT);
+  if(i!==undefined)jumpTo(i);
+  document.getElementById('pageno').textContent=padNum(slideNums[i!==undefined?i:cur])+' / '+lastNum;}
 window.addEventListener('keydown',e=>{
   if(e.metaKey||e.ctrlKey||e.altKey)return;
   if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(1);}

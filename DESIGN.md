@@ -196,6 +196,13 @@ where a row has nowhere to go. Only the `.gapfoot` copies are rows.
 
 ## Deck mechanics
 
+- **Slide numbers are labels, not indices.** A section carrying `data-num` takes that label and
+  does not advance the count: `#gapalt` is 2a and `#gapmid` is 2b, so the deck's third *idea* is
+  still slide 3 (Alex, 2026-08-31). Everything else numbers itself in order, so adding or removing
+  a slide needs no bookkeeping. One list (`slideNums`) feeds the rail, the page counter and the
+  number-key jump, so they cannot drift apart. Consequence to know: the number keys only accept
+  digits, so 2a and 2b are reachable by arrow, click or scroll but not by typing.
+
 - **The deck closes The Opportunity → Thank You → Appendix** (Alex, 2026-08-31), with the
   forward-looking paragraph as a `.fwdlook` footnote at the bottom of The Opportunity, matching
   `../investor-overview/` (the wording is identical between the two decks — copy it, do not
