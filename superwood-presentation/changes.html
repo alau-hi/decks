@@ -497,7 +497,11 @@ const LOG=[
  {iso:'2026-08-24',date:'Aug 24',topic:'Analytics',title:'Postgres goes live',slides:[],req:'Downmerge the Postgres branch and switch production analytics and the shared request board to the database.',items:[
   ['Production signups, per-slide dwell and the /changes board now read and write Neon Postgres; the Blob store is retired as a frozen archive',''],
   ['Full history migrated: every signup and viewing session recorded since July 14, including screen sizes where captured',''],
-  ['The request board is shared across the team \u2014 statuses and edits are the same for everyone, everywhere','']]}
+  ['The request board is shared across the team \u2014 statuses and edits are the same for everyone, everywhere','']]},
+ {iso:'2026-08-31',date:'Aug 31',topic:'Analytics',title:'Gate watchman',slides:[],req:'See how many visitors turn away at the email gate, and their IPs \u2014 a watchman on the self-serve gate.',items:[
+  ['The gate page now records each real-browser visit (bots and crawlers filtered) with an anonymous browser ID that links a bounce to a later signup','578e6c9'],
+  ['New Gate watch card on /stats: converted vs. turned-away funnel, a two-color world map, and a per-IP list expandable to per-browser history','1f9272d'],
+  ['Team browsers are flagged, not dropped \u2014 hidden behind a Show team toggle so testing never inflates the numbers','']]}
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
    (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */
