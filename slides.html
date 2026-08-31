@@ -114,20 +114,26 @@ body.on-cover .conf{opacity:0}
 #gapalt{padding:0}
 #gapalt .trip{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr 1.06fr}
 #gapalt .trip figure{position:relative;overflow:hidden}
-#gapalt .trip figure + figure{border-left:1px solid rgba(31,21,12,.9)}
+/* the panel divider fades out before it reaches the captions and the Also-imported row: a hard
+   rule running the full height cuts straight through the footer type (Alex, 2026-08-31). A border
+   cannot carry a gradient, so it is drawn as a ::before with no z-index, which keeps it under the
+   ::after scrim exactly where the border used to sit. Only the steel|aluminum seam needs it - the
+   third panel separates on the .5rem margin instead. */
+#gapalt .trip figure:nth-child(2)::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;
+  background:linear-gradient(180deg,rgba(31,21,12,.9) 0%,rgba(31,21,12,.9) 64%,rgba(31,21,12,0) 88%)}
 /* the demand signal keeps its own panel, separated by the gap and given a little extra width,
    but it bleeds like the others: on this slide the data centre is carrying scale of opportunity
    (Alex, 2026-08-29), and an inset card argues the opposite of scale */
 #gapalt .trip{background:rgba(228,210,180,.5)}
 #gapalt .trip figure:last-child{margin-left:.5rem;border-left:0}
-#gapalt .trip img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) brightness(.82)}
+#gapalt .trip video,#gapalt .trip img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) brightness(.82)}
 /* the cold-aisle frame carries its LED banks at the edges; a centred tall crop lands on the
    empty aisle and reads as a doorway, so this panel biases onto the left bank and lifts */
-#gapalt .trip figure:last-child img{object-position:20% center;filter:saturate(.92) brightness(1.08)}
+#gapalt .trip figure:last-child video,#gapalt .trip figure:last-child img{object-position:20% center;filter:saturate(.92) brightness(1.08)}
 
 #gapalt .trip figure::after{content:"";position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(24,16,9,.78) 0%,rgba(24,16,9,.16) 34%,rgba(24,16,9,.94) 100%)}
-#gapalt figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 2.4rem 7vh;
+#gapalt figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 2.4rem 11vh;
   /* reserve the footnote row on every panel so the three labels share one baseline */
   display:grid;grid-template-rows:auto auto 3.2rem;align-content:end}
 /* the last panel runs under the nav rail, so it borrows the section's own rail reserve */
@@ -170,7 +176,7 @@ body.on-cover .conf{opacity:0}
   border-radius:2px;overflow:hidden}
 #gap .gapstrip figure{position:relative;aspect-ratio:3/2;overflow:hidden}
 /* no scrim here: nothing is overlaid on these, so they only need to sit in the palette */
-#gap .gapstrip img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) brightness(.96)}
+#gap .gapstrip video,#gap .gapstrip img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) brightness(.96)}
 #gap .gapcols .machstats{margin-top:1.1rem}
 /* zero gutter keeps each stat registered to its photo's left edge; the gutter moves inside */
 #gap .gapcols .machstats .gr{padding-right:2.6rem}
@@ -202,27 +208,9 @@ body.on-cover .conf{opacity:0}
      reveal observer already sets: only the Gap slide on screen is actually running. */
   animation-play-state:paused}
 .in .glow{animation-play-state:running}
-/* The data centre frame is not dark enough for screen alone: the corridor, the floor and the
-   amber doors are all mid-tone, so an unkeyed copy lifts the whole band and the panel reads as
-   flashing. Key the copy on luminance first - brightness(b) puts the threshold at 0.5 (b=0.5/T)
-   and a hard contrast() crushes everything below it to black - so only the LEDs survive to be
-   screened back on. Threshold ~0.72: above the lit floor and the doors, below the LEDs. The base
-   img filters must be overridden, hence img.glow rather than .glow. */
-#gap .gapstrip img.glow.dc-l,#gap .gapstrip img.glow.dc-r,
-#gapalt .trip img.glow.dc-l,#gapalt .trip img.glow.dc-r,
-#gapmid .midstrip img.glow.dc-l,#gapmid .midstrip img.glow.dc-r{
-  filter:brightness(.69) contrast(26) saturate(1.35)}
-.glow.dc-l{clip-path:inset(0 56% 0 0);animation:dcblink-a 4.1s steps(1,end) infinite}
-.glow.dc-r{clip-path:inset(0 0 0 52%);animation:dcblink-b 5.3s steps(1,end) infinite .7s}
 .glow.pour{animation:pourflare 3.4s ease-in-out infinite}
 .glow.hall{animation:hallbreathe 7.2s ease-in-out infinite}
 /* irregular on purpose - evenly spaced blinks read as a loading spinner */
-/* the keyed copy is black except for the LEDs, so these can run near full - the number is how
-   hard the lights come up, not how much of the frame lifts */
-@keyframes dcblink-a{0%,14%{opacity:0}16%,22%{opacity:.90}24%,51%{opacity:0}
-  53%,57%{opacity:.60}59%,76%{opacity:0}78%,83%{opacity:.90}85%,100%{opacity:0}}
-@keyframes dcblink-b{0%,9%{opacity:0}11%,16%{opacity:.75}18%,38%{opacity:0}
-  40%,44%{opacity:1}46%,64%{opacity:0}66%,71%{opacity:.65}73%,100%{opacity:0}}
 @keyframes pourflare{0%,100%{opacity:0}22%{opacity:.30}38%{opacity:.12}61%{opacity:.34}79%{opacity:.16}}
 @keyframes hallbreathe{0%,100%{opacity:0}50%{opacity:.22}}
 /* a print is a still - nothing to blink, and a screen layer only washes it out */
@@ -237,10 +225,10 @@ body.on-cover .conf{opacity:0}
    an aspect-ratio on it would make it 8px shorter, dropping its caption off the baseline */
 #gapmid .midstrip figure{position:relative;overflow:hidden}
 #gapmid .midstrip figure:first-child{aspect-ratio:1/1}
-#gapmid .midstrip img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) brightness(.9)}
+#gapmid .midstrip video,#gapmid .midstrip img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) brightness(.9)}
 /* same separation grammar as slide 2: brown ground through the margin, rounded demand signal */
 #gapmid .midstrip figure:nth-child(3){margin-left:.5rem;border-radius:18px}
-#gapmid .midstrip figure:nth-child(3) img{object-position:20% center;filter:saturate(.92) brightness(1.02)}
+#gapmid .midstrip figure:nth-child(3) video,#gapmid .midstrip figure:nth-child(3) img{object-position:20% center;filter:saturate(.92) brightness(1.02)}
 /* the captions sit on the photograph, so each frame carries its own foot of shade */
 #gapmid .midstrip figure::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(24,16,9,0) 38%,rgba(24,16,9,.62) 66%,rgba(24,16,9,.95) 100%)}
@@ -715,7 +703,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <div class="gapstrip rv">
         <figure><img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill"><img class="glow pour" src="assets/gap-steel.webp" alt="" aria-hidden="true"></figure>
         <figure><img src="assets/gap-aluminum.webp" alt="Potline in an aluminum smelter"><img class="glow hall" src="assets/gap-aluminum.webp" alt="" aria-hidden="true"></figure>
-        <figure><img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall"><img class="glow dc-l" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true"><img class="glow dc-r" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true"></figure>
+        <figure><video class="dcvid" src="assets/gap-datacenter-racks.mp4" poster="assets/gap-datacenter-racks.webp" muted loop playsinline preload="metadata" aria-label="Rows of server racks in a data center hall, status lights blinking"></video></figure>
       </div>
       <div class="machstats rv" style="grid-template-columns:repeat(3,minmax(0,1fr));gap:0">
         <div class="gr sw-ref" tabindex="0"><span class="hl">Steel</span><b>18% imported</b><span class="sw-tip">Finished steel imports were <b>18%</b> of US apparent consumption in 2025, down from <b>23%</b> in 2024 as Section&nbsp;232 tariffs rose from 25% to 50%. USGS reaches the same place from its own data: 19M&nbsp;t of finished imports against 95M&nbsp;t of apparent consumption.</span></div>
@@ -747,7 +735,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
       <figcaption class="rv sw-ref" tabindex="0"><span class="lb">Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em><span class="sw-tip"><b>Primary metal only</b> &mdash; new aluminum, not recycled. US primary demand is 4.4M&nbsp;t/yr against 683,500&nbsp;t from the four remaining US smelters, so imports cover about 85%. Counting all aluminum, including the ~85% of US output that is recycled, net import reliance is <b>60%</b>.</span></figcaption>
     </figure>
     <figure>
-      <img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall"><img class="glow dc-l" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true"><img class="glow dc-r" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true">
+      <video class="dcvid" src="assets/gap-datacenter-racks.mp4" poster="assets/gap-datacenter-racks.webp" muted loop playsinline preload="metadata" aria-label="Rows of server racks in a data center hall, status lights blinking"></video>
       <figcaption class="rv sw-ref" tabindex="0"><span class="lb hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em><span class="sw-tip tipr">Steel&rsquo;s share of a <b>US data center&rsquo;s</b> building and contents by mass. Foundations are excluded &mdash; that is where most of the concrete goes. Data center developers are already flagging structural steel shortages.</span></figcaption>
     </figure>
   </div>
@@ -786,7 +774,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
         <figcaption class="sw-ref" tabindex="0"><span class="lb">Primary <span class="hl">Aluminum</span></span><b>85% imported</b><em class="gfn">* Now on the federal Critical Minerals List</em><span class="sw-tip"><b>Primary metal only</b> &mdash; new aluminum, not recycled. US primary demand is 4.4M&nbsp;t/yr against 683,500&nbsp;t from the four remaining US smelters, so imports cover about 85%. Counting all aluminum, including the ~85% of US output that is recycled, net import reliance is <b>60%</b>.</span></figcaption>
       </figure>
       <figure>
-        <img src="assets/gap-datacenter-racks.webp" alt="Rows of server racks in a data center hall"><img class="glow dc-l" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true"><img class="glow dc-r" src="assets/gap-datacenter-racks.webp" alt="" aria-hidden="true">
+        <video class="dcvid" src="assets/gap-datacenter-racks.mp4" poster="assets/gap-datacenter-racks.webp" muted loop playsinline preload="metadata" aria-label="Rows of server racks in a data center hall, status lights blinking"></video>
         <figcaption class="sw-ref" tabindex="0"><span class="lb hl">Data Centers</span><b>60% steel</b><em class="gfn">* data center developers flagging structural steel shortages</em><span class="sw-tip tipr">Steel&rsquo;s share of a <b>US data center&rsquo;s</b> building and contents by mass. Foundations are excluded &mdash; that is where most of the concrete goes. Data center developers are already flagging structural steel shortages.</span></figcaption>
       </figure>
     </div>
@@ -1360,9 +1348,16 @@ function animate(el){
   if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   el.animate([{opacity:0},{opacity:1}],{duration:600,easing:'ease-out'});
 }
+/* the Gap clips are ambience, not content: three 1080p decoders running behind slides nobody is
+   looking at is CPU charged to every scroll. They ride the same .in the observer sets and clears,
+   and never start under reduced motion, where the poster frame is the whole point. */
+function playIn(sec){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  sec.querySelectorAll('video').forEach(v=>{const p=v.play();if(p)p.catch(()=>{});});
+}
 function reveal(sec){
   if(!sec||sec.classList.contains('in'))return;
-  sec.classList.add('in');sec.querySelectorAll('[data-count]').forEach(animate);
+  sec.classList.add('in');sec.querySelectorAll('[data-count]').forEach(animate);playIn(sec);
 }
 /* the section covering the middle of the scrollport is the one being read. this is the authority for
    revealing, because intersectionRatio is not: once a slide is taller than the scrollport its ratio
@@ -1379,7 +1374,8 @@ const io=new IntersectionObserver(entries=>{entries.forEach(e=>{
   if(vis>=.5){cur=i;setActive(i);document.getElementById('pageno').textContent=padNum(slideNums[i])+' / '+lastNum;
     document.body.classList.toggle('on-cover',i===0);
     reveal(e.target);}
-  else if(!e.isIntersecting){e.target.classList.remove('in');}
+  else if(!e.isIntersecting){e.target.classList.remove('in');
+    e.target.querySelectorAll('video').forEach(v=>v.pause());}
 });},{root:deck,threshold:Array.from({length:21},(_,i)=>i/20)});
 secs.forEach(s=>io.observe(s));
 /* number keys: punch in a slide number (1–19) to jump; two digits commit instantly */

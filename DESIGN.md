@@ -143,7 +143,7 @@ itself, `class="glow"`, at `mix-blend-mode:screen` with `opacity` animated up fr
 |---|---|---|
 | `.pour` | steel | 3.4s smooth flare — the molten pour and sparks swell and settle |
 | `.hall` | aluminum | 7.2s slow breathe on the overhead lamps |
-| `.dc-l` / `.dc-r` | data centre | two clipped bands, 4.1s and 5.3s, `steps(1,end)` — the racks blink |
+| — | data centre | **not CSS**: a real 20s clip, see below |
 
 The mechanism to preserve if you touch this: **screen against a near-black backdrop is a
 no-op**, so the pulse is luminance-weighted for free. Only what is already bright in the frame
@@ -153,16 +153,23 @@ same two clip bands work on all three slides even though each crops the photogra
 a rack, the blend simply does nothing. Do not swap `screen` for an opacity fade of a brightened
 copy; that lifts the blacks and the images go milky.
 
-**The data centre needs one more step** (Alex, 2026-08-31: "I only want the LED lights to blink,
-not the whole frame"). That frame is not dark enough for screen alone — the corridor, the floor
-and the two amber doors are all mid-tone, so an unkeyed copy lifted the whole band and the panel
-read as flashing. The `.dc-*` copies are therefore luminance-keyed before they are screened:
-`brightness(.69) contrast(26) saturate(1.35)`. `brightness(b)` puts the threshold at 0.5 (so
-`b = 0.5/T`, here T ≈ 0.72 — above the lit floor and the doors, below the LEDs) and the hard
-`contrast()` crushes everything under it to black. What is left is an LED-only overlay, which is
-why those keyframes can peak near 1.0: the number now says how hard the lights come up, not how
-much of the frame lifts. Retune `b`, not the opacities, if the threshold ever drifts — and note
-`img.glow`, not `.glow`, because the base `#slide .strip img` filters have to be overridden.
+**The data centre is a video, not a still** (Alex, 2026-08-31: "it shouldn't be the whole bank of
+lights going on and off in sync, it should be different lights coming on and off slowly"). Two CSS
+attempts were made and both dropped. An unkeyed screen layer lifted the whole band, because that
+frame is not dark enough for screen to key itself — the corridor, the floor and the amber doors are
+all mid-tone. A luminance-keyed version (`brightness(.69) contrast(26)`) fixed that and did isolate
+the LEDs, but a clipped band can only ever pulse a whole region: it cannot blink one light while its
+neighbour stays lit, which is the thing that actually reads as a live room.
+
+`assets/gap-datacenter-racks.mp4` is a Seedance 2.5 image-to-video render off `gap-datacenter-racks.webp`
+(locked-off camera, LEDs only), ping-ponged with ffmpeg so the loop point is seamless — LED blinking
+is time-symmetric, so the reverse pass reads identically and there is no cut. 780 KB, h264, silent.
+Verified before shipping: a no-LED crop of the floor is unchanged frame to frame (no camera drift),
+and individual LEDs differ between t=0 and t=6. The still remains the `poster`, so print, the first
+paint and reduced motion all show exactly the photograph the deck had before.
+
+The clips ride the same `.in` gate as the CSS layers, through `playIn()`: three 1080p decoders
+running behind slides nobody is looking at is CPU charged to every scroll.
 
 Three details that are load-bearing:
 
