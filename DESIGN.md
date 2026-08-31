@@ -139,6 +139,17 @@ same two clip bands work on all three slides even though each crops the photogra
 a rack, the blend simply does nothing. Do not swap `screen` for an opacity fade of a brightened
 copy; that lifts the blacks and the images go milky.
 
+**The data centre needs one more step** (Alex, 2026-08-31: "I only want the LED lights to blink,
+not the whole frame"). That frame is not dark enough for screen alone — the corridor, the floor
+and the two amber doors are all mid-tone, so an unkeyed copy lifted the whole band and the panel
+read as flashing. The `.dc-*` copies are therefore luminance-keyed before they are screened:
+`brightness(.69) contrast(26) saturate(1.35)`. `brightness(b)` puts the threshold at 0.5 (so
+`b = 0.5/T`, here T ≈ 0.72 — above the lit floor and the doors, below the LEDs) and the hard
+`contrast()` crushes everything under it to black. What is left is an LED-only overlay, which is
+why those keyframes can peak near 1.0: the number now says how hard the lights come up, not how
+much of the frame lifts. Retune `b`, not the opacities, if the threshold ever drifts — and note
+`img.glow`, not `.glow`, because the base `#slide .strip img` filters have to be overridden.
+
 Three details that are load-bearing:
 
 - **Blink timings are irregular on purpose.** Evenly spaced keyframes read as a loading spinner.

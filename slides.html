@@ -194,15 +194,27 @@ body.on-cover .conf{opacity:0}
      reveal observer already sets: only the Gap slide on screen is actually running. */
   animation-play-state:paused}
 .in .glow{animation-play-state:running}
+/* The data centre frame is not dark enough for screen alone: the corridor, the floor and the
+   amber doors are all mid-tone, so an unkeyed copy lifts the whole band and the panel reads as
+   flashing. Key the copy on luminance first - brightness(b) puts the threshold at 0.5 (b=0.5/T)
+   and a hard contrast() crushes everything below it to black - so only the LEDs survive to be
+   screened back on. Threshold ~0.72: above the lit floor and the doors, below the LEDs. The base
+   img filters must be overridden, hence img.glow rather than .glow. */
+#gap .gapstrip img.glow.dc-l,#gap .gapstrip img.glow.dc-r,
+#gapalt .trip img.glow.dc-l,#gapalt .trip img.glow.dc-r,
+#gapmid .midstrip img.glow.dc-l,#gapmid .midstrip img.glow.dc-r{
+  filter:brightness(.69) contrast(26) saturate(1.35)}
 .glow.dc-l{clip-path:inset(0 56% 0 0);animation:dcblink-a 4.1s steps(1,end) infinite}
 .glow.dc-r{clip-path:inset(0 0 0 52%);animation:dcblink-b 5.3s steps(1,end) infinite .7s}
 .glow.pour{animation:pourflare 3.4s ease-in-out infinite}
 .glow.hall{animation:hallbreathe 7.2s ease-in-out infinite}
 /* irregular on purpose - evenly spaced blinks read as a loading spinner */
-@keyframes dcblink-a{0%,14%{opacity:0}16%,22%{opacity:.50}24%,51%{opacity:0}
-  53%,57%{opacity:.34}59%,76%{opacity:0}78%,83%{opacity:.50}85%,100%{opacity:0}}
-@keyframes dcblink-b{0%,9%{opacity:0}11%,16%{opacity:.42}18%,38%{opacity:0}
-  40%,44%{opacity:.55}46%,64%{opacity:0}66%,71%{opacity:.36}73%,100%{opacity:0}}
+/* the keyed copy is black except for the LEDs, so these can run near full - the number is how
+   hard the lights come up, not how much of the frame lifts */
+@keyframes dcblink-a{0%,14%{opacity:0}16%,22%{opacity:.90}24%,51%{opacity:0}
+  53%,57%{opacity:.60}59%,76%{opacity:0}78%,83%{opacity:.90}85%,100%{opacity:0}}
+@keyframes dcblink-b{0%,9%{opacity:0}11%,16%{opacity:.75}18%,38%{opacity:0}
+  40%,44%{opacity:1}46%,64%{opacity:0}66%,71%{opacity:.65}73%,100%{opacity:0}}
 @keyframes pourflare{0%,100%{opacity:0}22%{opacity:.30}38%{opacity:.12}61%{opacity:.34}79%{opacity:.16}}
 @keyframes hallbreathe{0%,100%{opacity:0}50%{opacity:.22}}
 /* a print is a still - nothing to blink, and a screen layer only washes it out */
