@@ -358,16 +358,34 @@ function renderGate(){
   svg.textContent='';
   svg.append(el('path',{d:WORLD_PATH,fill:'var(--ink2)',stroke:'var(--grid)','stroke-width':1}));
   const px=(lon,lat)=>[(lon+180)/360*1000,(90-lat)/180*500];
-  (g.locations||[]).forEach(loc=>{
-    const [cx,cy]=px(loc.lon,loc.lat);
-    const r=Math.min(20,6+Math.sqrt(loc.visits)*3);
-    const dot=el('g',{cursor:'pointer',tabindex:0});
-    dot.append(el('circle',{cx,cy,r,fill:loc.converted?'var(--wood-bright)':'#6b5a45',stroke:'var(--ink)','stroke-width':2,opacity:.92}));
-    const name=(loc.city?loc.city+', ':'')+loc.country;
-    const enter=e=>showTip(e,loc.visits+' hit'+(loc.visits===1?'':'s')+(loc.converted?' · converted':' · turned away'),name);
-    dot.addEventListener('pointermove',enter);
-    dot.addEventListener('pointerleave',hideTip);
-    svg.append(dot);
+  // Merge dots landing on the same point (centroid fallbacks collide), but
+  // keep outcomes distinct: converted and bounced render side by side.
+  const groups=new Map();
+  (g.locations||[]).forEach(l=>{
+    const k=l.lat.toFixed(1)+','+l.lon.toFixed(1);
+    const name=(l.city?l.city+', ':'')+l.country;
+    let grp=groups.get(k);
+    if(!grp){grp={lat:l.lat,lon:l.lon,bounced:0,converted:0,names:[]};groups.set(k,grp);}
+    grp[l.converted?'converted':'bounced']+=l.visits;
+    if(!grp.names.includes(name))grp.names.push(name);
+  });
+  [...groups.values()].forEach(grp=>{
+    const [cx,cy]=px(grp.lon,grp.lat);
+    const both=grp.bounced>0&&grp.converted>0;
+    [['converted','var(--wood-bright)',1],['bounced','#6b5a45',-1]].forEach(([kind,fill,side])=>{
+      const n=grp[kind];
+      if(!n)return;
+      const r=Math.min(20,6+Math.sqrt(n)*3);
+      const dx=both?side*(r*0.6+2):0;
+      const dot=el('g',{cursor:'pointer',tabindex:0});
+      dot.append(el('circle',{cx:cx+dx,cy,r,fill,stroke:'var(--ink)','stroke-width':2,opacity:.92}));
+      const enter=e=>showTip(e,n+' hit'+(n===1?'':'s')+(kind==='converted'?' · converted':' · turned away'),grp.names.join(' · '));
+      dot.addEventListener('pointermove',enter);
+      dot.addEventListener('focus',e=>{const bb=dot.getBoundingClientRect();enter({clientX:bb.x+bb.width/2,clientY:bb.y+20});});
+      dot.addEventListener('pointerleave',hideTip);
+      dot.addEventListener('blur',hideTip);
+      svg.append(dot);
+    });
   });
   const box=document.getElementById('gateips');
   box.textContent='';
