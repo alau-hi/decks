@@ -161,16 +161,18 @@ all mid-tone. A luminance-keyed version (`brightness(.69) contrast(26)`) fixed t
 the LEDs, but a clipped band can only ever pulse a whole region: it cannot blink one light while its
 neighbour stays lit, which is the thing that actually reads as a live room.
 
-`assets/gap-datacenter-racks.mp4` is a Seedance 2.5 image-to-video render off `gap-datacenter-racks.webp`
-(locked-off camera, LEDs only), ping-ponged with ffmpeg so the loop point is seamless — LED blinking
-is time-symmetric, so the reverse pass reads identically and there is no cut. The shipped clip is the
-second render (Alex, 2026-08-31: "more of the LEDs to change around") — the prompt asks for most LEDs
-on every rack to participate, each on its own clock; it more than doubles the measured per-second pixel
-change of the first render (0.38 vs 0.17 mean|Δ| on a downscaled gray diff). Rendered at 720p, upscaled
-to 1080p with ByteDance's AIGC preset, encoded crf 25. 2.2 MB, h264, silent. Verified before shipping:
-a no-LED crop of the floor is unchanged frame to frame (no camera drift), individual LEDs differ
-between t=0 and t=5, and the ping-pong seam is byte-exact. The still remains the `poster`, so print,
-the first paint and reduced motion all show exactly the photograph the deck had before.
+`assets/gap-datacenter-racks.mp4` is a Seedance 2.5 image-to-video render off a bright blue
+data-center corridor photo Alex supplied (`sources/datacenter image.jpg`, 2026-08-31) — chosen over
+the original dark warm-toned rack photo because it carries hundreds of visible LEDs, so far more of
+the frame can participate in the blinking (two earlier renders off the dark photo are superseded;
+the second's prompt-side fix — most LEDs on every rack, each on its own clock — carried over here).
+Locked-off camera, LEDs only, ping-ponged with ffmpeg so the loop point is seamless — LED blinking
+is time-symmetric, so the reverse pass reads identically and there is no cut. Rendered at 720p,
+upscaled to 1080p with ByteDance's AIGC preset, encoded crf 25. 2.6 MB, h264, silent. Verified
+before shipping: a no-LED crop of the glossy floor is unchanged frame to frame (no camera drift),
+individual LEDs differ between t=0 and t=5, and the ping-pong seam is byte-exact. The `poster`
+(`gap-datacenter-racks.webp`) is now the loop's exact first frame, so play start never pops; print,
+first paint and reduced motion show that same frame.
 
 The clips ride the same `.in` gate as the CSS layers, through `playIn()`: three 1080p decoders
 running behind slides nobody is looking at is CPU charged to every scroll.
