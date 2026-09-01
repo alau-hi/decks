@@ -31,7 +31,7 @@ Structure of `index.html`:
 
 ## Access gate & analytics (Vercel)
 
-The deployed deck is gated: every path except `/gate`, `/gate.html`, `/api/enter`, `/api/gatehit`, `/favicon.ico`, `/assets/og-cover.jpg`, `/press`, and `/press.html` requires a signed `sw_auth` cookie. The gate is env-aware: it activates only where `AUTH_SECRET` is configured (the production project), and `GATE_DISABLED=1` force-disables it — so staging projects deployed with no env vars serve the deck open, and deployments without `DATABASE_URL` accept but drop tracking beacons.
+The deployed deck is gated: every path except `/gate`, `/gate.html`, `/api/enter`, `/api/gatehit`, `/favicon.ico`, `/assets/og-cover.jpg`, `/press`, `/press.html`, and `/_vercel/*` requires a signed `sw_auth` cookie. The gate is env-aware: it activates only where `AUTH_SECRET` is configured (the production project), and `GATE_DISABLED=1` force-disables it — so staging projects deployed with no env vars serve the deck open, and deployments without `DATABASE_URL` accept but drop tracking beacons.
 
 The canonical deck URL is `/intro` — `/` redirects there (307 in practice, since `vercel.json`'s non-permanent redirect wins over the middleware's own 302 fallback on gated deployments), so the gate itself shows at `/intro`. `api/enter.mjs` lands signups on `/intro?v=<email>`, and the middleware's `?v=` viewer-identity redirect keys off `/intro`.
 
