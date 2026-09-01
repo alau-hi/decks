@@ -254,6 +254,14 @@ claims:
     conf: H
     source: SDI PR 2019 / BuildSteel (Sinton $1.9B, 3.0 Mtpa); Nucor updates (Apple Grove $2.7B -> ~$4.0B)
     slide: Economics
+  - claim: Nucor Apple Grove took 4 years from ground-breaking to first shipment
+    provenance: estimated
+    conf: M
+    source: provided by Alex 2026-09-01; consistent with announced-2021/ship-2027 register if
+      ground broke ~2023, but the groundbreaking date and actual first shipment are unverified
+      [needs source]. Note the visible line's past tense ("took") vs the 2027 expected-ship
+      register.
+    slide: Old Mills
   - claim: Smelter capex ~$4B (Century/EGA Inola)
     provenance: published
     conf: H
