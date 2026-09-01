@@ -163,10 +163,14 @@ neighbour stays lit, which is the thing that actually reads as a live room.
 
 `assets/gap-datacenter-racks.mp4` is a Seedance 2.5 image-to-video render off `gap-datacenter-racks.webp`
 (locked-off camera, LEDs only), ping-ponged with ffmpeg so the loop point is seamless — LED blinking
-is time-symmetric, so the reverse pass reads identically and there is no cut. 780 KB, h264, silent.
-Verified before shipping: a no-LED crop of the floor is unchanged frame to frame (no camera drift),
-and individual LEDs differ between t=0 and t=6. The still remains the `poster`, so print, the first
-paint and reduced motion all show exactly the photograph the deck had before.
+is time-symmetric, so the reverse pass reads identically and there is no cut. The shipped clip is the
+second render (Alex, 2026-08-31: "more of the LEDs to change around") — the prompt asks for most LEDs
+on every rack to participate, each on its own clock; it more than doubles the measured per-second pixel
+change of the first render (0.38 vs 0.17 mean|Δ| on a downscaled gray diff). Rendered at 720p, upscaled
+to 1080p with ByteDance's AIGC preset, encoded crf 25. 2.2 MB, h264, silent. Verified before shipping:
+a no-LED crop of the floor is unchanged frame to frame (no camera drift), individual LEDs differ
+between t=0 and t=5, and the ping-pong seam is byte-exact. The still remains the `poster`, so print,
+the first paint and reduced motion all show exactly the photograph the deck had before.
 
 The clips ride the same `.in` gate as the CSS layers, through `playIn()`: three 1080p decoders
 running behind slides nobody is looking at is CPU charged to every scroll.
