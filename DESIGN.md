@@ -138,6 +138,13 @@ throws its headline into the nav rail. Two consequences to respect when editing 
 
 ## The three Gap slides
 
+**Parked to one (Alex, 2026-09-01):** the original card-strip Gap (`#gap`) and the full-bleed
+alt (`#gapalt`) are parked — wrapped whole in `<template id="parked-gap-slides">` in
+`slides.html`, out of the deck/nav/numbering but kept intact. `#gapmid` (the former 2b) is now
+the deck's one Gap slide, numbered 02 and labeled "The Gap". To un-park: move the sections back
+out of the template and restore `data-num`/`data-nav` suffixes on all three. The notes below
+describe all three treatments and still apply to the parked pair.
+
 ### Live images (Alex, 2026-08-31)
 
 All three Gap slides animate their photographs. Each `<img>` is followed by a duplicate of

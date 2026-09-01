@@ -699,6 +699,10 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   <div class="draftmark">Draft version</div>
 </section>
 
+<!-- Parked 2026-09-01 (Alex): the original Gap slide and the full-bleed alt sit inside this
+     inert template - out of the deck, nav and numbering, but kept whole for un-parking:
+     move the sections back out of the template and restore data-num/data-nav on gapmid. -->
+<template id="parked-gap-slides">
 <section id="gap" class="dark" data-nav="The Gap">
   <div class="wrap">
     <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem);max-width:none">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
@@ -762,9 +766,10 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
     </div>
   </div>
 </section>
+</template>
 
 
-<section id="gapmid" data-num="2b" class="dark" data-nav="The Gap (b)">
+<section id="gapmid" class="dark" data-nav="The Gap">
   <div class="wrap">
     <h2 class="rv" style="font-size:clamp(1.6rem,2.9vw,2.5rem);max-width:none">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
     <p class="lead rv" style="margin-top:1rem;max-width:70ch">Data centers, reshored factories, housing, the grid. The build-out is here, and the key structural materials it runs on are increasingly not made here.</p>
