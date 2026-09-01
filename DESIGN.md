@@ -15,8 +15,12 @@ Alex, 2026-08-23 → 26.
   variables, never hardcoded colors. Per-material tints (rust / silver / white on the Gap
   stat labels) were tried on 2026-08-29 and reverted the same day — the deck keeps one accent.
 - **Type**: Fraunces for display/figures, Inter for text/labels, Montserrat for
-  small-caps band labels. Root font clamps with a **9px floor** — nothing on the deck may
-  render smaller (sub-.6rem styles carry their own `clamp(10px,…)`).
+  small-caps band labels and the SUPERWOOD legend keys on the cost chart (Alex asked for
+  Gotham; Montserrat is the loaded stand-in). Root font clamps with a **9px floor** — nothing
+  on the deck may render smaller (sub-.6rem styles carry their own `clamp(10px,…)`).
+- **SVG font gotcha**: `.ucchart svg text` sets Fraunces via CSS, which beats any
+  `font-family` presentation attribute on a `<text>` node. To change a chart label's face,
+  give it a class and a CSS rule (see `.uclab`, `.uckey`) — an attribute alone silently loses.
 
 ## Format rules (Alex-set, load-bearing)
 
