@@ -152,7 +152,7 @@ body.on-cover .conf{opacity:0}
    own column template and spans the first two cells, so the row ends where the aluminum panel does
    and stays there if the columns are ever retuned - change one template, change both. */
 #gapalt .tripfoot{position:absolute;left:0;right:0;bottom:0;z-index:3;
-  display:grid;grid-template-columns:1fr 1fr 1.06fr;padding-bottom:3.4vh;pointer-events:none}
+  display:grid;grid-template-columns:1fr 1fr 1.06fr;padding-bottom:max(3.4vh,54px);pointer-events:none}
 #gapalt .tripfoot .gapfoot{grid-column:1/3;max-width:none;margin-top:0;padding:0 2.4rem 0 6vw;
   pointer-events:auto;text-shadow:0 .12em .7em rgba(20,13,7,.95)}
 #gapalt .tripcopy{min-width:0}
