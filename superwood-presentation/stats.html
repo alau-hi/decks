@@ -344,7 +344,7 @@ function renderDevices(){
 document.getElementById('devtabs').addEventListener('click',e=>{
   const b=e.target.closest('.dtab');if(!b)return;
   mixTab=b.dataset.tab;
-  document.querySelectorAll('.dtab').forEach(t=>t.classList.toggle('sel',t===b));
+  document.querySelectorAll('#devtabs .dtab').forEach(t=>t.classList.toggle('sel',t===b));
   renderDevices();
 });
 /* -- gate watch -------------------------------------------------------- */
