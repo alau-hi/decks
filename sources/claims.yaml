@@ -389,6 +389,18 @@ claims:
       with the parent register's SM2-scale power <4 MW.
 
   # -- Old Mills: community pushback + imported ore (added per Alex 2026-08-23) --
+  - claim: Inola's board of trustees unanimously imposed a 60-day moratorium on smelter approvals (June 2026, after ~6 hours of public comment)
+    provenance: published
+    conf: H
+    source: Oklahoma Voice / KOSU, 2026-07-01
+    url: https://oklahomavoice.com/2026/07/01/inola-hits-pause-on-smelter-after-weighing-resident-pushback-trump-support/
+    slide: Old Mills
+  - claim: Ranchers fear permitted hydrogen fluoride would poison bluestem prairie hay and cattle; long-term fluoride exposure damages animals' teeth and bones; objections also cover power use and EGA's 60% UAE-state ownership
+    provenance: published
+    conf: H
+    source: The Frontier, 2026
+    url: https://www.readfrontier.org/stories/with-trumps-backing-mike-mazzei-embraced-the-smelter-inola-residents-arent-convinced/
+    slide: Old Mills
   - claim: Inola smelter faces a court challenge from the Oklahoma Attorney General (petition filed in Rogers County District Court, June 2026)
     provenance: published
     conf: H
