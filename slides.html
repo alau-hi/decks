@@ -3468,6 +3468,10 @@ secs.forEach((sec,i)=>{
   dotsBox.appendChild(b);railBtns.push(b);
 });
 dotsBox.appendChild(sep());
+/* the counter names the appendix section on its sub-slides, so "22 / 39 · Technology"
+   agrees with the rail, which highlights the section title while a sub-slide is in view */
+const groupOf=i=>{if(!('navhide' in secs[i].dataset))return '';let t=i;while(t>0&&!railBtns[t])t--;return secs[t].dataset.nav||'';};
+const counterText=i=>{const g=groupOf(i);return padNum(slideNums[i])+' / '+lastNum+(g?' · '+g:'');};
 function setActive(i){
   let t=i;while(t>0&&!railBtns[t])t--;   /* a hidden sub-slide highlights its section title */
   railBtns.forEach(b=>{if(b)b.classList.toggle('active',+b.dataset.idx===t);});
@@ -3518,7 +3522,7 @@ function currentSection(){
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{
   const i=secs.indexOf(e.target);
   const vis=Math.max(e.intersectionRatio,e.intersectionRect.height/deck.clientHeight);
-  if(vis>=.5){cur=i;setActive(i);document.getElementById('pageno').textContent=padNum(slideNums[i])+' / '+lastNum;
+  if(vis>=.5){cur=i;setActive(i);document.getElementById('pageno').textContent=counterText(i);
     document.body.classList.toggle('on-cover',i===0);
     reveal(e.target);}
   else if(!e.isIntersecting){e.target.classList.remove('in');
@@ -3529,7 +3533,7 @@ secs.forEach(s=>io.observe(s));
 let numBuf='',numT;
 function commitNum(){const i=numIdx.get(String(parseInt(numBuf,10)));numBuf='';clearTimeout(numT);
   if(i!==undefined)jumpTo(i);
-  document.getElementById('pageno').textContent=padNum(slideNums[i!==undefined?i:cur])+' / '+lastNum;}
+  document.getElementById('pageno').textContent=counterText(i!==undefined?i:cur);}
 window.addEventListener('keydown',e=>{
   if(e.metaKey||e.ctrlKey||e.altKey)return;
   if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(1);}
