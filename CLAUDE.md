@@ -57,7 +57,7 @@ Vercel's own SSO deployment protection is intentionally OFF for this project —
 
 ### Deploying — CRITICAL rule
 
-**Never run `vercel` from the repo root.** Always `cd superwood-presentation` first (the `deploy:*` npm scripts assume that cwd), in the same shell command as the deploy. A root-level `vercel --yes` auto-creates a brand-new PUBLIC project named `decks` that serves the entire repo ungated — including the 90MB master PPTX. This has happened three times. Telltale symptoms: deploy output says "Failed to link alau-hi/decks" or aliases to `decks-*.vercel.app` instead of `sw.inventwood.net`. Recovery: `vercel project rm decks`, delete the root `.vercel/` directory, redeploy from `superwood-presentation/`.
+**Never run `vercel` from the repo root — or from any subdirectory of a deck.** Always `cd` into the deck directory *in the same shell command* as the deploy; the shell cwd persists between tool calls, so a `cd exports/design-canvas` from an earlier step silently sends the next `vercel --prod` to a brand-new public project named after that folder (this happened on 2026-09-02: a `design-canvas` project was auto-created and had to be removed). Always `cd superwood-presentation` first (the `deploy:*` npm scripts assume that cwd), in the same shell command as the deploy. A root-level `vercel --yes` auto-creates a brand-new PUBLIC project named `decks` that serves the entire repo ungated — including the 90MB master PPTX. This has happened three times. Telltale symptoms: deploy output says "Failed to link alau-hi/decks" or aliases to `decks-*.vercel.app` instead of `sw.inventwood.net`. Recovery: `vercel project rm decks`, delete the root `.vercel/` directory, redeploy from `superwood-presentation/`.
 
 ### New machine setup (team members)
 
