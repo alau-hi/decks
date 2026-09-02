@@ -259,6 +259,13 @@ claims:
     conf: H
     source: SDI PR 2019 / BuildSteel (Sinton $1.9B, 3.0 Mtpa); Nucor updates (Apple Grove $2.7B -> ~$4.0B)
     slide: Economics
+  - claim: US cement imports 2025 - Canada $514M, Turkey $485M, Vietnam $207M
+    provenance: published
+    conf: M
+    source: OEC bilateral cement profile, per Alex 2026-09-01 (OEC blocks automated
+      verification; figures as provided)
+    url: https://oec.world/en/profile/bilateral-product/cement/reporter/usa
+    slide: The Gap
   - claim: Nucor Apple Grove took 4 years from ground-breaking to first shipment
     provenance: estimated
     conf: M
