@@ -243,6 +243,15 @@ claims:
     source: 750K t/yr published [H] / 2.70 t/m3 standard aluminum density
     slide: Economics
 
+  - claim: 7,000 SUPERMILL TWO equivalents would replace 50% of the steel used in the world today - roughly the amount of steel used in construction
+    provenance: internal
+    conf: M
+    source: deck-canonical per Alex 2026-09-02 (Fleet slide footnote). Sanity check, not a
+      derivation - world crude steel output is ~1.9 Gt/yr and worldsteel puts buildings +
+      infrastructure at roughly half of steel demand, so the two halves of the sentence are
+      consistent with each other; the 7,000-mill conversion itself rests on the SUPERMILL TWO
+      volume basis flagged elsewhere in this register (the 20,000 m3 vs 36M sf conflict).
+    slide: The Fleet
   - claim: Over 20 species of wood tested as SUPERWOOD feedstock, including bamboo and waste wood
     provenance: internal
     conf: H (internal canonical)
