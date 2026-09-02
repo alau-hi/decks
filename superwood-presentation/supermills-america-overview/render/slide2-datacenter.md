@@ -1,0 +1,109 @@
+# Slide 2 — data center imagery
+
+Generated 2026-08-29, Higgsfield `soul_location`, 16:9. Why generated rather than reused:
+every data-center image in the deck family (`dc-hall2.jpg`, `app_hall_servers.webp`,
+`alloc-datacenter.jpg`, `data-center-render.jpg`) is a SUPERWOOD wood-hall render — the
+aspiration, not the problem. A wood data hall on the problem slide gives the answer away
+eight slides early.
+
+## gap-datacenter-hall.webp — SHIPPING (both Gap slides, from 2026-08-29)
+
+Fifth and final frame. The path, and the two wrong lessons drawn along the way:
+
+1. **Campus exterior** — no racks at all. Alex: "find an image which shows a lot of server racks."
+2. **Cold aisle** — racks, unmistakably, but the only cool frame in a warm band. Alex: "find
+   another data center image that can match the other images better."
+3. **Clerestory hall** — matched on hue by washing everything sepia. Alex: "the data center
+   shouldn't look like rust."
+4. **Amber walls** — kept the cabinets black and made the *lights* amber. Alex: "is that really a
+   modern AI data center? the red/orange lighting is not appropriate." **He was right.** Rows of
+   amber and red light in a real hall read as fault indication or emergency lighting; a modern AI
+   facility is neutral white LED, cold-aisle containment, green-white status LEDs, dense GPU racks.
+   The frame harmonised beautifully and was not a data centre.
+5. **Neutral hall (shipped)** — an authentic contemporary compute hall: linear white ceiling
+   fixture, long row of black cabinets, green status LEDs, tiled floor.
+
+> Photorealistic modern AI data center, long row of black GPU server cabinets with perforated
+> doors, neutral white overhead lighting from linear fixtures, dense orderly fiber cabling in
+> overhead trays, small green and white status LEDs, no coloured mood lighting, dark floor,
+> restrained realistic documentary photograph of a hyperscale compute hall, 16:9
+
+**The corrected lesson.** I twice wrote down a rule that was wrong. "Match on hue" produced rust;
+"match on light rather than hue" produced a data centre lit like a furnace. The rule that actually
+holds: **match on value — how dark the frame is — and never adjust the subject to fit the band.**
+The steel and aluminum panels are dark images with small bright incidents; this one now is too,
+and it stays a truthful photograph of the thing it claims to show. When the subject genuinely will
+not harmonise, the honest move is to accept the difference, not to restyle the subject until an
+expert in the room stops believing it.
+
+Candidates and their in-band strips: `alt-datacenter.html`. Two authentic alternates kept in
+assets: `dc-opt9-containment.webp` (containment aisle, brighter — punches a hole in the band) and
+`dc-opt4-cold-aisle.webp` (authentic but heavily blue).
+
+## gap-datacenter-amber.webp — REJECTED 2026-08-29 (amber lighting reads as fault indication)
+
+Third and final frame for this panel. The path there is the useful part:
+
+1. **Campus exterior** — no racks at all. Alex: "find an image which shows a lot of server racks."
+2. **Cold aisle** — racks, unmistakably, but the only cool frame in a warm band. Alex: "find
+   another data center image that can match the other images better."
+3. **Clerestory hall** — matched on hue by washing everything sepia. Alex: "the data center
+   shouldn't look like rust." Correct: warming the *subject* until it harmonised turned a data
+   hall into a foundry.
+4. **Amber walls (shipped)** — Alex: "it's still fundamentally a lot of black boxes, but maybe
+   the lights can be more compatible?" That is the resolution. Keep the cabinets black, because
+   a data centre *is* black boxes, and match the band on **light** rather than on hue.
+
+> Photorealistic wide view down a data center hot aisle, twin walls of black server cabinets in
+> neutral dark grey, rows of warm amber indicator lights running the length of both walls like
+> furnace glow, warm light spilling across the floor from overhead fixtures, exposed steel
+> trusses, dark atmospheric haze, no cool colours, cinematic industrial photography, 16:9
+
+The lesson for any future panel in this band: match on light, not on colour grade. Seven
+candidates and their side-by-side strips are in `alt-datacenter.html`.
+
+## gap-datacenter-racks.webp — superseded 2026-08-29 (cool cold aisle)
+
+Alex asked for a data-center image showing a lot of server racks; the campus exterior below
+showed none. Three candidates were generated and compared *in place* in the strip rather than
+on their own — the deciding factor was tonal fit, not subject:
+
+| Candidate | Verdict |
+|---|---|
+| Elevated view over many rows | Best rack density, but bright white-and-blue — it jumped out of a band whose other two panels are dark and warm |
+| **Head-on cold aisle** | **Shipped.** Same darkness and warm centre pool as the steel and aluminum panels, LED banks read clearly as racks even at strip size |
+| High wide-angle hyperscale floor | Warm and vast, but at strip size the racks read as dark troughs, not equipment |
+
+> Photorealistic symmetrical head-on view down a data center cold aisle, tall black server racks
+> packed floor to ceiling on both sides, many further rows of racks visible through the aisle
+> openings, dense grids of blue and green status LEDs, steel cable trays overhead, warm amber
+> light at the vanishing point, deep one-point perspective, cinematic industrial photography, 16:9
+
+The LED banks sit at the left and right edges of the frame. The full-bleed slide crops it to a
+tall third, which lands on the empty aisle and reads as a doorway — so that panel alone carries
+`object-position:20% center` to bias onto the left bank, plus `brightness(1.08)` because it is
+inherently darker than the two panels beside it. Change the image, recheck both.
+
+## dc-exterior-dusk.png — superseded, still used by alt-slide2.html
+
+> Photorealistic aerial view of a large conventional hyperscale data center campus at dusk,
+> long low windowless steel-clad halls with standing-seam metal roofs, rows of grey rooftop
+> chillers, a fenced yard of diesel generators and electrical transformers, substation and
+> high-voltage transmission lines running to the site, asphalt service roads and parking,
+> flat rural landscape, warm amber and orange sunset sky, deep shadows, cinematic industrial
+> photography, 16:9
+
+## dc-hall-conventional.png — used in variant B of the review file only
+
+> Photorealistic interior of a conventional data center hall, long cold aisle between rows of
+> black steel server racks with small blue and green status lights, galvanized steel cable
+> trays and conduit overhead, exposed structural steel roof deck and beams, painted concrete
+> floor, cool equipment glow contrasted with warm amber overhead lighting at the far end,
+> deep perspective, cinematic industrial photography, 16:9
+
+Cooler than the deck palette by design — it is the one frame that should not look warm.
+
+## Not generated
+
+`gap-steel.jpg` and `gap-aluminum.jpg` are copies of `../supermill-presentation/assets/`
+`ind-steel-pour.jpg` and `ind-alum-potline.jpg`. Already ours; no licensing to clear.

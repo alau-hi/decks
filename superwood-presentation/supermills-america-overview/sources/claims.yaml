@@ -1,0 +1,647 @@
+# Claims register — Super Mills America deck
+# New claims introduced by this deck only. Everything else (capex, EBITDA, ROE,
+# deposits, pipeline, cost roadmap, properties, feedstock-in-48-states) traces to
+# ../../investor-overview/sources/claims.yaml.
+
+claims:
+  - claim: ~1 in 5 tons of US finished steel is imported (18% of apparent consumption in 2025; 23% in 2024)
+    provenance: published
+    source: American Iron and Steel Institute, "Steel Imports Down 12.6% in 2025" (Feb 2026)
+    url: https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/
+    slide: The Gap
+    note: >-
+      2025 share fell from 23% under Section 232 tariffs (25% from Mar 2025, 50% from
+      Jun 2025). Printed as 20% from 2026-08-27 (Alex's rounding of the 2024-25 pair),
+      then REVERTED TO THE SOURCED 18% on 2026-08-29 at Alex's direction. 18% is AISI's
+      2025 figure; 23% was 2024. Corroborated independently by USGS MCS 2026: 19 Mt of
+      finished steel imports against 95 Mt apparent consumption (2025e) = 20.0% - the
+      two agree to within rounding on different denominators.
+
+  # -- Aluminum import share. CORRECTED 2026-08-26 after Alex flagged the 85% as a
+  #    misread. It was: the Aluminum Association's "~85%" is the RECYCLED share of
+  #    US-made aluminum, not an import share. Both readings are researched below;
+  #    only the primary-aluminum one is printed. --
+  - claim: ~85% of the primary (unwrought) aluminum the US uses is imported
+    provenance: derived from published
+    conf: H
+    source: >-
+      The Aluminum Association / Wittsend, "Powering Up American Aluminum" white paper
+      (May 2025), pp. 3: "aggregate U.S. primary aluminum demand will rise from 4.4 to
+      5.1 million metric tons by 2029" and "Today, the U.S. has four aluminum smelters
+      remaining, producing 683,500 metric tons." 4.4 Mt demand less 0.6835 Mt domestic
+      primary = 3.72 Mt imported = 84.5%.
+    url: https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf
+    local: sources/PoweringUpAluminum_WhitePaper_2025.pdf
+    corroboration: >-
+      USGS MCS 2026 puts US primary production at 660 kt (2025e) against 4,400 kt of
+      crude-and-semifabricated imports. The same white paper states the import gap as
+      "around 4 million metric tons of raw (or unwrought) aluminum," which on the same
+      4.4 Mt denominator reads ~90%. The honest band is 85-90%; ~85% is the conservative
+      end and is what prints.
+    slide: The Gap
+    note: >-
+      MUST be labeled "primary" (or "new") aluminum. Applied to all aluminum it is wrong
+      by a wide margin - see the next entry. Resolves the open question logged in
+      ../../investor-overview (2026-08-24): the 85% Alex supplied is real and it is the
+      primary-aluminum share, not bauxite/alumina.
+
+  - claim: US net import reliance for aluminum (all forms) is 60% of apparent consumption
+    provenance: published
+    conf: H
+    source: >-
+      USGS Mineral Commodity Summaries 2026 - Aluminum (Feb 2026): net import reliance
+      60% (2025e), 62% (2024), 63% (2023).
+    url: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-aluminum.pdf
+    local: sources/mcs2026-aluminum.pdf
+    slide: The Gap (sources panel only)
+    note: >-
+      Basis change: MCS 2026 stopped netting exported scrap out of the calculation
+      (footnote 3), which is why the same 2024 figure reads 62% here and 47% in MCS 2025.
+      Quote the MCS 2026 basis and do not mix the two series. This is the figure
+      ../../investor-overview prints on its Vs Steel supply row - the two decks are
+      consistent because they are measuring different things.
+
+  - claim: NOT AN IMPORT SHARE - the Aluminum Association's "~85%" is the recycled share of US-made aluminum
+    provenance: published
+    conf: H
+    source: >-
+      aluminum.org/PowerUp: "recycled or 'secondary' production now accounts for ~85% of
+      U.S.-made aluminum"; the white paper phrases it as "over 80% of total raw aluminum
+      supply produced in the U.S. today."
+    url: https://www.aluminum.org/PowerUp
+    slide: none - do not print
+    note: >-
+      Recorded so the misread cannot recur. Arithmetic check on USGS MCS 2026 (2025e):
+      secondary 1,600 + 2,000 = 3,600 kt against 660 kt primary = 84.5% of domestic
+      output. The coincidence that the recycled share and the primary-import share are
+      both ~85% is what made the original claim look sourced.
+
+  - claim: 4 US primary aluminum smelters operating, down from 33 in 1980
+    provenance: published
+    conf: H
+    source: >-
+      Aluminum Association PowerUp white paper (May 2025): "In 1980, the U.S. produced
+      over 4.65 million metric tons at 33 sites with a nameplate capacity of 4.8 million
+      metric tons... Today, the U.S. has four aluminum smelters remaining, producing
+      683,500 metric tons. The primary aluminum segment... is operating at 53% of
+      installed capacity."
+    url: https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf
+    local: sources/PoweringUpAluminum_WhitePaper_2025.pdf
+    corroboration: >-
+      USGS MCS 2026: six smelters exist in five States, of which Hawesville KY (2022) and
+      New Madrid MO (2024) are temporarily shut - so four operating, matching the
+      Aluminum Association. The White House Section 232 proclamation (Feb 2025) gives 52%
+      capacity utilization for 2024 against the Association's 53%.
+    slide: The Gap
+    note: >-
+      The old "one source says five" doubt is resolved: aluminum.org's landing page says
+      "24 to 4," counting from a later year than the white paper's 1980 count of 33. Date
+      the 33 to 1980 whenever it prints. Mt. Holly SC announced a >50,000 t/yr restart in
+      Aug 2025 for mid-2026 - recheck the count of four after mid-2026.
+
+  - claim: America's first new primary aluminum smelter since 1980 — Century Aluminum / EGA JV, Inola OK; ~$4B; $500M DOE award; >1 GW continuous power; still waiting on a power deal as of 2026
+    provenance: published
+    source: US DOE (2025); Canary Media (2026)
+    url: https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980
+    url2: https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power
+    slide: Old Mills
+
+  - claim: The US is a net EXPORTER of iron ore - imports are ~11% of apparent consumption
+    provenance: published
+    conf: H
+    source: >-
+      USGS Mineral Commodity Summaries 2026 - Iron Ore (2025e): imports for consumption
+      4.0 Mt, exports 7.8 Mt, apparent consumption 37.0 Mt, domestic production 38.0 Mt
+      from eight open-pit mines in Michigan, Minnesota and Utah. Net import reliance is
+      printed as "E" - net exporter. Import sources 2021-24: Brazil 58%, Canada 21%,
+      Sweden 10%, Chile 4%.
+    url: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-iron-ore.pdf
+    local: sources/mcs2026-ironore.pdf
+    slide: none - register only (asked by Alex 2026-08-26)
+    note: >-
+      Sharpens the gap story: America's steel problem is NOT ore, it is finished and
+      semifinished product (18% of apparent consumption imported, 2025) and the cost and
+      pace of building mills. Contrast with aluminum, where both the metal (~85% of
+      primary) and the Inola smelter's bauxite feedstock are imported. Do not let a slide
+      imply US steel depends on foreign ore.
+
+  - claim: A new US mine averages ~29 years from discovery to production, second-longest in the world
+    provenance: published
+    source: S&P Global Market Intelligence, "Mine Development Times - The US in Perspective" (Jul 2024)
+    url: https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds
+    slide: Old Mills, Fast x Fast
+
+  - claim: Mass-timber projects run 20-30% faster construction schedules than steel and concrete
+    provenance: triangulated
+    source: ULI Urban Land; case-study reviews (avg ~20% across seven case studies, 12.7 vs 15.4 months; other studies up to 25-30%)
+    url: https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber
+    slide: Fast x Fast
+    note: Range spans studies; 40% claims exist but are not used. SUPERWOOD analogized to mass timber (prefab, light, timber detailing).
+
+  - claim: Excess capacity exists in US sawmills
+    provenance: asserted-internal
+    source: Alex Lau, 2026-08-23 (industry knowledge)
+    slide: Fast x Fast
+    note: Not yet externally sourced. Plausible given 2023-2025 sawmill curtailments on weak housing demand, but find a utilization figure before print use.
+
+  - claim: ~60% of a US data center is steel; operators concerned about structural steel shortage
+    provenance: inherited / asserted-internal
+    conf: L
+    source: ../../investor-overview/sources/claims.yaml (registered there as unverified, conf L, NEEDS SOURCE)
+    slide: The Gap
+    basis: >-
+      Alex 2026-08-27: the 60% denominator is the BUILDING AND ITS CONTENTS EXCLUDING
+      CONCRETE - foundations and slab, where most of the concrete goes, are out of scope.
+      That basis was never stated on the slide or in either register, which is why the
+      claim kept reading as "60% of a data center by mass" and failing review.
+      PRINTED FROM 2026-08-29: the basis now appears on both Gap slides, in the hover
+      tooltip on the Data Centers stat - so the slide no longer states the figure without
+      its denominator. The share itself is still Alex-asserted and unsourced; the tooltip
+      explains what it measures, not where it comes from.
+    note: >-
+      TRACED 2026-08-27. Origin is ../superwood-datacenter slide 16 ("About 60% of the mass
+      of a typical US data center is steel"), where reviews/REVIEW-2026-07-24.md flagged it
+      three times as unsourced and "almost certainly wrong" ON THE ALL-IN MASS BASIS
+      (concrete dominates). It entered investor-overview as unverified/conf L with
+      "NEEDS SOURCE - load-bearing for the entire data-center appendix" and was inherited
+      here without ever being sourced. On Alex's ex-concrete basis the review's objection
+      does not apply.
+      NO PUBLISHED SOURCE STATES A STEEL SHARE ON ANY BASIS. Searched 2026-08-27: LCA
+      literature, Schneider Electric Scope 3 white paper (carbon only, no mass inventory),
+      Gensler Research Institute 2023 (carbon only), Vertiv modular white paper (gated,
+      no quantities on the public page), WEF Dec 2025 (403). What does exist, per MW:
+      structural steel 500-1,000 t per 10 MW facility and concrete 5,000-10,000 m3 per
+      10 MW (~12,000-24,000 t at 2.4 t/m3) - arXiv 2509.21312 (Sep 2025) citing Hasan
+      et al. 2022 and Sharma et al. 2023 [preprint, secondary citations, conf M]. A
+      "~250 t/MW" figure circulates in trade press with no traceable origin [conf L,
+      do not print]. Until the ex-concrete share is either sourced or derived bottom-up
+      with stated assumptions, print it as Alex-asserted or not at all.
+
+  - claim: Hybrid SUPERWOOD-glulam beams (SUPERWOOD outer laminations, ~10% of section) increase bending stiffness ~75% and bending strength ~100%
+    provenance: inherited
+    source: ../../investor-overview/slides.html Hybrid Beams appendix / parent claims register
+    slide: Demand (path-to-structural strip)
+
+  - claim: Structural application engineering underway with Fast + Epp and Don Davies
+    provenance: asserted-internal
+    source: Alex Lau, 2026-08-23
+    slide: Demand (path-to-structural strip)
+    note: Davies is a deck advisor (fmr. President, Magnusson Klemencic). Confirm Fast + Epp engagement is public/citable before wide distribution.
+
+  # Economics comparison table (Economics slide) - per-cell provenance and confidence.
+  # Confidence markers are register-only; the slide does not print them (per Alex).
+
+  # -- Time to build row --
+  - claim: SUPERMILL build ~2 years
+    provenance: internal
+    conf: M
+    source: internal build class (2028-2030 SM2 schedule); panel-plant analogs 1.5-2.5 yr
+    slide: Economics
+  - claim: Minimill build 2.5-3 yrs, recent builds stretching to 6
+    provenance: published
+    conf: H
+    source: mills comparison.csv - Sinton 2019-2022; Apple Grove 2021-2027 (5.5-6 yr)
+    slide: Economics
+  - claim: Smelter build ~5 yrs; first new US smelter in 45 years
+    provenance: published
+    conf: H
+    source: US DOE 2025; Inola announced 2025, planned end of decade
+    slide: Economics
+
+  # -- Power row --
+  - claim: SUPERMILL TWO-scale plant requires <4 MW
+    provenance: asserted-internal
+    conf: M-H
+    source: Alex Lau, 2026-08-23; independently consistent with FEL2 basis (~900-930 kWh/t x ~30K t/yr = ~27 GWh/yr = ~3.2 MW average draw)
+    slide: Economics
+    note: TEM-vs-FEL2 energy reconciliation still open in mills repo, but Alex's figure matches the FEL2 arithmetic.
+  - claim: Minimill ~150 MW class (EAF melt 350-500 kWh/t at ~3M t/yr)
+    provenance: derived
+    conf: M
+    source: melt intensity published [H]; site average derived - melt only, so understates minimill power (conservative direction for our contrast)
+    slide: Economics
+  - claim: Smelter >1 GW continuous
+    provenance: published
+    conf: H
+    source: Canary Media 2026 (Inola)
+    slide: Economics
+
+  # -- Volume output row (m3/yr) --
+  - claim: SUPERMILL ~24,000 m3/yr (36M sf at 7.2mm average board thickness)
+    provenance: derived
+    conf: M
+    source: 36M sf/yr internal capacity [M] x 7.2mm conversion (parent register) = 24,080 m3
+    slide: Economics
+  - claim: Minimill ~347,000 m3/yr (~3M short tons at 7.85 t/m3)
+    provenance: derived
+    conf: H
+    source: 3.0 Mtpa published [H] x 0.907 mt/st / 7.85 t/m3 (parent register conversion)
+    slide: Economics
+  - claim: Smelter ~278,000 m3/yr (750K t at 2.70 t/m3)
+    provenance: derived
+    conf: H
+    source: 750K t/yr published [H] / 2.70 t/m3 standard aluminum density
+    slide: Economics
+
+  - claim: Over 20 species of wood tested as SUPERWOOD feedstock, including bamboo and waste wood
+    provenance: internal
+    conf: H (internal canonical)
+    source: deck-canonical per Alex 2026-09-01
+    slide: SUPERMILLS
+  # -- Cost to build row --
+  - claim: SUPERMILL capex $300M
+    provenance: internal
+    conf: H (internal canonical)
+    source: deck-canonical per Alex 2026-08-23 (investor-overview register)
+    slide: Economics
+  - claim: Minimill capex $1.9B (SDI Sinton) to $4.0B (Nucor Apple Grove board-approved Feb 2025)
+    provenance: published
+    conf: H
+    source: SDI PR 2019 / BuildSteel (Sinton $1.9B, 3.0 Mtpa); Nucor updates (Apple Grove $2.7B -> ~$4.0B)
+    slide: Economics
+  - claim: Portland cement (HS 252329) to the USA - Turkey ~7M t/yr at ~$55-58/t vs Canada ~3.6M t/yr at ~$110-119/t (2024-25); Turkey leads by tonnage ~2:1, led by value in 2025
+    provenance: derived from published
+    conf: H (unit values derived; FOB basis - freight not included)
+    source: WITS / UN Comtrade live pages 2026-09-01; full table in
+      cement-portland-imports-usa-wits.md
+    url: https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2025/tradeflow/Exports/partner/USA/product/252329
+    local: sources/cement-portland-imports-usa-wits.md
+    slide: none - register only (asked by Alex 2026-09-01)
+  - claim: 2023 cement CLINKER (HS 252310) exports to the USA - EU $40.6M, Canada $39.7M, France $39.3M, Turkey $12.8M
+    provenance: published
+    conf: H
+    source: WITS / UN Comtrade, read from the live page 2026-09-01; full table in
+      cement-clinker-imports-2023-wits.md. Clinker is a subset of HS4 2523 cement -
+      do not mix with the OEC finished-cement figures below.
+    url: https://wits.worldbank.org/trade/comtrade/en/country/All/year/2023/tradeflow/Exports/partner/USA/product/252310
+    local: sources/cement-clinker-imports-2023-wits.md
+    slide: none - register only (asked by Alex 2026-09-01, "keep handy")
+  - claim: US cement imports 2025 - Canada $514M, Turkey $485M, Vietnam $207M
+    provenance: published
+    conf: H
+    source: OEC bilateral cement profile, read from the live page 2026-09-01 - "In 2025,
+      the main origins of United States' Cement imports were Canada ($514M), Turkey
+      ($485M), Vietnam ($207M), Mexico ($108M), and Egypt ($71.9M)"; 2025 total $1.76B
+    url: https://oec.world/en/profile/bilateral-product/cement/reporter/usa
+    slide: The Gap
+  - claim: Nucor Apple Grove took 4 years from ground-breaking to first shipment
+    provenance: estimated
+    conf: M
+    source: provided by Alex 2026-09-01; consistent with announced-2021/ship-2027 register if
+      ground broke ~2023, but the groundbreaking date and actual first shipment are unverified
+      [needs source]. Note the visible line's past tense ("took") vs the 2027 expected-ship
+      register.
+    slide: Old Mills
+  - claim: Smelter capex ~$4B (Century/EGA Inola)
+    provenance: published
+    conf: H
+    source: Canary Media / Oklahoma Energy Today 2026
+    slide: Economics
+
+  # -- Profit per year row --
+  - claim: SUPERMILL ~$208M/yr plant EBITDA (65% of $320M projected)
+    provenance: derived (internal inputs)
+    conf: M
+    source: arithmetic on deck-canonical figures; projection, not actuals
+    slide: Economics
+  - claim: Minimill ~$0.6-1.2B/yr EBITDA over the cycle (SDI $197/t 2024 to $411/t 2021, x 3M t)
+    provenance: derived
+    conf: M
+    source: SDI company-wide per-ton EBITDA published [H/M] applied to a single 3 Mtpa plant
+    note: Company-wide margin used as plant proxy - flag if challenged.
+    slide: Economics
+  - claim: Smelter ~$340M/yr at record 2025 margins (~17%), cyclical
+    provenance: estimated
+    conf: M for the record-year figure, L as a through-cycle expectation
+    source: 750K t x ~$2,700/t = ~$2.0B revenue x ~17% (Century FY2025 - net sales $2.5B, adj EBITDA $425M)
+    url: https://centuryaluminum.com/investors/press-releases/press-release-details/2026/Century-Aluminum-Company-Reports-Fourth-Quarter-2025-Results/default.aspx
+    note: 2025 was tariff-supported; smelter margins swing to near-zero in troughs [M].
+    slide: Economics
+
+  # -- Return on investment row --
+  - claim: SUPERMILL 175-200% ROE with ~75% project debt; capex ~1.4x annual EBITDA
+    provenance: internal / derived
+    conf: M (model)
+    source: deck-canonical ROE; $300M / $208M = 1.44x
+    slide: Economics
+  - claim: Minimill capex 1.5-7.6x annual EBITDA across the cycle
+    provenance: derived
+    conf: M
+    source: mills comparison.csv (2021 vs 2024 SDI endpoints)
+    slide: Economics
+  - claim: Smelter capex ~13x annual EBITDA at 2025 margins
+    provenance: derived
+    conf: M
+    source: $4B / ~$340M (above)
+    slide: Economics
+
+  # ================= Jon Strimling feedback pass, 2026-08-29 =================
+  # Source doc: feedback/NIC_Deck_Feedback_2026-08-29.docx (Jon's notes, Alex's
+  # bracketed replies and margin comments). New printed claims registered below.
+
+  - claim: SUPERWOOD is stronger than steel, half the weight of aluminum, scalable to half the cost of steel
+    provenance: asserted-internal
+    conf: L
+    source: Jon Strimling, deck feedback 2026-08-29; printed on the SUPERMILLS slide at his direction
+    slide: SUPERMILLS
+    note: >-
+      THREE claims in one line and none is yet registered with a basis.
+      "Stronger than steel" inherits the parent register's ASTM A36 footnote and is the
+      deck's oldest known consistency problem (investor-overview REFERENCES logs it stated
+      five ways on four bases). "Half the weight of aluminum" needs a density pair -
+      aluminum is 2.70 t/m3, so this asserts SUPERWOOD at ~1.35; confirm against the
+      properties register before this ships to anyone technical. "Scalable to half the cost
+      of steel" is the cost-roadmap endpoint (ChipMill $1,310/m3 against steel at market),
+      so it is a projection, not a current fact - the word "scalable" is carrying that and
+      should not be dropped in any future edit.
+
+  - claim: ">7,000 SUPERMILL TWO equivalents of global demand, collectively over $500B in combined revenue"
+    provenance: derived (internal inputs)
+    conf: L
+    source: Jon Strimling 2026-08-29; >7,000 figure inherited from the investor-overview register (estimated, conf L)
+    slide: none - register only (printed on The Fleet 2026-08-29, removed the same day)
+    note: >-
+      Alex 2026-08-29 (margin comment): the $500B assumes roughly a 4x price reduction with
+      CHIPMILLS versus SUPERMILL TWO, and he does not want that assumption on the slide.
+      Arithmetic check: 7,000 x $360M at SM2 pricing is ~$2.5T, so $500B is consistent with
+      a ~4-5x lower realised price. The assumption is load-bearing and lives only here -
+      anyone reworking this slide must not "correct" $500B upward against SM2 pricing.
+
+  - claim: The fleet figure assumes eventual replacement of more than 50% of the world's current steel production
+    provenance: asserted-internal
+    conf: L
+    source: Jon Strimling 2026-08-29
+    slide: none - register only (removed from The Fleet by Alex, 2026-08-29)
+    note: >-
+      Briefly printed as a footnote on The Fleet, then removed. It remains the assumption the
+      >7,000-mill figure rests on, alongside the ~4x CHIPMILL price reduction behind the $500B -
+      so BOTH load-bearing assumptions behind that slide's headline now live only here. Anyone
+      asked to defend the $500B in diligence needs this entry.
+
+  - claim: SUPERMILL TWO volume output is ~20,000 m3/yr
+    provenance: internal
+    conf: M
+    source: Jon Strimling 2026-08-29 ("actually 20k, not 24k"); confirmed by Alex 2026-08-29
+    slide: Appendix
+    note: >-
+      SUPERSEDES the 24,000 m3/yr previously printed. UNRESOLVED ARITHMETIC: 24,000 was not
+      an independent figure, it was derived - 36M sf at 7.2 mm average board thickness gives
+      24,077 m3. Moving to 20,000 breaks that identity, so one of the other two must move:
+      either output is ~30M sf at 7.2 mm, or it is 36M sf at ~6.0 mm. The second choice
+      cascades, because the same 7.2 mm converts the whole $/sf price ladder to $/m3 on the
+      Cost Roadmap ($5.50/sf = $8,222/m3 only at 7.2 mm). The appendix now prints 20,000 with
+      the "(36M sf)" parenthetical REMOVED so the deck states no contradiction, but 36M sf is
+      still printed on the Cost Roadmap and The Fleet. Alex to pick which figure moves.
+
+  - claim: SUPERWOOD prices are per-market, not one product at three prices
+    provenance: internal
+    conf: M
+    source: >-
+      Alex 2026-08-29, replying to Jon: $15.00/sf is premium interior (mullions, blinds,
+      luxury furniture structures); $5.50/sf interior board; $3.00/sf commodity structural.
+    slide: Cost Roadmap
+    note: >-
+      Jon: "$15 out of the gate for structural boards is aggressive - that price has been
+      proposed to customers and they are walking away. Exterior board holds at $25/sf."
+      Alex's instruction was to RELABEL rather than reduce, which is what shipped: the ladder
+      keeps its numbers and now names the market each one belongs to. The $25/sf exterior
+      price is NOT printed anywhere and is registered here only as context.
+
+  - claim: First SUPERMILL electrical load is under 5 MW
+    provenance: internal
+    conf: M
+    source: Alex Lau, margin comment 2026-08-29
+    slide: none yet - Fast x Fast when added
+    note: >-
+      Jon estimated 5-10 MW in the same document; Alex's comment is the later and narrower
+      instruction - "I can say < 5 MW electrical load, and stay silent on the exact grid
+      connection number." Use <5 MW and do not print a grid-connection figure. Consistent
+      with the parent register's SM2-scale power <4 MW.
+
+  # -- Old Mills: community pushback + imported ore (added per Alex 2026-08-23) --
+  - claim: Inola smelter requires the power capacity of Boston (~11 TWh/yr)
+    provenance: published
+    conf: H
+    source: Canary Media 2026 - "enough electricity to power the city of Boston or Nashville
+      annually"; Boston chosen per Alex 2026-09-01 (replacing an earlier Tulsa framing)
+    url: https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power
+    slide: Old Mills
+  - claim: Inola's board of trustees unanimously imposed a 60-day moratorium on smelter approvals (June 2026, after ~6 hours of public comment)
+    provenance: published
+    conf: H
+    source: Oklahoma Voice / KOSU, 2026-07-01
+    url: https://oklahomavoice.com/2026/07/01/inola-hits-pause-on-smelter-after-weighing-resident-pushback-trump-support/
+    slide: Old Mills
+  - claim: Ranchers fear permitted hydrogen fluoride would poison bluestem prairie hay and cattle; long-term fluoride exposure damages animals' teeth and bones; objections also cover power use and EGA's 60% UAE-state ownership
+    provenance: published
+    conf: H
+    source: The Frontier, 2026
+    url: https://www.readfrontier.org/stories/with-trumps-backing-mike-mazzei-embraced-the-smelter-inola-residents-arent-convinced/
+    slide: Old Mills
+  - claim: Inola smelter faces a court challenge from the Oklahoma Attorney General (petition filed in Rogers County District Court, June 2026)
+    provenance: published
+    conf: H
+    source: Oklahoma AG press release; Manufacturing Dive; ENR
+    url: https://oklahoma.gov/oag/news/newsroom/2026/june/drummond-files-action-to-block-inola-aluminum-smelter.html
+    slide: Old Mills
+  - claim: 3,400+ verified resident petition signatures against the Inola smelter
+    provenance: published
+    conf: M-H
+    source: Change.org petition count as reported in press coverage (Radio Oklahoma News, TriplePundit, 2026)
+    slide: Old Mills
+    note: Petition counts move; refresh before print use.
+  - claim: Muscogee (Creek) National Council unanimously approved a resolution opposing the smelter
+    provenance: published
+    conf: H
+    source: press coverage of the council resolution, 2026
+    slide: Old Mills
+  - claim: Inola smelter permitted to emit more than a ton of hydrogen fluoride per day
+    provenance: published
+    conf: M
+    source: reported in AG-filing coverage and environmental explainers (News9, 2026)
+    slide: Old Mills
+    note: Verify against the actual air permit before print use.
+  - claim: Inola feedstock is imported - bauxite from EGA's Guinea operations via the port of New Orleans, refined to alumina and barged to Inola; EGA (UAE state-owned) holds 60%
+    provenance: published
+    conf: M-H
+    source: project descriptions (Frontier Map, Discovery Alert, OK Dept of Commerce, 2026); EGA/GAC Guinea operations [H]
+    slide: Old Mills
+    note: The "vertically integrated, an ocean away" line is rhetorical framing of this sourced supply chain (Alex, 2026-08-23).
+
+  - claim: US smelters closed/curtailed on power prices - Century Hawesville KY idled Jul 2022 over "soaring energy prices" (described by Century as largest producer of high-purity primary aluminum in North America); Ravenswood WV closed 2015 (energy costs); Mt. Holly SC cut to half capacity 2015 (power pricing)
+    provenance: published
+    conf: H
+    source: Century Aluminum history (Wikipedia summary of company/press reports); Mining.com column "Power trumps tariffs as another US aluminum smelter shuts" (2026)
+    url: https://www.mining.com/web/column-power-trumps-tariffs-as-another-us-aluminum-smelter-shuts/
+    slide: Old Mills
+    note: '"Those prices aren''t coming down" is Alex''s framing [asserted-internal, M], directionally supported by data-center-driven grid strain coverage.'
+
+  - claim: Nucor Apple Grove sheet mill ran 2021->2027 announce-to-ship
+    provenance: published
+    conf: H
+    source: mills comparison.csv / Nucor updates (announced Sep 2021, 2027 shipments per IndexBox construction update)
+    slide: Old Mills
+  - claim: No US smelter built since 1980 because domestic metal could not compete with imports smelted on cheaper power
+    provenance: derived
+    conf: M-H
+    source: closure record (Hawesville/Ravenswood/Mt. Holly, all power-cost-driven [H]) + Aluminum Association PowerUp framing; causal phrasing per Alex 2026-08-23
+    slide: Old Mills
+    note: Replaces the earlier "decades between builds" framing, which implied building is inherently slow - Alex flagged that the drought was competitiveness-driven, not capability-driven.
+
+  - claim: Aluminum is on the federal Critical Minerals List (60 minerals, final 2025 list; listed since 2022)
+    provenance: published
+    conf: H
+    source: Federal Register, "Final 2025 List of Critical Minerals" (Nov 7, 2025)
+    url: https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals
+    slide: The Gap
+
+  - claim: A SUPERMILL's site asks are light - <4 MW grid draw at standard industrial service (no transmission interconnection queue), process heat self-fueled by wood residues, no smelter-class emissions to permit
+    provenance: internal / derived
+    conf: M
+    source: <4 MW per Alex (consistent with FEL2 mass & energy balance, Rev F 2026-08-19 - electric ~900-930 kWh/t, boiler self-fueled, gas make-up ~0); permitting-gates-timelines framing per Alex 2026-08-23
+    slide: Fast x Fast
+    note: '"No smelter-class emissions" is comparative, not absolute - the residue boiler still needs a state air permit (likely minor source). Interconnection queues for GW-class loads running years is widely reported [M]; do not print a specific queue duration without a source.'
+
+  - claim: 10+ year development timelines for incumbent heavy-materials capacity
+    provenance: published/derived
+    conf: M-H
+    source: mills comparison.csv - integrated steel ~10 yr full complex (Formosa 4.5 yr to first iron) [published]; US mine ~29 yr (S&P Global) [H]; Apple Grove 6 yr for a minimill sprint [H]; smelter development incl. site/power/permitting exceeds its ~5-yr construction window
+    slide: Old Mills
+    note: Title-level claim; the card's bullets carry the causes (power, logistics, cyclicality), each separately sourced above.
+
+  # Appendix table rework (2026-08-24, per Alex)
+  - claim: SUPERMILL develop + build <3 years
+    provenance: asserted-internal
+    conf: M
+    source: Alex Lau 2026-08-24; consistent with light site asks (<4 MW, minor-source permitting) + ~2-yr build class
+    slide: Appendix comparison
+  - claim: Steel minimill and aluminum smelter develop + build 10+ years
+    provenance: asserted-internal / derived
+    conf: M
+    source: Alex Lau 2026-08-24; anchors - integrated steel ~10 yr full complex [published], Apple Grove 6 yr announce-to-ship (development precedes announcement) [H], Inola first metal ~2030 with power deal open [H]
+    slide: Appendix comparison
+  - claim: Minimill needs a ~300 MVA-class grid connection; one EAF draws 200-300 MVA with severe flicker
+    provenance: published/derived
+    conf: M
+    source: Primetals / MHI Spectra / trade engineering sources - EAF up to 200-300 MVA per furnace, flicker/harmonics drive interconnection design ("the worst machine you can connect to a grid")
+    slide: Appendix comparison
+    note: Replaces the earlier ~150 MW average-draw figure with connection capacity, per Alex.
+  - claim: Unlevered cash yield (annual EBITDA / capex) - SUPERMILL ~69% (model), minimill ~15-30% at ~$4B build cost, smelter ~9% record year
+    provenance: derived
+    conf: M (SUPERMILL model basis), M (minimill), M/L (smelter through-cycle)
+    source: arithmetic on registered figures - 208/300; 600-1200/4000; 340/4000
+    slide: Appendix comparison
+    note: Apples-to-apples design per Alex 2026-08-24 - common unlevered metric replaces mixed ROE/payback rows; ROE shown for SUPERMILL only in the footnote; bases (model vs realized) labeled per cell.
+
+  - claim: SUPERMILL long-lead equipment ~18 months; construction 6-12 months after site development; <3 years develop + build end to end
+    provenance: asserted-internal
+    conf: M-H
+    source: Alex Lau, 2026-08-25
+    slide: Appendix comparison, Fast x Fast
+    note: Supersedes the earlier "~2-yr build class" phrasing for the build itself; the ~2-year figure remains valid as the overall build-cycle class (long-lead + construction overlap).
+
+  - claim: 700+ paid online deposits
+    provenance: internal
+    conf: H (internal canonical)
+    source: Alex Lau, 2026-08-25
+    slide: Running, Demand
+    note: Supersedes the 800+ figure inherited from the investor-overview register for this deck. Parent decks (investor-overview, aaron-deck) still print 800+ - flag for alignment.
+
+  - claim: SUPERMILL ONE was designed as a subscale pilot facility for SUPERMILL TWO
+    provenance: asserted-internal
+    conf: H (internal)
+    source: Alex Lau, 2026-08-26
+    slide: Cost Roadmap (ucnote), The Fleet (SM One card)
+    note: Printed as the explanation for the 20% -> 65% EBITDA step; the driver is scale, per Alex.
+
+  - claim: SUPERMILL TWO economics assume selling into a blend of premium and structural markets; projected revenue reflects a blended realized price above the structural-board assumption in the cost roadmap chart
+    provenance: asserted-internal
+    conf: H (internal)
+    source: Alex Lau, 2026-08-26
+    slide: Cost Roadmap (ucnote)
+    note: Reconciles 36M sf x $5.50/sf structural-board assumption ($198M) with the $320M projected revenue printed on Demand and The Fleet.
+
+  - claim: SuperMill One building is 90,000 sf, ramping to 1M sf/yr of capacity
+    provenance: asserted-internal
+    conf: H (internal)
+    source: Alex Lau, 2026-08-25 (1M sf/yr capacity already registered via parent)
+    slide: Running (photo caption)
+
+  - claim: "~22% of US cement consumption met by imports (net import reliance)"
+    provenance: published
+    conf: H
+    source: USGS Mineral Commodity Summaries, January 2025, Cement - net import reliance 22% of apparent consumption in 2024e (22% in 2022-23); ~25M t cement + clinker imported; leading sources Turkey 32%, Canada 22% (2020-23). https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf
+    slide: The Gap
+    note: Added per Alex 2026-08-26 ("America imports over 20% of the cement it uses") - printed as ~22% with the USGS figure rather than the looser >20%.
+
+  # Materials-gap background notes (2026-08-26, per Alex) - researched for the
+  # reference document; NOT printed on a slide yet.
+  - claim: ">95% of US titanium sponge consumption is met by imports (net import reliance); record ~42,000 t imported 2023, Japan 77-86% leading source; majority of US titanium metal use is aerospace"
+    provenance: published
+    conf: H
+    source: USGS Mineral Commodity Summaries, January 2024, Titanium and Titanium Dioxide - net import reliance >95% of apparent consumption 2021-2023e (>50% in 2019-20); only active US sponge plant is electronic-grade, ~500 t/yr capacity (Salt Lake City); Henderson NV (12,600 t/yr) idled since 2020. https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf
+    slide: The Gap (stat row + gnote, added 2026-08-26)
+  - claim: "US imports roughly 30,000 t/yr of carbon fiber - ~40% of ~75,000 t consumption - concentrated in intermediate/high-modulus aerospace grades from Japan"
+    provenance: triangulated
+    conf: M (volumes), M-H (aerospace-grade dependency direction)
+    source: ORNL/NREL "Global Carbon Fiber Composites Supply Chain Competitiveness Analysis" (Das et al., May 2016; sources/Pub61706.pdf, supplied by Alex) - USITC trade data show imports met 66-86% of North American (mostly US) carbon fiber demand 2008-2012; Japan 43% + Europe 38% of 2012 US imports; report cautions the HTS code bundles CF with intermediates so the import share is likely overstated; aerospace-grade small-tow CF manufacturing "most concentrated in Japan" (top three firms headquartered there), Toray dominant incl. the $6B Boeing 787 prepreg contract. Astute Analytica market report (~30 kt imports, ~40% of consumption, current-era but non-primary); Lexington Institute (Grant, Apr 2025) - outside Hexcel, "most of the remaining critical aerospace carbon fiber market is served by Japanese firms"; Nandina REM (Oct 2025, supplied by Alex) - defense reliance on Japanese/European proprietary fibers, GAO visibility gap. https://www.nandinarem.com/post/carbon-fibre-a-core-us-defence-supply-chain-vulnerability
+    slide: The Gap (aside table - "Carbon fiber 66-86%", the ORNL/NREL 2008-12 import share; sources panel carries the vintage caveat)
+    note: >-
+      The ORNL/NREL report is government-grade provenance but 2012-vintage data; the ~30 kt / ~40% figures are current-era but market-research grade. Printable now: "imports have historically met a majority of US carbon fiber demand (66-86%, 2008-12)" [conf: H for the period stated] and the aerospace-grade Japan concentration [conf: H]. A current-year import share still lacks a primary source.
+  - claim: "US import dependence on minerals is rising: imports exceeded half of apparent consumption for 54 nonfuel mineral commodities in 2025 (100% reliant for 16), up from 46 (100% for 15) in 2024"
+    provenance: published
+    conf: H
+    source: USGS Mineral Commodity Summaries 2026, p.11 (2025 data) and MCS 2025, p.10 (2024 data), quoted verbatim from both. Politico Pro / E&E News coverage (Feb 9, 2026, paywalled) supplied by Alex reports the same release. https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf
+    slide: The Gap (gnote, added 2026-08-26; all-nonfuel-commodities basis printed)
+    note: On the Critical Minerals List basis the 2025 figures are 13 at 100% plus 20 more at >=50%; the 16/54 figures are the all-nonfuel-commodities basis. Use one basis consistently if printed.
+
+  # Appendix feedstock row (added per Alex 2026-08-26)
+  - claim: Suitable wood for a SUPERMILL is abundant in almost every state
+    provenance: inherited / asserted-internal
+    conf: H (internal)
+    source: Alex Lau, 2026-08-26; restates the feedstock-in-48-states claim (parent register)
+    slide: Appendix comparison (feedstock row)
+  - claim: RETIRED 2026-09-01 - "80% of US pig iron is imported" removed from the deck at
+      Alex's direction; only ~25% of US pig iron is imported, and 80% is the share of the
+      MERCHANT pig iron market. The slide cell now carries only the recycled-steel
+      constraint line.
+    provenance: asserted-internal (corrected)
+    conf: M
+    source: Alex Lau, 2026-08-26; corrected by Alex 2026-09-01
+    corroboration: >-
+      USITC Executive Briefing on Trade (Oct 2022, "Russia, Ukraine, and Pig Iron
+      Supply") - domestic merchant pig iron production covers only ~5% of US
+      consumption; Brazil supplies the majority of imports (>60%, and rising after
+      Russian supply was sanctioned). The 80% printed is the conservative end.
+      https://www.usitc.gov/publications/332/executive_briefings/ebot_russia_ukraine_and_pig_iron_supply.pdf
+    slide: Appendix comparison (feedstock row)
+    note: >-
+      "Emerging constraints on recycled steel" is Alex's framing (industry knowledge,
+      not yet externally sourced) - consistent with busheling price volatility already
+      held in reserve in STORY.md. Find a scrap-availability source before wide
+      distribution if challenged.
+  - claim: 100% of smelter-grade bauxite is imported - no domestic smelter-grade supply
+    provenance: published (scoped)
+    conf: H
+    source: >-
+      USGS Mineral Commodity Summaries 2025 - Bauxite and Alumina: US net import
+      reliance >75% of apparent consumption; the small domestic output (Alabama,
+      Arkansas, Georgia) is bauxite and bauxitic clays for NONmetallurgical uses, so
+      metallurgical (smelter-grade) bauxite is entirely imported. Import sources
+      2020-23: Jamaica 67%, Turkey 9%, Guyana 8%, Australia 6%.
+      https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-bauxite-alumina.pdf
+    slide: Appendix comparison (feedstock row)
+    note: >-
+      Alex supplied "100% of bauxite imported"; printed scoped to smelter-grade, which
+      is the USGS-defensible form (overall bauxite reliance prints as >75% because
+      nonmetallurgical domestic output exists).
+
+  - claim: Plant-level EBITDA 45-65%, depending on the blend of commodity structural vs premium products
+    provenance: asserted-internal
+    conf: H (internal)
+    source: Alex Lau, 2026-08-26
+    slide: SUPERMILLS (machine-class stats + gnote footnote)
+    note: >-
+      Supersedes the flat 65% on the SUPERMILLS slide only. The 65% elsewhere
+      (Cost Roadmap table, Fleet card, Appendix ~$208M = 65% of $320M) is the
+      SUPERMILL TWO-specific projection and stands.

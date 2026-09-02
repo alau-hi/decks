@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Data centre panel — seven candidates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1f150c;--cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;
+  --wood-bright:#cda165;--gold:#e2b877;--line:rgba(228,210,180,.16)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:clamp(13px,.5vw + .5vh + 4px,20px);scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+.head{max-width:76rem;margin:0 auto;padding:2.2rem 9rem 1rem 2.2rem}
+.head h1{font-family:'Fraunces',serif;font-weight:400;font-size:1.8rem;line-height:1.15}
+.head p{color:var(--cream-dim);font-size:.8rem;line-height:1.6;margin-top:.6rem;max-width:64ch}
+.head .keys{margin-top:.6rem;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.dock{position:fixed;right:1.1rem;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;gap:.45rem;align-items:flex-end}
+.dock a{font-family:'Montserrat',sans-serif;font-weight:600;font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.2rem .5rem;border-radius:99px;transition:color .2s,background .2s}
+.dock a:hover{color:var(--cream-dim)}
+.dock a.active{color:var(--ink);background:var(--wood-bright)}
+.opt{max-width:76rem;margin:0 auto;padding:1rem 9rem 2rem 2.2rem;scroll-margin-top:1rem}
+.olabel{display:flex;align-items:baseline;gap:.8rem;margin-bottom:.5rem}
+.olabel .k{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);white-space:nowrap}
+.olabel .n{font-size:.74rem;color:var(--muted);line-height:1.5}
+.olabel .pick{color:var(--gold);font-weight:600}
+/* the strip exactly as slide 2 builds it: three abutting thirds, then the stat row */
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-radius:2px;overflow:hidden;max-width:62rem}
+.strip figure{position:relative;aspect-ratio:3/2;overflow:hidden}
+.strip img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) brightness(.96)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;max-width:62rem;margin-top:1rem}
+.gr{border-top:1px solid rgba(228,210,180,.14);padding:.6rem 2.6rem 0 0}
+.gr span{display:block;font-weight:600;font-size:.82rem;color:var(--cream-dim)}
+.gr b{display:block;font-family:'Fraunces',serif;font-weight:400;font-size:1.25rem;color:var(--gold);margin-top:.15em}
+.hl{color:var(--wood-bright)}
+.note{max-width:76rem;margin:0 auto;padding:0 9rem 4rem 2.2rem;color:var(--muted);font-size:.76rem;line-height:1.65}
+.note b{color:var(--cream-dim);font-weight:600}
+.note p + p{margin-top:.55rem}
+</style>
+</head>
+<body>
+
+<nav class="dock" aria-label="Candidates">
+  <a href="#oA">Hot aisle</a>
+  <a href="#oB">Liquid-cooled</a>
+  <a href="#oC">Containment</a>
+  <a href="#oD">Rack fronts</a>
+  <a href="#oE">Steel frame</a>
+  <a href="#oEd">Steel frame ′</a>
+  <a href="#o4">In the deck</a>
+  <a href="#o6">Amber walls</a>
+  <a href="#o7">Amber aisle</a>
+  <a href="#o1">Clerestory</a>
+  <a href="#o2">Warm aisle</a>
+  <a href="#o3">Rack faces</a>
+  <a href="#o4">Cold aisle</a>
+  <a href="#o5">Elevated</a>
+  <a href="#verdict">Verdict</a>
+</nav>
+
+<header class="head">
+  <h1>Data centre panel &mdash; alternatives</h1>
+  <p>Each one shown where it actually has to work: as the third of the three abutting thirds on
+     slide 2, beside the steel pour and the aluminum potline, at the same crop and the same
+     brightness the deck applies. A photograph that is striking alone can still break a band.</p>
+  <p><b style="color:var(--cream-dim)">A&ndash;E are the new set</b>, all authentic modern facilities
+     &mdash; neutral white lighting, containment, green-white status LEDs. What the strips show, which
+     I did not expect: <b style="color:var(--cream-dim)">only D sits in the band</b>. A real modern hall
+     is a <em>brightly lit</em> room, so photographing one honestly tends to produce a bright frame, and
+     four of these five punch a hole between the pour and the potline. E&prime; is E with the exposure
+     pulled down to test whether that is fixable by treatment. The cold aisle currently in the deck
+     follows, then the earlier rounds kept for the record.</p>
+  <div class="keys">← → to move between candidates</div>
+</header>
+
+<section class="opt" id="oA">
+  <div class="olabel"><span class="k">A · Hot aisle</span>
+    <span class="n">Behind the racks: rear doors open on dense bundled fiber, busway and cable ladder overhead. The most "working facility" of the set &mdash; infrastructure rather than a showroom.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-optA-hot-aisle.webp" alt="Hot aisle with bundled fiber"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="oB">
+  <div class="olabel"><span class="k">B · Liquid-cooled</span>
+    <span class="n">Coolant distribution units and stainless manifolds feeding GPU pods. The most specifically <em>AI</em> of the five &mdash; liquid cooling is what distinguishes a 2026 compute hall from a 2016 one.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-optB-liquid-cooled.webp" alt="Liquid-cooled GPU pods"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="oC">
+  <div class="olabel"><span class="k">C · Containment</span>
+    <span class="n">Down a containment corridor, glass doors either side, dark ceiling void above. Quiet and architectural; closest in geometry to the potline&rsquo;s receding aisle.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-optC-containment.webp" alt="Cold aisle containment corridor"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="oD">
+  <div class="olabel"><span class="k">D · Rack fronts</span>
+    <span class="n">Close on perforated black doors and their grids of white-green status LEDs, falling off into a dark hall. Densest read at strip size, least sense of the building.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-optD-rack-faces.webp" alt="Rack fronts with status LEDs"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="oE">
+  <div class="olabel"><span class="k">E · Steel frame</span>
+    <span class="n">Long-span steel roof trusses dominating the frame, racks below in shadow. <b style="color:var(--cream-dim)">On-message:</b> the stat under it says 60% steel, and this is the only candidate that shows the steel.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-optE-steel-frame.webp" alt="Data hall under exposed steel roof structure"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="oEd">
+  <div class="olabel"><span class="k">E&prime; · Steel frame, darkened</span>
+    <span class="n">The same frame at <code>brightness(.55)</code> &mdash; exposure only, the subject untouched. It improves a lot and it still does not seat: even pulled down this far it reads as the brightest of the three panels, because the room itself is white. Worth seeing, but the honest verdict is that treatment does not rescue it.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-optE-steel-frame.webp" alt="Data hall steel frame, darkened" style="filter:saturate(.8) brightness(.55)"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="o6">
+  <div class="olabel"><span class="k">6 · Amber walls</span>
+    <span class="n">Twin walls of black cabinets with rows of amber indicator lights running their length, warm glow at the far end. The cabinets stay black &mdash; a data centre <em>is</em> black boxes &mdash; and the lighting is what matches the band.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/gap-datacenter-amber.webp" alt="Data centre aisle with amber indicator lights"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="o7">
+  <div class="olabel"><span class="k">7 · Amber aisle</span>
+    <span class="n">Same idea, wider and quieter: black cabinets, amber LED runs, a figure in the aisle for scale. Reads as one aisle rather than two walls, so slightly less dense at strip size.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-opt7-amber-aisle.webp" alt="Data centre aisle with amber LEDs and a figure"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="o1">
+  <div class="olabel"><span class="k">1 · Clerestory</span>
+    <span class="n">Warm gold light through high windows, rows receding to a far wall, a figure for scale. Tonally close to the band, but Alex’s objection lands: the sepia wash makes it read as rust, not as a data centre.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-opt1-clerestory.webp" alt="Data hall lit through clerestory windows"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="o2">
+  <div class="olabel"><span class="k">2 · Warm aisle</span>
+    <span class="n">Amber light pooling down a central aisle, rack faces and cabling visible. Warm like 1 but reads more explicitly as equipment rather than rows of dark mass.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-opt2-warm-aisle.webp" alt="Warm-lit data centre aisle"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="o3">
+  <div class="olabel"><span class="k">3 · Rack faces</span>
+    <span class="n">Three-quarter view, tungsten light on the cabinet faces. Reads well full-size, but at strip scale it collapses into amber haze and dark shapes &mdash; the least legible of the three warm frames, not the most, which is the opposite of what it promised.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-opt3-rack-faces.webp" alt="Server rack faces in warm light"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="o4">
+  <div class="olabel"><span class="k">4 · Cold aisle</span>
+    <span class="n"><span class="pick">Currently in the deck.</span> Unmistakably a data centre &mdash; dense LED banks either side. Cool, and that is a property of the subject: a real hall reads cool. Alex&rsquo;s pick after five rounds of trying to make it warm.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-opt4-cold-aisle.webp" alt="Data centre cold aisle"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<section class="opt" id="o5">
+  <div class="olabel"><span class="k">5 · Elevated</span>
+    <span class="n">Highest rack density of the five and the clearest at a glance &mdash; and the worst fit. White floor and blue cast punch a hole in the band.</span></div>
+  <div class="strip">
+    <figure><img src="assets/gap-steel.webp" alt="Steel pour"></figure>
+    <figure><img src="assets/gap-aluminum.webp" alt="Aluminum potline"></figure>
+    <figure><img src="assets/dc-opt5-elevated-rows.webp" alt="Elevated view over rows of racks"></figure>
+  </div>
+  <div class="stats">
+    <div class="gr"><span class="hl">Steel</span><b>18% imported</b></div>
+    <div class="gr"><span>Primary <span class="hl">Aluminum</span></span><b>85% imported</b></div>
+    <div class="gr"><span class="hl">Data Centers</span><b>60% steel</b></div>
+  </div>
+</section>
+
+<div class="note" id="verdict">
+  <p><b>The trade-off was tone against legibility</b> &mdash; the warmer the frame, the less obviously
+     it said "server racks" &mdash; and 1&ndash;5 all sat somewhere on that line. 6 and 7 get off it:
+     keep the cabinets black, and make only the <em>lights</em> warm. A data centre is a lot of black
+     boxes; the fix was never to warm the boxes up until they looked like rust, it was to match the
+     band on light instead of on hue.</p>
+  <p><b>The cold aisle (4) is in the deck now.</b> Of the new set, only two are real contenders once
+     you see them in the band: <b>D</b>, which is dark as shot and reads unmistakably as racks, and &mdash; with a caveat
+     &mdash; <b>E</b>, the only frame that shows the steel the stat underneath is about. E needs its
+     exposure pulled hard, and E&prime; shows that even then it stays the brightest panel of the three.
+     So: <b>D is the only clean swap</b> in this set, and the cold aisle already in the deck remains
+     the better frame than any of A, B, C or E. <b>A</b>, <b>B</b> and <b>C</b> I would drop: all three
+     are honest photographs of brightly lit rooms, and all three punch a hole in the band. B is a
+     shame, because liquid-cooling manifolds are the clearest visual marker of a 2026 AI hall.</p>
+  <p style="opacity:.75"><b>Earlier rounds, kept for the record.</b> 6 was in the deck briefly Of the original five: <b>2 was where I landed</b> &mdash; warm enough to belong beside the potline, with enough rack
+     face and cabling to be read correctly at the size it actually runs. 1 is the alternative: the
+     best tonal match of the five and the better frame if the band reading as one image matters more
+     than the panel reading on its own. 3 I would drop &mdash; it looked promising full-size and did
+     not survive the crop.</p>
+  <p>All five are generated, so none carries a licence. Whichever you pick ships as
+     <code>gap-datacenter-&lt;name&gt;.webp</code> &mdash; a new filename, so returning viewers
+     don't get a cached older frame. Say the number.</p>
+</div>
+
+<script>
+const secs=[...document.querySelectorAll('.opt')], links=[...document.querySelectorAll('.dock a')];
+function spy(){
+  const h=innerHeight, bottom=scrollY+h>=document.body.scrollHeight-4;
+  let i=0;
+  if(bottom){i=links.length-1;}
+  else{secs.forEach((s,n)=>{if(s.getBoundingClientRect().top<=h*0.4)i=n;});}
+  links.forEach((a,n)=>a.classList.toggle('active',n===i));
+  return Math.min(i,secs.length-1);
+}
+addEventListener('scroll',spy,{passive:true}); addEventListener('resize',spy); spy();
+addEventListener('keydown',e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+  e.preventDefault();
+  const i=spy(), n=Math.min(secs.length-1,Math.max(0,i+(e.key==='ArrowRight'?1:-1)));
+  secs[n].scrollIntoView({behavior:'smooth',block:'start'});
+});
+</script>
+</body>
+</html>
