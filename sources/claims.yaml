@@ -394,6 +394,14 @@ claims:
       with the parent register's SM2-scale power <4 MW.
 
   # -- Old Mills: community pushback + imported ore (added per Alex 2026-08-23) --
+  - claim: Inola smelter requires the power capacity of Oklahoma's second largest city (Tulsa)
+    provenance: triangulated
+    conf: M
+    source: framing per Alex 2026-09-01; conservative vs the published comparator - Canary Media
+      2026 puts the draw at ~11 TWh/yr, "enough electricity to power the city of Boston or
+      Nashville annually", both larger than Tulsa
+    url: https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power
+    slide: Old Mills
   - claim: Inola's board of trustees unanimously imposed a 60-day moratorium on smelter approvals (June 2026, after ~6 hours of public comment)
     provenance: published
     conf: H
