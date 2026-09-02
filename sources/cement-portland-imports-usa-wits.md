@@ -32,7 +32,22 @@ Key readings:
   ~25M t imports register [conf: M]): Turkey ~6.1% (2024) → ~6.4% (2025); Canada ~3.1%
   both years.
 
+## Freight from Turkey (recorded 2026-09-01)
+
+- Platts Cement Weekly (2026-01-15): **Mediterranean -> Houston cement freight $26.00/mt**
+  (40kt vessel). Platts began weekly Turkey cement + freight-to-North-America
+  assessments in Jan 2025.
+- Same date: OPC (CEM I 42.5R) bulk **FOB Turkey $54.00/mt**; Medcem 2026 contracts
+  $53.5-55/mt FOB (2025: $52/mt).
+- Trade commentary puts the ocean leg at ~$15-20/t in softer freight markets [conf: M].
+- Cross-check vs the WITS unit values above: Turkey ~$58/t FOB + ~$26/t freight ≈
+  **~$84/t landed**, still well under Canada's ~$110/t unit value - the landed gap is
+  ~$25-30/t, not the 2:1 the FOB ratio suggests.
+
 Sources:
+- [Platts cement weekly PDF](https://energy.spglobal.com/rs/325-KYL-599/images/cement%20weekly.pdf)
+- [Platts Turkey cement + freight assessments launch, Jan 2025](https://press.spglobal.com/2025-01-23-S-P-Global-Commodity-Insights-Launches-Weekly-Platts-Cement-Price-Assessments-for-Turkey-and-Associated-Freight-to-Europe-and-North-America)
+- [S&P Global: Medcem 2026 bookings](https://www.spglobal.com/energy/en/news-research/latest-news/fertilizers/120425-turkeys-medcem-fully-booked-for-2026-with-higher-cement-clinker-prices)
 - [WITS 2024, HS 252329, partner USA](https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2024/tradeflow/Exports/partner/USA/product/252329)
 - [WITS 2025, HS 252329, partner USA](https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2025/tradeflow/Exports/partner/USA/product/252329)
 - [WITS 2024, HS 252329, world exports](https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2024/tradeflow/Exports/partner/WLD/product/252329) — Turkey $791M vs Canada $428M to ALL destinations (the page Alex cited)
