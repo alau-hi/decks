@@ -506,7 +506,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .overlap{margin-top:1.4rem;font-style:italic;font-size:.72rem;line-height:1.5;color:var(--muted)}
 
 /* jf journey — ported from investor-overview */
-.tlarc{position:absolute;left:0;right:0;bottom:0;width:100%;height:62%;pointer-events:none;opacity:.35}
 .tl{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem;margin-top:1.6rem;align-items:start;position:relative}
 .tl .ph img{width:6.4rem;height:6.4rem;border-radius:50%;object-fit:cover;border:2px solid var(--wood-bright);display:block;margin-bottom:.8rem;box-shadow:0 14px 34px rgba(0,0,0,.45)}
 .tl .ph.past img{filter:saturate(.75) brightness(.85)}
@@ -937,6 +936,9 @@ section.tier-divider{--tier:7.6rem}
     height:auto;min-height:0;position:static;display:flex;flex-wrap:wrap;gap:.3rem .35rem;align-items:flex-end}
   .gnet .gcard:nth-child(3) .gicons .fx,.gnet .gcard:nth-child(4) .gicons .fx,.gnet .gcard:nth-child(5) .gicons .fx{position:static}
 }
+
+/* ==== Export mode: the PDF renderer adds html.exporting; hover/tap hints make no sense on paper ==== */
+html.exporting .teamhint,html.exporting .hovernote{display:none!important}
 
 /* ==== Phone adaptation II (2026-09-02) ==== */
 /* wording follows the input: pointers hover, fingers tap */
@@ -1403,7 +1405,7 @@ section.tier-divider{--tier:7.6rem}
         <div class="bio-pop"><b>Shaun Klopfenstein — Head of AI</b><ul><li>Serial technology entrepreneur and investor.</li><li>Co-founder and former CTO of Marketo, the marketing-automation SaaS unicorn, where he helped bring the company onto the NASDAQ.</li><li>BS Computer Information Science, University of Oregon.</li></ul></div>
       </div>
     </div>
-    <div class="adv-head rv">Advisors <span style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — <span class="if-hover">hover</span><span class="if-touch">tap</span> for detail</span></div>
+    <div class="adv-head rv">Advisors <span class="hovernote" style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — <span class="if-hover">hover</span><span class="if-touch">tap</span> for detail</span></div>
     <div class="adv rv">
       <div class="advc" tabindex="0">
         <img width="384" height="384" loading="eager" decoding="sync" src="assets/adv-davies-c.webp" alt="Don Davies"><div><div class="nm">Don Davies</div><div class="ro">Structural Engineering</div></div>
@@ -1462,8 +1464,7 @@ section.tier-divider{--tier:7.6rem}
 </section>
 
 <section id="jf" class="dark" data-nav="Journey">
-  <svg class="tlarc" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true"><path d="M0 540 C 380 540, 700 470, 1000 60" fill="none" stroke="url(#tlg)" stroke-width="3"/><defs><linearGradient id="tlg" x1="0" x2="1"><stop offset="0" stop-color="#cda165" stop-opacity="0"/><stop offset="1" stop-color="#e2b877" stop-opacity=".55"/></linearGradient></defs></svg>
-  <div class="wrap">
+    <div class="wrap">
     <h2 class="rv">From university research to commercial production &mdash; <em>and ready to scale</em></h2>
     <div class="tl rv">
       <div class="ph past"><img loading="lazy" src="assets/molecular.webp" alt="Cellulose molecular structure"><div class="yrs">2016&ndash;2018</div><h3>The breakthrough</h3><p>Dr.&nbsp;Liangbing Hu invents SUPERWOOD at the University of Maryland.</p></div>
@@ -1525,7 +1526,8 @@ section.tier-divider{--tier:7.6rem}
       <div class="mtitem" style="margin-top:0"><h3>What it sets up</h3><p>A $75&ndash;100M Series B in 2027 at a $400&ndash;800M target valuation &mdash; building SuperMill Two toward $200M+/yr gross margin.</p></div>
     </div>
     <div class="askcta rv">
-      <a class="askbtn" href="mailto:alex@inventwood.com?subject=Request%3A%20data%20room">Request the data room</a>
+      <a class="askbtn" href="mailto:lex@inventwood.com?subject=Request%3A%20data%20room">Request the data room</a>
+      <a class="mail" href="mailto:lex@inventwood.com?subject=Request%3A%20data%20room">lex@inventwood.com</a>
     </div>
     <p class="fwdlook rv">This presentation contains forward-looking statements about future plants, production, costs, revenue and financing. These reflect current expectations and assumptions, involve risks and uncertainties, and actual results may differ materially. Figures for future periods are projections, not guarantees.</p>
   </div>
@@ -1535,6 +1537,19 @@ section.tier-divider{--tier:7.6rem}
   <div class="thanks">
     <div class="left"><h2 class="rv">Thank you</h2><div class="contact rv"><div class="c"><span class="who">Alex Lau &middot; CEO / Co-founder</span><a class="mail" href="mailto:alex@inventwood.com">alex@inventwood.com</a></div><div class="c"><span class="who">Lex Harris &middot; Director, Capital Markets &amp; IR</span><a class="mail" href="mailto:lex@inventwood.com">lex@inventwood.com</a></div></div></div>
     <div class="right"></div>
+  </div>
+</section>
+
+<section id="notice" class="dark" data-nav="Notice">
+  <div class="wrap">
+    <h2 class="rv" style="max-width:none">Important notice</h2>
+    <div class="teamhint rv" style="margin-top:.4rem">Draft &mdash; for legal review before external distribution</div>
+    <div class="mtgrid rv" style="grid-template-columns:1fr 1fr;gap:1.6rem 2.6rem;margin-top:1.6rem">
+      <div class="mtitem"><h3>Confidential</h3><p>This presentation is confidential and is provided solely to the recipient for the purpose of evaluating a potential investment in InventWood. It may not be reproduced, redistributed or disclosed, in whole or in part, without InventWood&rsquo;s written consent.</p></div>
+      <div class="mtitem"><h3>Not an offer</h3><p>Nothing in this presentation constitutes an offer to sell, or a solicitation of an offer to buy, any security. Any offering will be made only by definitive documents, whose terms will supersede anything shown here.</p></div>
+      <div class="mtitem"><h3>Forward-looking statements</h3><p>This presentation contains forward-looking statements about future plants, production, costs, revenue and financing. These reflect current expectations and assumptions, involve risks and uncertainties, and actual results may differ materially. Figures for future periods are projections, not guarantees.</p></div>
+      <div class="mtitem"><h3>No reliance</h3><p>The information is believed to be accurate as of the date on the cover but has not been independently verified, and InventWood undertakes no obligation to update it. Recipients should rely on their own investigation and professional advice.</p></div>
+    </div>
   </div>
 </section>
 
