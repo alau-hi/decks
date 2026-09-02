@@ -1,0 +1,17 @@
+# Alex's supermills deck ships slides.html + assets/ only. Its docs, sources,
+# critique history, alt slides and redirect stub stay in git, off the deployment.
+# (Only this root-level file applies to the Vercel project; the subtree's own
+# .vercelignore is inert here.)
+supermills-america-overview/README.md
+supermills-america-overview/STORY.md
+supermills-america-overview/DESIGN.md
+supermills-america-overview/REFERENCES.md
+supermills-america-overview/sources
+supermills-america-overview/.impeccable
+supermills-america-overview/feedback
+supermills-america-overview/render
+supermills-america-overview/alt-slide2.html
+supermills-america-overview/alt-datacenter.html
+supermills-america-overview/index.html
+supermills-america-overview/.vercelignore
+supermills-america-overview/.gitignore
