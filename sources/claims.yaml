@@ -243,6 +243,11 @@ claims:
     source: 750K t/yr published [H] / 2.70 t/m3 standard aluminum density
     slide: Economics
 
+  - claim: Over 20 species of wood tested as SUPERWOOD feedstock, including bamboo and waste wood
+    provenance: internal
+    conf: H (internal canonical)
+    source: deck-canonical per Alex 2026-09-01
+    slide: SUPERMILLS
   # -- Cost to build row --
   - claim: SUPERMILL capex $300M
     provenance: internal
