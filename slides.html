@@ -51,7 +51,9 @@ img{max-width:100%}
 /* width:max-content — with only `right` set the box stretched the full viewport width: an invisible
    z-index:95 strip across the bottom that swallowed pointer events, and which showed itself the
    moment the narrow-screen rule below gave it a background */
-.brand{position:fixed;bottom:20px;right:2.125rem;z-index:95;height:20px;width:max-content;opacity:1}.brand img{height:100%;width:auto}
+.brand{position:fixed;bottom:20px;right:2.125rem;z-index:95;height:20px;width:max-content;opacity:1;transition:height .35s}.brand img{height:100%;width:auto}
+/* the cover is the one slide where the brand leads - everywhere else it recedes to chrome */
+body.on-cover .brand{height:48px}
 .pageno{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:90;font-size:.62rem;letter-spacing:.14em;color:var(--cream-dim);font-variant-numeric:tabular-nums;transition:opacity .4s;background:rgba(20,13,7,.6);padding:.3em .9em;border-radius:999px;backdrop-filter:blur(3px)}
 body.on-cover .pageno{opacity:0}
 .conf{position:fixed;bottom:20px;left:2.125rem;z-index:90;font-size:clamp(9px,.6rem,.74rem);letter-spacing:.3em;color:var(--muted);background:rgba(20,13,7,.72);padding:.3em .8em;border-radius:999px;backdrop-filter:blur(3px);text-transform:uppercase}
@@ -587,6 +589,8 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   .brand{background:rgba(20,13,7,.72);padding:.3em .6em;border-radius:999px;backdrop-filter:blur(3px);
     height:auto;width:max-content;display:flex}
   .brand img{height:14px;width:auto;display:block}
+  body.on-cover .brand{height:auto}
+  body.on-cover .brand img{height:24px}
   /* a phone cannot hold a desktop-density slide in one viewport at a legible size. past the zoom
      floor the slide grows and scrolls rather than shrinking further, so snapping goes proximity —
      mandatory + a section taller than the scrollport fights the user. overflow-x:clip (not hidden)
