@@ -501,7 +501,11 @@ const LOG=[
  {iso:'2026-08-31',date:'Aug 31',topic:'Analytics',title:'Gate watchman',slides:[],req:'See how many visitors turn away at the email gate, and their IPs \u2014 a watchman on the self-serve gate.',items:[
   ['The gate page now records each real-browser visit (bots and crawlers filtered) with an anonymous browser ID that links a bounce to a later signup','578e6c9'],
   ['New Gate watch card on /stats: converted vs. turned-away funnel, a two-color world map, and a per-IP list expandable to per-browser history','1f9272d'],
-  ['Team browsers are flagged, not dropped \u2014 hidden behind a Show team toggle so testing never inflates the numbers','']]}
+  ['Team browsers are flagged, not dropped \u2014 hidden behind a Show team toggle so testing never inflates the numbers','']]},
+ {iso:'2026-09-02',date:'Sep 2',topic:'Decks',title:'SUPERMILLS America deck joins the site',slides:[],req:'Put Alex\u2019s SUPERMILLS deck at investors.inventwood.net/supermills-america-overview, behind the same gate.',items:[
+  ['The deck moved into this repo with its full history (git subtree) and is served at /supermills-america-overview; Alex\u2019s own deployment stays his staging',''],
+  ['The email gate now returns you to the page you asked for after signing in, instead of always landing on the main deck',''],
+  ['Staging deploy scripts repaired for the current Vercel CLI','']]}
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
    (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */
