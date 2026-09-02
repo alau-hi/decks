@@ -58,6 +58,14 @@ Alex, 2026-08-23 → 26.
 - **Plain language.** No AI-speak ("the gap lands on…"), no hedging filler. Voice-level
   edits from Alex override anything here.
 
+- **Deliberate exceptions to the rules above (Alex, 2026-09-02, at critique):** the
+  **Demand** slide keeps its four stat cards (large figure over caption, rust accent
+  `#c56c32`, cream + dark cards) and **The Fleet** keeps its five cards with the green and
+  orange icon tints. Both were flagged by `/impeccable critique` as breaking "no stat-tile
+  dramatization", "tables over cards" and "one accent"; Alex chose to keep them as they are.
+  Do not "fix" them toward the rules without asking. Recorded in
+  `.impeccable/critique/ignore.md` so future critiques stop raising them.
+
 ## Claims discipline (the most load-bearing rule)
 
 - Every checkable number, named entity, or attributed position traces to
