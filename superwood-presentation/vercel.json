@@ -1,14 +1,25 @@
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "/", "destination": "/intro", "permanent": false }
+    { "source": "/", "destination": "/intro", "permanent": false },
+    { "source": "/supermills-america-overview", "destination": "/supermills-america-overview/", "permanent": false }
   ],
   "rewrites": [
-    { "source": "/intro", "destination": "/" }
+    { "source": "/intro", "destination": "/" },
+    { "source": "/supermills-america-overview/", "destination": "/supermills-america-overview/slides" }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/supermills-america-overview/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

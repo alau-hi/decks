@@ -18,6 +18,13 @@ function getCookie(req, name) {
   return null;
 }
 
+// Same-site relative path only (no scheme, no host, no protocol-relative
+// '//'); anything else lands on the deck's canonical entry.
+function safeNext(raw) {
+  const s = String(raw || '');
+  return /^\/(?!\/)[A-Za-z0-9_\-./]*$/.test(s) ? s : '/intro';
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -25,9 +32,9 @@ export default async function handler(req, res) {
   // Ungated deployment (no AUTH_SECRET / gate disabled): no cookie to sign,
   // nothing to record — just send the visitor into the deck.
   if (!process.env.AUTH_SECRET || process.env.GATE_DISABLED === '1') {
-    return res.status(200).json({ redirect: '/intro' });
+    return res.status(200).json({ redirect: safeNext((req.body || {}).next) });
   }
-  const { email } = req.body || {};
+  const { email, next } = req.body || {};
   const cleanEmail = String(email || '').trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail) || cleanEmail.length > 254) {
     return res.status(400).json({ error: 'Please enter a valid email address.' });
@@ -70,5 +77,5 @@ export default async function handler(req, res) {
     'Set-Cookie',
     `sw_auth=${payload}.${sig}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${MAX_AGE}${domain}`
   );
-  return res.status(200).json({ redirect: `/intro?v=${encodeURIComponent(cleanEmail)}` });
+  return res.status(200).json({ redirect: `${safeNext(next)}?v=${encodeURIComponent(cleanEmail)}` });
 }
