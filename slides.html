@@ -66,7 +66,7 @@ body.on-cover .conf{opacity:0}
 .srcbtn:hover,.srcbtn:focus-visible,.srcwrap.open .srcbtn{color:var(--cream);border-color:rgba(226,184,119,.5)}
 .srcpanel{position:absolute;left:0;bottom:calc(100% + .8rem);width:min(34rem,calc(100vw - 3rem));max-height:62vh;overflow-y:auto;background:var(--pop-bg);border:1px solid rgba(226,184,119,.28);border-radius:12px;padding:1.05rem 1.25rem;box-shadow:0 24px 60px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .25s,transform .25s;text-align:left}
 .srcwrap.open .srcpanel{opacity:1;pointer-events:auto;transform:none}
-.srcpanel h4{font-family:'Inter';font-weight:600;font-size:clamp(9px,.55rem,.7rem);letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:.65rem}
+.srcpanel h3{font-family:'Inter';font-weight:600;font-size:clamp(9px,.55rem,.7rem);letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:.65rem}
 .srcpanel ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin:0;padding:0}
 .srcpanel li{font-size:clamp(10px,.68rem,.85rem);line-height:1.5;color:var(--cream-dim)}
 .srcpanel li a{color:var(--gold);text-decoration:none;font-weight:600}
@@ -519,7 +519,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .tlaxis{position:relative;height:2px;background:linear-gradient(90deg,var(--wood-deep),var(--wood-bright));margin-top:1.4rem;border-radius:2px}
 .tlyears span{position:absolute;transform:translateX(-50%);white-space:nowrap}
 .tlaxis .dot.now{position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:#e0432b;box-shadow:0 0 0 2px var(--ink);z-index:3}
-.tlaxis .nowring{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;border:2px solid #e07b39;animation:tlring 2s ease-in-out infinite;z-index:2}
+.tlaxis .nowring{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;border:2px solid #e07b39;animation:tlring 2s ease-in-out 5;z-index:2}
 @keyframes tlring{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.7}50%{transform:translate(-50%,-50%) scale(1.8);opacity:0}}
 .tlyears{position:relative;height:1.2em;margin-top:.6rem;font-size:clamp(10px,.62rem,.78rem);letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums}
 .tlbands{position:relative;height:2.4rem;margin-top:1rem}
@@ -1080,7 +1080,7 @@ svg.ctbuh{display:block;margin:.4rem auto 0;width:78%;max-width:none;max-height:
   <div class="srcwrap">
     <button class="srcbtn" type="button" aria-expanded="false" aria-haspopup="dialog">Sources</button>
     <div class="srcpanel" role="dialog" aria-label="Sources for this slide">
-      <h4>Sources &mdash; Old Mills</h4>
+      <h3>Sources &mdash; Old Mills</h3>
       <ul>
         <li><a href="https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980" target="_blank" rel="noopener">US DOE (2025)</a> &mdash; $500M award to the Century Aluminum / EGA smelter in Inola, OK &mdash; the first American primary smelter since 1980.</li>
         <li><a href="https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power" target="_blank" rel="noopener">Canary Media (2026)</a> &mdash; ~$4B JV; &gt;1 GW continuous power requirement; still waiting on a power deal; bauxite imported via the port of New Orleans.</li>
@@ -1139,7 +1139,7 @@ svg.ctbuh{display:block;margin:.4rem auto 0;width:78%;max-width:none;max-height:
   <div class="srcwrap">
     <button class="srcbtn" type="button" aria-expanded="false" aria-haspopup="dialog">Sources</button>
     <div class="srcpanel" role="dialog" aria-label="Sources for this slide">
-      <h4>Sources &mdash; Fast &times; Fast</h4>
+      <h3>Sources &mdash; Fast &times; Fast</h3>
       <ul>
         <li><a href="https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber" target="_blank" rel="noopener">ULI Urban Land &amp; case studies</a> &mdash; mass-timber schedule savings run ~20&ndash;30% vs. concrete and steel across case-study reviews.</li>
         <li><a href="https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds" target="_blank" rel="noopener">S&amp;P Global (2024)</a> &mdash; a new US mine averages ~29 years from discovery to production.</li>
@@ -1378,7 +1378,7 @@ svg.ctbuh{display:block;margin:.4rem auto 0;width:78%;max-width:none;max-height:
         <div class="bio-pop"><b>Shaun Klopfenstein — Head of AI</b><ul><li>Serial technology entrepreneur and investor.</li><li>Co-founder and former CTO of Marketo, the marketing-automation SaaS unicorn, where he helped bring the company onto the NASDAQ.</li><li>BS Computer Information Science, University of Oregon.</li></ul></div>
       </div>
     </div>
-    <div class="adv-head rv">World-Class Advisors <span style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — hover for detail</span></div>
+    <div class="adv-head rv">Advisors <span style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — hover for detail</span></div>
     <div class="adv rv">
       <div class="advc" tabindex="0">
         <img width="384" height="384" loading="eager" decoding="sync" src="assets/adv-davies-c.webp" alt="Don Davies"><div><div class="nm">Don Davies</div><div class="ro">Structural Engineering</div></div>
@@ -1519,12 +1519,12 @@ svg.ctbuh{display:block;margin:.4rem auto 0;width:78%;max-width:none;max-height:
   <div class="wrap">
     <h2 class="rv" style="text-align:center">Appendix</h2>
     <nav class="apxtoc rv" aria-label="Appendix sections">
-      <a href="#econ"><b>Manufacturing Comparison</b><small></small></a>
-      <a href="#tsec"><b>Technology</b><small></small></a>
-      <a href="#mkts"><b>Applications</b><small></small></a>
-      <a href="#s20"><b>Selected Showcase Projects</b><small></small></a>
-      <a href="#mth"><b>Mass Timber</b><small></small></a>
-      <a href="#dch"><b>Data Centers</b><small></small></a>
+      <a href="#econ"><b>Manufacturing Comparison</b><small>1 slide</small></a>
+      <a href="#tsec"><b>Technology</b><small>5 slides</small></a>
+      <a href="#mkts"><b>Applications</b><small>1 slide</small></a>
+      <a href="#s20"><b>Selected Showcase Projects</b><small>1 slide</small></a>
+      <a href="#mth"><b>Mass Timber</b><small>4 slides</small></a>
+      <a href="#dch"><b>Data Centers</b><small>5 slides</small></a>
     </nav>
   </div>
 </section>
@@ -1549,7 +1549,7 @@ svg.ctbuh{display:block;margin:.4rem auto 0;width:78%;max-width:none;max-height:
   <div class="srcwrap">
     <button class="srcbtn" type="button" aria-expanded="false" aria-haspopup="dialog">Sources</button>
     <div class="srcpanel" role="dialog" aria-label="Sources for this slide">
-      <h4>Sources &mdash; Materials manufacturing comparison</h4>
+      <h3>Sources &mdash; Materials manufacturing comparison</h3>
       <ul>
         <li><b style="color:var(--gold)">Steel minimill</b> &mdash; SDI Sinton: $1.9B, 3.0M&nbsp;tons/yr, 2019&ndash;2022 build (SDI announcements); Nucor Apple Grove: ~$4.0B, 2021&ndash;2027 announce-to-ship (Nucor updates); SDI EBITDA $197&ndash;411/ton across the cycle (company filings). EAF grid connection: 200&ndash;300&nbsp;MVA per furnace (Primetals / MHI Spectra engineering sources).</li>
         <li><b style="color:var(--gold)">Aluminum smelter</b> &mdash; Century Aluminum / EGA Inola: ~$4B, &gt;1&nbsp;GW continuous (<a href="https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power" target="_blank" rel="noopener">Canary Media 2026</a>; <a href="https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980" target="_blank" rel="noopener">US DOE</a>); margins from <a href="https://centuryaluminum.com/investors/press-releases/press-release-details/2026/Century-Aluminum-Company-Reports-Fourth-Quarter-2025-Results/default.aspx" target="_blank" rel="noopener">Century FY2025 results</a> (net sales $2.5B, adj. EBITDA $425M &mdash; a record, tariff-supported year).</li>
