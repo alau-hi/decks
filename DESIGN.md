@@ -98,6 +98,15 @@ Alex, 2026-08-23 → 26.
   needs to click through to AISI or USGS from the deck itself, the button has to come back.
 - Conflicting data is surfaced honestly, never averaged into convenience.
 
+## Appendix dividers
+
+Four divider pages (Appendix, Technology, Mass Timber, Data Centers) share one treatment
+(unified 2026-09-02 at Alex's request): a full-bleed image from that section's own material
+(`appendix-bg.jpg`, `tech2/sem-after.webp`, `mt-woodcity.jpg`, `data-center-render.webp`), the
+one `.tier-divider .scrim` gradient (.6 → .8), the `Appendix` kicker, and a plain centered
+white title — no gold-italic word, no inline styles. `.tier-divider .wrap` re-centers itself
+because the deck's wrap is otherwise left-anchored. A new section divider copies this block.
+
 ## Full-bleed slides
 
 Two rules that hold on `#gapalt` specifically (Alex, 2026-08-31):
