@@ -259,6 +259,14 @@ claims:
     conf: H
     source: SDI PR 2019 / BuildSteel (Sinton $1.9B, 3.0 Mtpa); Nucor updates (Apple Grove $2.7B -> ~$4.0B)
     slide: Economics
+  - claim: Portland cement (HS 252329) to the USA - Turkey ~7M t/yr at ~$55-58/t vs Canada ~3.6M t/yr at ~$110-119/t (2024-25); Turkey leads by tonnage ~2:1, led by value in 2025
+    provenance: derived from published
+    conf: H (unit values derived; FOB basis - freight not included)
+    source: WITS / UN Comtrade live pages 2026-09-01; full table in
+      cement-portland-imports-usa-wits.md
+    url: https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2025/tradeflow/Exports/partner/USA/product/252329
+    local: sources/cement-portland-imports-usa-wits.md
+    slide: none - register only (asked by Alex 2026-09-01)
   - claim: 2023 cement CLINKER (HS 252310) exports to the USA - EU $40.6M, Canada $39.7M, France $39.3M, Turkey $12.8M
     provenance: published
     conf: H
