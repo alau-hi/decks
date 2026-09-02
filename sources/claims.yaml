@@ -259,6 +259,15 @@ claims:
     conf: H
     source: SDI PR 2019 / BuildSteel (Sinton $1.9B, 3.0 Mtpa); Nucor updates (Apple Grove $2.7B -> ~$4.0B)
     slide: Economics
+  - claim: 2023 cement CLINKER (HS 252310) exports to the USA - EU $40.6M, Canada $39.7M, France $39.3M, Turkey $12.8M
+    provenance: published
+    conf: H
+    source: WITS / UN Comtrade, read from the live page 2026-09-01; full table in
+      cement-clinker-imports-2023-wits.md. Clinker is a subset of HS4 2523 cement -
+      do not mix with the OEC finished-cement figures below.
+    url: https://wits.worldbank.org/trade/comtrade/en/country/All/year/2023/tradeflow/Exports/partner/USA/product/252310
+    local: sources/cement-clinker-imports-2023-wits.md
+    slide: none - register only (asked by Alex 2026-09-01, "keep handy")
   - claim: US cement imports 2025 - Canada $514M, Turkey $485M, Vietnam $207M
     provenance: published
     conf: H
