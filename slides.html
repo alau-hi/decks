@@ -698,8 +698,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
    wrong for the centered divider pages, so the dividers re-center themselves */
 .tier-divider .wrap{margin:0 auto;text-align:center}
 .tier-divider h2{max-width:none}
-/* every appendix divider: its section's own image, one scrim, kicker, plain centered title */
-.tier-divider .scrim{background:linear-gradient(180deg,rgba(22,14,8,.6),rgba(22,14,8,.8))}
 :root{--m1:#54300f;--m5:#7c4a1e;--m10:#9c6531;--m50:#c49a5f;--m100:#dccaa0}
 section.tier-divider{--tier:7.6rem}
 .kicker{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.9rem}
@@ -1541,9 +1539,9 @@ section.tier-divider{--tier:7.6rem}
 
 <section id="apx" class="tier-divider" data-nav="Appendix">
   <div class="bg" style="background-image:url(assets/appendix-bg.jpg)"></div>
-  <div class="scrim"></div>
+  <div class="scrim" style="background:linear-gradient(180deg,rgba(22,14,8,.6),rgba(22,14,8,.82))"></div>
   <div class="wrap">
-    <h2 class="rv">Appendix</h2>
+    <h2 class="rv" style="text-align:center">Appendix</h2>
     <nav class="apxtoc rv" aria-label="Appendix sections">
       <a href="#econ"><b>Manufacturing Comparison</b><small>1 slide</small></a>
       <a href="#tsec"><b>Technology</b><small>5 slides</small></a>
@@ -1586,12 +1584,11 @@ section.tier-divider{--tier:7.6rem}
   </div>
 </section>
 
-<section id="tsec" class="tier-divider" data-nav="Technology">
-  <div class="bg" style="background-image:url(assets/tech2/sem-after.webp)"></div>
-  <div class="scrim"></div>
-  <div class="wrap">
+<section id="tsec" class="tier-divider dark" data-nav="Technology">
+  <div class="bg" style="background-image:url(assets/appendix-bg.jpg);opacity:.35"></div>
+  <div class="wrap" style="justify-content:center;text-align:center">
     <div class="kicker rv">Appendix</div>
-    <h2 class="rv">Technology</h2>
+    <h2 class="rv" style="text-align:center">Technology</h2>
   </div>
 </section>
 <section id="bkth" data-navhide class="dark" data-nav="Breakthrough">
@@ -1835,11 +1832,11 @@ section.tier-divider{--tier:7.6rem}
 </section>
 
 <section id="mth" class="tier-divider" data-nav="Mass Timber">
-  <div class="bg" style="background-image:url(assets/mt-woodcity.jpg)"></div>
-  <div class="scrim"></div>
-  <div class="wrap">
+  <div class="bg" style="background-image:url(assets/appendix-bg.jpg)"></div>
+  <div class="scrim" style="background:linear-gradient(180deg,rgba(22,14,8,.55),rgba(22,14,8,.75))"></div>
+  <div class="wrap" style="text-align:center">
     <div class="kicker rv">Appendix</div>
-    <h2 class="rv">Mass Timber</h2>
+    <h2 class="rv">Mass <em>Timber</em></h2>
   </div>
 </section>
 
@@ -1938,10 +1935,10 @@ section.tier-divider{--tier:7.6rem}
 
 <section id="dch" class="tier-divider" data-nav="Data Centers">
   <div class="bg" style="background-image:url(assets/data-center-render.webp)"></div>
-  <div class="scrim"></div>
-  <div class="wrap">
+  <div class="scrim" style="background:linear-gradient(180deg,rgba(22,14,8,.6),rgba(22,14,8,.8))"></div>
+  <div class="wrap" style="text-align:center">
     <div class="kicker rv">Appendix</div>
-    <h2 class="rv">Data Centers</h2>
+    <h2 class="rv">Data <em>Centers</em></h2>
   </div>
 </section>
 
