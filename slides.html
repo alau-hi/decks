@@ -585,7 +585,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
   .pipes{grid-template-columns:1fr}
   .tl{grid-template-columns:1fr 1fr;row-gap:1.4rem}
   .tlbands{display:none}}
-@media (max-width:700px), (max-width:860px) and (orientation:portrait){
+@media (max-width:700px), (max-width:860px) and (orientation:portrait), screen and (max-height:520px){
   /* right gutter clears the nav rail (26px targets + its own padding = 45px), bottom gutter clears
      the fixed Confidential / page-number / brand row. both matter more now that slides scroll:
      at rest the content must not sit under the chrome. fitSlides reads these paddings, so the fit
@@ -936,6 +936,27 @@ svg.ctbuh{display:block;margin:.4rem auto 0;width:78%;max-width:none;max-height:
     height:auto;min-height:0;position:static;display:flex;flex-wrap:wrap;gap:.3rem .35rem;align-items:flex-end}
   .gnet .gcard:nth-child(3) .gicons .fx,.gnet .gcard:nth-child(4) .gicons .fx{position:static}
 }
+
+/* ==== Phone adaptation II (2026-09-02) ==== */
+/* wording follows the input: pointers hover, fingers tap */
+@media (hover:hover){.if-touch{display:none}}
+@media (hover:none){.if-hover{display:none}}
+/* slide 4 in portrait: in -> mill -> out runs top to bottom */
+@media (max-width:700px), (max-width:860px) and (orientation:portrait){
+  .machrow{flex-direction:column;gap:.9rem}
+  .macharrow{transform:rotate(90deg);align-self:center;line-height:1}
+}
+/* Journey on any phone: the cards carry the years, so the axis, its 15 labels and the arc
+   go; portrait reads as one column, a landscape phone keeps two */
+@media (max-width:700px), (max-width:860px) and (orientation:portrait), (max-height:520px){
+  #jf .tlarc,#jf .tlaxis,#jf .tlyears,#jf .tlbands{display:none}
+  #jf .tl{grid-template-columns:1fr 1fr;row-gap:1.2rem}
+}
+@media (max-width:700px) and (orientation:portrait){
+  #jf .tl{grid-template-columns:1fr}
+  #jf .tl .ph{display:grid;grid-template-columns:4.2rem 1fr;column-gap:.9rem;align-items:start}
+  #jf .tl .ph img{width:4.2rem;height:4.2rem;margin:0;grid-row:1/4}
+}
 </style>
 </head>
 <body class="on-cover">
@@ -1032,7 +1053,7 @@ svg.ctbuh{display:block;margin:.4rem auto 0;width:78%;max-width:none;max-height:
   <div class="wrap">
     <h2 class="rv" style="font-size:clamp(1.6rem,2.9vw,2.5rem);max-width:none">America is building again &mdash; and it is <span class="hl">short the materials to do it</span></h2>
     <p class="lead rv" style="margin-top:1rem;max-width:70ch">Data centers, reshored factories, housing, the grid. The build-out is here, and the key structural materials it runs on are increasingly not made here.</p>
-    <div class="teamhint rv" style="margin-top:.6rem">Hover any underlined figure for its source</div>
+    <div class="teamhint rv" style="margin-top:.6rem"><span class="if-hover">Hover</span><span class="if-touch">Tap</span> any underlined figure for its source</div>
     <div class="midstrip rv">
       <figure>
         <img src="assets/gap-steel.webp" alt="Molten steel pouring from a ladle in a mill"><img class="glow pour" src="assets/gap-steel.webp" alt="" aria-hidden="true">
@@ -1063,7 +1084,7 @@ svg.ctbuh{display:block;margin:.4rem auto 0;width:78%;max-width:none;max-height:
 <section id="old" class="dark" data-nav="Old Mills">
   <div class="wrap">
     <h2 class="rv" style="max-width:32ch">More of the old mills won&rsquo;t close the gap &mdash; <em>not in time</em></h2>
-    <div class="teamhint rv" style="margin-top:.8rem">Hover any underlined phrase for the detail behind it</div>
+    <div class="teamhint rv" style="margin-top:.8rem"><span class="if-hover">Hover</span><span class="if-touch">Tap</span> any underlined phrase for the detail behind it</div>
     <div class="cols3 rv" style="margin-top:1.4rem">
       <div class="col-card"><h3>Billions per plant</h3><ul>
         <li><b>Aluminum:</b> the Inola smelter, the first new American smelter in over 40 years, is a <span class="sw-ref" tabindex="0"><b>$4B</b> JV<span class="sw-tip">Century Aluminum / EGA joint venture in Inola, OK. A <b>$500M DOE award</b> moved it forward; first metal expected ~2030, and its power deal was still open in 2026.</span></span>, and needed a <b>$500M federal grant</b> to advance</li>
@@ -1349,7 +1370,7 @@ svg.ctbuh{display:block;margin:.4rem auto 0;width:78%;max-width:none;max-height:
 <section id="s7" class="dark" data-nav="Team">
   <div class="wrap">
     <h2 class="rv">Building the team <em>to scale</em></h2>
-    <div class="teamhint rv">Hover or tap any card for the full bio</div>
+    <div class="teamhint rv"><span class="if-hover">Hover</span><span class="if-touch">Tap</span> any card for the full bio</div>
     <div class="team rv">
       <div class="person" tabindex="0">
         <img width="384" height="384" loading="eager" decoding="sync" class="pic" src="assets/team-alex7-c.webp" alt="Alex Lau"><div class="nm">Alex Lau</div><div class="ro">CEO / Co-Founder</div>
@@ -1382,7 +1403,7 @@ svg.ctbuh{display:block;margin:.4rem auto 0;width:78%;max-width:none;max-height:
         <div class="bio-pop"><b>Shaun Klopfenstein — Head of AI</b><ul><li>Serial technology entrepreneur and investor.</li><li>Co-founder and former CTO of Marketo, the marketing-automation SaaS unicorn, where he helped bring the company onto the NASDAQ.</li><li>BS Computer Information Science, University of Oregon.</li></ul></div>
       </div>
     </div>
-    <div class="adv-head rv">Advisors <span style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — hover for detail</span></div>
+    <div class="adv-head rv">Advisors <span style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — <span class="if-hover">hover</span><span class="if-touch">tap</span> for detail</span></div>
     <div class="adv rv">
       <div class="advc" tabindex="0">
         <img width="384" height="384" loading="eager" decoding="sync" src="assets/adv-davies-c.webp" alt="Don Davies"><div><div class="nm">Don Davies</div><div class="ro">Structural Engineering</div></div>
@@ -3566,7 +3587,7 @@ window.addEventListener('keydown',e=>{
 /* one-slide-per-page: zoom each slide's content to FILL the available page —
    shrink when it overflows, grow when it's sparse (upscale capped at 1.4x).
    zoom affects layout, so re-measure and converge over a few passes. */
-const NARROW=()=>matchMedia('(max-width:700px), (max-width:860px) and (orientation:portrait)').matches;
+const NARROW=()=>matchMedia('(max-width:700px), (max-width:860px) and (orientation:portrait), (max-height:520px)').matches;
 function fitSlides(only){
   /* zoom floor. below this the slide stops being readable, so past the floor it grows and scrolls
      instead of shrinking further — a phone can't hold a desktop-density slide in one viewport at a
