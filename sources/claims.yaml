@@ -601,10 +601,13 @@ claims:
     conf: H (internal)
     source: Alex Lau, 2026-08-26; restates the feedstock-in-48-states claim (parent register)
     slide: Appendix comparison (feedstock row)
-  - claim: 80% of US pig iron is imported; emerging constraints on recycled steel supply
-    provenance: asserted-internal
+  - claim: RETIRED 2026-09-01 - "80% of US pig iron is imported" removed from the deck at
+      Alex's direction; only ~25% of US pig iron is imported, and 80% is the share of the
+      MERCHANT pig iron market. The slide cell now carries only the recycled-steel
+      constraint line.
+    provenance: asserted-internal (corrected)
     conf: M
-    source: Alex Lau, 2026-08-26
+    source: Alex Lau, 2026-08-26; corrected by Alex 2026-09-01
     corroboration: >-
       USITC Executive Briefing on Trade (Oct 2022, "Russia, Ukraine, and Pig Iron
       Supply") - domestic merchant pig iron production covers only ~5% of US
