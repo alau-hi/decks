@@ -62,7 +62,7 @@ f.addEventListener('submit',async e=>{
   if(!email){err.textContent='Please enter your email.';err.classList.add('show');return;}
   go.disabled=true;go.textContent='Checking…';
   try{
-    const r=await fetch('/api/enter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,next:location.pathname+location.search})});
+    const r=await fetch('/api/enter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,next:location.pathname})});
     const d=await r.json().catch(()=>({}));
     if(r.ok&&d.redirect){location.href=d.redirect;return;}
     err.textContent=d.error||'Something went wrong. Please try again.';

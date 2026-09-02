@@ -20,9 +20,15 @@ function getCookie(req, name) {
 
 // Same-site relative path only (no scheme, no host, no protocol-relative
 // '//'); anything else lands on the deck's canonical entry.
+// Same-site relative path only (no scheme, no host, no protocol-relative
+// '//'); never the gate/key/api routes themselves (a visitor who typed /gate
+// would otherwise bounce straight back to the gate). Anything else lands on
+// the deck's canonical entry.
 function safeNext(raw) {
   const s = String(raw || '');
-  return /^\/(?!\/)[A-Za-z0-9_\-./]*$/.test(s) ? s : '/intro';
+  if (!/^\/(?!\/)[A-Za-z0-9_\-./]*$/.test(s)) return '/intro';
+  if (/^\/(gate|gate\.html|key|api)(\/|$)/.test(s)) return '/intro';
+  return s;
 }
 
 export default async function handler(req, res) {

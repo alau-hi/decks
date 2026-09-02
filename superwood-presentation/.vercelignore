@@ -1,17 +1,15 @@
-# Alex's supermills deck ships slides.html + assets/ only. Its docs, sources,
-# critique history, alt slides and redirect stub stay in git, off the deployment.
+# Alex's supermills deck ships slides.html + assets/ only. Everything else in
+# the subtree (docs, sources, critique history, alt slides, feedback, and his
+# index.html redirect stub) stays in git, off the deployment. Allowlist form so
+# anything he adds at the top level upstream is excluded by default.
 # (Only this root-level file applies to the Vercel project; the subtree's own
-# .vercelignore is inert here.)
-supermills-america-overview/README.md
-supermills-america-overview/STORY.md
-supermills-america-overview/DESIGN.md
-supermills-america-overview/REFERENCES.md
-supermills-america-overview/sources
-supermills-america-overview/.impeccable
-supermills-america-overview/feedback
-supermills-america-overview/render
-supermills-america-overview/alt-slide2.html
-supermills-america-overview/alt-datacenter.html
-supermills-america-overview/index.html
-supermills-america-overview/.vercelignore
-supermills-america-overview/.gitignore
+# .vercelignore is inert here.) The index.html exclusion is load-bearing: a
+# deployed index.html would be served for /supermills-america-overview/ ahead
+# of the vercel.json rewrite, and it meta-refreshes to a /slides.html that does
+# not exist in this project.
+supermills-america-overview/*
+!supermills-america-overview/slides.html
+!supermills-america-overview/assets
+
+# Never ship a pulled env file (vercel env pull … .env.check).
+.env*

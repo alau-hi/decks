@@ -8,7 +8,7 @@
     "deploy:prod": "vercel --prod --yes --scope inventwood",
     "deploy:stage": "node scripts/alias-deploy.mjs superwood-stage.vercel.app",
     "deploy:stage-open": "node scripts/alias-deploy.mjs superwood-stage-open.vercel.app --target=staging-open",
-    "sync:supermills": "cd .. && git subtree pull --prefix=superwood-presentation/supermills-america-overview git@github.com:alau-hi/supermills-america.git main -m 'Sync supermills deck from alau-hi/supermills-america'"
+    "sync:supermills": "cd \"$(git rev-parse --show-toplevel)\" && git subtree pull --prefix=superwood-presentation/supermills-america-overview git@github.com:alau-hi/supermills-america.git main -m 'Sync supermills deck from alau-hi/supermills-america'"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.0",
