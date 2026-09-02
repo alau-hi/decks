@@ -314,7 +314,7 @@ to:
 cd /Users/sklop/build/inventwood/alau-hi/decks/superwood-presentation && node --check api/enter.mjs && node -e "JSON.parse(require('fs').readFileSync('vercel.json','utf8'));console.log('vercel.json parses')" && grep -c "safeNext" api/enter.mjs && grep -c "next:location.pathname" gate.html
 ```
 
-Expected: `vercel.json parses`, `4` (definition + 3 uses… count must be ≥ 3), `1`.
+Expected: `vercel.json parses`, `3` (the definition line plus its two call sites), `1`.
 
 - [ ] **Step 5: Routing check on ungated staging**
 
