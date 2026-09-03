@@ -61,7 +61,26 @@ async function deckPassed(req, deckId) {
   return sig === parts[1] && Number(parts[0]) > Date.now();
 }
 
+// What the visitor still owes for a target path, given their cookies.
+async function needFor(req, target) {
+  const deckId = deckFromPath(target);
+  const deck = DECKS[deckId];
+  const deckPw = deck && deck.password ? (process.env[deck.password] || '') : '';
+  const knownEmail = await authedEmail(req);
+  const needPassword = !!deckPw && !(await deckPassed(req, deckId));
+  return { deckId, deckPw, knownEmail, needPassword };
+}
+
 export default async function handler(req, res) {
+  // GET: the gate page asks which fields to show when its hint cookie is
+  // missing (e.g. a cached page). Never trusted for access — only for the UI.
+  if (req.method === 'GET') {
+    res.setHeader('Cache-Control', 'no-store');
+    if (!process.env.AUTH_SECRET || process.env.GATE_DISABLED === '1') return res.status(200).json({ need: 'none' });
+    const { knownEmail, needPassword } = await needFor(req, safeNext(req.query?.path));
+    const need = !knownEmail ? (needPassword ? 'both' : 'email') : (needPassword ? 'password' : 'none');
+    return res.status(200).json({ need });
+  }
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -73,12 +92,8 @@ export default async function handler(req, res) {
     return res.status(200).json({ redirect: target });
   }
 
-  const deckId = deckFromPath(target);
-  const deck = DECKS[deckId];
-  const deckPw = deck && deck.password ? (process.env[deck.password] || '') : '';
-  const knownEmail = await authedEmail(req);
+  const { deckId, deckPw, knownEmail, needPassword } = await needFor(req, target);
   const needEmail = !knownEmail;
-  const needPassword = !!deckPw && !(await deckPassed(req, deckId));
 
   // Validate everything before writing anything: a wrong password must not
   // leave a signup behind or hand out a cookie.

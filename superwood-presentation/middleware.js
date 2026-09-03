@@ -39,7 +39,12 @@ async function deckPassed(req, deckId) {
 // JS-readable cookie; the page clears it after reading.
 function toGate(req, need) {
   return rewrite(new URL('/gate', req.url), {
-    headers: { 'Set-Cookie': `sw_need=${need}; Path=/; Secure; SameSite=Lax` },
+    headers: {
+      'Set-Cookie': `sw_need=${need}; Path=/; Secure; SameSite=Lax`,
+      // Never let a browser or cache keep a gate page for a deck URL: a
+      // revalidated 304 would replay a stale mode without this cookie.
+      'Cache-Control': 'no-store',
+    },
   });
 }
 

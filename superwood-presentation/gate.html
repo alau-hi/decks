@@ -50,14 +50,23 @@ button:disabled{opacity:.55;cursor:default}
 // One screen for whatever the visitor still owes for the page they asked for.
 // The middleware says which (email | password | both) via a short-lived
 // sw_need cookie set on the rewrite that brought us here; default is email.
-const m=document.cookie.match(/(?:^|;\s*)sw_need=(email|password|both)\b/);
-const need=m?m[1]:'email';
-document.cookie='sw_need=; Max-Age=0; Path=/; Secure; SameSite=Lax';
-const askEmail=need!=='password',askPw=need!=='email';
 const emailEl=document.getElementById('email'),pwEl=document.getElementById('pw'),sub=document.getElementById('sub');
-emailEl.hidden=!askEmail; pwEl.hidden=!askPw;
-sub.textContent='This presentation is shared privately. We appreciate you entering your '+(askEmail&&askPw?'email and password':askEmail?'email':'password')+' to continue.';
-(askEmail?emailEl:pwEl).focus();
+let askEmail=true,askPw=false;
+function applyMode(need){
+  if(need==='none'){location.reload();return;}
+  askEmail=need!=='password'; askPw=need!=='email';
+  emailEl.hidden=!askEmail; pwEl.hidden=!askPw;
+  sub.textContent='This presentation is shared privately. We appreciate you entering your '+(askEmail&&askPw?'email and password':askEmail?'email':'password')+' to continue.';
+  (askEmail?emailEl:pwEl).focus();
+}
+const m=document.cookie.match(/(?:^|;\s*)sw_need=(email|password|both)\b/);
+document.cookie='sw_need=; Max-Age=0; Path=/; Secure; SameSite=Lax';
+if(m){applyMode(m[1]);}
+else{
+  // No hint (e.g. this page came from a cache): ask the server what is owed.
+  applyMode('email');
+  fetch('/api/enter?path='+encodeURIComponent(location.pathname),{cache:'no-store'}).then(r=>r.json()).then(d=>{ if(d&&d.need)applyMode(d.need); }).catch(()=>{});
+}
 // Watchman beacon: one fire per gate view, only when the visitor is still
 // unidentified (a signed-in viewer asked for a deck password is not a bounce).
 // JS-only (curl/crawlers never run it); skipped for declared automation;
