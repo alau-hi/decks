@@ -5,9 +5,6 @@ import { DECKS, deckFromPath } from './api/_decks.mjs';
 // previews render in email clients and chat apps.
 const OPEN_PATHS = new Set(['/gate', '/gate.html', '/api/enter', '/api/gatehit', '/favicon.ico', '/assets/og-cover.jpg', '/press', '/press.html']);
 
-// The password step's own page and API are never themselves deck-checked.
-const DECK_EXEMPT = new Set(['/deckpass', '/deckpass.html', '/api/deckpass']);
-
 const enc = new TextEncoder();
 async function hmacHex(data, secret) {
   const key = await crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
@@ -29,6 +26,23 @@ function b64urlDecode(s) {
   return atob(padded);
 }
 
+// True when this browser already passed the deck's shared password.
+async function deckPassed(req, deckId) {
+  const parts = String(getCookie(req, `sw_deck_${deckId}`) || '').split('.');
+  if (parts.length !== 2) return false;
+  const sig = await hmacHex(`deck.${deckId}.${parts[0]}`, process.env.AUTH_SECRET || '');
+  return sig === parts[1] && Number(parts[0]) > Date.now();
+}
+
+// Send the visitor to the one gate screen, telling it what is still owed for
+// the page they asked for (email | password | both) via a short-lived,
+// JS-readable cookie; the page clears it after reading.
+function toGate(req, need) {
+  return rewrite(new URL('/gate', req.url), {
+    headers: { 'Set-Cookie': `sw_need=${need}; Path=/; Secure; SameSite=Lax` },
+  });
+}
+
 export default async function middleware(req) {
   // Env-aware gate: only deployments with AUTH_SECRET configured are gated
   // (i.e. the production project). Staging/preview projects with no env vars
@@ -40,7 +54,7 @@ export default async function middleware(req) {
   // undecoded compare lets /%73upermills… slip past prefix-based rules.
   // Malformed escapes fail closed to the gate.
   let path;
-  try { path = decodeURIComponent(url.pathname); } catch { return rewrite(new URL('/gate', req.url)); }
+  try { path = decodeURIComponent(url.pathname); } catch { return toGate(req, 'email'); }
   if (OPEN_PATHS.has(path) || path.startsWith('/_vercel/')) return next();
 
   // Canonical deck URL is /intro. Fallback in case platform routing order
@@ -51,6 +65,10 @@ export default async function middleware(req) {
     dest.pathname = '/intro';
     return Response.redirect(dest, 302);
   }
+
+  const deckId = deckFromPath(path);
+  const deck = DECKS[deckId];
+  const deckPw = deck && deck.password ? process.env[deck.password] : '';
 
   const token = getCookie(req, 'sw_auth');
   if (token) {
@@ -72,18 +90,7 @@ export default async function middleware(req) {
         }
         // Per-deck shared password (see api/_decks.mjs): only decks that
         // declare a password env var, and only where that var is set.
-        const deckId = deckFromPath(path);
-        const deck = DECKS[deckId];
-        const deckPw = deck && deck.password ? process.env[deck.password] : '';
-        if (deckPw && !DECK_EXEMPT.has(path)) {
-          const dParts = (getCookie(req, `sw_deck_${deckId}`) || '').split('.');
-          let deckOk = false;
-          if (dParts.length === 2) {
-            const dSig = await hmacHex(`deck.${deckId}.${dParts[0]}`, process.env.AUTH_SECRET || '');
-            deckOk = dSig === dParts[1] && Number(dParts[0]) > Date.now();
-          }
-          if (!deckOk) return rewrite(new URL('/deckpass', req.url));
-        }
+        if (deckPw && !(await deckPassed(req, deckId))) return toGate(req, 'password');
         // Keep the viewer identity on the URL so the deck's per-slide
         // analytics (?v=) attribute return visits too.
         if (path === '/intro' && !url.searchParams.has('v')) {
@@ -99,5 +106,7 @@ export default async function middleware(req) {
       }
     }
   }
-  return rewrite(new URL('/gate', req.url));
+  // Not signed in: ask for the email, plus the deck password if this deck has
+  // one and the browser has not passed it yet.
+  return toGate(req, deckPw && !(await deckPassed(req, deckId)) ? 'both' : 'email');
 }

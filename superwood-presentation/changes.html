@@ -512,7 +512,10 @@ const LOG=[
  {iso:'2026-09-03',date:'Sep 3',topic:'Analytics',title:'Both decks on the stats page',slides:[],req:'Incorporate the new deck into the stats page with a deck switcher at the top.',items:[
   ['A deck switcher on /stats: every card (viewers, heatmap, charts, devices, map, gate watch) now renders per deck',''],
   ['Engagement rows are attributed to a deck by URL path rather than by deployment; the SUPERMILLS deck loads the same tracker as the main deck',''],
-  ['Slide order for the heatmap is captured from the deck itself, so reorders show up without code changes','']]}
+  ['Slide order for the heatmap is captured from the deck itself, so reorders show up without code changes','']]},
+ {iso:'2026-09-03',date:'Sep 3',topic:'Access',title:'One gate screen',slides:[],req:'Merge the email and password screens into one that asks only for what we still need.',items:[
+  ['The gate asks for your email, the deck password, or both on a single screen, with matching wording; a wrong password no longer leaves a signup behind',''],
+  ['The separate password page is gone; one endpoint handles every combination','']]}
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
    (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */

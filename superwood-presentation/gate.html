@@ -24,6 +24,7 @@ h1 em{font-style:italic;color:var(--wood-bright)}
 .sub{font-size:.95rem;line-height:1.6;color:var(--cream-dim);font-weight:300;margin-bottom:34px}
 label{display:block;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 0 8px 2px}
 input{width:100%;padding:13px 15px;margin-bottom:20px;background:rgba(244,236,223,.04);border:1px solid var(--line);border-radius:8px;color:var(--cream);font-family:'Inter',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s,background .2s}
+input[hidden]{display:none}
 input:focus{border-color:var(--wood);background:rgba(244,236,223,.07)}
 input::placeholder{color:var(--muted);opacity:.6}
 button{width:100%;padding:14px;border:none;border-radius:8px;background:linear-gradient(135deg,var(--wood-deep),var(--wood));color:var(--cream);font-family:'Inter',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:filter .2s,opacity .2s;margin-top:4px}
@@ -37,18 +38,32 @@ button:disabled{opacity:.55;cursor:default}
 <body>
 <div class="card">
   <h1>INVENTWOOD</h1>
-  <p class="sub">This presentation is shared privately. We appreciate you entering your email to continue.</p>
+  <p class="sub" id="sub">This presentation is shared privately. We appreciate you entering your email to continue.</p>
   <form id="f" novalidate>
-    <input id="email" type="email" name="email" placeholder="Email" aria-label="Email" autocomplete="email" required autofocus>
+    <input id="email" type="email" name="email" placeholder="Email" aria-label="Email" autocomplete="email">
+    <input id="pw" type="password" name="password" placeholder="Password" aria-label="Password" autocomplete="current-password" hidden>
     <button id="go" type="submit">View the deck</button>
     <div id="err" class="err"></div>
   </form>
 </div>
 <script>
-// Watchman beacon: one fire per gate view. JS-only (curl/crawlers never run
-// it); skipped for declared automation; failure-silent everywhere.
+// One screen for whatever the visitor still owes for the page they asked for.
+// The middleware says which (email | password | both) via a short-lived
+// sw_need cookie set on the rewrite that brought us here; default is email.
+const m=document.cookie.match(/(?:^|;\s*)sw_need=(email|password|both)\b/);
+const need=m?m[1]:'email';
+document.cookie='sw_need=; Max-Age=0; Path=/; Secure; SameSite=Lax';
+const askEmail=need!=='password',askPw=need!=='email';
+const emailEl=document.getElementById('email'),pwEl=document.getElementById('pw'),sub=document.getElementById('sub');
+emailEl.hidden=!askEmail; pwEl.hidden=!askPw;
+sub.textContent='This presentation is shared privately. We appreciate you entering your '+(askEmail&&askPw?'email and password':askEmail?'email':'password')+' to continue.';
+(askEmail?emailEl:pwEl).focus();
+// Watchman beacon: one fire per gate view, only when the visitor is still
+// unidentified (a signed-in viewer asked for a deck password is not a bounce).
+// JS-only (curl/crawlers never run it); skipped for declared automation;
+// failure-silent everywhere.
 try{
-  if(!navigator.webdriver){
+  if(askEmail&&!navigator.webdriver){
     const payload=JSON.stringify({path:location.pathname+location.search,scr:{w:innerWidth,h:innerHeight,sw:screen.width,sh:screen.height,dpr:devicePixelRatio,o:matchMedia('(orientation: portrait)').matches?'p':'l'}});
     if(!(navigator.sendBeacon&&navigator.sendBeacon('/api/gatehit',new Blob([payload],{type:'application/json'}))))
       fetch('/api/gatehit',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:payload}).catch(()=>{});
@@ -58,11 +73,12 @@ const f=document.getElementById('f'),go=document.getElementById('go'),err=docume
 f.addEventListener('submit',async e=>{
   e.preventDefault();
   err.classList.remove('show');
-  const email=document.getElementById('email').value.trim();
-  if(!email){err.textContent='Please enter your email.';err.classList.add('show');return;}
+  const body={next:location.pathname};
+  if(askEmail){ body.email=emailEl.value.trim(); if(!body.email){err.textContent='Please enter your email.';err.classList.add('show');return;} }
+  if(askPw){ body.password=pwEl.value; if(!body.password){err.textContent='Please enter the password.';err.classList.add('show');return;} }
   go.disabled=true;go.textContent='Checking…';
   try{
-    const r=await fetch('/api/enter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,next:location.pathname})});
+    const r=await fetch('/api/enter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const d=await r.json().catch(()=>({}));
     if(r.ok&&d.redirect){location.href=d.redirect;return;}
     err.textContent=d.error||'Something went wrong. Please try again.';
