@@ -415,7 +415,14 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .cesfoot{margin-top:1.2rem;max-width:none;text-align:center}
 /* panel size encodes scale: SM One < SM Two < National Fleet. stretch is load-bearing —
    with align-items:start the fleet card has fewest rows and ends up the shortest, cancelling the width step */
-.gnet{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:auto auto 1fr auto;gap:0 .8rem;margin-top:.9rem}
+.gnet{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto 1fr auto auto;gap:0 .8rem;margin-top:.9rem}
+/* ChipMill makes a different product, so it sits on its own row below the four SUPERWOOD cards:
+   a band with title, eyebrow and note on the left, the packed field across the middle, stats right */
+.gnet .gcard.chip{grid-column:1/-1;grid-row:auto;margin-top:.8rem;display:grid;grid-template-columns:minmax(19rem,1.25fr) 2.6fr minmax(12rem,.75fr);grid-template-rows:auto auto 1fr;grid-template-areas:"h f s" "e f s" "n f s";column-gap:1.4rem;align-items:start}
+.gnet .gcard.chip .gmid{display:contents}
+.gnet .gcard.chip h3{grid-area:h}.gnet .gcard.chip .gsub{grid-area:e}.gnet .gcard.chip .gnote{grid-area:n;margin-top:.6rem}
+.gnet .gcard.chip .gicons{grid-area:f;align-self:stretch;min-height:5rem;margin:.1rem 0 0}
+.gnet .gcard.chip .grows{grid-area:s;margin-top:0}
 #gnet{padding-bottom:3.5vh}
 /* one row of five; each card is a subgrid so title, eyebrow and note start on shared lines across
    all five. The icon field and stat rows share the 1fr row as one flex column, so each card's field
@@ -439,11 +446,11 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .gcard.sm .gicons{margin:.7rem 0 .2rem}
 /* icon fields are packed by packFleet() at runtime to their measured box (see the script), so
    they read full at any viewport; the packer writes px sizes and positions on each icon */
-.gnet .gicons{position:relative;display:block;min-height:4.5rem;margin:.6rem 0 .2rem}
-.gnet .gr{padding:.3rem 0}
-.gnet .gnote{margin-top:.75rem}
+.gnet .gicons{position:relative;display:block;min-height:3.4rem;margin:.5rem 0 .2rem}
+.gnet .gcard{padding:.85rem 1rem}
+.gnet .gnote{margin-top:.6rem}
 .gnet .gicons .fx{position:absolute}
-.gnet .gr{font-size:.82rem}
+.gnet .gr{font-size:.82rem;padding:.22rem 0;min-height:1.6rem}
 .gnet .gnote{font-size:.8rem}
 #gnet>.wrap>.gnote{font-size:.8rem;max-width:none}
 .grows{margin-top:.7rem}
@@ -679,7 +686,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){
   .machstats{grid-template-columns:1fr 1fr;gap:.4rem 1.4rem}
   .gnet{grid-template-columns:1fr 1fr;grid-template-rows:none;gap:.8rem}
-  .gnet .gcard{display:flex;flex-direction:column}
+  .gnet .gcard,.gnet .gcard.chip{display:flex;flex-direction:column;margin-top:0}
   .gmid{display:contents}
   #fast .mtgrid{grid-template-columns:1fr!important}
   #s15 .msrow{grid-template-columns:1fr!important;gap:1rem}
@@ -1382,8 +1389,8 @@ html.exporting section{padding-right:6vw}   /* no nav rail on paper */
       <div class="gcard  rv"><h3>SUPERMILL ONE</h3><div class="gsub">Now shipping</div><div class="gmid"><div class="gicons" data-mix="1.6" data-k=".82" data-fill="0" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>1M</b></div><div class="gr"><span>Capex</span><b>$48M</b></div><div class="gr"><span>Revenue</span><b>$20M / yr</b></div><div class="gr"><span>EBITDA</span><b>20%</b></div><div class="gr full"><span>Primary product</span><b>SUPERWOOD Boards</b></div></div></div><p class="gnote">Designed as a subscale pilot facility for SUPERMILL TWO: commercialize process, prove techno-economics, seed demand for future SUPERMILLS.</p></div>
       <div class="gcard  rv"><h3>SUPERMILL TWO</h3><div class="gsub">In development</div><div class="gmid"><div class="gicons" data-mix="3.0" data-k=".82" data-fill="0" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>36M</b></div><div class="gr"><span>Capex</span><b>$300M</b></div><div class="gr"><span>Revenue</span><b>$360M cap. &middot; $320M proj.</b></div><div class="gr"><span>EBITDA</span><b>65%</b></div><div class="gr full"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer</b></div></div></div><p class="gnote">Same batch process as SUPERMILL ONE, at increased scale that enables cost to compete with steel.</p></div>
       <div class="gcard  rv"><h3>NATIONAL FLEET OF SUPERMILLS</h3><div class="gsub">Using SUPERMILL TWO as a template</div><div class="gmid"><div class="gicons" data-mix="6,4.24,4.24,3.2,3,2.8,2.6" data-k=".72" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>10B+</b></div><div class="gr"><span>ROE per SUPERMILL</span><b>175&ndash;200%</b></div><div class="gr full"><span>Feedstock</span><b>Sufficient for a SUPERMILL in 48 states</b></div></div></div><p class="gnote">Modular construction and manufacturing make additional SUPERMILLS easy to site and fast to build.</p></div>
-      <div class="gcard sm rv"><h3>INTERNATIONAL FLEET</h3><div class="gsub">~20x the national fleet</div><div class="gmid"><div class="gicons orange" data-mix="6,6,6,6,4.24,4.24,4.24,3.8,3.4,3,2.8,2.6" data-k=".68" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer, SUPER OSB</b></div></div></div><p class="gnote">Typically a JV with a local partner: InventWood earns a technology &amp; setup fee, an operating fee, and a brand / marketing fee.</p></div>
-      <div class="gcard sm rv"><h3>CHIPMILL FLEET</h3><div class="gsub">National and international</div><div class="gmid"><div class="gicons green" data-mix="6,6,6,4.8,4.6,4.4,4.24,4.24,4,3.8,3.6" data-k=".68" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>180M per plant</b></div><div class="gr"><span>Product</span><b>SUPER OSB</b></div></div></div><p class="gnote">Further scale &amp; profitability. Continuous manufacturing on low-cost wood chips &amp; wood waste. International plants as JVs with local partners &mdash; technology &amp; setup, operating, and brand / marketing fees.</p></div>
+      <div class="gcard sm rv"><h3>INTERNATIONAL FLEET</h3><div class="gsub">~20x the national fleet</div><div class="gmid"><div class="gicons orange" data-mix="6,6,6,6,4.24,4.24,4.24,3.8,3.4,3,2.8,2.6" data-k=".68" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer</b></div></div></div><p class="gnote">Typically a JV with a local partner: InventWood earns a technology &amp; setup fee, an operating fee, and a brand / marketing fee.</p></div>
+      <div class="gcard sm chip rv"><h3>CHIPMILL FLEET</h3><div class="gsub">National and international</div><div class="gmid"><div class="gicons green" data-mix="6,6,6,4.8,4.6,4.4,4.24,4.24,4,3.8,3.6" data-k=".68" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>180M per plant</b></div><div class="gr"><span>Product</span><b>SUPER OSB</b></div></div></div><p class="gnote">Further scale &amp; profitability. Continuous manufacturing on low-cost wood chips &amp; wood waste. International plants as JVs with local partners &mdash; technology &amp; setup, operating, and brand / marketing fees.</p></div>
     </div>
     <p class="gnote rv">7,000 SUPERMILL TWO equivalents would be required to replace 50% of the steel used in the world today &mdash; roughly the amount of steel used in construction.</p>
   </div>
