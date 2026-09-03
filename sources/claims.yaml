@@ -271,6 +271,11 @@ claims:
     conf: H (internal canonical)
     source: deck-canonical per Alex 2026-08-23 (investor-overview register)
     slide: Economics
+  - claim: Capex per SUPERMILL $300-400M (range)
+    provenance: internal
+    conf: H (internal canonical)
+    source: per Alex 2026-09-03, SUPERMILLS slide only; The Fleet card and the Comparison table still carry the $300M point figure
+    slide: SUPERMILLS
   - claim: Minimill capex $1.9B (SDI Sinton) to $4.0B (Nucor Apple Grove board-approved Feb 2025)
     provenance: published
     conf: H
