@@ -1579,12 +1579,12 @@ html.exporting section{padding-right:6vw}   /* no nav rail on paper */
   <div class="wrap">
     <h2 class="rv" style="text-align:center">Appendix</h2>
     <nav class="apxtoc rv" aria-label="Appendix sections">
-      <a href="#econ"><b>Manufacturing Comparison</b><small>1 slide</small></a>
-      <a href="#tsec"><b>Technology</b><small>5 slides</small></a>
-      <a href="#mkts"><b>Applications</b><small>1 slide</small></a>
-      <a href="#s20"><b>Selected Showcase Projects</b><small>1 slide</small></a>
-      <a href="#mth"><b>Mass Timber</b><small>4 slides</small></a>
-      <a href="#dch"><b>Data Centers</b><small>5 slides</small></a>
+      <a href="#econ"><b>Manufacturing Comparison</b><small>21</small></a>
+      <a href="#tsec"><b>Technology</b><small>22</small></a>
+      <a href="#mkts"><b>Applications</b><small>28</small></a>
+      <a href="#s20"><b>Selected Showcase Projects</b><small>29</small></a>
+      <a href="#mth"><b>Mass Timber</b><small>30</small></a>
+      <a href="#dch"><b>Data Centers</b><small>35</small></a>
     </nav>
   </div>
 </section>
@@ -2127,6 +2127,8 @@ const slideNums=(()=>{let n=0;return secs.map(s=>s.dataset.num||String(++n));})(
 const lastNum=slideNums[slideNums.length-1];
 const numIdx=new Map(slideNums.map((l,i)=>[l,i]));
 const padNum=l=>l.padStart(2,'0');
+/* Appendix TOC shows the page each section starts on, from the same numbering as the rail */
+document.querySelectorAll('.apxtoc a[href^="#"]').forEach(a=>{const i=secs.indexOf(document.getElementById(a.hash.slice(1)));if(i>=0)a.querySelector('small').textContent=padNum(slideNums[i]);});
 const dotsBox=document.getElementById('dots');
 const railBtns=[];
 /* the rail lists the deck plus the appendix's section titles only; sub-slides carry
