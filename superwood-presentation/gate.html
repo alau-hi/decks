@@ -48,24 +48,25 @@ button:disabled{opacity:.55;cursor:default}
 </div>
 <script>
 // One screen for whatever the visitor still owes for the page they asked for.
-// The middleware says which (email | password | both) via a short-lived
-// sw_need cookie set on the rewrite that brought us here; default is email.
+// The middleware says which via a short-lived _swx cookie set on the rewrite
+// that brought us here (bitmask: 1 = email, 2 = password); default is email.
 const emailEl=document.getElementById('email'),pwEl=document.getElementById('pw'),sub=document.getElementById('sub');
 let askEmail=true,askPw=false;
-function applyMode(need){
-  if(need==='none'){location.reload();return;}
-  askEmail=need!=='password'; askPw=need!=='email';
+function applyMode(mask){
+  mask=Number(mask)||0;
+  if(!mask){location.reload();return;}
+  askEmail=!!(mask&1); askPw=!!(mask&2);
   emailEl.hidden=!askEmail; pwEl.hidden=!askPw;
   sub.textContent='This presentation is shared privately. We appreciate you entering your '+(askEmail&&askPw?'email and password':askEmail?'email':'password')+' to continue.';
   (askEmail?emailEl:pwEl).focus();
 }
-const m=document.cookie.match(/(?:^|;\s*)sw_need=(email|password|both)\b/);
-document.cookie='sw_need=; Max-Age=0; Path=/; Secure; SameSite=Lax';
+const m=document.cookie.match(/(?:^|;\s*)_swx=([123])\b/);
+document.cookie='_swx=; Max-Age=0; Path=/; Secure; SameSite=Lax';
 if(m){applyMode(m[1]);}
 else{
   // No hint (e.g. this page came from a cache): ask the server what is owed.
-  applyMode('email');
-  fetch('/api/enter?path='+encodeURIComponent(location.pathname),{cache:'no-store'}).then(r=>r.json()).then(d=>{ if(d&&d.need)applyMode(d.need); }).catch(()=>{});
+  applyMode(1);
+  fetch('/api/enter?path='+encodeURIComponent(location.pathname),{cache:'no-store'}).then(r=>r.json()).then(d=>{ if(d&&typeof d.m==='number')applyMode(d.m); }).catch(()=>{});
 }
 // Watchman beacon: one fire per gate view, only when the visitor is still
 // unidentified (a signed-in viewer asked for a deck password is not a bounce).

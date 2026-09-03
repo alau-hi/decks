@@ -76,10 +76,10 @@ export default async function handler(req, res) {
   // missing (e.g. a cached page). Never trusted for access — only for the UI.
   if (req.method === 'GET') {
     res.setHeader('Cache-Control', 'no-store');
-    if (!process.env.AUTH_SECRET || process.env.GATE_DISABLED === '1') return res.status(200).json({ need: 'none' });
+    if (!process.env.AUTH_SECRET || process.env.GATE_DISABLED === '1') return res.status(200).json({ m: 0 });
     const { knownEmail, needPassword } = await needFor(req, safeNext(req.query?.path));
-    const need = !knownEmail ? (needPassword ? 'both' : 'email') : (needPassword ? 'password' : 'none');
-    return res.status(200).json({ need });
+    // Bitmask, same as the middleware's _swx hint: 1 = email, 2 = deck password.
+    return res.status(200).json({ m: (knownEmail ? 0 : 1) | (needPassword ? 2 : 0) });
   }
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });

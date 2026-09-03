@@ -35,12 +35,13 @@ async function deckPassed(req, deckId) {
 }
 
 // Send the visitor to the one gate screen, telling it what is still owed for
-// the page they asked for (email | password | both) via a short-lived,
-// JS-readable cookie; the page clears it after reading.
-function toGate(req, need) {
+// the page they asked for via a short-lived, JS-readable cookie the page
+// clears after reading. Bitmask: 1 = email, 2 = deck password, 3 = both.
+const NEED_EMAIL = 1, NEED_PASSWORD = 2;
+function toGate(req, mask) {
   return rewrite(new URL('/gate', req.url), {
     headers: {
-      'Set-Cookie': `sw_need=${need}; Path=/; Secure; SameSite=Lax`,
+      'Set-Cookie': `_swx=${mask}; Path=/; Secure; SameSite=Lax`,
       // Never let a browser or cache keep a gate page for a deck URL: a
       // revalidated 304 would replay a stale mode without this cookie.
       'Cache-Control': 'no-store',
@@ -59,7 +60,7 @@ export default async function middleware(req) {
   // undecoded compare lets /%73upermills… slip past prefix-based rules.
   // Malformed escapes fail closed to the gate.
   let path;
-  try { path = decodeURIComponent(url.pathname); } catch { return toGate(req, 'email'); }
+  try { path = decodeURIComponent(url.pathname); } catch { return toGate(req, NEED_EMAIL); }
   if (OPEN_PATHS.has(path) || path.startsWith('/_vercel/')) return next();
 
   // Canonical deck URL is /intro. Fallback in case platform routing order
@@ -95,7 +96,7 @@ export default async function middleware(req) {
         }
         // Per-deck shared password (see api/_decks.mjs): only decks that
         // declare a password env var, and only where that var is set.
-        if (deckPw && !(await deckPassed(req, deckId))) return toGate(req, 'password');
+        if (deckPw && !(await deckPassed(req, deckId))) return toGate(req, NEED_PASSWORD);
         // Keep the viewer identity on the URL so the deck's per-slide
         // analytics (?v=) attribute return visits too.
         if (path === '/intro' && !url.searchParams.has('v')) {
@@ -113,5 +114,5 @@ export default async function middleware(req) {
   }
   // Not signed in: ask for the email, plus the deck password if this deck has
   // one and the browser has not passed it yet.
-  return toGate(req, deckPw && !(await deckPassed(req, deckId)) ? 'both' : 'email');
+  return toGate(req, NEED_EMAIL | (deckPw && !(await deckPassed(req, deckId)) ? NEED_PASSWORD : 0));
 }
