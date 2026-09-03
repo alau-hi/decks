@@ -126,13 +126,13 @@ tr:last-child td{border-bottom:none}
     </div>
   </div>
   <div class="cards">
-    <div class="card">
+    <div class="card" id="timecard">
       <h2>Time per slide</h2>
       <div class="chartsub" id="timesub">average engaged time per visit</div>
       <div class="legend" id="timelegend" hidden><span><i class="sw"></i>All visits (avg)</span><span><i class="dot"></i><b id="legviewer"></b></span></div>
       <svg id="c-time" viewBox="0 0 560 325" role="img" aria-label="Average time per slide"></svg>
     </div>
-    <div class="card">
+    <div class="card" id="dropcard">
       <h2>Drop-off</h2>
       <div class="chartsub" id="dropsub">share of visits reaching each slide</div>
       <svg id="c-drop" viewBox="0 0 560 325" role="img" aria-label="Percent of visits reaching each slide"></svg>
@@ -203,7 +203,10 @@ function hideTip(){ tip.style.opacity='0'; }
 /* -- bar chart -------------------------------------------------------- */
 function barChart(svg,rows,opts){
   svg.textContent='';
-  const W=560,H=325,m={t:12,r:8,b:65,l:38};
+  // Long decks (SUPERMILLS has 40 slides) get a wider canvas so the x labels
+  // keep their spacing; the card scales the SVG to fit either way.
+  const W=Math.max(560,rows.length*30),H=325,m={t:12,r:8,b:65,l:38};
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
   const iw=W-m.l-m.r,ih=H-m.t-m.b;
   const max=niceMax(Math.max(...rows.map(r=>r.value),opts.overlay?Math.max(...opts.overlay.map(o=>o.value||0)):0));
   const band=iw/rows.length,bw=Math.min(24,band-4);
@@ -248,6 +251,10 @@ function barChart(svg,rows,opts){
 
 function renderCharts(){
   const slides=DATA.slides||[],drop=DATA.dropoff||[];
+  // Past 20 slides the two charts each take a full row instead of sharing one.
+  const wide=slides.length>20;
+  document.getElementById('timecard').classList.toggle('wide',wide);
+  document.getElementById('dropcard').classList.toggle('wide',wide);
   const sel=selected?DATA.viewers.find(v=>v.email===selected):null;
   document.getElementById('timelegend').hidden=!sel;
   if(sel)document.getElementById('legviewer').textContent=sel.email;
