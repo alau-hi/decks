@@ -505,7 +505,10 @@ const LOG=[
  {iso:'2026-09-02',date:'Sep 2',topic:'Decks',title:'SUPERMILLS America deck joins the site',slides:[],req:'Put Alex\u2019s SUPERMILLS deck at investors.inventwood.net/supermills-america-overview, behind the same gate.',items:[
   ['The deck moved into this repo with its full history (git subtree) and is served at /supermills-america-overview; Alex\u2019s own deployment stays his staging','e64df60'],
   ['The email gate now returns you to the page you asked for after signing in, instead of always landing on the main deck','f61ea4e'],
-  ['Staging deploy scripts repaired for the current Vercel CLI','046556c']]}
+  ['Staging deploy scripts repaired for the current Vercel CLI','046556c']]},
+ {iso:'2026-09-03',date:'Sep 3',topic:'Access',title:'Shared password on the SUPERMILLS deck',slides:[],req:'Password-protect the new deck with a single password for all users, after the email gate.',items:[
+  ['After signing in with an email, visitors to /supermills-america-overview enter a shared password once per browser (30 days); the main deck is unchanged',''],
+  ['Enforced server-side by the middleware via a small deck registry, so future decks can opt in with one line','']]}
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
    (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */
