@@ -74,13 +74,17 @@ f.addEventListener('submit',async e=>{
   e.preventDefault();
   err.classList.remove('show');
   const body={next:location.pathname};
-  if(askEmail){ body.email=emailEl.value.trim(); if(!body.email){err.textContent='Please enter your email.';err.classList.add('show');return;} }
-  if(askPw){ body.password=pwEl.value; if(!body.password){err.textContent='Please enter the password.';err.classList.add('show');return;} }
+  if(!emailEl.hidden){ body.email=emailEl.value.trim(); if(!body.email){err.textContent='Please enter your email.';err.classList.add('show');return;} }
+  if(!pwEl.hidden){ body.password=pwEl.value; if(!body.password){err.textContent='Please enter the password.';err.classList.add('show');return;} }
   go.disabled=true;go.textContent='Checking…';
   try{
     const r=await fetch('/api/enter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
     const d=await r.json().catch(()=>({}));
     if(r.ok&&d.redirect){location.href=d.redirect;return;}
+    // A stale mode hint (two tabs racing) can hide a field the server needs:
+    // reveal it on the matching error instead of dead-ending the visitor.
+    if(r.status===401&&pwEl.hidden){pwEl.hidden=false;sub.textContent='This presentation is shared privately. We appreciate you entering your '+(askEmail?'email and password':'password')+' to continue.';}
+    if(r.status===400&&emailEl.hidden){emailEl.hidden=false;sub.textContent='This presentation is shared privately. We appreciate you entering your email and password to continue.';}
     err.textContent=d.error||'Something went wrong. Please try again.';
     err.classList.add('show');
   }catch(_){
