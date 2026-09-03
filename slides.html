@@ -28,15 +28,18 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
 .deck{height:100vh;height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
 .deck::-webkit-scrollbar{width:0}
 ::selection{background:rgba(226,184,119,.9);color:var(--ink-deep)}
-section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:flex-start;padding:6vh max(6vw,9.5rem) 6vh 6vw;overflow:hidden}
-/* titles hold one line and one size deck-wide: sections top-align (the cover, Thank you, the photo
-   slide and the appendix dividers keep their centred compositions), and the title and its kicker
-   undo the fit zoom fitSlides puts on the wrap, so only the body scales to fill the slide */
+section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;padding:6vh max(6vw,9.5rem) 6vh 6vw;overflow:hidden}
+/* on screen a slide is centred in the viewport; on paper (html.exporting) sections top-align so every
+   title prints at the same height (the cover, Thank you, the photo slide and the appendix dividers
+   keep their centred compositions). Either way the title and its kicker undo the fit zoom
+   fitSlides puts on the wrap, so titles keep one size and only the body scales. */
+html.exporting section{align-items:flex-start}
 #s1,#s19,#run,section.tier-divider{align-items:center}
 .wrap>.kicker,.wrap>h2,.wrap>h2+.lead{zoom:calc(1/var(--z,1))}
 section.tier-divider .wrap>h2{zoom:1}
-/* what is left under the title block is split above and below the body, so a thin slide reads as
-   composed rather than bottom-empty; fitSlides measures the slack and writes it here */
+/* on paper, what is left under the title block is split above and below the body, so a thin slide
+   reads as composed rather than bottom-empty; fitSlides measures the slack and writes it here only
+   for top-aligned sections, so on screen it stays 0 and the whole slide simply centres */
 .wrap>h2:not(:has(+.lead)),.wrap>h2+.lead{margin-bottom:calc(var(--slack,0px)/2)}
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto 0 0;position:relative;z-index:2;display:flow-root}
 /* left-aligned, not centred: CSS zoom scales the wrap's layout width, so a slide that fitSlides

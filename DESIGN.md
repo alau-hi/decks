@@ -283,9 +283,11 @@ where a row has nowhere to go. Only the `.gapfoot` copies are rows.
   scale under zoom; right-aligned content can ride into the nav rail on sparse slides —
   cap the containing block's width (see `.gapfoot`). Elements outside `.wrap` (sources
   buttons) escape the zoom.
-- **Titles are pinned (2026-09-02).** Sections top-align (`align-items:flex-start`; the cover,
-  Thank you, SUPERMILL ONE photo slide and the appendix dividers stay centred) and the title
-  block — `.wrap>.kicker`, `.wrap>h2`, and a `.lead` directly after the h2 — carries
+- **Titles are pinned on paper; slides centre on screen (2026-09-03).** On screen sections are
+  `align-items:center`, so each slide sits centred in the viewport. In export mode
+  (`html.exporting`) sections top-align (the cover, Thank you, SUPERMILL ONE photo slide and the
+  appendix dividers stay centred), so every PDF page has its title at the same height. In both
+  modes the title block — `.wrap>.kicker`, `.wrap>h2`, and a `.lead` directly after the h2 — carries
   `zoom:calc(1/var(--z))`, undoing the fit zoom `fitSlides` writes to `--z`. Result: every
   title sits 49px from the top (78px under an appendix kicker) at 42px, whatever the body's
   zoom (measured before: 35–69px, 42–135px down). Only the body scales. `fitSlides` then
