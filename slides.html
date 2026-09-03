@@ -875,6 +875,7 @@ section.tier-divider{--tier:7.6rem}
 .apxtoc a:hover{border-color:var(--wood);background:rgba(184,125,68,.14);transform:translateX(4px)}
 .apxtoc b{font-family:'Fraunces';font-weight:500;font-size:1.15rem;color:var(--cream)}
 .apxtoc span{grid-column:1;font-size:.74rem;color:var(--cream-dim)}
+.apxtoc .notesrow{display:none}html.exporting .apxtoc .notesrow{display:grid}   /* the Notes pages exist only in the PDF */
 .apxtoc small{grid-column:2;grid-row:1/3;align-self:center;font-size:.85rem;color:var(--wood-bright);font-variant-numeric:tabular-nums;letter-spacing:.1em}
 /* s21-23 appendices */
 .mtworld{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;margin-top:1.6rem}
@@ -967,7 +968,7 @@ section.tier-divider{--tier:7.6rem}
 /* ==== Export mode: the PDF renderer adds html.exporting; hover/tap hints make no sense on paper ==== */
 html.exporting .teamhint,html.exporting .hovernote,html.exporting .srcwrap{display:none!important}
 /* paper has no hover and no Sources pill; slides that carry tips or a source panel point at the Notes pages instead */
-html.exporting section.has-notes::after{content:"See Notes and Sources in Appendix";position:absolute;left:2.125rem;bottom:52px;z-index:96;font-family:'Inter';font-weight:600;font-size:clamp(9px,.58rem,.72rem);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+html.exporting section.has-notes::after{content:"See Notes and References in Appendix";position:absolute;left:2.125rem;bottom:52px;z-index:96;font-family:'Inter';font-weight:600;font-size:clamp(9px,.58rem,.72rem);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
 html.exporting section{padding-right:6vw}   /* no nav rail on paper */
 #gnet .wrap{max-width:none}
 
@@ -1582,6 +1583,7 @@ html.exporting section{padding-right:6vw}   /* no nav rail on paper */
       <a href="#s20"><b>Selected Showcase Projects</b><small>28</small></a>
       <a href="#mth"><b>Mass Timber</b><small>29</small></a>
       <a href="#dch"><b>Data Centers</b><small>34</small></a>
+      <a class="notesrow"><b>Notes and References</b><small>40</small></a>
     </nav>
   </div>
 </section>
@@ -2126,6 +2128,7 @@ const numIdx=new Map(slideNums.map((l,i)=>[l,i]));
 const padNum=l=>l.padStart(2,'0');
 /* Appendix TOC shows the page each section starts on, from the same numbering as the rail */
 document.querySelectorAll('.apxtoc a[href^="#"]').forEach(a=>{const i=secs.indexOf(document.getElementById(a.hash.slice(1)));if(i>=0)a.querySelector('small').textContent=padNum(slideNums[i]);});
+document.querySelectorAll('.apxtoc .notesrow small').forEach(x=>{x.textContent=padNum(String(+lastNum+1));});
 const dotsBox=document.getElementById('dots');
 const railBtns=[];
 /* the rail lists the deck plus the appendix's section titles only; sub-slides carry

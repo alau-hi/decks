@@ -60,8 +60,15 @@ Alex, 2026-08-23 → 26.
 
 - **Export mode hides the Sources pill.** `html.exporting .srcwrap` is hidden and any section
   holding a `.srcwrap` or `.sw-tip` gets `.has-notes`, whose `::after` prints "See Notes and
-  Sources in Appendix" where the pill sat. The PDF's Notes pages are built from the same
-  elements (`exports/` pipeline in the session scratchpad: `render-pdf.sh`, `assemble.py`).
+  References in Appendix" where the pill sat. The Appendix TOC carries an export-only
+  "Notes and References" row (`.notesrow`, numbered slides+1 by the TOC script). The PDF's Notes
+  pages are built from the same elements (`exports/` pipeline in the session scratchpad:
+  `render-pdf.sh`, `assemble.py`).
+- **Render PDF pages inside a 1440x810 iframe.** Headless Chrome's `--screenshot` captures at a
+  taller viewport than the page's JS sees (window 897 -> JS innerHeight 810 -> capture 897), so
+  a bare page fits its content for 810 while `position:fixed` chrome paints at 897 — cropping to
+  810 then cuts the Confidential / page number / brand footer (2026-09-03). A wrapper page with a
+  1440x810 iframe gives layout, fit and footer one viewport; crop the capture to the iframe.
 - **Deliberate exceptions to the rules above (Alex, 2026-09-02, at critique):** the
   **Demand** slide keeps its four stat cards (large figure over caption, rust accent
   `#c56c32`, cream + dark cards) and **The Fleet** keeps its five cards with the green and
