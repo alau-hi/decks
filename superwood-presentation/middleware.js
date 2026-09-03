@@ -5,6 +5,9 @@ import { DECKS, deckFromPath } from './api/_decks.mjs';
 // previews render in email clients and chat apps.
 const OPEN_PATHS = new Set(['/gate', '/gate.html', '/api/enter', '/api/gatehit', '/favicon.ico', '/assets/og-cover.jpg', '/press', '/press.html']);
 
+// The password step's own page and API are never themselves deck-checked.
+const DECK_EXEMPT = new Set(['/deckpass', '/deckpass.html', '/api/deckpass']);
+
 const enc = new TextEncoder();
 async function hmacHex(data, secret) {
   const key = await crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
@@ -33,7 +36,11 @@ export default async function middleware(req) {
   if (!process.env.AUTH_SECRET || process.env.GATE_DISABLED === '1') return next();
 
   const url = new URL(req.url);
-  const path = url.pathname;
+  // Compare the DECODED path: Vercel serves files by decoded path, so an
+  // undecoded compare lets /%73upermills… slip past prefix-based rules.
+  // Malformed escapes fail closed to the gate.
+  let path;
+  try { path = decodeURIComponent(url.pathname); } catch { return rewrite(new URL('/gate', req.url)); }
   if (OPEN_PATHS.has(path) || path.startsWith('/_vercel/')) return next();
 
   // Canonical deck URL is /intro. Fallback in case platform routing order
@@ -68,7 +75,7 @@ export default async function middleware(req) {
         const deckId = deckFromPath(path);
         const deck = DECKS[deckId];
         const deckPw = deck && deck.password ? process.env[deck.password] : '';
-        if (deckPw) {
+        if (deckPw && !DECK_EXEMPT.has(path)) {
           const dParts = (getCookie(req, `sw_deck_${deckId}`) || '').split('.');
           let deckOk = false;
           if (dParts.length === 2) {

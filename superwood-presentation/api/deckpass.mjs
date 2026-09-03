@@ -28,7 +28,8 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true });
   }
   if (String(password || '').length > 200 || !passwordOk(password, expected)) {
-    return res.status(401).json({ error: 'That password isn\'t right.' });
+    console.log('deck-password rejected:', JSON.stringify({ deck: id, ip: (req.headers['x-forwarded-for'] || '').split(',')[0].trim() }));
+    return res.status(401).json({ error: 'That password isn’t right.' });
   }
   const exp = Date.now() + MAX_AGE * 1000;
   const sig = await hmacHex(`deck.${id}.${exp}`, process.env.AUTH_SECRET);
