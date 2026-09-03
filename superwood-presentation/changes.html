@@ -508,7 +508,11 @@ const LOG=[
   ['Staging deploy scripts repaired for the current Vercel CLI','046556c']]},
  {iso:'2026-09-03',date:'Sep 3',topic:'Access',title:'Shared password on the SUPERMILLS deck',slides:[],req:'Password-protect the new deck with a single password for all users, after the email gate.',items:[
   ['After signing in with an email, visitors to /supermills-america-overview enter a shared password once per browser (30 days); the main deck is unchanged','7484c6f'],
-  ['Enforced server-side by the middleware via a small deck registry, so future decks can opt in with one line','9126db6']]}
+  ['Enforced server-side by the middleware via a small deck registry, so future decks can opt in with one line','9126db6']]},
+ {iso:'2026-09-03',date:'Sep 3',topic:'Analytics',title:'Both decks on the stats page',slides:[],req:'Incorporate the new deck into the stats page with a deck switcher at the top.',items:[
+  ['A deck switcher on /stats: every card (viewers, heatmap, charts, devices, map, gate watch) now renders per deck',''],
+  ['Engagement rows are attributed to a deck by URL path rather than by deployment; the SUPERMILLS deck loads the same tracker as the main deck',''],
+  ['Slide order for the heatmap is captured from the deck itself, so reorders show up without code changes','']]}
 ];
 /* MAINTENANCE RULE: every push that changes the deck or this page must add/extend an entry in LOG above
    (date, topic, slides touched, request wording, items with commit hashes) and update request statuses. */
