@@ -100,12 +100,12 @@ Alex, 2026-08-23 → 26.
 
 ## Appendix dividers
 
-Four divider pages (Appendix, Technology, Mass Timber, Data Centers) share one treatment
-(unified 2026-09-02 at Alex's request): a full-bleed image from that section's own material
-(`appendix-bg.jpg`, `tech2/sem-after.webp`, `mt-woodcity.jpg`, `data-center-render.webp`), the
-one `.tier-divider .scrim` gradient (.6 → .8), the `Appendix` kicker, and a plain centered
-white title — no gold-italic word, no inline styles. `.tier-divider .wrap` re-centers itself
-because the deck's wrap is otherwise left-anchored. A new section divider copies this block.
+The four divider pages (Appendix, Technology, Mass Timber, Data Centers) are the
+investor-overview deck's own, byte-for-byte (Alex, 2026-09-02, after a one-day unified
+treatment was tried and reverted): plant-wall image with per-page scrims, Technology faded
+with no scrim, gold-italic second words. The one local rule is `.tier-divider .wrap`
+re-centering itself, because this deck's wrap is otherwise left-anchored. The TOC carries
+per-section slide counts and a Manufacturing Comparison entry the overview lacks.
 
 ## Full-bleed slides
 

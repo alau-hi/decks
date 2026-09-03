@@ -430,6 +430,8 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .gnet .gcard:nth-child(3) .gicons{flex:0 0 auto;position:relative;display:block;height:10rem}
 .gnet .gcard:nth-child(3) .gicons .fx,.gnet .gcard:nth-child(4) .gicons .fx{position:absolute}
 .gnet .gcard:nth-child(4) .gicons{flex:0 0 auto;position:relative;display:block;height:14.3rem}
+.gnet .gcard:nth-child(5) .gicons{flex:0 0 auto;position:relative;display:block;height:8.6rem}
+.gnet .gcard:nth-child(5) .gicons .fx{position:absolute}
 .gicons.dense{gap:.28rem .32rem;min-height:0}.gicons.dense .fx{height:calc(var(--fh) * .68);width:calc(var(--fh) * .68 * .8875)}
 .gicons.dense2{gap:.3rem .35rem;justify-content:space-between}.gicons.dense2 .fx{height:calc(var(--fh) * .72);width:calc(var(--fh) * .72 * .8875)}
 .grows{margin-top:.7rem}
@@ -504,7 +506,6 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .overlap{margin-top:1.4rem;font-style:italic;font-size:.72rem;line-height:1.5;color:var(--muted)}
 
 /* jf journey — ported from investor-overview */
-.tlarc{position:absolute;left:0;right:0;bottom:0;width:100%;height:62%;pointer-events:none;opacity:.35}
 .tl{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem;margin-top:1.6rem;align-items:start;position:relative}
 .tl .ph img{width:6.4rem;height:6.4rem;border-radius:50%;object-fit:cover;border:2px solid var(--wood-bright);display:block;margin-bottom:.8rem;box-shadow:0 14px 34px rgba(0,0,0,.45)}
 .tl .ph.past img{filter:saturate(.75) brightness(.85)}
@@ -696,8 +697,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
    wrong for the centered divider pages, so the dividers re-center themselves */
 .tier-divider .wrap{margin:0 auto;text-align:center}
 .tier-divider h2{max-width:none}
-/* every appendix divider: its section's own image, one scrim, kicker, plain centered title */
-.tier-divider .scrim{background:linear-gradient(180deg,rgba(22,14,8,.6),rgba(22,14,8,.8))}
+.tier-divider .apxtoc{text-align:left}   /* the TOC rows are left-titled, count on the right */
 :root{--m1:#54300f;--m5:#7c4a1e;--m10:#9c6531;--m50:#c49a5f;--m100:#dccaa0}
 section.tier-divider{--tier:7.6rem}
 .kicker{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.9rem}
@@ -932,10 +932,15 @@ section.tier-divider{--tier:7.6rem}
   /* the Fleet's packed icon fields are laid out in rem for a desktop card; on a phone
      they flow again - wrapping rows, natural height - so nothing spills past the card */
   .gnet .gcard:nth-child(1) .gicons,.gnet .gcard:nth-child(2) .gicons,
-  .gnet .gcard:nth-child(3) .gicons,.gnet .gcard:nth-child(4) .gicons{
+  .gnet .gcard:nth-child(3) .gicons,.gnet .gcard:nth-child(4) .gicons,.gnet .gcard:nth-child(5) .gicons{
     height:auto;min-height:0;position:static;display:flex;flex-wrap:wrap;gap:.3rem .35rem;align-items:flex-end}
-  .gnet .gcard:nth-child(3) .gicons .fx,.gnet .gcard:nth-child(4) .gicons .fx{position:static}
+  .gnet .gcard:nth-child(3) .gicons .fx,.gnet .gcard:nth-child(4) .gicons .fx,.gnet .gcard:nth-child(5) .gicons .fx{position:static}
 }
+
+/* ==== Export mode: the PDF renderer adds html.exporting; hover/tap hints make no sense on paper ==== */
+html.exporting .teamhint,html.exporting .hovernote{display:none!important}
+html.exporting section{padding-right:6vw}   /* no nav rail on paper */
+#gnet .wrap{max-width:none}
 
 /* ==== Phone adaptation II (2026-09-02) ==== */
 /* wording follows the input: pointers hover, fingers tap */
@@ -1224,9 +1229,8 @@ section.tier-divider{--tier:7.6rem}
       </svg>
     </div>
     <div class="millcols rv"><div class="ml">Output</div><div class="mv">1M sf / yr</div><div class="mv">36M sf / yr</div><div class="mv">180M sf / yr</div><div class="mv">~400M sf / yr</div><div class="ml">Capex</div><div class="mv">$48M</div><div class="mv">$300M</div><div class="mv">&mdash;</div><div class="mv">&mdash;</div><div class="ml">EBITDA</div><div class="mv">20%</div><div class="mv">65%</div><div class="mv">&mdash;</div><div class="mv">&mdash;</div><div class="ml">Price</div><div class="mv">$22,425 / m³</div><div class="mv">$8,222 / m³</div><div class="mv">$4,485 / m³</div><div class="mv">$3,275 / m³</div><div class="ml">Cost</div><div class="mv">$14,472 / m³</div><div class="mv">$3,244 / m³</div><div class="mv">$1,841 / m³</div><div class="mv">$1,310 / m³</div></div>
-    <p class="gnote rv" style="margin-top:.9rem">And every square foot of it is <b style="color:var(--cream)">made in America, from American lumber.</b></p>
     <p class="ucnote-m" style="display:none;font-size:.7rem;font-style:italic;color:var(--muted);margin-top:.8rem">Like-for-like $/m&sup3; comparison; scroll the chart sideways. Full methodology in the desktop view.</p>
-    <p class="ucnote rv">CHIPMILL is the future SUPERMILL generation fed by low-cost wood chips and waste. SUPERMILL ONE was designed as a subscale pilot facility for SUPERMILL TWO. Like-for-like comparison. SUPERWOOD prices are per-market assumptions, not one product at three prices: $15.00 / sf is premium interior (mullions, blinds, luxury furniture structures), $5.50 / sf interior board, $3.00 / sf commodity structural, and ChipMill continuous at an assumed 60% gross margin, $2.19 / sf &mdash; converted at 7.2&nbsp;mm average board thickness; SUPERMILL TWO economics assume selling into a blend of premium and structural markets, so projected revenue reflects a blended realized price above the structural-board assumption charted here. Costs are COGS per m³ from the structural TEM (Jan 2026) cost roadmap, built from identified engineering savings at each scale &mdash; not from Wright&rsquo;s Law or an assumed learning rate. Steel and stainless are market prices converted at 7.85 and 8.0&nbsp;t/m³ (August 2026).</p>
+    <p class="ucnote rv">CHIPMILL is the future SUPERMILL generation fed by low-cost wood chips and waste. SUPERMILL ONE was designed as a subscale pilot facility for SUPERMILL TWO. Like-for-like comparison. SUPERMILL ONE pricing is based on $15.00 / sf for premium applications (we&rsquo;re currently getting $19 / sf for interior). SUPERMILL TWO pricing is based on $5.50 / sf for interior structural applications. ChipMill continuous pricing assumes 60% gross margins. Costs are built from identified engineering savings at each scale &mdash; not from Wright&rsquo;s Law or an assumed learning rate. Steel and stainless are US market prices for different forms of structural steel converted at 7.85 and 8.0&nbsp;t/m&sup3;.</p>
   </div>
 </section>
 
@@ -1237,7 +1241,7 @@ section.tier-divider{--tier:7.6rem}
     <div>
       <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem)">SUPERMILL ONE is already running &mdash; <em>and it is oversubscribed</em></h2>
       <div class="machstats rv" style="grid-template-columns:1fr 1fr;gap:.4rem 2.2rem;margin-top:1.8rem">
-        <div class="gr"><span>Commercial shipments</span><b>shipping today</b><em style="display:block;font-style:italic;font-size:.62rem;line-height:1.4;color:var(--muted);margin-top:.35rem">ramping through 2025 and 2026</em></div>
+        <div class="gr"><span>Commercial shipments</span><b>shipping today</b><em style="display:block;font-style:italic;font-size:.62rem;line-height:1.4;color:var(--muted);margin-top:.35rem">ramping through 2026 and 2027</em></div>
         <div class="gr"><span>Demand vs capacity</span><b>7x</b></div>
       </div>
       <p class="gnote rv" style="margin-top:1.4rem;max-width:44ch">The machine works, the process is proven, and the premium product sells today at premium prices, while the cost roadmap does its work.</p>
@@ -1359,11 +1363,11 @@ section.tier-divider{--tier:7.6rem}
     <div class="gnet">
       <div class="gcard  rv"><h3>SUPERMILL ONE</h3><div class="gsub">Now shipping</div><div class="gicons" style="--fh:1.6rem" aria-hidden="true"><svg class="fx" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>1M</b></div><div class="gr"><span>Capex</span><b>$48M</b></div><div class="gr"><span>Revenue</span><b>$20M / yr</b></div><div class="gr"><span>EBITDA</span><b>20%</b></div><div class="gr full"><span>Primary product</span><b>SUPERWOOD Boards</b></div></div><p class="gnote">Designed as a subscale pilot facility for SUPERMILL TWO: commercialize process, prove techno-economics, seed demand for future SUPERMILLS.</p></div>
       <div class="gcard  rv"><h3>SUPERMILL TWO</h3><div class="gsub">In development</div><div class="gicons" style="--fh:3.0rem" aria-hidden="true"><svg class="fx" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>36M</b></div><div class="gr"><span>Capex</span><b>$300M</b></div><div class="gr"><span>Revenue</span><b>$360M cap. &middot; $320M proj.</b></div><div class="gr"><span>EBITDA</span><b>65%</b></div><div class="gr full"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer</b></div></div><p class="gnote">Same batch process as SUPERMILL ONE, at increased scale that enables cost to compete with steel.</p></div>
-      <div class="gcard  rv"><h3>NATIONAL FLEET OF SUPERMILLS</h3><div class="gsub">Using SUPERMILL TWO as a template</div><div class="gicons varied dense2" aria-hidden="true"><svg class="fx" style="--fh:4.20rem;left:4.08rem;top:0.01rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.60rem;left:8.61rem;top:0.01rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:11.29rem;top:0.04rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.50rem;left:1.73rem;top:0.04rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.70rem;left:0.05rem;top:2.52rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:5.57rem;top:3.22rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:2.97rem;top:3.25rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.70rem;left:8.31rem;top:3.34rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.20rem;left:1.14rem;top:4.87rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.60rem;left:4.57rem;top:5.57rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.50rem;left:10.52rem;top:5.60rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:7.21rem;top:5.82rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.80rem;left:13.35rem;top:6.37rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.20rem;left:0.04rem;top:6.69rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.90rem;left:8.22rem;top:7.80rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:11.32rem;top:8.17rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:3.73rem;top:8.33rem" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>10B+</b></div><div class="gr"><span>ROE per SUPERMILL</span><b>175&ndash;200%</b></div><div class="gr full"><span>Feedstock</span><b>Sufficient for a SUPERMILL in 48 states</b></div></div><p class="gnote">Modular construction and manufacturing make additional SUPERMILLS easy to site and fast to build.</p></div>
-      <div class="gcard sm rv"><h3>INTERNATIONAL FLEET</h3><div class="gsub">~20x the national fleet</div><div class="gicons orange varied dense" aria-hidden="true"><svg class="fx" style="--fh:3.05rem;left:5.40rem;top:0.02rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.97rem;left:19.34rem;top:0.02rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:0.01rem;top:0.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.35rem;left:10.04rem;top:0.04rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:13.68rem;top:0.07rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.67rem;left:3.99rem;top:2.74rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.74rem;left:21.22rem;top:3.31rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.63rem;left:7.27rem;top:3.70rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.29rem;left:11.82rem;top:4.67rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.26rem;left:17.23rem;top:4.88rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.37rem;left:2.79rem;top:5.25rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.66rem;left:14.68rem;top:5.57rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.68rem;left:0.01rem;top:6.19rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.82rem;left:20.65rem;top:7.25rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.87rem;left:6.13rem;top:7.69rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.85rem;left:9.88rem;top:7.84rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.58rem;left:14.38rem;top:8.23rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.77rem;left:0.04rem;top:8.95rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.74rem;left:3.50rem;top:9.13rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.77rem;left:17.93rem;top:9.16rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:20.01rem;top:9.93rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:7.42rem;top:10.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.30rem;left:3.77rem;top:11.89rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.95rem;left:12.45rem;top:11.96rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.08rem;left:16.63rem;top:12.19rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.75rem;left:0.70rem;top:12.41rem" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer, SUPER OSB</b></div></div><p class="gnote">Typically a JV with a local partner: InventWood earns a technology &amp; setup fee, an operating fee, and a brand / marketing fee.</p></div>
-      <div class="gcard sm wide rv"><h3>CHIPMILL FLEET</h3><div class="gsub">National and international</div><div class="gicons green varied dense" aria-hidden="true"><svg class="fx" style="--fh:4.29rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.81rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.59rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.93rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.97rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.68rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.13rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.64rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.73rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.23rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.56rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.50rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.65rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.36rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.81rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.97rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.54rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.39rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.37rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.18rem" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>180M per plant</b></div><div class="gr"><span>Product</span><b>SUPER OSB</b></div></div><p class="gnote">Further scale &amp; profitability. Continuous manufacturing on low-cost wood chips &amp; wood waste. International plants as JVs with local partners &mdash; technology &amp; setup, operating, and brand / marketing fees.</p></div>
+      <div class="gcard  rv"><h3>NATIONAL FLEET OF SUPERMILLS</h3><div class="gsub">Using SUPERMILL TWO as a template</div><div class="gicons varied dense2" aria-hidden="true"><svg class="fx" style="--fh:4.20rem;left:26.90%;top:0.01rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.60rem;left:56.76%;top:0.01rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:74.42%;top:0.04rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.50rem;left:11.40%;top:0.04rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.70rem;left:0.33%;top:2.52rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:36.72%;top:3.22rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:19.58%;top:3.25rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.70rem;left:54.78%;top:3.34rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.20rem;left:7.51%;top:4.87rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.60rem;left:30.13%;top:5.57rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.50rem;left:69.35%;top:5.60rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:47.53%;top:5.82rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.80rem;left:88.00%;top:6.37rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.20rem;left:0.26%;top:6.69rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.90rem;left:54.19%;top:7.80rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:74.62%;top:8.17rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:24.59%;top:8.33rem" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>10B+</b></div><div class="gr"><span>ROE per SUPERMILL</span><b>175&ndash;200%</b></div><div class="gr full"><span>Feedstock</span><b>Sufficient for a SUPERMILL in 48 states</b></div></div><p class="gnote">Modular construction and manufacturing make additional SUPERMILLS easy to site and fast to build.</p></div>
+      <div class="gcard sm rv"><h3>INTERNATIONAL FLEET</h3><div class="gsub">~20x the national fleet</div><div class="gicons orange varied dense" aria-hidden="true"><svg class="fx" style="--fh:3.05rem;left:22.84%;top:0.02rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.97rem;left:81.81%;top:0.02rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:0.04%;top:0.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.35rem;left:42.47%;top:0.04rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:57.87%;top:0.07rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.67rem;left:16.88%;top:2.74rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.74rem;left:89.76%;top:3.31rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.63rem;left:30.75%;top:3.70rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.29rem;left:50.00%;top:4.67rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.26rem;left:72.88%;top:4.88rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.37rem;left:11.80%;top:5.25rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.66rem;left:62.10%;top:5.57rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.68rem;left:0.04%;top:6.19rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.82rem;left:87.35%;top:7.25rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.87rem;left:25.93%;top:7.69rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.85rem;left:41.79%;top:7.84rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.58rem;left:60.83%;top:8.23rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.77rem;left:0.17%;top:8.95rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.74rem;left:14.81%;top:9.13rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.77rem;left:75.85%;top:9.16rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:84.64%;top:9.93rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:31.39%;top:10.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.30rem;left:15.95%;top:11.89rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.95rem;left:52.66%;top:11.96rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.08rem;left:70.35%;top:12.19rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.75rem;left:2.96%;top:12.41rem" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer, SUPER OSB</b></div></div><p class="gnote">Typically a JV with a local partner: InventWood earns a technology &amp; setup fee, an operating fee, and a brand / marketing fee.</p></div>
+      <div class="gcard sm wide rv"><h3>CHIPMILL FLEET</h3><div class="gsub">National and international</div><div class="gicons green varied dense" aria-hidden="true"><svg class="fx" style="--fh:4.28rem;left:1.12%;top:0.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.60rem;left:39.59%;top:0.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.52rem;left:89.94%;top:0.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.31rem;left:68.63%;top:0.06rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.56rem;left:21.53%;top:0.07rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.70rem;left:78.92%;top:0.09rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.85rem;left:57.41%;top:0.15rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.59rem;left:52.13%;top:0.25rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.12rem;left:14.92%;top:0.42rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.63rem;left:8.03%;top:0.45rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.09rem;left:96.26%;top:0.46rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.75rem;left:30.31%;top:0.49rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.09rem;left:46.19%;top:0.63rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:5.00rem;left:61.08%;top:1.56rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.08rem;left:84.59%;top:1.60rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.89rem;left:35.49%;top:1.84rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.99rem;left:74.05%;top:2.05rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.89rem;left:25.78%;top:2.31rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.51rem;left:66.75%;top:3.20rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.72rem;left:12.45%;top:3.75rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.80rem;left:4.83%;top:3.79rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.97rem;left:90.87%;top:4.06rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.95rem;left:21.12%;top:4.14rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.93rem;left:50.74%;top:4.17rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.99rem;left:40.60%;top:4.18rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.87rem;left:95.73%;top:4.26rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.90rem;left:31.02%;top:4.30rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.93rem;left:0.07%;top:4.85rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.70rem;left:45.50%;top:4.93rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.66rem;left:82.52%;top:4.97rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.69rem;left:15.85%;top:5.02rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.80rem;left:60.06%;top:5.28rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.68rem;left:70.78%;top:5.32rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.60rem;left:85.88%;top:5.39rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.49rem;left:35.48%;top:5.43rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.35rem;left:55.18%;top:5.48rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.44rem;left:25.78%;top:5.54rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.27rem;left:8.33%;top:5.56rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.32rem;left:78.50%;top:5.65rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.09rem;left:64.65%;top:5.80rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.71rem;left:75.04%;top:5.83rem" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>180M per plant</b></div><div class="gr"><span>Product</span><b>SUPER OSB</b></div></div><p class="gnote">Further scale &amp; profitability. Continuous manufacturing on low-cost wood chips &amp; wood waste. International plants as JVs with local partners &mdash; technology &amp; setup, operating, and brand / marketing fees.</p></div>
     </div>
-
+    <p class="gnote rv" style="max-width:78ch">7,000 SUPERMILL TWO equivalents would be required to replace 50% of the steel used in the world today &mdash; roughly the amount of steel used in construction.</p>
   </div>
 </section>
 
@@ -1403,7 +1407,7 @@ section.tier-divider{--tier:7.6rem}
         <div class="bio-pop"><b>Shaun Klopfenstein — Head of AI</b><ul><li>Serial technology entrepreneur and investor.</li><li>Co-founder and former CTO of Marketo, the marketing-automation SaaS unicorn, where he helped bring the company onto the NASDAQ.</li><li>BS Computer Information Science, University of Oregon.</li></ul></div>
       </div>
     </div>
-    <div class="adv-head rv">Advisors <span style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — <span class="if-hover">hover</span><span class="if-touch">tap</span> for detail</span></div>
+    <div class="adv-head rv">Advisors <span class="hovernote" style="color:var(--muted);text-transform:none;letter-spacing:0;font-family:'Fraunces';font-style:italic"> — <span class="if-hover">hover</span><span class="if-touch">tap</span> for detail</span></div>
     <div class="adv rv">
       <div class="advc" tabindex="0">
         <img width="384" height="384" loading="eager" decoding="sync" src="assets/adv-davies-c.webp" alt="Don Davies"><div><div class="nm">Don Davies</div><div class="ro">Structural Engineering</div></div>
@@ -1462,8 +1466,7 @@ section.tier-divider{--tier:7.6rem}
 </section>
 
 <section id="jf" class="dark" data-nav="Journey">
-  <svg class="tlarc" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true"><path d="M0 540 C 380 540, 700 470, 1000 60" fill="none" stroke="url(#tlg)" stroke-width="3"/><defs><linearGradient id="tlg" x1="0" x2="1"><stop offset="0" stop-color="#cda165" stop-opacity="0"/><stop offset="1" stop-color="#e2b877" stop-opacity=".55"/></linearGradient></defs></svg>
-  <div class="wrap">
+    <div class="wrap">
     <h2 class="rv">From university research to commercial production &mdash; <em>and ready to scale</em></h2>
     <div class="tl rv">
       <div class="ph past"><img loading="lazy" src="assets/molecular.webp" alt="Cellulose molecular structure"><div class="yrs">2016&ndash;2018</div><h3>The breakthrough</h3><p>Dr.&nbsp;Liangbing Hu invents SUPERWOOD at the University of Maryland.</p></div>
@@ -1525,7 +1528,8 @@ section.tier-divider{--tier:7.6rem}
       <div class="mtitem" style="margin-top:0"><h3>What it sets up</h3><p>A $75&ndash;100M Series B in 2027 at a $400&ndash;800M target valuation &mdash; building SuperMill Two toward $200M+/yr gross margin.</p></div>
     </div>
     <div class="askcta rv">
-      <a class="askbtn" href="mailto:alex@inventwood.com?subject=Request%3A%20data%20room">Request the data room</a>
+      <a class="askbtn" href="mailto:lex@inventwood.com?subject=Request%3A%20data%20room">Request the data room</a>
+      <a class="mail" href="mailto:lex@inventwood.com?subject=Request%3A%20data%20room">lex@inventwood.com</a>
     </div>
     <p class="fwdlook rv">This presentation contains forward-looking statements about future plants, production, costs, revenue and financing. These reflect current expectations and assumptions, involve risks and uncertainties, and actual results may differ materially. Figures for future periods are projections, not guarantees.</p>
   </div>
@@ -1538,11 +1542,24 @@ section.tier-divider{--tier:7.6rem}
   </div>
 </section>
 
+<section id="notice" class="dark" data-nav="Notice">
+  <div class="wrap">
+    <h2 class="rv" style="max-width:none">Important notice</h2>
+    <div class="teamhint rv" style="margin-top:.4rem">Draft &mdash; for legal review before external distribution</div>
+    <div class="mtgrid rv" style="grid-template-columns:1fr 1fr;gap:1.6rem 2.6rem;margin-top:1.6rem">
+      <div class="mtitem"><h3>Confidential</h3><p>This presentation is confidential and is provided solely to the recipient for the purpose of evaluating a potential investment in InventWood. It may not be reproduced, redistributed or disclosed, in whole or in part, without InventWood&rsquo;s written consent.</p></div>
+      <div class="mtitem"><h3>Not an offer</h3><p>Nothing in this presentation constitutes an offer to sell, or a solicitation of an offer to buy, any security. Any offering will be made only by definitive documents, whose terms will supersede anything shown here.</p></div>
+      <div class="mtitem"><h3>Forward-looking statements</h3><p>This presentation contains forward-looking statements about future plants, production, costs, revenue and financing. These reflect current expectations and assumptions, involve risks and uncertainties, and actual results may differ materially. Figures for future periods are projections, not guarantees.</p></div>
+      <div class="mtitem"><h3>No reliance</h3><p>The information is believed to be accurate as of the date on the cover but has not been independently verified, and InventWood undertakes no obligation to update it. Recipients should rely on their own investigation and professional advice.</p></div>
+    </div>
+  </div>
+</section>
+
 <section id="apx" class="tier-divider" data-nav="Appendix">
   <div class="bg" style="background-image:url(assets/appendix-bg.jpg)"></div>
-  <div class="scrim"></div>
+  <div class="scrim" style="background:linear-gradient(180deg,rgba(22,14,8,.6),rgba(22,14,8,.82))"></div>
   <div class="wrap">
-    <h2 class="rv">Appendix</h2>
+    <h2 class="rv" style="text-align:center">Appendix</h2>
     <nav class="apxtoc rv" aria-label="Appendix sections">
       <a href="#econ"><b>Manufacturing Comparison</b><small>1 slide</small></a>
       <a href="#tsec"><b>Technology</b><small>5 slides</small></a>
@@ -1585,12 +1602,11 @@ section.tier-divider{--tier:7.6rem}
   </div>
 </section>
 
-<section id="tsec" class="tier-divider" data-nav="Technology">
-  <div class="bg" style="background-image:url(assets/tech2/sem-after.webp)"></div>
-  <div class="scrim"></div>
-  <div class="wrap">
+<section id="tsec" class="tier-divider dark" data-nav="Technology">
+  <div class="bg" style="background-image:url(assets/appendix-bg.jpg);opacity:.35"></div>
+  <div class="wrap" style="justify-content:center;text-align:center">
     <div class="kicker rv">Appendix</div>
-    <h2 class="rv">Technology</h2>
+    <h2 class="rv" style="text-align:center">Technology</h2>
   </div>
 </section>
 <section id="bkth" data-navhide class="dark" data-nav="Breakthrough">
@@ -1779,7 +1795,7 @@ section.tier-divider{--tier:7.6rem}
     </div>
     <div class="market-grid rv">
       <div class="mcol">
-        <div class="ph">Phase 01 · Today</div><h3>Premium Markets</h3>
+        <h3>Premium Markets</h3>
         <div class="sub">Aesthetic-forward applications with minimal barriers and burning market need.</div>
         <div class="mbox t100">Indoor &amp; outdoor furniture</div>
         <div class="mbox t100">Exterior cladding</div>
@@ -1793,7 +1809,7 @@ section.tier-divider{--tier:7.6rem}
         <div class="mbox t1">Yacht decking</div>
       </div>
       <div class="mcol">
-        <div class="ph">Phase 02 · With Scale</div><h3>Broader Markets</h3>
+        <h3>Broader Markets</h3>
         <div class="sub">Unlocked with scale or development effort.</div>
         <div class="mbox t100">Beams &amp; trusses</div>
         <div class="mbox t100">Roofing</div>
@@ -1807,7 +1823,7 @@ section.tier-divider{--tier:7.6rem}
         <div class="mbox t1">Ballistic &amp; blast-resistant doors</div>
       </div>
       <div class="mcol">
-        <div class="ph">Phase 03 · Longer Term</div><h3>Frontier Markets</h3>
+        <h3>Frontier Markets</h3>
         <div class="sub">Markets with longer qualification or customer cycles.</div>
         <div class="mbox t100">Rebar</div>
         <div class="mbox t100">Foundations</div>
@@ -1834,11 +1850,11 @@ section.tier-divider{--tier:7.6rem}
 </section>
 
 <section id="mth" class="tier-divider" data-nav="Mass Timber">
-  <div class="bg" style="background-image:url(assets/mt-woodcity.jpg)"></div>
-  <div class="scrim"></div>
-  <div class="wrap">
+  <div class="bg" style="background-image:url(assets/appendix-bg.jpg)"></div>
+  <div class="scrim" style="background:linear-gradient(180deg,rgba(22,14,8,.55),rgba(22,14,8,.75))"></div>
+  <div class="wrap" style="text-align:center">
     <div class="kicker rv">Appendix</div>
-    <h2 class="rv">Mass Timber</h2>
+    <h2 class="rv">Mass <em>Timber</em></h2>
   </div>
 </section>
 
@@ -1937,10 +1953,10 @@ section.tier-divider{--tier:7.6rem}
 
 <section id="dch" class="tier-divider" data-nav="Data Centers">
   <div class="bg" style="background-image:url(assets/data-center-render.webp)"></div>
-  <div class="scrim"></div>
-  <div class="wrap">
+  <div class="scrim" style="background:linear-gradient(180deg,rgba(22,14,8,.6),rgba(22,14,8,.8))"></div>
+  <div class="wrap" style="text-align:center">
     <div class="kicker rv">Appendix</div>
-    <h2 class="rv">Data Centers</h2>
+    <h2 class="rv">Data <em>Centers</em></h2>
   </div>
 </section>
 
@@ -2248,5 +2264,6 @@ function realign(){if(NARROW())return;const h=deck.clientHeight;const top=Math.r
 addEventListener('load',()=>{fitSlides();realign();reveal(currentSection());setTimeout(()=>{fitSlides();realign();reveal(currentSection());},600);});
 if(document.fonts)document.fonts.ready.then(()=>{fitSlides();realign();});
 </script>
+<script src="/deck-track.js" defer></script>
 </body>
 </html>
