@@ -727,6 +727,7 @@ section.tier-divider{--tier:7.6rem}
 /* zoom-proof circular clipping: Chrome can mis-clip border-radius on imgs under ancestor zoom */
 .person .pic,.advc>img,.invc img,.phase img,.step .inset,.step img.mol,.adv img{clip-path:circle(50%)}
 .portrait{aspect-ratio:4/5;object-fit:cover}
+#bkth .media-frame{width:min(100%,14rem)}   /* the portrait is a credential, not the subject: cap it */
 .strength-chart{margin-top:1.8rem;border:1px solid var(--line);border-radius:12px;padding:1.3rem 1.4rem;background:rgba(255,255,255,.02)}
 .sc-title{font-size:.84rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:1rem}
 .sc-title span{color:var(--muted);letter-spacing:.06em}
