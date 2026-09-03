@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
-import { sql, DECK } from './_db.mjs';
+import { sql } from './_db.mjs';
+import { deckFromPath } from './_decks.mjs';
 import { cleanScr } from './track.mjs';
 
 const GID_MAX_AGE = 400 * 24 * 3600; // 400 days — matches sw_admin's lifetime
@@ -67,7 +68,7 @@ export default async function handler(req, res) {
   try {
     await sql`
       INSERT INTO gate_hits (deck, ts, gid, ip, ua, city, country, lat, lon, path, scr, team)
-      VALUES (${DECK}, ${record.ts}, ${record.gid}, ${record.ip}, ${record.ua}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.path}, ${scr ? JSON.stringify(scr) : null}::jsonb, ${record.team})`;
+      VALUES (${deckFromPath(path)}, ${record.ts}, ${record.gid}, ${record.ip}, ${record.ua}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.path}, ${scr ? JSON.stringify(scr) : null}::jsonb, ${record.team})`;
   } catch (err) {
     console.log('gate-hit write failed:', JSON.stringify(record), err.message);
   }

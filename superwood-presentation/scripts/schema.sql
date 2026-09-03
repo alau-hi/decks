@@ -72,3 +72,12 @@ CREATE INDEX IF NOT EXISTS gate_hits_deck_idx ON gate_hits (deck);
 
 -- Conversion link: which anonymous browser this signup came from.
 ALTER TABLE signups ADD COLUMN IF NOT EXISTS gid text;
+
+-- Latest observed slide order per deck (the tracker reports the DOM's
+-- data-nav list on every beacon; newest deployment wins). Read by /api/stats
+-- so the heatmap follows slide reorders without a hardcoded list.
+CREATE TABLE IF NOT EXISTS deck_slides (
+  deck       text PRIMARY KEY,
+  slides     jsonb NOT NULL,
+  updated_at timestamptz NOT NULL DEFAULT now()
+);

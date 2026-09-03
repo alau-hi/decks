@@ -1,4 +1,5 @@
-import { sql, DECK } from './_db.mjs';
+import { sql } from './_db.mjs';
+import { DECKS, DEFAULT_DECK } from './_decks.mjs';
 
 // The gate cookie is the authoritative viewer identity; the payload viewer is
 // only a fallback (middleware already blocks unauthenticated requests).
@@ -38,6 +39,18 @@ export function cleanScr(raw) {
   return out;
 }
 
+// Slide order as reported by the deck's DOM: ≤80 names, ≤60 chars each,
+// deduplicated, first occurrence wins. Anything malformed → null (no upsert).
+export function cleanOrder(raw) {
+  if (!Array.isArray(raw) || raw.length === 0 || raw.length > 80) return null;
+  const out = [], seen = new Set();
+  for (const v of raw) {
+    const s = String(v ?? '').trim().slice(0, 60);
+    if (s && !seen.has(s)) { seen.add(s); out.push(s); }
+  }
+  return out.length ? out : null;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -46,7 +59,8 @@ export default async function handler(req, res) {
   if (!sql) {
     return res.status(204).end();
   }
-  const { viewer, session, totals, scr } = req.body || {};
+  const { viewer, session, totals, scr, deck: deckRaw, order } = req.body || {};
+  const deck = Object.prototype.hasOwnProperty.call(DECKS, String(deckRaw)) ? String(deckRaw) : DEFAULT_DECK;
   if (!/^[a-z0-9]{8,32}$/.test(String(session || ''))) {
     return res.status(400).json({ error: 'Bad session' });
   }
@@ -80,10 +94,17 @@ export default async function handler(req, res) {
     // beacons never double-count (same semantics as the old per-session blob).
     await sql`
       INSERT INTO dwell_sessions (session, deck, viewer, totals, scr, ua, ip, city, country, lat, lon, ts)
-      VALUES (${session}, ${DECK}, ${email}, ${JSON.stringify(clean)}::jsonb, ${record.scr ? JSON.stringify(record.scr) : null}::jsonb, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.ts})
+      VALUES (${session}, ${deck}, ${email}, ${JSON.stringify(clean)}::jsonb, ${record.scr ? JSON.stringify(record.scr) : null}::jsonb, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.ts})
       ON CONFLICT (session) DO UPDATE SET
         viewer = EXCLUDED.viewer, totals = EXCLUDED.totals, scr = COALESCE(EXCLUDED.scr, dwell_sessions.scr), ua = EXCLUDED.ua, ip = EXCLUDED.ip,
         city = EXCLUDED.city, country = EXCLUDED.country, lat = EXCLUDED.lat, lon = EXCLUDED.lon, ts = EXCLUDED.ts`;
+    const slides = cleanOrder(order);
+    if (slides) {
+      await sql`
+        INSERT INTO deck_slides (deck, slides, updated_at)
+        VALUES (${deck}, ${JSON.stringify(slides)}::jsonb, now())
+        ON CONFLICT (deck) DO UPDATE SET slides = EXCLUDED.slides, updated_at = now()`;
+    }
   } catch (err) {
     console.log('deck-dwell write failed:', JSON.stringify(record), err.message);
     return res.status(500).json({ error: 'Store failed' });

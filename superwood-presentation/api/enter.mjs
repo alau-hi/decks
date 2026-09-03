@@ -1,4 +1,5 @@
-import { sql, DECK } from './_db.mjs';
+import { sql } from './_db.mjs';
+import { deckFromPath } from './_decks.mjs';
 
 const MAX_AGE = 30 * 24 * 3600; // 30 days
 
@@ -49,6 +50,7 @@ export default async function handler(req, res) {
   const ts = new Date().toISOString();
   const rawGid = String(getCookie(req, 'sw_gid') || '');
   const gid = /^[0-9a-f-]{36}$/.test(rawGid) ? rawGid : null;
+  const deck = deckFromPath(safeNext(next)); // deck of entry: where the visitor was headed
 
   const record = {
     email: cleanEmail,
@@ -64,7 +66,7 @@ export default async function handler(req, res) {
     if (!sql) throw new Error('DATABASE_URL not configured');
     await sql`
       INSERT INTO signups (deck, email, ts, ua, ip, city, country, lat, lon, gid)
-      VALUES (${DECK}, ${record.email}, ${record.ts}, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${gid})
+      VALUES (${deck}, ${record.email}, ${record.ts}, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${gid})
       ON CONFLICT (deck, email, ts) DO NOTHING`;
   } catch (err) {
     // DB unavailable — keep the signup in function logs and let the viewer in.
