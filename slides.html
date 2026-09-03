@@ -33,7 +33,7 @@ section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-s
    title prints at the same height (the cover, Thank you, the photo slide and the appendix dividers
    keep their centred compositions). Either way the title and its kicker undo the fit zoom
    fitSlides puts on the wrap, so titles keep one size and only the body scales. */
-html.exporting section{align-items:flex-start}
+html.exporting section{align-items:flex-start;padding-top:10vh}   /* paper: titles sit 81px down, not 49 */
 #s1,#s19,#run,section.tier-divider{align-items:center}
 .wrap>.kicker,.wrap>h2,.wrap>h2+.lead{zoom:calc(1/var(--z,1))}
 section.tier-divider .wrap>h2{zoom:1}
