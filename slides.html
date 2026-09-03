@@ -28,7 +28,16 @@ body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-we
 .deck{height:100vh;height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
 .deck::-webkit-scrollbar{width:0}
 ::selection{background:rgba(226,184,119,.9);color:var(--ink-deep)}
-section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;padding:6vh max(6vw,9.5rem) 6vh 6vw;overflow:hidden}
+section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:flex-start;padding:6vh max(6vw,9.5rem) 6vh 6vw;overflow:hidden}
+/* titles hold one line and one size deck-wide: sections top-align (the cover, Thank you, the photo
+   slide and the appendix dividers keep their centred compositions), and the title and its kicker
+   undo the fit zoom fitSlides puts on the wrap, so only the body scales to fill the slide */
+#s1,#s19,#run,section.tier-divider{align-items:center}
+.wrap>.kicker,.wrap>h2,.wrap>h2+.lead{zoom:calc(1/var(--z,1))}
+section.tier-divider .wrap>h2{zoom:1}
+/* what is left under the title block is split above and below the body, so a thin slide reads as
+   composed rather than bottom-empty; fitSlides measures the slack and writes it here */
+.wrap>h2:not(:has(+.lead)),.wrap>h2+.lead{margin-bottom:calc(var(--slack,0px)/2)}
 .wrap{width:100%;max-width:var(--maxw);margin:0 auto 0 0;position:relative;z-index:2;display:flow-root}
 /* left-aligned, not centred: CSS zoom scales the wrap's layout width, so a slide that fitSlides
    shrinks became narrower than the space and `margin:0 auto` walked it right - the Fleet slide
@@ -403,13 +412,16 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .cesfoot{margin-top:1.2rem;max-width:none;text-align:center}
 /* panel size encodes scale: SM One < SM Two < National Fleet. stretch is load-bearing —
    with align-items:start the fleet card has fewest rows and ends up the shortest, cancelling the width step */
-.gnet{display:grid;grid-template-columns:1.05fr 1.25fr 1.45fr 2.15fr;gap:.8rem;margin-top:1.1rem}
-#gnet{padding-top:3.5vh;padding-bottom:3.5vh}
-.gcard.wide{grid-column:1/-1}
-.gcard.wide>h3{min-height:0}
-.gcard.wide .grows{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem}
-.gcard.wide .gicons{gap:.4rem .6rem}
-.gcard.wide .gr{justify-content:flex-start;gap:1.4rem}.gcard.wide .gr b{text-align:left}
+.gnet{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:auto auto 1fr auto;gap:0 .8rem;margin-top:.9rem}
+#gnet{padding-bottom:3.5vh}
+/* one row of five; each card is a subgrid so title, eyebrow and note start on shared lines across
+   all five. The icon field and stat rows share the 1fr row as one flex column, so each card's field
+   takes exactly that card's slack (a shared stats row would hand the tallest card's stat height to
+   every field and starve them) */
+.gnet .gcard{display:grid;grid-template-rows:subgrid;grid-row:span 4}
+.gmid{display:flex;flex-direction:column}
+.gmid .gicons{flex:1 0 auto}
+.gnet .gcard h3{min-height:0;font-size:clamp(.95rem,1.4vw,1.15rem)}
 .gcard{display:flex;flex-direction:column;border:1px solid rgba(184,125,68,.5);border-radius:14px;padding:1rem 1.1rem}
 .gcard h3{font-family:'Fraunces';font-weight:400;font-size:clamp(.95rem,1.5vw,1.25rem);color:var(--cream);line-height:1.15;letter-spacing:0;min-height:2.3em;display:flex;align-items:flex-start}
 .gcard .gsub{font-family:'Inter';font-weight:600;font-size:clamp(10px,.58rem,.72rem);letter-spacing:.16em;text-transform:uppercase;color:var(--wood-bright);margin-top:.35rem}
@@ -422,18 +434,15 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .gicons.green{color:#8fb356}
 .gicons.orange{color:#c2571d}
 .gcard.sm .gicons{margin:.7rem 0 .2rem}
-/* stretched cards hand their slack height to the icon field, so every card reads full */
-.gcard .gicons{flex:1 0 auto;align-content:space-evenly}
-/* ONE and TWO: a fixed icon-field height so their stat rows start on the same line */
-.gnet .gcard:nth-child(1) .gicons,.gnet .gcard:nth-child(2) .gicons{flex:0 0 auto;height:6.05rem}
-/* National and International pin too, sized so all four gnotes start on the same line */
-.gnet .gcard:nth-child(3) .gicons{flex:0 0 auto;position:relative;display:block;height:10rem}
-.gnet .gcard:nth-child(3) .gicons .fx,.gnet .gcard:nth-child(4) .gicons .fx{position:absolute}
-.gnet .gcard:nth-child(4) .gicons{flex:0 0 auto;position:relative;display:block;height:14.3rem}
-.gnet .gcard:nth-child(5) .gicons{flex:0 0 auto;position:relative;display:block;height:8.6rem}
-.gnet .gcard:nth-child(5) .gicons .fx{position:absolute}
-.gicons.dense{gap:.28rem .32rem;min-height:0}.gicons.dense .fx{height:calc(var(--fh) * .68);width:calc(var(--fh) * .68 * .8875)}
-.gicons.dense2{gap:.3rem .35rem;justify-content:space-between}.gicons.dense2 .fx{height:calc(var(--fh) * .72);width:calc(var(--fh) * .72 * .8875)}
+/* icon fields are packed by packFleet() at runtime to their measured box (see the script), so
+   they read full at any viewport; the packer writes px sizes and positions on each icon */
+.gnet .gicons{position:relative;display:block;min-height:4.5rem;margin:.6rem 0 .2rem}
+.gnet .gr{padding:.3rem 0}
+.gnet .gnote{margin-top:.75rem}
+.gnet .gicons .fx{position:absolute}
+.gnet .gr{font-size:.82rem}
+.gnet .gnote{font-size:.8rem}
+#gnet>.wrap>.gnote{font-size:.8rem;max-width:none}
 .grows{margin-top:.7rem}
 .gr{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:.15rem .7rem;padding:.34rem 0;border-bottom:1px solid rgba(228,210,180,.1);font-size:.7rem;min-height:1.95rem}
 .gr span{color:var(--muted);flex:none;white-space:nowrap}
@@ -666,9 +675,9 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 /* narrow screens: collapses for grids whose base rules are defined later in the sheet */
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){
   .machstats{grid-template-columns:1fr 1fr;gap:.4rem 1.4rem}
-  .gnet{grid-template-columns:1fr 1fr}
-  .gcard.wide{grid-column:1/3}
-  .gcard.wide .grows{grid-template-columns:1fr}
+  .gnet{grid-template-columns:1fr 1fr;grid-template-rows:none;gap:.8rem}
+  .gnet .gcard{display:flex;flex-direction:column}
+  .gmid{display:contents}
   #fast .mtgrid{grid-template-columns:1fr!important}
   #s15 .msrow{grid-template-columns:1fr!important;gap:1rem}
   .askterms{grid-template-columns:1fr 1fr}
@@ -832,7 +841,7 @@ section.tier-divider{--tier:7.6rem}
 .showgrid span{display:inline;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright)}
 .showgrid p{font-size:.66rem;line-height:1.45;color:var(--cream-dim);margin-top:.25rem}
 /* dc application tiles */
-#dcn h2,#dcm h2,#dcf h2{max-width:none;font-size:clamp(1.35rem,2.55vw,2rem)}
+#dcn h2,#dcm h2,#dcf h2{max-width:none}
 #ask .note,#dcn .note,#dcm .note{font-size:.62rem;line-height:1.5;font-style:italic;color:var(--muted);margin-top:1.3rem}
 .apph{font-family:'Inter';font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:.5rem;margin-top:1.5rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
 .appgrid{display:grid;grid-template-columns:repeat(6,1fr);column-gap:1.1rem;row-gap:.9rem;margin-top:.9rem;align-items:start}
@@ -861,6 +870,10 @@ section.tier-divider{--tier:7.6rem}
 #mte .mtworld figcaption{font-size:.78rem;min-height:6.7rem}
 #mtb .mtworld figcaption{display:block;font-size:.78rem;min-height:0}
 .mtworld figure{position:relative}
+/* thin appendix slides spend their slack on the body itself: taller landmark photos, taller
+   (text-centred) cards. Half of --slack goes here, the other half is the title-block margin. */
+#mtb .mtworld img{aspect-ratio:auto;height:calc(8.4rem + var(--slack,0px)/var(--z,1)/2)}
+#dcm .dccard,#dcf .dccard{align-items:center;padding-block:calc(1.2rem + var(--slack,0px)/var(--z,1)/4)}
 .mtworld figure .why{position:absolute;left:0;right:0;top:0;aspect-ratio:3/2.6;border-radius:10px;border:1px solid rgba(196,154,95,.4);background:linear-gradient(180deg,rgba(24,15,8,.95),rgba(24,15,8,.98));display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:.3rem;padding:.6rem .7rem;overflow:hidden;font-family:'Inter';font-size:.52rem;line-height:1.5;color:var(--cream-dim);opacity:0;pointer-events:none;transition:opacity .22s ease}
 .mtworld figure:hover .why,.mtworld figure:focus .why,.mtworld figure:focus-within .why{opacity:1;pointer-events:auto}
 .mtworld figure .why a{color:var(--gold);text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
@@ -929,16 +942,16 @@ section.tier-divider{--tier:7.6rem}
 #s21 .mtgrid{grid-template-columns:1fr 1.35fr;align-items:center;margin-top:.4rem}
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){
   #ask .mtgrid,#s21 .mtgrid{grid-template-columns:1fr;gap:1.4rem}
-  /* the Fleet's packed icon fields are laid out in rem for a desktop card; on a phone
-     they flow again - wrapping rows, natural height - so nothing spills past the card */
-  .gnet .gcard:nth-child(1) .gicons,.gnet .gcard:nth-child(2) .gicons,
-  .gnet .gcard:nth-child(3) .gicons,.gnet .gcard:nth-child(4) .gicons,.gnet .gcard:nth-child(5) .gicons{
-    height:auto;min-height:0;position:static;display:flex;flex-wrap:wrap;gap:.3rem .35rem;align-items:flex-end}
-  .gnet .gcard:nth-child(3) .gicons .fx,.gnet .gcard:nth-child(4) .gicons .fx,.gnet .gcard:nth-child(5) .gicons .fx{position:static}
+  /* the Fleet's icon fields are packed for a desktop card; on a phone they flow again -
+     wrapping rows, natural height - and packFleet() emits only the base mix (position:static) */
+  .gnet .gicons{height:auto;min-height:0;position:static;display:flex;flex-wrap:wrap;gap:.3rem .35rem;align-items:flex-end}
+  .gnet .gicons .fx{position:static}
 }
 
 /* ==== Export mode: the PDF renderer adds html.exporting; hover/tap hints make no sense on paper ==== */
-html.exporting .teamhint,html.exporting .hovernote{display:none!important}
+html.exporting .teamhint,html.exporting .hovernote,html.exporting .srcwrap{display:none!important}
+/* paper has no hover and no Sources pill; slides that carry tips or a source panel point at the Notes pages instead */
+html.exporting section.has-notes::after{content:"See Notes and Sources in Appendix";position:absolute;left:2.125rem;bottom:52px;z-index:96;font-family:'Inter';font-weight:600;font-size:clamp(9px,.58rem,.72rem);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
 html.exporting section{padding-right:6vw}   /* no nav rail on paper */
 #gnet .wrap{max-width:none}
 
@@ -1146,7 +1159,7 @@ html.exporting section{padding-right:6vw}   /* no nav rail on paper */
 
 <section id="fast" class="dark" data-nav="Fast &times; Fast">
   <div class="wrap">
-    <h2 class="rv" style="font-size:clamp(1.8rem,3.4vw,3rem)">Fast to build. <em>Fast to build with.</em></h2>
+    <h2 class="rv">Fast to build. <em>Fast to build with.</em></h2>
     <p class="lead rv" style="margin-top:1rem;max-width:70ch">Site development is what stalls big plants. A SUPERMILL barely registers.</p>
     <div class="mtgrid rv" style="grid-template-columns:1fr 1fr 1fr;gap:1rem 2.4rem;margin-top:1.2rem">
       <div class="mtitem"><h3>Fast to permit and build</h3><ul class="li">
@@ -1358,16 +1371,16 @@ html.exporting section{padding-right:6vw}   /* no nav rail on paper */
 
 <section id="gnet" class="dark" data-nav="The Fleet">
   <div class="wrap">
-    <h2 class="rv" style="max-width:32ch">Enabling a <em>fleet of SUPERMILLS</em>, across America and the globe</h2>
-    <p class="lead rv" style="margin-top:.8rem;font-family:'Fraunces',serif;font-size:clamp(1.05rem,1.8vw,1.5rem);color:var(--cream)">Global demand potential: <em style="color:var(--gold)">&gt;7,000 SUPERMILL TWO equivalents</em></p>
+    <h2 class="rv" style="max-width:none">Enabling a <em>fleet of SUPERMILLS</em>, across America and the globe</h2>
+    <p class="lead rv" style="margin-top:.5rem;font-family:'Fraunces',serif;font-size:clamp(1.05rem,1.8vw,1.5rem);color:var(--cream)">Global demand potential: <em style="color:var(--gold)">&gt;7,000 SUPERMILL TWO equivalents</em></p>
     <div class="gnet">
-      <div class="gcard  rv"><h3>SUPERMILL ONE</h3><div class="gsub">Now shipping</div><div class="gicons" style="--fh:1.6rem" aria-hidden="true"><svg class="fx" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>1M</b></div><div class="gr"><span>Capex</span><b>$48M</b></div><div class="gr"><span>Revenue</span><b>$20M / yr</b></div><div class="gr"><span>EBITDA</span><b>20%</b></div><div class="gr full"><span>Primary product</span><b>SUPERWOOD Boards</b></div></div><p class="gnote">Designed as a subscale pilot facility for SUPERMILL TWO: commercialize process, prove techno-economics, seed demand for future SUPERMILLS.</p></div>
-      <div class="gcard  rv"><h3>SUPERMILL TWO</h3><div class="gsub">In development</div><div class="gicons" style="--fh:3.0rem" aria-hidden="true"><svg class="fx" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>36M</b></div><div class="gr"><span>Capex</span><b>$300M</b></div><div class="gr"><span>Revenue</span><b>$360M cap. &middot; $320M proj.</b></div><div class="gr"><span>EBITDA</span><b>65%</b></div><div class="gr full"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer</b></div></div><p class="gnote">Same batch process as SUPERMILL ONE, at increased scale that enables cost to compete with steel.</p></div>
-      <div class="gcard  rv"><h3>NATIONAL FLEET OF SUPERMILLS</h3><div class="gsub">Using SUPERMILL TWO as a template</div><div class="gicons varied dense2" aria-hidden="true"><svg class="fx" style="--fh:4.20rem;left:26.90%;top:0.01rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.60rem;left:56.76%;top:0.01rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:74.42%;top:0.04rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.50rem;left:11.40%;top:0.04rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.70rem;left:0.33%;top:2.52rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:36.72%;top:3.22rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:19.58%;top:3.25rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.70rem;left:54.78%;top:3.34rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.20rem;left:7.51%;top:4.87rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.60rem;left:30.13%;top:5.57rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.50rem;left:69.35%;top:5.60rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:47.53%;top:5.82rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.80rem;left:88.00%;top:6.37rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.20rem;left:0.26%;top:6.69rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.90rem;left:54.19%;top:7.80rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:74.62%;top:8.17rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.30rem;left:24.59%;top:8.33rem" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>10B+</b></div><div class="gr"><span>ROE per SUPERMILL</span><b>175&ndash;200%</b></div><div class="gr full"><span>Feedstock</span><b>Sufficient for a SUPERMILL in 48 states</b></div></div><p class="gnote">Modular construction and manufacturing make additional SUPERMILLS easy to site and fast to build.</p></div>
-      <div class="gcard sm rv"><h3>INTERNATIONAL FLEET</h3><div class="gsub">~20x the national fleet</div><div class="gicons orange varied dense" aria-hidden="true"><svg class="fx" style="--fh:3.05rem;left:22.84%;top:0.02rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.97rem;left:81.81%;top:0.02rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:0.04%;top:0.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.35rem;left:42.47%;top:0.04rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:57.87%;top:0.07rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.67rem;left:16.88%;top:2.74rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.74rem;left:89.76%;top:3.31rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.63rem;left:30.75%;top:3.70rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.29rem;left:50.00%;top:4.67rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.26rem;left:72.88%;top:4.88rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.37rem;left:11.80%;top:5.25rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.66rem;left:62.10%;top:5.57rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.68rem;left:0.04%;top:6.19rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.82rem;left:87.35%;top:7.25rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.87rem;left:25.93%;top:7.69rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.85rem;left:41.79%;top:7.84rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.58rem;left:60.83%;top:8.23rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.77rem;left:0.17%;top:8.95rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.74rem;left:14.81%;top:9.13rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.77rem;left:75.85%;top:9.16rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:84.64%;top:9.93rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:6.00rem;left:31.39%;top:10.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.30rem;left:15.95%;top:11.89rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.95rem;left:52.66%;top:11.96rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.08rem;left:70.35%;top:12.19rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:2.75rem;left:2.96%;top:12.41rem" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer, SUPER OSB</b></div></div><p class="gnote">Typically a JV with a local partner: InventWood earns a technology &amp; setup fee, an operating fee, and a brand / marketing fee.</p></div>
-      <div class="gcard sm wide rv"><h3>CHIPMILL FLEET</h3><div class="gsub">National and international</div><div class="gicons green varied dense" aria-hidden="true"><svg class="fx" style="--fh:4.28rem;left:1.12%;top:0.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.60rem;left:39.59%;top:0.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.52rem;left:89.94%;top:0.03rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.31rem;left:68.63%;top:0.06rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.56rem;left:21.53%;top:0.07rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.70rem;left:78.92%;top:0.09rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.85rem;left:57.41%;top:0.15rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.59rem;left:52.13%;top:0.25rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.12rem;left:14.92%;top:0.42rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.63rem;left:8.03%;top:0.45rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.09rem;left:96.26%;top:0.46rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.75rem;left:30.31%;top:0.49rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.09rem;left:46.19%;top:0.63rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:5.00rem;left:61.08%;top:1.56rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.08rem;left:84.59%;top:1.60rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.89rem;left:35.49%;top:1.84rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.99rem;left:74.05%;top:2.05rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.89rem;left:25.78%;top:2.31rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.51rem;left:66.75%;top:3.20rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.72rem;left:12.45%;top:3.75rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.80rem;left:4.83%;top:3.79rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.97rem;left:90.87%;top:4.06rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.95rem;left:21.12%;top:4.14rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.93rem;left:50.74%;top:4.17rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.99rem;left:40.60%;top:4.18rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.87rem;left:95.73%;top:4.26rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.90rem;left:31.02%;top:4.30rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.93rem;left:0.07%;top:4.85rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.70rem;left:45.50%;top:4.93rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.66rem;left:82.52%;top:4.97rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.69rem;left:15.85%;top:5.02rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.80rem;left:60.06%;top:5.28rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.68rem;left:70.78%;top:5.32rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.60rem;left:85.88%;top:5.39rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.49rem;left:35.48%;top:5.43rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.35rem;left:55.18%;top:5.48rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.44rem;left:25.78%;top:5.54rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.27rem;left:8.33%;top:5.56rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.32rem;left:78.50%;top:5.65rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:4.09rem;left:64.65%;top:5.80rem" aria-hidden="true"><use href="#ic-factory"/></svg><svg class="fx" style="--fh:3.71rem;left:75.04%;top:5.83rem" aria-hidden="true"><use href="#ic-factory"/></svg></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>180M per plant</b></div><div class="gr"><span>Product</span><b>SUPER OSB</b></div></div><p class="gnote">Further scale &amp; profitability. Continuous manufacturing on low-cost wood chips &amp; wood waste. International plants as JVs with local partners &mdash; technology &amp; setup, operating, and brand / marketing fees.</p></div>
+      <div class="gcard  rv"><h3>SUPERMILL ONE</h3><div class="gsub">Now shipping</div><div class="gmid"><div class="gicons" data-mix="1.6" data-k=".82" data-fill="0" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>1M</b></div><div class="gr"><span>Capex</span><b>$48M</b></div><div class="gr"><span>Revenue</span><b>$20M / yr</b></div><div class="gr"><span>EBITDA</span><b>20%</b></div><div class="gr full"><span>Primary product</span><b>SUPERWOOD Boards</b></div></div></div><p class="gnote">Designed as a subscale pilot facility for SUPERMILL TWO: commercialize process, prove techno-economics, seed demand for future SUPERMILLS.</p></div>
+      <div class="gcard  rv"><h3>SUPERMILL TWO</h3><div class="gsub">In development</div><div class="gmid"><div class="gicons" data-mix="3.0" data-k=".82" data-fill="0" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>36M</b></div><div class="gr"><span>Capex</span><b>$300M</b></div><div class="gr"><span>Revenue</span><b>$360M cap. &middot; $320M proj.</b></div><div class="gr"><span>EBITDA</span><b>65%</b></div><div class="gr full"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer</b></div></div></div><p class="gnote">Same batch process as SUPERMILL ONE, at increased scale that enables cost to compete with steel.</p></div>
+      <div class="gcard  rv"><h3>NATIONAL FLEET OF SUPERMILLS</h3><div class="gsub">Using SUPERMILL TWO as a template</div><div class="gmid"><div class="gicons" data-mix="6,4.24,4.24,3.2,3,2.8,2.6" data-k=".72" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>10B+</b></div><div class="gr"><span>ROE per SUPERMILL</span><b>175&ndash;200%</b></div><div class="gr full"><span>Feedstock</span><b>Sufficient for a SUPERMILL in 48 states</b></div></div></div><p class="gnote">Modular construction and manufacturing make additional SUPERMILLS easy to site and fast to build.</p></div>
+      <div class="gcard sm rv"><h3>INTERNATIONAL FLEET</h3><div class="gsub">~20x the national fleet</div><div class="gmid"><div class="gicons orange" data-mix="6,6,6,6,4.24,4.24,4.24,3.8,3.4,3,2.8,2.6" data-k=".68" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Products</span><b>SUPERWOOD Boards, SUPER Veneer, SUPER OSB</b></div></div></div><p class="gnote">Typically a JV with a local partner: InventWood earns a technology &amp; setup fee, an operating fee, and a brand / marketing fee.</p></div>
+      <div class="gcard sm rv"><h3>CHIPMILL FLEET</h3><div class="gsub">National and international</div><div class="gmid"><div class="gicons green" data-mix="6,6,6,4.8,4.6,4.4,4.24,4.24,4,3.8,3.6" data-k=".68" aria-hidden="true"></div><div class="grows"><div class="gr"><span>Sq ft / yr</span><b>180M per plant</b></div><div class="gr"><span>Product</span><b>SUPER OSB</b></div></div></div><p class="gnote">Further scale &amp; profitability. Continuous manufacturing on low-cost wood chips &amp; wood waste. International plants as JVs with local partners &mdash; technology &amp; setup, operating, and brand / marketing fees.</p></div>
     </div>
-    <p class="gnote rv" style="max-width:78ch">7,000 SUPERMILL TWO equivalents would be required to replace 50% of the steel used in the world today &mdash; roughly the amount of steel used in construction.</p>
+    <p class="gnote rv">7,000 SUPERMILL TWO equivalents would be required to replace 50% of the steel used in the world today &mdash; roughly the amount of steel used in construction.</p>
   </div>
 </section>
 
@@ -2062,7 +2075,31 @@ const deck=document.getElementById('deck');
   document.addEventListener('click',e=>{if(!e.target.closest('.srcwrap'))closeAll();});
   addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();});
 }
-document.querySelectorAll('#gnet .gicons').forEach((g,gi)=>{g.querySelectorAll('.fx').forEach((f,i)=>{f.style.animationDelay=(gi*160+i*70)+'ms';});});
+/* Fleet icon fields. data-mix lists icon heights in rem, largest first (SUPERMILL TWO = 3.0,
+   2x = 4.24, LARGE / 4x = 6.0; "N x as large" is visual area, so height scales by sqrt N).
+   Bottom-left fill: each icon takes the lowest, then leftmost, free spot on a 3px lattice; once
+   the mix is placed, the three smallest sizes keep going until none fits anywhere, so the field
+   is full down to the smallest icon by construction, and deterministic for a given box. */
+function packFleet(){
+  const rem=parseFloat(getComputedStyle(document.documentElement).fontSize);
+  document.querySelectorAll('#gnet .gicons[data-mix]').forEach((g,gi)=>{
+    const mix=g.dataset.mix.split(',').map(Number),k=+g.dataset.k,fill=g.dataset.fill!=='0';
+    const flow=getComputedStyle(g).position!=='relative';
+    const W=g.clientWidth,H=g.clientHeight,gap=-.22*rem;
+    if(g.dataset.box===W+'x'+H)return;g.dataset.box=W+'x'+H;   /* same box, same layout: don't rebuild (it would replay the reveal) */   /* boxes overlap ~4px: the glyph's edges are chimney and roofline, mostly empty */
+    const placed=[];
+    const free=(x,y,w,h)=>!placed.some(p=>x<p.x+p.w+gap&&x+w+gap>p.x&&y<p.y+p.h+gap&&y+h+gap>p.y);
+    const put=fh=>{const h=fh*rem*k,w=h*.8875;if(w>W||h>H)return false;
+      for(let y=H-h;y>=0;y-=3)for(let x=0;x<=W-w;x+=3)if(free(x,y,w,h)){placed.push({x,y,w,h,fh});return true;}
+      return false;};
+    if(flow||!W||!H)placed.push(...mix.map(fh=>({fh,h:fh*rem*k,w:fh*rem*k*.8875})));
+    else if(!fill)put(mix[0]);
+    else{mix.forEach(put);const small=mix.slice(-3);while(small.some(put)){}}
+    g.innerHTML=placed.map((p,i)=>'<svg class="fx" style="height:'+p.h.toFixed(1)+'px;width:'+p.w.toFixed(1)+'px;'
+      +(p.x===undefined?'':'left:'+p.x.toFixed(1)+'px;top:'+p.y.toFixed(1)+'px;')
+      +'animation-delay:'+(gi*160+i*45)+'ms" aria-hidden="true"><use href="#ic-factory"/></svg>').join('');
+  });
+}
 /* team + advisor cards are focusable divs whose .bio-pop is visibility:hidden — so the full bio sits
    outside the a11y tree until :focus-within reveals it, and the card itself announced as nothing.
    name each card from its own heading rows and point describedby at the bio, which focus has just
@@ -2195,7 +2232,12 @@ window.addEventListener('keydown',e=>{
    shrink when it overflows, grow when it's sparse (upscale capped at 1.4x).
    zoom affects layout, so re-measure and converge over a few passes. */
 const NARROW=()=>matchMedia('(max-width:700px), (max-width:860px) and (orientation:portrait), (max-height:520px)').matches;
+secs.forEach(s=>{if(s.querySelector('.srcwrap,.sw-tip'))s.classList.add('has-notes');});
 function fitSlides(only){
+  fitSlidesInner(only);
+  if(!only||only.id==='gnet')packFleet();
+}
+function fitSlidesInner(only){
   /* zoom floor. below this the slide stops being readable, so past the floor it grows and scrolls
      instead of shrinking further — a phone can't hold a desktop-density slide in one viewport at a
      legible size. phones floor high (10% shrink is invisible; the old unbounded path reached 46%,
@@ -2208,12 +2250,12 @@ function fitSlides(only){
   (only?[only]:secs).forEach(s=>{
     if(s.id==='s1')return;                       /* cover keeps its own scale */
     const w=s.querySelector(':scope > .wrap');if(!w)return;
-    w.style.zoom='';
+    w.style.zoom='';w.style.setProperty('--z',1);w.style.setProperty('--slack','0px');
     const cs=getComputedStyle(s);
     const avail=deck.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
     let z=1;
     /* returns true once the floor is reached, so each loop stops instead of spinning against it */
-    const set=v=>{z=Math.max(minz,Math.min(maxz,v));w.style.zoom=z;return z<=minz};
+    const set=v=>{z=Math.max(minz,Math.min(maxz,v));w.style.zoom=z;w.style.setProperty('--z',z);return z<=minz};
     for(let i=0;i<12;i++){
       const h=w.offsetHeight*z;
       if(Math.abs(h-avail)<5)break;
@@ -2249,6 +2291,10 @@ function fitSlides(only){
       const over=(rightmost()-sr.left)-(vw-parseFloat(cs.paddingRight));
       if(over<=0.5)break;
       if(set(z*Math.max(.6,1-(over/Math.max(1,vw))-0.004)))break;
+    }
+    if(cs.alignItems==='flex-start'&&!NARROW()){
+      const slack=(s.clientHeight-parseFloat(cs.paddingBottom))-(lowest()-s.getBoundingClientRect().top);
+      if(slack>8)w.style.setProperty('--slack',Math.floor(slack)+'px');
     }
   });
 }
