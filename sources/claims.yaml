@@ -548,7 +548,7 @@ claims:
     source: Primetals / MHI Spectra / trade engineering sources - EAF up to 200-300 MVA per furnace, flicker/harmonics drive interconnection design ("the worst machine you can connect to a grid")
     slide: Appendix comparison
     note: Replaces the earlier ~150 MW average-draw figure with connection capacity, per Alex.
-  - claim: Unlevered cash yield (annual EBITDA / capex) - SUPERMILL ~69% (model), minimill ~15-30% at ~$4B build cost, smelter ~9% record year
+  - claim: Unlevered cash yield (annual EBITDA / capex) - SUPERMILL ~52-69% (model: ~$208M EBITDA over $300-400M capex; was ~69% on the $300M point figure until 2026-09-03), minimill ~15-30% at ~$4B build cost, smelter ~9% record year
     provenance: derived
     conf: M (SUPERMILL model basis), M (minimill), M/L (smelter through-cycle)
     source: arithmetic on registered figures - 208/300; 600-1200/4000; 340/4000
