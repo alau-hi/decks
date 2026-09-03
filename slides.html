@@ -71,6 +71,9 @@ body.on-cover .pageno{opacity:0}
 body.on-cover .conf{opacity:0}
 /* per-slide sources button: bottom-left corner, just above the Confidential pill; click to open */
 .srcwrap{position:absolute;left:2.125rem;bottom:52px;z-index:96}
+/* the pill (and on paper the Notes hint that replaces it) sits 52px up; keep the body clear of it.
+   fitSlides reads section padding, so the fit follows. */
+section:has(.srcwrap),html.exporting section.has-notes{padding-bottom:max(6vh,96px)}
 .srcbtn{font-family:'Inter';font-weight:600;font-size:clamp(9px,.58rem,.72rem);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);background:rgba(20,13,7,.72);border:1px solid var(--line);border-radius:999px;padding:.4em 1.05em;cursor:pointer;backdrop-filter:blur(3px);transition:color .25s,border-color .25s}
 .srcbtn:hover,.srcbtn:focus-visible,.srcwrap.open .srcbtn{color:var(--cream);border-color:rgba(226,184,119,.5)}
 .srcpanel{position:absolute;left:0;bottom:calc(100% + .8rem);width:min(34rem,calc(100vw - 3rem));max-height:62vh;overflow-y:auto;background:var(--pop-bg);border:1px solid rgba(226,184,119,.28);border-radius:12px;padding:1.05rem 1.25rem;box-shadow:0 24px 60px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .25s,transform .25s;text-align:left}
@@ -891,7 +894,9 @@ section.tier-divider{--tier:7.6rem}
 #s21 .mtitem{margin-top:1rem}
 .invimg{box-shadow:none}
 .mtlab{margin-top:1.5rem}
-.ctbuh{display:block;margin:.4rem auto 0;width:78%;max-width:none;max-height:34vh;height:auto;object-fit:contain}
+.ctbuhfig{position:relative;width:78%;margin:.4rem auto 0}
+.ctbuh{display:block;width:100%;max-width:none;max-height:34vh;height:auto;object-fit:contain}
+.ctbuhfig figcaption{position:absolute;right:.2rem;bottom:.15rem;font-size:.62rem;font-style:italic;color:var(--muted)}
 #s21 .mtitem h3{font-size:1.08rem}
 #s21 .mtitem p{font-size:.95rem;line-height:1.5}
 #s21 .mtitem{margin-top:1.5rem}
@@ -1883,8 +1888,8 @@ html.exporting section{padding-right:6vw}   /* no nav rail on paper */
       </div>
       <div class="rv"><img loading="lazy" class="mtimg invimg" style="width:100%;height:auto;max-height:44vh;object-fit:contain;margin-left:auto" width="908" height="539" src="assets/mt-chart-dark.png" alt="Timber Rising: global demand for mass timber building materials, Forest Economic Advisors via Bloomberg Green"></div>
     </div>
-    <p class="mtlab rv"><b>Capabilities growing</b><span>The world&rsquo;s tallest timber building rose from 29 m (2009) to 85 m (2019) &mdash; almost 3x in a decade. Source: CTBUH, May 2020</span></p>
-    <img class="ctbuh rv" src="assets/mt-tallest-ctbuh.png" alt="History of the tallest timber building, CTBUH: Stadthaus 29 m 2009 through Mjostarnet 85 m 2019" loading="lazy">
+    <p class="mtlab rv"><b>Capabilities growing</b><span>The world&rsquo;s tallest timber building rose from 29 m (2009) to 85 m (2019) &mdash; almost 3x in a decade.</span></p>
+    <figure class="ctbuhfig rv"><img class="ctbuh" src="assets/mt-tallest-ctbuh.png" alt="History of the tallest timber building, CTBUH: Stadthaus 29 m 2009 through Mjostarnet 85 m 2019" loading="lazy"><figcaption>Source: CTBUH, May 2020</figcaption></figure>
   </div>
 </section>
 
