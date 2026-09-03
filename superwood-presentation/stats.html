@@ -95,7 +95,7 @@ tr:last-child td{border-bottom:none}
 </style>
 </head>
 <body>
-<h1>SUPERWOOD deck — viewer stats</h1>
+<h1 id="title">SUPERWOOD deck — viewer stats</h1>
 <div class="sub" id="sub">Everyone who has passed the gate, with time spent per slide.</div>
 
 <div id="keyui" class="keybox" hidden>
@@ -107,6 +107,7 @@ tr:last-child td{border-bottom:none}
 
 <div id="dash" hidden>
   <div class="bar">
+    <div class="devtabs" id="decktabs" style="margin:0"></div>
     <button id="refresh" class="ghost">Refresh</button>
     <button id="forget" class="ghost">Forget key</button>
     <span class="sub" id="gen"></span>
@@ -157,6 +158,18 @@ const WORLD_PATH="M334.5 472.3 333.7 473.7 332.9 475.0 327.1 474.6 320.9 474.8 3
 const FALLBACK_SLIDES=["Cover","The Moment","The Problem","The Opportunity","Breakthrough","The Technology","SUPERWOOD","The Market","Roadmap","Traction","The Team","The Moat","In the Press","Join Us"];
 const keyui=document.getElementById('keyui'),dash=document.getElementById('dash'),kerr=document.getElementById('kerr'),tip=document.getElementById('tip');
 let DATA=null,SLIDES=FALLBACK_SLIDES,selected=null;
+let DECK=new URLSearchParams(location.search).get('deck')||'superwood';
+function renderDeckTabs(){
+  const box=document.getElementById('decktabs');box.textContent='';
+  (DATA.decks||[]).forEach(d=>{
+    const b=document.createElement('button');b.className='dtab'+(d.id===DATA.deck?' sel':'');b.textContent=d.label;b.dataset.deck=d.id;
+    b.addEventListener('click',()=>{ if(d.id===DECK)return; DECK=d.id; selected=null; const u=new URL(location.href); u.searchParams.set('deck',DECK); history.replaceState(null,'',u); load(localStorage.getItem('sw_stats_key')||''); });
+    box.append(b);
+  });
+  const cur=(DATA.decks||[]).find(d=>d.id===DATA.deck);
+  document.getElementById('title').textContent=(cur?cur.label:'SUPERWOOD')+' deck — viewer stats';
+  document.title=(cur?cur.label:'Deck')+' Stats — InventWood';
+}
 
 function fmt(s){ if(!s)return ''; if(s<60)return s+'s'; return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
 function when(ts){ if(!ts)return '—'; const d=new Date(ts); return d.toLocaleDateString(undefined,{month:'short',day:'numeric'})+' '+d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}); }
@@ -427,7 +440,8 @@ document.getElementById('gateteam').addEventListener('click',e=>{
 
 function render(data){
   DATA=data;
-  SLIDES=data.slideOrder||FALLBACK_SLIDES;
+  renderDeckTabs();
+  SLIDES=(data.slideOrder&&data.slideOrder.length)?data.slideOrder:(data.deck==='superwood'?FALLBACK_SLIDES:[]);
   if(selected&&!data.viewers.some(v=>v.email===selected))selected=null;
   document.getElementById('gen').textContent='Updated '+when(data.generatedAt);
   renderCharts();renderMap();renderTable();renderDevices();renderGate();
@@ -435,7 +449,7 @@ function render(data){
 
 async function load(key){
   kerr.textContent='';
-  const r=await fetch('/api/stats?key='+encodeURIComponent(key));
+  const r=await fetch('/api/stats?key='+encodeURIComponent(key)+'&deck='+encodeURIComponent(DECK));
   if(r.status===401){ localStorage.removeItem('sw_stats_key'); keyui.hidden=false; dash.hidden=true; kerr.textContent='That key isn’t right.'; return; }
   if(!r.ok){ kerr.textContent='Error loading stats ('+r.status+').'; return; }
   localStorage.setItem('sw_stats_key',key);

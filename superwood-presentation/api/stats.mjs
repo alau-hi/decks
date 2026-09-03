@@ -1,9 +1,11 @@
 import { timingSafeEqual } from 'node:crypto';
-import { sql, iso, DECK } from './_db.mjs';
+import { sql, iso } from './_db.mjs';
+import { DECKS, DEFAULT_DECK } from './_decks.mjs';
 
 // Canonical slide order (matches data-nav in index.html). Shared with
-// stats.html via the response so the client doesn't hardcode it.
-const SLIDES = ['Cover', 'The Moment', 'The Problem', 'The Opportunity', 'Breakthrough', 'The Technology', 'SUPERWOOD', 'The Market', 'Roadmap', 'Traction', 'The Team', 'The Moat', 'In the Press', 'Join Us'];
+// stats.html via the response so the client doesn't hardcode it. Only
+// superwood has a hardcoded fallback; other decks fall back to [].
+const FALLBACK_SLIDES = { superwood: ['Cover', 'The Moment', 'The Problem', 'The Opportunity', 'Breakthrough', 'The Technology', 'SUPERWOOD', 'The Market', 'Roadmap', 'Traction', 'The Team', 'The Moat', 'In the Press', 'Join Us'] };
 
 // Fallback coordinates for records written before lat/lon capture.
 const COUNTRY_CENTROIDS = {
@@ -76,17 +78,22 @@ export default async function handler(req, res) {
   if (!keyOk(req.query?.key, process.env.STATS_KEY)) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
+  const deckId = Object.prototype.hasOwnProperty.call(DECKS, String(req.query?.deck ?? '')) ? String(req.query.deck) : DEFAULT_DECK;
+  const decks = Object.entries(DECKS).map(([id, d]) => ({ id, label: d.label }));
+  const fallbackSlides = FALLBACK_SLIDES[deckId] || [];
   // Storage-less deployment (staging-open, collaborators): valid key, but nothing recorded here.
   if (!sql) {
     res.setHeader('Cache-Control', 'no-store');
-    return res.status(200).json({ generatedAt: new Date().toISOString(), slideOrder: SLIDES, viewers: [], slides: [], dropoff: [], totalSessions: 0, locations: [], deviceMix: [], formatMix: [], breakMix: [], gate: { funnel: { visits: 0, converted: 0, bounced: 0 }, locations: [], ips: [] } });
+    return res.status(200).json({ generatedAt: new Date().toISOString(), deck: deckId, decks, slideOrder: fallbackSlides, viewers: [], slides: [], dropoff: [], totalSessions: 0, locations: [], deviceMix: [], formatMix: [], breakMix: [], gate: { funnel: { visits: 0, converted: 0, bounced: 0 }, locations: [], ips: [] } });
   }
 
-  const [signupRows, dwellRows, gateRows] = await Promise.all([
-    sql`SELECT email, ts, ua, ip, city, country, lat, lon, gid FROM signups WHERE deck = ${DECK}`,
-    sql`SELECT session, viewer, totals, scr, ua, ip, city, country, lat, lon, ts FROM dwell_sessions WHERE deck = ${DECK}`,
-    sql`SELECT ts, gid, ip, ua, city, country, lat, lon, team FROM gate_hits WHERE deck = ${DECK} ORDER BY ts`,
+  const [signupRows, dwellRows, gateRows, slideRows] = await Promise.all([
+    sql`SELECT email, ts, ua, ip, city, country, lat, lon, gid FROM signups WHERE deck = ${deckId}`,
+    sql`SELECT session, viewer, totals, scr, ua, ip, city, country, lat, lon, ts FROM dwell_sessions WHERE deck = ${deckId}`,
+    sql`SELECT ts, gid, ip, ua, city, country, lat, lon, team FROM gate_hits WHERE deck = ${deckId} ORDER BY ts`,
+    sql`SELECT slides FROM deck_slides WHERE deck = ${deckId}`,
   ]);
+  const SLIDES = (slideRows[0] && Array.isArray(slideRows[0].slides) && slideRows[0].slides.length) ? slideRows[0].slides : fallbackSlides;
   // Rows carry the same fields the blobs did; normalize timestamps back to
   // the ISO strings the aggregation below compares lexicographically.
   const signups = signupRows.map(r => ({ ...r, ts: iso(r.ts) }));
@@ -301,6 +308,8 @@ export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   return res.status(200).json({
     generatedAt: new Date().toISOString(),
+    deck: deckId,
+    decks,
     slideOrder: SLIDES,
     viewers: out,
     slides,
