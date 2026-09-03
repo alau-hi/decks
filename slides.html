@@ -426,7 +426,7 @@ nav.dots button.active::before{content:"";position:absolute;left:-.55rem;top:50%
 .gnet .gcard.chip h3{grid-area:h}.gnet .gcard.chip .gsub{grid-area:e}.gnet .gcard.chip .gnote{grid-area:n;margin-top:.6rem}
 .gnet .gcard.chip .gicons{grid-area:f;align-self:stretch;min-height:5rem;margin:.1rem 0 0}
 .gnet .gcard.chip .grows{grid-area:s;margin-top:0}
-#gnet{padding-bottom:3.5vh}
+#gnet{padding-bottom:max(6vh,64px)}   /* the footer chrome sits in the bottom 44px; keep the footnote above it */
 /* one row of five; each card is a subgrid so title, eyebrow and note start on shared lines across
    all five. The icon field and stat rows share the 1fr row as one flex column, so each card's field
    takes exactly that card's slack (a shared stats row would hand the tallest card's stat height to
