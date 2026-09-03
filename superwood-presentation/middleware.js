@@ -1,4 +1,5 @@
 import { next, rewrite } from '@vercel/edge';
+import { DECKS, deckFromPath } from './api/_decks.mjs';
 
 // Paths reachable without authentication. og-cover.jpg stays open so link
 // previews render in email clients and chat apps.
@@ -61,6 +62,20 @@ export default async function middleware(req) {
             if (aSig === aParts[1] && Number(aParts[0]) > Date.now()) return next();
           }
           return rewrite(new URL('/key', req.url));
+        }
+        // Per-deck shared password (see api/_decks.mjs): only decks that
+        // declare a password env var, and only where that var is set.
+        const deckId = deckFromPath(path);
+        const deck = DECKS[deckId];
+        const deckPw = deck && deck.password ? process.env[deck.password] : '';
+        if (deckPw) {
+          const dParts = (getCookie(req, `sw_deck_${deckId}`) || '').split('.');
+          let deckOk = false;
+          if (dParts.length === 2) {
+            const dSig = await hmacHex(`deck.${deckId}.${dParts[0]}`, process.env.AUTH_SECRET || '');
+            deckOk = dSig === dParts[1] && Number(dParts[0]) > Date.now();
+          }
+          if (!deckOk) return rewrite(new URL('/deckpass', req.url));
         }
         // Keep the viewer identity on the URL so the deck's per-slide
         // analytics (?v=) attribute return visits too.
