@@ -9,6 +9,5 @@ export const sql = process.env.DATABASE_URL ? neon(process.env.DATABASE_URL) : n
 // all downstream aggregation/sorting assumes that format.
 export const iso = (t) => (t == null ? null : new Date(t).toISOString());
 
-// The database is shared by (future) multiple decks; each deployment tags and
-// filters its rows by this identity.
-export const DECK = process.env.DECK_ID || 'superwood';
+// Deck identity lives in ./_decks.mjs; this alias keeps older imports working.
+export { DEFAULT_DECK as DECK } from './_decks.mjs';

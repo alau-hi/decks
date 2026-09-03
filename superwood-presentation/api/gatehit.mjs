@@ -68,7 +68,7 @@ export default async function handler(req, res) {
   try {
     await sql`
       INSERT INTO gate_hits (deck, ts, gid, ip, ua, city, country, lat, lon, path, scr, team)
-      VALUES (${deckFromPath(path)}, ${record.ts}, ${record.gid}, ${record.ip}, ${record.ua}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.path}, ${scr ? JSON.stringify(scr) : null}::jsonb, ${record.team})`;
+      VALUES (${deckFromPath(path.split('?')[0])}, ${record.ts}, ${record.gid}, ${record.ip}, ${record.ua}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.path}, ${scr ? JSON.stringify(scr) : null}::jsonb, ${record.team})`;
   } catch (err) {
     console.log('gate-hit write failed:', JSON.stringify(record), err.message);
   }

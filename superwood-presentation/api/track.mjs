@@ -69,8 +69,9 @@ export default async function handler(req, res) {
   }
   const clean = {};
   let count = 0;
+  // Cap matches cleanOrder's bound: the largest deck has ~40 sections.
   for (const [section, secs] of Object.entries(totals)) {
-    if (++count > 30) break;
+    if (++count > 80) break;
     const s = Math.min(7200, Math.max(0, Math.round(Number(secs) || 0)));
     if (s > 0) clean[String(section).slice(0, 60)] = s;
   }
@@ -95,6 +96,7 @@ export default async function handler(req, res) {
     await sql`
       INSERT INTO dwell_sessions (session, deck, viewer, totals, scr, ua, ip, city, country, lat, lon, ts)
       VALUES (${session}, ${deck}, ${email}, ${JSON.stringify(clean)}::jsonb, ${record.scr ? JSON.stringify(record.scr) : null}::jsonb, ${record.ua}, ${record.ip}, ${record.city}, ${record.country}, ${record.lat}, ${record.lon}, ${record.ts})
+      -- deck is not updated on conflict: a session lives on exactly one deck path.
       ON CONFLICT (session) DO UPDATE SET
         viewer = EXCLUDED.viewer, totals = EXCLUDED.totals, scr = COALESCE(EXCLUDED.scr, dwell_sessions.scr), ua = EXCLUDED.ua, ip = EXCLUDED.ip,
         city = EXCLUDED.city, country = EXCLUDED.country, lat = EXCLUDED.lat, lon = EXCLUDED.lon, ts = EXCLUDED.ts`;

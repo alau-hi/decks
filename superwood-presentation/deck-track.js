@@ -5,9 +5,10 @@
    the server can overwrite one record per session without double-counting.
    The deck id comes from the URL path and the slide order from the DOM, so a
    deck never needs per-deck configuration here. Off this site (e.g. a deck's
-   own staging host) the file 404s and nothing runs. */
+   own staging host) the file 404s and nothing runs.
+   Sections that share a data-nav name are one slide to the heatmap. */
 (function(){
-  var PREFIXES={supermills:'/supermills-america-overview'};
+  var PREFIXES={supermills:'/supermills-america-overview'}; // mirror of api/_decks.mjs — update both
   var deck='superwood';
   for(var id in PREFIXES){ var p=PREFIXES[id]; if(location.pathname===p||location.pathname.indexOf(p+'/')===0){deck=id;} }
   var params=new URLSearchParams(location.search);
@@ -29,8 +30,10 @@
   var sio=new IntersectionObserver(function(es){
     es.forEach(function(e){
       if(e.isIntersecting && e.intersectionRatio>=0.6){
+        var name=(e.target.dataset.nav||e.target.id||'').trim();
+        if(!name)return;
         flush();
-        current=(e.target.dataset.nav||e.target.id);
+        current=name;
         enterT=performance.now();
         track('section_view',{section:current});
       }

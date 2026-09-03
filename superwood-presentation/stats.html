@@ -440,6 +440,7 @@ document.getElementById('gateteam').addEventListener('click',e=>{
 
 function render(data){
   DATA=data;
+  if(data.deck)DECK=data.deck;
   renderDeckTabs();
   SLIDES=(data.slideOrder&&data.slideOrder.length)?data.slideOrder:(data.deck==='superwood'?FALLBACK_SLIDES:[]);
   if(selected&&!data.viewers.some(v=>v.email===selected))selected=null;
@@ -447,7 +448,8 @@ function render(data){
   renderCharts();renderMap();renderTable();renderDevices();renderGate();
 }
 
-async function load(key){
+let loadN=0;
+async function load(key){ const n=++loadN;
   kerr.textContent='';
   const r=await fetch('/api/stats?key='+encodeURIComponent(key)+'&deck='+encodeURIComponent(DECK));
   if(r.status===401){ localStorage.removeItem('sw_stats_key'); keyui.hidden=false; dash.hidden=true; kerr.textContent='That key isn’t right.'; return; }
@@ -456,7 +458,7 @@ async function load(key){
   // Also set the sw_admin cookie so /changes unlocks without asking again.
   fetch('/api/adminkey',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key})}).catch(()=>{});
   keyui.hidden=true; dash.hidden=false;
-  render(await r.json());
+  const data=await r.json(); if(n!==loadN)return; render(data);
 }
 
 document.getElementById('load').addEventListener('click',()=>load(document.getElementById('key').value.trim()));
