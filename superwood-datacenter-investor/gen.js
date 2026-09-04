@@ -129,19 +129,17 @@ pub.forEach(([logo, ar, photo, credit, txt, src], i) => {
   body(s, txt, L + 0.25, y + ph + 0.48, cw - 0.5, 0.52, 8, DIM);
   s.addText(src, { x: L + 0.25, y: y + 2.03, w: cw - 0.5, h: 0.18, fontFace: SANS, fontSize: 7, italic: true, color: MUTED, margin: 0 });
 });
-// right: beams, then the comparison
+// right: column headers, beam images under each header, then the comparison rows
 const RX = 5.45, RW = 7.3;
-const beams = [
-  ["prep/beam_glulam.jpg", "Glulam beam — mass timber today"],
-  ["prep/beam_hybrid.jpg", "SUPERWOOD hybrid beam — outer laminations on glulam"],
-  ["prep/beam_thin.jpg", "Thin SUPERWOOD beam — laminated from ¼\" boards"],
-];
-beams.forEach(([img, cap], i) => {
-  const bw = (RW - 0.3) / 3, x = RX + i * (bw + 0.15), y = 2.0, bh = 1.75;
-  s.addImage({ path: img, x, y, w: bw, h: bh, sizing: { type: "crop", w: bw, h: bh } });
-});
+const cx = [RX, RX + 1.45, RX + 3.85], cwid = [1.35, 2.3, 3.45];
+s.addText("MASS TIMBER TODAY (CLT, GLULAM)", { x: cx[1], y: 1.98, w: cwid[1], h: 0.3, fontFace: SANS, fontSize: 9, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" });
+s.addText("WITH SUPERWOOD", { x: cx[2], y: 1.98, w: cwid[2], h: 0.3, fontFace: SANS, fontSize: 9, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" });
+const IMY = 2.36, IMH = 1.15;
+s.addImage({ path: "prep/beam_glulam.jpg", x: cx[1], y: IMY, w: cwid[1], h: IMH, sizing: { type: "crop", w: cwid[1], h: IMH } });
+const half = (cwid[2] - 0.1) / 2;
+s.addImage({ path: "prep/beam_hybrid.jpg", x: cx[2], y: IMY, w: half, h: IMH, sizing: { type: "crop", w: half, h: IMH } });
+s.addImage({ path: "prep/beam_thin.jpg", x: cx[2] + half + 0.1, y: IMY, w: half, h: IMH, sizing: { type: "crop", w: half, h: IMH } });
 const cmpRows = [
-  ["", "Mass timber today (CLT, glulam)", "With SUPERWOOD"],
   ["What it replaces", "Concrete floor slabs and decks; some columns and beams", "Adds the steel: members, skins, screens and fences — and, ahead, enclosures and foundations"],
   ["Strength", "Lumber-grade; large sections carry the load", "Tensile strength above ASTM A36 steel in samples, at one-sixth the weight; thin, dense members"],
   ["The timber itself", "Glulam and CLT at lumber stiffness", "Mass-timber enhancement: SUPERWOOD outer laminations (~10% of section) raise a glulam beam's stiffness ~75% and strength ~100%"],
@@ -149,16 +147,14 @@ const cmpRows = [
   ["Fire", "Chars; established assemblies", "Chars; far better than ordinary wood — Class A demonstrated in testing"],
   ["Code path", "Established in the building codes", "Certifiable under wood standards today; SUPERWOOD-specific standards are the goal"],
 ];
-const cx = [RX, RX + 1.5, RX + 3.75], cwid = [1.4, 2.15, 3.55];
 cmpRows.forEach((r, ri) => {
-  const y = 3.95 + ri * 0.395;
-  if (ri > 0) s.addShape(pres.ShapeType.rect, { x: RX, y: y - 0.05, w: RW, h: 0.012, fill: { color: RULE } });
+  const y = 3.68 + ri * 0.52;
+  s.addShape(pres.ShapeType.rect, { x: RX, y: y - 0.07, w: RW, h: 0.012, fill: { color: RULE } });
   r.forEach((c, ci) => {
-    const isHead = ri === 0, isLabel = ci === 0;
-    s.addText(isHead ? c.toUpperCase() : c, { x: cx[ci], y, w: cwid[ci], h: 0.36, fontFace: SANS, fontSize: isHead ? 8 : (isLabel ? 9.5 : 8), bold: isHead || isLabel, color: isHead ? BRIGHT : (isLabel ? CREAM : (ci === 2 ? DIM : MUTED)), charSpacing: isHead ? 1.2 : 0, margin: 0, valign: "top" });
+    s.addText(c, { x: cx[ci], y, w: cwid[ci], h: 0.46, fontFace: SANS, fontSize: ci === 0 ? 11 : 9.5, bold: ci === 0, color: ci === 0 ? CREAM : (ci === 2 ? DIM : MUTED), margin: 0, valign: "top" });
   });
 });
-note(s, "Sources: news.microsoft.com, Nov 2024; Thornton Tomasetti project page; sustainability.atmeta.com, 31 Jul 2025. Logos and photographs are the companies' own, from the cited publications, used to identify the published projects. SUPERWOOD strength: company test data, parallel-to-grain tension. Hybrid-beam gains: derived from beam theory with SUPERWOOD modulus and strength, engineering write-up pending. Beams: concept renderings.", 6.82, 0.3);
+note(s, "Sources: news.microsoft.com, Nov 2024; Thornton Tomasetti project page; sustainability.atmeta.com, 31 Jul 2025. Logos and photographs are the companies' own, from the cited publications, used to identify the published projects. SUPERWOOD strength: company test data, parallel-to-grain tension. Hybrid-beam gains: derived from beam theory with SUPERWOOD modulus and strength, engineering write-up pending. Beams: concept renderings.", 6.84, 0.25);
 
 // ---------- 5 · WHAT A GW DATA CENTER IS MADE OF ----------
 s = pres.addSlide(); base(s, "InventWood · The size");
