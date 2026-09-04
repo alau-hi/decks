@@ -2401,6 +2401,19 @@ facts:
       permission), and what HITT / Turner's "enthusiastic support" consisted of.
 
   # =========================================================================== datacenter
+  - id: datacenter.racks_and_server_boxes_horizons
+    value: "racks: now; server enclosures: long term; electronics: never"
+    unit: null
+    statement: In a data center SUPERWOOD can address racks now, server enclosures (boxes) eventually, and the electronics never
+    basis: asserted-internal
+    confidence: M
+    source: Alex Lau 2026-09-04
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "Model effect (analyses/materials-mass-and-replacement.md, update 2026-09-04): racking row moves to Immediate; 40% of IT mass (estimate for enclosures) moves to Long term. Immediate horizon becomes 1.8-5.7 kt SUPERWOOD per GW = 2.1-6.6 years of SuperMill One."
+
   - id: datacenter.embodied_carbon_building_materials_per_gw
     value: "~745 kt CO2e per GW (high case); steel ~61%, concrete ~39%; steel above the slab ~37%"
     unit: kt CO2e per 1 GW campus, building materials only

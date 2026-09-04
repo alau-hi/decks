@@ -192,3 +192,15 @@ Against recycled (EAF) steel the avoided figure is far lower, so any claim must 
   Concrete 0.12 kg CO₂e/kg is a typical ready-mix cradle-to-gate value [conf: M].
 - Unit masses for gensets, UPS, transformers, chillers, metal panel, fencing, ducting, rebar ratios, foundation share:
   general industry ranges, not individually sourced [conf: L]. Replace with vendor or takeoff data before external use.
+
+## Update 2026-09-04 — racks now, server enclosures later (Alex)
+
+Two horizon changes, applied to the deck charts (`prep/charts/make_charts.py`) but not yet to the workbook:
+
+- **Racking and equipment supports** move from *Soon* to *Immediate*: racks are steel SUPERWOOD can address now.
+- **IT — servers and racks**: server enclosures ("boxes"), taken as 40% of IT mass [estimate], become addressable in the
+  *Long term*; the electronics never are. The remaining 60% (boards, drives, power supplies, cabling) stays "not replaced".
+
+Roll-up effect per GW (steel substitution 0.3–0.6): Immediate incumbent 5.3–17 kt, SUPERWOOD 1.8–5.7 kt (2.1–6.6M sf,
+2.1–6.6 years of SuperMill One); Soon 10–25 kt, SUPERWOOD 2.9–15 kt; Long term 1,002–2,089 kt, SUPERWOOD 58–363 kt.
+Structural unchanged. Regenerate the workbook and this file from `build_model.py` / `gen_md.py` when next touched.
