@@ -15,7 +15,7 @@ rows=[("Concrete — slab on grade, paving",1200,0.75,"long"),("Concrete — fou
 ("Rebar in all concrete",100,0.81,"long"),("Steel — primary frame",40,1.0,"med"),("Steel — roof trusses, joists, deck, girts",60,1.0,"med"),
 ("Exterior skins — metal panel",7.4,1.0,"imm"),("Louvers and yard screens",0.9,1.0,"imm"),("Security and staff-area fencing",1.0,1.0,"imm"),
 ("Platforms, walkways, mezzanines, railings",15,1.0,"soon"),("Acoustic barriers, enclosures, separations",5,1.0,"soon"),
-("Racking and equipment supports",5,1.0,"imm"),("Tray, containment, doors, misc. metals",10,0.5,"soon"),
+("Racking and equipment supports",5,1.0,"soon"),("Tray, containment, doors, misc. metals",10,0.5,"soon"),
 ("Ducting and air-distribution sheet metal",8,1.0,"med"),("Interior finishes, backplanes, trim",3,1.0,"imm"),
 ("Electrical equipment and conductors",100,0,None),("Mechanical equipment, piping, loop water",50,0,None),("IT — servers and racks",70,0.4,"long")]
 col={"imm":GOLD,"soon":GREEN,"med":WOOD,"long":TEAL}
@@ -25,7 +25,7 @@ lab={"imm":"now","soon":"next","med":"structural","long":"long-term vision"}
 F={"concrete":0.12,"steel":1.8,"mixed":1.0}
 kind=["concrete","concrete","steel","steel","steel","steel","steel","steel","steel","steel","steel","steel","steel","mixed",None,None,None]
 carb=[(r[1]*F[k] if k else 0) for r,k in zip(rows,kind)]
-LEG=[Patch(color=GOLD,label="Now — skins, screens, fences, racks"),Patch(color=GREEN,label="Next — platforms, barriers, doors"),
+LEG=[Patch(color=GOLD,label="Now — skins, screens, fences, interiors"),Patch(color=GREEN,label="Next — racks, platforms, barriers, doors"),
      Patch(color=WOOD,label="Structural — frame, roofs, enclosures"),Patch(color=TEAL,label="Long-term vision — slab, foundations, server boxes"),Patch(color=NR,label="Not replaced")]
 def campus(values, out, xlabel, log, narrow, unit):
     fig,a=plt.subplots(figsize=(7.0,4.3) if narrow else (12.4,6.9),facecolor=INK); clean(a)
@@ -72,8 +72,8 @@ a.set_ylabel("Tensile strength, MPa",color=MUTED); a.grid(axis="y",color=NR,lw=0
 plt.tight_layout(); fig.savefig("prep/charts/strength.png",dpi=200,facecolor=INK); plt.close(fig)
 
 # ---- Chart 3: what one gigawatt is worth — SUPERWOOD required by horizon, low/high, in plant-years ----
-hor=["Now\nskins, screens, fences, racks","Next\nplatforms, barriers, doors","Structural\nframe, roofs, enclosures","Long-term vision\nslab, foundations, server boxes"]
-lo=[1.8,2.9,16,58]; hi=[5.7,15,65,363]   # kt SUPERWOOD required per GW (analyses §4)
+hor=["Now\nskins, screens, fences","Next\nracks, platforms, barriers","Structural\nframe, roofs, enclosures","Long-term vision\nslab, foundations, server boxes"]
+lo=[1.2,3.5,16,58]; hi=[2.7,18,65,363]   # kt SUPERWOOD required per GW (analyses §4)
 fig,a=plt.subplots(figsize=(8.6,4.2),facecolor=INK); clean(a)
 cols=[GOLD,GREEN,WOOD,TEAL]
 for i,(l,h) in enumerate(zip(lo,hi)):

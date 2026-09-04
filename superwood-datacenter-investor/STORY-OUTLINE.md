@@ -57,9 +57,9 @@ New imagery (Higgsfield nano_banana_pro, prompts in `render/dc-steel-frame-const
   Carbon view: steel ~60% of building-materials embodied carbon at 1.8 kg/kg (about a third with recycled steel); steel
   above the slab ~37%; equipment not estimated. Factors and derivation in `prep/charts/make_charts.py`.
 
-- Racks and server boxes (Alex 2026-09-04): racks are addressable now (slide 11 tile, slide 5 rows, slide 6 table);
-  server enclosures eventually (long-term vision, 40% of IT mass as an estimate); electronics never. Immediate horizon is
-  now 1.8–5.7 kt SUPERWOOD per GW = 2.1–6.6 years of SuperMill One (slides 2, 6, 18 updated).
+- Racks and server boxes (Alex 2026-09-04): racks are "soon" — a few months of development (slide 12 tile, "next"
+  horizon on slides 5 and 6); server enclosures eventually (long-term vision, 40% of IT mass as an estimate); electronics
+  never. An earlier same-day move of racks to "now" was reversed.
 
 ## Still open
 

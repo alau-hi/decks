@@ -197,10 +197,10 @@ Against recycled (EAF) steel the avoided figure is far lower, so any claim must 
 
 Two horizon changes, applied to the deck charts (`prep/charts/make_charts.py`) but not yet to the workbook:
 
-- **Racking and equipment supports** move from *Soon* to *Immediate*: racks are steel SUPERWOOD can address now.
+- **Racking and equipment supports** stay in *Soon*: racks are a few months of development away (Alex, later on 2026-09-04, reversing an earlier same-day move to Immediate).
 - **IT — servers and racks**: server enclosures ("boxes"), taken as 40% of IT mass [estimate], become addressable in the
   *Long term*; the electronics never are. The remaining 60% (boards, drives, power supplies, cabling) stays "not replaced".
 
-Roll-up effect per GW (steel substitution 0.3–0.6): Immediate incumbent 5.3–17 kt, SUPERWOOD 1.8–5.7 kt (2.1–6.6M sf,
-2.1–6.6 years of SuperMill One); Soon 10–25 kt, SUPERWOOD 2.9–15 kt; Long term 1,002–2,089 kt, SUPERWOOD 58–363 kt.
+Roll-up effect per GW (steel substitution 0.3–0.6): Immediate and Soon unchanged from the tables above; Long term becomes
+1,002–2,089 kt incumbent, SUPERWOOD 58–363 kt.
 Structural unchanged. Regenerate the workbook and this file from `build_model.py` / `gen_md.py` when next touched.

@@ -73,7 +73,7 @@ const thesis = [
   ["We turbocharge the wood they already use",
    "Mass timber replaces concrete floors. SUPERWOOD, stronger than A36 steel in tension at one-sixth the weight, adds the steel: members, skins and screens — and strengthens the mass timber itself. It ships today from SuperMill One; truss design and mass-timber enhancement are under way."],
   ["One basis-of-design win is SuperMill Two-scale demand",
-   "A gigawatt campus's skins and racks alone are two to seven years of SuperMill One's output; its structure is a year or more of SuperMill Two. The long game is prefabricated envelopes and, eventually, foundations."],
+   "A gigawatt campus's skins alone are one to three years of SuperMill One's output; its structure is a year or more of SuperMill Two. The long game is prefabricated envelopes and, eventually, foundations."],
 ];
 thesis.forEach(([head, sub], i) => {
   const cw = 3.95, x = L + i * 4.125, y = 2.1;
@@ -162,7 +162,7 @@ const chW = 5.6, chH = chW * 4.3 / 7.0;
 s.addImage({ path: "prep/charts/campus_mass_narrow.png", x: L, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_carbon_narrow.png", x: 6.7, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_legend.png", x: L, y: 2.08 + chH + 0.03, w: CW, h: CW * LEG_H / LEG_W });
-const sizeL = [["50–80% of the above-ground portion of a data center is steel", "Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens, fences and racks now; platforms and barriers next; frame and roofs as structure; server boxes eventually — the electronics never."]];
+const sizeL = [["50–80% of the above-ground portion of a data center is steel", "Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server boxes eventually — the electronics never."]];
 const sizeR = [["By embodied carbon, steel is about 60% of the building materials", "At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses through the structural horizon."]];
 [[sizeL, L], [sizeR, 6.7]].forEach(([arr, x]) => arr.forEach(([head, sub]) => {
   const y = 2.08 + chH + 0.42;
@@ -178,8 +178,8 @@ title(s, "What one gigawatt of campus is worth to InventWood", L, 0.88, 11.9, 27
 s.addImage({ path: "prep/charts/worth.png", x: L, y: 1.9, w: 5.9, h: 5.9 * 4.2 / 8.6 });
 const worthCols = ["Horizon", "Incumbent replaced", "SUPERWOOD required", "Plant-years"];
 const worthRows = [
-  ["Now — skins, screens, fences, racks", "5.3–17 kt", "1.8–5.7 kt (2.1–6.6M sf)", "2.1–6.6 yr of SuperMill One"],
-  ["Next — platforms, barriers, doors", "10–25 kt", "2.9–15 kt", "0.1–0.5 yr of SuperMill Two"],
+  ["Now — skins, screens, fences", "3.3–12 kt", "1.2–2.7 kt (1.4–3.1M sf)", "1.4–3.1 yr of SuperMill One"],
+  ["Next — racks, platforms, barriers", "12–30 kt", "3.5–18 kt", "0.1–0.6 yr of SuperMill Two"],
   ["Structural — frame, roofs, enclosures", "53–108 kt", "16–65 kt", "0.5–2.1 yr of SuperMill Two"],
   ["Long-term vision — slab, foundations, server boxes", "1,002–2,089 kt", "58–363 kt", "1.9–12 yr of SuperMill Two"],
 ];
@@ -297,21 +297,20 @@ const nowTiles = [
   ["tile_louvers2", "Louvers & equipment screening"],
   ["tile_fence_staff", "Fencing for staff outdoor spaces"],
   ["tile_fence_security", "Security fencing around transformers & outdoor infrastructure"],
-  ["tile_rackocp", "Racks & equipment supports"],
   ["tile_doorkick", "Trim, door kicks & sub-framing"],
 ];
 {
   const cw = CW / nowTiles.length, rowY = 2.55;
   nowTiles.forEach(([img, lab], j) => {
     const x = L + j * cw;
-    s.addImage({ path: `prep/tiles/${img}.jpg`, x: x + (cw - 1.5) / 2, y: rowY, w: 1.5, h: 1.5 });
-    s.addText(lab, { x: x + 0.05, y: rowY + 1.6, w: cw - 0.1, h: 0.9, fontFace: SANS, fontSize: 10, color: DIM, align: "center", margin: 0, valign: "top" });
+    s.addImage({ path: `prep/tiles/${img}.jpg`, x: x + (cw - 1.6) / 2, y: rowY, w: 1.6, h: 1.6 });
+    s.addText(lab, { x: x + 0.05, y: rowY + 1.7, w: cw - 0.1, h: 0.8, fontFace: SANS, fontSize: 10.5, color: DIM, align: "center", margin: 0, valign: "top" });
   });
 }
 panel(s, L, 5.3, CW, 1.15, PANEL);
 s.addText([
   t("Why these first.  ", { bold: true, color: GOLD }),
-  t("They need no assembly fire rating — where a finish rating applies, Class A has been demonstrated and is specified per order. They sit where the community and the workforce see the campus. Racks are steel we can replace today. And they are the near-term projects our hyperscaler customers asked for: facades, biophilic office interiors, staff-area fencing, security fencing around critical outdoor infrastructure.", { color: DIM }),
+  t("They need no assembly fire rating — where a finish rating applies, Class A has been demonstrated and is specified per order. They sit where the community and the workforce see the campus. And they are the near-term projects our hyperscaler customers asked for: facades, biophilic office interiors, staff-area fencing, security fencing around critical outdoor infrastructure.", { color: DIM }),
 ], { x: L + 0.3, y: 5.4, w: CW - 0.6, h: 0.95, fontFace: SANS, fontSize: 11, margin: 0, valign: "middle" });
 conceptTag(s, W - 3.6, 6.6, 3.0, "Concept renderings");
 
@@ -326,15 +325,16 @@ const gated = [
   ["tile_mullion2", "Window mullions", "Thermal and structural data"],
   ["tile_door", "Interior doors & door protection", "Listing for rated openings"],
   ["tile_backplane", "Equipment backplanes", "Electrical-room listing"],
+  ["tile_rackocp", "Racks & equipment supports", "A few months of design and load-data development"],
 ];
 {
   const cw = CW / gated.length, rowY = 2.1;
   gated.forEach(([img, lab, gate], j) => {
     const x = L + j * cw;
-    s.addImage({ path: `prep/tiles/${img}.jpg`, x: x + (cw - 1.6) / 2, y: rowY, w: 1.6, h: 1.6 });
-    s.addText(lab, { x: x + 0.05, y: rowY + 1.7, w: cw - 0.1, h: 0.62, fontFace: SANS, fontSize: 11, bold: true, color: CREAM, align: "center", margin: 0, valign: "top" });
-    s.addText("WHAT IT NEEDS", { x: x + 0.05, y: rowY + 2.38, w: cw - 0.1, h: 0.22, fontFace: SANS, fontSize: 8, bold: true, color: BRIGHT, charSpacing: 1.5, align: "center", margin: 0 });
-    s.addText(gate, { x: x + 0.05, y: rowY + 2.62, w: cw - 0.1, h: 0.5, fontFace: SANS, fontSize: 9.5, color: MUTED, align: "center", margin: 0, valign: "top" });
+    s.addImage({ path: `prep/tiles/${img}.jpg`, x: x + (cw - 1.5) / 2, y: rowY, w: 1.5, h: 1.5 });
+    s.addText(lab, { x: x + 0.05, y: rowY + 1.6, w: cw - 0.1, h: 0.62, fontFace: SANS, fontSize: 10.5, bold: true, color: CREAM, align: "center", margin: 0, valign: "top" });
+    s.addText("WHAT IT NEEDS", { x: x + 0.05, y: rowY + 2.28, w: cw - 0.1, h: 0.22, fontFace: SANS, fontSize: 8, bold: true, color: BRIGHT, charSpacing: 1.5, align: "center", margin: 0 });
+    s.addText(gate, { x: x + 0.05, y: rowY + 2.52, w: cw - 0.1, h: 0.6, fontFace: SANS, fontSize: 9.5, color: MUTED, align: "center", margin: 0, valign: "top" });
   });
 }
 panel(s, L, 5.5, CW, 0.85, PANEL);
@@ -357,7 +357,7 @@ const sm2 = [
   ["tile_spaceframe", "Building enclosures & structural components", "The co-development target with hyperscaler architects and engineers"],
   ["tile_truss2", "Trusses, roofs & long-span members", "Roof structure first; fast-to-build enclosures follow"],
   ["tile_clt", "CLT-type floor, roof & wall assemblies", "Thin, far stronger panels through the mass-timber product route"],
-  ["tile_rackocp", "Heavy equipment supports & server enclosures", "Racks ship now; enclosures for servers and equipment follow — the electronics stay"],
+  ["tile_rackocp", "Heavy equipment supports & server enclosures", "Racks come next, a few months of development; enclosures for servers and equipment follow — the electronics stay"],
 ];
 sm2.forEach(([img, head, sub], i) => {
   const col = i % 2, row = Math.floor(i / 2);
@@ -503,7 +503,7 @@ title(s, "What has to be true, and what could stop it");
 const risks = [
   ["Insurers and code officials must accept SUPERWOOD for structural use", "Start with skins and non-structural items that need no assembly rating. Qualify structural applications with the first customer, on the pathway mass timber opened."],
   ["Qualification could run longer than customer design cycles", "Sell what needs no qualification now. Hyperscalers design campuses years ahead, so basis-of-design work starts before qualification ends."],
-  ["One plant, shared across every market", "SuperMill One allocates output; a gigawatt's skins and racks alone are two to seven plant-years. SuperMill Two is the answer — and the raise."],
+  ["One plant, shared across every market", "SuperMill One allocates output; a gigawatt's skins alone are one to three plant-years. SuperMill Two is the answer — and the raise."],
   ["Price against metal panel, fiber cement, CLT and recycled steel", "Premium skins where appearance and community acceptance carry value. Structural competitiveness arrives with SuperMill Two cost (roadmap basis, not yet realized)."],
   ["Carbon figures are projections until the LCA lands", "Labeled pre-LCA everywhere; LCA under way with Prof. Ming Hu, University of Notre Dame. No carbon claim without its baseline and substitution factor."],
   ["Customer concentration", "Three hyperscalers plus Vertiv, Wooden Data Center and operators — and what is qualified for a data center is qualified for the wider structural market."],
