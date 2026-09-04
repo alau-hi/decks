@@ -21,3 +21,14 @@ Made entirely of a dense engineered wood in a warm medium walnut / oiled-teak br
 ## Notes
 - Label "Concept renderings". The hybrid beam illustrates the mass-timber-enhancement claim (~10% SUPERWOOD outer laminations, ~75% stiffness, ~100% strength — derived, write-up pending).
 - Logos on the same slide are the companies' marks (Wikimedia Commons SVGs, wordmarks recolored cream for the dark card), rendered via the browser canvas, not generated.
+
+## Revision 2026-09-04 (Alex): one camera, very long beams, thin beam as laminated 1/4" boards
+
+Shared setup for all three, 16:9: a single extremely long beam runs from the lower-left foreground diagonally into the
+distance toward the upper right, receding for many meters and fading softly into the dark background with shallow depth
+of field; near cut end faces the camera at a low three-quarter angle. Same espresso studio background and warm key light.
+- Glulam: eight to ten thick pale spruce laminations, thin glue lines, a few knots.
+- Hybrid: glulam core with two thin outer plates (about one-tenth of depth) of dense walnut/oiled-teak wood, each plate
+  itself two or three quarter-inch laminations.
+- Thin SUPERWOOD: entirely dense walnut/oiled-teak wood, a laminated assembly of about twenty quarter-inch boards, fine
+  regular lamination lines on the cut end, about one-third the thickness of the glulam, flat faces, sharp edges, no knots.

@@ -106,7 +106,7 @@ note(s, "Steel and concrete intensities: arXiv 2509.21312 (Sep 2025), citing Has
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
 kicker(s, "The buyer");
-title(s, [t("Hyperscalers are already building with wood. We "), gold("turbocharge"), t(" wood.")], L, 0.88, 11.9, 27);
+title(s, [t("Hyperscalers are already building structures with wood. We "), gold("turbocharge"), t(" wood.")], L, 0.88, 11.9, 26);
 label(s, "On the public record", L, 1.95, 4.6);
 const pub = [
   ["prep/logo_microsoft.png", 1688 / 360, "prep/ms_clt_datacenter.jpg", "Photo: Microsoft", "Two Northern Virginia datacenters with cross-laminated timber floors on a steel frame — about 35% less embodied carbon than conventional steel construction, 65% less than precast. Gensler; Thornton Tomasetti.", "Microsoft Source, Nov 2024"],
@@ -128,7 +128,7 @@ label(s, "What SUPERWOOD adds to the wood they already use", RX, 1.95, RW);
 const beams = [
   ["prep/beam_glulam.jpg", "Glulam beam — mass timber today"],
   ["prep/beam_hybrid.jpg", "SUPERWOOD hybrid beam — outer laminations on glulam"],
-  ["prep/beam_thin.jpg", "Thin SUPERWOOD beam — steel-like sections"],
+  ["prep/beam_thin.jpg", "Thin SUPERWOOD beam — laminated from ¼\" boards"],
 ];
 beams.forEach(([img, cap], i) => {
   const bw = (RW - 0.3) / 3, x = RX + i * (bw + 0.15), y = 2.3, bh = 1.3;

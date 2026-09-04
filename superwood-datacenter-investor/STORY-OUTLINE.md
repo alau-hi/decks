@@ -65,6 +65,10 @@ New imagery (Higgsfield nano_banana_pro, prompts in `render/dc-steel-frame-const
   frame) and Meta's interior shot of the Aiken timber structure, each credited "Photo: Microsoft / Meta" and sourced
   to the cited publications. Third-party press photos — confirm use is acceptable before wide distribution.
 
+- Slide 4 title (Alex 2026-09-04): "Hyperscalers are already building structures with wood. We turbocharge wood."
+  Beams re-rendered with one camera, very long and fading into the distance; the thin SUPERWOOD beam is shown as a
+  laminated assembly of 1/4-inch boards.
+
 ## Still open
 
 - Slide 4 (Alex 2026-09-04): story is "hyperscalers are already ready to work with wood; we turbocharge wood" —
