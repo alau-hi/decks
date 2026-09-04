@@ -1,4 +1,4 @@
-// SUPERWOOD for Data Centers — investor companion to Super Mills America.
+// SUPERWOOD for Data Centers — investor companion to the SUPERMILLS Investor Overview (InventWood).
 // Rebuilt 2026-09-04 from the fresh-look review (reviews/FRESH-LOOK-2026-09-04.md). 20 slides, no dividers.
 // node gen.js → SUPERWOOD-for-Data-Centers-Companion.pptx. Charts are matplotlib PNGs (prep/charts/make_charts.py).
 import { createRequire } from "module"; const require = createRequire(import.meta.url); // package.json is type:module for the gate
@@ -54,12 +54,20 @@ function bullets(slide, items, opts) {
 let s;
 
 // ---------- 1 · COVER ----------
+// Matches the SUPERMILLS Investor Overview cover: InventWood mark above the title, "NAME — italic tagline", bold date line.
 s = pres.addSlide();
 s.background = { path: "prep/campus_hero.jpg" };
-s.addShape(pres.ShapeType.rect, { x: 0, y: 4.75, w: W, h: 2.75, fill: { color: "120C07", transparency: 30 } });
-s.addImage({ path: "prep/wordmark_cream.png", x: 0.7, y: 5.1, w: 6.2, h: 6.2 * 2615 / 16347 });
-s.addText("SUPERWOOD for Data Centers", { x: 0.72, y: 6.2, w: 9, h: 0.6, fontFace: SERIF, italic: true, fontSize: 26, color: GOLD, margin: 0 });
-s.addText("Investor companion to Super Mills America  ·  September 2026", { x: 0.72, y: 6.85, w: 8, h: 0.35, fontFace: SANS, fontSize: 12, color: DIM, margin: 0 });
+s.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: W, h: H, fill: { color: "150E08", transparency: 42 } });
+s.addShape(pres.ShapeType.rect, { x: 0, y: 3.9, w: W, h: 3.6, fill: { color: "120C07", transparency: 22 } });
+s.addImage({ path: "prep/inventwood_logo.png", x: 0.62, y: 4.15, w: 4.6, h: 4.6 * 216 / 1473 });
+s.addText([
+  t("SUPERWOOD for Data Centers — ", {}),
+  t("turbocharging the wood hyperscalers already build with", { italic: true, color: BRIGHT }),
+], { x: 0.72, y: 4.95, w: 11.8, h: 1.45, fontFace: SERIF, fontSize: 34, color: CREAM, margin: 0, valign: "top" });
+s.addText([
+  t("Companion to the SUPERMILLS Investor Overview", { color: CREAM }),
+  t("\nSeptember 2026", { bold: true, color: BRIGHT }),
+], { x: 0.72, y: 6.42, w: 8, h: 0.7, fontFace: SANS, fontSize: 14, margin: 0, valign: "top" });
 s.addText("INVENTWOOD  ·  CONFIDENTIAL", { x: W - 4.3, y: 7.0, w: 3.6, h: 0.3, fontFace: SANS, fontSize: 9, color: DIM, charSpacing: 3, align: "right", margin: 0 });
 s.addText("Concept rendering", { x: W - 2.3, y: 0.25, w: 1.9, h: 0.25, fontFace: SANS, fontSize: 8, italic: true, color: "E8DECB", align: "right", margin: 0 });
 
@@ -82,7 +90,7 @@ thesis.forEach(([head, sub], i) => {
   s.addText(head, { x: x + 0.3, y: y + 0.95, w: cw - 0.6, h: 0.9, fontFace: SANS, fontSize: 14.5, bold: true, color: CREAM, margin: 0, valign: "top" });
   body(s, sub, x + 0.3, y + 1.9, cw - 0.6, 1.55, 11, DIM);
 });
-note(s, "The company, team, mills, cost roadmap and the raise are in Super Mills America. This deck covers one application. Strength: company test data vs ASTM A36; campus sizing: company estimate (slides 5–6).", 6.0, 0.5);
+note(s, "The company, team, mills, cost roadmap and the raise are in the SUPERMILLS Investor Overview. This deck covers one application. Strength: company test data vs ASTM A36; campus sizing: company estimate (slides 5–6).", 6.0, 0.5);
 
 // ---------- 3 · THE BUYER ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
@@ -91,17 +99,17 @@ title(s, "Data centers are a fast-growing buyer of structural steel, and they ar
 s.addImage({ path: "prep/dc_steel_frame.jpg", x: L, y: 2.0, w: 6.3, h: 6.3 * 1536 / 2752, sizing: { type: "crop", w: 6.3, h: 3.52 } });
 conceptTag(s, L + 6.3 - 2.6, 5.55);
 const buyer = [
-  ["500–1,000 t of structural steel per 10 MW", "and 5,000–10,000 m³ of concrete — literature intensities for hyperscale builds. A gigawatt campus carries roughly 50–100 kt of structural steel above the slab."],
-  ["Customers report backlogs and a shortage of structural steel", "Supply chain and timeline are the first concern data-center customers raise with us. A domestic material that is lighter to ship and faster to erect answers it directly."],
-  ["Campuses are built to a standard basis of design", "Hyperscalers repeat one design campus after campus. A material written into that design is specified again and again."],
+  ["Steel-intensive", "500–1,000 tons of structural steel and 5,000–10,000 m³ of concrete per 10 MW — literature intensities for hyperscale builds. A gigawatt campus carries roughly 50,000–100,000 tons of structural steel above the slab."],
+  ["Supply-chain challenged", "Customers report backlogs and a shortage of structural steel. Supply chain and timeline are the first concern they raise with us; a domestic material that is lighter to ship and faster to erect answers it directly."],
+  ["Highly repeatable", "Hyperscalers build to a standard basis of design, campus after campus. A material written into that design is specified again and again."],
 ];
 buyer.forEach(([head, sub], i) => {
   const x = 7.2, y = 2.0 + i * 1.22;
   s.addShape(pres.ShapeType.ellipse, { x, y: y + 0.09, w: 0.14, h: 0.14, fill: { color: GOLD } });
-  s.addText(head, { x: x + 0.35, y, w: 5.2, h: 0.34, fontFace: SANS, fontSize: 13, bold: true, color: CREAM, margin: 0 });
-  body(s, sub, x + 0.35, y + 0.36, 5.2, 0.85, 10.5, MUTED);
+  s.addText(head, { x: x + 0.35, y, w: 5.2, h: 0.34, fontFace: SANS, fontSize: 14, bold: true, color: CREAM, margin: 0 });
+  body(s, sub, x + 0.35, y + 0.38, 5.2, 0.85, 10.5, MUTED);
 });
-note(s, "Steel and concrete intensities: arXiv 2509.21312 (Sep 2025), citing Hasan et al. 2022 and Sharma et al. 2023 — secondary literature figures, ranges as published; per-GW figure is that range × 1,000 MW. Shortage and backlog statements are what data-center customers report to InventWood (2026), not a published statistic.", 6.55, 0.5);
+note(s, "Steel and concrete intensities: arXiv 2509.21312 (Sep 2025), citing Hasan et al. 2022 and Sharma et al. 2023 — secondary literature figures, ranges as published (metric tons); per-GW figure is that range × 1,000 MW. Shortage and backlog statements are what data-center customers report to InventWood (2026), not a published statistic.", 6.55, 0.5);
 
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
@@ -563,7 +571,7 @@ note(s, "Steps are sequenced, not dated. Each names what it produces.", 6.75, 0.
 s = pres.addSlide();
 s.background = { path: "prep/cover_bg.jpg" };
 s.addText([t("Let's build what's "), gold("next"), t(".")], { x: 1.0, y: 2.6, w: 10, h: 1.0, fontFace: SERIF, fontSize: 44, color: CREAM, margin: 0 });
-s.addImage({ path: "prep/wordmark_cream.png", x: 1.0, y: 4.0, w: 4.5, h: 4.5 * 2615 / 16347 });
+s.addImage({ path: "prep/inventwood_logo.png", x: 0.9, y: 3.95, w: 4.6, h: 4.6 * 216 / 1473 });
 s.addText("Alex Lau · CEO / Co-Founder · alex@inventwood.com", { x: 1.0, y: 4.9, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
 s.addText("Lex Harris · Director, Capital Markets & IR · lex@inventwood.com", { x: 1.0, y: 5.35, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
 

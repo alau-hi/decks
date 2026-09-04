@@ -20,6 +20,10 @@
 #   conflicts_with / conflict_topic / decision: drive CONFLICTS.md
 
 meta:
+  deck_names:
+    super-mills-america: "SUPERMILLS Investor Overview (official name, Alex 2026-09-04; formerly 'Super Mills America'; deployed under superwood-presentation/supermills-america-overview)"
+    superwood-datacenter-investor: "SUPERWOOD for Data Centers - InventWood investor companion to the SUPERMILLS Investor Overview"
+    investor-overview: "InventWood Investor Overview (Canva, August 2026)"
   round: SAFE
   round_period: September 2026
   as_of: 2026-09-04

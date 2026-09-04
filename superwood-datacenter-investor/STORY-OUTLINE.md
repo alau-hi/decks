@@ -73,6 +73,13 @@ New imagery (Higgsfield nano_banana_pro, prompts in `render/dc-steel-frame-const
   cards (Big, Beautiful, Carbon sinks) over the campus hero, with the LCA caveat in the footer; the carbon slide follows
   it. Deck is 21 slides; web nav for the envelopes/foundations slide renamed "Long game".
 
+- Cover and branding (Alex 2026-09-04): InventWood-branded, aligned with the SUPERMILLS Investor Overview cover —
+  InventWood mark above the title, "SUPERWOOD for Data Centers — *turbocharging the wood hyperscalers already build
+  with*", then "Companion to the SUPERMILLS Investor Overview / September 2026". The sibling deck's official name is
+  **SUPERMILLS Investor Overview** (formerly "Super Mills America"); all references here use it. Fixed brand chrome and
+  the close slide carry the InventWood mark. The SUPERMILLS deck itself (synced into superwood-presentation/ from
+  alau-hi/supermills-america) still titles itself "SUPERMILLS America" — rename there.
+
 ## Still open
 
 - Slide 4 (Alex 2026-09-04): story is "hyperscalers are already ready to work with wood; we turbocharge wood" —
