@@ -109,16 +109,18 @@ kicker(s, "The buyer");
 title(s, [t("Hyperscalers are already building with wood. We "), gold("turbocharge"), t(" wood.")], L, 0.88, 11.9, 27);
 label(s, "On the public record", L, 1.95, 4.6);
 const pub = [
-  ["prep/logo_microsoft.png", 1688 / 360, "Two Northern Virginia datacenters with cross-laminated timber floor panels on a steel frame: an estimated 35% embodied-carbon reduction vs. conventional steel construction and 65% vs. precast concrete. Design by Gensler; structural engineering by Thornton Tomasetti.", "Microsoft Source, Nov 2024"],
-  ["prep/logo_meta.png", 1896 / 382, "Piloting mass timber for data-center administrative buildings: first completed 2025 at Aiken, South Carolina (DPR, SmartLam); projects under way in Cheyenne, Wyoming and Montgomery, Alabama; about a 41% reduction in the embodied carbon of the materials substituted.", "Meta Sustainability, 31 Jul 2025"],
+  ["prep/logo_microsoft.png", 1688 / 360, "prep/ms_clt_datacenter.jpg", "Photo: Microsoft", "Two Northern Virginia datacenters with cross-laminated timber floors on a steel frame — about 35% less embodied carbon than conventional steel construction, 65% less than precast. Gensler; Thornton Tomasetti.", "Microsoft Source, Nov 2024"],
+  ["prep/logo_meta.png", 1896 / 382, "prep/meta_aiken_masstimber.jpg", "Photo: Meta", "Mass-timber data-center administrative buildings: Aiken, South Carolina completed 2025 (DPR, SmartLam); Cheyenne and Montgomery under way; about 41% less embodied carbon in the materials substituted.", "Meta Sustainability, 31 Jul 2025"],
 ];
-pub.forEach(([logo, ar, txt, src], i) => {
-  const y = 2.3 + i * 2.1, cw = 4.6;
-  panel(s, L, y, cw, 1.95, PANEL2);
-  const lh = 0.34;
-  s.addImage({ path: logo, x: L + 0.25, y: y + 0.2, w: lh * ar, h: lh });
-  body(s, txt, L + 0.25, y + 0.68, cw - 0.5, 1.0, 9.5, DIM);
-  s.addText(src, { x: L + 0.25, y: y + 1.65, w: cw - 0.5, h: 0.25, fontFace: SANS, fontSize: 8, italic: true, color: MUTED, margin: 0 });
+pub.forEach(([logo, ar, photo, credit, txt, src], i) => {
+  const y = 2.3 + i * 2.25, cw = 4.6, ph = 0.92;
+  panel(s, L, y, cw, 2.15, PANEL2);
+  s.addImage({ path: photo, x: L + 0.15, y: y + 0.12, w: cw - 0.3, h: ph, sizing: { type: "crop", w: cw - 0.3, h: ph } });
+  s.addText(credit, { x: L + cw - 1.6, y: y + 0.12 + ph - 0.24, w: 1.4, h: 0.2, fontFace: SANS, fontSize: 7, italic: true, color: "E8DECB", align: "right", margin: 0 });
+  const lh = 0.23;
+  s.addImage({ path: logo, x: L + 0.25, y: y + ph + 0.2, w: lh * ar, h: lh });
+  body(s, txt, L + 0.25, y + ph + 0.48, cw - 0.5, 0.52, 8, DIM);
+  s.addText(src, { x: L + 0.25, y: y + 1.95, w: cw - 0.5, h: 0.18, fontFace: SANS, fontSize: 7, italic: true, color: MUTED, margin: 0 });
 });
 // right: beams, then the comparison
 const RX = 5.45, RW = 7.3;
@@ -151,7 +153,7 @@ cmpRows.forEach((r, ri) => {
     s.addText(isHead ? c.toUpperCase() : c, { x: cx[ci], y, w: cwid[ci], h: 0.36, fontFace: SANS, fontSize: isHead ? 8 : (isLabel ? 9.5 : 8), bold: isHead || isLabel, color: isHead ? BRIGHT : (isLabel ? CREAM : (ci === 2 ? DIM : MUTED)), charSpacing: isHead ? 1.2 : 0, margin: 0, valign: "top" });
   });
 });
-note(s, "Sources: news.microsoft.com, Nov 2024; Thornton Tomasetti project page; sustainability.atmeta.com, 31 Jul 2025. Logos are the companies' marks, used to identify published projects. SUPERWOOD strength: company test data, parallel-to-grain tension. Hybrid-beam gains: derived from beam theory with SUPERWOOD modulus and strength, engineering write-up pending. Beams: concept renderings.", 6.82, 0.3);
+note(s, "Sources: news.microsoft.com, Nov 2024; Thornton Tomasetti project page; sustainability.atmeta.com, 31 Jul 2025. Logos and photographs are the companies' own, from the cited publications, used to identify the published projects. SUPERWOOD strength: company test data, parallel-to-grain tension. Hybrid-beam gains: derived from beam theory with SUPERWOOD modulus and strength, engineering write-up pending. Beams: concept renderings.", 6.82, 0.3);
 
 // ---------- 5 · WHAT A GW DATA CENTER IS MADE OF ----------
 s = pres.addSlide(); base(s, "InventWood · The size");

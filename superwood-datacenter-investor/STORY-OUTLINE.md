@@ -61,6 +61,10 @@ New imagery (Higgsfield nano_banana_pro, prompts in `render/dc-steel-frame-const
   horizon on slides 5 and 6); server enclosures eventually (long-term vision, 40% of IT mass as an estimate); electronics
   never. An earlier same-day move of racks to "now" was reversed.
 
+- Slide 4 photos (Alex 2026-09-04): the Microsoft Source construction photo (CLT panel set on the Northern Virginia
+  frame) and Meta's interior shot of the Aiken timber structure, each credited "Photo: Microsoft / Meta" and sourced
+  to the cited publications. Third-party press photos — confirm use is acceptable before wide distribution.
+
 ## Still open
 
 - Slide 4 (Alex 2026-09-04): story is "hyperscalers are already ready to work with wood; we turbocharge wood" —
