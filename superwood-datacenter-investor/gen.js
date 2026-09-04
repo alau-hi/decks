@@ -174,7 +174,7 @@ note(s, "Company estimate for a 1 GW IT-load campus, high case. Only the concret
 s = pres.addSlide(); base(s, "InventWood · The size");
 kicker(s, "The size");
 title(s, "What one gigawatt of campus is worth to InventWood", L, 0.88, 11.9, 27);
-s.addImage({ path: "prep/charts/worth.png", x: L, y: 1.9, w: 5.9, h: 5.9 * 4.2 / 8.6 });
+s.addImage({ path: "prep/charts/worth.png", x: L, y: 2.15, w: 5.0, h: 5.0 * 4.2 / 8.6 });
 const worthCols = ["Horizon", "Incumbent replaced", "SUPERWOOD required", "Plant-years"];
 const worthRows = [
   ["Now — skins, screens, fences", "3.3–12 kt", "1.2–2.7 kt (1.4–3.1M sf)", "1.4–3.1 yr of SuperMill One"],
@@ -182,19 +182,19 @@ const worthRows = [
   ["Structural — frame, roofs, enclosures", "53–108 kt", "16–65 kt", "0.5–2.1 yr of SuperMill Two"],
   ["Long-term vision — slab, foundations, server boxes", "1,002–2,089 kt", "58–362 kt", "1.8–12 yr of SuperMill Two"],
 ];
-const wx = [6.7, 8.95, 10.15, 11.5], ww = [2.15, 1.1, 1.25, 1.3];
-worthCols.forEach((c, i) => s.addText(c.toUpperCase(), { x: wx[i], y: 1.9, w: ww[i], h: 0.45, fontFace: SANS, fontSize: 7.5, bold: true, color: BRIGHT, charSpacing: 1, margin: 0, valign: "bottom" }));
+const wx = [5.9, 8.2, 9.6, 11.0], ww = [2.2, 1.3, 1.3, 1.75];
+worthCols.forEach((c, i) => s.addText(c.toUpperCase(), { x: wx[i], y: 1.9, w: ww[i], h: 0.5, fontFace: SANS, fontSize: 9, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" }));
 worthRows.forEach((r, ri) => {
-  const y = 2.45 + ri * 0.72;
-  s.addShape(pres.ShapeType.rect, { x: 6.7, y: y - 0.06, w: 6.1, h: 0.012, fill: { color: RULE } });
-  r.forEach((c, ci) => s.addText(c, { x: wx[ci], y, w: ww[ci], h: 0.62, fontFace: SANS, fontSize: ci === 0 ? 10 : 9.5, bold: ci === 0 || ci === 3, color: ci === 0 ? CREAM : (ci === 3 ? GOLD : DIM), margin: 0, valign: "top" }));
+  const y = 2.55 + ri * 0.82;
+  s.addShape(pres.ShapeType.rect, { x: 5.9, y: y - 0.08, w: 6.85, h: 0.012, fill: { color: RULE } });
+  r.forEach((c, ci) => s.addText(c, { x: wx[ci], y, w: ww[ci], h: 0.7, fontFace: SANS, fontSize: ci === 0 ? 12 : 11.5, bold: ci === 0 || ci === 3, color: ci === 0 ? CREAM : (ci === 3 ? GOLD : DIM), margin: 0, valign: "top" }));
 });
-panel(s, L, 5.05, CW, 0.85, PANEL);
+panel(s, L, 5.95, CW, 0.7, PANEL);
 s.addText([
   t("Two or three gigawatts of campus absorb SuperMill Two for years.  ", { bold: true, color: GOLD }),
   t("That is the offtake argument and the capacity risk in one number — and why a basis-of-design win with one hyperscaler is the demand anchor for the second mill.", { color: DIM }),
-], { x: L + 0.3, y: 5.13, w: CW - 0.6, h: 0.7, fontFace: SANS, fontSize: 11.5, margin: 0, valign: "middle" });
-note(s, "Quantities: company estimate (slide 5 model; low–high scenarios). Incumbent replaced is steel except the long-term row (concrete, rebar, and server enclosures at 40% of IT mass — estimate; electronics excluded). SUPERWOOD required uses a 0.3–0.6 substitution factor for steel (estimate, to be engineering-stamped per element). Plant output: SuperMill One ≈ 0.9 kt/yr (1M sf), SuperMill Two ≈ 31 kt/yr (36M sf) at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application; see Super Mills America for the cost roadmap.", 6.05, 0.75);
+], { x: L + 0.3, y: 6.0, w: CW - 0.6, h: 0.6, fontFace: SANS, fontSize: 12, margin: 0, valign: "middle" });
+note(s, "Company estimate (slide 5 model; low–high scenarios). Incumbent replaced is steel except the long-term row (concrete, rebar, server enclosures at 40% of IT mass — estimate; electronics excluded). SUPERWOOD required uses a 0.3–0.6 steel substitution factor (estimate). Plant output: SuperMill One ≈ 0.9 kt/yr (1M sf), SuperMill Two ≈ 31 kt/yr (36M sf) at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application.", 6.72, 0.36);
 
 // ---------- 7 · PROCESS ----------
 s = pres.addSlide(); base(s, "InventWood · The fit");
