@@ -1,0 +1,12 @@
+# ship only the web deck — keep source, exports and working files off the CDN
+*.pptx
+*.pdf
+*.zip
+gen.js
+STORY-OUTLINE.md
+analyses/
+media/
+prep/
+render/
+reviews/
+archive/

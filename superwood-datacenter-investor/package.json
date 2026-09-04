@@ -1,0 +1,10 @@
+{
+  "name": "superwood-datacenter-investor",
+  "version": "1.0.0",
+  "description": "SUPERWOOD for Data Centers - investor deck",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@vercel/edge": "^1.2.1"
+  }
+}
