@@ -32,3 +32,7 @@ of field; near cut end faces the camera at a low three-quarter angle. Same espre
   itself two or three quarter-inch laminations.
 - Thin SUPERWOOD: entirely dense walnut/oiled-teak wood, a laminated assembly of about twenty quarter-inch boards, fine
   regular lamination lines on the cut end, about one-third the thickness of the glulam, flat faces, sharp edges, no knots.
+
+## Revision 2 (Alex, 2026-09-04): SUPERWOOD-only beam with boards stacked flat
+
+Same camera. The beam is about twenty quarter-inch boards stacked flat one on top of another and bonded, so the square-cut end shows crisp horizontal, evenly spaced lamination lines across its full width. Captions removed from all three beams; the table headers label the two sides.

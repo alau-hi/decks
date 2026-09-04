@@ -131,9 +131,8 @@ const beams = [
   ["prep/beam_thin.jpg", "Thin SUPERWOOD beam — laminated from ¼\" boards"],
 ];
 beams.forEach(([img, cap], i) => {
-  const bw = (RW - 0.3) / 3, x = RX + i * (bw + 0.15), y = 2.3, bh = 1.3;
+  const bw = (RW - 0.3) / 3, x = RX + i * (bw + 0.15), y = 2.3, bh = 1.55;
   s.addImage({ path: img, x, y, w: bw, h: bh, sizing: { type: "crop", w: bw, h: bh } });
-  s.addText(cap, { x, y: y + bh + 0.04, w: bw, h: 0.36, fontFace: SANS, fontSize: 8.5, italic: true, color: i === 0 ? MUTED : BRIGHT, align: "center", margin: 0, valign: "top" });
 });
 const cmpRows = [
   ["", "Mass timber today (CLT, glulam)", "With SUPERWOOD"],
