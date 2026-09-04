@@ -58,6 +58,17 @@ Alex, 2026-08-23 → 26.
 - **Plain language.** No AI-speak ("the gap lands on…"), no hedging filler. Voice-level
   edits from Alex override anything here.
 
+- **Export mode hides the Sources pill.** `html.exporting .srcwrap` is hidden and any section
+  holding a `.srcwrap` or `.sw-tip` gets `.has-notes`, whose `::after` prints "See Notes and
+  References in Appendix" where the pill sat. The Appendix TOC carries an export-only
+  "Notes and References" row (`.notesrow`, numbered slides+1 by the TOC script). The PDF's Notes
+  pages are built from the same elements (`exports/` pipeline in the session scratchpad:
+  `render-pdf.sh`, `assemble.py`).
+- **Render PDF pages inside a 1440x810 iframe.** Headless Chrome's `--screenshot` captures at a
+  taller viewport than the page's JS sees (window 897 -> JS innerHeight 810 -> capture 897), so
+  a bare page fits its content for 810 while `position:fixed` chrome paints at 897 — cropping to
+  810 then cuts the Confidential / page number / brand footer (2026-09-03). A wrapper page with a
+  1440x810 iframe gives layout, fit and footer one viewport; crop the capture to the iframe.
 - **Deliberate exceptions to the rules above (Alex, 2026-09-02, at critique):** the
   **Demand** slide keeps its four stat cards (large figure over caption, rust accent
   `#c56c32`, cream + dark cards) and **The Fleet** keeps its five cards with the green and
@@ -279,6 +290,31 @@ where a row has nowhere to go. Only the `.gapfoot` copies are rows.
   scale under zoom; right-aligned content can ride into the nav rail on sparse slides —
   cap the containing block's width (see `.gapfoot`). Elements outside `.wrap` (sources
   buttons) escape the zoom.
+- **Titles are pinned on paper; slides centre on screen (2026-09-03).** On screen sections are
+  `align-items:center`, so each slide sits centred in the viewport. In export mode
+  (`html.exporting`) sections top-align (the cover, Thank you, SUPERMILL ONE photo slide and the
+  appendix dividers stay centred), so every PDF page has its title at the same height. In both
+  modes the title block — `.wrap>.kicker`, `.wrap>h2`, and a `.lead` directly after the h2 — carries
+  `zoom:calc(1/var(--z))`, undoing the fit zoom `fitSlides` writes to `--z`. Result: every
+  title sits 49px from the top (78px under an appendix kicker) at 42px, whatever the body's
+  zoom (measured before: 35–69px, 42–135px down). Only the body scales. `fitSlides` then
+  measures the leftover height and writes it to `--slack`; the title block spends half of it
+  as bottom margin so a thin slide's body centres in the space under the title instead of
+  piling at the bottom. Thin appendix slides spend the other half on their body (`#mtb` photo
+  height, `#dcm`/`#dcf` card padding) so they fill. Both variables reset to 0 at the start of
+  every fit, so the natural size is what gets measured. Do not give an h2 an inline
+  `font-size` — that was how `fast` and the Data Centers trio drifted.
+- **The Fleet is one row of five subgrid cards, packed at runtime (2026-09-02).** The old 4+1
+  layout was ~1060px tall and shrank to 0.71x, which is why its notes read at 9px. Each card is
+  a `subgrid` sharing the title, eyebrow and note rows; the icon field and stat rows share the
+  `1fr` row as a flex column (`.gmid`) so each field takes exactly its own card's slack. Fields
+  are empty in the markup; `packFleet()` (called after every fit of the section) reads the field
+  box and bottom-left-fills it from `data-mix` (icon heights in rem, largest first; SUPERMILL TWO
+  = 3.0, 2x = 4.24, LARGE/4x = 6.0 — "N x as large" is visual area) on a 3px lattice, then keeps
+  placing the three smallest sizes until nothing fits, so a field is full down to its smallest
+  icon by construction. Boxes overlap ~4px on purpose (glyph edges are chimney and roofline).
+  It skips when the box is unchanged, so the reveal animation plays once. On a phone
+  (`position:static` field) it emits only the base mix and lets it wrap.
 - **Reveals**: `.rv` elements animate when their section gains `.in` (IntersectionObserver).
   Default state must be presentable — print, headless, and reduced-motion all see it.
 - **Counters never fabricate**: real final values always in the DOM; animation is a
