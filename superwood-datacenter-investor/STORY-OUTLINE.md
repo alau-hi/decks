@@ -69,6 +69,10 @@ New imagery (Higgsfield nano_banana_pro, prompts in `render/dc-steel-frame-const
   Beams re-rendered with one camera, very long and fading into the distance; the thin SUPERWOOD beam is shown as a
   laminated assembly of 1/4-inch boards.
 
+- New slide 17, the vision (Alex 2026-09-04): "Can the world's data centers be big, beautiful carbon sinks?" — three
+  cards (Big, Beautiful, Carbon sinks) over the campus hero, with the LCA caveat in the footer; the carbon slide follows
+  it. Deck is 21 slides; web nav for the envelopes/foundations slide renamed "Long game".
+
 ## Still open
 
 - Slide 4 (Alex 2026-09-04): story is "hyperscalers are already ready to work with wood; we turbocharge wood" —
