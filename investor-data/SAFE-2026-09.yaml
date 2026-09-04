@@ -1,0 +1,3097 @@
+# InventWood investor data — master register for the September 2026 SAFE round.
+#
+# ONE entry per FACT (not per slide, not per deck). Decks reference ids; they never
+# redefine values. SAFE-2026-09.md and CONFLICTS.md are GENERATED from this file:
+#     python build.py
+# check_decks.py matches the per-deck registers back to these ids.
+#
+# Field notes
+#   basis:      internal | published | derived | triangulated | estimated |
+#               asserted-internal | unverified   (labels copied from the source registers;
+#               never upgraded here)
+#   confidence: H | M | L  (source labels such as "M-H" or "H (internal canonical)" are
+#               kept verbatim in confidence_label and mapped to the LOWER letter)
+#   status:     canonical | superseded | retired | open   (open = value not yet decided)
+#   printed_in: decks that print the fact, from the source registers' slide fields.
+#               Inherited facts the super-mills-america register says it traces to the
+#               parent (capex, EBITDA, ROE, deposits, pipeline, cost roadmap, properties,
+#               feedstock) list both decks.
+#   slides:     optional {deck: [slide nav names]} for tracing
+#   conflicts_with / conflict_topic / decision: drive CONFLICTS.md
+
+meta:
+  round: SAFE
+  round_period: September 2026
+  as_of: 2026-09-04
+  maintainers:
+    - Alex Lau (decisions; every canonical value is his call)
+    - Claude (assembly and generation, 2026-09-04)
+  authority: >-
+    This YAML is the single source of truth. SAFE-2026-09.md and CONFLICTS.md are generated
+    from it and must not be hand-edited.
+  regenerate: >-
+    cd /Users/test/Git/decks/investor-data && python build.py && python check_decks.py
+  sources:
+    - ../investor-overview/sources/claims.yaml (by slide; last_reconciled 2026-08-24)
+    - ../super-mills-america/sources/claims.yaml (flat; edited to 2026-09-04)
+    - ../investor-overview/sources/notes/superwood-unit-economics.md
+    - ../investor-overview/sources/notes/steel-and-stainless-prices.md
+    - ../investor-overview/sources/notes/steel-and-concrete-market-size.md
+    - ../superwood-datacenter-investor/reviews/FRESH-LOOK-2026-09-04.md
+    - ../superwood-datacenter-investor/analyses/materials-mass-and-replacement.md
+  decks:
+    investor-overview: Canva/HTML Investor Overview, August 2026 (41 slides)
+    super-mills-america: Super Mills America deck
+    superwood-datacenter-investor: SUPERWOOD for Data Centers, investor companion (rebuild pending Alex OK)
+    aaron-deck: parent deck named in the SMA register as still printing 800+ deposits
+  groups: [company, team, ip, mills, cost_price, economics, material, process, carbon,
+           market, feedstock, customers, datacenter, financing, advisors, collaborators, comparison]
+
+facts:
+
+  # =========================================================================== company
+  - id: company.shipping_from_supermill_one
+    value: Frederick, MD
+    unit: null
+    statement: SUPERWOOD is shipping today from SuperMill One in Frederick, MD
+    basis: internal
+    confidence: H
+    source: Company; investor-overview register (Introducing, Journey)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    slides: {investor-overview: [Introducing, Journey], super-mills-america: [Running]}
+    notes: SuperMill One built in Frederick, MD; lab-to-commercial transition 2022-2025.
+
+  - id: company.commercial_shipments_begin
+    value: December 2025
+    unit: date
+    statement: Commercial shipments began December 2025
+    basis: internal
+    confidence: H
+    source: Company; investor-overview register (Journey)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: company.invented_by_hu
+    value: 2016-2018
+    unit: years
+    statement: SUPERWOOD was invented by Dr. Liangbing Hu (University of Maryland) in 2016-2018, with Jiaqi Dai as key co-inventor
+    basis: published
+    confidence: H
+    source: Hu et al., Nature (2018), densified wood. Citation not yet attached in any deck - ADD IT.
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    slides: {investor-overview: [Journey, Conversion]}
+    notes: Feedback doc 2026-08-21 asked for Jiaqi Dai to be described as key co-inventor.
+
+  - id: company.supermill_one_is_subscale_pilot
+    value: true
+    unit: null
+    statement: SuperMill One was designed as a subscale pilot facility for SuperMill Two; the 20% to 65% EBITDA step is driven by scale
+    basis: asserted-internal
+    confidence: H
+    confidence_label: H (internal)
+    source: Alex Lau, 2026-08-26 (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Cost Roadmap, The Fleet]}
+    notes: null
+
+  - id: company.supermill_one_building_sf
+    value: 90000
+    unit: sf
+    statement: The SuperMill One building is 90,000 sf, ramping to 1M sf/yr of capacity
+    basis: asserted-internal
+    confidence: H
+    confidence_label: H (internal)
+    source: Alex Lau, 2026-08-25 (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Running]}
+    notes: Capacity figure is mills.sm1.capacity_sf_yr.
+
+  - id: company.inbound_inquiries
+    value: 15000+
+    unit: inquiries
+    statement: 15,000+ inbound inquiries with virtually no marketing spend
+    basis: internal
+    confidence: H
+    source: Company CRM (investor-overview register, Demand)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: company.contact_ir
+    value: Lex Harris, Director, Capital Markets & IR, ir@inventwood.com; Alex Lau
+    unit: null
+    statement: Investor contact is Lex Harris (Director, Capital Markets & IR, ir@inventwood.com); closing contacts Alex Lau and Lex Harris
+    basis: internal
+    confidence: H
+    source: investor-overview register (The Opportunity, Thank You); datacenter Fresh Look close slide
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, superwood-datacenter-investor]
+    notes: null
+
+  # =========================================================================== team
+  - id: team.executives
+    value: Alex Lau; Jon Strimling; Tom Dorsch; Jiaqi Dai; Shaun Klopfenstein
+    unit: null
+    statement: Executive team biographies (Lau, Strimling, Dorsch, Dai, Klopfenstein), self-reported
+    basis: internal
+    confidence: H
+    source: investor-overview register (Team)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: >-
+      Checkable items a diligence process will test: Strimling's Inc. 5000 "fastest-growing
+      manufacturer" and NASDAQ listing; Dai's H-index of 96 and top-2% ranking; degrees.
+      Jack Winterowd was removed 2026-08-24 and his 51 issued / 60+ pending patents no longer
+      appear in any deck.
+
+  - id: team.klopfenstein_title
+    value: Head of AI
+    unit: null
+    statement: Shaun Klopfenstein is titled Head of AI
+    basis: internal
+    confidence: H
+    source: Retitled from Chief Information Officer 2026-08-24, per the Lex call (investor-overview register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: team.dorsch_bio
+    value: VP Engineering & Capital Projects; >$2B of projects over three decades
+    unit: null
+    statement: >-
+      Tom Dorsch, VP Engineering & Capital Projects - built more than $2B of projects over three
+      decades in pulp, paper and tissue; led Solaris Paper's relocation into an 800,000 sf facility
+      in Moreno Valley, CA (operational early 2019); St. Croix Tissue and Woodland Pulp; earlier a
+      senior project manager at Turner; PMP; University of Cincinnati
+    basis: triangulated
+    confidence: M
+    source: LinkedIn profile and a ZoomInfo listing, assembled 2026-08-24; Alex confirmed the Turner role
+    url: https://www.linkedin.com/in/thomas-dorsch-pmp-2aab5331/
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: >-
+      The TITLE comes from ZoomInfo, not the company - CONFIRM INTERNALLY. The ">$2B over three
+      decades" figure was supplied by Alex 2026-08-24 and is internal; no public listing carries
+      a project-value total.
+
+  - id: team.hu_founder_title_hindex
+    value: 198
+    unit: H-index
+    statement: Prof. Liangbing Hu - Founder & Inventor; Director, Center for Materials Innovation, Yale; H-index 198
+    basis: published
+    confidence: M
+    source: investor-overview register (Breakthrough); H-index verifiable via Google Scholar
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Confirm the Yale title is current. Founder does not appear in the datacenter companion deck.
+
+  # =========================================================================== ip
+  - id: ip.patents_granted_allowed
+    value: 41
+    unit: patents
+    statement: 41 granted and allowed patents
+    basis: internal
+    confidence: H
+    source: InventWood Overview Deck - Opus8.pdf, p.32 "Protected by a Robust and Growing IP Portfolio" (Mar 2026)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    slides: {investor-overview: [Conversion, Patents]}
+    notes: >-
+      Counts age quickly - refresh before each send. Patent numbers are publicly verifiable via
+      USPTO and EPO assignee search - DO THAT; it converts an internal assertion to public record.
+
+  - id: ip.patent_filings_total
+    value: 144
+    unit: filings
+    statement: 144 filings covering core process, products and pipeline technologies
+    basis: internal
+    confidence: H
+    source: Opus8 p.32 (Mar 2026)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Wording differs - "144 filings" (Conversion) vs "144 total applications" (Patents).
+
+  - id: ip.countries_regions_covered
+    value: 70
+    unit: countries and regions
+    statement: Patent coverage across 70 countries and regions
+    basis: internal
+    confidence: H
+    source: Opus8 p.32 (Mar 2026)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: ip.portfolio_split
+    value: Core Tech 45 / Product 39 / Pipeline Tech 48
+    unit: filings
+    statement: Portfolio split - Core Tech 45, Product 39, Pipeline Tech 48
+    basis: internal
+    confidence: H
+    source: investor-overview register (Patents)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: 45 + 39 + 48 = 132, not 144 - the split does not sum to the filings total. Reconcile before print.
+
+  - id: ip.strategy
+    value: Walling and Patent Network, IP Steering Committee
+    unit: null
+    statement: IP strategy of "Walling" and "Patent Network", overseen by an IP Steering Committee
+    basis: internal
+    confidence: H
+    source: investor-overview register (Patents)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: ip.technology_patented
+    value: true
+    unit: null
+    statement: The SUPERWOOD technology is patented
+    basis: published
+    confidence: H
+    source: investor-overview register (Conversion); patent numbers verifiable - ADD THEM
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  # =========================================================================== mills
+  - id: mills.sm1.capacity_sf_yr
+    value: 1000000
+    unit: sf/yr
+    statement: SuperMill One capacity is 1M sf/yr (across all markets)
+    basis: internal
+    confidence: H
+    source: Company model; investor-overview register (Introducing, Demand, Cost Roadmap); SMA register (Running)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04 (use 1M in investor decks)
+    status: canonical
+    printed_in: [investor-overview, super-mills-america, superwood-datacenter-investor]
+    conflicts_with: [mills.sm1.capacity_sf_yr_customer_deck]
+    conflict_topic: SuperMill One capacity 1M vs 1.3M sf/yr
+    decision: Alex Lau 2026-09-04 - 1M sf/yr in all investor materials; datacenter deck to use 1M or none.
+    notes: Datacenter capacity sentence per Fresh Look - "SuperMill One is ~1M sf/yr across all markets".
+
+  - id: mills.sm1.capacity_sf_yr_customer_deck
+    value: 1300000
+    unit: sf/yr
+    statement: SuperMill One capacity printed as 1.3M sf/yr in the customer data-center deck (and the stale Opus8 deck)
+    basis: internal
+    confidence: L
+    source: ../superwood-datacenter customer deck; Opus8 (listed as a stale figure in superwood-unit-economics.md)
+    as_of: 2026-09-04
+    status: superseded
+    printed_in: []
+    conflicts_with: [mills.sm1.capacity_sf_yr]
+    notes: Unit-economics note lists 1.3M sf/yr among four stale Opus8 figures (1.3M sf/yr, $34M, $220M, $360M). Do not print.
+
+  - id: mills.sm1.capex
+    value: 48000000
+    unit: USD
+    statement: SuperMill One capex $48M
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md (company model)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: Opus8's $34M is stale.
+
+  - id: mills.sm1.status
+    value: 2025 - now shipping
+    unit: null
+    statement: SuperMill One status - 2025, now shipping
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: null
+
+  - id: mills.sm1.electrical_load_mw
+    value: "<5"
+    unit: MW
+    statement: The first SUPERMILL's electrical load is under 5 MW
+    basis: internal
+    confidence: M
+    source: Alex Lau, margin comment 2026-08-29 (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: >-
+      Jon estimated 5-10 MW in the same document; Alex's later, narrower instruction is "<5 MW
+      electrical load, stay silent on the exact grid connection number". Do not print a
+      grid-connection figure. Consistent with mills.sm2.power_draw_mw (<4 MW). Not yet on a slide
+      (Fast x Fast when added).
+
+  - id: mills.sm1.output_tonnes_yr
+    value: "~900"
+    unit: t/yr
+    statement: SuperMill One output is about 0.9 kt/yr of SUPERWOOD
+    basis: estimated
+    confidence: L
+    source: materials-mass-and-replacement.md - 1M sf x 0.87 kg/sf (7.2 mm x 1.3 t/m3); internal TEM basis
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Derived from the 7.2 mm average-thickness basis; TEM thickness mix still to be fixed so plant output in tonnes is one number.
+
+  - id: mills.sm2.commissioning_year
+    value: 2029
+    unit: year
+    statement: SuperMill Two commissions in 2029 (development 2027-2030)
+    basis: internal
+    confidence: H
+    source: Confirmed by Alex (investor-overview register, Introducing)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: SMA register's build-time entry cites an internal "2028-2030 SM2 schedule" for the build class; the 2029 commissioning date stands.
+
+  - id: mills.sm2.output_multiple_of_sm1
+    value: 36
+    unit: x
+    statement: SuperMill Two output is 36x SuperMill One
+    basis: internal
+    confidence: H
+    source: investor-overview register (Introducing)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: 36M sf / 1M sf. Depends on mills.sm2.capacity_sf_yr, which is under the volume conflict.
+
+  - id: mills.sm2.capacity_sf_yr
+    value: 36000000
+    unit: sf/yr
+    statement: SuperMill Two output 36M sf/yr
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md (company model)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    slides: {super-mills-america: [Cost Roadmap, The Fleet]}
+    conflicts_with: [mills.sm2.volume_m3_yr, mills.sm2.volume_m3_yr_derived]
+    conflict_topic: SuperMill Two volume - 20,000 vs 24,000 m3/yr and the 36M sf / 7.2 mm identity
+    notes: 36M sf at 7.2 mm = 24,077 m3. Printing 20,000 m3 alongside 36M sf breaks the identity.
+
+  - id: mills.sm2.volume_m3_yr
+    value: 20000
+    unit: m3/yr
+    statement: SuperMill Two volume output is about 20,000 m3/yr - SUPERSEDED 2026-09-04
+    basis: internal
+    confidence: M
+    source: Jon Strimling 2026-08-29 ("actually 20k, not 24k"); confirmed by Alex 2026-08-29 (SMA register)
+    as_of: 2026-09-04
+    status: superseded
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Appendix]}
+    conflicts_with: [mills.sm2.capacity_sf_yr, mills.sm2.volume_m3_yr_derived]
+    conflict_topic: SuperMill Two volume - 20,000 vs 24,000 m3/yr and the 36M sf / 7.2 mm identity
+    decision: RESOLVED - Alex Lau 2026-09-04 - 36M sf at 7.2 mm stands, so volume is ~24,000 m3/yr (mills.sm2.volume_m3_yr_derived). The 20,000 figure is superseded. ACTION - super-mills-america Appendix comparison still prints 20,000 m3; update it to ~24,000 (and the >7,000-mill fleet anchor inherits the change).
+    notes: >-
+      UNRESOLVED ARITHMETIC. 24,000 was derived (36M sf x 7.2 mm = 24,077 m3). At 20,000 m3 one
+      of the other two must move - either output is ~30M sf at 7.2 mm, or 36M sf at ~6.0 mm. The
+      second cascades: 7.2 mm converts the whole $/sf ladder to $/m3 ($5.50/sf = $8,222/m3 only at
+      7.2 mm). Appendix prints 20,000 with "(36M sf)" removed; 36M sf still prints on Cost Roadmap
+      and The Fleet. Also the anchor for the >7,000-mill fleet figure.
+
+  - id: mills.sm2.volume_m3_yr_derived
+    value: 24000
+    unit: m3/yr
+    statement: SuperMill Two ~24,000 m3/yr (36M sf at 7.2 mm average board thickness)
+    basis: derived
+    confidence: H
+    source: 36M sf/yr internal capacity x 7.2 mm conversion = 24,077 m3 (SMA register, Economics)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04 (36M sf at 7.2 mm is the basis)
+    status: canonical
+    printed_in: []
+    conflicts_with: [mills.sm2.volume_m3_yr]
+    notes: Was superseded by 20,000 m3/yr on 2026-08-29; reinstated as canonical 2026-09-04 when Alex confirmed 36M sf at 7.2 mm. Consistent with the $/sf to $/m3 ladder (x1,495).
+
+  - id: mills.sm2.output_tonnes_yr
+    value: "~30000-31000"
+    unit: t/yr
+    statement: SuperMill Two output is roughly 30-31 kt/yr of SUPERWOOD
+    basis: estimated
+    confidence: L
+    source: materials-mass-and-replacement.md (~31 kt/yr, internal TEM basis); SMA register power note uses ~30K t/yr
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: 24,000 m3 x 1.3 t/m3 = 31.2 kt (volume resolved at ~24,000 m3, 2026-09-04). Density 1.3 t/m3 is itself an implied value - see material.density_t_per_m3.
+
+  - id: mills.sm2.capex_range
+    value: 300-400
+    unit: USD million
+    statement: SuperMill Two capex $300-400M
+    basis: internal
+    confidence: H
+    confidence_label: H (internal canonical)
+    source: Alex Lau 2026-09-03; propagated to Cost Roadmap, Financing, The Fleet (SM Two card) and the Comparison table the same day (SMA register)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-03
+    status: canonical
+    printed_in: [super-mills-america, superwood-datacenter-investor]
+    conflicts_with: [mills.sm2.capex_point, mills.sm2.capex_325]
+    conflict_topic: SuperMill Two capex $300M vs $300-400M vs $325M
+    decision: Alex Lau 2026-09-03 - print the $300-400M range; $300M was the earlier point figure; $325M reconciled down 2026-08-23.
+    notes: investor-overview still carries the $300M point figure (unit-economics note, Cost Roadmap table, Demand note) - align.
+
+  - id: mills.sm2.capex_point
+    value: 300000000
+    unit: USD
+    statement: SuperMill Two capex $300M (point figure)
+    basis: internal
+    confidence: H
+    confidence_label: H (internal canonical)
+    source: deck-canonical per Alex 2026-08-23 (investor-overview register; SMA Economics row)
+    as_of: 2026-09-04
+    status: superseded
+    printed_in: [investor-overview, super-mills-america]
+    slides: {investor-overview: [Cost Roadmap, Demand], super-mills-america: [Economics]}
+    conflicts_with: [mills.sm2.capex_range]
+    notes: Still the basis of the $300M / $208M = 1.44x capex-to-EBITDA line and the 69% cash-yield endpoint.
+
+  - id: mills.sm2.capex_325
+    value: 325000000
+    unit: USD
+    statement: SuperMill Two capex $325M (earlier Scaling-slide figure)
+    basis: internal
+    confidence: L
+    source: investor-overview register (Demand note) - "the $325M on the Scaling slide was reconciled down"
+    as_of: 2026-09-04
+    status: retired
+    printed_in: []
+    conflicts_with: [mills.sm2.capex_range]
+    notes: Reconciled down to $300M on 2026-08-23. Do not print.
+
+  - id: mills.sm2.power_draw_mw
+    value: "<4"
+    unit: MW
+    statement: A SuperMill Two-scale plant requires <4 MW grid draw at standard industrial service
+    basis: asserted-internal
+    confidence: M
+    confidence_label: M-H
+    source: Alex Lau 2026-08-23; consistent with FEL2 basis (~900-930 kWh/t x ~30K t/yr = ~27 GWh/yr = ~3.2 MW average draw) (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Economics, Fast x Fast]}
+    notes: TEM-vs-FEL2 energy reconciliation still open in the mills repo. Site asks - no transmission interconnection queue; process heat self-fueled by wood residues; no smelter-class emissions (comparative - residue boiler still needs a state air permit, likely minor source). Do not print a specific queue duration without a source.
+
+  - id: mills.sm2.electric_intensity_kwh_per_t
+    value: 900-930
+    unit: kWh/t
+    statement: SUPERWOOD plant electric intensity ~900-930 kWh/t (FEL2 mass and energy balance, Rev F 2026-08-19); boiler self-fueled, gas make-up ~0
+    basis: internal
+    confidence: M
+    source: FEL2 Rev F 2026-08-19, as cited in the SMA register power and site-asks entries
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Confidence not stated separately in the source; recorded at M (the parent claim is M-H).
+
+  - id: mills.sm2.build_years
+    value: "~2"
+    unit: years
+    statement: SUPERMILL build about 2 years (long-lead equipment ~18 months; construction 6-12 months after site development)
+    basis: asserted-internal
+    confidence: M
+    confidence_label: M-H (2026-08-25 detail); M (build class)
+    source: internal build class (2028-2030 SM2 schedule), panel-plant analogs 1.5-2.5 yr; detail from Alex Lau 2026-08-25 (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Economics, Appendix comparison, Fast x Fast]}
+    notes: The ~2-year figure remains valid as the overall build-cycle class (long-lead and construction overlap).
+
+  - id: mills.sm2.develop_build_years
+    value: "<3"
+    unit: years
+    statement: SUPERMILL develop + build under 3 years end to end
+    basis: asserted-internal
+    confidence: M
+    source: Alex Lau 2026-08-24 and 2026-08-25; consistent with light site asks and ~2-yr build class (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Appendix comparison, Fast x Fast]}
+    notes: Compare comparison.incumbent_develop_build_years (10+).
+
+  - id: mills.chipmill.capacity_sf_yr
+    value: 180000000
+    unit: sf/yr per plant
+    statement: ChipMills at 180M sf/yr per plant, using wood chips and waste; 2032+ future plants
+    basis: internal
+    confidence: M
+    source: investor-overview register (Global Fleet); superwood-unit-economics.md
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: null
+
+  - id: mills.chipmill.capex_revenue_ebitda
+    value: null
+    unit: USD
+    statement: ChipMill capex, revenue and EBITDA - no figures exist in the underlying model
+    basis: internal
+    confidence: L
+    source: superwood-unit-economics.md - "no ChipMill capex, revenue, or EBITDA figures exist in the deck's underlying model"
+    as_of: 2026-09-04
+    status: open
+    printed_in: []
+    notes: The three em-dashes on the Cost Roadmap table are deliberate. Do not fill in without a real number.
+
+  - id: mills.fleet.national_capacity_sf_yr
+    value: 10000000000+
+    unit: sf/yr
+    statement: National fleet of 10B+ sf/yr using SuperMill Two as the template
+    basis: internal
+    confidence: M
+    source: investor-overview register (Global Fleet)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  # =========================================================================== cost_price
+  - id: cost_price.conversion_factors
+    value: steel 7.85 t/m3; stainless 304 8.0 t/m3; aluminum 2.70 t/m3; SUPERWOOD board 7.2 mm average thickness (1 m3 = 1,495 sf)
+    unit: null
+    statement: Conversions - structural steel 7.85 t/m3, stainless 304 8.0 t/m3, aluminum 2.70 t/m3, SUPERWOOD 7.2 mm average board thickness (1,495 sf per m3)
+    basis: published
+    confidence: H
+    source: Densities are standard. 7.2 mm confirmed by Alex 2026-08-22 (investor-overview register, Cost Roadmap; steel-and-stainless-prices.md)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: >-
+      1 / (0.0072 m x 0.0929 m2) = 1,495 sf/m3, so $/m3 = $/sf x 1,495. The 7.2 mm figure exposed an
+      Opus8 error (6.0 mm implied for SuperMill One). The 7.2 mm basis is what the 20,000 m3 volume
+      decision strains - see mills.sm2.volume_m3_yr.
+
+  - id: cost_price.realized_interior_per_sf
+    value: 19
+    unit: USD/sf
+    statement: SUPERWOOD interior product currently sells at about $19/sf (realized)
+    basis: internal
+    confidence: H
+    confidence_label: H (internal canonical)
+    source: Alex Lau 2026-09-02, Cost Roadmap footnote rewrite (SMA register)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-02
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Cost Roadmap]}
+    notes: The only realized price on file besides the $25/sf exterior context figure. Basis for datacenter.value_per_gw_immediate.
+
+  - id: cost_price.sm1_price_basis_per_sf
+    value: 15.00
+    unit: USD/sf
+    statement: Cost-roadmap SuperMill One price basis $15.00/sf (premium applications - mullions, blinds, luxury furniture structures)
+    basis: internal
+    confidence: H
+    confidence_label: H (internal canonical)
+    source: Alex Lau 2026-09-02 (SMA register); per-market relabel 2026-08-29
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-02
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    conflicts_with: [cost_price.exterior_per_sf_context]
+    conflict_topic: Price ladder relabel vs Jon's $25/sf exterior
+    decision: Alex Lau 2026-08-29 - RELABEL the ladder by market rather than reduce; 2026-09-02 bases fixed at $15.00 SM One premium / $5.50 SM Two interior structural; $25/sf exterior is context only, never printed.
+    notes: >-
+      $15.00 x 1,495 = $22,425/m3 (cost_price.sm1_price_per_m3). Jon Strimling 2026-08-29 - "$15 out of
+      the gate for structural boards is aggressive - that price has been proposed to customers and they
+      are walking away." Alex's answer was that prices are per-market, not one product at three prices.
+
+  - id: cost_price.sm2_price_basis_per_sf
+    value: 5.50
+    unit: USD/sf
+    statement: Cost-roadmap SuperMill Two price basis $5.50/sf (interior structural board)
+    basis: internal
+    confidence: H
+    confidence_label: H (internal canonical)
+    source: Alex Lau 2026-09-02 (SMA register)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-02
+    status: canonical
+    printed_in: [super-mills-america]
+    conflicts_with: [cost_price.sm2_price_per_m3_overview]
+    conflict_topic: SuperMill Two roadmap price - $8,222/m3 ($5.50/sf, SMA) vs $14,950/m3 (investor-overview table)
+    decision: Alex Lau 2026-09-02 fixed the SMA basis at $5.50/sf. OPEN - Alex - whether the investor-overview Cost Roadmap table ($14,950/m3 = $10/sf) moves to the same basis.
+    notes: $5.50 x 1,495 = $8,222/m3 (cost_price.sm2_price_per_m3). 36M sf x $5.50 = $198M, below the $320M projected revenue - reconciled by economics.sm2_blended_price.
+
+  - id: cost_price.commodity_structural_per_sf
+    value: 3.00
+    unit: USD/sf
+    statement: Commodity structural board $3.00/sf (earlier footnote per-market list)
+    basis: internal
+    confidence: M
+    source: Alex 2026-08-29 replying to Jon (SMA register); remains in the overview register
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: $3.00 x 1,495 = $4,485/m3, the ChipMill price in the investor-overview table (cost_price.chipmill_price_per_m3_overview). Superseded as the SMA printed basis by the 2026-09-02 rewrite but still the overview basis.
+
+  - id: cost_price.exterior_per_sf_context
+    value: 25
+    unit: USD/sf
+    statement: Exterior board holds at $25/sf (Jon Strimling) - context only, never printed
+    basis: asserted-internal
+    confidence: M
+    source: Jon Strimling, deck feedback 2026-08-29 (SMA register)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-02 (context only)
+    status: canonical
+    printed_in: []
+    conflicts_with: [cost_price.sm1_price_basis_per_sf]
+    notes: Registered only as context. Fresh Look derives $35-78M per GW of data-center skins at this price; not for print.
+
+  - id: cost_price.chipmill_gross_margin
+    value: 60
+    unit: "%"
+    statement: ChipMill continuous assumes 60% gross margin
+    basis: internal
+    confidence: H
+    confidence_label: H (internal canonical)
+    source: Alex Lau 2026-09-02 (SMA register, Cost Roadmap footnote)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-02
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Implies price = 2.5 x cost. At $1,310/m3 cost that is ~$3,275/m3 ($2.19/sf); the overview table's $4,485 / $1,525 is 2.94x. See cost_price.chipmill_cost_per_m3.
+
+  - id: cost_price.sm1_price_per_m3
+    value: 22425
+    unit: USD/m3
+    statement: SuperMill One price $22,425/m3
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md; = $15.00/sf x 1,495
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: Opus8's $17,368/m3 implied a 6.0 mm board and is stale.
+
+  - id: cost_price.sm1_cost_per_m3
+    value: 14472
+    unit: USD/m3
+    statement: SuperMill One manufacturing cost $14,472/m3
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: Price/cost 1.55x.
+
+  - id: cost_price.sm2_price_per_m3
+    value: 8222
+    unit: USD/m3
+    statement: SuperMill Two price for STRUCTURAL-STEEL REPLACEMENT - $8,222/m3 ($5.50/sf at 7.2 mm)
+    basis: internal
+    confidence: H
+    source: SMA Cost Roadmap; = $5.50 x 1,495. Basis clarified by Alex Lau 2026-09-04.
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Price/cost 2.53x against $3,244. This is the structural-market price; most SuperMill Two output is expected to sell into premium markets at the higher basis (cost_price.sm2_price_per_m3_overview). Not a conflict - two markets, two prices. Any slide printing one should say which market it is.
+
+  - id: cost_price.sm2_price_per_m3_overview
+    value: 14950
+    unit: USD/m3
+    statement: SuperMill Two price for PREMIUM MARKETS - $14,950/m3 ($10.00/sf at 7.2 mm), where most SuperMill Two output is expected to sell
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md canonical table (slide 11). Basis clarified by Alex Lau 2026-09-04.
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: $14,950 / 1,495 = $10.00/sf. Premium-market price; the $8,222/m3 figure is the structural-steel-replacement price. Reconciles with the SMA note that SuperMill Two revenue ($320M projected) reflects a blended realized price above the structural-board assumption. Label the market whenever either prints.
+
+  - id: cost_price.sm2_cost_per_m3
+    value: 3244
+    unit: USD/m3
+    statement: SuperMill Two manufacturing cost $3,244/m3 - below the A36 structural-steel price band
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: The cost line crosses below structural steel at SuperMill Two; the price line only at ChipMill.
+
+  - id: cost_price.chipmill_price_per_m3_overview
+    value: 4485
+    unit: USD/m3
+    statement: ChipMill price $4,485/m3 ($3.00/sf) - investor-overview table
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    conflicts_with: [cost_price.chipmill_cost_per_m3]
+    conflict_topic: ChipMill cost and price - overview ($1,525 / $4,485 per m3) vs SMA ($1,310/m3, 60% GM, $2.19/sf)
+    notes: Fresh Look lists the ChipMill price/cost ratio as 2.4-2.5, which matches the SMA pair, not this one (2.94).
+
+  - id: cost_price.chipmill_cost_per_m3
+    value: 1525 (overview) / 1310 (SMA)
+    unit: USD/m3
+    statement: ChipMill manufacturing cost - investor-overview Cost Roadmap table $1,525/m3 (single ChipMill column, price $4,485); super-mills-america Cost Roadmap $1,841/m3 (ChipMill batch, price $4,485) and $1,310/m3 (ChipMill continuous, price $3,275)
+    basis: internal
+    confidence: L
+    source: superwood-unit-economics.md ($1,525, overview slide 11); SMA slides.html Cost Roadmap table (batch $1,841 / continuous $1,310, prices $4,485 / $3,275); SMA register ($1,310 in the "half the cost of steel" note)
+    as_of: 2026-09-04
+    status: open
+    printed_in: [investor-overview, super-mills-america]
+    conflicts_with: [cost_price.chipmill_price_per_m3_overview]
+    conflict_topic: ChipMill cost and price - overview ($1,525 / $4,485 per m3) vs SMA ($1,310/m3, 60% GM, $2.19/sf)
+    decision: OPEN - Alex. The two decks are investor-overview (one ChipMill column - $4,485 price, $1,525 cost) and super-mills-america (two ChipMill columns - batch $4,485 / $1,841 and continuous $3,275 / $1,310). Same $4,485 price, different cost ($1,525 vs $1,841). Either the overview adopts SMA's batch cost, or SMA's batch column takes $1,525.
+    notes: SMA continuous set is internally consistent with the 60% GM decision ($1,310 x 2.5 = $3,275). The overview's $1,525 has no counterpart in SMA.
+
+  - id: cost_price.half_cost_of_steel
+    value: 0.5
+    unit: x steel cost
+    statement: SUPERWOOD is manufacturable at half the cost of steel (scalable - a cost-roadmap endpoint, not a current fact)
+    basis: internal
+    confidence: M
+    source: investor-overview register (Introducing, internal M); SMA SUPERMILLS slide line "scalable to half the cost of steel" (asserted-internal L, Jon Strimling 2026-08-29)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: >-
+      Cost, not price. SMA labels it L because it is the ChipMill endpoint (cost ~$1,310/m3 against steel
+      at market) - the word "scalable" carries the projection and must not be dropped. Overview wording
+      "Manufacturable at half the cost".
+
+  - id: cost_price.steel_structural_price_band_per_m3
+    value: 7000-11000
+    unit: USD/m3
+    statement: Structural steel (A36 / mild), fabricated and erected, $7,000-11,000 per m3 (market price at 7.85 t/m3)
+    basis: triangulated
+    confidence: M
+    source: steel-and-stainless-prices.md (source URLs not captured at research time - RE-CAPTURE before diligence use)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: >-
+      FLAGGED - the chart footnote does not disclose that this is fabricated/erected steel. Mill product
+      is far cheaper (cost_price.hrc_price). A reader benchmarking against mill prices reaches a much worse
+      conclusion, including at ChipMill. Grand View sizes the STRUCTURAL steel sub-market at only $174.51B by
+      2030 - a small slice of the $1.8T total.
+
+  - id: cost_price.stainless_price_band_per_m3
+    value: 25600-36300
+    unit: USD/m3
+    statement: Stainless steel (304) $25,600-36,300 per m3 (market price at 8.0 t/m3)
+    basis: triangulated
+    confidence: L
+    confidence_label: L-M
+    source: steel-and-stainless-prices.md; URLs need re-capture
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: Weakest researched figure in the overview deck. One outlier source excluded as implausible.
+
+  - id: cost_price.hrc_price
+    value: 500-580 USD/t US (= 3,925-4,553 USD/m3); Europe EUR 520-580/t; China 430-470 USD/t
+    unit: USD/t
+    statement: Hot rolled coil early 2026 - $500-580/t US, EUR 520-580/t Europe, $430-470/t China; rebar $450-530/t CFR
+    basis: published
+    confidence: M
+    source: SteelOnTheNet facts and figures
+    url: https://www.steelonthenet.com/essentials/facts-and-figures.html
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: US HRC at 7.85 t/m3 = $3,925-4,553/m3 (derived). ChipMill's $4,485/m3 sits at the top of that range rather than well below steel.
+
+  - id: cost_price.price_to_cost_ratios
+    value: SM One 1.55; SM Two 2.53 (SMA) ; ChipMill 2.4-2.5 (SMA)
+    unit: x
+    statement: Printed price-to-cost ratios - SuperMill One 1.55 ($22,425 / $14,472), SuperMill Two 2.53 ($8,222 / $3,244), ChipMill 2.4-2.5; none is 1.7
+    basis: derived
+    confidence: M
+    source: Fresh Look 2026-09-04 open items ("Price basis x1.7")
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Recorded so nobody applies a 1.7x price basis. Datacenter deck prints no prices until Alex sets the skins basis (datacenter.value_per_gw_immediate).
+
+  - id: cost_price.roadmap_title_claim
+    value: cost below steel at SuperMill Two; price below steel at ChipMill (2032+)
+    unit: null
+    statement: Cost roadmap drives below the cost of steel - true for COST at SuperMill Two ($3,244/m3 below the A36 band); PRICE crosses only at ChipMill
+    basis: internal
+    confidence: M
+    source: investor-overview register (Cost Roadmap, retitled 2026-08-23); steel-and-stainless-prices.md
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: >-
+      FLAGGED - a sceptical reader sees the price line not crossing the structural-steel band before the
+      final point. At SuperMill Two SUPERWOOD price is still ~1.4-2x structural steel on price, below stainless.
+      Chart plots price (solid) and cost (dashed) for this reason.
+
+  # =========================================================================== economics
+  - id: economics.sm1_revenue
+    value: 20000000
+    unit: USD/yr
+    statement: SuperMill One revenue $20M/yr (production capacity)
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: null
+
+  - id: economics.sm1_ebitda_margin
+    value: 20
+    unit: "%"
+    statement: SuperMill One EBITDA margin 20%
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: Step to 65% at SuperMill Two explained by scale (company.supermill_one_is_subscale_pilot).
+
+  - id: economics.sm2_revenue_projected
+    value: 320000000
+    unit: USD/yr
+    statement: SuperMill Two projected revenue $320M/yr
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md; canonical everywhere per Alex 2026-08-23 - $360M capacity, $320M projected
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-08-23
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: The plan does not seek to maximise revenue. Opus8's $220M is stale.
+
+  - id: economics.sm2_revenue_capacity
+    value: 360000000
+    unit: USD/yr
+    statement: SuperMill Two potential revenue at full capacity $360M/yr
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md; confirmed by Alex 2026-08-22 and 2026-08-23
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-08-23
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: Not in conflict with $320M - capacity vs projection. Both appear in the decks in different contexts.
+
+  - id: economics.sm2_ebitda_margin
+    value: 65
+    unit: "%"
+    statement: SuperMill Two plant-level EBITDA margin 65%
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md; Alex 2026-08-23
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: The SuperMill Two-specific projection; stands on Cost Roadmap, Fleet card, Appendix. See economics.plant_ebitda_range for the SUPERMILLS-slide range.
+
+  - id: economics.plant_ebitda_range
+    value: 45-65
+    unit: "%"
+    statement: Plant-level EBITDA 45-65%, depending on the blend of commodity structural vs premium products
+    basis: asserted-internal
+    confidence: H
+    confidence_label: H (internal)
+    source: Alex Lau, 2026-08-26 (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [SUPERMILLS]}
+    notes: Supersedes the flat 65% on the SUPERMILLS slide only.
+
+  - id: economics.sm2_ebitda_per_yr
+    value: 208000000
+    unit: USD/yr
+    statement: SuperMill Two plant EBITDA about $208M/yr (65% of $320M projected)
+    basis: derived
+    confidence: M
+    source: Arithmetic on deck-canonical figures; projection, not actuals (SMA register, Economics)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: 0.65 x 320 = 208.
+
+  - id: economics.sm2_blended_price
+    value: true
+    unit: null
+    statement: SuperMill Two economics assume a blend of premium and structural markets; projected revenue reflects a blended realized price above the structural-board assumption in the roadmap chart
+    basis: asserted-internal
+    confidence: H
+    confidence_label: H (internal)
+    source: Alex Lau, 2026-08-26 (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Reconciles 36M sf x $5.50/sf = $198M with the $320M projected revenue.
+
+  - id: economics.four_supermill_model
+    value: revenue $2.4B; EBITDA $1.1B; FCF $900M; EBITDA margin 45-50%
+    unit: USD/yr
+    statement: Four SuperMills produce $2.4B revenue, $1.1B EBITDA, $900M free cash flow at 45-50% consolidated EBITDA margins (later plants assume declining pricing)
+    basis: internal
+    confidence: H
+    source: superwood-unit-economics.md; Alex 2026-08-23
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    slides: {investor-overview: [Scaling]}
+    notes: Consolidated margin is below the 65% plant-level SuperMill Two figure by design.
+
+  - id: economics.corporate_equity_to_fcf
+    value: 150000000
+    unit: USD
+    statement: $150M corporate equity reaches $900M annual free cash flow
+    basis: internal
+    confidence: H
+    source: investor-overview register (Scaling)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: economics.financing_structure
+    value: 75% debt; 10-15% project equity; $150M corporate equity
+    unit: null
+    statement: Plant financing structure 75% debt, 10-15% project equity, $150M corporate equity
+    basis: internal
+    confidence: M
+    source: superwood-unit-economics.md; investor-overview register (Scaling)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: Assumes project debt at this ratio is available for a first-of-a-kind plant.
+
+  - id: economics.roe_supermill
+    value: 175-200
+    unit: "%"
+    statement: 175-200% ROE at the SuperMill level (with ~75% project debt)
+    basis: internal
+    confidence: M
+    confidence_label: M (model)
+    source: investor-overview register (Scaling); SMA Economics row
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: SMA appendix shows ROE for SUPERMILL only in the footnote; the table uses unlevered cash yield.
+
+  - id: economics.sm2_capex_to_ebitda
+    value: "~1.4 (at $300M); 1.4-1.9 (at $300-400M)"
+    unit: x
+    statement: SuperMill Two capex is about 1.4x annual EBITDA ($300M / $208M = 1.44x)
+    basis: derived
+    confidence: M
+    source: SMA register, Economics ROI row
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: At the $300-400M range the ratio is 1.44-1.92x; the printed 1.4x still rests on the $300M point.
+
+  - id: economics.unlevered_cash_yield
+    value: SUPERMILL ~52-69%; minimill ~15-30%; smelter ~9%
+    unit: "% (annual EBITDA / capex)"
+    statement: Unlevered cash yield - SUPERMILL ~52-69% (~$208M over $300-400M; was ~69% on the $300M point until 2026-09-03), minimill ~15-30% at ~$4B, smelter ~9% record year
+    basis: derived
+    confidence: M
+    confidence_label: M (SUPERMILL model), M (minimill), M/L (smelter through-cycle)
+    source: Arithmetic on registered figures - 208/300-400; 600-1200/4000; 340/4000 (SMA register, Appendix comparison)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Apples-to-apples design per Alex 2026-08-24 - common unlevered metric replaces mixed ROE/payback rows; bases labeled per cell.
+
+  - id: economics.pipeline_total
+    value: 2000000000+
+    unit: USD
+    statement: $2B+ pipeline against 1M sf/yr output
+    basis: internal
+    confidence: H
+    source: Company CRM (investor-overview register, Introducing)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: null
+
+  - id: economics.pipeline_sm1
+    value: 140000000+
+    unit: USD
+    statement: $140M+ SuperMill One pipeline vs $20M production capacity
+    basis: internal
+    confidence: H
+    source: Company CRM (investor-overview register, Demand)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: null
+
+  - id: economics.pipeline_sm2
+    value: 2000000000+
+    unit: USD
+    statement: $2.0B+ SuperMill Two pipeline vs $360M capacity, $320M projected
+    basis: internal
+    confidence: H
+    source: Company CRM (investor-overview register, Demand)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: null
+
+  - id: economics.deposits_paid
+    value: 700+
+    unit: paid online deposits
+    statement: 700+ paid online deposits (reservations)
+    basis: internal
+    confidence: H
+    confidence_label: H (internal canonical)
+    source: Company CRM; set by Alex 2026-08-24 (investor-overview register) and 2026-08-25 (SMA register)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-08-25
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    slides: {investor-overview: [Introducing, Demand, Customers], super-mills-america: [Running, Demand]}
+    conflicts_with: [economics.deposits_paid_800]
+    conflict_topic: Paid deposits 700+ vs 800+
+    decision: Alex Lau 2026-08-25 - 700+ everywhere; 800+ superseded. Registers disagree on whether investor-overview still prints 800+ (SMA note says parent decks and aaron-deck still do; overview register says 700+ set 2026-08-24 on all three slides) - verify the live decks.
+    notes: Count moved 650+ -> 800+ -> 700+. Confirm the live CRM figure before each send; this is the number a reader is most likely to ask about.
+
+  - id: economics.deposits_paid_800
+    value: 800+
+    unit: paid online deposits
+    statement: 800+ paid online deposits (earlier figure)
+    basis: internal
+    confidence: M
+    source: investor-overview deck as of ~2026-08-23; SMA register note 2026-08-25
+    as_of: 2026-09-04
+    status: superseded
+    printed_in: [aaron-deck]
+    conflicts_with: [economics.deposits_paid]
+    notes: SMA register - "Parent decks (investor-overview, aaron-deck) still print 800+ - flag for alignment."
+
+  - id: economics.deposit_mix
+    value: ~50% homeowners ($14M+); ~50% commercial ($125M+)
+    unit: null
+    statement: Deposits split about 50% homeowners representing $14M+ and 50% commercial representing $125M+
+    basis: internal
+    confidence: H
+    source: Company CRM (investor-overview register, Demand)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: economics.sm1_allocation
+    value: three-way allocation; percentages not defined
+    unit: null
+    statement: Three-way allocation plan for SuperMill One output; the pie chart is drawn as equal thirds with no real percentages
+    basis: estimated
+    confidence: L
+    source: investor-overview register (Allocation) - plan internal H; the thirds are notional (estimated L)
+    as_of: 2026-09-04
+    status: open
+    printed_in: [investor-overview]
+    notes: FLAGGED - supply actual percentages or drop the graphic. Replaced an equally notional bar 2026-08-24.
+
+  - id: economics.fleet_combined_revenue
+    value: 500000000000+
+    unit: USD/yr
+    statement: More than 7,000 SUPERMILL TWO equivalents of global demand, collectively over $500B in combined revenue
+    basis: derived
+    confidence: L
+    source: Jon Strimling 2026-08-29; >7,000 inherited from investor-overview (estimated L) (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: >-
+      Register only - printed on The Fleet 2026-08-29 and removed the same day. Alex 2026-08-29 - the
+      $500B assumes roughly a 4x price reduction with ChipMills vs SuperMill Two and he does not want
+      that assumption on the slide. Check - 7,000 x $360M at SM2 pricing is ~$2.5T, so $500B implies a
+      ~4-5x lower realised price. Do not "correct" $500B upward.
+
+  # =========================================================================== material
+  - id: material.strength_canonical_formulation
+    value: null
+    unit: null
+    statement: ONE canonical strength formulation with its test basis, to be used everywhere - not yet chosen
+    basis: internal
+    confidence: L
+    source: investor-overview cross_slide issue (priority highest); Fresh Look claims table (slides 8 vs 10)
+    as_of: 2026-09-04
+    status: open
+    printed_in: []
+    conflicts_with: [material.strength_vs_a36, material.strength_to_weight_vs_steel, material.strength_50pct_stronger_one_sixth_weight, material.strength_about_10x, material.strength_increase_over_wood, material.tensile_strength_mpa]
+    conflict_topic: Strength stated five ways on four bases
+    decision: OPEN - Alex. Pick one formulation, state its test basis once, build it as a reusable component, use only that in all places.
+    notes: >-
+      Strength-to-weight and absolute strength are different quantities; none of the five printed
+      formulations states a test standard. The deck's single largest diligence exposure - a
+      consistency problem, not a data problem.
+
+  - id: material.strength_vs_a36
+    value: stronger than ASTM A36
+    unit: null
+    statement: SUPERWOOD is stronger than ASTM A36 structural steel (footnoted to A36)
+    basis: internal
+    confidence: M
+    source: investor-overview register (Introducing, Vs Steel); SMA SUPERMILLS line (asserted-internal L, Jon Strimling 2026-08-29)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    conflicts_with: [material.strength_canonical_formulation]
+    notes: >-
+      Formulation (1). Vs Steel slide - steel "1.5x weaker" and "6x heavier" vs SUPERWOOD, revised by
+      Alex 2026-08-24 ("comparable" then back to "Stronger" footnoted to A36). ASTM A36 is the only
+      test basis stated anywhere. SMA prints it in "stronger than steel, half the weight of aluminum,
+      scalable to half the cost of steel" (conf L there).
+
+  - id: material.strength_to_weight_vs_steel
+    value: up to 10
+    unit: x
+    statement: Up to 10x the strength-to-weight ratio of steel
+    basis: internal
+    confidence: M
+    source: investor-overview register (Properties, Why Wood)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, superwood-datacenter-investor]
+    conflicts_with: [material.strength_canonical_formulation]
+    notes: Formulation (2). Fresh Look - 1.5 x 6 = 9 at lab values; 500/400 x 6 = 7.5 at production values. Print the derivation or the production figure.
+
+  - id: material.strength_50pct_stronger_one_sixth_weight
+    value: ">50% stronger; 1/6 weight"
+    unit: null
+    statement: More than 50% stronger than steel, at one-sixth the weight (Conversion step 03)
+    basis: internal
+    confidence: M
+    source: investor-overview register (Conversion)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    conflicts_with: [material.strength_canonical_formulation]
+    notes: Formulation (4).
+
+  - id: material.strength_about_10x
+    value: "~10"
+    unit: x
+    statement: About 10x strength (Conversion step 02)
+    basis: internal
+    confidence: M
+    source: investor-overview cross_slide issue
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    conflicts_with: [material.strength_canonical_formulation]
+    notes: Formulation (3). Does not say strength of what, relative to what.
+
+  - id: material.strength_increase_over_wood
+    value: 5-12
+    unit: x
+    statement: SUPERWOOD increases wood's strength by 5-12x
+    basis: internal
+    confidence: L
+    source: investor-overview register (Vs Steel) - NEEDS TEST BASIS
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    conflicts_with: [material.strength_canonical_formulation]
+    notes: Formulation (5).
+
+  - id: material.tensile_strength_mpa
+    value: production 500; lab 600+
+    unit: MPa (tensile, parallel to grain)
+    statement: SUPERWOOD tensile strength - 500 MPa in production, 600+ MPa in the lab
+    basis: internal
+    confidence: L
+    source: Fresh Look 2026-09-04 (datacenter deck slides 8 and 10; no confidence stated there - recorded L pending test basis)
+    as_of: 2026-09-04
+    status: open
+    printed_in: [superwood-datacenter-investor]
+    conflicts_with: [material.strength_canonical_formulation]
+    notes: >-
+      Current datacenter deck contradicts itself ("600 MPa in production today" vs "production 500 MPa; lab
+      600+"). Fresh Look proposes production 500 / lab 600+ with A36 shown as its 400-550 MPa range and
+      6061-T6 at 310 MPa. "Design values and methods on request."
+
+  - id: material.steel_a36_tensile_mpa
+    value: 400-550
+    unit: MPa (ultimate tensile)
+    statement: ASTM A36 ultimate tensile strength is a 400-550 MPa range; 400 is the floor
+    basis: published
+    confidence: H
+    source: ASTM A36 specification (Fresh Look, conf H)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Datacenter chart shows steel at 400 MPa - show the range or label "A36 minimum".
+
+  - id: material.aluminum_6061_t6_tensile_mpa
+    value: 310
+    unit: MPa
+    statement: Aluminum 6061-T6 tensile strength 310 MPa
+    basis: published
+    confidence: M
+    source: Fresh Look 2026-09-04 (handbook value; no citation attached)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Confidence not stated in source; recorded M.
+
+  - id: material.weight_vs_steel
+    value: 6
+    unit: x lighter
+    statement: SUPERWOOD is 6x lighter than steel (one-sixth the weight)
+    basis: internal
+    confidence: M
+    source: investor-overview register (Introducing, Conversion, Vs Steel, Why Wood)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america, superwood-datacenter-investor]
+    notes: 7.85 / 6 = 1.31 t/m3, consistent with material.density.
+
+  - id: material.weight_vs_aluminum
+    value: 0.5
+    unit: x aluminum weight
+    statement: SUPERWOOD is half the weight of aluminum
+    basis: asserted-internal
+    confidence: L
+    source: Jon Strimling, deck feedback 2026-08-29; printed on the SUPERMILLS slide at his direction (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Needs a density pair - aluminum 2.70 t/m3 asserts SUPERWOOD at ~1.35 t/m3. Confirm against the properties register before it reaches anyone technical. Vs Steel slide says aluminum "2x heavier".
+
+  - id: material.density_t_per_m3
+    value: 1.3
+    unit: t/m3
+    statement: SUPERWOOD density about 1.3 t/m3
+    basis: internal
+    confidence: M
+    source: materials-mass-and-replacement.md (7.2 mm x 1.3 t/m3 = 0.87 kg/sf; internal TEM basis); implied by 6x-lighter-than-steel and half-of-aluminum claims
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04 ("1.3 t/m3 is a reasonable typical number to use")
+    status: canonical
+    printed_in: []
+    notes: No properties-register value on file in the inputs read. Confirm the canonical density; 3-4x densification of ~0.4-0.5 t/m3 wood is consistent.
+
+  - id: material.board_mass_kg_per_sf
+    value: 0.87
+    unit: kg/sf
+    statement: SUPERWOOD board at 7.2 mm weighs about 0.87 kg/sf
+    basis: derived
+    confidence: L
+    source: materials-mass-and-replacement.md - 0.0072 m x 0.0929 m2 x 1,300 kg/m3 = 0.87 kg
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Inherits material.density_t_per_m3.
+
+  - id: material.densification_factor
+    value: 3-4
+    unit: x density
+    statement: The conversion process produces a 3-4x density increase
+    basis: internal
+    confidence: H
+    source: investor-overview register (Conversion)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: material.hardness_vs_oak
+    value: 3
+    unit: x
+    statement: 3x harder than oak
+    basis: internal
+    confidence: M
+    source: investor-overview register (Properties)
+    as_of: 2026-09-04
+    status: open
+    printed_in: [investor-overview, superwood-datacenter-investor]
+    notes: Datacenter deck prints it as "3x more dent-resistant than oak" - unsourced [needs source]; Fresh Look asks Alex for the method or permission to drop (item 8).
+
+  - id: material.fire_e84_class_a
+    value: Class A demonstrated in testing (not guaranteed on every board)
+    unit: ASTM E84
+    statement: SUPERWOOD has demonstrated ASTM E84 Class A in testing and performs much better in fire than regular wood - a capability, not a per-board guarantee
+    basis: internal
+    confidence: H
+    source: Third-party test reports exist (investor-overview register, Introducing/Properties); wording per Alex Lau 2026-09-04 (Fresh Look Part 3 revision)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america, superwood-datacenter-investor]
+    notes: >-
+      Never print "every board is Class A". Finish rating is specified per order. ADD THE REPORT
+      REFERENCES - the deck's strongest external validation has no document pointer. Overview prints
+      "ASTM E84 tested to Class A fire rating".
+
+  - id: material.aerospace_standards
+    value: tested to aerospace standards (standard not named)
+    unit: null
+    statement: SUPERWOOD tested to aerospace standards
+    basis: internal
+    confidence: H
+    source: investor-overview register (Introducing, Properties) - same test reports as E84
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, superwood-datacenter-investor]
+    notes: Fresh Look - no standard named; name the test or say "data package on request".
+
+  - id: material.thermal_insulation_multipliers
+    value: 100x vs steel; 400x vs aluminum
+    unit: x
+    statement: 100x better thermal insulation than steel; 400x better than aluminum
+    basis: derived
+    confidence: M
+    source: investor-overview register (Properties) - consistent with published thermal conductivities of wood vs steel vs aluminium; conductivity values and arithmetic not recorded
+    as_of: 2026-09-04
+    status: open
+    printed_in: [investor-overview, superwood-datacenter-investor]
+    notes: Fresh Look marks it [needs source] in the datacenter deck; Alex to source or drop (item 8). Record the conductivity values and the arithmetic here when sourced.
+
+  - id: material.rf_transparent
+    value: true
+    unit: null
+    statement: RF transparent - wireless signals pass through unhindered
+    basis: internal
+    confidence: M
+    source: investor-overview register (Properties); Huntington Ingalls Industries collaboration on RF transparency is third-party validation (collaborators.external)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, superwood-datacenter-investor]
+    notes: Niche for data centers.
+
+  - id: material.electrical_nonconductive
+    value: non-conductive; programmable conductive pathways as a future capability
+    unit: null
+    statement: Non-conductive, with programmable conductive pathways as a future capability
+    basis: internal
+    confidence: M
+    source: investor-overview register (Why Wood)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: The "future capability" is correctly framed as not-yet-available.
+
+  - id: material.durability_pests
+    value: protects against termites, mold and fungus (no standard named)
+    unit: null
+    statement: Protects against termites, mold and fungus
+    basis: internal
+    confidence: L
+    source: Datacenter deck slide 9 (Fresh Look claims table); USDA Forest Products Laboratory work on biodegradability and insect resistance (collaborators.external)
+    as_of: 2026-09-04
+    status: open
+    printed_in: [superwood-datacenter-investor]
+    notes: No standard named; confidence not stated in source. Name the test or say "data package on request".
+
+  - id: material.tunable_properties_caveat
+    value: true
+    unit: null
+    statement: Properties are tunable and not all products meet every standard concurrently
+    basis: internal
+    confidence: H
+    source: investor-overview register (Properties) - on-slide caveat
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Keep it.
+
+  - id: material.no_glues_binders_toxics
+    value: no added glues, no polymer binders, no toxic chemicals
+    unit: null
+    statement: No added glues, no polymer binders, no toxic chemicals
+    basis: internal
+    confidence: H
+    source: investor-overview register (Conversion)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    conflicts_with: [process.lignin_breakdown]
+    conflict_topic: Chemistry wording - "no toxic chemicals" vs "non-toxic chemicals"
+    decision: OPEN - Alex. The 2026-08-22 call suggested "environmentally benign process" and "modifies molecular bonding".
+    notes: Both can be true but the pairing invites a question.
+
+  - id: material.cnc_tensile_gpa
+    value: CNC 7; carbon fibre 4.5; steel 0.4
+    unit: GPa
+    statement: Cellulose nanocrystal tensile strength 7 GPa vs carbon fibre 4.5 GPa vs steel 0.4 GPa
+    basis: published
+    confidence: M
+    source: Materials-science literature values; no citation travelled with the slide - NEEDS SOURCE (investor-overview register, Breakthrough)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: The scientific premise of the company; a technical reader will check it.
+
+  - id: material.vs_materials_table
+    value: steel 6x heavier and weaker (vs A36); aluminum 2x heavier, 2x weaker; concrete 2x heavier, 5x weaker in compression, 100x weaker in tension
+    unit: null
+    statement: Versus SUPERWOOD - steel is 6x heavier and weaker (vs ASTM A36); aluminum 2x heavier and 2x weaker; concrete 2x heavier and 5x weaker in compression (100x weaker in tension)
+    basis: internal
+    confidence: M
+    source: InventWood Overview Deck - Opus8.pdf, p14; revised by Alex 2026-08-24 (aluminum 2.2x -> 2x)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    slides: {investor-overview: [Vs Steel]}
+    notes: ASTM A36 is the only test basis stated; aluminum and concrete cells have none.
+
+  - id: material.hybrid_glulam_beams
+    value: "+75% bending stiffness; +100% bending strength at ~10% of section"
+    unit: null
+    statement: Replacing ~10% of a glulam section with SUPERWOOD outer laminations raises bending stiffness ~75% and bending strength ~100%
+    basis: derived
+    confidence: M
+    source: investor-overview register (Hybrid Beams); inherited by SMA (Demand, path-to-structural strip)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: Follows from beam theory given SUPERWOOD's modulus and strength, but the calculation is not recorded - WRITE UP THE DERIVATION.
+
+  - id: material.product_envelope_sm1
+    value: boards to 8 in x 16 ft x 3/8 in
+    unit: null
+    statement: Today's SuperMill One product envelope - boards up to 8" x 16' x 3/8"
+    basis: internal
+    confidence: L
+    source: Fresh Look 2026-09-04 and materials-mass-and-replacement.md (no confidence stated)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Cannot make a truss, roof deck or enclosure; structural sections need SuperMill Two veneers and sections. Confirm the width with production before print.
+
+  - id: material.form_factors
+    value: SUPERWOOD Board; SUPER Veneer; SUPER OSB
+    unit: null
+    statement: Three form factors (SUPERWOOD Board, SUPER Veneer, SUPER OSB) serve every market
+    basis: internal
+    confidence: H
+    source: investor-overview register (Applications)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  # =========================================================================== process
+  - id: process.equipment
+    value: customized off-the-shelf equipment; highly automated
+    unit: null
+    statement: Customized off-the-shelf equipment in a highly automated process
+    basis: internal
+    confidence: H
+    source: investor-overview register (Process)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Machines shown on the slide are illustrative, not InventWood's actual equipment (on-slide disclaimer - keep).
+
+  - id: process.manufacturing_specifics
+    value: equipment common to lumber treatment and wood-panel plants; food-grade process solution; near-zero process wastewater
+    unit: null
+    statement: Off-the-shelf equipment common to lumber treatment and wood panel industries; food-grade solution; near-zero process wastewater
+    basis: internal
+    confidence: L
+    source: Original data center deck slides 23/25 (Fresh Look); confidence "per Alex"
+    as_of: 2026-09-04
+    status: open
+    decision: Not printed in the data center deck - Alex 2026-09-04 kept slide 7 to the 2026-09-02 wording. Confirm as-built before any deck uses it.
+    printed_in: []
+    notes: Fresh Look item 7 - Alex to confirm the three specifics still hold for SuperMill One as built before they are restored to the datacenter deck.
+
+  - id: process.lignin_breakdown
+    value: temperature, pressure and non-toxic chemicals
+    unit: null
+    statement: The process breaks down lignin using temperature, pressure and non-toxic chemicals
+    basis: internal
+    confidence: H
+    source: investor-overview register (Process)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    conflicts_with: [material.no_glues_binders_toxics]
+    notes: Datacenter deck reduces this to "chemistry common to food and pulp processing".
+
+  - id: process.temperature_c
+    value: "<180"
+    unit: degrees C
+    statement: Process temperature under 180 C (vs ~1,800 C for steelmaking)
+    basis: internal
+    confidence: L
+    source: Datacenter deck slide 13 (Fresh Look); no confidence stated
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Fresh Look - a temperature contrast posing as an energy comparison; keep the numbers, cut the adjectives ("energy efficient", "capital efficient").
+
+  # =========================================================================== carbon
+  - id: carbon.superwood_manufacturing_kgco2e_per_kg
+    value: 0.5
+    unit: kg CO2e / kg SUPERWOOD
+    statement: SUPERWOOD manufacturing emissions are projected at 0.5 kg CO2e per kg at a full-scale plant (pre-LCA projection)
+    basis: internal
+    confidence: M
+    source: Canva DCII deck carbon set; original data center deck slide 16 "Expected LCA results"; materials-mass-and-replacement.md section 5
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    conflicts_with: [carbon.tem_jan2026_set]
+    conflict_topic: Carbon set - Canva (0.5 / 1.3 per kg) vs TEM Jan 2026 (0.39 / 1.8 per t)
+    decision: Alex Lau 2026-09-04 - Canva set for all investor materials; TEM Jan-2026 figures superseded. Label pre-LCA in body copy.
+    notes: >-
+      Confidence not labeled in the source registers (the overview register has only "net carbon sink...
+      an LCA would be the backup" at internal M); recorded M. Always print with carbon.lca_status.
+
+  - id: carbon.superwood_biogenic_stored_kgco2e_per_kg
+    value: 1.3
+    unit: kg CO2e / kg SUPERWOOD
+    statement: SUPERWOOD stores 1.3 kg CO2e per kg as biogenic carbon - reported separately, and released in module C under EN 15804
+    basis: internal
+    confidence: M
+    source: Canva DCII deck carbon set; original data center deck slide 16; materials-mass-and-replacement.md
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    conflicts_with: [carbon.tem_jan2026_set]
+    notes: Under reporting standards all biogenic carbon is released in module C, so the product is net zero on biogenic and must win on manufacturing emissions. Never net the 1.3 against the 0.5 in a headline.
+
+  - id: carbon.steel_baseline_kgco2e_per_kg
+    value: 1.8
+    unit: kg CO2e / kg steel
+    statement: Steel baseline 1.8 kg CO2e per kg (global BF-BOF average)
+    basis: published
+    confidence: M
+    source: Canva carbon set; materials-mass-and-replacement.md (no citation attached)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Hyperscalers procure EAF steel - show both baselines (carbon.steel_eaf_kgco2e_per_kg). Confidence not stated in source; recorded M.
+
+  - id: carbon.steel_eaf_kgco2e_per_kg
+    value: 0.4-0.7
+    unit: kg CO2e / kg steel
+    statement: EAF (recycled) steel 0.4-0.7 kg CO2e per kg
+    basis: published
+    confidence: M
+    source: Fresh Look 2026-09-04 [conf M]; no citation attached
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Against EAF steel the avoided figure is far lower - any claim must state its baseline.
+
+  - id: carbon.concrete_kgco2e_per_kg
+    value: 0.12
+    unit: kg CO2e / kg concrete
+    statement: Concrete 0.12 kg CO2e per kg (typical ready-mix cradle-to-gate)
+    basis: published
+    confidence: M
+    source: materials-mass-and-replacement.md sources [conf M]
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: null
+
+  - id: carbon.tem_jan2026_set
+    value: 0.39 emitted / 1.8 stored (per t, as written)
+    unit: as written in the TEM review
+    statement: TEM Jan 2026 carbon figures - 0.39 emitted / 1.8 stored per t
+    basis: internal
+    confidence: L
+    source: SUPERWOOD Structural and Cladding TEMs (Jan 2026), as cited in the Fresh Look and datacenter outline
+    as_of: 2026-09-04
+    status: superseded
+    printed_in: []
+    conflicts_with: [carbon.superwood_manufacturing_kgco2e_per_kg, carbon.superwood_biogenic_stored_kgco2e_per_kg]
+    notes: Superseded by the Canva set on 2026-09-04. Units as written in the source ("per t"); not reconciled to per-kg here - do not convert without reading the TEM.
+
+  - id: carbon.lca_status
+    value: LCA under way with Prof. Ming Hu, University of Notre Dame; milestone date not set
+    unit: null
+    statement: Full LCA under way with Prof. Ming Hu, University of Notre Dame; all carbon figures are pre-LCA projections until it reports
+    basis: internal
+    confidence: H
+    source: collaborators list (Alex 2026-08-24); Fresh Look slide 17
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, superwood-datacenter-investor]
+    notes: LCA milestone date is an open ask to Alex (Fresh Look slide 17).
+
+  - id: carbon.net_sink_per_functional_unit
+    value: true
+    unit: null
+    statement: SUPERWOOD is a net carbon sink that cuts embodied carbon per functional unit
+    basis: internal
+    confidence: M
+    source: investor-overview register (Why Wood)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: An LCA would be the backup; none referenced. Any per-functional-unit example must print the substitution factor (datacenter.substitution_factor_steel).
+
+  - id: carbon.emissions_reduction_90pct
+    value: 90
+    unit: "%"
+    statement: The "90% emissions reduction" claim - keep off all decks
+    basis: derived
+    confidence: L
+    source: Fresh Look open items - 72-78% per kg vs average steel; ~90% only per functional unit at ~0.5 substitution factor; far less vs EAF
+    as_of: 2026-09-04
+    status: retired
+    printed_in: []
+    notes: (1.8 - 0.5) / 1.8 = 72%; at 0.5 kg SUPERWOOD per kg steel, (1.8 - 0.25) / 1.8 = 86%. Not printed anywhere; keep it off.
+
+  - id: carbon.fleet_12_5mt_displaces_50pct_us_steel
+    value: 12.5 Mt/yr displaces 50% of US steel demand
+    unit: null
+    statement: 12.5 Mt/yr of SUPERWOOD displaces 50% of US steel demand (datacenter deck slide 15)
+    basis: unverified
+    confidence: L
+    source: Datacenter companion deck slide 15 (Fresh Look) - US steel demand ~100 Mt [conf M]; 50% = 50 Mt implies a 0.25 substitution factor, below the model's 0.3-0.6
+    as_of: 2026-09-04
+    status: retired
+    printed_in: []
+    notes: Cut with the slide (Fresh Look). Company-level claim; belongs in Super Mills America if anywhere, with a derivation.
+
+  - id: carbon.steel_concrete_share_of_global_emissions
+    value: 15
+    unit: "% of global emissions"
+    statement: 15% of global emissions come from steel and concrete alone
+    basis: unverified
+    confidence: M
+    source: Widely repeated; consistent with IEA sectoral splits (steel ~7-8%, cement ~7-8%) - NEEDS SOURCE (investor-overview register, Materials)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: A causal consequence clause (wildfires, hurricanes, heat deaths) was added and removed 2026-08-25.
+
+  - id: carbon.sector_shares_steel_cement_aluminum
+    value: steel 7-8%; cement 7-8%; aluminum 3%
+    unit: "% of global GHG"
+    statement: Steel and cement each 7-8% of global GHG emissions; aluminum 3%
+    basis: unverified
+    confidence: M
+    source: Consistent with IEA sectoral splits but uncited (investor-overview register, Vs Steel)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  # =========================================================================== market
+  - id: market.global_floor_space
+    value: 235 B m2 (2017) -> 461 B m2 (2050)
+    unit: billion m2
+    statement: Global floor space grows from 235 B m2 (2017) to 461 B m2 (2050)
+    basis: published
+    confidence: H
+    source: Woersdoerfer et al. (2019), "Perspectives for the Clean Energy Transition - The Critical Role of Buildings", International Energy Agency
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Cited on-slide with a link. Strongest-sourced claim in the overview deck. "Construction is happening at the fastest rate in human history" is rhetorical framing of this (derived M).
+
+  - id: market.steel_global_usd
+    value: 1.5
+    unit: USD trillion / yr
+    statement: Global steel market is $1.5T per year
+    basis: triangulated
+    confidence: M
+    source: Opus8 p14 (origin, corrected 2026-08-24); external span $0.9-2.1T - SteelOnTheNet $0.9-1.0T; Grand View $1.82T (2024, all finished steel); Expert Market Research $1,836.2B; Future Market Insights $2,073.3B; Stellar MR $1,534.73B closest to the figure shown
+    url: https://www.grandviewresearch.com/industry-analysis/steel-market
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: On-slide tooltip discloses the full span. Implied ~$960/t at $1.82T / 1.89 Bt; SteelOnTheNet's $0.9-1.0T implies ~$480-530/t (mill pricing). Structural steel sub-market only $174.51B by 2030 (Grand View).
+
+  - id: market.crude_steel_production_2025
+    value: 1.85
+    unit: billion tonnes
+    statement: Global crude steel production surpassed 1.85 billion tonnes in 2025 (1,904 Mt in 2023; ~1,890 Mt in 2024; ~850 Mt in 2000)
+    basis: published
+    confidence: H
+    source: World Steel Association press release; SteelOnTheNet (2024 figure, China ~54%)
+    url: https://worldsteel.org/media/press-releases/2026/december-2025-crude-steel-production-2025-global-crude-steel-production/
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: The primary-source volume anchor to lean on if a market-size figure is challenged. SMA fleet note uses ~1.9 Gt/yr.
+
+  - id: market.concrete_global_usd
+    value: 1
+    unit: USD trillion / yr
+    statement: Global concrete market is $1T per year (ready-mix alone, rounded down; ready-mix + precast is ~$1.1-1.2T)
+    basis: triangulated
+    confidence: M
+    source: Ready-mix $964.5B-1,081.35B (Grand View, SNS Insider, Fortune, market.us, 2025); precast $117-175B; Opus8 p14 origin of the $1T
+    url: https://www.grandviewresearch.com/industry-analysis/ready-mix-concrete-market
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Excludes site-mixed concrete, so conservative. "Together, about $2 trillion a year" with steel is the on-slide framing.
+
+  - id: market.aluminum_global_usd
+    value: 200
+    unit: USD billion / yr
+    statement: Global aluminum market $200B
+    basis: internal
+    confidence: M
+    source: InventWood Overview Deck - Opus8.pdf, p14
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: No external triangulation recorded.
+
+  - id: market.tam_interior_exterior
+    value: 100+
+    unit: USD billion
+    statement: Interior/Exterior TAM $100B+
+    basis: estimated
+    confidence: L
+    source: investor-overview register (Markets) - NEEDS SOURCE; decision 2026-08-22 to hold at $100B until backup lands
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Cross-slide issue - TAM figures on slides 13, 14, 19 have no external backup. Load-bearing for a non-environmental audience.
+
+  - id: market.tam_structural_members
+    value: 400+
+    unit: USD billion
+    statement: Structural Members TAM $400B+
+    basis: estimated
+    confidence: L
+    source: investor-overview register (Markets) - NEEDS SOURCE
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: market.tam_optimized_buildings
+    value: 700+
+    unit: USD billion
+    statement: Optimized Buildings TAM $700B+
+    basis: estimated
+    confidence: L
+    source: investor-overview register (Markets) - NEEDS SOURCE; largest and least substantiated of the three
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: market.application_market_dots
+    value: $1B to $100B+ scale dots
+    unit: USD
+    statement: Per-application market sizes shown as $1B to $100B+ scale dots
+    basis: estimated
+    confidence: L
+    source: investor-overview register (Applications) - NEEDS SOURCE or relabel as relative scale
+    as_of: 2026-09-04
+    status: open
+    printed_in: [investor-overview]
+    notes: Also - Applications and Markets slides use two different market taxonomies (code pathway vs phase/application). Reconcile (cross_slide open issue).
+
+  - id: market.global_demand_sm2_equivalents
+    value: 7000+
+    unit: SuperMill Two equivalents
+    statement: Global demand potential greater than 7,000 SuperMill Two equivalents - roughly 50% of the steel used in the world today, about the amount used in construction
+    basis: estimated
+    confidence: L
+    source: investor-overview register (Global Fleet, estimated L); SMA Fleet footnote per Alex 2026-09-02 (internal M) - sanity check, not a derivation
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: >-
+      Most prominent unsourced number in the overview deck (24px gold). Sanity check - world crude steel
+      ~1.9 Gt/yr; worldsteel puts buildings + infrastructure at roughly half of demand. The 7,000-mill
+      conversion rests on the SuperMill Two volume basis (mills.sm2.volume_m3_yr conflict). Assumes eventual
+      replacement of >50% of the world's current steel production (asserted-internal L, register only).
+      Either derive it with the arithmetic recorded here or restate as illustrative scale.
+
+  - id: market.wood_harvest_rots_or_burned
+    value: ">50% of 2 billion tons/yr"
+    unit: null
+    statement: Over 50% of the 2 billion tons of wood harvested globally each year rots or is burned
+    basis: unverified
+    confidence: L
+    source: investor-overview register (Wood) - NEEDS SOURCE; FAO forest-products statistics the likely anchor
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Two separate figures (harvest volume, rot/burn share), neither backed. Opens the abundance argument.
+
+  - id: market.concrete_sand_wars
+    value: true
+    unit: null
+    statement: Concrete demand fuels "sand wars"
+    basis: published
+    confidence: H
+    source: Vince Beiser, Pulitzer Center
+    url: https://pulitzercenter.org/projects/deadly-global-war-sand
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Concrete also requires a 7+ day curing process (published H, general industry knowledge).
+
+  - id: market.built_environment_health
+    value: true
+    unit: null
+    statement: The built environment affects stress, cortisol and cognitive fatigue; living among natural materials measurably improves health, happiness and productivity
+    basis: published
+    confidence: M
+    source: On-slide "Sources & further reading" modal - Evans, G.W. (2003), J. Urban Health; Kaplan, S. (1995); biophilic-design literature
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: The modal is the backup; keep it in sync.
+
+  - id: market.us_steel_import_share
+    value: 18% (2025); 23% (2024)
+    unit: "% of apparent consumption, finished steel"
+    statement: About 1 in 5 tons of US finished steel is imported - 18% of apparent consumption in 2025, 23% in 2024
+    basis: published
+    confidence: H
+    source: American Iron and Steel Institute, "Steel Imports Down 12.6% in 2025" (Feb 2026); AISI 2025 Annual Statistical Report
+    url: https://www.steel.org/2026/02/steel-imports-down-12-6-in-2025/
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-08-29 (print the sourced 18%, not the rounded 20%)
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    slides: {investor-overview: [Vs Steel], super-mills-america: [The Gap]}
+    notes: >-
+      Fell under Section 232 tariffs (25% from Mar 2025, 50% from Jun 2025). Corroborated by USGS MCS
+      2026 - 19 Mt finished imports against 95 Mt apparent consumption (2025e) = 20.0%. Overview prints
+      "~18%"; the two registers agree.
+
+  - id: market.us_steel_apparent_consumption
+    value: 95
+    unit: Mt (2025e)
+    statement: US apparent steel consumption about 95 Mt (2025e), with ~19 Mt finished imports
+    basis: published
+    confidence: H
+    source: USGS Mineral Commodity Summaries 2026 (as cited in the SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Fresh Look uses "US steel demand ~100 Mt [conf M]" - same order.
+
+  - id: market.us_aluminum_primary_import_share
+    value: "~85"
+    unit: "% of primary (unwrought) aluminum used"
+    statement: About 85% of the primary (unwrought) aluminum the US uses is imported
+    basis: derived
+    confidence: H
+    source: The Aluminum Association / Wittsend, "Powering Up American Aluminum" (May 2025), p.3 - 4.4 Mt demand less 0.6835 Mt domestic primary = 3.72 Mt imported = 84.5%
+    url: https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [The Gap]}
+    conflicts_with: [market.us_aluminum_import_reliance_all_forms]
+    conflict_topic: Aluminum import share 85% vs 60% (resolved - different bases)
+    decision: RESOLVED 2026-08-26 - 85% is the PRIMARY-aluminum share (SMA, labeled "primary"); 60% is net import reliance across all forms (overview Vs Steel row). Both stand; label the basis every time.
+    notes: >-
+      Provenance label in source is "derived from published". MUST be labeled primary/new aluminum.
+      Corroboration - USGS MCS 2026 660 kt primary production vs 4,400 kt crude-and-semifab imports;
+      the white paper's "around 4 million t" gap reads ~90%; honest band 85-90%, 85% is the conservative end.
+      Local copy - super-mills-america/sources/PoweringUpAluminum_WhitePaper_2025.pdf.
+
+  - id: market.us_aluminum_import_reliance_all_forms
+    value: 60
+    unit: "% of apparent consumption (2025e)"
+    statement: US net import reliance for aluminum (all forms) is 60% of apparent consumption (62% 2024, 63% 2023)
+    basis: published
+    confidence: H
+    source: USGS Mineral Commodity Summaries 2026 - Aluminum (Feb 2026)
+    url: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-aluminum.pdf
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    slides: {investor-overview: [Vs Steel], super-mills-america: [The Gap (sources panel only)]}
+    conflicts_with: [market.us_aluminum_primary_import_share]
+    notes: MCS 2026 stopped netting exported scrap (footnote 3), so 2024 reads 62% here and 47% in MCS 2025 - do not mix series. Aluminum is on the USGS Critical Minerals List.
+
+  - id: market.aluminum_recycled_share_not_import
+    value: "~85"
+    unit: "% of US-made aluminum that is recycled/secondary"
+    statement: NOT AN IMPORT SHARE - the Aluminum Association's "~85%" is the recycled share of US-made aluminum
+    basis: published
+    confidence: H
+    source: aluminum.org/PowerUp - "recycled or 'secondary' production now accounts for ~85% of U.S.-made aluminum"; USGS MCS 2026 check 3,600 kt secondary vs 660 kt primary = 84.5%
+    url: https://www.aluminum.org/PowerUp
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Do not print. Recorded so the misread cannot recur - the coincidence of two ~85% figures made the original claim look sourced.
+
+  - id: market.us_primary_smelters_operating
+    value: 4 (down from 33 in 1980)
+    unit: smelters
+    statement: 4 US primary aluminum smelters operating, down from 33 in 1980; the segment runs at ~53% of installed capacity
+    basis: published
+    confidence: H
+    source: Aluminum Association PowerUp white paper (May 2025); USGS MCS 2026 (six exist, Hawesville KY and New Madrid MO temporarily shut); White House Section 232 proclamation Feb 2025 (52% utilization 2024)
+    url: https://www.aluminum.org/sites/default/files/2025-05/PoweringUpAluminum_WhitePaper_2025.pdf
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Date the 33 to 1980 whenever it prints (aluminum.org landing page says "24 to 4" from a later base year). Mt. Holly SC announced a >50,000 t/yr restart for mid-2026 - recheck the count of four.
+
+  - id: market.inola_smelter
+    value: Century Aluminum / EGA JV, Inola OK; ~$4B; $500M DOE award; >1 GW continuous power; ~11 TWh/yr (Boston-scale); no power deal as of 2026
+    unit: null
+    statement: America's first new primary aluminum smelter since 1980 - Century Aluminum / EGA JV at Inola, OK; ~$4B; $500M DOE award; >1 GW continuous power (enough to power Boston, ~11 TWh/yr); still waiting on a power deal in 2026
+    basis: published
+    confidence: H
+    source: US DOE (2025); Canary Media (2026); Boston framing chosen by Alex 2026-09-01
+    url: https://www.energy.gov/articles/energy-department-awardee-build-first-american-aluminum-smelter-1980
+    url2: https://www.canarymedia.com/articles/clean-aluminum/americas-new-aluminum-smelter-needs-power
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Old Mills, Economics]}
+    notes: Feedstock imported - bauxite from EGA's Guinea operations via New Orleans, refined to alumina, barged to Inola; EGA (UAE state-owned) holds 60% (published M-H). "Vertically integrated, an ocean away" is rhetorical framing (Alex 2026-08-23).
+
+  - id: market.inola_opposition
+    value: 60-day moratorium (June 2026); OK Attorney General petition (June 2026); 3,400+ petition signatures; Muscogee (Creek) National Council resolution; HF permit >1 t/day
+    unit: null
+    statement: Inola smelter opposition - board of trustees' unanimous 60-day moratorium after ~6 hours of public comment (June 2026); Oklahoma AG court challenge (Rogers County, June 2026); 3,400+ verified petition signatures; Muscogee (Creek) National Council unanimously opposed; ranchers fear hydrogen fluoride (permitted at more than a ton per day) poisoning hay and cattle
+    basis: published
+    confidence: M
+    confidence_label: H (moratorium, AG filing, ranchers, Muscogee); M-H (petition count); M (HF permit figure)
+    source: Oklahoma Voice / KOSU 2026-07-01; Oklahoma AG press release, Manufacturing Dive, ENR; The Frontier 2026; Radio Oklahoma News, TriplePundit; News9
+    url: https://oklahomavoice.com/2026/07/01/inola-hits-pause-on-smelter-after-weighing-resident-pushback-trump-support/
+    url2: https://oklahoma.gov/oag/news/newsroom/2026/june/drummond-files-action-to-block-inola-aluminum-smelter.html
+    url3: https://www.readfrontier.org/stories/with-trumps-backing-mike-mazzei-embraced-the-smelter-inola-residents-arent-convinced/
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Old Mills]}
+    notes: Petition counts move - refresh before print. Verify the HF figure against the actual air permit before print.
+
+  - id: market.us_smelter_closures_power_costs
+    value: Hawesville KY idled Jul 2022; Ravenswood WV closed 2015; Mt. Holly SC halved 2015
+    unit: null
+    statement: US smelters closed or curtailed on power prices - Century Hawesville KY idled Jul 2022 over "soaring energy prices"; Ravenswood WV closed 2015; Mt. Holly SC cut to half capacity 2015. No US smelter built since 1980 because domestic metal could not compete with imports smelted on cheaper power
+    basis: published
+    confidence: H
+    confidence_label: H (closures); M-H (causal framing, derived)
+    source: Century Aluminum history; Mining.com column "Power trumps tariffs as another US aluminum smelter shuts" (2026); Aluminum Association PowerUp framing; causal phrasing per Alex 2026-08-23
+    url: https://www.mining.com/web/column-power-trumps-tariffs-as-another-us-aluminum-smelter-shuts/
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: '"Those prices aren''t coming down" is Alex''s framing [asserted-internal, M]. The drought was competitiveness-driven, not capability-driven.'
+
+  - id: market.us_iron_ore_net_exporter
+    value: imports ~11% of apparent consumption; net exporter
+    unit: null
+    statement: The US is a net exporter of iron ore - imports ~11% of apparent consumption (4.0 Mt imports, 7.8 Mt exports, 37.0 Mt apparent consumption, 38.0 Mt production, 2025e)
+    basis: published
+    confidence: H
+    source: USGS Mineral Commodity Summaries 2026 - Iron Ore
+    url: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-iron-ore.pdf
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Register only (Alex 2026-08-26). America's steel problem is finished product and mill build cost/pace, not ore. Do not let a slide imply US steel depends on foreign ore.
+
+  - id: market.us_mine_development_years
+    value: "~29"
+    unit: years
+    statement: A new US mine averages ~29 years from discovery to production, second-longest in the world
+    basis: published
+    confidence: H
+    source: S&P Global Market Intelligence, "Mine Development Times - The US in Perspective" (Jul 2024)
+    url: https://press.spglobal.com/2024-07-18-United-States-Ranks-Next-to-Last-in-Development-Time-for-New-Mines-that-Produce-Critical-Minerals-for-Energy-Transition,-S-P-Global-Finds
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Old Mills, Fast x Fast]}
+    notes: Confidence not stated in the SMA entry; H recorded for a primary published figure.
+
+  - id: market.us_cement_import_reliance
+    value: 21% (2025e, MCS 2026) / 22% (2024e, MCS 2025)
+    unit: "% of apparent consumption"
+    statement: About one-fifth of US cement consumption is met by imports - 21% (USGS MCS 2026, 2025e) or 22% (USGS MCS 2025, 2024e)
+    basis: published
+    confidence: H
+    source: USGS Mineral Commodity Summaries 2026 (cement 21%, cited in the overview register); USGS MCS January 2025 - Cement, 22% in 2024e (22% in 2022-23), ~25M t cement + clinker imported, Turkey 32% / Canada 22% (SMA register)
+    url: https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-cement.pdf
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    conflicts_with: []
+    conflict_topic: Cement import reliance 21% vs ~22% (different USGS vintages)
+    decision: OPEN - Alex. Overview prints 21% (MCS 2026), SMA prints ~22% (MCS 2025). Pick one vintage; MCS 2026 is newer.
+    notes: Added to SMA per Alex 2026-08-26 ("America imports over 20% of the cement it uses").
+
+  - id: market.us_cement_imports_by_origin_2025
+    value: Canada $514M; Turkey $485M; Vietnam $207M; Mexico $108M; Egypt $71.9M; total $1.76B
+    unit: USD (2025)
+    statement: US cement imports 2025 - Canada $514M, Turkey $485M, Vietnam $207M (total $1.76B)
+    basis: published
+    confidence: H
+    source: OEC bilateral cement profile, read from the live page 2026-09-01
+    url: https://oec.world/en/profile/bilateral-product/cement/reporter/usa
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [The Gap]}
+    notes: >-
+      Register-only detail (Alex 2026-09-01) - Portland cement (HS 252329) to the USA - Turkey ~7M t/yr at
+      ~$55-58/t vs Canada ~3.6M t/yr at ~$110-119/t (2024-25), FOB, derived unit values [H];
+      2023 clinker (HS 252310) exports to the USA - EU $40.6M, Canada $39.7M, France $39.3M, Turkey $12.8M [H].
+      WITS/Comtrade - https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2025/tradeflow/Exports/partner/USA/product/252329
+      and .../year/2023/.../product/252310 ; local tables in super-mills-america/sources/.
+
+  - id: market.us_titanium_sponge_import_reliance
+    value: ">95"
+    unit: "% of apparent consumption (2021-2023e)"
+    statement: More than 95% of US titanium sponge consumption is met by imports; record ~42,000 t imported 2023, Japan 77-86% leading source; most US titanium metal use is aerospace
+    basis: published
+    confidence: H
+    source: USGS Mineral Commodity Summaries, January 2024, Titanium - only active US sponge plant is electronic-grade (~500 t/yr, Salt Lake City); Henderson NV (12,600 t/yr) idled since 2020
+    url: https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-titanium.pdf
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [The Gap]}
+    notes: null
+
+  - id: market.us_carbon_fiber_imports
+    value: "~30,000 t/yr, ~40% of ~75,000 t consumption (market-research grade); 66-86% of demand 2008-12 (ORNL/NREL)"
+    unit: null
+    statement: US imports roughly 30,000 t/yr of carbon fiber (~40% of consumption), concentrated in aerospace grades from Japan; imports met 66-86% of North American demand in 2008-2012
+    basis: triangulated
+    confidence: M
+    confidence_label: M (volumes), M-H (aerospace-grade dependency direction), H for the 2008-12 share
+    source: ORNL/NREL Das et al. May 2016 (Pub61706.pdf); Astute Analytica; Lexington Institute (Grant, Apr 2025); Nandina REM (Oct 2025)
+    url: https://www.nandinarem.com/post/carbon-fibre-a-core-us-defence-supply-chain-vulnerability
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [The Gap (aside table "Carbon fiber 66-86%")]}
+    notes: The HTS code bundles CF with intermediates so the import share is likely overstated. A current-year import share still lacks a primary source. Local copy super-mills-america/sources/Pub61706.pdf.
+
+  - id: market.us_mineral_import_dependence
+    value: 54 nonfuel mineral commodities >50% imported in 2025 (16 at 100%); 46 (15) in 2024
+    unit: commodities
+    statement: US import dependence on minerals is rising - imports exceeded half of apparent consumption for 54 nonfuel mineral commodities in 2025 (100% reliant for 16), up from 46 (15) in 2024
+    basis: published
+    confidence: H
+    source: USGS Mineral Commodity Summaries 2026 p.11 and MCS 2025 p.10; Politico Pro / E&E News Feb 9 2026
+    url: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Critical-Minerals-List basis for 2025 is 13 at 100% plus 20 more at >=50%. Use one basis consistently.
+
+  - id: market.aluminum_critical_minerals_list
+    value: listed since 2022; on the final 2025 list of 60
+    unit: null
+    statement: Aluminum is on the federal Critical Minerals List (60 minerals, final 2025 list; listed since 2022)
+    basis: published
+    confidence: H
+    source: Federal Register, "Final 2025 List of Critical Minerals" (Nov 7, 2025)
+    url: https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: null
+
+  - id: market.bauxite_smelter_grade_imported
+    value: 100
+    unit: "% of smelter-grade bauxite"
+    statement: 100% of smelter-grade bauxite is imported - no domestic smelter-grade supply (overall bauxite reliance >75%)
+    basis: published
+    confidence: H
+    source: USGS Mineral Commodity Summaries 2025 - Bauxite and Alumina; domestic output (AL, AR, GA) is for nonmetallurgical uses; import sources 2020-23 Jamaica 67%, Turkey 9%, Guyana 8%, Australia 6%
+    url: https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-bauxite-alumina.pdf
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Appendix comparison (feedstock row)]}
+    notes: Provenance label "published (scoped)". Alex supplied "100% of bauxite imported"; printed scoped to smelter-grade.
+
+  - id: market.us_pig_iron_imports
+    value: "~25% of US pig iron imported; 80% is the MERCHANT pig-iron share"
+    unit: null
+    statement: RETIRED - "80% of US pig iron is imported" removed 2026-09-01; only ~25% of US pig iron is imported, 80% is the share of the merchant market
+    basis: asserted-internal
+    confidence: M
+    source: Alex Lau 2026-08-26, corrected 2026-09-01; USITC Executive Briefing on Trade (Oct 2022, "Russia, Ukraine, and Pig Iron Supply") - domestic merchant pig iron covers ~5% of US consumption, Brazil >60% of imports
+    url: https://www.usitc.gov/publications/332/executive_briefings/ebot_russia_ukraine_and_pig_iron_supply.pdf
+    as_of: 2026-09-04
+    status: retired
+    printed_in: []
+    notes: The slide cell now carries only the "emerging constraints on recycled steel" line (Alex's framing, not yet sourced - find a scrap-availability source).
+
+  - id: market.mass_timber_schedule_advantage
+    value: 20-30
+    unit: "% faster construction schedule"
+    statement: Mass-timber projects run 20-30% faster construction schedules than steel and concrete (avg ~20% across seven case studies, 12.7 vs 15.4 months; other studies up to 25-30%)
+    basis: triangulated
+    confidence: M
+    source: ULI Urban Land; case-study reviews
+    url: https://urbanland.uli.org/development-business/faster-project-delivery-hidden-features-sustainable-mass-timber
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america, superwood-datacenter-investor]
+    slides: {super-mills-america: [Fast x Fast]}
+    notes: 40% claims exist but are not used. SUPERWOOD analogized to mass timber - no SUPERWOOD schedule claim of its own. Confidence not stated in SMA; Fresh Look labels it M.
+
+  - id: market.sawmill_excess_capacity
+    value: true
+    unit: null
+    statement: Excess capacity exists in US sawmills
+    basis: asserted-internal
+    confidence: L
+    source: Alex Lau, 2026-08-23 (industry knowledge)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Fast x Fast]}
+    notes: Plausible given 2023-2025 curtailments on weak housing demand; find a utilization figure before print use. Confidence not stated; L recorded.
+
+  - id: market.ibc_mass_timber_support
+    value: IBC 2021 Types IV-A/B/C
+    unit: null
+    statement: Strong support for mass timber in the latest International Building Codes (IBC 2021 tall mass timber provisions, Types IV-A/B/C)
+    basis: published
+    confidence: H
+    source: investor-overview register (MT Wave) - add the citation
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: market.tallest_mass_timber_tripled
+    value: 29 m (2009) -> 86.6 m (2022) = 3.0x
+    unit: m
+    statement: The height of the world's tallest mass timber building tripled over 10 years - Stadthaus 29 m (2009), Forte 32 m (2012), Treet 49 m (2015), Brock Commons 53 m (2017), Mjostarnet 85.4 m (2019), Ascent 86.6 m (2022)
+    basis: published
+    confidence: M
+    confidence_label: M (claim); H (heights)
+    source: CTBUH mass timber data
+    url: https://www.ctbuh.org/mass-timber-data
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Brock Commons was 58 m in the old bitmap; CTBUH says 53 m.
+
+  - id: market.mass_timber_landmarks
+    value: Brock Commons; T3; Ascent; Atlassian HQ; Portland Airport; Shigeru Ban; Sara Kulturhus; Arctowski Station; Mannheim Multihalle (60 m spans); Richmond Olympic Oval
+    unit: null
+    statement: Mass timber landmark projects - Brock Commons, T3, the Ascent, Atlassian HQ, Portland Airport, Shigeru Ban, Sara Kulturhus, Arctowski Station; Mannheim Multihalle (world's largest self-supporting timber gridshell, 60 m spans); Richmond Olympic Oval (world's largest hybrid timber span roof, 2010 Olympic venue)
+    basis: published
+    confidence: H
+    source: investor-overview register (MT Wave, Landmarks, Engineers) - all well documented publicly
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: market.brock_commons_fast_epp
+    value: world's first 18-story mass timber tower; Fast + Epp structural engineers
+    unit: null
+    statement: UBC Brock Commons - world's first 18-story mass timber tower; Fast + Epp engineered the building that became the template for the IBC tall mass timber provisions
+    basis: published
+    confidence: M
+    source: Fast + Epp article on IBC transferability (the firm's own publication); credit added 2026-08-25 at Alex's direction
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: '"Engineered", not "designed" - Acton Ostry is credited as architect. A third-party source for "template" would be stronger.'
+
+  - id: market.walmart_hq_mass_timber
+    value: 3.5M sf across 11 buildings; >2.4M sf mass timber; opened 2025
+    unit: null
+    statement: Walmart HQ - 3.5M sf across 11 buildings, over 2.4M sf mass timber, opened 2025
+    basis: published
+    confidence: M
+    source: investor-overview register (Engineers)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: market.fast_epp_share_of_canadian_mass_timber
+    value: ">50"
+    unit: "% of mass timber projects in Canada"
+    statement: Fast + Epp is involved in over 50% of mass timber projects in Canada
+    basis: unverified
+    confidence: L
+    source: investor-overview register (Engineers) - NEEDS SOURCE; attributed to a named third party, verify with them
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Fast + Epp on-site lab with a 100,000 lb loading frame is also unverified (M).
+
+  - id: market.incumbent_development_timelines
+    value: 10+
+    unit: years
+    statement: 10+ year development timelines for incumbent heavy-materials capacity
+    basis: published
+    confidence: M
+    confidence_label: M-H (published/derived)
+    source: mills comparison.csv - integrated steel ~10 yr full complex (Formosa 4.5 yr to first iron); US mine ~29 yr (S&P Global); Apple Grove 6 yr minimill sprint; smelter development incl. site/power/permitting exceeds its ~5-yr construction window
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Old Mills]}
+    notes: Title-level claim; the card's bullets carry the causes (power, logistics, cyclicality).
+
+  - id: market.nucor_apple_grove_timeline
+    value: announced Sep 2021 -> 2027 shipments; ~4 yr ground-breaking to first shipment
+    unit: null
+    statement: Nucor Apple Grove sheet mill ran 2021 to 2027 announce-to-ship; took about 4 years from ground-breaking to first shipment
+    basis: published
+    confidence: M
+    confidence_label: H (announce-to-ship); M (4-yr groundbreaking figure, estimated)
+    source: mills comparison.csv / Nucor updates (IndexBox construction update); 4-year figure provided by Alex 2026-09-01 - groundbreaking date and actual first shipment unverified [needs source]
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Old Mills]}
+    notes: The visible line's past tense ("took") sits against a 2027 expected-ship record.
+
+  # =========================================================================== feedstock
+  - id: feedstock.available_in_48_states
+    value: 48 states / "almost every state"
+    unit: null
+    statement: Suitable feedstock for a SUPERMILL is sufficient in 48 states (SMA wording - abundant in almost every state); SUPERWOOD uses abundant domestic feedstock
+    basis: unverified
+    confidence: L
+    confidence_label: L (overview, unverified); H (internal) in SMA as asserted-internal
+    source: investor-overview register (Global Fleet, Vs Steel) - NEEDS SOURCE; USDA Forest Service FIA would be the anchor. SMA - Alex Lau 2026-08-26 restating the parent claim
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    slides: {investor-overview: [Global Fleet, Vs Steel], super-mills-america: [Appendix comparison (feedstock row)]}
+    notes: Specific and checkable - exactly what a diligence process will test. The lower label (unverified L) is kept here; SMA's H is an internal-assertion label, not a source.
+
+  - id: feedstock.species_tested
+    value: 20+
+    unit: species
+    statement: Over 20 species of wood tested as SUPERWOOD feedstock, including bamboo and waste wood
+    basis: internal
+    confidence: H
+    confidence_label: H (internal canonical)
+    source: deck-canonical per Alex 2026-09-01 (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [SUPERMILLS]}
+    notes: null
+
+  - id: feedstock.chipmill_chips_and_waste
+    value: wood chips and waste
+    unit: null
+    statement: ChipMills use wood chips and waste as feedstock
+    basis: internal
+    confidence: M
+    source: investor-overview register (Global Fleet)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: feedstock.waste_biomaterials_claim
+    value: constructed from waste biomaterials
+    unit: null
+    statement: '"Constructed from waste biomaterials" - cut from the datacenter deck'
+    basis: asserted-internal
+    confidence: L
+    source: Datacenter companion slide 12 (Fresh Look); CSO - at SuperMill Two and ChipMill scale the feedstock is not waste
+    as_of: 2026-09-04
+    status: retired
+    printed_in: []
+    notes: Do not print. Greenwashing exposure flagged by the CSO.
+
+  # =========================================================================== customers
+  - id: customers.logo_wall
+    value: 40 logos, grouped SuperMill One / Two / Future
+    unit: logos
+    statement: 40 named customer and prospect logos, grouped by SuperMill One / Two / Future
+    basis: internal
+    confidence: M
+    source: investor-overview register (Customers)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: SENSITIVE - confirm naming permission and stage placement. Apple and Amazon moved to SuperMill Two per Jon Strimling.
+
+  - id: customers.showcase_projects
+    value: Sycamore and Oak DC (600,000 sf; Emerson Collective; RedBrick); Safdie condos San Diego (12-story, $100M, 777 Beech; Bradley Land Group; Safdie-Rabines); Seven Oaks Retreat Center, Madison VA (27,500 sf, 2027-28); SNG condos Dubai Islands (10-story); Altadena rebuild (Adjaye Associates); GLOBE Theatre world tour (construction from end 2026, LA 2028 Olympics)
+    unit: null
+    statement: Showcase projects (six named), all unverified against public record
+    basis: unverified
+    confidence: M
+    confidence_label: M (five projects); L (GLOBE Theatre)
+    source: investor-overview register (Showcase)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Third parties named - confirm permission and public figures. Naming Adjaye Associates carries reputational considerations - deliberate decision needed.
+
+  - id: customers.applications_now_vs_next
+    value: skins, screens, fences, interiors now; qualified items next
+    unit: null
+    statement: Applications available now vs next year; renderings are concepts
+    basis: internal
+    confidence: M
+    source: investor-overview register (Apps Now); Fresh Look slides 11-12
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, superwood-datacenter-investor]
+    notes: Keep the "renderings are concepts" disclaimer. Backplanes move from "now" to gated (UL 94 not started).
+
+  - id: customers.datacenter_engagement_ladder
+    value: null
+    unit: stage per account
+    statement: Stage (conversation / samples / mockup / paid pilot / PO / basis of design) and next milestone for Microsoft, Meta, Google, Vertiv, Wooden Data Center, security-fencing operators; one concrete statement each for HITT, Turner, Fast + Epp, Timber Engineering
+    basis: internal
+    confidence: L
+    source: Fresh Look 2026-09-04, ask 3
+    as_of: 2026-09-04
+    status: open
+    printed_in: []
+    notes: >-
+      Current deck prints "engaged for over a year", "broad engagement" - undated, unverifiable. Also open -
+      whether "customer names used with permission" is true (Alex approved naming; that is not customer
+      permission), and what HITT / Turner's "enthusiastic support" consisted of.
+
+  # =========================================================================== datacenter
+  - id: datacenter.embodied_carbon_building_materials_per_gw
+    value: "~745 kt CO2e per GW (high case); steel ~61%, concrete ~39%; steel above the slab ~37%"
+    unit: kt CO2e per 1 GW campus, building materials only
+    statement: Embodied carbon of a 1 GW campus's building materials is roughly 745 kt CO2e in the high case, about 60% of it steel and 40% concrete at a global-average steel factor; the steel above the slab is about 37% of the total; equipment not estimated
+    basis: estimated
+    confidence: L
+    source: superwood-datacenter-investor/prep/charts/make_charts.py (2026-09-04) - campus model masses x factors steel 1.8, concrete 0.12, interior finishes 1.0 kg CO2e/kg
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "With recycled (EAF) steel at ~0.55 kg/kg the steel share falls to about a third. Factors are typical cradle-to-gate values [conf M]; masses are estimates [conf L]. Printed on slide 5 as shares, not totals."
+
+  - id: datacenter.structural_work_under_way
+    value: "truss design starting; mass-timber enhancement under way"
+    unit: null
+    statement: Structural work with data-center customers has begun - truss design is starting and mass-timber enhancement (SUPERWOOD laminations on glulam/CLT-type members) is under way; structural sales expected on the way to SuperMill Two
+    basis: asserted-internal
+    confidence: M
+    source: Alex Lau 2026-09-04
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "Replaces the 09-01 framing that structural waits for SuperMill Two. Related fact: material.hybrid_glulam_beams."
+
+  - id: collaborators.fast_epp_experiments
+    value: ">1,000"
+    unit: small-scale experiments
+    statement: Fast + Epp has conducted over a thousand small-scale experiments on SUPERWOOD, funded by the Canadian government
+    basis: asserted-internal
+    confidence: M
+    source: Alex Lau 2026-09-04
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Funding program not named - ask Fast + Epp for the program name and dates before this prints in a widely distributed deck.
+
+  - id: collaborators.hitt_turner_role
+    value: advocates, not specifiers
+    unit: null
+    statement: HITT and Turner, as contractors, are advocates for SUPERWOOD; contractors do not specify materials
+    basis: asserted-internal
+    confidence: M
+    source: Alex Lau 2026-09-04
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Print as advocacy, never as "supporting the structural work" or as a specification.
+
+  - id: datacenter.dollars_per_gw_not_printed
+    value: null
+    unit: null
+    statement: Dollar values per gigawatt of campus are NOT printed in the data center deck (Alex 2026-09-04); the slide shows incumbent mass, SUPERWOOD required and plant-years only
+    basis: internal
+    confidence: H
+    source: Alex Lau 2026-09-04
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Derivation kept in reviews/FRESH-LOOK-2026-09-04.md for reference; do not reintroduce without a price basis decision.
+
+  - id: datacenter.steel_share_above_ground_estimate
+    value: "50-80% (printed band, Alex 2026-09-04); independent estimate 66-80%, ~60-65% if equipment steel fractions are 40%"
+    unit: share of above-ground mass incl. contents, metal-panel-wall case
+    statement: Roughly three-quarters of a data center's above-ground material, including all contents, is steel - independent estimate; the "~60%" ex-concrete figure is conservative
+    basis: estimated
+    confidence: L
+    source: superwood-datacenter-investor/analyses/steel-share-above-ground.md (2026-09-04) - component masses from the 1 GW campus model; per-component steel fractions are assumptions
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04 (print as 50-80% of the above-ground portion)
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    conflicts_with: []
+    notes: >-
+      Asked by Alex 2026-09-04. Excludes slab, paving, foundations, all concrete. Structure and envelope alone
+      ~99% steel; equipment (55-59% of above-ground mass) drives the answer. Falls well below the band if the
+      perimeter walls are precast/tilt-up. Print only with the denominator and as a company estimate.
+
+  - id: datacenter.steel_share_ex_concrete
+    value: "~60"
+    unit: "% of building and contents by mass, EXCLUDING concrete"
+    statement: About 60% of a US data center (building and contents, excluding concrete) is steel
+    basis: asserted-internal
+    confidence: L
+    source: Origin ../superwood-datacenter slide 16; inherited into investor-overview as unverified L (NEEDS SOURCE) and into SMA; denominator basis per Alex 2026-08-27; basis printed in the Gap-slide tooltip from 2026-08-29
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    slides: {investor-overview: [The Need], super-mills-america: [The Gap, Appendix]}
+    conflicts_with: [datacenter.steel_share_model_derivation]
+    conflict_topic: 60%-steel data-center stat (unsourced, ex-concrete basis)
+    decision: Alex Lau 2026-08-27/29 - print with the ex-concrete basis stated (tooltip). Sourcing still OPEN - Alex - either source it, derive it bottom-up with stated assumptions (the model lands near 70%), or drop it. Not printed in the datacenter companion.
+    notes: >-
+      NO PUBLISHED SOURCE STATES A STEEL SHARE ON ANY BASIS (searched 2026-08-27 - LCA literature,
+      Schneider Electric, Gensler 2023, Vertiv, WEF). On an all-in mass basis it is almost certainly wrong -
+      concrete is 83-87% of everything. A "~250 t/MW" figure circulates with no traceable origin [L, do not print].
+
+  - id: datacenter.steel_share_model_derivation
+    value: "~70"
+    unit: "% of ex-concrete mass"
+    statement: Excluding concrete, steel in all forms comes out near 70% of what is left on the model's assumptions - a derivation, not a source
+    basis: estimated
+    confidence: L
+    source: materials-mass-and-replacement.md section 2
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    conflicts_with: [datacenter.steel_share_ex_concrete]
+    notes: Consistent in order of magnitude with the ~60% framing.
+
+  - id: datacenter.construction_spending_surge
+    value: "~5x in two years"
+    unit: null
+    statement: US data center construction spending surged roughly 5x in two years
+    basis: unverified
+    confidence: M
+    source: investor-overview register (The Need) - NEEDS SOURCE; Census construction-spending series would anchor it
+    as_of: 2026-09-04
+    status: open
+    printed_in: [investor-overview]
+    notes: Fresh Look ask 9 - whether to print the trend in the companion; if yes, a source.
+
+  - id: datacenter.steel_shortage_concern
+    value: customer-reported
+    unit: null
+    statement: Data center operators are concerned about a structural steel shortage (customer-reported; label as such in body copy)
+    basis: unverified
+    confidence: L
+    source: investor-overview register (The Need); SMA (The Gap, inherited); hearsay per Fresh Look
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america, superwood-datacenter-investor]
+    notes: Label in body copy, not an 8 pt footnote, or find a published source.
+
+  - id: datacenter.microsoft_clt
+    value: two Northern Virginia data centers; CLT floors on steel frame; 35% vs steel, 65% vs precast
+    unit: "% embodied-carbon reduction"
+    statement: Microsoft - two Northern Virginia data centers with CLT floors on a steel frame; 35% embodied-carbon reduction vs steel, 65% vs precast (Gensler, Thornton Tomasetti)
+    basis: published
+    confidence: H
+    source: Fresh Look 2026-09-04 [published, conf H]; specific publication to be cited on the slide
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    conflicts_with: [datacenter.meta_microsoft_two_thirds]
+    conflict_topic: Meta/Microsoft CLT carbon reduction - "two-thirds" (overview) vs 35%/65% and ~41% (published)
+    decision: Use the published per-company figures (Microsoft 35% vs steel / 65% vs precast; Meta ~41% on materials substituted). The overview's single "two-thirds" line is superseded. "Reported through EC3" is asserted [needs source] - cut or source.
+    notes: CLT replaces concrete floors; nothing yet replaces the steel - the pivot to SUPERWOOD.
+
+  - id: datacenter.meta_clt
+    value: Aiken SC 2025; Cheyenne WY; Montgomery AL; ~41% on materials substituted
+    unit: "% embodied-carbon reduction"
+    statement: Meta - mass timber data centers at Aiken SC (2025), Cheyenne WY, Montgomery AL; ~41% embodied-carbon reduction on materials substituted
+    basis: published
+    confidence: H
+    source: Fresh Look 2026-09-04 [published, conf H]; cite the publication on the slide
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    conflicts_with: [datacenter.meta_microsoft_two_thirds]
+    notes: null
+
+  - id: datacenter.meta_microsoft_two_thirds
+    value: two-thirds
+    unit: carbon reduction
+    statement: Meta and Microsoft demonstrated a two-thirds carbon reduction using mass timber (CLT) floors
+    basis: unverified
+    confidence: M
+    source: investor-overview register (The Need) - NEEDS SOURCE
+    as_of: 2026-09-04
+    status: superseded
+    printed_in: [investor-overview]
+    conflicts_with: [datacenter.microsoft_clt, datacenter.meta_clt]
+    notes: Matches only Microsoft's 65%-vs-precast figure. Replace with the per-company published figures.
+
+  - id: datacenter.steel_intensity_per_10mw
+    value: 500-1000
+    unit: t structural steel per 10 MW
+    statement: Data centers use 500-1,000 t of structural steel per 10 MW facility (50-100 t/MW)
+    basis: published
+    confidence: M
+    source: arXiv 2509.21312 (Sep 2025), citing Hasan et al. 2022 and Sharma et al. 2023 [preprint, secondary citations]
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Factor-of-two range; one real takeoff from HITT, Turner or Fast + Epp collapses it. Read the primary papers.
+
+  - id: datacenter.concrete_intensity_per_10mw
+    value: 5000-10000
+    unit: m3 concrete per 10 MW
+    statement: Data centers use 5,000-10,000 m3 of concrete per 10 MW (~12,000-24,000 t at 2.4 t/m3)
+    basis: published
+    confidence: M
+    source: arXiv 2509.21312 citing Hasan 2022 / Sharma 2023 [secondary]
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: null
+
+  - id: datacenter.campus_mass_per_gw
+    value: 1,385-2,875 kt total; 185-475 kt excluding concrete
+    unit: kt per 1 GW IT load
+    statement: A 1 GW campus (5-10 buildings) is 1,385-2,875 kt of building and contents; excluding concrete 185-475 kt - concrete is 83-87% of everything by mass
+    basis: estimated
+    confidence: L
+    source: materials-mass-and-replacement.md v4 (2026-09-01), live model materials-mass-and-replacement.xlsx
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Low and high are whole scenarios, not a distribution. Any "share of a data center" statement must say whether concrete is in the denominator.
+
+  - id: datacenter.immediate_horizon_per_gw
+    value: 1.4-3.1M sf (1.2-2.7 kt) replacing 3.3-12 kt; 1.4-3.1 yr of SuperMill One
+    unit: per 1 GW
+    statement: Immediate horizon (skins, screens, fences, interiors) - 1.4-3.1M sf of SUPERWOOD per GW, 1.4-3.1 years of SuperMill One's entire output
+    basis: estimated
+    confidence: L
+    source: materials-mass-and-replacement.md section 4
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Gate - none beyond E84 Class A where a finish rating applies (capability wording per material.fire_e84_class_a).
+
+  - id: datacenter.soon_horizon_per_gw
+    value: 3.5-18 kt replacing 12-30 kt; 0.1-0.6 yr of SuperMill Two
+    unit: per 1 GW
+    statement: Soon horizon (platforms, railings, barriers, racking, doors) - 3.5-18 kt SUPERWOOD per GW, 0.1-0.6 years of SuperMill Two
+    basis: estimated
+    confidence: L
+    source: materials-mass-and-replacement.md section 4
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Each item behind one scoped test or listing.
+
+  - id: datacenter.medium_term_horizon_per_gw
+    value: 16-65 kt replacing 53-108 kt; 0.5-2.1 yr of SuperMill Two
+    unit: per 1 GW
+    statement: Medium-term horizon (structural steel, roof trusses and roofs, ducting, enclosures) - 16-65 kt SUPERWOOD per GW, 0.5-2.1 years of SuperMill Two
+    basis: estimated
+    confidence: L
+    source: materials-mass-and-replacement.md section 4
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Through the medium term SUPERWOOD addresses 68-150 kt, essentially all steel above the slab, ~4.9-5.2% of total campus mass. Two or three gigawatts of campus absorb SuperMill Two for years - the offtake argument and the capacity risk in one number.
+
+  - id: datacenter.long_term_horizon_per_gw
+    value: 56-346 kt replacing 996-2,061 kt concrete and rebar; 1.8-11.0 yr of SuperMill Two; ceiling ~77% of campus mass
+    unit: per 1 GW
+    statement: Long-term technical potential (75% of slab and paving, 90% of foundations, with their rebar) - 996-2,061 kt of concrete and rebar per GW; with it SUPERWOOD's ceiling is 76.8-76.9% of total campus mass
+    basis: estimated
+    confidence: L
+    source: materials-mass-and-replacement.md v4; concrete shares are stated technical potential (Alex, 2026-09-01), asserted-internal; substitution 0.05-0.15 kg/kg estimated
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Print as vision with the label on the slide, never as a forecast - no design or code pathway exists. A ChipMill-scale market on its own if it ever became real.
+
+  - id: datacenter.substitution_factor_steel
+    value: 0.3-0.6
+    unit: kg SUPERWOOD per kg steel
+    statement: Steel substitution factor 0.3-0.6 kg SUPERWOOD per kg steel replaced - to be engineering-stamped per element
+    basis: estimated
+    confidence: L
+    source: materials-mass-and-replacement.md section 1
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: The whole medium-term demand number; Fast + Epp can stamp it per element. Any per-functional-unit carbon claim must print it.
+
+  - id: datacenter.substitution_factor_concrete
+    value: 0.05-0.15
+    unit: kg SUPERWOOD per kg concrete
+    statement: Concrete substitution factor 0.05-0.15 kg SUPERWOOD per kg concrete (lightweight insulated wood-foundation concept, no design exists)
+    basis: estimated
+    confidence: L
+    source: materials-mass-and-replacement.md section 1
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: null
+
+  - id: datacenter.value_per_gw_immediate
+    value: "$27-59M at $19/sf (1.4-3.1M sf); $35-78M at $25/sf"
+    unit: USD per GW of campus
+    statement: One gigawatt of campus is worth $27-59M to InventWood in immediate skins at $19/sf realized interior price (or $35-78M at the $25/sf exterior context price)
+    basis: derived
+    confidence: L
+    source: Fresh Look 2026-09-04 gap 1 - 1.4-3.1M sf x $19/sf; derived from estimates
+    as_of: 2026-09-04
+    status: open
+    printed_in: []
+    notes: Alex to confirm the price basis for data center skins and for SuperMill Two structural ($/sf or $/t; realized or roadmap) and whether to print dollars per GW (ask 1). Medium term 16-65 kt x [$/t at SuperMill Two] also open.
+
+  - id: datacenter.carbon_effect_per_gw
+    value: immediate 5.4-21 kt; soon 19-45 kt; medium 87-162 kt net CO2e reduction vs average steel (far lower vs EAF)
+    unit: kt CO2e per GW
+    statement: Pre-LCA embodied-carbon effect per GW - net reduction 5.4-21 kt (immediate), 19-45 kt (soon), 87-162 kt (medium term) against average steel; 0.7-7.3 / 2.9-12 / 13-43 kt against EAF steel; biogenic stored reported separately
+    basis: estimated
+    confidence: L
+    source: materials-mass-and-replacement.md section 5, using the Canva carbon set (0.5 / 1.3 / steel 1.8 / concrete 0.12)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Long-term concrete row nets 92-75 kt (SUPERWOOD manufacturing 28-173 kt can exceed avoided concrete emissions at the high end). Any claim must state its baseline.
+
+  - id: datacenter.no_dated_milestones
+    value: none
+    unit: null
+    statement: The data center companion prints NO dated data-center milestones - the path to first projects is stated as a sequence without dates
+    basis: internal
+    confidence: H
+    source: Alex Lau 2026-09-04 (Fresh Look Part 3 revision)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Sequence - skins on one building or yard; scoped test program with that customer; basis-of-design work with their architect and engineer; measured carbon delta against a baseline bill of materials.
+
+  - id: datacenter.no_approvals_standards_detail
+    value: none
+    unit: null
+    statement: No approvals or standards detail in the data center deck - no standards tables, labs or dates; qualification described in plain words only
+    basis: internal
+    confidence: H
+    source: Alex Lau 2026-09-04 (Fresh Look Part 3 revision) - too soon to say what all the approvals will be
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Qualification runs alongside customer work, on the pathway mass timber has opened in the codes; test methods and property data on request. The "trusses carry no fire-resistance requirement" line is dropped (combustibility / FRTW is the gate in IBC Type I/II [conf M]).
+
+  - id: datacenter.structural_not_gated_on_sm2
+    value: structural work started; structural sales expected before SuperMill Two
+    unit: null
+    statement: Structural applications are not gated on SuperMill Two - work has started and the company expects structural sales on the way there; scale comes with SuperMill Two veneers and sections
+    basis: asserted-internal
+    confidence: M
+    source: Alex Lau 2026-09-04 (Fresh Look Part 3 revision)
+    as_of: 2026-09-04
+    decided_by: Alex Lau 2026-09-04
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: OPEN detail (ask 6) - which structural applications are sellable from today's board envelope, the test each needs, and the earliest structural sale expected.
+
+  - id: datacenter.qualification_program_scope
+    value: null
+    unit: null
+    statement: Lab, budget, scope and owner for the E119 / NFPA 285 / UL 94 / STC test programs
+    basis: internal
+    confidence: L
+    source: Fresh Look 2026-09-04 ask 4 - nothing has started
+    as_of: 2026-09-04
+    status: open
+    printed_in: []
+    notes: Register-only; per datacenter.no_approvals_standards_detail none of this prints. Backplanes need a UL 94 yellow card before an electrical room.
+
+  - id: datacenter.lightweight_foundations_speculative
+    value: may need lower geotechnical requirements; could be movable
+    unit: null
+    statement: Lightweight SUPERWOOD foundations may need lower geotechnical requirements and could be movable (long-term vision)
+    basis: estimated
+    confidence: L
+    source: investor-overview register (Longer Term); Fresh Look slide 13b
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, superwood-datacenter-investor]
+    notes: Hedged with "may" and "potentially" - keep the hedging. Prefabricated envelopes, then foundations, printed as vision.
+
+  - id: datacenter.rack_mass_gb200_nvl72
+    value: "~1360"
+    unit: kg
+    statement: NVIDIA GB200 NVL72 rack mass about 1,360 kg
+    basis: published
+    confidence: H
+    source: NVIDIA published specification (materials-mass-and-replacement.md)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: []
+    notes: Anchor for the IT-mass row; aggregate IT mass per GW is [L].
+
+  # =========================================================================== financing
+  - id: financing.total_to_date
+    value: 80000000+
+    unit: USD
+    statement: Backed with over $80M in total financing to date (includes non-dilutive ARPA-E and DARPA funding)
+    basis: internal
+    confidence: H
+    source: Confirmed by Alex 2026-08-22 (investor-overview register, Introducing)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: financing.non_dilutive
+    value: 20000000
+    unit: USD
+    statement: $20M non-dilutive funding secured (ARPA-E and DARPA)
+    basis: internal
+    confidence: H
+    source: investor-overview register (Financing) - award numbers are public, ADD THEM
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: financing.series_a_2025
+    value: $26M at $62M post-money
+    unit: USD
+    statement: Series A 2025 - $26M at $62M post-money
+    basis: internal
+    confidence: H
+    source: Cap table (investor-overview register, Financing)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: financing.series_aa_2026
+    value: $18M at $129M post-money
+    unit: USD
+    statement: Series AA 2026 - $18M at $129M post-money
+    basis: internal
+    confidence: H
+    source: Cap table (investor-overview register, Financing)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: null
+
+  - id: financing.safe_2026
+    value: $10M at $170-200M valuation cap; open now
+    unit: USD
+    statement: Raising $10M on SAFEs at a $170-200M valuation cap, open now (September 2026)
+    basis: internal
+    confidence: H
+    source: investor-overview register (Financing, The Opportunity)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview, super-mills-america]
+    notes: This is the round this register serves.
+
+  - id: financing.safe_close_date
+    value: null
+    unit: date
+    statement: SAFE round close date
+    basis: internal
+    confidence: L
+    source: investor-overview register (The Opportunity) - OUTSTANDING; standard for a SAFE round and expected by this audience
+    as_of: 2026-09-04
+    status: open
+    printed_in: []
+    notes: null
+
+  - id: financing.safe_minimum_check
+    value: null
+    unit: USD
+    statement: SAFE minimum check size
+    basis: internal
+    confidence: L
+    source: investor-overview register (The Opportunity) - OUTSTANDING
+    as_of: 2026-09-04
+    status: open
+    printed_in: []
+    notes: null
+
+  - id: financing.series_b_2027
+    value: $75-100M at $400-800M target valuation
+    unit: USD
+    statement: Series B 2027 - $75-100M at a $400-800M target valuation (forward-looking target, not a commitment)
+    basis: internal
+    confidence: M
+    source: investor-overview register (Financing)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Series B target of $200M+/yr gross margin from SuperMill Two (internal M, The Opportunity).
+
+  - id: financing.investors_institutional
+    value: ARPA-E; The New Industrial Corporation; Builders Vision; JLL; Grantham Foundation; Smart Aviation Futures (Delta Air Lines); Echelon; MUUS Climate Partners; Hugo Neu Corporation
+    unit: null
+    statement: Institutional investors - ARPA-E, The New Industrial Corporation, Builders Vision, JLL, Grantham Foundation, Smart Aviation Futures (Delta Air Lines), Echelon, MUUS Climate Partners, Hugo Neu Corporation
+    basis: internal
+    confidence: H
+    source: Cap table (investor-overview register, Investors)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Confirm each investor has consented to being named publicly.
+
+  - id: financing.investors_individual
+    value: John Rockwell (Element Partners, $800M VC/PE - unverified M); Bill McGlashan (TPG Growth / TPG Rise - published H; keep/remove OPEN); Suzy Ganz (Lion Brothers ~$65M revenue, 450 employees, sold to Avery Dennison 2023; Baltimore Fed branch chair - triangulated M; OPEN vs restoring Scott Jacobs); Nick Sansone (Sansone Group "#5-ranked" - unverified L, NEEDS SOURCE); Colin Bosa (co-founder Axiom; CEO Bosa Properties - published M); Koerner, Sant, Stotmeister (unverified M)
+    unit: null
+    statement: Individual investor biographies (Rockwell, McGlashan, Ganz, Sansone, Bosa, Koerner, Sant, Stotmeister)
+    basis: unverified
+    confidence: M
+    confidence_label: per person - see value
+    source: investor-overview register (Investors), researched 2026-08-22/24
+    as_of: 2026-09-04
+    status: open
+    printed_in: [investor-overview]
+    notes: >-
+      OPEN DECISIONS - (a) McGlashan - Jon Strimling's written feedback recommends removing him; the
+      2026-08-22 Granola call says fine to keep. (b) Ganz - the Granola call prefers restoring Scott Jacobs
+      in her place. Bosa corrected 2026-08-24 - Paul Bosa (nephew) is CEO of Axiom. Sansone ranking has no
+      publisher - source or soften. Re-capture Ganz source URLs.
+
+  # =========================================================================== advisors
+  - id: advisors.bios
+    value: Don Davies (structural engineering; fmr President, Magnusson Klemencic); Paul Hawken (ecology, business & design); Z Smith (high-performance buildings); Alan Organschi (architecture & urban design); Allan Bradshaw (manufacturing & wood industry)
+    unit: null
+    statement: Advisor biographies - Don Davies, Paul Hawken, Z Smith, Alan Organschi, Allan Bradshaw
+    basis: unverified
+    confidence: M
+    source: investor-overview register (Advisors appendix, moved off Team 2026-08-24 per the Lex call)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Named third parties - confirm each has agreed to be listed. Most checkable - Bradshaw's $1.5B Weyerhaeuser fleet overhaul; Hawken's authorship.
+
+  # =========================================================================== collaborators
+  - id: collaborators.external
+    value: Ohio State University (fasteners); USDA Forest Products Laboratory (biodegradability, insect resistance); Auburn University (strength); University of Notre Dame (LCA); Fast + Epp (structural design and testing); Huntington Ingalls Industries (RF transparency); Momentum Glass (window mullions); DARPA (military)
+    unit: null
+    statement: External collaborators - OSU, USDA FPL, Auburn, Notre Dame, Fast + Epp, Huntington Ingalls Industries, Momentum Glass, DARPA
+    basis: internal
+    confidence: H
+    source: Supplied by Alex 2026-08-24 (investor-overview register, Collaborators)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: NAMED THIRD PARTIES - confirm each has agreed to be listed publicly. HII on RF transparency validates material.rf_transparent.
+
+  - id: collaborators.structural_engineering_underway
+    value: Fast + Epp and Don Davies
+    unit: null
+    statement: Structural application engineering underway with Fast + Epp and Don Davies
+    basis: asserted-internal
+    confidence: L
+    source: Alex Lau, 2026-08-23 (SMA register, Demand path-to-structural strip)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Confirm the Fast + Epp engagement is public/citable before wide distribution. Confidence not stated in source; L recorded.
+
+  # =========================================================================== comparison
+  - id: comparison.minimill_build_years
+    value: 2.5-3 (recent builds to 6)
+    unit: years
+    statement: Steel minimill build 2.5-3 years, recent builds stretching to 6 (Sinton 2019-2022; Apple Grove 2021-2027)
+    basis: published
+    confidence: H
+    source: mills comparison.csv - SDI Sinton; Nucor Apple Grove (SMA register, Economics)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Compare mills.sm2.build_years (~2).
+
+  - id: comparison.smelter_build_years
+    value: "~5"
+    unit: years
+    statement: Aluminum smelter build about 5 years; first new US smelter in 45 years (Inola, planned end of decade)
+    basis: published
+    confidence: H
+    source: US DOE 2025 (SMA register, Economics)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: null
+
+  - id: comparison.incumbent_develop_build_years
+    value: 10+
+    unit: years
+    statement: Steel minimill and aluminum smelter develop + build 10+ years (vs SUPERMILL <3)
+    basis: asserted-internal
+    confidence: M
+    source: Alex Lau 2026-08-24; anchors - integrated steel ~10 yr full complex [published], Apple Grove 6 yr announce-to-ship [H], Inola first metal ~2030 with power deal open [H] (SMA register, Appendix comparison)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Provenance label "asserted-internal / derived".
+
+  - id: comparison.minimill_power
+    value: ~300 MVA-class grid connection (one EAF 200-300 MVA); earlier ~150 MW average-draw figure replaced
+    unit: MVA
+    statement: A minimill needs a ~300 MVA-class grid connection; one EAF draws 200-300 MVA with severe flicker (earlier row - ~150 MW class from 350-500 kWh/t melt at ~3M t/yr)
+    basis: published
+    confidence: M
+    confidence_label: M (published/derived)
+    source: Primetals / MHI Spectra / trade engineering sources; melt intensity published [H], site average derived (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    slides: {super-mills-america: [Economics, Appendix comparison]}
+    notes: Connection capacity replaced average draw per Alex. Melt-only derivation understates minimill power (conservative for our contrast).
+
+  - id: comparison.smelter_power
+    value: ">1"
+    unit: GW continuous
+    statement: An aluminum smelter needs >1 GW continuous power
+    basis: published
+    confidence: H
+    source: Canary Media 2026 (Inola) (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Contrast with mills.sm2.power_draw_mw (<4 MW).
+
+  - id: comparison.minimill_volume_m3_yr
+    value: "~347000"
+    unit: m3/yr
+    statement: Minimill output ~347,000 m3/yr (~3M short tons at 7.85 t/m3)
+    basis: derived
+    confidence: H
+    source: 3.0 Mtpa published [H] x 0.907 t/st / 7.85 t/m3 (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: null
+
+  - id: comparison.smelter_volume_m3_yr
+    value: "~278000"
+    unit: m3/yr
+    statement: Smelter output ~278,000 m3/yr (750K t at 2.70 t/m3)
+    basis: derived
+    confidence: H
+    source: 750K t/yr published [H] / 2.70 t/m3 (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: null
+
+  - id: comparison.minimill_capex
+    value: $1.9B (SDI Sinton) to $4.0B (Nucor Apple Grove)
+    unit: USD
+    statement: Minimill capex $1.9B (SDI Sinton) to $4.0B (Nucor Apple Grove, board-approved Feb 2025; was $2.7B)
+    basis: published
+    confidence: H
+    source: SDI PR 2019 / BuildSteel; Nucor updates (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: null
+
+  - id: comparison.smelter_capex
+    value: "~4"
+    unit: USD billion
+    statement: Smelter capex ~$4B (Century/EGA Inola)
+    basis: published
+    confidence: H
+    source: Canary Media / Oklahoma Energy Today 2026 (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: null
+
+  - id: comparison.minimill_ebitda
+    value: $0.6-1.2B/yr over the cycle
+    unit: USD/yr
+    statement: Minimill EBITDA ~$0.6-1.2B/yr over the cycle (SDI $197/t 2024 to $411/t 2021, x 3M t)
+    basis: derived
+    confidence: M
+    source: SDI company-wide per-ton EBITDA published [H/M] applied to a single 3 Mtpa plant (SMA register)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: Company-wide margin used as plant proxy - flag if challenged. Capex 1.5-7.6x annual EBITDA across the cycle (derived M).
+
+  - id: comparison.smelter_ebitda
+    value: "~$340M/yr at record 2025 margins (~17%)"
+    unit: USD/yr
+    statement: Smelter EBITDA ~$340M/yr at record 2025 margins (~17%), cyclical - 750K t x ~$2,700/t = ~$2.0B revenue x ~17%
+    basis: estimated
+    confidence: M
+    confidence_label: M (record-year figure), L (through-cycle)
+    source: Century Aluminum FY2025 - net sales $2.5B, adj EBITDA $425M (SMA register)
+    url: https://centuryaluminum.com/investors/press-releases/press-release-details/2026/Century-Aluminum-Company-Reports-Fourth-Quarter-2025-Results/default.aspx
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [super-mills-america]
+    notes: 2025 was tariff-supported; margins swing to near zero in troughs [M]. Capex ~13x annual EBITDA at 2025 margins ($4B / $340M, derived M).
+
+  - id: comparison.urban_heat_island
+    value: true
+    unit: null
+    statement: Urban heat islands - concrete and asphalt trap heat, making cities hotter
+    basis: published
+    confidence: M
+    source: EPA and equivalent agencies document measurable urban-rural temperature differentials (investor-overview register, Materials, added 2026-08-25)
+    as_of: 2026-09-04
+    status: canonical
+    printed_in: [investor-overview]
+    notes: Deliberately stated without a figure - published values vary with method, time of day and city. A property of the material (thermal mass, albedo), not its manufacture.
