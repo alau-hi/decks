@@ -2,7 +2,7 @@
 // purpose: the Edge middleware imports it as well as the Node APIs.
 export const DECKS = {
   superwood:  { label: 'SUPERWOOD',          prefix: '/intro',                       home: '/intro' },
-  supermills: { label: 'SUPERMILLS America', prefix: '/supermills-america-overview', home: '/supermills-america-overview/', password: 'SUPERMILLS_PASSWORD' },
+  supermills: { label: 'SUPERMILLS America', prefix: '/supermills-deck', home: '/supermills-deck/', password: 'SUPERMILLS_PASSWORD' },
 };
 
 // The deployment's own deck; rows with no better attribution belong to it.

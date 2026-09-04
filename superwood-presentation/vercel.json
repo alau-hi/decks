@@ -1,12 +1,40 @@
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "/", "destination": "/intro", "permanent": false },
-    { "source": "/supermills-america-overview", "destination": "/supermills-america-overview/", "permanent": false }
+    {
+      "source": "/",
+      "destination": "/intro",
+      "permanent": false
+    },
+    {
+      "source": "/supermills-deck",
+      "destination": "/supermills-deck/",
+      "permanent": false
+    },
+    {
+      "source": "/supermills-america-overview",
+      "destination": "/supermills-deck/",
+      "permanent": false
+    },
+    {
+      "source": "/supermills-america-overview/:path*",
+      "destination": "/supermills-deck/:path*",
+      "permanent": false
+    }
   ],
   "rewrites": [
-    { "source": "/intro", "destination": "/" },
-    { "source": "/supermills-america-overview/", "destination": "/supermills-america-overview/slides" }
+    {
+      "source": "/intro",
+      "destination": "/"
+    },
+    {
+      "source": "/supermills-deck/",
+      "destination": "/supermills-america-overview/slides"
+    },
+    {
+      "source": "/supermills-deck/:path+",
+      "destination": "/supermills-america-overview/:path+"
+    }
   ],
   "headers": [
     {
@@ -19,7 +47,7 @@
       ]
     },
     {
-      "source": "/supermills-america-overview/assets/(.*)",
+      "source": "/supermills-deck/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

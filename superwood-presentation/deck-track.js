@@ -8,7 +8,7 @@
    own staging host) the file 404s and nothing runs.
    Sections that share a data-nav name are one slide to the heatmap. */
 (function(){
-  var PREFIXES={supermills:'/supermills-america-overview'}; // mirror of api/_decks.mjs — update both
+  var PREFIXES={supermills:'/supermills-deck'}; // mirror of api/_decks.mjs — update both
   var deck='superwood';
   for(var id in PREFIXES){ var p=PREFIXES[id]; if(location.pathname===p||location.pathname.indexOf(p+'/')===0){deck=id;} }
   var params=new URLSearchParams(location.search);
