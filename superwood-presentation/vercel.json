@@ -17,6 +17,11 @@
       "permanent": false
     },
     {
+      "source": "/supermills-america-overview/",
+      "destination": "/supermills-deck/",
+      "permanent": false
+    },
+    {
       "source": "/supermills-america-overview/:path*",
       "destination": "/supermills-deck/:path*",
       "permanent": false
