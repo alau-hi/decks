@@ -43,6 +43,7 @@ rows=[
 ("elec_t_mw","Electrical: gensets, transformers, switchgear, UPS, busway, copper",50,100,"t/MW","estimated [L]","Genset 30–60 t, 1 MW UPS 10–20 t, transformer 5–8 t"),
 ("mech_t_mw","Mechanical: chillers, fan walls, coolers, piping, water",20,50,"t/MW","estimated [L]",""),
 ("it_t_mw","IT: servers and racks",15,70,"t/MW","estimated [L]","Loaded rack ~1 t; GB200 NVL72 ~1.36 t [H]"),
+("it_enclosure_share","Share of IT mass that is server and equipment enclosures (boxes), replaceable long term",0.4,0.4,"share","estimated [L]; Alex 2026-09-04","Server boxes eventually; the electronics never"),
 ("foundation_share","Share of all concrete that is foundations, footings, piers and equipment pads",0.4,0.5,"share","estimated [L]","Remainder is slab on grade, paving and yard"),
 ("slab_lt","Long-term technical potential: share of slab-on-grade and paving concrete replaceable",0.75,0.75,"share","asserted-internal (Alex, 2026-09-01) [L]","Technical potential, not a plan; no design or code pathway yet"),
 ("fdn_lt","Long-term technical potential: share of foundations, footings, piers and pads replaceable",0.9,0.9,"share","asserted-internal (Alex, 2026-09-01) [L]","Technical potential, not a plan"),
@@ -109,13 +110,13 @@ comp=[
 ("CONTENTS — FIT-OUT AND EQUIPMENT",None,None,None,None,None),
 ("Platforms, walkways, mezzanines, railings, tray supports",lambda c:f"={ref('platform_t_mw',c)}*{IT(c)}","Soon",lambda c:"1","steel","Published design values; IBC 1607 for railings"),
 ("Acoustic barriers, enclosures, HVAC separations",lambda c:f"={ref('acoustic_t_mw',c)}*{IT(c)}","Soon",lambda c:"1","steel","STC / OITC lab and field data"),
-("Racking and equipment supports",lambda c:f"={ref('racking_t_mw',c)}*{IT(c)}","Soon",lambda c:"1","steel","Design values, seismic qualification"),
+("Racking and equipment supports",lambda c:f"={ref('racking_t_mw',c)}*{IT(c)}","Soon",lambda c:"1","steel","A few months of design and load-data development (Alex 2026-09-04)"),
 ("Other tray, containment, doors, misc. metals",lambda c:f"={ref('other_t_mw',c)}*{IT(c)}","Soon",lambda c:f"={ref('share_other',c)}","steel","Partial; UL 10C for rated doors"),
 ("Ducting, plenums and air-distribution sheet metal",lambda c:f"={ref('duct_t_mw',c)}*{IT(c)}","Medium term",lambda c:"1","steel","NFPA 90A / UL 181 noncombustibility expectations for in-airstream components — the hardest gate in this row set"),
 ("Interior finishes, backplanes, trim (admin / office)",lambda c:f"={ref('interior_t_mw',c)}*{IT(c)}","Immediate",lambda c:"1","interior","E84 Class A finish; backplanes UL 94 yellow card (not yet started)"),
 ("Electrical equipment and conductors",lambda c:f"={ref('elec_t_mw',c)}*{IT(c)}",None,lambda c:"0","zero","Gensets, transformers, switchgear, batteries, copper"),
 ("Mechanical equipment, piping, loop water",lambda c:f"={ref('mech_t_mw',c)}*{IT(c)}",None,lambda c:"0","zero","Chillers, fan walls, coolers, piping (ductwork is its own row)"),
-("IT — servers and racks",lambda c:f"={ref('it_t_mw',c)}*{IT(c)}",None,lambda c:"0","zero","Rack masses [H]; aggregate [L]"),
+("IT — servers and racks",lambda c:f"={ref('it_t_mw',c)}*{IT(c)}","Long term",lambda c:f"={ref('it_enclosure_share',c)}","steel","Server and equipment enclosures only (40% of IT mass, estimate); electronics never. Rack masses [H]; aggregate [L]"),
 ]
 r=2; data_rows=[]; precast_row=None
 for name,f,hor,share,rule,note in comp:
@@ -231,4 +232,4 @@ txt=["SUPERWOOD × Data Centers — material mass build-up and replacement model
 for i,s in enumerate(txt,1): Rd.cell(row=i,column=1,value=s)
 Rd.column_dimensions["A"].width=150
 wb.save("materials-mass-and-replacement.xlsx"); print("saved; data rows",first,last,"summary ends",r)
-import json; json.dump({"sheet":SHEET,"first":first,"last":last,"rt":rt,"rx":rx,"hor":hor_rows,"rc":rc,"rsw":rsw,"rsy":rsy,"rsh":rsh,"rshx":rshx,"rnr":rnr,"rnrs":rnrs,"data_rows":data_rows,"precast":precast_row},open("/private/tmp/claude-505/-Users-test-Documents-ClaudeCode/4078cd1a-34e7-43aa-bee2-452b4c4dfdec/scratchpad/model_rows.json","w"))
+import json; json.dump({"sheet":SHEET,"first":first,"last":last,"rt":rt,"rx":rx,"hor":hor_rows,"rc":rc,"rsw":rsw,"rsy":rsy,"rsh":rsh,"rshx":rshx,"rnr":rnr,"rnrs":rnrs,"data_rows":data_rows,"precast":precast_row},open("model_rows.json","w"))

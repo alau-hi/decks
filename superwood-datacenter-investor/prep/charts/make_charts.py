@@ -73,7 +73,7 @@ plt.tight_layout(); fig.savefig("prep/charts/strength.png",dpi=200,facecolor=INK
 
 # ---- Chart 3: what one gigawatt is worth — SUPERWOOD required by horizon, low/high, in plant-years ----
 hor=["Now\nskins, screens, fences","Next\nracks, platforms, barriers","Structural\nframe, roofs, enclosures","Long-term vision\nslab, foundations, server boxes"]
-lo=[1.2,3.5,16,58]; hi=[2.7,18,65,363]   # kt SUPERWOOD required per GW (analyses §4)
+lo=[1.2,3.5,16,58]; hi=[2.7,18,65,362]   # kt SUPERWOOD required per GW (analyses §4)
 fig,a=plt.subplots(figsize=(8.6,4.2),facecolor=INK); clean(a)
 cols=[GOLD,GREEN,WOOD,TEAL]
 for i,(l,h) in enumerate(zip(lo,hi)):

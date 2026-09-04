@@ -157,7 +157,7 @@ s = pres.addSlide(); base(s, "InventWood · The size");
 kicker(s, "The size");
 title(s, "What a GW data center is made of", L, 0.88, 11.9, 27);
 label(s, "By mass", L, 1.8, 4); label(s, "By embodied carbon", 6.7, 1.8, 4);
-const chW = 5.6, chH = chW * 4.3 / 7.0;
+const chW = 5.4, chH = chW * 4.3 / 7.0;
 s.addImage({ path: "prep/charts/campus_mass_narrow.png", x: L, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_carbon_narrow.png", x: 6.7, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_legend.png", x: L, y: 2.08 + chH + 0.03, w: CW, h: CW * LEG_H / LEG_W });
@@ -165,8 +165,8 @@ const sizeL = [["50–80% of the above-ground portion of a data center is steel"
 const sizeR = [["By embodied carbon, steel is about 60% of the building materials", "At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses through the structural horizon."]];
 [[sizeL, L], [sizeR, 6.7]].forEach(([arr, x]) => arr.forEach(([head, sub]) => {
   const y = 2.08 + chH + 0.42;
-  s.addText(head, { x, y, w: 5.9, h: 0.3, fontFace: SANS, fontSize: 11.5, bold: true, color: CREAM, margin: 0 });
-  body(s, sub, x, y + 0.3, 5.9, 0.5, 8.5, MUTED);
+  s.addText(head, { x, y, w: 5.9, h: 0.32, fontFace: SANS, fontSize: 13, bold: true, color: CREAM, margin: 0 });
+  body(s, sub, x, y + 0.34, 5.9, 0.62, 10, DIM);
 }));
 note(s, "Company estimate for a 1 GW IT-load campus, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, secondary, conf M); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate. Model: analyses/materials-mass-and-replacement.xlsx.", 6.78, 0.3);
 
@@ -180,7 +180,7 @@ const worthRows = [
   ["Now — skins, screens, fences", "3.3–12 kt", "1.2–2.7 kt (1.4–3.1M sf)", "1.4–3.1 yr of SuperMill One"],
   ["Next — racks, platforms, barriers", "12–30 kt", "3.5–18 kt", "0.1–0.6 yr of SuperMill Two"],
   ["Structural — frame, roofs, enclosures", "53–108 kt", "16–65 kt", "0.5–2.1 yr of SuperMill Two"],
-  ["Long-term vision — slab, foundations, server boxes", "1,002–2,089 kt", "58–363 kt", "1.9–12 yr of SuperMill Two"],
+  ["Long-term vision — slab, foundations, server boxes", "1,002–2,089 kt", "58–362 kt", "1.8–12 yr of SuperMill Two"],
 ];
 const wx = [6.7, 8.95, 10.15, 11.5], ww = [2.15, 1.1, 1.25, 1.3];
 worthCols.forEach((c, i) => s.addText(c.toUpperCase(), { x: wx[i], y: 1.9, w: ww[i], h: 0.45, fontFace: SANS, fontSize: 7.5, bold: true, color: BRIGHT, charSpacing: 1, margin: 0, valign: "bottom" }));

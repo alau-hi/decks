@@ -36,3 +36,7 @@ of field; near cut end faces the camera at a low three-quarter angle. Same espre
 ## Revision 2 (Alex, 2026-09-04): SUPERWOOD-only beam with boards stacked flat
 
 Same camera. The beam is about twenty quarter-inch boards stacked flat one on top of another and bonded, so the square-cut end shows crisp horizontal, evenly spaced lamination lines across its full width. Captions removed from all three beams; the table headers label the two sides.
+
+## Revision 3 (Alex, 2026-09-04): image-to-image from the hybrid render
+
+SUPERWOOD-only beam generated from the hybrid beam job as reference ("keep this image exactly the same except..."): same camera and direction, whole beam in the dark dense wood of the hybrid plates, about twenty quarter-inch boards stacked flat.

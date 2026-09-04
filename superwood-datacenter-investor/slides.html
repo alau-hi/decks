@@ -218,6 +218,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
 .toggle button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .toggle .hint{font-size:.55rem;letter-spacing:.14em;color:var(--muted);padding:0 .7em}
 .view[hidden]{display:none!important}
+#campus .li{margin:0}#campus .li h3{font-size:clamp(1.15rem,1.6vw,1.5rem);line-height:1.2;margin-bottom:.7rem;font-family:'Fraunces',serif;font-weight:400}#campus .li p{font-size:clamp(.9rem,1.1vw,1.05rem);line-height:1.55;color:var(--cream-dim)}
 @media (max-width:900px), (orientation:portrait){.beams{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
@@ -305,7 +306,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
     <div class="kicker rv">The size</div>
     <h2 class="rv">What a GW data center is made of</h2>
     <div class="toggle rv" role="tablist" aria-label="View"><button role="tab" aria-selected="true" data-view="mass">By mass</button><button role="tab" aria-selected="false" data-view="carbon">By embodied carbon</button><span class="hint">M / C</span></div>
-    <div class="split rv" style="grid-template-columns:2.2fr 1fr">
+    <div class="split rv" style="grid-template-columns:1.7fr 1fr;align-items:center">
       <figure><img class="view" data-view="mass" src="assets/chart_campus_mass.png" alt="Bar chart of campus mass by component with SUPERWOOD-addressable share by horizon" loading="lazy"><img class="view" data-view="carbon" src="assets/chart_campus_carbon.png" alt="Bar chart of embodied carbon by component" loading="lazy" hidden></figure>
       <div>
         <div class="view" data-view="mass"><div class="li" style="grid-template-columns:1fr"><div><h3>50–80% of the above-ground portion of a data center is steel</h3><p>Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server boxes eventually — the electronics never.</p></div></div></div>
@@ -329,7 +330,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
           <tr><td>Now — skins, screens, fences</td><td>3.3–12 kt</td><td>1.2–2.7 kt (1.4–3.1M sf)</td><td class="gold">1.4–3.1 yr of SuperMill One</td></tr>
           <tr><td>Next — racks, platforms, barriers</td><td>12–30 kt</td><td>3.5–18 kt</td><td class="gold">0.1–0.6 yr of SuperMill Two</td></tr>
           <tr><td>Structural — frame, roofs, enclosures</td><td>53–108 kt</td><td>16–65 kt</td><td class="gold">0.5–2.1 yr of SuperMill Two</td></tr>
-          <tr><td>Long-term vision — slab, foundations, server boxes</td><td>1,002–2,089 kt</td><td>58–363 kt</td><td class="gold">1.9–12 yr of SuperMill Two</td></tr>
+          <tr><td>Long-term vision — slab, foundations, server boxes</td><td>1,002–2,089 kt</td><td>58–362 kt</td><td class="gold">1.8–12 yr of SuperMill Two</td></tr>
         </tbody>
       </table>
     </div>

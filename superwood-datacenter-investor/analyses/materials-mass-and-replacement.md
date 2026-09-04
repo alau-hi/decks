@@ -1,6 +1,6 @@
 # Material mass in a data center — the build-up, and how much SUPERWOOD can replace
 
-Date: 2026-09-01 (v4: long-term concrete shares set to Alex's stated technical potential). Status: **estimate**.
+Date: 2026-09-04 (v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
 Every table below is generated from the live model [materials-mass-and-replacement.xlsx](materials-mass-and-replacement.xlsx)
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
@@ -15,9 +15,9 @@ Low and high columns are whole scenarios (all-low inputs, all-high inputs), not 
 | Horizon | What it means | Product and plant | Gate |
 |---|---|---|---|
 | **Immediate** | Replacements shipping now | SuperMill One boards to 8" × 16' × 3/8" | None beyond E84 Class A where a finish rating applies |
-| **Soon** | Non-structural items behind one scoped test or listing | SuperMill One, then SuperMill Two | Design values, STC/OITC, IBC 1607, UL 10C, seismic qualification |
+| **Soon** | Non-structural items behind one scoped test program — racks, platforms, barriers, doors | SuperMill One, then SuperMill Two | A scoped test program per application; racks are a few months of development |
 | **Medium term** | Structural steel (primary and roof), roof trusses and roofs, ducting, enclosures | SuperMill Two boards and veneers | Mass-timber qualification pathway, ICC-ES, E119, NFPA 285, FM acceptance; NFPA 90A / UL 181 for ducting |
-| **Long term** | Concrete: 75% of slab-on-grade and paving, 90% of foundations, footings, piers and pads, with the rebar in each | ChipMill-scale products | Stated technical potential (Alex, 2026-09-01); no design or code pathway yet |
+| **Long term** | Concrete: 75% of slab-on-grade and paving, 90% of foundations, footings, piers and pads, with the rebar in each; server and equipment enclosures (40% of IT mass, estimate) — never the electronics | ChipMill-scale products | Stated technical potential (Alex, 2026-09-01 and 2026-09-04); no design or code pathway yet |
 
 ## 1. Assumptions that drive the build-up
 
@@ -107,13 +107,13 @@ the SUPERWOOD mass required.
 |---|---|---|---|---|---|---|---|
 | Platforms, walkways, mezzanines, railings, tray supports | — | 100% | — | — | 5.0–15 kt | 1.5–9.0 kt | Published design values; IBC 1607 for railings |
 | Acoustic barriers, enclosures, HVAC separations | — | 100% | — | — | 2.0–5.0 kt | 0.6–3.0 kt | STC / OITC lab and field data |
-| Racking and equipment supports | — | 100% | — | — | 2.0–5.0 kt | 0.6–3.0 kt | Design values, seismic qualification |
+| Racking and equipment supports | — | 100% | — | — | 2.0–5.0 kt | 0.6–3.0 kt | A few months of design and load-data development (Alex 2026-09-04) |
 | Other tray, containment, doors, misc. metals | — | 50% | — | — | 2.5–5.0 kt | 0.8–3.0 kt | Partial; UL 10C for rated doors |
 | Ducting, plenums and air-distribution sheet metal | — | — | 100% | — | 3.0–8.0 kt | 0.9–4.8 kt | NFPA 90A / UL 181 noncombustibility expectations for in-airstream components — the hardest gate in this row set |
 | Interior finishes, backplanes, trim (admin / office) | 100% | — | — | — | 1.0–3.0 kt | 0.1–0.4 kt | E84 Class A finish; backplanes UL 94 yellow card (not yet started) |
 | Electrical equipment and conductors | — | — | — | — | — | — | Gensets, transformers, switchgear, batteries, copper |
 | Mechanical equipment, piping, loop water | — | — | — | — | — | — | Chillers, fan walls, coolers, piping (ductwork is its own row) |
-| IT — servers and racks | — | — | — | — | — | — | Rack masses [H]; aggregate [L] |
+| IT — servers and racks | — | — | — | 40% | 6.0–28 kt | 1.8–17 kt | Server and equipment enclosures only (40% of IT mass, estimate); electronics never. Rack masses [H]; aggregate [L] |
 
 ## 4. Roll-up by horizon (per 1 GW campus)
 
@@ -122,18 +122,18 @@ the SUPERWOOD mass required.
 | Immediate — skins, screens, fences, interiors, backplanes | 3.3–12 kt | 1.2–2.7 kt (1.4–3.1M sf) | 1.4–3.1 yr of SuperMill One |
 | Soon — platforms, railings, barriers, racking, doors | 12–30 kt | 3.5–18 kt | 0.1–0.6 yr of SuperMill Two |
 | Medium term — structural steel, roof trusses and roofs, ducting, enclosures | 53–108 kt | 16–65 kt | 0.5–2.1 yr of SuperMill Two |
-| Long term — slab, paving, foundations and their rebar (technical potential) | 996–2,061 kt | 56–346 kt | 1.8–11.0 yr of SuperMill Two |
-| **Cumulative** | **1,064–2,211 kt** | **76–431 kt** | **2.4–13.8 yr of SuperMill Two** |
-| Not replaced by SUPERWOOD | 321–664 kt | | about 23% of total mass |
+| Long term — slab, paving, foundations and their rebar (technical potential) | 1,002–2,089 kt | 58–362 kt | 1.8–11.6 yr of SuperMill Two |
+| **Cumulative** | **1,070–2,239 kt** | **78–448 kt** | **2.5–14.3 yr of SuperMill Two** |
+| Not replaced by SUPERWOOD | 315–636 kt | | 22–23% of total mass |
 
 - Through the medium term SUPERWOOD addresses **68–150 kt** of incumbent
   material — essentially all the steel above the slab, about
   4.9–5.2% of total campus mass.
-  The long-term concrete rows are what move the total: with them, the ceiling is **76.8–76.9% of total
+  The long-term concrete rows are what move the total: with them, the ceiling is **77.2–77.9% of total
   campus mass**. Those shares (75% of slab and paving, 90% of foundations) are stated technical potential, not an
   engineered plan, and the whole difference between the two figures rests on them.
 - What stays: the remaining concrete, servers, gensets, transformers, switchgear, batteries, chillers, copper, loop
-  water — about 23% of total mass.
+  water — 22–23% of total mass.
 - Plant math: one gigawatt campus's immediate skins are 1.4–3.1M sf, **1.4–3.1 years
   of SuperMill One's entire output**. The medium-term structural horizon alone is 0.5–2.1 years of SuperMill
   Two per gigawatt — two or three gigawatts of campus absorb the plant for years, which is the offtake argument and
@@ -151,13 +151,13 @@ the concrete factor, which is conservative.
 | Immediate (steel) | 6.0–22 kt CO₂e | 0.6–1.3 kt | **5.4–21 kt** | 0.7–7.3 kt | 1.6–3.5 kt |
 | Soon (steel) | 21–54 kt CO₂e | 1.7–9.0 kt | **19–45 kt** | 2.9–12 kt | 4.5–23 kt |
 | Medium term (steel) | 95–194 kt CO₂e | 8.0–32 kt | **87–162 kt** | 13–43 kt | 21–84 kt |
-| Long term (foundation concrete) | 120–247 kt CO₂e | 28–173 kt | **92–75 kt** | n/a | 73–449 kt |
+| Long term (foundation concrete) | 120–251 kt CO₂e | 29–181 kt | **91–69 kt** | n/a | 75–471 kt |
 
 Against recycled (EAF) steel the avoided figure is far lower, so any claim must state its baseline.
 
 ## 6. Sensitivities — what moves the answer most
 
-1. **Long-term concrete.** The long-term rows are 996–2,061 kt of concrete and rebar on stated technical
+1. **Long-term concrete.** The long-term rows are 1,002–2,089 kt of concrete and rebar on stated technical
    potential (75% of slab and paving, 90% of foundations) and a 0.05–0.15 substitution factor, none of it engineered.
    They are the only rows that change the total-mass share materially, and the least evidenced. Present them as
    technical potential and say so on the slide.
@@ -192,15 +192,3 @@ Against recycled (EAF) steel the avoided figure is far lower, so any claim must 
   Concrete 0.12 kg CO₂e/kg is a typical ready-mix cradle-to-gate value [conf: M].
 - Unit masses for gensets, UPS, transformers, chillers, metal panel, fencing, ducting, rebar ratios, foundation share:
   general industry ranges, not individually sourced [conf: L]. Replace with vendor or takeoff data before external use.
-
-## Update 2026-09-04 — racks now, server enclosures later (Alex)
-
-Two horizon changes, applied to the deck charts (`prep/charts/make_charts.py`) but not yet to the workbook:
-
-- **Racking and equipment supports** stay in *Soon*: racks are a few months of development away (Alex, later on 2026-09-04, reversing an earlier same-day move to Immediate).
-- **IT — servers and racks**: server enclosures ("boxes"), taken as 40% of IT mass [estimate], become addressable in the
-  *Long term*; the electronics never are. The remaining 60% (boards, drives, power supplies, cabling) stays "not replaced".
-
-Roll-up effect per GW (steel substitution 0.3–0.6): Immediate and Soon unchanged from the tables above; Long term becomes
-1,002–2,089 kt incumbent, SUPERWOOD 58–363 kt.
-Structural unchanged. Regenerate the workbook and this file from `build_model.py` / `gen_md.py` when next touched.
