@@ -60,14 +60,11 @@ s.background = { path: "prep/campus_hero.jpg" };
 s.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: W, h: H, fill: { color: "150E08", transparency: 42 } });
 s.addShape(pres.ShapeType.rect, { x: 0, y: 3.9, w: W, h: 3.6, fill: { color: "120C07", transparency: 22 } });
 s.addImage({ path: "prep/inventwood_logo.png", x: 0.62, y: 4.15, w: 4.6, h: 4.6 * 216 / 1473 });
-s.addText([
-  t("SUPERWOOD for Data Centers — ", {}),
-  t("turbocharging the wood hyperscalers already build with", { italic: true, color: BRIGHT }),
-], { x: 0.72, y: 4.95, w: 11.8, h: 1.45, fontFace: SERIF, fontSize: 34, color: CREAM, margin: 0, valign: "top" });
+s.addText("SUPERWOOD for Data Centers", { x: 0.72, y: 5.0, w: 11.8, h: 0.9, fontFace: SERIF, fontSize: 40, color: CREAM, margin: 0, valign: "top" });
 s.addText([
   t("Companion to the SUPERMILLS Investor Overview", { color: CREAM }),
   t("\nSeptember 2026", { bold: true, color: BRIGHT }),
-], { x: 0.72, y: 6.42, w: 8, h: 0.7, fontFace: SANS, fontSize: 14, margin: 0, valign: "top" });
+], { x: 0.72, y: 6.1, w: 8, h: 0.7, fontFace: SANS, fontSize: 14, margin: 0, valign: "top" });
 s.addText("INVENTWOOD  ·  CONFIDENTIAL", { x: W - 4.3, y: 7.0, w: 3.6, h: 0.3, fontFace: SANS, fontSize: 9, color: DIM, charSpacing: 3, align: "right", margin: 0 });
 s.addText("Concept rendering", { x: W - 2.3, y: 0.25, w: 1.9, h: 0.25, fontFace: SANS, fontSize: 8, italic: true, color: "E8DECB", align: "right", margin: 0 });
 
