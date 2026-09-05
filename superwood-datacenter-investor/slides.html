@@ -13,7 +13,7 @@
 :root{--ink:#1f150c;--panel:#261a0f;--panel2:#2e2113;--cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;--wood:#b87d44;--wood-bright:#cda165;--gold:#e2b877;--line:rgba(228,210,180,.14);--green:#8fb356;--teal:#5ea9a2;--rose:#c9706b;--ink-deep:#1a1209;--dock:9.5rem}
 *{margin:0;padding:0;box-sizing:border-box}
 html{font-size:clamp(15px,.55vw + .55vh + 4.5px,32px)}
-@media (pointer:fine){html{font-size:clamp(13.5px,min(.55vw + .55vh + 4.5px,1.19vw),32px)}}
+@media (pointer:fine){html{font-size:clamp(15px,min(.55vw + .55vh + 4.5px,1.25vw),32px)}}
 body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .deck{height:100vh;height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
 .deck::-webkit-scrollbar{width:0}
@@ -93,6 +93,11 @@ td:first-child{color:var(--cream);font-weight:600}
 .cbars .saar span{position:absolute;left:0;bottom:.2rem;font-size:max(.68rem,11px);color:var(--wood-bright)}
 .cbars figcaption{margin-top:1.9rem}
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){.cbars .cols{height:9rem;gap:.15rem}.cbars .cb b{font-size:0}.cbars .cb span{font-size:0}.cbars .cb:nth-child(1) span,.cbars .cb:nth-child(7) span,.cbars .cb.t12 span{font-size:max(.55rem,10px)}}
+#props .split{grid-template-columns:1fr 1.55fr;gap:2.4rem;align-items:center}
+#props .props{gap:1.05rem 1.3rem}#props .props img{width:2rem;height:2rem;margin-top:.15rem}
+#props .props h4{font-size:max(1.02rem,13px);letter-spacing:.06em}#props .props p{font-size:max(.95rem,12.5px);line-height:1.45;color:var(--cream-dim)}
+#props h3{font-size:1.65rem!important;margin-top:1.2rem!important}
+@media (max-width:1150px){.ladder .lhead .stages span{font-size:0!important;letter-spacing:0}.ladder .lhead .stages span::before{content:attr(data-s);font-size:max(.62rem,11px);letter-spacing:.06em}}
 /* dividers */
 .div .scrim{background:rgba(18,12,7,.35)}
 .div .kicker{margin-bottom:.8rem}.div h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}.div .lead{margin-top:.8rem}

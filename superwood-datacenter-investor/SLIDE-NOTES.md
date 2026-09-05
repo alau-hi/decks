@@ -40,6 +40,7 @@ better than regular wood"; no approvals/standards detail; no dated milestones; d
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-05: desktop type floor raised to 15px (root cap 1.25vw) so ~1000px windows read; slide 9 type and icons enlarged to fill the frame; ladder stage headers use short labels below 1150px.
 - 2026-09-05: slides 7 (Process) and 8 (Strength) removed at Alex's request; deck is 19 slides.
 - 2026-09-05: slide 3 rebuilt around the Census construction-spending headline and growth projections; four new register facts (Census, JLL, McKinsey/JLL, Dell'Oro).
 - 2026-09-05: horizon taxonomy fixed (Alex): Immediate (shipping) / Soon (1–3 years, straightforward applications
