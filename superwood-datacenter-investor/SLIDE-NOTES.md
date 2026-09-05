@@ -16,8 +16,8 @@ better than regular wood"; no approvals/standards detail; no dated milestones; d
 | 2 | Thesis | State the thesis in one line, three supporting cards | Wording: "We help data centers decarbonize and improve their impact on communities, while they accelerate SUPERWOOD's journey from premium skins into structural applications" |
 | 3 | The buyer | Data centers are steel-intensive, supply-chain challenged, highly repeatable | Labels exactly: Steel-intensive · Supply-chain challenged · Highly repeatable; tons, not t/kt; steel-frame construction render, not a wood render |
 | 4 | Turbocharge | Hyperscalers already build structures with wood; we turbocharge wood | Title verbatim ("…building structures with wood. We turbocharge wood."); Microsoft and Meta logos and their own project photos (credited); beams: glulam under the mass-timber header, hybrid and thin SUPERWOOD beams under the SUPERWOOD header; thin beam shown as stacked 1/4" boards, same camera and color as the hybrid; no beam captions; no column labels ("on the public record", "what SUPERWOOD adds"); code path: certifiable under wood standards today, SUPERWOOD-specific standards the goal; larger table text |
-| 5 | Data center | What a GW data center is made of, by mass and by embodied carbon | Title "What a GW data center is made of"; toggle mass/carbon (web; PPTX side by side); rows must not shift between views; headline "50–80% of the above-ground portion of a data center is steel" (band covers metal-panel and tilt-up walls); do NOT mention concrete's share of total mass, the 5%-of-total line, or "only the long-term vision moves the total"; right-hand notes large and legible |
-| 6 | Worth | What one gigawatt of data center is worth to InventWood | No dollar values; incumbent replaced, SUPERWOOD required, plant-years; larger table text; racks in "next" |
+| 5 | Data center | What a 1 GW data center is made of, by mass and by embodied carbon | Title "What a 1 GW data center is made of" (Alex 2026-09-05); web shows 5 horizon groups by default with "Show all 17 rows" (key D); PPTX keeps the full charts; toggle mass/carbon (web; PPTX side by side); rows must not shift between views; headline "50–80% of the above-ground portion of a data center is steel" (band covers metal-panel and tilt-up walls); do NOT mention concrete's share of total mass, the 5%-of-total line, or "only the long-term vision moves the total"; right-hand notes large and legible |
+| 6 | Worth | How much SUPERWOOD could a 1 GW data center require? | Title per Alex 2026-09-05; table is the primary element, chart secondary (hidden on phones, table stacks as cards); mill capacities as a legend line; no dollar values; incumbent replaced, SUPERWOOD required, plant-years; larger table text; racks in "next" |
 | 7 | Process | We unlock the power of cellulose | Kept to the 2026-09-02 wording; the three manufacturing specifics (off-the-shelf equipment, food-grade solution, near-zero wastewater) removed |
 | 8 | Strength | Production SUPERWOOD exceeds A36 steel in tension at one-sixth the weight | Claim title, no stat tiles; chart with A36 shown as a 400–550 MPa range; derivation card |
 | 9 | Properties | Properties that matter on a data center | Fire wording per convention; no unsourced multipliers (100×/400×, 3× oak) |
@@ -41,6 +41,12 @@ better than regular wood"; no approvals/standards detail; no dated milestones; d
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-05: critique follow-through (all six actions). Slide 6 rebuilt (table primary; chart legend line; phone cards);
+  slide 5 grouped by horizon with detail on demand; laptop root floor 13.5px and an 11px floor on small roles; dock and
+  pager precede the deck in the DOM, non-current slides are inert and focus follows navigation; slide 13 kicker fixed;
+  slide 17 note scrim; slide 4 kicker "The buyer · The fit"; phone view keeps the Confidential mark; ladder headers use
+  short labels on phones; second InventWood mark hidden on the close slide. Parked: slide 2 vs 6 SuperMill Two years;
+  unqualified "stronger than steel" on slides 2, 7, 9.
 - 2026-09-04 (later): copy pass — doubled phrase on slide 9 fixed; slide 3 title agreement; internal confidence markers removed from slide notes; ton/tonne unified to tons on slide 18; unsourced "what hyperscalers increasingly buy" removed from the EAF bar; slide 16 dock label "Microsoft, Meta"; toggle hint reads "Keys M / C".
 - 2026-09-04 (later): Impeccable polish pass on the web deck — deep links re-align after the fit zoom runs (fixes
   misaligned landings at laptop sizes); the dock sits on a translucent pill so its labels read over photographs;

@@ -110,7 +110,7 @@ note(s, "Steel and concrete intensities: arXiv 2509.21312 (Sep 2025), citing Has
 
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
-kicker(s, "The buyer");
+kicker(s, "The buyer · The fit");
 title(s, [t("Hyperscalers are already building structures with wood. We "), gold("turbocharge"), t(" wood.")], L, 0.88, 12.2, 23);
 const pub = [
   ["prep/logo_microsoft.png", 1688 / 360, "prep/ms_clt_datacenter.jpg", "Photo: Microsoft", "Two Northern Virginia datacenters with cross-laminated timber floors on a steel frame — about 35% less embodied carbon than conventional steel construction, 65% less than precast. Gensler; Thornton Tomasetti.", "Microsoft Source, Nov 2024"],
@@ -156,7 +156,7 @@ note(s, "Sources: news.microsoft.com, Nov 2024; Thornton Tomasetti project page;
 // ---------- 5 · WHAT A GW DATA CENTER IS MADE OF ----------
 s = pres.addSlide(); base(s, "InventWood · The size");
 kicker(s, "The size");
-title(s, "What a GW data center is made of", L, 0.88, 11.9, 27);
+title(s, "What a 1 GW data center is made of", L, 0.88, 11.9, 27);
 label(s, "By mass", L, 1.8, 4); label(s, "By embodied carbon", 6.7, 1.8, 4);
 const chW = 5.4, chH = chW * 4.3 / 7.0;
 s.addImage({ path: "prep/charts/campus_mass_narrow.png", x: L, y: 2.08, w: chW, h: chH });
@@ -174,7 +174,7 @@ note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the co
 // ---------- 6 · WHAT ONE GIGAWATT IS WORTH ----------
 s = pres.addSlide(); base(s, "InventWood · The size");
 kicker(s, "The size");
-title(s, "What one gigawatt of data center is worth to InventWood", L, 0.88, 11.9, 27);
+title(s, "How much SUPERWOOD could a 1 GW data center require?", L, 0.88, 11.9, 27);
 s.addImage({ path: "prep/charts/worth.png", x: L, y: 2.15, w: 5.0, h: 5.0 * 4.2 / 8.6 });
 const worthCols = ["Horizon", "Incumbent replaced", "SUPERWOOD required", "Plant-years"];
 const worthRows = [

@@ -13,7 +13,7 @@
 :root{--ink:#1f150c;--panel:#261a0f;--panel2:#2e2113;--cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;--wood:#b87d44;--wood-bright:#cda165;--gold:#e2b877;--line:rgba(228,210,180,.14);--green:#8fb356;--teal:#5ea9a2;--rose:#c9706b;--ink-deep:#1a1209;--dock:9.5rem}
 *{margin:0;padding:0;box-sizing:border-box}
 html{font-size:clamp(15px,.55vw + .55vh + 4.5px,32px)}
-@media (pointer:fine){html{font-size:clamp(11px,min(.55vw + .55vh + 4.5px,1.19vw),32px)}}
+@media (pointer:fine){html{font-size:clamp(13.5px,min(.55vw + .55vh + 4.5px,1.19vw),32px)}}
 body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .deck{height:100vh;height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
 .deck::-webkit-scrollbar{width:0}
@@ -23,10 +23,11 @@ section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-s
 h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01em;line-height:1.08}
 h2{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:340;text-wrap:balance;margin:.25rem 0 1.1rem}
 h2 em,h1 em{font-style:italic;color:var(--gold)}
-.kicker{font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright)}
+.kicker{font-size:max(.72rem,11px);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright)}
 .lead{font-size:clamp(.9rem,1.25vw,1.05rem);line-height:1.55;color:var(--cream-dim);font-weight:300;max-width:60ch}
 .lead b,.li b,p b{color:var(--cream);font-weight:600}
-.note{font-size:.74rem;line-height:1.5;color:var(--cream-dim);font-style:normal;margin-top:1rem;max-width:95ch}
+.note{font-size:max(.74rem,11px);line-height:1.5;color:var(--cream-dim);font-style:normal;margin-top:1rem;max-width:80ch}
+.wrap > .card p{max-width:80ch}
 .rv{opacity:0;transform:translateY(1.4rem);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .in .rv{opacity:1;transform:none}
 section.noanim .rv{transition:none}
@@ -36,13 +37,14 @@ section.noanim .rv{transition:none}
 img{max-width:100%;display:block}
 /* chrome */
 .brand{position:fixed;bottom:1.1rem;right:calc(var(--dock) + .4rem);z-index:95;height:1.5rem;width:max-content}.brand img{height:100%;width:auto}
-body.on-cover .brand{display:none}
-.conf{position:fixed;bottom:1.1rem;left:1.6rem;z-index:90;font-size:.62rem;letter-spacing:.28em;color:var(--muted);background:rgba(20,13,7,.7);padding:.3em .8em;border-radius:999px;text-transform:uppercase}
+body.on-cover .brand,body.on-close .brand{display:none}
+section:focus{outline:none}
+.conf{position:fixed;bottom:1.1rem;left:1.6rem;z-index:90;font-size:max(.62rem,11px);letter-spacing:.28em;color:var(--muted);background:rgba(20,13,7,.7);padding:.3em .8em;border-radius:999px;text-transform:uppercase}
 .pager{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:.5rem;background:rgba(20,13,7,.72);padding:.25rem .35rem;border-radius:999px;backdrop-filter:blur(3px);border:1px solid var(--line)}
 .pager button{background:transparent;border:0;color:var(--cream-dim);font:500 .66rem 'Inter',sans-serif;letter-spacing:.06em;padding:.35em .9em;border-radius:999px;cursor:pointer;white-space:nowrap}
 .pager button:hover{color:var(--ink-deep);background:var(--wood-bright)}
 .pager button:disabled{opacity:.3;cursor:default;background:transparent;color:var(--cream-dim)}
-.pager .pn{font-size:.66rem;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums;padding:0 .3em}
+.pager .pn{font-size:max(.66rem,11px);letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums;padding:0 .3em}
 /* right-hand dock */
 nav.dock{position:fixed;right:1.1rem;top:50%;transform:translateY(-50%);z-index:96;display:flex;flex-direction:column;gap:.12rem;align-items:flex-end;max-height:92vh;overflow:hidden;background:rgba(20,13,7,.55);padding:.5rem .3rem;border-radius:1rem;backdrop-filter:blur(4px)}
 nav.dock button{border:0;background:transparent;cursor:pointer;font:500 .66rem 'Inter',sans-serif;letter-spacing:.1em;color:var(--muted);opacity:.6;padding:.14em .55em;border-radius:999px;transition:color .25s,opacity .25s,background .25s;text-align:right;white-space:nowrap}
@@ -56,15 +58,15 @@ nav.dock i{display:block;width:1.6rem;height:1px;background:var(--line);margin:.
 .card{background:var(--panel);border-radius:.6rem;padding:1rem 1.1rem}
 .card.tint{background:var(--panel2)}
 .card h3{font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem;color:var(--cream);margin-bottom:.35rem}
-.card p,.li p{font-size:.8rem;line-height:1.45;color:var(--muted)}
+.card p,.li p{font-size:max(.8rem,11px);line-height:1.45;color:var(--muted)}
 .num{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--wood);line-height:1}
 .li{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:start;margin-bottom:.9rem}
 .li .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--gold);margin-top:.45rem}
 .li h3{font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;margin-bottom:.15rem}
-figure{margin:0}figcaption{font-size:.72rem;color:var(--muted);font-style:italic;margin-top:.4rem}
+figure{margin:0}figcaption{font-size:max(.72rem,11px);color:var(--muted);font-style:italic;margin-top:.4rem}
 .imgbox{border-radius:.5rem;overflow:hidden;background:#000}.imgbox img{width:100%;height:100%;object-fit:cover}
-table{border-collapse:collapse;width:100%;font-size:.76rem}
-th{text-align:left;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;padding:.4rem .5rem .5rem 0;border-bottom:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:max(.76rem,11px)}
+th{text-align:left;font-size:max(.7rem,11px);letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;padding:.4rem .5rem .5rem 0;border-bottom:1px solid var(--line)}
 td{padding:.55rem .5rem .55rem 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--cream-dim);line-height:1.4}
 td:first-child{color:var(--cream);font-weight:600}
 /* cover */
@@ -75,36 +77,37 @@ td:first-child{color:var(--cream);font-weight:600}
 #s1 h1{font-size:clamp(1.9rem,3.8vw,3.1rem);color:var(--cream);font-weight:340;max-width:24ch;line-height:1.1}#s1 h1 em{color:var(--gold)}
 #s1 .coverlogo{display:block;height:clamp(40px,5.2vw,68px);width:auto;margin:0 0 1.6rem -.2em}
 #s1 .covline{margin-top:1.4rem;font-size:clamp(.95rem,1.5vw,1.25rem);font-weight:600;letter-spacing:.03em;color:var(--cream)}#s1 .covline b{display:block;color:var(--wood-bright);font-weight:700;margin-top:.15em}
-#s1 .tag{position:absolute;top:1.2rem;right:calc(var(--dock) + .4rem);z-index:3;font-size:.7rem;font-style:italic;color:var(--cream-dim)}
+#s1 .tag{position:absolute;top:1.2rem;right:calc(var(--dock) + .4rem);z-index:3;font-size:max(.7rem,11px);font-style:italic;color:var(--cream-dim)}
+#sinks .note{background:rgba(20,13,7,.6);padding:.6rem .9rem;border-radius:.45rem;display:inline-block}
 /* dividers */
 .div .scrim{background:rgba(18,12,7,.35)}
 .div .kicker{margin-bottom:.8rem}.div h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}.div .lead{margin-top:.8rem}
 /* process flow */
 .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.8rem;align-items:start;margin-top:1rem}
 .flow .arr{font-family:'Fraunces',serif;color:var(--gold);font-size:1.6rem;align-self:center}
-.flow h3{font-family:'Inter',sans-serif;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.35rem}
-.flow p{font-size:.8rem;color:var(--muted);line-height:1.4;min-height:3.2em}
+.flow h3{font-family:'Inter',sans-serif;font-size:max(.76rem,11px);letter-spacing:.08em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.35rem}
+.flow p{font-size:max(.8rem,11px);color:var(--muted);line-height:1.4;min-height:3.2em}
 .flow .imgbox{aspect-ratio:1.55;margin-top:.6rem}
 /* properties */
 .props{display:grid;grid-template-columns:auto 1fr;gap:.55rem 1rem;align-items:start}
 .props img{width:1.4rem;height:1.4rem;margin-top:.1rem}
-.props h4{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
-.props p{font-size:.76rem;color:var(--muted);line-height:1.35}
+.props h4{font-family:'Inter',sans-serif;font-size:max(.78rem,11px);letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.props p{font-size:max(.76rem,11px);color:var(--muted);line-height:1.35}
 /* tiles */
 .tiles{display:grid;gap:.8rem;margin-top:1rem}
 .tiles.n7{grid-template-columns:repeat(7,1fr)}.tiles.n6{grid-template-columns:repeat(6,1fr)}
 .tiles .imgbox{aspect-ratio:1}
-.tiles p{font-size:.76rem;color:var(--cream-dim);text-align:center;margin-top:.45rem;line-height:1.3}
-.tiles .gate{font-size:.7rem;color:var(--muted);text-align:center;margin-top:.25rem;line-height:1.3}
-.tiles .gate b{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.1rem}
+.tiles p{font-size:max(.76rem,11px);color:var(--cream-dim);text-align:center;margin-top:.45rem;line-height:1.3}
+.tiles .gate{font-size:max(.7rem,11px);color:var(--muted);text-align:center;margin-top:.25rem;line-height:1.3}
+.tiles .gate b{display:block;font-size:max(.7rem,11px);letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.1rem}
 .cards4 .card{display:grid;grid-template-columns:5.2rem 1fr;gap:.9rem;align-items:start}
 .cards4 .card .imgbox{aspect-ratio:1}
 /* customers */
-.band{background:var(--panel2);border-radius:.45rem;padding:.55rem 1rem;display:grid;grid-template-columns:11rem 1fr;gap:1rem;align-items:center;margin-top:.55rem;font-size:.78rem}
-.band b{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright)}
+.band{background:var(--panel2);border-radius:.45rem;padding:.55rem 1rem;display:grid;grid-template-columns:11rem 1fr;gap:1rem;align-items:center;margin-top:.55rem;font-size:max(.78rem,11px)}
+.band b{font-size:max(.66rem,11px);letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright)}
 .pub{background:var(--panel2);border-radius:.5rem;padding:.7rem 1rem;margin-bottom:1rem}
-.pub b{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:.3rem}
-.pub p{font-size:.76rem;line-height:1.45;color:var(--cream)}
+.pub b{display:block;font-size:max(.7rem,11px);letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:.3rem}
+.pub p{font-size:max(.76rem,11px);line-height:1.45;color:var(--cream)}
 .profile h2 em{font-size:.7em}
 .profile .imgbox{aspect-ratio:1}
 /* close */
@@ -121,9 +124,15 @@ td:first-child{color:var(--cream);font-weight:600}
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){
   :root{--dock:2.6rem}
   .split[style],.grid2[style],.grid3[style],.split,.grid2,.grid3{grid-template-columns:1fr!important}
-  table.cmp,table.worth,table.risks{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table.cmp,table.risks{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #worth .chartcol{display:none}
+  table.worth,table.worth tbody{display:block}table.worth thead{display:none}
+  table.worth tr{display:grid;grid-template-columns:1fr 1fr;gap:.15rem .9rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+  table.worth td{display:block;border:0;padding:0;font-size:.9rem}table.worth td:first-child{grid-column:1/-1;margin-bottom:.15rem}
+  table.worth td:not(:first-child)::before{content:attr(data-h);display:block;font-size:max(.62rem,11px);letter-spacing:.12em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.1rem}
+  table.worth td:last-child{grid-column:1/-1}
   table.cmp thead,table.cmp tbody,table.cmp tr{display:table;width:100%;table-layout:fixed}
-  .ladder .stages span{font-size:.55rem}
+  .ladder .stages{grid-template-columns:repeat(6,minmax(0,1fr))}.ladder .lhead .stages span{font-size:0!important;letter-spacing:0}.ladder .lhead .stages span::before{content:attr(data-s);font-size:11px;letter-spacing:.04em}
   table.cmp .thimgs{gap:.3rem}
   .deck{scroll-snap-type:y proximity}
   section{overflow:visible;overflow-x:clip;scroll-snap-stop:normal;padding:4.5rem var(--dock) 5rem 1.1rem;align-items:flex-start}
@@ -133,7 +142,7 @@ td:first-child{color:var(--cream);font-weight:600}
   nav.dock i{display:none}
   .pager button span.lbl{display:none}
   .brand{display:none}
-  .conf{display:none}
+  .conf{display:block;top:.55rem;bottom:auto;left:.7rem;font-size:.5rem;padding:.25em .7em}
   .cards4 .card{grid-template-columns:3.8rem 1fr}
   .band{grid-template-columns:1fr}
   .tag{right:3rem}
@@ -141,65 +150,72 @@ td:first-child{color:var(--cream);font-weight:600}
 @media (prefers-reduced-motion:reduce){.rv{transition:none;opacity:1;transform:none}.deck{scroll-behavior:auto}}
 
 /* 2026-09-04 rebuild */
-.thesis .card{padding:1.2rem 1.2rem 1.3rem}.thesis .card .num{font-size:1.7rem;display:block;margin-bottom:.7rem}.thesis .card h3{font-size:.98rem;min-height:2.6em}.thesis .card p{font-size:.8rem;line-height:1.5}
-.pub .src{display:block;font-size:.7rem;font-style:italic;color:var(--muted);margin-top:.5rem}
-table.cmp td{font-size:clamp(.82rem,1vw,.95rem);line-height:1.45;padding:.6rem .6rem .6rem 0}table.cmp td:first-child{width:7rem;font-size:clamp(.9rem,1.05vw,1rem)}table.cmp td:nth-child(2){color:var(--muted);width:32%}table.cmp th{font-size:.72rem;vertical-align:bottom;padding-bottom:.6rem}table.cmp th span{display:block;margin-bottom:.5rem}table.cmp .thimgs{display:flex;gap:.4rem}table.cmp .thimgs img{flex:1 1 0;min-width:0;aspect-ratio:1.9;object-fit:cover;border-radius:.35rem}
-table.worth th{font-size:.7rem}table.worth td{font-size:clamp(.9rem,1.05vw,1rem);padding:.75rem .6rem .75rem 0;line-height:1.4}table.worth td.gold{color:var(--gold);font-weight:600}
+.thesis .card{padding:1.2rem 1.2rem 1.3rem}.thesis .card .num{font-size:1.7rem;display:block;margin-bottom:.7rem}.thesis .card h3{font-size:.98rem;min-height:2.6em}.thesis .card p{font-size:max(.8rem,11px);line-height:1.5}
+.pub .src{display:block;font-size:max(.7rem,11px);font-style:italic;color:var(--muted);margin-top:.5rem}
+table.cmp td{font-size:clamp(.82rem,1vw,.95rem);line-height:1.45;padding:.6rem .6rem .6rem 0}table.cmp td:first-child{width:7rem;font-size:clamp(.9rem,1.05vw,1rem)}table.cmp td:nth-child(2){color:var(--muted);width:32%}table.cmp th{font-size:max(.72rem,11px);vertical-align:bottom;padding-bottom:.6rem}table.cmp th span{display:block;margin-bottom:.5rem}table.cmp .thimgs{display:flex;gap:.4rem}table.cmp .thimgs img{flex:1 1 0;min-width:0;aspect-ratio:1.9;object-fit:cover;border-radius:.35rem}
+table.worth th{font-size:max(.7rem,11px)}table.worth td{font-size:clamp(.9rem,1.05vw,1rem);padding:.75rem .6rem .75rem 0;line-height:1.4}table.worth td.gold{color:var(--gold);font-weight:600}
 .ladder{margin-top:.6rem}
 .ladder .lhead,.ladder .lrow{display:grid;grid-template-columns:11rem 1fr 15rem;gap:1.2rem;align-items:start}
 .ladder .lhead{padding-bottom:.3rem}.ladder .stages{display:grid;grid-template-columns:repeat(6,1fr)}
-.ladder .stages span,.ladder .lh{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--wood-bright);text-align:center;line-height:1.25}
+.ladder .stages span,.ladder .lh{font-size:max(.7rem,11px);letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--wood-bright);text-align:center;line-height:1.25}
 .ladder .lh{text-align:left}
 .ladder .lrow{padding:.55rem 0 .35rem;border-top:1px solid var(--line)}
 .ladder .lrow h3{font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem}
-.ladder .lrow p{font-size:.76rem;line-height:1.45;color:var(--cream-dim)}
+.ladder .lrow p{font-size:max(.76rem,11px);line-height:1.45;color:var(--cream-dim)}
 .ladder .track{position:relative;height:2.2rem}
 .ladder .track i{position:absolute;left:0;right:0;top:.5rem;height:3px;background:var(--line);border-radius:2px}
 .ladder .track i::after{content:"";position:absolute;left:0;top:0;height:3px;border-radius:2px;background:var(--wood);width:calc((var(--pos) + .5) / 6 * 100%)}
 .ladder .track b{position:absolute;top:.5rem;width:.9rem;height:.9rem;border-radius:50%;background:var(--gold);transform:translate(-50%,-38%);left:calc((var(--pos) + .5) / 6 * 100%)}
-.ladder .track em{position:absolute;left:0;top:1.15rem;font-size:.72rem;color:var(--cream-dim);white-space:nowrap}
+.ladder .track em{position:absolute;left:0;top:1.15rem;font-size:max(.72rem,11px);color:var(--cream-dim);white-space:nowrap}
 .bars .bar{display:grid;grid-template-columns:1fr;margin-bottom:.9rem}
-.bars .bar span{font-size:.78rem;color:var(--cream);margin-bottom:.35rem}
+.bars .bar span{font-size:max(.78rem,11px);color:var(--cream);margin-bottom:.35rem}
 .bars .tr{position:relative;height:.95rem;background:#3a2b1a;border-radius:.2rem;overflow:hidden;width:78%;display:inline-block;vertical-align:middle}
 .bars .tr i{display:block;height:100%;border-radius:.2rem}
 .bars .bar b{display:inline-block;font-family:'Fraunces',serif;font-size:1.05rem;color:var(--cream);margin-left:.6rem;vertical-align:middle}
-table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
+table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
 #close .wm{height:2.4rem;margin:1.6rem 0 1rem}
 @media (max-width:900px), (orientation:portrait){.ladder .lhead,.ladder .lrow{grid-template-columns:1fr}.ladder .lhead .lh{display:none}.ladder .track{margin:.3rem 0 .6rem}}
 
 .pub .logo{height:1.3rem;width:auto;margin:.6rem 0 .45rem;display:block}
-.pub .shot{position:relative;border-radius:.4rem;overflow:hidden;aspect-ratio:2.6}.pub .shot img{width:100%;height:100%;object-fit:cover}.pub .shot figcaption{position:absolute;right:.5rem;bottom:.3rem;font-size:.7rem;font-style:italic;color:#e8decb;margin:0;text-shadow:0 0 4px rgba(0,0,0,.7)}
+.pub .shot{position:relative;border-radius:.4rem;overflow:hidden;aspect-ratio:2.6}.pub .shot img{width:100%;height:100%;object-fit:cover}.pub .shot figcaption{position:absolute;right:.5rem;bottom:.3rem;font-size:max(.7rem,11px);font-style:italic;color:#e8decb;margin:0;text-shadow:0 0 4px rgba(0,0,0,.7)}
 .toggle{display:inline-flex;align-items:center;gap:.2rem;background:var(--panel);border-radius:999px;padding:.2rem;margin-bottom:.9rem}
 .toggle button{border:0;background:transparent;color:var(--cream-dim);font:600 .7rem 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:.45em 1em;border-radius:999px;cursor:pointer}
 .toggle button[aria-selected="true"]{background:var(--wood-bright);color:var(--ink-deep)}
 .toggle button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.toggle .hint{font-size:.7rem;letter-spacing:.14em;color:var(--muted);padding:0 .7em}
-.view[hidden]{display:none!important}
+.toggle .hint{font-size:max(.7rem,11px);letter-spacing:.14em;color:var(--muted);padding:0 .7em}
+@media (pointer:coarse){.toggle .hint{display:none}}
+.detail{margin-left:.6rem;border:1px solid var(--line);background:transparent;color:var(--cream-dim);font:600 .7rem 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:.55em 1em;border-radius:999px;cursor:pointer;vertical-align:middle}.detail:hover,.detail:focus-visible{color:var(--cream);border-color:var(--wood-bright);outline:none}
+.hb.g .hl{font-weight:600;color:var(--cream)}.hb.g{min-height:2.6rem}.hb.g .hv em{white-space:normal}
+.view[hidden],.hbars[hidden]{display:none!important}
 #campus .li{margin:0}#campus .li h3{font-size:clamp(1.15rem,1.6vw,1.5rem);line-height:1.2;margin-bottom:.7rem;font-family:'Fraunces',serif;font-weight:400}#campus .li p{font-size:clamp(.9rem,1.1vw,1.05rem);line-height:1.55;color:var(--cream-dim)}
 
 /* HTML bar charts (slides 5 and 6) */
 .hbars{display:grid;gap:.32rem}
 .hb{display:grid;grid-template-columns:13rem 1fr 9.5rem;gap:.6rem;align-items:center;min-height:2.15rem}
-.hb .hl{font-size:.78rem;color:var(--cream);text-align:right;line-height:1.2}
+.hb .hl{font-size:max(.78rem,11px);color:var(--cream);text-align:right;line-height:1.2}
 .hb .tr{position:relative;height:.95rem;background:rgba(58,43,26,.35);border-radius:.15rem;overflow:visible}
 .hb .tr i{position:absolute;top:0;height:100%;border-radius:.15rem}
 .hb .tr .rp{left:0}.hb .tr .nr{background:#3a2b1a}
 .hb .tr .ne{left:0;width:22%;background:repeating-linear-gradient(135deg,transparent 0 3px,#3a2b1a 3px 5px);border:1px solid #3a2b1a}
-.hb .hv{font-size:.76rem;color:var(--cream-dim);line-height:1.2;white-space:nowrap}.hb .hv em{font-style:normal;color:var(--muted);display:block;margin-left:0}.hb .hv.muted{color:var(--muted)}
+.hb .hv{font-size:max(.76rem,11px);color:var(--cream-dim);line-height:1.2;white-space:nowrap}.hb .hv em{font-style:normal;color:var(--muted);display:block;margin-left:0}.hb .hv.muted{color:var(--muted)}
 .hb.ax{margin-top:.4rem;align-items:start}.hb.ax .tr{background:none;height:1.1rem;border-top:1px solid var(--line)}
-.hb.ax .tr span{position:absolute;top:.15rem;transform:translateX(-50%);font-size:.7rem;color:var(--muted)}
-.hb.ax .hv{font-size:.7rem;color:var(--muted);padding-top:.15rem}
-.hleg{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;margin-top:1rem;font-size:.72rem;color:var(--cream-dim)}.hleg i{display:inline-block;width:.85rem;height:.6rem;border-radius:.12rem;margin-right:.4rem;vertical-align:-.05rem}
-.hbars.worth{gap:1rem}.hbars.worth .hb{grid-template-columns:10rem 1fr 8rem;min-height:0}.hbars.worth .hb .tr{height:1.5rem}.hbars.worth .hb .tr .rg{border-radius:.2rem}
+.hb.ax .tr span{position:absolute;top:.15rem;transform:translateX(-50%);font-size:max(.7rem,11px);color:var(--muted)}
+.hb.ax .hv{font-size:max(.7rem,11px);color:var(--muted);padding-top:.15rem}
+.hleg{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;margin-top:1rem;font-size:max(.72rem,11px);color:var(--cream-dim)}.hleg i{display:inline-block;width:.85rem;height:.6rem;border-radius:.12rem;margin-right:.4rem;vertical-align:-.05rem}
+.hbars.worth{gap:1rem}.hbars.worth .hb{grid-template-columns:9rem 1fr 7.5rem;min-height:0}.hbars.worth .hb .tr{height:1.5rem}.hbars.worth .hb .tr .rg{border-radius:.2rem}
 .hbars.worth .hb .tr .mk{width:0;border-left:1px dashed var(--wood-bright);height:100%;top:0}
-.hbars.worth .hb.ax .tr b{position:absolute;top:.25rem;transform:translateX(-50%);font-size:.7rem;font-weight:500;color:var(--wood-bright);white-space:nowrap}
-.hbars.worth .hb.ax .tr b:last-child{transform:translateX(-30%)}
+.hleg.mills{margin-top:.5rem}.hleg .mkleg{display:inline-block;width:0;height:.75rem;border-left:1px dashed var(--wood-bright);margin-right:.5rem;vertical-align:middle}
+.hbars.worth .hb.ax .hv{white-space:normal}
 .hbars.worth .hb.ax .tr{height:1.4rem}.hbars.worth .hb.ax .tr span{display:none}
 .hbars.worth .hb .hl{font-size:.82rem}
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){.hb{grid-template-columns:1fr;gap:.15rem;min-height:0}.hb .hl{text-align:left}.hb .hv{white-space:normal}.hb .hv em{display:inline;margin-left:.3rem}.hb.ax{display:none}.hbars.worth .hb.ax{display:grid}.hbars.worth .hb.ax .tr b{display:none}}
 </style>
 </head>
 <body class="on-cover">
+<nav class="dock" id="dock" aria-label="Sections"></nav>
+<div class="pager" id="pager"><button id="prevb" aria-label="Previous section"></button><span class="pn" id="pageno"></span><button id="nextb" aria-label="Next section"></button></div>
+<div class="conf">InventWood · Confidential</div>
+<a class="brand" href="#s1" aria-label="Back to cover"><img src="assets/inventwood_logo.png" alt="InventWood"></a>
 <div class="deck" id="deck">
 
 <!-- 1 · COVER -->
@@ -247,7 +263,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
 <!-- 4 · WE TURBOCHARGE WOOD -->
 <section id="turbo" data-nav="Turbocharge">
   <div class="wrap">
-    <div class="kicker rv">The buyer</div>
+    <div class="kicker rv">The buyer · The fit</div>
     <h2 class="rv">Hyperscalers are already building structures with wood. We <em>turbocharge</em> wood.</h2>
     <div class="split rv" style="grid-template-columns:1fr 1.8fr">
       <div>
@@ -276,10 +292,16 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
 <section id="campus" data-nav="Data center">
   <div class="wrap">
     <div class="kicker rv">The size</div>
-    <h2 class="rv">What a GW data center is made of</h2>
-    <div class="toggle rv" role="tablist" aria-label="View"><button role="tab" id="tab-mass" aria-selected="true" aria-controls="view-mass view-mass-notes" data-view="mass">By mass</button><button role="tab" id="tab-carbon" aria-selected="false" aria-controls="view-carbon view-carbon-notes" tabindex="-1" data-view="carbon">By embodied carbon</button><span class="hint" title="Keyboard: M for mass, C for embodied carbon">Keys M / C</span></div>
+    <h2 class="rv">What a 1 GW data center is made of</h2>
+    <div class="toggle rv" role="tablist" aria-label="View"><button role="tab" id="tab-mass" aria-selected="true" aria-controls="view-mass view-mass-notes" data-view="mass">By mass, log scale</button><button role="tab" id="tab-carbon" aria-selected="false" aria-controls="view-carbon view-carbon-notes" tabindex="-1" data-view="carbon">By embodied carbon</button><span class="hint" title="Keyboard: M for mass, C for embodied carbon, D for detail">Keys M / C / D</span></div><button class="detail" type="button" aria-pressed="false">Show all 17 rows</button>
     <div class="split rv" style="grid-template-columns:1.7fr 1fr;align-items:center">
-      <div class="chartcol"><div class="view" id="view-mass" role="tabpanel" aria-labelledby="tab-mass" data-view="mass"><div class="hbars">
+      <div class="chartcol"><div class="view" id="view-mass" role="tabpanel" aria-labelledby="tab-mass" data-view="mass"><div class="hbars grp">
+<div class="hb g"><span class="hl">Now — skins, screens, fences, interiors</span><div class="tr"><i class="rp" style="width:36.8%;background:var(--gold)"></i><i class="nr" style="left:36.8%;width:0.0%"></i></div><span class="hv">12,300 tons <em>100% replaceable now</em></span></div>
+<div class="hb g"><span class="hl">Next — racks, platforms, barriers, doors</span><div class="tr"><i class="rp" style="width:47.1%;background:var(--green)"></i><i class="nr" style="left:47.1%;width:1.8%"></i></div><span class="hv">35,000 tons <em>86% replaceable next</em></span></div>
+<div class="hb g"><span class="hl">Structural — frame, roofs, ducting, enclosures</span><div class="tr"><i class="rp" style="width:61.8%;background:var(--wood)"></i><i class="nr" style="left:61.8%;width:0.0%"></i></div><span class="hv">108,000 tons <em>100% replaceable as structure</em></span></div>
+<div class="hb g"><span class="hl">Long-term vision — slab, foundations, rebar, server boxes</span><div class="tr"><i class="rp" style="width:95.8%;background:var(--teal)"></i><i class="nr" style="left:95.8%;width:2.4%"></i></div><span class="hv">2,570,000 tons <em>81% technical potential</em></span></div>
+<div class="hb g"><span class="hl">Not replaced — electrical and mechanical equipment</span><div class="tr"><i class="nr" style="left:0.0%;width:65.6%"></i></div><span class="hv">150,000 tons <em>not replaced</em></span></div>
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1</span><span style="left:34.4%">10</span><span style="left:60.9%">100</span><span style="left:87.4%">1,000</span></div><span class="hv">'000s of tons, log scale</span></div></div><div class="hbars det" hidden>
 <div class="hb"><span class="hl">Concrete — slab on grade, paving</span><div class="tr"><i class="rp" style="width:67.1%;background:var(--teal)"></i><i class="nr" style="left:67.1%;width:22.4%"></i></div><span class="hv">1,200,000 tons <em>75% long-term vision</em></span></div>
 <div class="hb"><span class="hl">Concrete — foundations, footings, pads</span><div class="tr"><i class="rp" style="width:80.5%;background:var(--teal)"></i><i class="nr" style="left:80.5%;width:9.0%"></i></div><span class="hv">1,200,000 tons <em>90% long-term vision</em></span></div>
 <div class="hb"><span class="hl">Rebar in all concrete</span><div class="tr"><i class="rp" style="width:49.3%;background:var(--teal)"></i><i class="nr" style="left:49.3%;width:11.6%"></i></div><span class="hv">100,000 tons <em>81% long-term vision</em></span></div>
@@ -294,10 +316,16 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
 <div class="hb"><span class="hl">Tray, containment, doors, misc. metals</span><div class="tr"><i class="rp" style="width:17.2%;background:var(--green)"></i><i class="nr" style="left:17.2%;width:17.2%"></i></div><span class="hv">10,000 tons <em>50% next</em></span></div>
 <div class="hb"><span class="hl">Ducting and air-distribution sheet metal</span><div class="tr"><i class="rp" style="width:31.9%;background:var(--wood)"></i><i class="nr" style="left:31.9%;width:0.0%"></i></div><span class="hv">8,000 tons <em>100% structural</em></span></div>
 <div class="hb"><span class="hl">Interior finishes, backplanes, trim</span><div class="tr"><i class="rp" style="width:20.6%;background:var(--gold)"></i><i class="nr" style="left:20.6%;width:0.0%"></i></div><span class="hv">3,000 tons <em>100% now</em></span></div>
-<div class="hb"><span class="hl">Electrical equipment and conductors</span><div class="tr"><i class="nr" style="left:0%;width:60.9%"></i></div><span class="hv">100,000 tons</span></div>
-<div class="hb"><span class="hl">Mechanical equipment, piping, loop water</span><div class="tr"><i class="nr" style="left:0%;width:52.9%"></i></div><span class="hv">50,000 tons</span></div>
+<div class="hb"><span class="hl">Electrical equipment and conductors</span><div class="tr"><i class="nr" style="left:0%;width:60.9%"></i></div><span class="hv">100,000 tons <em>not replaced</em></span></div>
+<div class="hb"><span class="hl">Mechanical equipment, piping, loop water</span><div class="tr"><i class="nr" style="left:0%;width:52.9%"></i></div><span class="hv">50,000 tons <em>not replaced</em></span></div>
 <div class="hb"><span class="hl">IT — servers and racks</span><div class="tr"><i class="rp" style="width:22.7%;background:var(--teal)"></i><i class="nr" style="left:22.7%;width:34.1%"></i></div><span class="hv">70,000 tons <em>40% long-term vision</em></span></div>
-<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1</span><span style="left:34.4%">10</span><span style="left:60.9%">100</span><span style="left:87.4%">1,000</span></div><span class="hv">'000s of tons, log scale</span></div></div></div><div class="view" id="view-carbon" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden><div class="hbars">
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1</span><span style="left:34.4%">10</span><span style="left:60.9%">100</span><span style="left:87.4%">1,000</span></div><span class="hv">'000s of tons, log scale</span></div></div></div><div class="view" id="view-carbon" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden><div class="hbars grp">
+<div class="hb g"><span class="hl">Now — skins, screens, fences, interiors</span><div class="tr"><i class="rp" style="width:4.0%;background:var(--gold)"></i><i class="nr" style="left:4.0%;width:0.0%"></i></div><span class="hv">20,000 tons CO₂e <em>100% replaceable now</em></span></div>
+<div class="hb g"><span class="hl">Next — racks, platforms, barriers, doors</span><div class="tr"><i class="rp" style="width:10.8%;background:var(--green)"></i><i class="nr" style="left:10.8%;width:1.8%"></i></div><span class="hv">63,000 tons CO₂e <em>86% replaceable next</em></span></div>
+<div class="hb g"><span class="hl">Structural — frame, roofs, ducting, enclosures</span><div class="tr"><i class="rp" style="width:38.8%;background:var(--wood)"></i><i class="nr" style="left:38.8%;width:0.0%"></i></div><span class="hv">194,000 tons CO₂e <em>100% replaceable as structure</em></span></div>
+<div class="hb g"><span class="hl">Long-term vision — slab, foundations, rebar</span><div class="tr"><i class="rp" style="width:76.6%;background:var(--teal)"></i><i class="nr" style="left:76.6%;width:17.0%"></i></div><span class="hv">468,000 tons CO₂e <em>82% technical potential; server boxes not estimated</em></span></div>
+<div class="hb g"><span class="hl">Not replaced — electrical and mechanical equipment</span><div class="tr"><i class="ne"></i></div><span class="hv muted">not estimated</span></div>
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:0%">0</span><span style="left:20%">100</span><span style="left:40%">200</span><span style="left:60%">300</span><span style="left:80%">400</span><span style="left:100%">500</span></div><span class="hv">'000s of tons CO₂e</span></div></div><div class="hbars det" hidden>
 <div class="hb"><span class="hl">Concrete — slab on grade, paving</span><div class="tr"><i class="rp" style="width:36.0%;background:var(--teal)"></i><i class="nr" style="left:36.0%;width:12.0%"></i></div><span class="hv">144,000 tons CO₂e <em>75% long-term vision</em></span></div>
 <div class="hb"><span class="hl">Concrete — foundations, footings, pads</span><div class="tr"><i class="rp" style="width:43.2%;background:var(--teal)"></i><i class="nr" style="left:43.2%;width:4.8%"></i></div><span class="hv">144,000 tons CO₂e <em>90% long-term vision</em></span></div>
 <div class="hb"><span class="hl">Rebar in all concrete</span><div class="tr"><i class="rp" style="width:48.6%;background:var(--teal)"></i><i class="nr" style="left:48.6%;width:11.4%"></i></div><span class="hv">180,000 tons CO₂e <em>81% long-term vision</em></span></div>
@@ -329,23 +357,23 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
 <section id="worth" data-nav="Worth">
   <div class="wrap">
     <div class="kicker rv">The size</div>
-    <h2 class="rv">What one gigawatt of data center is worth to InventWood</h2>
-    <div class="split rv" style="grid-template-columns:1.1fr 1fr;align-items:center">
+    <h2 class="rv">How much SUPERWOOD could a 1 GW data center require?</h2>
+    <div class="split rv worthsplit" style="grid-template-columns:1.35fr 1fr;align-items:start">
+      <table class="worth">
+        <thead><tr><th>Horizon</th><th>Incumbent replaced</th><th>SUPERWOOD required</th><th>Plant-years</th></tr></thead>
+        <tbody>
+          <tr><td data-h="Horizon">Now — skins, screens, fences</td><td data-h="Incumbent replaced">3,300–12,000 tons</td><td data-h="SUPERWOOD required">1,200–2,700 tons (1.4–3.1M sf)</td><td class="gold" data-h="Plant-years">1.4–3.1 yr of SuperMill One</td></tr>
+          <tr><td data-h="Horizon">Next — racks, platforms, barriers</td><td data-h="Incumbent replaced">12,000–30,000 tons</td><td data-h="SUPERWOOD required">3,500–18,000 tons</td><td class="gold" data-h="Plant-years">0.1–0.6 yr of SuperMill Two</td></tr>
+          <tr><td data-h="Horizon">Structural — frame, roofs, enclosures</td><td data-h="Incumbent replaced">53,000–108,000 tons</td><td data-h="SUPERWOOD required">16,000–65,000 tons</td><td class="gold" data-h="Plant-years">0.5–2.1 yr of SuperMill Two</td></tr>
+          <tr><td data-h="Horizon">Long-term vision — slab, foundations, server boxes</td><td data-h="Incumbent replaced">1,002,000–2,089,000 tons</td><td data-h="SUPERWOOD required">58,000–362,000 tons</td><td class="gold" data-h="Plant-years">1.8–12 yr of SuperMill Two</td></tr>
+        </tbody>
+      </table>
       <div class="chartcol"><div class="hbars worth">
 <div class="hb"><span class="hl">Now — skins, screens, fences</span><div class="tr"><i class="rg" style="left:5.4%;width:10.7%;background:var(--gold)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">1,200–2,700 tons</span></div>
 <div class="hb"><span class="hl">Next — racks, platforms, barriers</span><div class="tr"><i class="rg" style="left:19.6%;width:21.7%;background:var(--green)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">3,500–18,000 tons</span></div>
 <div class="hb"><span class="hl">Structural — frame, roofs, enclosures</span><div class="tr"><i class="rg" style="left:39.8%;width:18.6%;background:var(--wood)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">16,000–65,000 tons</span></div>
 <div class="hb"><span class="hl">Long-term vision — slab, foundations, server boxes</span><div class="tr"><i class="rg" style="left:56.8%;width:24.3%;background:var(--teal)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">58,000–362,000 tons</span></div>
-<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:3.0%">1</span><span style="left:33.5%">10</span><span style="left:64.1%">100</span><span style="left:94.6%">1,000</span><b style="left:1.6%">SuperMill One ≈ 900 tons/yr</b><b style="left:48.5%">SuperMill Two ≈ 31,000 tons/yr</b></div><span class="hv">'000s of tons per GW, log</span></div></div></div>
-      <table class="worth">
-        <thead><tr><th>Horizon</th><th>Incumbent replaced</th><th>SUPERWOOD required</th><th>Plant-years</th></tr></thead>
-        <tbody>
-          <tr><td>Now — skins, screens, fences</td><td>3,300–12,000 tons</td><td>1,200–2,700 tons (1.4–3.1M sf)</td><td class="gold">1.4–3.1 yr of SuperMill One</td></tr>
-          <tr><td>Next — racks, platforms, barriers</td><td>12,000–30,000 tons</td><td>3,500–18,000 tons</td><td class="gold">0.1–0.6 yr of SuperMill Two</td></tr>
-          <tr><td>Structural — frame, roofs, enclosures</td><td>53,000–108,000 tons</td><td>16,000–65,000 tons</td><td class="gold">0.5–2.1 yr of SuperMill Two</td></tr>
-          <tr><td>Long-term vision — slab, foundations, server boxes</td><td>1,002,000–2,089,000 tons</td><td>58,000–362,000 tons</td><td class="gold">1.8–12 yr of SuperMill Two</td></tr>
-        </tbody>
-      </table>
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:3.0%">1</span><span style="left:33.5%">10</span><span style="left:64.1%">100</span><span style="left:94.6%">1,000</span></div><span class="hv">'000s of tons per GW, log scale</span></div></div><div class="hleg mills"><span><i class="mkleg"></i>SuperMill One ≈ 900 tons/yr</span><span><i class="mkleg"></i>SuperMill Two ≈ 31,000 tons/yr</span></div></div>
     </div>
     <div class="card rv" style="margin-top:1rem"><p style="font-size:.86rem;color:var(--cream-dim)"><b style="color:var(--gold)">Two or three gigawatts of data center would take all of SuperMill Two's output for years.</b> A basis-of-design win with one hyperscaler is the demand case for the second mill. It is also the capacity constraint.</p></div>
     <p class="note rv">Quantities: company estimate (slide 5 model; low–high scenarios). Incumbent replaced is steel except the long-term row (concrete, rebar, and server enclosures at 40% of IT mass — estimate; electronics excluded). SUPERWOOD required uses a 0.3–0.6 substitution factor for steel (estimate, to be engineering-stamped per element). Plant output: SuperMill One ≈ 900 tons/yr (1M sf), SuperMill Two ≈ 31,000 tons/yr (36M sf) at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application; see the SUPERMILLS Investor Overview for the cost roadmap.</p>
@@ -469,7 +497,8 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
     <h2 class="rv">Structural: starting <em>now</em>, scaling with SuperMill Two</h2>
     <div class="split rv" style="grid-template-columns:1fr 1.6fr">
       <div class="card tint" style="display:grid;grid-template-columns:5rem 1fr;gap:.9rem;align-items:start">
-        <div><div class="kicker" style="color:var(--gold);margin-bottom:.5rem;grid-column:1/-1">Under development with SUPERMILL ONE output</div><div class="imgbox" style="aspect-ratio:1"><img src="assets/tile_truss2.jpg" alt="" loading="lazy"></div></div>
+        <div class="kicker" style="color:var(--gold);margin-bottom:.2rem;grid-column:1/-1">Under development with SUPERMILL ONE output</div>
+        <div><div class="imgbox" style="aspect-ratio:1"><img src="assets/tile_truss2.jpg" alt="" loading="lazy"></div></div>
         <p style="font-size:.8rem;line-height:1.5;color:var(--cream-dim);align-self:center">Truss design is starting. Mass-timber enhancement — SUPERWOOD laminations that stiffen and strengthen glulam and CLT-type members — is under way. Light structural components (non-life-safety): strut-type supports, window mullions, deck boards.<br><br>We expect structural sales on the way to SuperMill Two. Replacing structural steel is the first thing new data-center customers ask about.</p>
       </div>
       <div>
@@ -507,7 +536,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
     <div class="kicker rv">The evidence</div>
     <h2 class="rv">Customer engagement</h2>
     <div class="ladder rv">
-      <div class="lhead"><span></span><div class="stages"><span>Conversations</span><span>Applications identified</span><span>Projects scoped</span><span>Testing &amp; mockups</span><span>First purchase</span><span>Basis of design</span></div><span class="lh">What they are doing with us</span></div>
+      <div class="lhead"><span></span><div class="stages"><span data-s="Talks">Conversations</span><span data-s="Apps">Applications identified</span><span data-s="Scoped">Projects scoped</span><span data-s="Testing">Testing &amp; mockups</span><span data-s="Purchase">First purchase</span><span data-s="Design basis">Basis of design</span></div><span class="lh">What they are doing with us</span></div>
       <div class="lrow"><h3>Microsoft</h3><div class="track" style="--pos:2"><i></i><b></b><em>Next: first skin project on one building or yard</em></div><p>Facades, biophilic interiors, staff and security fencing under discussion; roof-truss and enclosure work with their architecture and engineering firms; interest in SUPERWOOD in the basis of design</p></div>
       <div class="lrow"><h3>Meta</h3><div class="track" style="--pos:2"><i></i><b></b><em>Next: backplane listing; first facade project</em></div><p>Engaged for over a year across the data-center ecosystem; facade applications and backplanes under way; structural applications and racking to follow</p></div>
       <div class="lrow"><h3>Google</h3><div class="track" style="--pos:1"><i></i><b></b><em>Next: scope with their design teams</em></div><p>Engagement just begun; initial focus on replacement of structural steel</p></div>
@@ -657,14 +686,11 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
 
 </div>
 
-<nav class="dock" id="dock" aria-label="Sections"></nav>
-<div class="pager" id="pager"><button id="prevb" aria-label="Previous section"></button><span class="pn" id="pageno"></span><button id="nextb" aria-label="Next section"></button></div>
-<div class="conf">InventWood · Confidential</div>
-<a class="brand" href="#s1" aria-label="Back to cover"><img src="assets/inventwood_logo.png" alt="InventWood"></a>
+
 
 <script>
 const deck=document.getElementById('deck');
-const secs=[...document.querySelectorAll('section')];
+const secs=[...document.querySelectorAll('section')];secs.forEach(s=>s.tabIndex=-1);
 const dock=document.getElementById('dock'), pageno=document.getElementById('pageno'), prevb=document.getElementById('prevb'), nextb=document.getElementById('nextb');
 /* dock: keyword labels only; dividers carry data-navhide and highlight the next content slide */
 const railBtns=[];
@@ -683,6 +709,9 @@ function setActive(i){
   prevb.innerHTML=i>0?'← <span class="lbl">'+labelOf(i-1)+'</span>':'←';
   nextb.innerHTML=i<secs.length-1?'<span class="lbl">'+labelOf(i+1)+'</span> →':'→';
   document.body.classList.toggle('on-cover',i===0);
+  document.body.classList.toggle('on-close',i===secs.length-1);
+  /* keyboard and assistive tech stay on the visible slide */
+  secs.forEach((s,k)=>{s.inert=k!==i;});
 }
 function reveal(sec){if(sec&&!sec.classList.contains('in'))sec.classList.add('in');}
 let jumping=false;
@@ -690,6 +719,7 @@ function jumpTo(i){i=Math.max(0,Math.min(secs.length-1,i));
   const target=()=>deck.scrollTop+secs[i].getBoundingClientRect().top-deck.getBoundingClientRect().top;
   const smooth=!matchMedia('(prefers-reduced-motion:reduce)').matches&&Math.abs(i-cur)===1;
   cur=i;setActive(i);reveal(secs[i]);jumping=true;
+  if(!secs[i].contains(document.activeElement))secs[i].focus({preventScroll:true});
   deck.scrollTo({top:target(),behavior:smooth?'smooth':'instant'});
   /* a smooth scroll interrupted by the next key never fires a final scroll event; verify once the deck has come to rest and hard-set */
   clearInterval(jumpTo._iv);let last=-1,ticks=0;
@@ -743,6 +773,10 @@ const campusSec=document.getElementById('campus');
 function setView(v,focus){campusSec.querySelectorAll('.view').forEach(e=>{e.hidden=e.dataset.view!==v;});campusSec.querySelectorAll('.toggle button').forEach(b=>{const on=b.dataset.view===v;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;if(on&&focus)b.focus();});}
 campusSec.querySelectorAll('.toggle button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
 addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;if(secs[cur]!==campusSec)return;if(e.key==='m'||e.key==='M')setView('mass');if(e.key==='c'||e.key==='C')setView('carbon');});
+const detBtn=campusSec.querySelector('.detail');
+function setDetail(on){campusSec.querySelectorAll('.hbars.grp').forEach(e=>e.hidden=on);campusSec.querySelectorAll('.hbars.det').forEach(e=>e.hidden=!on);detBtn.setAttribute('aria-pressed',String(on));detBtn.textContent=on?'Show 5 groups':'Show all 17 rows';fitSlides();}
+detBtn.onclick=()=>setDetail(detBtn.getAttribute('aria-pressed')!=='true');
+addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;if(secs[cur]!==campusSec)return;if(e.key==='d'||e.key==='D')setDetail(detBtn.getAttribute('aria-pressed')!=='true');});
 /* arrow keys inside the toggle switch views instead of slides */
 campusSec.querySelector('.toggle').addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();e.stopPropagation();setView(document.activeElement.dataset.view==='mass'?'carbon':'mass',true);}},true);
 </script>
