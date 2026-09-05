@@ -509,7 +509,7 @@ title(s, "Embodied carbon: LCA based on SUPERMILL TWO projections", L, 0.88, 11.
 const bars = [
   ["Steel — global average (BF-BOF), per kg of steel", 0, 0, 1.8, 1.8, ROSE, "1.8 kg"],
   ["Steel — recycled (EAF), per kg of steel", 0, 0, 0.4, 0.7, "A0714E", "0.4–0.7 kg"],
-  ["SUPERWOOD — per kg of steel substituted at 3:1 to 4:1, projected: emissions right, carbon storage left", 0.1, 0.5, 0.1, 0.2, GREEN, "+0.1–0.2 · −0.1 to −0.5 kg"],
+  ["SUPERWOOD — per kg of steel substituted at 3:1 to 4:1 replacement by weight, projected: emissions right, carbon storage left", 0.1, 0.5, 0.1, 0.2, GREEN, "+0.1–0.2 · −0.1 to −0.5 kg"],
 ];
 label(s, "kg CO₂e, cradle to gate · emissions right of zero, storage left", L, 1.95, 6.4);
 const bx = L, bw = 4.9, kS = bw / 2.4, zx = bx + 0.6 * kS;
@@ -534,9 +534,9 @@ s.addText([
 // right: functional unit
 panel(s, 7.3, 1.95, 5.45, 4.5, PANEL);
 label(s, "Per functional unit — replacing one ton of steel", 7.55, 2.1, 5.0, BRIGHT);
-body(s, "SUPERWOOD needed: 0.25–0.33 tons per ton of steel replaced — a 3:1 to 4:1 average replacement value, to be engineering-stamped per element.\n\nSUPERWOOD manufacturing emissions: 0.25–0.33 tons × 0.5 = about 0.1–0.2 tons CO₂e per ton of steel substituted.\n\nAgainst average steel (1.8 tons CO₂e): a reduction of 89–94%.\n\nAgainst recycled steel (0.4–0.7 tons CO₂e): a reduction of 50–86%.\n\nCarbon stored in the SUPERWOOD: 0.25–0.33 tons × 0.5–1.5 = 0.1–0.5 tons CO₂e per ton of steel replaced, biogenic, reported separately.\n\nAny stated reduction must name its steel baseline and its substitution factor. Both are shown here; neither is yet verified.", 7.55, 2.45, 5.0, 3.1, 9.5, DIM);
+body(s, "SUPERWOOD needed: 0.25–0.33 tons per ton of steel replaced — a 3:1 to 4:1 average replacement by weight, to be engineering-stamped per element.\n\nSUPERWOOD manufacturing emissions: 0.25–0.33 tons × 0.5 = about 0.1–0.2 tons CO₂e per ton of steel substituted.\n\nAgainst average steel (1.8 tons CO₂e): a reduction of 89–94%.\n\nAgainst recycled steel (0.4–0.7 tons CO₂e): a reduction of 50–86%.\n\nCarbon stored in the SUPERWOOD: 0.25–0.33 tons × 0.5–1.5 = 0.1–0.5 tons CO₂e per ton of steel replaced, biogenic, reported separately.\n\nAny stated reduction must name its steel baseline and its substitution factor. Both are shown here; neither is yet verified.", 7.55, 2.45, 5.0, 3.1, 9.5, DIM);
 s.addText("Pre-LCA projection for a full-scale plant. LCA under way with Prof. Ming Hu, University of Notre Dame.", { x: 7.55, y: 5.6, w: 5.0, h: 0.75, fontFace: SANS, fontSize: 10.5, bold: true, color: CREAM, margin: 0, valign: "top" });
-note(s, "SUPERWOOD 0.5 kg CO₂e/kg manufactured and 0.5–1.5 kg/kg biogenic storage: company projections, pre-LCA. Steel 1.8 kg/kg: global BF-BOF average. EAF 0.4–0.7 kg/kg: typical published range for recycled-scrap steel. Replacement value 3:1 to 4:1 (0.25–0.33 kg SUPERWOOD per kg steel): company assumption. Reductions are arithmetic on these inputs.", 6.6, 0.45);
+note(s, "SUPERWOOD 0.5 kg CO₂e/kg manufactured and 0.5–1.5 kg/kg biogenic storage: company projections, pre-LCA. Steel 1.8 kg/kg: global BF-BOF average. EAF 0.4–0.7 kg/kg: typical published range for recycled-scrap steel. Replacement 3:1 to 4:1 by weight (0.25–0.33 kg SUPERWOOD per kg steel): company assumption. Reductions are arithmetic on these inputs.", 6.6, 0.45);
 
 // ---------- 18 · RISKS ----------
 s = pres.addSlide(); base(s, "InventWood · Risks");
