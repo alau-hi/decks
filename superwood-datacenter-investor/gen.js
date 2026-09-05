@@ -309,8 +309,8 @@ conceptTag(s, W - 3.6, 6.6, 3.0, "Concept renderings");
 
 // ---------- 12 · NEXT ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Next");
-title(s, "Next: applications one test program away");
+kicker(s, "The path · Soon");
+title(s, "Soon: applications requiring straightforward testing and engineering", L, 0.88, 11.9, 27);
 const gated = [
   ["tile_barrier", "Acoustic barrier walls & equipment screens", "Acoustic performance data"],
   ["tile_walkway", "Walkways & platforms", "Load and connection data"],
