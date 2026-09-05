@@ -504,7 +504,7 @@ s.addText("Whether a building nets out as a store of carbon depends on the LCA (
 // ---------- 18 · THE CARBON CLAIM ----------
 s = pres.addSlide(); base(s, "InventWood · Carbon");
 kicker(s, "Carbon");
-title(s, "Embodied carbon: a projection until the LCA is complete", L, 0.88, 11.9, 27);
+title(s, "Embodied carbon: LCA based on SUPERMILL TWO projections", L, 0.88, 11.9, 27);
 // bars on one axis: emissions to the right of zero, storage to the left. Ranges: solid to the low value, faded to the high.
 const bars = [
   ["Steel — global average (BF-BOF), per kg of steel", 0, 0, 1.8, 1.8, ROSE, "1.8 kg"],
