@@ -119,6 +119,39 @@ why.forEach(([head, sub], i) => {
 });
 note(s, "US Census Bureau, Construction Spending (C30), private data center construction put in place: July 2026 preliminary seasonally adjusted annual rate $75.2B vs $47.8B in July 2025 (+57%); bars are calendar-year totals, not seasonally adjusted; buildings only, servers excluded. JLL North America Data Center Report Midyear 2026 (66 GW). McKinsey, AI power (2025). JLL Global Data Center Outlook 2026. Dell'Oro Group (2026). Steel intensity: arXiv 2509.21312, secondary; tonnage derived. Shortage statements are what customers report to InventWood.", 6.62, 0.45);
 
+// ---------- 4 · COMMUNITY PUSHBACK ----------
+s = pres.addSlide(); base(s, "InventWood · The buyer");
+kicker(s, "The buyer · The community");
+title(s, [t("Community pushback now delays more data center projects than ever. Most of it is about power and water; "), gold("two complaints are about the building itself"), t(".")], L, 0.88, 12.2, 21);
+label(s, "What neighbors object to", L, 2.0, 7.2);
+const objections = [
+  ["Electricity bills and grid strain", "77% of Americans worry data centers will raise their electricity bills. Utilities build generation and lines for one large load; households fear carrying the cost. Not a materials problem."],
+  ["Water for cooling", "Evaporative cooling draws on local supply; closed-loop cooling is now written into ordinances. Not a materials problem."],
+  ["Noise", "Cooling fans and generator testing produce a low-frequency hum that carries; new local codes set decibel limits at the property line. SUPERWOOD: acoustic screens and barriers that damp sound and look like architecture."],
+  ["Visual mass and land use", "Windowless boxes and substations on farmland and next to subdivisions; counties answer with 500–1,000 ft setbacks, design standards and screening rules. SUPERWOOD: facades, fences and screens that neighbors accept, and a lower-carbon building."],
+  ["Diesel backup generators", "Hundreds of engines per site; air-quality rules now require the cleanest tier. Not a materials problem."],
+  ["Few jobs, tax breaks, secrecy", "Large abatements for small permanent headcounts, and non-disclosure agreements that keep the buyer's name out of the hearing. Not a materials problem."],
+];
+objections.forEach(([head, sub], i) => {
+  const x = L, y = 2.4 + i * 0.68;
+  s.addShape(pres.ShapeType.ellipse, { x, y: y + 0.08, w: 0.13, h: 0.13, fill: { color: GOLD } });
+  s.addText(head, { x: x + 0.3, y, w: 6.9, h: 0.26, fontFace: SANS, fontSize: 11.5, bold: true, color: CREAM, margin: 0 });
+  body(s, sub, x + 0.3, y + 0.26, 6.9, 0.42, 8.5, MUTED);
+});
+label(s, "How big the pushback has become", 8.0, 2.0, 4.8);
+const scale = [
+  ["75 projects, about $130 billion, blocked or delayed in one quarter", "January to March 2026: as much as in all of 2025. 833 active opposition groups in 49 states, more than double the count at the end of 2025. Moratorium bills introduced in 14 states.", PANEL2],
+  ["The least-wanted development in America", "Asked about ten kinds of local development, Americans ranked data centers last: 26% support one nearby, 46% oppose. Housing led at 58%.", PANEL2],
+  ["Why it matters to us", "Entitlement is where hyperscalers now lose time. Facades, screens and fences a community accepts are a schedule argument, not decoration. Power, water and rates are outside our scope, and we say so.", PANEL],
+];
+scale.forEach(([head, sub, col], i) => {
+  const x = 8.0, y = 2.4 + i * 1.38, cw = 4.75;
+  panel(s, x, y, cw, 1.26, col);
+  s.addText(head, { x: x + 0.22, y: y + 0.12, w: cw - 0.44, h: 0.42, fontFace: SANS, fontSize: 11, bold: true, color: CREAM, margin: 0 });
+  body(s, sub, x + 0.22, y + 0.56, cw - 0.44, 0.66, 8.5, DIM);
+});
+note(s, "Data Center Watch, Q1 2026 report (June 2026): 75 projects, ~$130B, 833 groups, 49 states, 14 states with moratorium bills. Reuters/Ipsos 2026 survey (77% worry about electricity bills) as cited by Brookings, Aug 2026. ITIF and Public First survey, Aug 2026 (26% support, 46% oppose; last of ten development types). Setbacks and noise limits: Virginia HB 153 (500 ft); Henry County, VA ordinance, Aug 2026 (1,000 ft, 50 dBA, closed-loop cooling); Virginia DEQ generator rule, Jul 2026. Issue list is general reporting, not a ranked survey.", 6.62, 0.45);
+
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
 kicker(s, "The buyer · The fit");
@@ -140,11 +173,11 @@ pub.forEach(([logo, ar, photo, credit, txt, src], i) => {
 // right: column headers, beam images under each header, then the comparison rows
 const RX = 5.45, RW = 7.3;
 const cx = [RX, RX + 1.45, RX + 3.85], cwid = [1.35, 2.3, 3.45];
-s.addText("MASS TIMBER TODAY (CLT, GLULAM)", { x: cx[1], y: 1.98, w: cwid[1], h: 0.3, fontFace: SANS, fontSize: 9, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" });
-s.addText("WITH SUPERWOOD", { x: cx[2], y: 1.98, w: cwid[2], h: 0.3, fontFace: SANS, fontSize: 9, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" });
-const IMY = 2.36, IMH = 1.15;
-s.addImage({ path: "prep/beam_glulam.jpg", x: cx[1], y: IMY, w: cwid[1], h: IMH, sizing: { type: "crop", w: cwid[1], h: IMH } });
-const half = (cwid[2] - 0.1) / 2;
+s.addText("MASS TIMBER TODAY (CLT, GLULAM)", { x: cx[1], y: 2.1, w: cwid[1], h: 0.5, fontFace: SANS, fontSize: 12, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" });
+s.addText("WITH SUPERWOOD", { x: cx[2], y: 2.1, w: cwid[2], h: 0.5, fontFace: SANS, fontSize: 12, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" });
+const IMY = 2.7, IMH = 0.72;
+s.addImage({ path: "prep/beam_glulam.jpg", x: cx[1], y: IMY, w: 1.3, h: IMH, sizing: { type: "crop", w: 1.3, h: IMH } });
+const half = 1.3;
 s.addImage({ path: "prep/beam_hybrid.jpg", x: cx[2], y: IMY, w: half, h: IMH, sizing: { type: "crop", w: half, h: IMH } });
 s.addImage({ path: "prep/beam_thin.jpg", x: cx[2] + half + 0.1, y: IMY, w: half, h: IMH, sizing: { type: "crop", w: half, h: IMH } });
 const cmpRows = [
@@ -283,7 +316,7 @@ s.addText([
   t("Why these first.  ", { bold: true, color: GOLD }),
   t("They need no assembly fire rating — where a finish rating applies, Class A has been demonstrated and is specified per order. They sit where the community and the workforce see the data center. And they are the near-term projects our hyperscaler customers asked for: facades, biophilic office interiors, staff-area fencing, security fencing around critical outdoor infrastructure.", { color: DIM }),
 ], { x: L + 0.3, y: 5.4, w: CW - 0.6, h: 0.95, fontFace: SANS, fontSize: 11, margin: 0, valign: "middle" });
-conceptTag(s, W - 3.6, 6.6, 3.0, "Concept renderings");
+conceptTag(s, W - 3.6, 5.02, 3.0, "Concept renderings");
 
 // ---------- 12 · NEXT ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
@@ -311,7 +344,7 @@ const gated = [
 panel(s, L, 5.5, CW, 0.85, PANEL);
 s.addText("Each needs one scoped test program, which can be co-funded with a customer. Order depends on which a customer picks up first.",
   { x: L + 0.3, y: 5.55, w: CW - 0.6, h: 0.75, fontFace: SANS, fontSize: 11.5, italic: true, color: DIM, margin: 0, valign: "middle" });
-conceptTag(s, W - 3.6, 6.6, 3.0, "Concept renderings");
+conceptTag(s, W - 3.6, 5.2, 3.0, "Concept renderings");
 
 // ---------- 13 · STRUCTURAL ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
@@ -325,8 +358,8 @@ body(s, "Truss design is starting. Mass-timber enhancement — SUPERWOOD laminat
 // right: at SuperMill Two scale
 label(s, "At SuperMill Two scale", 5.5, 2.1, 6.0);
 const sm2 = [
-  ["tile_spaceframe", "Building enclosures", "Prefabricated envelope structure and skin — the co-development target with hyperscaler architects and engineers"],
-  ["tile_truss2", "Trusses, roofs & long-span members", "Roof structure first; fast-to-build enclosures follow"],
+  ["tile_mullion2", "Window mullions", "Slender, stiff curtain-wall and storefront mullions in place of aluminum and steel — light structural, non-life-safety"],
+  ["tile_truss2", "Trusses, roofs & long-span members", "Roof structure first; long-span floors and canopies follow"],
   ["tile_clt", "CLT-type floor, roof & wall assemblies", "Thin, far stronger panels through the mass-timber product route"],
   ["tile_rackocp", "Heavy equipment supports & server enclosures", "Racks come soon, a few months of development; enclosures for servers and equipment follow; the electronics are never replaced"],
 ];
@@ -342,7 +375,7 @@ s.addText([
   t("How qualification works.  ", { bold: true, color: GOLD }),
   t("Every structural application is qualified through a scoped test program with the customer who picks it up first, on the pathway mass timber has already opened in the building codes, with insurer acceptance for structural use. Test methods and property data are available on request.", { color: DIM }),
 ], { x: L + 0.3, y: 5.75, w: CW - 0.6, h: 0.8, fontFace: SANS, fontSize: 10.5, margin: 0, valign: "middle" });
-conceptTag(s, W - 3.6, 6.65, 3.0, "Concept renderings");
+conceptTag(s, W - 3.6, 5.42, 3.0, "Concept renderings");
 
 // ---------- 14 · THE LONG-TERM VISION ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
@@ -353,15 +386,15 @@ const vis = [
   ["prep/dc_wood_foundation.jpg", 1376 / 768, "Foundations, slabs and paving", "Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete — installed faster, with lower geotechnical demands, and potentially movable."],
 ];
 vis.forEach(([img, ar, head, sub], i) => {
-  const cw = 6.0, x = L + i * 6.2, y = 1.95, ih = 2.55;
-  s.addImage({ path: img, x, y, w: cw, h: ih, sizing: { type: "crop", w: cw, h: ih } });
-  s.addText(head, { x, y: y + ih + 0.15, w: cw, h: 0.38, fontFace: SANS, fontSize: 14, bold: true, color: CREAM, margin: 0 });
-  body(s, sub, x, y + ih + 0.55, cw, 1.05, 10.5, MUTED);
+  // text only — Alex 2026-09-05: no renderings on the long-term slide yet
+  const cw = 6.0, x = L + i * 6.2, y = 2.2;
+  panel(s, x, y, cw, 2.6, PANEL2);
+  s.addText(head, { x: x + 0.3, y: y + 0.25, w: cw - 0.6, h: 0.4, fontFace: SANS, fontSize: 15, bold: true, color: CREAM, margin: 0 });
+  body(s, sub, x + 0.3, y + 0.75, cw - 0.6, 1.7, 11.5, MUTED);
 });
 panel(s, L, 6.15, CW, 0.6, PANEL2);
 s.addText("Stated technical potential, not an engineered plan: slab, paving and foundations are on the order of 1–2 million tons of concrete and rebar per gigawatt. No design or code pathway exists yet.",
   { x: L + 0.3, y: 6.15, w: CW - 0.6, h: 0.6, fontFace: SANS, fontSize: 9.5, italic: true, color: DIM, margin: 0, valign: "middle" });
-conceptTag(s, W - 3.6, 4.5, 3.0, "Concept renderings");
 
 // ---------- 15 · EVERY ACCOUNT ON ONE LADDER ----------
 s = pres.addSlide(); base(s, "InventWood · The evidence");

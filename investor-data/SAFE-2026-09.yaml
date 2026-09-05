@@ -2417,6 +2417,42 @@ facts:
     printed_in: [superwood-datacenter-investor]
     notes: "Buildings only; servers and IT excluded (Cushman & Wakefield puts construction at ~20% of total data center cost). Monthly figures are preliminary/revised; annual bars are NSA sums. Supersedes the unsourced '5x in two years' line in the investor-overview register (2023 $20.0B to 2025 $49.7B is 2.5x)."
 
+  - id: datacenter.community_pushback_q1_2026
+    value: "75 projects, ~$130B blocked or delayed; 833 opposition groups in 49 states; moratorium bills in 14 states"
+    unit: projects / USD / groups
+    statement: In January-March 2026, local opposition blocked or delayed 75 US data center projects worth about $130B, matching all of 2025; active opposition groups more than doubled to 833 across 49 states; 14 states introduced moratorium bills
+    basis: published
+    confidence: H
+    source: Data Center Watch, Q1 2026 report, https://www.datacenterwatch.org/q1-2026 (via NBC News, 12 Jun 2026, https://www.nbcnews.com/tech/tech-news/data-center-opposition-sharply-rising-2026-study-finds-rcna349728)
+    as_of: 2026-09-05
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "Data Center Watch is an industry-funded tracker (10a Labs); the report characterises concerns as energy, water, land use and ratepayer impacts without a ranked breakdown. The earlier $64B figure was its 2023-2025 cumulative total."
+
+  - id: datacenter.public_opinion_2026
+    value: "26% support / 46% oppose a nearby data center (ITIF-Public First, Aug 2026); 77% worry about electricity bills (Reuters/Ipsos 2026)"
+    unit: share of US adults
+    statement: Data centers ranked last of ten development types Americans were asked about (26% support, 46% oppose; housing 58% support); 77% worry data centers will raise their electricity bills
+    basis: published
+    confidence: M
+    source: ITIF and Public First survey as reported by Route Fifty, Sep 2026, https://www.route-fifty.com/artificial-intelligence/2026/09/data-centers-are-americans-least-favored-development-poll-finds/415751/ ; Reuters/Ipsos 2026 as cited by Brookings, 25 Aug 2026, https://www.brookings.edu/articles/why-data-centers-are-a-top-issue-in-the-2026-midterms/
+    as_of: 2026-09-05
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "Secondary citations; sample sizes not captured. Gallup 2026 (>70% oppose nearby) and Annenberg (61% oppose) exist but were not verified at source."
+
+  - id: datacenter.local_ordinance_examples_2026
+    value: "500 ft setback (VA HB 153); 1,000 ft, 50 dBA, closed-loop cooling (Henry County VA, Aug 2026); Tier 4 generators (VA DEQ, Jul 2026)"
+    unit: ordinance terms
+    statement: New local rules answer noise and visual objections with setbacks, decibel limits and screening or design standards
+    basis: published
+    confidence: M
+    source: ailawsbystate.com regulation tracker (secondary); Calvert County MD data center page; Virginia DEQ
+    as_of: 2026-09-05
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "Used as examples on the pushback slide, not as a survey of ordinances."
+
   - id: datacenter.north_america_under_construction_gw
     value: ">66 GW"
     unit: GW under construction
