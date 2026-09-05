@@ -10,6 +10,8 @@ InventWood; deploy the web deck on every change, rebuild PPTX/PDF only when aske
 (0.5 / 1.3 / steel 1.8), pre-LCA, Prof. Ming Hu named; fire = Class A demonstrated, not guaranteed per board, "much
 better than regular wood"; no approvals/standards detail; no dated milestones; density 1.3 t/m³.
 
+Numbering follows the live deck (the former Process and Strength slides were removed 2026-09-05; company-level technology content lives in the SUPERMILLS Investor Overview).
+
 | # | Slide | Intent | Alex's notes and decisions |
 |---|---|---|---|
 | 1 | Cover | InventWood-branded, aligned with the SUPERMILLS Investor Overview cover | InventWood mark above the title; title "SUPERWOOD for Data Centers" with no tagline (the "turbocharging…" subtitle was removed 2026-09-04); "Companion to the SUPERMILLS Investor Overview / September 2026"; one Confidential mark only |
@@ -19,20 +21,19 @@ better than regular wood"; no approvals/standards detail; no dated milestones; d
 | 5 | Wood emerging | Hyperscalers already build structures with wood; we turbocharge wood | Slide called "Wood emerging" (Alex 2026-09-05; nav label and kicker); title verbatim ("…building structures with wood. We turbocharge wood."); Microsoft and Meta logos and their own project photos (credited); beams: glulam under the mass-timber header, hybrid and thin SUPERWOOD beams under the SUPERWOOD header; thin beam shown as stacked 1/4" boards, same camera and color as the hybrid; no beam captions; header images small, column titles large relative to body text; thin beam mirrored so all three beams recede the same way (2026-09-05); no column labels ("on the public record", "what SUPERWOOD adds"); code path: certifiable under wood standards today, SUPERWOOD-specific standards the goal; larger table text |
 | 6 | Data center | What a 1 GW data center is made of, by mass and by embodied carbon | Title "What a 1 GW data center is made of" (Alex 2026-09-05); web shows 5 horizon groups by default with "Show all 17 rows" (key D); PPTX keeps the full charts; toggle mass/carbon (web; PPTX side by side); rows must not shift between views; headline "50–80% of the above-ground portion of a data center is steel" (band covers metal-panel and tilt-up walls); do NOT mention concrete's share of total mass, the 5%-of-total line, or "only the long-term vision moves the total"; right-hand notes large and legible |
 | 7 | Worth | Just one data center can consume the entire output of a SUPERMILL | Rebuilt 2026-09-05 (Alex: too much duplicate information). Title verbatim. One table only: horizon, SUPERWOOD required, years of mill output; chart, "incumbent replaced" column and the capacity card removed; mill capacities as a legend line; no dollar values; racks in "soon" |
-| 8–9 | (removed) | Process and Strength slides removed 2026-09-05 (Alex) | Company-level technology content lives in the SUPERMILLS Investor Overview; the strength derivation card is retired with them |
-| 10 | Properties | Properties that matter on a data center | Fire wording per convention; no unsourced multipliers (100×/400×, 3× oak) |
-| 11 | Speed | Faster to build: lighter, prefabricated, reconfigurable | Restored from the original deck's "speed and scale of deployment"; mass-timber schedule figures as analogy only (ULI) |
-| 12 | Now | Skins, screens and fences from SuperMill One | Racks are NOT here (see 12) |
-| 13 | Soon | "Soon: applications requiring straightforward testing and engineering" | Racks belong here — a few months of development; gates in plain words, no standards |
-| 14 | Structural | Structural: starting now, scaling with SuperMill Two | Left block label "Under development with SUPERMILL ONE output": truss design starting; mass-timber enhancement under way; light structural components (non-life-safety: strut-type supports, window mullions, deck boards). "Window mullions" card replaces "Building enclosures" (Alex 2026-09-05: full building enclosures belong to the long-term slide). Qualification band in plain words; do not say "this is what Microsoft and Google are asking about" |
-| 15 | Long term | Prefabricated envelopes, then foundations | Long-term vision slide Alex asked for; labeled technical potential; no 5%/three-quarters mass lines; text only, no renderings (Alex 2026-09-05: "we are not ready yet for that") |
-| 16 | Customers | Customer engagement ladder | Stages as reported by InventWood; next steps undated; Fast + Epp: over a thousand small-scale experiments, Canadian-government funded (company statement; program name pending); HITT and Turner are contractor advocates, they do not specify; no "used with permission" line |
-| 17 | Microsoft and Meta | Published projects, and work with InventWood | Title just "Microsoft and Meta"; blocks "Published" and "Working with InventWood" |
-| 18 | Carbon sinks | The vision | Title verbatim: "Can the world's data centers be big, beautiful carbon sinks?"; three cards (Big, Beautiful, Carbon sinks); LCA caveat in footer |
-| 19 | Carbon | Embodied carbon: a projection until the LCA is complete | Canva set; both steel baselines; functional-unit derivation with substitution factor; biogenic separate |
-| 20 | Risks | Risks and how we handle them | No standards detail; SuperMill Two "is what the raise funds" |
-| 21 | Path | Path to first projects | Undated steps, each naming what it produces |
-| 22 | Close | Let's build what's next | Three-line recap; link to the SUPERMILLS Investor Overview; InventWood mark; contacts |
+| 8 | Properties | Properties that matter on a data center | Fire wording per convention; no unsourced multipliers (100×/400×, 3× oak) |
+| 9 | Speed | Faster to build: lighter, prefabricated, reconfigurable | Restored from the original deck's "speed and scale of deployment"; mass-timber schedule figures as analogy only (ULI) |
+| 10 | Now | Skins, screens and fences from SuperMill One | Racks are NOT here (see 12) |
+| 11 | Soon | "Soon: applications requiring straightforward testing and engineering" | Racks belong here — a few months of development; gates in plain words, no standards |
+| 12 | Structural | Structural: starting now, scaling with SuperMill Two | Left block label "Under development with SUPERMILL ONE output": truss design starting; mass-timber enhancement under way; light structural components (non-life-safety: strut-type supports, window mullions, deck boards). Left block is text only (its truss image repeated the truss card; Alex 2026-09-05); CLT card leads with SUPERWOOD hybrid glulam assemblies and shows the hybrid beam; "Window mullions" card replaces "Building enclosures" (Alex 2026-09-05: full building enclosures belong to the long-term slide). Qualification band in plain words; do not say "this is what Microsoft and Google are asking about" |
+| 13 | Long term | Prefabricated envelopes, then foundations | Long-term vision slide Alex asked for; labeled technical potential; no 5%/three-quarters mass lines; text only, no renderings (Alex 2026-09-05: "we are not ready yet for that") |
+| 14 | Customers | Customer engagement ladder | Stages as reported by InventWood; next steps undated; Fast + Epp: over a thousand small-scale experiments, Canadian-government funded (company statement; program name pending); HITT and Turner are contractor advocates, they do not specify; no "used with permission" line |
+| 15 | Microsoft and Meta | Published projects, and work with InventWood | Title just "Microsoft and Meta"; blocks "Published" and "Working with InventWood" |
+| 16 | Carbon sinks | The vision | Title verbatim: "Can the world's data centers be big, beautiful carbon sinks?"; three cards (Big, Beautiful, Carbon sinks); LCA caveat in footer |
+| 17 | Carbon | Embodied carbon: a projection until the LCA is complete | Canva set; both steel baselines; functional-unit derivation with substitution factor; biogenic separate |
+| 18 | Risks | Risks and how we handle them | No standards detail; SuperMill Two "is what the raise funds" |
+| 19 | Path | Path to first projects | Undated steps, each naming what it produces |
+| 20 | Close | Let's build what's next | Three-line recap; link to the SUPERMILLS Investor Overview; InventWood mark; contacts |
 
 ## Open items (Alex to confirm)
 - Wall system in Microsoft's and Meta's standard designs (metal panel vs tilt-up) — drives the steel share and whether facades are "now".

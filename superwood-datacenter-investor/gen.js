@@ -349,14 +349,13 @@ title(s, [t("Structural: starting "), gold("now"), t(", scaling with SuperMill T
 // left: under way now
 panel(s, L, 1.95, 4.6, 3.55, PANEL2);
 label(s, "Under development with SUPERMILL ONE output", L + 0.3, 2.1, 4.0, GOLD);
-s.addImage({ path: "prep/tiles/tile_truss2.jpg", x: L + 0.3, y: 2.45, w: 1.5, h: 1.5 });
-body(s, "Truss design is starting. Mass-timber enhancement — SUPERWOOD laminations that stiffen and strengthen glulam and CLT-type members — is under way. Light structural components (non-life-safety): strut-type supports, window mullions, deck boards.\n\nWe expect structural sales on the way to SuperMill Two. Replacing structural steel is the first thing new data-center customers ask about.", L + 2.0, 2.45, 2.9, 3.0, 10, DIM);
+body(s, "Truss design is starting. Mass-timber enhancement — SUPERWOOD laminations that stiffen and strengthen glulam and CLT-type members — is under way. Light structural components (non-life-safety): strut-type supports, window mullions, deck boards.\n\nWe expect structural sales on the way to SuperMill Two. Replacing structural steel is the first thing new data-center customers ask about.", L + 0.3, 2.5, 4.0, 2.9, 11, DIM);
 // right: at SuperMill Two scale
 label(s, "At SuperMill Two scale", 5.5, 2.1, 6.0);
 const sm2 = [
   ["tile_mullion2", "Window mullions", "Slender, stiff curtain-wall and storefront mullions in place of aluminum and steel — light structural, non-life-safety"],
   ["tile_truss2", "Trusses, roofs & long-span members", "Roof structure first; long-span floors and canopies follow"],
-  ["tile_clt", "CLT-type floor, roof & wall assemblies", "Thin, far stronger panels through the mass-timber product route"],
+  ["tile_hybrid_glulam", "CLT-type floor, roof & wall assemblies", "Starting with SUPERWOOD hybrid glulam: SUPERWOOD outer laminations on a glulam core. Thin, far stronger panels follow through the mass-timber product route"],
   ["tile_rackocp", "Heavy equipment supports & server enclosures", "Racks come soon, a few months of development; enclosures for servers and equipment follow; the electronics are never replaced"],
 ];
 sm2.forEach(([img, head, sub], i) => {
