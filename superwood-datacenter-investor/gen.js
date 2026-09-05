@@ -78,7 +78,7 @@ const thesis = [
   ["We turbocharge the wood they already use",
    "Mass timber replaces concrete floors. SUPERWOOD, stronger than A36 steel in tension at one-sixth the weight, adds the steel: members, skins and screens — and strengthens the mass timber itself. It ships today from SuperMill One; truss design and mass-timber enhancement are under way."],
   ["One basis-of-design win is SuperMill Two-scale demand",
-   "A gigawatt data center's skins alone are one to three years of SuperMill One's output; its structure is a year or more of SuperMill Two. Long term: prefabricated envelopes and, eventually, foundations."],
+   "A gigawatt data center's skins alone are one to three years of SuperMill One's output; its structure is a year or more of SuperMill Two. Later: prefabricated envelopes and, eventually, foundations."],
 ];
 thesis.forEach(([head, sub], i) => {
   const cw = 3.95, x = L + i * 4.125, y = 2.1;
@@ -163,13 +163,13 @@ s.addImage({ path: "prep/charts/campus_mass_narrow.png", x: L, y: 2.08, w: chW, 
 s.addImage({ path: "prep/charts/campus_carbon_narrow.png", x: 6.7, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_legend.png", x: L, y: 2.08 + chH + 0.03, w: CW, h: CW * LEG_H / LEG_W });
 const sizeL = [["50–80% of the above-ground portion of a data center is steel", "Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server enclosures eventually; never the electronics."]];
-const sizeR = [["By embodied carbon, steel is about 60% of the building materials", "At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses through the structural horizon."]];
+const sizeR = [["By embodied carbon, steel is about 60% of the building materials", "At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses now, soon and later."]];
 [[sizeL, L], [sizeR, 6.7]].forEach(([arr, x]) => arr.forEach(([head, sub]) => {
   const y = 2.08 + chH + 0.42;
   s.addText(head, { x, y, w: 5.9, h: 0.32, fontFace: SANS, fontSize: 13, bold: true, color: CREAM, margin: 0 });
   body(s, sub, x, y + 0.34, 5.9, 0.62, 10, DIM);
 }));
-note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Model: analyses/materials-mass-and-replacement.xlsx.", 6.78, 0.3);
+note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: now = shipping; soon = 1–3 years, straightforward applications engineering; later = complex applications engineering, new form factors or materials engineering.", 6.78, 0.3);
 
 // ---------- 6 · WHAT ONE GIGAWATT IS WORTH ----------
 s = pres.addSlide(); base(s, "InventWood · The size");
@@ -179,9 +179,9 @@ s.addImage({ path: "prep/charts/worth.png", x: L, y: 2.15, w: 5.0, h: 5.0 * 4.2 
 const worthCols = ["Horizon", "Incumbent replaced", "SUPERWOOD required", "Plant-years"];
 const worthRows = [
   ["Now — skins, screens, fences", "3,300–12,000 tons", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 yr of SuperMill One"],
-  ["Next — racks, platforms, barriers", "12,000–30,000 tons", "3,500–18,000 tons", "0.1–0.6 yr of SuperMill Two"],
-  ["Structural — frame, roofs, enclosures", "53,000–108,000 tons", "16,000–65,000 tons", "0.5–2.1 yr of SuperMill Two"],
-  ["Long-term vision — slab, foundations, server boxes", "1,002,000–2,089,000 tons", "58,000–362,000 tons", "1.8–12 yr of SuperMill Two"],
+  ["Soon — racks, platforms, barriers", "12,000–30,000 tons", "3,500–18,000 tons", "0.1–0.6 yr of SuperMill Two"],
+  ["Later: structure — frame, roofs, enclosures", "53,000–108,000 tons", "16,000–65,000 tons", "0.5–2.1 yr of SuperMill Two"],
+  ["Later: vision — slab, foundations, server boxes", "1,002,000–2,089,000 tons", "58,000–362,000 tons", "1.8–12 yr of SuperMill Two"],
 ];
 const wx = [5.9, 8.2, 9.6, 11.0], ww = [2.2, 1.3, 1.3, 1.75];
 worthCols.forEach((c, i) => s.addText(c.toUpperCase(), { x: wx[i], y: 1.9, w: ww[i], h: 0.5, fontFace: SANS, fontSize: 9, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" }));
@@ -281,6 +281,7 @@ kicker(s, "The path · Now");
 title(s, "Now: skins, screens and fences from SuperMill One");
 s.addText("Every item below ships today as boards up to 8\" × 16' × 3/8\", exterior or interior grade. SuperMill One makes about one million square feet a year across all markets.",
   { x: L, y: 1.85, w: CW, h: 0.45, fontFace: SANS, fontSize: 12, color: DIM, margin: 0 });
+s.addText([t("NOW ", { bold: true, color: BRIGHT }), t("shipping from SuperMill One   ·   ", {}), t("SOON ", { bold: true, color: BRIGHT }), t("1–3 years; straightforward applications engineering   ·   ", {}), t("LATER ", { bold: true, color: BRIGHT }), t("complex applications engineering such as full building systems, new form factors, or materials engineering", {})], { x: L, y: 2.25, w: CW, h: 0.3, fontFace: SANS, fontSize: 9.5, color: DIM, margin: 0 });
 const nowTiles = [
   ["tile_cladding", "Facades, cladding & rain screens"],
   ["tile_lobby", "Biophilic interiors for office space"],
@@ -306,8 +307,8 @@ conceptTag(s, W - 3.6, 6.6, 3.0, "Concept renderings");
 
 // ---------- 12 · NEXT ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Soon");
-title(s, "Soon: applications requiring straightforward testing and engineering", L, 0.88, 11.9, 27);
+kicker(s, "The path · Soon (1–3 years)");
+title(s, "Soon (1–3 years): applications needing straightforward applications engineering", L, 0.88, 11.9, 27);
 const gated = [
   ["tile_barrier", "Acoustic barrier walls & equipment screens", "Acoustic performance data"],
   ["tile_walkway", "Walkways & platforms", "Load and connection data"],
@@ -334,7 +335,7 @@ conceptTag(s, W - 3.6, 6.6, 3.0, "Concept renderings");
 
 // ---------- 13 · STRUCTURAL ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Structural");
+kicker(s, "The path · Later");
 title(s, [t("Structural: starting "), gold("now"), t(", scaling with SuperMill Two")]);
 // left: under way now
 panel(s, L, 1.95, 4.6, 3.55, PANEL2);
@@ -347,7 +348,7 @@ const sm2 = [
   ["tile_spaceframe", "Building enclosures", "Prefabricated envelope structure and skin — the co-development target with hyperscaler architects and engineers"],
   ["tile_truss2", "Trusses, roofs & long-span members", "Roof structure first; fast-to-build enclosures follow"],
   ["tile_clt", "CLT-type floor, roof & wall assemblies", "Thin, far stronger panels through the mass-timber product route"],
-  ["tile_rackocp", "Heavy equipment supports & server enclosures", "Racks come next, a few months of development; enclosures for servers and equipment follow; the electronics are never replaced"],
+  ["tile_rackocp", "Heavy equipment supports & server enclosures", "Racks come soon, a few months of development; enclosures for servers and equipment follow; the electronics are never replaced"],
 ];
 sm2.forEach(([img, head, sub], i) => {
   const col = i % 2, row = Math.floor(i / 2);
@@ -365,8 +366,8 @@ conceptTag(s, W - 3.6, 6.65, 3.0, "Concept renderings");
 
 // ---------- 14 · THE LONG-TERM VISION ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Long term");
-title(s, [t("Long term: prefabricated "), gold("envelopes"), t(", then foundations")]);
+kicker(s, "The path · Later, the long-term vision");
+title(s, [t("Later, the long-term vision: prefabricated "), gold("envelopes"), t(", then foundations")]);
 const vis = [
   ["prep/app_shell.jpg", 1200 / 896, "Prefabricated building envelopes", "Structure and skin shipped as panels and modules — the co-development target with our hyperscaler customers' architects and engineers. Shells that carry their own loads, weigh far less than steel and precast, and can be disassembled and moved."],
   ["prep/dc_wood_foundation.jpg", 1376 / 768, "Foundations, slabs and paving", "Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete — installed faster, with lower geotechnical demands, and potentially movable."],
@@ -554,7 +555,7 @@ note(s, "Steps are sequenced, not dated. Each names what it produces.", 6.75, 0.
 s = pres.addSlide();
 s.background = { path: "prep/cover_bg.jpg" };
 s.addText([t("Let's build what's "), gold("next"), t(".")], { x: 1.0, y: 2.6, w: 10, h: 1.0, fontFace: SERIF, fontSize: 44, color: CREAM, margin: 0 });
-bullets(s, ["Data centers are short of steel and already build with wood.", "SUPERWOOD turbocharges that wood: skins and fences now, structure next.", "One basis-of-design win with a hyperscaler is the demand case for SuperMill Two."], { x: 1.0, y: 3.55, w: 7.5, h: 1.2, fontSize: 12.5, color: CREAM });
+bullets(s, ["Data centers are short of steel and already build with wood.", "SUPERWOOD turbocharges that wood: skins and fences now, structure later.", "One basis-of-design win with a hyperscaler is the demand case for SuperMill Two."], { x: 1.0, y: 3.55, w: 7.5, h: 1.2, fontSize: 12.5, color: CREAM });
 s.addText("Company, mills, cost roadmap and the raise: SUPERMILLS Investor Overview", { x: 1.0, y: 4.8, w: 9, h: 0.3, fontFace: SANS, fontSize: 11, color: BRIGHT, margin: 0 });
 s.addImage({ path: "prep/inventwood_logo.png", x: 1.0, y: 5.25, w: 3.6, h: 3.6 * 216 / 1473 });
 s.addText("Alex Lau · CEO / Co-Founder · alex@inventwood.com", { x: 1.0, y: 5.95, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });

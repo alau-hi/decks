@@ -41,6 +41,10 @@ better than regular wood"; no approvals/standards detail; no dated milestones; d
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-05: horizon taxonomy fixed (Alex): Now / Soon (1–3 years, straightforward applications engineering) / Later
+  (complex applications engineering such as full building systems, new form factors, or materials engineering). "Next"
+  and "structural" as horizon names are gone; charts, tables, tags, kickers, the dock and the slide 12 and 14 titles
+  follow; definitions printed on slide 11 and in the slide 5 note.
 - 2026-09-05: critique follow-through (all six actions). Slide 6 rebuilt (table primary; chart legend line; phone cards);
   slide 5 grouped by horizon with detail on demand; laptop root floor 13.5px and an 11px floor on small roles; dock and
   pager precede the deck in the DOM, non-current slides are inert and focus follows navigation; slide 13 kicker fixed;

@@ -48,8 +48,10 @@ premium skins into structural applications."
 - Units in tons or '000s of tons, never kt; "data center", never "campus"; plain language, no fluff.
 - Carbon figures are the Canva set (0.5 kg CO₂e/kg manufactured, 1.3 kg/kg biogenic stored, steel 1.8), pre-LCA, with
   Prof. Ming Hu, University of Notre Dame, named. Fire: Class A is a demonstrated capability, not a per-board guarantee.
-- No approvals or standards detail; no dated milestones; no dollar values per gigawatt. Racks are "soon"; server
-  enclosures are long term; electronics never.
+- No approvals or standards detail; no dated milestones; no dollar values per gigawatt. Horizons (Alex, 2026-09-05): Now =
+  shipping from SuperMill One; Soon = 1–3 years, straightforward applications engineering (racks, platforms, barriers,
+  doors, mullions); Later = complex applications engineering such as full building systems, new form factors or materials
+  engineering (structure, enclosures, and the long-term vision of foundations). Server enclosures are later; electronics never.
 - Web navigation: fixed right-hand keyword dock with live scroll-spy, named prev/next, left/right arrow section jumps,
   digit jumps, M/C toggle on slide 5. Slides fit to the viewport on desktop and scroll on phones.
 - Undecided: which wall system Microsoft's and Meta's standard designs use (drives the steel-share estimate);
