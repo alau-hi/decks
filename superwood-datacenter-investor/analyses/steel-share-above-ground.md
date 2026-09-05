@@ -1,6 +1,7 @@
 # How much of a data center's above-ground material is steel, including contents
 
-Date: 2026-09-04. Status: **estimate** [conf: L]. Asked by Alex 2026-09-04 as an independent check on the
+Date: 2026-09-04. Status: **estimate** [conf: L]. The per-component fractions and totals are now a live sheet, *Steel share*, in
+[materials-mass-and-replacement.xlsx](materials-mass-and-replacement.xlsx); this note is the narrative. Asked by Alex 2026-09-04 as an independent check on the
 "~60% of a data center is steel" figure (ex-concrete basis). Inputs are the component masses from
 [materials-mass-and-replacement.md](materials-mass-and-replacement.md) (v4, metal-panel-wall case); the steel
 fractions per component are my assumptions, stated in the table, not sourced.

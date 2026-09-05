@@ -62,6 +62,7 @@ rows=[
 ("co2_eaf","Steel emissions, recycled (EAF)",0.4,0.7,"kg CO₂e/kg","industry range [M]",""),
 ("co2_sw","SUPERWOOD manufacturing emissions",0.5,0.5,"kg CO₂e/kg","internal, pre-LCA [L]","Canva DCII deck; LCA under way, Prof. Ming Hu, Notre Dame"),
 ("co2_bio","SUPERWOOD biogenic carbon stored",1.3,1.3,"kg CO₂e/kg","internal, pre-LCA [L]","Report separately; module C release under EN 15804"),
+("co2_mixed","Interior finishes emissions (gypsum, wood, steel studs — mixed)",1.0,1.0,"kg CO₂e/kg","estimated [L]","Used only for the interior finishes row"),
 ]
 R={}
 for i,(k,name,lo,hi,unit,lab,note) in enumerate(rows,start=2):
@@ -93,7 +94,8 @@ HORS=("Immediate","Soon","Medium term","Long term"); HCOL={"Immediate":6,"Soon":
 header(M,1,["Component (building, then contents)","Low  tons per data center","High  tons per data center","Low  cumulative t","High  cumulative t",
             "Addressable — immediate","Addressable — soon","Addressable — medium term","Addressable — long term",
             "Low  replaced t","High  replaced t","Low  SUPERWOOD t","High  SUPERWOOD t","Gate / basis","High  not replaced t",
-            "Low SW immediate","Low SW soon","Low SW medium","Low SW long","High SW immediate","High SW soon","High SW medium","High SW long"])
+            "Low SW immediate","Low SW soon","Low SW medium","Low SW long","High SW immediate","High SW soon","High SW medium","High SW long",
+            "Carbon factor (kg CO₂e/kg)","Low embodied carbon (t CO₂e)","High embodied carbon (t CO₂e)","EAF-basis factor (kg CO₂e/kg)","Material class"])
 IT=lambda c: ref('it_mw',c)
 # (name, mass formula, horizon, share formula, sw rule, note)
 comp=[
@@ -154,6 +156,16 @@ for name,f,hor,share,rule,note in comp:
         for j,h in enumerate(HORS):
             M.cell(row=r,column=base+j,value=f"=IF({tot_share}=0,0,{CL(scol)}{r}*{CL(HCOL[h])}{r}/{tot_share})").fill=calc
     M.cell(row=r,column=15,value=f"=C{r}-K{r}").fill=calc
+    # embodied carbon per row: factor by material class (equipment rows not estimated)
+    kind = "concrete" if (name.startswith("Concrete") or name.startswith("Precast")) else "equipment" if (name.startswith("Electrical") or name.startswith("Mechanical") or name.startswith("IT")) else "mixed" if rule=="interior" else "steel"
+    M.cell(row=r,column=28,value=kind)
+    if kind=="equipment":
+        M.cell(row=r,column=24,value="not estimated"); M.cell(row=r,column=25,value=0).fill=calc; M.cell(row=r,column=26,value=0).fill=calc; M.cell(row=r,column=27,value=0)
+    else:
+        fk={"concrete":"co2_conc","steel":"co2_steel","mixed":"co2_mixed"}[kind]
+        M.cell(row=r,column=24,value=f"={ref(fk,'B')}").fill=calc
+        M.cell(row=r,column=27,value=f"={ref('co2_eaf','C') if kind=='steel' else ref(fk,'B')}").fill=calc
+        M.cell(row=r,column=25,value=f"=B{r}*X{r}").fill=calc; M.cell(row=r,column=26,value=f"=C{r}*X{r}").fill=calc
     r+=1
 first,last=data_rows[0],data_rows[-1]
 r+=1
@@ -186,10 +198,23 @@ rsh=srow("Share of total mass replaced",f"=B{rc}/B{rt}",f"=C{rc}/C{rt}",fmt="0.0
 rshx=srow("Share of ex-concrete mass replaced through the medium term (excludes foundations)",f"=(B{rc}-B{hor_rows['Long term'][0]})/B{rx}",f"=(C{rc}-C{hor_rows['Long term'][0]})/C{rx}",fmt="0.0%")
 rnr=srow("Not replaced by SUPERWOOD (tons)",f"=B{rt}-B{rc}",f"=C{rt}-C{rc}",bold=True)
 rnrs=srow("Not replaced, share of total",f"=B{rnr}/B{rt}",f"=C{rnr}/C{rt}",fmt="0.0%")
+r+=1
+M.cell(row=r,column=1,value="EMBODIED CARBON — building materials (equipment not estimated)").font=tot; M.cell(row=r,column=1).fill=sect; r+=1
+rcb=srow("Embodied carbon, building materials (t CO₂e)",f"=SUM(Y{first}:Y{last})",f"=SUM(Z{first}:Z{last})",bold=True)
+rcs=srow("  of which steel (t CO₂e)",f'=SUMIF(AB{first}:AB{last},"steel",Y{first}:Y{last})',f'=SUMIF(AB{first}:AB{last},"steel",Z{first}:Z{last})')
+rcc=srow("  of which concrete (t CO₂e)",f'=SUMIF(AB{first}:AB{last},"concrete",Y{first}:Y{last})',f'=SUMIF(AB{first}:AB{last},"concrete",Z{first}:Z{last})')
+rcss=srow("Steel share of building-materials carbon",f"=B{rcs}/B{rcb}",f"=C{rcs}/C{rcb}",fmt="0.0%")
+rccs=srow("Concrete share of building-materials carbon",f"=B{rcc}/B{rcb}",f"=C{rcc}/C{rcb}",fmt="0.0%")
+rebar_row=[x for x in data_rows if M.cell(row=x,column=1).value.startswith("Rebar")][0]
+rcas=srow("Steel above the slab (steel excl. rebar), share of building-materials carbon",f"=(B{rcs}-Y{rebar_row})/B{rcb}",f"=(C{rcs}-Z{rebar_row})/C{rcb}",fmt="0.0%")
+rceaf=srow("Steel share if steel is recycled (EAF factor, high end)",f'=SUMPRODUCT(B{first}:B{last},AA{first}:AA{last},--(AB{first}:AB{last}="steel"))/SUMPRODUCT(B{first}:B{last},AA{first}:AA{last})',f'=SUMPRODUCT(C{first}:C{last},AA{first}:AA{last},--(AB{first}:AB{last}="steel"))/SUMPRODUCT(C{first}:C{last},AA{first}:AA{last})',fmt="0.0%")
 for rr in range(2,last+1):
     for col in (2,3,4,5,10,11,12,13,15)+tuple(range(16,24)):
         if M.cell(row=rr,column=col).number_format=="General": M.cell(row=rr,column=col).number_format="#,##0"
-widths(M,[58,15,15,16,16,12,12,12,12,14,14,14,14,64,16]+[11]*8); M.freeze_panes="B2"
+widths(M,[58,15,15,16,16,12,12,12,12,14,14,14,14,64,16]+[11]*8+[14,18,18,14,12]); M.freeze_panes="B2"
+for rr in range(first,last+1):
+    for col in (25,26): M.cell(row=rr,column=col).number_format="#,##0"
+    M.cell(row=rr,column=24).number_format="0.00"; M.cell(row=rr,column=27).number_format="0.00"
 for col in range(16,24): M.column_dimensions[CL(col)].outlineLevel=1; M.column_dimensions[CL(col)].hidden=True
 M.cell(row=1,column=16).value="Low SW immediate (helper — grouped, unhide to see the per-horizon split)"
 ch=BarChart(); ch.type="bar"; ch.grouping="stacked"; ch.overlap=100; ch.title="High case, tons per data center — replaced by SUPERWOOD vs not (slab concrete row excluded)"
@@ -207,29 +232,66 @@ M.add_chart(ch,f"A{r+2}")
 C=wb.create_sheet("Carbon")
 header(C,1,["Horizon","Low incumbent emissions avoided (t CO₂e)","High","Low SUPERWOOD manufacturing (t CO₂e)","High","Low net reduction","High","Low net vs EAF steel","High","Low biogenic stored (separate)","High"])
 for i,hor in enumerate(("Immediate","Soon","Medium term","Long term"),start=2):
-    rr,rs,_=hor_rows[hor]; C.cell(row=i,column=1,value=hor+(" (foundation concrete)" if hor=="Long term" else " (steel)"))
+    rr,rs,_=hor_rows[hor]; C.cell(row=i,column=1,value=hor+(" (concrete, rebar, server enclosures)" if hor=="Long term" else " (steel)"))
     for c,col in (("B",2),("C",3)):
-        inc=f"'1 GW data center'!{c}{rr}"; sw=f"'1 GW data center'!{c}{rs}"
-        fac=ref('co2_conc',c) if hor=="Long term" else ref('co2_steel',c)
-        C.cell(row=i,column=col,value=f"={inc}*{fac}")
+        sw=f"'1 GW data center'!{c}{rs}"; sc=CL(HCOL[hor]); S=f"'1 GW data center'!"
+        C.cell(row=i,column=col,value=f"=SUMPRODUCT({S}{c}{first}:{c}{last},{S}{sc}{first}:{sc}{last},{S}X{first}:X{last})")
         C.cell(row=i,column=col+2,value=f"={sw}*{ref('co2_sw',c)}")
         C.cell(row=i,column=col+4,value=f"={CL(col)}{i}-{CL(col+2)}{i}")
-        C.cell(row=i,column=col+6,value=("=\"n/a\"" if hor=="Long term" else f"={inc}*{ref('co2_eaf',c)}-{CL(col+2)}{i}"))
+        C.cell(row=i,column=col+6,value=f"=SUMPRODUCT({S}{c}{first}:{c}{last},{S}{sc}{first}:{sc}{last},{S}AA{first}:AA{last})-{CL(col+2)}{i}")
         C.cell(row=i,column=col+8,value=f"={sw}*{ref('co2_bio',c)}")
     for col in range(2,12): C.cell(row=i,column=col).number_format="#,##0"
-C.cell(row=7,column=1,value="Pre-LCA projections (LCA under way with Prof. Ming Hu, University of Notre Dame). Long-term row uses a concrete factor (Inputs co2_conc) and treats the rebar in foundations at the concrete factor — conservative. Biogenic storage reported separately (EN 15804 module C).")
+C.cell(row=7,column=1,value="Pre-LCA projections (LCA under way with Prof. Ming Hu, University of Notre Dame). Each row is valued at its own factor (column X on the main sheet): concrete rows at co2_conc, steel rows including rebar at co2_steel, interior finishes at co2_mixed; equipment rows (including the long-term server enclosures) carry no factor, so the long-term row counts concrete and rebar only. The EAF column revalues steel rows at the recycled-steel factor (high end). Equipment rows carry no factor. Biogenic storage reported separately (EN 15804 module C).")
 widths(C,[30,18,12,18,12,16,12,16,12,18,12])
+
+# ---------------- Steel share of above-ground mass ----------------
+SS=wb.create_sheet("Steel share")
+header(SS,1,["Above-ground component (contents included)","Low tons","High tons","Steel fraction — low","Steel fraction — high","Low steel tons","High steel tons","Basis for the fraction"])
+fr={"Structural steel — primary":(1,1,"steel by definition"),"Structural steel — roof":(1,1,"steel by definition"),"Exterior skins":(0.85,0.95,"steel-faced IMP; some aluminum"),
+"Louvers":(0.4,0.7,"aluminum common"),"Security":(0.9,1,"chain-link, palisade, posts"),"Platforms":(0.95,1,"structural and misc. steel"),"Acoustic":(0.7,0.9,"steel panels with absorptive fill"),
+"Racking":(0.95,1,"steel"),"Other tray":(0.85,0.95,"mostly steel, some aluminum"),"Ducting":(0.95,1,"galvanized steel"),"Interior finishes":(0.2,0.4,"gypsum, wood, steel studs"),
+"Electrical":(0.5,0.65,"enclosures, cores, gensets, switchgear; rest copper, oil, batteries"),"Mechanical":(0.45,0.65,"chillers, piping steel; water, copper, refrigerant not"),"IT":(0.4,0.6,"steel chassis and racks; aluminum, PCBs, copper")}
+rr=2; ss_rows=[]
+for x in data_rows:
+    nm=M.cell(row=x,column=1).value
+    if nm.startswith("Concrete") or nm.startswith("Precast") or nm.startswith("Rebar"): continue
+    key=[k for k in fr if nm.startswith(k)]
+    if not key: continue
+    lo_f,hi_f,basis=fr[key[0]]
+    SS.cell(row=rr,column=1,value=nm); SS.cell(row=rr,column=2,value=f"='{SHEET}'!B{x}").fill=calc; SS.cell(row=rr,column=3,value=f"='{SHEET}'!C{x}").fill=calc
+    a=SS.cell(row=rr,column=4,value=lo_f); a.fill=inp; a.number_format="0%"; bb=SS.cell(row=rr,column=5,value=hi_f); bb.fill=inp; bb.number_format="0%"
+    SS.cell(row=rr,column=6,value=f"=B{rr}*D{rr}").fill=calc; SS.cell(row=rr,column=7,value=f"=C{rr}*E{rr}").fill=calc; SS.cell(row=rr,column=8,value=basis)
+    for col in (2,3,6,7): SS.cell(row=rr,column=col).number_format="#,##0"
+    ss_rows.append(rr); rr+=1
+f1,f2=ss_rows[0],ss_rows[-1]; rr+=1
+SS.cell(row=rr,column=1,value="Above-ground mass, contents included (tons)").font=Font(bold=True); SS.cell(row=rr,column=2,value=f"=SUM(B{f1}:B{f2})"); SS.cell(row=rr,column=3,value=f"=SUM(C{f1}:C{f2})"); ss_tot=rr; rr+=1
+SS.cell(row=rr,column=1,value="Steel in it (tons)").font=Font(bold=True); SS.cell(row=rr,column=2,value=f"=SUM(F{f1}:F{f2})"); SS.cell(row=rr,column=3,value=f"=SUM(G{f1}:G{f2})"); ss_steel=rr; rr+=1
+SS.cell(row=rr,column=1,value="Steel share of above-ground mass").font=Font(bold=True); SS.cell(row=rr,column=2,value=f"=B{ss_steel}/B{ss_tot}"); SS.cell(row=rr,column=3,value=f"=C{ss_steel}/C{ss_tot}"); ss_share=rr
+for col in (2,3): SS.cell(row=rr,column=col).number_format="0%"
+rr+=1
+SS.cell(row=rr,column=1,value="Steel share including slab rebar (at-grade steel)").font=Font(bold=True)
+SS.cell(row=rr,column=2,value=f"=(B{ss_steel}+'{SHEET}'!B{rebar_row})/(B{ss_tot}+'{SHEET}'!B{rebar_row})"); SS.cell(row=rr,column=3,value=f"=(C{ss_steel}+'{SHEET}'!C{rebar_row})/(C{ss_tot}+'{SHEET}'!C{rebar_row})"); ss_share_rebar=rr
+for col in (2,3): SS.cell(row=rr,column=col).number_format="0%"
+rr+=1
+SS.cell(row=rr,column=1,value="Structure and envelope only (first five rows)").font=Font(bold=True)
+SS.cell(row=rr,column=2,value=f"=SUM(F{f1}:F{f1+4})/SUM(B{f1}:B{f1+4})"); SS.cell(row=rr,column=3,value=f"=SUM(G{f1}:G{f1+4})/SUM(C{f1}:C{f1+4})"); ss_se=rr
+for col in (2,3): SS.cell(row=rr,column=col).number_format="0%"
+rr+=2
+SS.cell(row=rr,column=1,value="Excludes slab on grade, paving, foundations and all concrete. Steel fractions per component are estimates [conf: L] (yellow cells). Printed band on the deck: 50–80% (Alex, 2026-09-04). Precast/tilt-up walls would add above-ground concrete and lower the share sharply.")
+for col in (2,3,6,7): SS.cell(row=ss_tot,column=col).number_format="#,##0"; SS.cell(row=ss_steel,column=col).number_format="#,##0"
+widths(SS,[58,14,14,16,16,14,14,64]); SS.freeze_panes="B2"
 
 # ---------------- README ----------------
 Rd=wb.create_sheet("README",0)
-txt=["SUPERWOOD × Data Centers — material mass build-up and replacement model (2026-09-01, v2)",
+txt=["SUPERWOOD × Data Centers — material mass, embodied carbon and replacement model (2026-09-04, v3)",
 "","Reference unit: 1 GW IT-load data center. Change any yellow cell on Inputs (and the four addressable-share columns on 1 GW data center — immediate, soon, medium term, long term; a row may split across them); everything recalculates.",
 "Low column = every low input; High column = every high input. These are scenario bounds, not a distribution — vary single inputs for sensitivities.",
 "","Read the sheet 1 GW data center top to bottom: building structure and envelope first, then contents, with a running cumulative total. The right-hand columns show, for each component, the addressable share in each of the four horizons, the mass replaced, and the SUPERWOOD required (per-horizon SUPERWOOD split sits in grouped helper columns P–W). The summary block and chart follow.",
 "Horizons: Immediate (shipping now, no assembly rating) · Soon (certification-gated non-structural: platforms, railings, barriers, racking, doors) · Medium term (structural steel, roof trusses and roofs, ducting, enclosures) · Long term (foundations). Switch Inputs walls_precast to 1 to model precast perimeter walls; foundation_share and conc_sub_factor drive the long-term row.",
 "","Provenance: concrete and structural-steel intensities are published, secondary (arXiv 2509.21312 citing Hasan 2022 / Sharma 2023, conf M); GB200 rack mass is NVIDIA-published (conf H). Everything else is estimated [conf: L] — replace with a real material takeoff from HITT, Turner or Fast + Epp before external use.",
+"Embodied carbon: columns X–AB on the main sheet value each row at its own factor (concrete, steel, mixed; equipment not estimated), with totals and steel/concrete shares in the summary; the Carbon sheet rolls avoided emissions up by horizon at those factors and at the recycled-steel (EAF) factor. Steel share: the Steel share sheet estimates what fraction of above-ground mass, contents included, is steel (per-component steel fractions are yellow inputs).",
 "Companion narrative: materials-mass-and-replacement.md in the same folder."]
 for i,s in enumerate(txt,1): Rd.cell(row=i,column=1,value=s)
 Rd.column_dimensions["A"].width=150
 wb.save("materials-mass-and-replacement.xlsx"); print("saved; data rows",first,last,"summary ends",r)
-import json; json.dump({"sheet":SHEET,"first":first,"last":last,"rt":rt,"rx":rx,"hor":hor_rows,"rc":rc,"rsw":rsw,"rsy":rsy,"rsh":rsh,"rshx":rshx,"rnr":rnr,"rnrs":rnrs,"data_rows":data_rows,"precast":precast_row},open("model_rows.json","w"))
+import json; json.dump({"sheet":SHEET,"first":first,"last":last,"rt":rt,"rx":rx,"hor":hor_rows,"rc":rc,"rsw":rsw,"rsy":rsy,"rsh":rsh,"rshx":rshx,"rnr":rnr,"rnrs":rnrs,"data_rows":data_rows,"precast":precast_row,"rcb":rcb,"rcs":rcs,"rcc":rcc,"rcss":rcss,"rccs":rccs,"rcas":rcas,"rceaf":rceaf,"ss_rows":ss_rows,"ss_tot":ss_tot,"ss_steel":ss_steel,"ss_share":ss_share,"ss_share_rebar":ss_share_rebar,"ss_se":ss_se},open("model_rows.json","w"))

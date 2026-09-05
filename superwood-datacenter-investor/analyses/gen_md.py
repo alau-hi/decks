@@ -32,6 +32,11 @@ cum=dict(rlo=ev(S,f"B{meta['rc']}"),rhi=ev(S,f"C{meta['rc']}"),slo=ev(S,f"B{meta
          shlo=ev(S,f"B{meta['rsh']}"),shhi=ev(S,f"C{meta['rsh']}"),xlo=ev(S,f"B{meta['rshx']}"),xhi=ev(S,f"C{meta['rshx']}"),nlo=ev(S,f"B{meta['rnr']}"),nhi=ev(S,f"C{meta['rnr']}"),nslo=ev(S,f"B{meta['rnrs']}"),nshi=ev(S,f"C{meta['rnrs']}"))
 print("CUM",{a:round(b,3) for a,b in cum.items()})
 carb=[[ev("Carbon",f"{c}{i}") for c in "BCDEFGHIJK"] for i in (2,3,4,5)]
+CB={k:(ev(S,f"B{meta[k]}"),ev(S,f"C{meta[k]}")) for k in ("rcb","rcs","rcc","rcss","rccs","rcas","rceaf")}
+comp_carb=[dict(name=M.cell(row=r,column=1).value,kind=M.cell(row=r,column=28).value,fac=ev(S,f"X{r}"),lo=ev(S,f"Y{r}"),hi=ev(S,f"Z{r}")) for r in meta["data_rows"] if M.cell(row=r,column=2).value is not None]
+SSH=wb["Steel share"]
+ss=[dict(name=SSH.cell(row=r,column=1).value,lo=ev("Steel share",f"B{r}"),hi=ev("Steel share",f"C{r}"),flo=SSH.cell(row=r,column=4).value,fhi=SSH.cell(row=r,column=5).value,slo=ev("Steel share",f"F{r}"),shi=ev("Steel share",f"G{r}"),basis=SSH.cell(row=r,column=8).value) for r in meta["ss_rows"]]
+SST={k:(ev("Steel share",f"B{meta[k]}"),ev("Steel share",f"C{meta[k]}")) for k in ("ss_tot","ss_steel","ss_share","ss_share_rebar","ss_se")}
 print("CARBON",[[ (round(x) if isinstance(x,(int,float)) else x) for x in c] for c in carb])
 
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
@@ -80,7 +85,7 @@ def hrow(label,h,plant):
     return f"| {label} | {kr(h['rlo'],h['rhi'])} | {kr(h['slo'],h['shi'])}{' ('+f'{h['sflo']/1e6:.1f}–{h['sfhi']/1e6:.1f}M sf)' if 'sflo' in h else ''} | {h['ylo']:.1f}–{h['yhi']:.1f} yr of {plant} |"
 md=f"""# Material mass in a data center — the build-up, and how much SUPERWOOD can replace
 
-Date: 2026-09-04 (v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
+Date: 2026-09-04 (v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
 Every table below is generated from the live model [materials-mass-and-replacement.xlsx](materials-mass-and-replacement.xlsx)
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
@@ -191,14 +196,56 @@ the SUPERWOOD mass required.
 
 Deck figures: steel 1.8 kg CO₂e/kg (global BF-BOF average), concrete 0.12 kg/kg, SUPERWOOD 0.5 kg/kg manufactured and
 1.3 kg/kg biogenic carbon stored — **pre-LCA projections at scale; LCA under way with Prof. Ming Hu, University of Notre
-Dame.** Biogenic storage reported separately (EN 15804 module C). The long-term row values concrete and its rebar at
-the concrete factor, which is conservative.
+Dame.** Biogenic storage reported separately (EN 15804 module C). Each component is valued at its own factor: concrete
+rows at 0.12, steel rows (including rebar) at 1.8, interior finishes at 1.0 [estimate]; equipment rows, including the
+server enclosures in the long-term horizon, carry no factor, so long-term avoided emissions count concrete and rebar only. The "vs EAF" column revalues steel at 0.7 kg/kg (recycled, high end).
 
 | Horizon | Incumbent emissions avoided | SUPERWOOD manufacturing | Net reduction | Net vs EAF steel | Biogenic stored (separate) |
 |---|---|---|---|---|---|
 """ + NL.join(f"| {h} | {kr(c[0],c[1])} CO₂e | {kr(c[2],c[3])} | **{kr(c[4],c[5])}** | {kr(c[6],c[7]) if isinstance(c[6],(int,float)) else 'n/a'} | {kr(c[8],c[9])} |" for h,c in zip(("Immediate (steel)","Soon (steel)","Medium term (steel)","Long term (foundation concrete)"),carb)) + f"""
 
 Against recycled (EAF) steel the avoided figure is far lower, so any claim must state its baseline.
+
+### 5b. Embodied carbon by component (building materials; equipment not estimated)
+
+The slide-5 "by embodied carbon" view. Factors: concrete {comp_carb[0]['fac']} kg CO₂e/kg [M], steel 1.8 [M, global
+BF-BOF average], interior finishes 1.0 [L]. Equipment (electrical, mechanical, IT) is outside a materials estimate.
+
+| Component | Class | Factor kg CO₂e/kg | Embodied carbon, low–high |
+|---|---|---|---|
+""" + NL.join(f"| {d['name']} | {d['kind']} | {d['fac'] if d['kind']!='equipment' else '—'} | {(kr(d['lo'],d['hi'])+' CO₂e' if (d['lo'] or d['hi']) else '—') if d['kind']!='equipment' else 'not estimated'} |" for d in comp_carb) + f"""
+
+| Roll-up | Low | High |
+|---|---|---|
+| Embodied carbon, building materials | {k(CB['rcb'][0])} tons CO₂e | {k(CB['rcb'][1])} tons CO₂e |
+| Steel share | {CB['rcss'][0]:.0%} | {CB['rcss'][1]:.0%} |
+| Concrete share | {CB['rccs'][0]:.0%} | {CB['rccs'][1]:.0%} |
+| Steel above the slab (steel excl. rebar), share | {CB['rcas'][0]:.0%} | {CB['rcas'][1]:.0%} |
+| Steel share if steel is recycled (EAF, 0.7 kg/kg) | {CB['rceaf'][0]:.0%} | {CB['rceaf'][1]:.0%} |
+
+By embodied carbon, steel is roughly 55–60% of the building materials and concrete roughly 40–45% at the global-average
+steel factor; with recycled steel the steel share falls to about a third. The steel above the slab — what SUPERWOOD
+addresses through the structural horizon — carries about 37% of the building materials' embodied carbon.
+
+### 5c. Steel share of above-ground mass, contents included (workbook sheet *Steel share*)
+
+Basis for the slide-5 headline. Excludes slab, paving, foundations and all concrete. Steel fractions per component
+are estimates [conf: L] and editable in the workbook. Printed band on the deck: **50–80%** (Alex, 2026-09-04).
+
+| Component | Mass, low–high | Steel fraction | Steel, low–high | Basis |
+|---|---|---|---|---|
+""" + NL.join(f"| {d['name']} | {kr(d['lo'],d['hi'])} | {d['flo']:.0%}–{d['fhi']:.0%} | {kr(d['slo'],d['shi'])} | {d['basis']} |" for d in ss) + f"""
+| **Above-ground total** | **{kr(*SST['ss_tot'])}** | | **{kr(*SST['ss_steel'])}** | |
+
+| Share | Low | High |
+|---|---|---|
+| Steel share of above-ground mass | {SST['ss_share'][0]:.0%} | {SST['ss_share'][1]:.0%} |
+| Including slab rebar (at-grade steel) | {SST['ss_share_rebar'][0]:.0%} | {SST['ss_share_rebar'][1]:.0%} |
+| Structure and envelope only | {SST['ss_se'][0]:.0%} | {SST['ss_se'][1]:.0%} |
+
+Equipment is 55–60% of above-ground mass, so the answer turns on how much of a genset, switchgear lineup, chiller and
+server rack is steel; at 40% for all equipment the share falls to about 60–65%. Precast or tilt-up perimeter walls would
+add above-ground concrete and lower the share sharply. Narrative: [steel-share-above-ground.md](steel-share-above-ground.md).
 
 ## 6. Sensitivities — what moves the answer most
 

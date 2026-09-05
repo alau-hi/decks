@@ -1,6 +1,6 @@
 # Material mass in a data center — the build-up, and how much SUPERWOOD can replace
 
-Date: 2026-09-04 (v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
+Date: 2026-09-04 (v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
 Every table below is generated from the live model [materials-mass-and-replacement.xlsx](materials-mass-and-replacement.xlsx)
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
@@ -143,17 +143,89 @@ the SUPERWOOD mass required.
 
 Deck figures: steel 1.8 kg CO₂e/kg (global BF-BOF average), concrete 0.12 kg/kg, SUPERWOOD 0.5 kg/kg manufactured and
 1.3 kg/kg biogenic carbon stored — **pre-LCA projections at scale; LCA under way with Prof. Ming Hu, University of Notre
-Dame.** Biogenic storage reported separately (EN 15804 module C). The long-term row values concrete and its rebar at
-the concrete factor, which is conservative.
+Dame.** Biogenic storage reported separately (EN 15804 module C). Each component is valued at its own factor: concrete
+rows at 0.12, steel rows (including rebar) at 1.8, interior finishes at 1.0 [estimate]; equipment rows, including the
+server enclosures in the long-term horizon, carry no factor, so long-term avoided emissions count concrete and rebar only. The "vs EAF" column revalues steel at 0.7 kg/kg (recycled, high end).
 
 | Horizon | Incumbent emissions avoided | SUPERWOOD manufacturing | Net reduction | Net vs EAF steel | Biogenic stored (separate) |
 |---|---|---|---|---|---|
-| Immediate (steel) | 6,019–22,250 tons CO₂e | 617–1,343 tons | **5,402–20,908 tons** | 721–7,310 tons | 1,604–3,491 tons |
-| Soon (steel) | 20,700–54,000 tons CO₂e | 1,725–9,000 tons | **18,975–45,000 tons** | 2,875–12,000 tons | 4,485–23,400 tons |
-| Medium term (steel) | 95,400–194,400 tons CO₂e | 7,950–32,400 tons | **87,450–162,000 tons** | 13,250–43,200 tons | 20,670–84,240 tons |
-| Long term (foundation concrete) | 120,276–250,680 tons CO₂e | 28,845–181,200 tons | **91,431–69,480 tons** | n/a | 74,997–471,120 tons |
+| Immediate (steel) | 5,219–19,850 tons CO₂e | 617–1,343 tons | **4,602–18,508 tons** | 2,024–8,210 tons | 1,604–3,491 tons |
+| Soon (steel) | 20,700–54,000 tons CO₂e | 1,725–9,000 tons | **18,975–45,000 tons** | 6,325–12,000 tons | 4,485–23,400 tons |
+| Medium term (steel) | 95,400–194,400 tons CO₂e | 7,950–32,400 tons | **87,450–162,000 tons** | 29,150–43,200 tons | 20,670–84,240 tons |
+| Long term (foundation concrete) | 160,380–383,400 tons CO₂e | 28,845–181,200 tons | **131,535–202,200 tons** | 104,805–113,100 tons | 74,997–471,120 tons |
 
 Against recycled (EAF) steel the avoided figure is far lower, so any claim must state its baseline.
+
+### 5b. Embodied carbon by component (building materials; equipment not estimated)
+
+The slide-5 "by embodied carbon" view. Factors: concrete 0.12 kg CO₂e/kg [M], steel 1.8 [M, global
+BF-BOF average], interior finishes 1.0 [L]. Equipment (electrical, mechanical, IT) is outside a materials estimate.
+
+| Component | Class | Factor kg CO₂e/kg | Embodied carbon, low–high |
+|---|---|---|---|
+| Concrete: slab on grade, paving, yard | concrete | 0.12 | 86,400–144,000 tons CO₂e |
+| Concrete: foundations, footings, piers, equipment pads | concrete | 0.12 | 57,600–144,000 tons CO₂e |
+| Precast / tilt-up perimeter walls (precast case) | concrete | 0.12 | — |
+| Rebar in all concrete | steel | 1.8 | 54,000–180,000 tons CO₂e |
+| Structural steel — primary frame (columns, girders) | steel | 1.8 | 54,000–72,000 tons CO₂e |
+| Structural steel — roof trusses, joists, roof deck, girts | steel | 1.8 | 36,000–108,000 tons CO₂e |
+| Exterior skins — metal panel / IMP (metal-panel case) | steel | 1.8 | 3,345–13,378 tons CO₂e |
+| Louvers and yard / mechanical screens | steel | 1.8 | 334–1,672 tons CO₂e |
+| Security and staff-area fencing | steel | 1.8 | 540–1,800 tons CO₂e |
+| Platforms, walkways, mezzanines, railings, tray supports | steel | 1.8 | 9,000–27,000 tons CO₂e |
+| Acoustic barriers, enclosures, HVAC separations | steel | 1.8 | 3,600–9,000 tons CO₂e |
+| Racking and equipment supports | steel | 1.8 | 3,600–9,000 tons CO₂e |
+| Other tray, containment, doors, misc. metals | steel | 1.8 | 9,000–18,000 tons CO₂e |
+| Ducting, plenums and air-distribution sheet metal | steel | 1.8 | 5,400–14,400 tons CO₂e |
+| Interior finishes, backplanes, trim (admin / office) | mixed | 1 | 1,000–3,000 tons CO₂e |
+| Electrical equipment and conductors | equipment | — | not estimated |
+| Mechanical equipment, piping, loop water | equipment | — | not estimated |
+| IT — servers and racks | equipment | — | not estimated |
+
+| Roll-up | Low | High |
+|---|---|---|
+| Embodied carbon, building materials | 323,819 tons CO₂e | 745,250 tons CO₂e |
+| Steel share | 55% | 61% |
+| Concrete share | 44% | 39% |
+| Steel above the slab (steel excl. rebar), share | 39% | 37% |
+| Steel share if steel is recycled (EAF, 0.7 kg/kg) | 32% | 38% |
+
+By embodied carbon, steel is roughly 55–60% of the building materials and concrete roughly 40–45% at the global-average
+steel factor; with recycled steel the steel share falls to about a third. The steel above the slab — what SUPERWOOD
+addresses through the structural horizon — carries about 37% of the building materials' embodied carbon.
+
+### 5c. Steel share of above-ground mass, contents included (workbook sheet *Steel share*)
+
+Basis for the slide-5 headline. Excludes slab, paving, foundations and all concrete. Steel fractions per component
+are estimates [conf: L] and editable in the workbook. Printed band on the deck: **50–80%** (Alex, 2026-09-04).
+
+| Component | Mass, low–high | Steel fraction | Steel, low–high | Basis |
+|---|---|---|---|---|
+| Structural steel — primary frame (columns, girders) | 30,000–40,000 tons | 100%–100% | 30,000–40,000 tons | steel by definition |
+| Structural steel — roof trusses, joists, roof deck, girts | 20,000–60,000 tons | 100%–100% | 20,000–60,000 tons | steel by definition |
+| Exterior skins — metal panel / IMP (metal-panel case) | 1,858–7,432 tons | 85%–95% | 1,579–7,061 tons | steel-faced IMP; some aluminum |
+| Louvers and yard / mechanical screens | 186–929 tons | 40%–70% | 74–650 tons | aluminum common |
+| Security and staff-area fencing | 300–1,000 tons | 90%–100% | 270–1,000 tons | chain-link, palisade, posts |
+| Platforms, walkways, mezzanines, railings, tray supports | 5,000–15,000 tons | 95%–100% | 4,750–15,000 tons | structural and misc. steel |
+| Acoustic barriers, enclosures, HVAC separations | 2,000–5,000 tons | 70%–90% | 1,400–4,500 tons | steel panels with absorptive fill |
+| Racking and equipment supports | 2,000–5,000 tons | 95%–100% | 1,900–5,000 tons | steel |
+| Other tray, containment, doors, misc. metals | 5,000–10,000 tons | 85%–95% | 4,250–9,500 tons | mostly steel, some aluminum |
+| Ducting, plenums and air-distribution sheet metal | 3,000–8,000 tons | 95%–100% | 2,850–8,000 tons | galvanized steel |
+| Interior finishes, backplanes, trim (admin / office) | 1,000–3,000 tons | 20%–40% | 200–1,200 tons | gypsum, wood, steel studs |
+| Electrical equipment and conductors | 50,000–100,000 tons | 50%–65% | 25,000–65,000 tons | enclosures, cores, gensets, switchgear; rest copper, oil, batteries |
+| Mechanical equipment, piping, loop water | 20,000–50,000 tons | 45%–65% | 9,000–32,500 tons | chillers, piping steel; water, copper, refrigerant not |
+| IT — servers and racks | 15,000–70,000 tons | 40%–60% | 6,000–42,000 tons | steel chassis and racks; aluminum, PCBs, copper |
+| **Above-ground total** | **155,344–375,361 tons** | | **107,274–291,411 tons** | |
+
+| Share | Low | High |
+|---|---|---|
+| Steel share of above-ground mass | 69% | 78% |
+| Including slab rebar (at-grade steel) | 74% | 82% |
+| Structure and envelope only | 99% | 99% |
+
+Equipment is 55–60% of above-ground mass, so the answer turns on how much of a genset, switchgear lineup, chiller and
+server rack is steel; at 40% for all equipment the share falls to about 60–65%. Precast or tilt-up perimeter walls would
+add above-ground concrete and lower the share sharply. Narrative: [steel-share-above-ground.md](steel-share-above-ground.md).
 
 ## 6. Sensitivities — what moves the answer most
 
