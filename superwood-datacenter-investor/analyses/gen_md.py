@@ -13,8 +13,8 @@ for r in meta["data_rows"]:
     hor=max(sh,key=sh.get) if sum(sh.values())>0 else "Not addressed"
     rows.append(dict(name=M.cell(row=r,column=1).value, lo=ev(S,f"B{r}"), hi=ev(S,f"C{r}"), clo=ev(S,f"D{r}"), chi=ev(S,f"E{r}"), hor=hor, shares=sh,
            share=sum(sh.values()), rlo=ev(S,f"J{r}"), rhi=ev(S,f"K{r}"), slo=ev(S,f"L{r}"), shi=ev(S,f"M{r}"), note=M.cell(row=r,column=14).value))
-def k(v): return f"{v/1000:,.1f}" if abs(v)<10000 else f"{v/1000:,.0f}"
-def kr(lo,hi): return f"{k(lo)}–{k(hi)} kt" if (lo or hi) else "—"
+def k(v): return f"{v:,.0f}"
+def kr(lo,hi): return f"{k(lo)}–{k(hi)} tons" if (lo or hi) else "—"
 def pct(lo,hi):
     a,b=sorted((lo*100,hi*100)); return f"{a:.1f}%" if abs(a-b)<0.05 else f"{a:.1f}–{b:.1f}%"
 def pct0(lo,hi):
@@ -52,9 +52,9 @@ for i,g in enumerate(labels):
     if rep>0:
         hor=[d["hor"] for d in grp if d["rhi"]>0]; hcol=col[max(set(hor),key=hor.count)]
         a1.bar(i,rep,bottom=base,color=hcol,width=0.7)
-    a1.text(i,base+v+0.03,f"{v*1000:,.0f} kt" if v<0.5 else f"{v:.2f} Mt",ha="center",fontsize=8.5,color=CREAM); base+=v
+    a1.text(i,base+v+0.03,f"{v*1e6:,.0f} tons" if v<0.5 else f"{v:.2f} million tons",ha="center",fontsize=8.5,color=CREAM); base+=v
 a1.bar(len(labels),base,color=MUTED,width=0.7); a1.text(len(labels),base+0.03,f"{base:.2f} Mt",ha="center",fontsize=9,color=CREAM,fontweight="bold")
-a1.set_xticks(range(len(labels)+1)); a1.set_xticklabels(labels+["Total"],rotation=35,ha="right",fontsize=8.5); a1.set_ylabel("Mt per 1 GW campus (high case)")
+a1.set_xticks(range(len(labels)+1)); a1.set_xticklabels(labels+["Total"],rotation=35,ha="right",fontsize=8.5); a1.set_ylabel("million tons per 1 GW data center (high case)")
 a1.set_title("Mass build-up — building, then contents (colored = replaceable)",loc="left",fontsize=12,color=CREAM)
 # right: everything except slab concrete
 ex=[d for d in rows if not d["name"].startswith("Precast") and d["hi"]>0]
@@ -63,11 +63,11 @@ y=list(range(len(ex)))
 a2.barh(y,[d["rhi"]/1000 for d in ex],color=[col[d["hor"]] for d in ex],height=0.65)
 a2.barh(y,[(d["hi"]-d["rhi"])/1000 for d in ex],left=[d["rhi"]/1000 for d in ex],color=NR,height=0.65)
 xmax=max(d["hi"] for d in ex)/1000
-for i,d in enumerate(ex): a2.text(d["hi"]/1000+xmax*0.01,i,f"{d['hi']/1000:,.0f} kt"+(f" · {d['rhi']/d['hi']:.0%} {d['hor'].lower()}" if d["rhi"] else ""),va="center",fontsize=8.5,color=DIM)
-a2.set_yticks(y); a2.set_yticklabels(names,fontsize=8.5); a2.invert_yaxis(); a2.set_xlabel("kt per 1 GW campus (high case) — log scale"); a2.set_xscale("log"); a2.set_xlim(0.5,xmax*6)
+for i,d in enumerate(ex): a2.text(d["hi"]/1000+xmax*0.01,i,f"{d['hi']:,.0f} tons"+(f" · {d['rhi']/d['hi']:.0%} {d['hor'].lower()}" if d["rhi"] else ""),va="center",fontsize=8.5,color=DIM)
+a2.set_yticks(y); a2.set_yticklabels(names,fontsize=8.5); a2.invert_yaxis(); a2.set_xlabel("tons per 1 GW data center (high case) — log scale"); a2.set_xscale("log"); a2.set_xlim(0.5,xmax*6)
 a2.set_title("Every component — what SUPERWOOD replaces, and when (log scale)",loc="left",fontsize=12,color=CREAM)
 fig.legend(handles=[Patch(color=GOLD,label="Immediate — skins, screens, fences, interiors"),Patch(color=GREEN,label="Soon — platforms, barriers, racking, doors"),Patch(color=WOOD,label="Medium term — structural steel, roofs, ducting, enclosures"),Patch(color=TEAL,label="Long term — slab, paving, foundations (technical potential)"),Patch(color=NR,label="Not replaced")],loc="lower center",ncol=5,fontsize=8.5,facecolor=INK,edgecolor=NR,bbox_to_anchor=(0.5,0.035))
-fig.text(0.01,0.01,"Estimates for a 1 GW IT-load campus; only concrete and structural-steel intensities are published (secondary, conf M). Long-term concrete shares are stated technical potential (Alex, 2026-09-01), not an engineered plan. Source model: materials-mass-and-replacement.xlsx",fontsize=8,color=MUTED)
+fig.text(0.01,0.01,"Estimates for a 1 GW IT-load data center; only concrete and structural-steel intensities are published (secondary, conf M). Long-term concrete shares are stated technical potential (Alex, 2026-09-01), not an engineered plan. Source model: materials-mass-and-replacement.xlsx",fontsize=8,color=MUTED)
 plt.tight_layout(rect=(0,0.09,1,1)); fig.savefig("mass-buildup-and-replacement.png",dpi=160,facecolor=INK); print("png ok")
 
 def row_md(d): return f"| {d['name']} | {kr(d['lo'],d['hi'])} | {kr(d['clo'],d['chi'])} |"
@@ -85,7 +85,7 @@ Every table below is generated from the live model [materials-mass-and-replaceme
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
 
-Reference unit: **1 GW of IT load** — a campus of roughly 5–10 hyperscale buildings on the assumptions below.
+Reference unit: **1 GW of IT load** — a data center of roughly 5–10 hyperscale buildings on the assumptions below.
 Low and high columns are whole scenarios (all-low inputs, all-high inputs), not a distribution.
 
 ![Mass build-up and replacement](mass-buildup-and-replacement.png)
@@ -114,24 +114,24 @@ Low and high columns are whole scenarios (all-low inputs, all-high inputs), not 
 | Rebar | 60 kg/m³ | 100 kg/m³ | estimated |
 | Ducting and air-distribution sheet metal | 3 t/MW | 8 t/MW | estimated |
 | Electrical / mechanical / IT | 50 / 20 / 15 t/MW | 100 / 50 / 70 t/MW | estimated from unit masses; GB200 NVL72 rack 1.36 t [H] |
-| SUPERWOOD board | 7.2 mm × 1.3 t/m³ = 0.87 kg/sf; SuperMill One ≈ 0.9 kt/yr, SuperMill Two ≈ 31 kt/yr | | internal TEM basis |
+| SUPERWOOD board | 7.2 mm × 1.3 t/m³ = 0.87 kg/sf; SuperMill One ≈ 900 tons/yr, SuperMill Two ≈ 31,000 tons/yr | | internal TEM basis |
 | Substitution, steel | 0.3 kg SUPERWOOD per kg steel | 0.6 kg/kg | estimated — to be engineering-stamped per element |
 | Long-term technical potential, concrete | 75% of slab and paving; 90% of foundations, footings, piers, pads | same | asserted-internal (Alex, 2026-09-01) |
 | Substitution, concrete | 0.05 kg SUPERWOOD per kg concrete | 0.15 kg/kg | estimated — lightweight insulated wood-foundation concept, no design exists |
 
-## 2. The build-up: what goes into a 1 GW campus
+## 2. The build-up: what goes into a 1 GW data center
 
 Read top to bottom. Building structure and envelope first, then contents. The cumulative column is the running total.
 
 ### 2a. Building — structure and envelope
 
-| Component | Mass per campus | Cumulative |
+| Component | Mass per data center | Cumulative |
 |---|---|---|
 {NL.join(row_md(d) for d in bld)}
 
 ### 2b. Contents — fit-out and equipment
 
-| Component | Mass per campus | Cumulative |
+| Component | Mass per data center | Cumulative |
 |---|---|---|
 {NL.join(row_md(d) for d in cont)}
 
@@ -163,7 +163,7 @@ the SUPERWOOD mass required.
 |---|---|---|---|---|---|---|---|
 {NL.join(rep_md(d) for d in cont)}
 
-## 4. Roll-up by horizon (per 1 GW campus)
+## 4. Roll-up by horizon (per 1 GW data center)
 
 | Horizon | Incumbent mass replaced | SUPERWOOD required | Plant-years |
 |---|---|---|---|
@@ -176,15 +176,15 @@ the SUPERWOOD mass required.
 
 - Through the medium term SUPERWOOD addresses **{kr(imm['rlo']+soon['rlo']+med['rlo'],imm['rhi']+soon['rhi']+med['rhi'])}** of incumbent
   material — essentially all the steel above the slab, about
-  {pct((imm['rlo']+soon['rlo']+med['rlo'])/tot_lo,(imm['rhi']+soon['rhi']+med['rhi'])/tot_hi)} of total campus mass.
+  {pct((imm['rlo']+soon['rlo']+med['rlo'])/tot_lo,(imm['rhi']+soon['rhi']+med['rhi'])/tot_hi)} of total data center mass.
   The long-term concrete rows are what move the total: with them, the ceiling is **{pct(cum['shlo'],cum['shhi'])} of total
-  campus mass**. Those shares (75% of slab and paving, 90% of foundations) are stated technical potential, not an
+  data center mass**. Those shares (75% of slab and paving, 90% of foundations) are stated technical potential, not an
   engineered plan, and the whole difference between the two figures rests on them.
 - What stays: the remaining concrete, servers, gensets, transformers, switchgear, batteries, chillers, copper, loop
   water — {pct0(cum['nslo'],cum['nshi'])} of total mass.
-- Plant math: one gigawatt campus's immediate skins are {imm['sflo']/1e6:.1f}–{imm['sfhi']/1e6:.1f}M sf, **{imm['ylo']:.1f}–{imm['yhi']:.1f} years
+- Plant math: one gigawatt data center's immediate skins are {imm['sflo']/1e6:.1f}–{imm['sfhi']/1e6:.1f}M sf, **{imm['ylo']:.1f}–{imm['yhi']:.1f} years
   of SuperMill One's entire output**. The medium-term structural horizon alone is {med['ylo']:.1f}–{med['yhi']:.1f} years of SuperMill
-  Two per gigawatt — two or three gigawatts of campus absorb the plant for years, which is the offtake argument and
+  Two per gigawatt — two or three gigawatts of data center absorb the plant for years, which is the offtake argument and
   the capacity risk in one number. The long-term concrete rows, if they ever became real, are a ChipMill-scale market on their own.
 
 ## 5. Embodied-carbon effect (pre-LCA, per GW)

@@ -5,7 +5,7 @@ Every table below is generated from the live model [materials-mass-and-replaceme
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
 
-Reference unit: **1 GW of IT load** — a campus of roughly 5–10 hyperscale buildings on the assumptions below.
+Reference unit: **1 GW of IT load** — a data center of roughly 5–10 hyperscale buildings on the assumptions below.
 Low and high columns are whole scenarios (all-low inputs, all-high inputs), not a distribution.
 
 ![Mass build-up and replacement](mass-buildup-and-replacement.png)
@@ -34,45 +34,45 @@ Low and high columns are whole scenarios (all-low inputs, all-high inputs), not 
 | Rebar | 60 kg/m³ | 100 kg/m³ | estimated |
 | Ducting and air-distribution sheet metal | 3 t/MW | 8 t/MW | estimated |
 | Electrical / mechanical / IT | 50 / 20 / 15 t/MW | 100 / 50 / 70 t/MW | estimated from unit masses; GB200 NVL72 rack 1.36 t [H] |
-| SUPERWOOD board | 7.2 mm × 1.3 t/m³ = 0.87 kg/sf; SuperMill One ≈ 0.9 kt/yr, SuperMill Two ≈ 31 kt/yr | | internal TEM basis |
+| SUPERWOOD board | 7.2 mm × 1.3 t/m³ = 0.87 kg/sf; SuperMill One ≈ 900 tons/yr, SuperMill Two ≈ 31,000 tons/yr | | internal TEM basis |
 | Substitution, steel | 0.3 kg SUPERWOOD per kg steel | 0.6 kg/kg | estimated — to be engineering-stamped per element |
 | Long-term technical potential, concrete | 75% of slab and paving; 90% of foundations, footings, piers, pads | same | asserted-internal (Alex, 2026-09-01) |
 | Substitution, concrete | 0.05 kg SUPERWOOD per kg concrete | 0.15 kg/kg | estimated — lightweight insulated wood-foundation concept, no design exists |
 
-## 2. The build-up: what goes into a 1 GW campus
+## 2. The build-up: what goes into a 1 GW data center
 
 Read top to bottom. Building structure and envelope first, then contents. The cumulative column is the running total.
 
 ### 2a. Building — structure and envelope
 
-| Component | Mass per campus | Cumulative |
+| Component | Mass per data center | Cumulative |
 |---|---|---|
-| Concrete: slab on grade, paving, yard | 720–1,200 kt | 720–1,200 kt |
-| Concrete: foundations, footings, piers, equipment pads | 480–1,200 kt | 1,200–2,400 kt |
-| Precast / tilt-up perimeter walls (precast case) | — | 1,200–2,400 kt |
-| Rebar in all concrete | 30–100 kt | 1,230–2,500 kt |
-| Structural steel — primary frame (columns, girders) | 30–40 kt | 1,260–2,540 kt |
-| Structural steel — roof trusses, joists, roof deck, girts | 20–60 kt | 1,280–2,600 kt |
-| Exterior skins — metal panel / IMP (metal-panel case) | 1.9–7.4 kt | 1,282–2,607 kt |
-| Louvers and yard / mechanical screens | 0.2–0.9 kt | 1,282–2,608 kt |
-| Security and staff-area fencing | 0.3–1.0 kt | 1,282–2,609 kt |
+| Concrete: slab on grade, paving, yard | 720,000–1,200,000 tons | 720,000–1,200,000 tons |
+| Concrete: foundations, footings, piers, equipment pads | 480,000–1,200,000 tons | 1,200,000–2,400,000 tons |
+| Precast / tilt-up perimeter walls (precast case) | — | 1,200,000–2,400,000 tons |
+| Rebar in all concrete | 30,000–100,000 tons | 1,230,000–2,500,000 tons |
+| Structural steel — primary frame (columns, girders) | 30,000–40,000 tons | 1,260,000–2,540,000 tons |
+| Structural steel — roof trusses, joists, roof deck, girts | 20,000–60,000 tons | 1,280,000–2,600,000 tons |
+| Exterior skins — metal panel / IMP (metal-panel case) | 1,858–7,432 tons | 1,281,858–2,607,432 tons |
+| Louvers and yard / mechanical screens | 186–929 tons | 1,282,044–2,608,361 tons |
+| Security and staff-area fencing | 300–1,000 tons | 1,282,344–2,609,361 tons |
 
 ### 2b. Contents — fit-out and equipment
 
-| Component | Mass per campus | Cumulative |
+| Component | Mass per data center | Cumulative |
 |---|---|---|
-| Platforms, walkways, mezzanines, railings, tray supports | 5.0–15 kt | 1,287–2,624 kt |
-| Acoustic barriers, enclosures, HVAC separations | 2.0–5.0 kt | 1,289–2,629 kt |
-| Racking and equipment supports | 2.0–5.0 kt | 1,291–2,634 kt |
-| Other tray, containment, doors, misc. metals | 5.0–10 kt | 1,296–2,644 kt |
-| Ducting, plenums and air-distribution sheet metal | 3.0–8.0 kt | 1,299–2,652 kt |
-| Interior finishes, backplanes, trim (admin / office) | 1.0–3.0 kt | 1,300–2,655 kt |
-| Electrical equipment and conductors | 50–100 kt | 1,350–2,755 kt |
-| Mechanical equipment, piping, loop water | 20–50 kt | 1,370–2,805 kt |
-| IT — servers and racks | 15–70 kt | 1,385–2,875 kt |
+| Platforms, walkways, mezzanines, railings, tray supports | 5,000–15,000 tons | 1,287,344–2,624,361 tons |
+| Acoustic barriers, enclosures, HVAC separations | 2,000–5,000 tons | 1,289,344–2,629,361 tons |
+| Racking and equipment supports | 2,000–5,000 tons | 1,291,344–2,634,361 tons |
+| Other tray, containment, doors, misc. metals | 5,000–10,000 tons | 1,296,344–2,644,361 tons |
+| Ducting, plenums and air-distribution sheet metal | 3,000–8,000 tons | 1,299,344–2,652,361 tons |
+| Interior finishes, backplanes, trim (admin / office) | 1,000–3,000 tons | 1,300,344–2,655,361 tons |
+| Electrical equipment and conductors | 50,000–100,000 tons | 1,350,344–2,755,361 tons |
+| Mechanical equipment, piping, loop water | 20,000–50,000 tons | 1,370,344–2,805,361 tons |
+| IT — servers and racks | 15,000–70,000 tons | 1,385,344–2,875,361 tons |
 
-**Total mass, building and contents: 1,385–2,875 kt** (about 1.4–2.9 Mt).
-**Excluding concrete: 185–475 kt** — concrete is 83–87% of everything by mass.
+**Total mass, building and contents: 1,385,344–2,875,361 tons** (about 1.4–2.9 Mt).
+**Excluding concrete: 185,344–475,361 tons** — concrete is 83–87% of everything by mass.
 
 Two consequences follow before any SUPERWOOD arithmetic:
 
@@ -91,52 +91,52 @@ the SUPERWOOD mass required.
 
 | Component | Immediate | Soon | Medium term | Long term | Incumbent replaced | SUPERWOOD required | Gate / basis |
 |---|---|---|---|---|---|---|---|
-| Concrete: slab on grade, paving, yard | — | — | — | 75% | 540–900 kt | 27–135 kt | Technical potential per Alex (75%); no design or code pathway yet. arXiv 2509.21312 [M] for total concrete |
-| Concrete: foundations, footings, piers, equipment pads | — | — | — | 90% | 432–1,080 kt | 22–162 kt | Technical potential per Alex (90%); lightweight insulated SUPERWOOD foundations — geotechnical, durability and code pathway all open |
+| Concrete: slab on grade, paving, yard | — | — | — | 75% | 540,000–900,000 tons | 27,000–135,000 tons | Technical potential per Alex (75%); no design or code pathway yet. arXiv 2509.21312 [M] for total concrete |
+| Concrete: foundations, footings, piers, equipment pads | — | — | — | 90% | 432,000–1,080,000 tons | 21,600–162,000 tons | Technical potential per Alex (90%); lightweight insulated SUPERWOOD foundations — geotechnical, durability and code pathway all open |
 | Precast / tilt-up perimeter walls (precast case) | — | — | 100% | — | — | — | Hybrid SUPERWOOD wall panels; NFPA 285 + E119 assemblies. Active when Inputs walls_precast = 1 |
-| Rebar in all concrete | — | — | — | 81% | 24–81 kt | 7.3–49 kt | Rebar follows the concrete it sits in: foundation share × 90% + slab share × 75% |
-| Structural steel — primary frame (columns, girders) | — | — | 100% | — | 30–40 kt | 9.0–24 kt | ICC-ES via the mass-timber qualification pathway; FM acceptance; E119 |
-| Structural steel — roof trusses, joists, roof deck, girts | — | — | 100% | — | 20–60 kt | 6.0–36 kt | Design values and connection data; trusses carry no fire-resistance requirement |
-| Exterior skins — metal panel / IMP (metal-panel case) | 100% | — | — | — | 1.9–7.4 kt | 0.7–1.4 kt | Shipping now; area-for-area rain screen |
-| Louvers and yard / mechanical screens | 100% | — | — | — | 0.2–0.9 kt | 0.2–0.4 kt | Shipping now |
-| Security and staff-area fencing | 100% | — | — | — | 0.3–1.0 kt | 0.2–0.5 kt | Shipping now — the Microsoft near-term list |
+| Rebar in all concrete | — | — | — | 81% | 24,300–81,000 tons | 7,290–48,600 tons | Rebar follows the concrete it sits in: foundation share × 90% + slab share × 75% |
+| Structural steel — primary frame (columns, girders) | — | — | 100% | — | 30,000–40,000 tons | 9,000–24,000 tons | ICC-ES via the mass-timber qualification pathway; FM acceptance; E119 |
+| Structural steel — roof trusses, joists, roof deck, girts | — | — | 100% | — | 20,000–60,000 tons | 6,000–36,000 tons | Design values and connection data; trusses carry no fire-resistance requirement |
+| Exterior skins — metal panel / IMP (metal-panel case) | 100% | — | — | — | 1,858–7,432 tons | 696–1,391 tons | Shipping now; area-for-area rain screen |
+| Louvers and yard / mechanical screens | 100% | — | — | — | 186–929 tons | 174–435 tons | Shipping now |
+| Security and staff-area fencing | 100% | — | — | — | 300–1,000 tons | 234–468 tons | Shipping now — the Microsoft near-term list |
 
 ### 3b. Contents — fit-out and equipment
 
 | Component | Immediate | Soon | Medium term | Long term | Incumbent replaced | SUPERWOOD required | Gate / basis |
 |---|---|---|---|---|---|---|---|
-| Platforms, walkways, mezzanines, railings, tray supports | — | 100% | — | — | 5.0–15 kt | 1.5–9.0 kt | Published design values; IBC 1607 for railings |
-| Acoustic barriers, enclosures, HVAC separations | — | 100% | — | — | 2.0–5.0 kt | 0.6–3.0 kt | STC / OITC lab and field data |
-| Racking and equipment supports | — | 100% | — | — | 2.0–5.0 kt | 0.6–3.0 kt | A few months of design and load-data development (Alex 2026-09-04) |
-| Other tray, containment, doors, misc. metals | — | 50% | — | — | 2.5–5.0 kt | 0.8–3.0 kt | Partial; UL 10C for rated doors |
-| Ducting, plenums and air-distribution sheet metal | — | — | 100% | — | 3.0–8.0 kt | 0.9–4.8 kt | NFPA 90A / UL 181 noncombustibility expectations for in-airstream components — the hardest gate in this row set |
-| Interior finishes, backplanes, trim (admin / office) | 100% | — | — | — | 1.0–3.0 kt | 0.1–0.4 kt | E84 Class A finish; backplanes UL 94 yellow card (not yet started) |
+| Platforms, walkways, mezzanines, railings, tray supports | — | 100% | — | — | 5,000–15,000 tons | 1,500–9,000 tons | Published design values; IBC 1607 for railings |
+| Acoustic barriers, enclosures, HVAC separations | — | 100% | — | — | 2,000–5,000 tons | 600–3,000 tons | STC / OITC lab and field data |
+| Racking and equipment supports | — | 100% | — | — | 2,000–5,000 tons | 600–3,000 tons | A few months of design and load-data development (Alex 2026-09-04) |
+| Other tray, containment, doors, misc. metals | — | 50% | — | — | 2,500–5,000 tons | 750–3,000 tons | Partial; UL 10C for rated doors |
+| Ducting, plenums and air-distribution sheet metal | — | — | 100% | — | 3,000–8,000 tons | 900–4,800 tons | NFPA 90A / UL 181 noncombustibility expectations for in-airstream components — the hardest gate in this row set |
+| Interior finishes, backplanes, trim (admin / office) | 100% | — | — | — | 1,000–3,000 tons | 130–391 tons | E84 Class A finish; backplanes UL 94 yellow card (not yet started) |
 | Electrical equipment and conductors | — | — | — | — | — | — | Gensets, transformers, switchgear, batteries, copper |
 | Mechanical equipment, piping, loop water | — | — | — | — | — | — | Chillers, fan walls, coolers, piping (ductwork is its own row) |
-| IT — servers and racks | — | — | — | 40% | 6.0–28 kt | 1.8–17 kt | Server and equipment enclosures only (40% of IT mass, estimate); electronics never. Rack masses [H]; aggregate [L] |
+| IT — servers and racks | — | — | — | 40% | 6,000–28,000 tons | 1,800–16,800 tons | Server and equipment enclosures only (40% of IT mass, estimate); electronics never. Rack masses [H]; aggregate [L] |
 
-## 4. Roll-up by horizon (per 1 GW campus)
+## 4. Roll-up by horizon (per 1 GW data center)
 
 | Horizon | Incumbent mass replaced | SUPERWOOD required | Plant-years |
 |---|---|---|---|
-| Immediate — skins, screens, fences, interiors, backplanes | 3.3–12 kt | 1.2–2.7 kt (1.4–3.1M sf) | 1.4–3.1 yr of SuperMill One |
-| Soon — platforms, railings, barriers, racking, doors | 12–30 kt | 3.5–18 kt | 0.1–0.6 yr of SuperMill Two |
-| Medium term — structural steel, roof trusses and roofs, ducting, enclosures | 53–108 kt | 16–65 kt | 0.5–2.1 yr of SuperMill Two |
-| Long term — slab, paving, foundations and their rebar (technical potential) | 1,002–2,089 kt | 58–362 kt | 1.8–11.6 yr of SuperMill Two |
-| **Cumulative** | **1,070–2,239 kt** | **78–448 kt** | **2.5–14.3 yr of SuperMill Two** |
-| Not replaced by SUPERWOOD | 315–636 kt | | 22–23% of total mass |
+| Immediate — skins, screens, fences, interiors, backplanes | 3,344–12,361 tons | 1,234–2,685 tons (1.4–3.1M sf) | 1.4–3.1 yr of SuperMill One |
+| Soon — platforms, railings, barriers, racking, doors | 11,500–30,000 tons | 3,450–18,000 tons | 0.1–0.6 yr of SuperMill Two |
+| Medium term — structural steel, roof trusses and roofs, ducting, enclosures | 53,000–108,000 tons | 15,900–64,800 tons | 0.5–2.1 yr of SuperMill Two |
+| Long term — slab, paving, foundations and their rebar (technical potential) | 1,002,300–2,089,000 tons | 57,690–362,400 tons | 1.8–11.6 yr of SuperMill Two |
+| **Cumulative** | **1,070,144–2,239,361 tons** | **78,274–447,885 tons** | **2.5–14.3 yr of SuperMill Two** |
+| Not replaced by SUPERWOOD | 315,200–636,000 tons | | 22–23% of total mass |
 
-- Through the medium term SUPERWOOD addresses **68–150 kt** of incumbent
+- Through the medium term SUPERWOOD addresses **67,844–150,361 tons** of incumbent
   material — essentially all the steel above the slab, about
-  4.9–5.2% of total campus mass.
+  4.9–5.2% of total data center mass.
   The long-term concrete rows are what move the total: with them, the ceiling is **77.2–77.9% of total
-  campus mass**. Those shares (75% of slab and paving, 90% of foundations) are stated technical potential, not an
+  data center mass**. Those shares (75% of slab and paving, 90% of foundations) are stated technical potential, not an
   engineered plan, and the whole difference between the two figures rests on them.
 - What stays: the remaining concrete, servers, gensets, transformers, switchgear, batteries, chillers, copper, loop
   water — 22–23% of total mass.
-- Plant math: one gigawatt campus's immediate skins are 1.4–3.1M sf, **1.4–3.1 years
+- Plant math: one gigawatt data center's immediate skins are 1.4–3.1M sf, **1.4–3.1 years
   of SuperMill One's entire output**. The medium-term structural horizon alone is 0.5–2.1 years of SuperMill
-  Two per gigawatt — two or three gigawatts of campus absorb the plant for years, which is the offtake argument and
+  Two per gigawatt — two or three gigawatts of data center absorb the plant for years, which is the offtake argument and
   the capacity risk in one number. The long-term concrete rows, if they ever became real, are a ChipMill-scale market on their own.
 
 ## 5. Embodied-carbon effect (pre-LCA, per GW)
@@ -148,20 +148,20 @@ the concrete factor, which is conservative.
 
 | Horizon | Incumbent emissions avoided | SUPERWOOD manufacturing | Net reduction | Net vs EAF steel | Biogenic stored (separate) |
 |---|---|---|---|---|---|
-| Immediate (steel) | 6.0–22 kt CO₂e | 0.6–1.3 kt | **5.4–21 kt** | 0.7–7.3 kt | 1.6–3.5 kt |
-| Soon (steel) | 21–54 kt CO₂e | 1.7–9.0 kt | **19–45 kt** | 2.9–12 kt | 4.5–23 kt |
-| Medium term (steel) | 95–194 kt CO₂e | 8.0–32 kt | **87–162 kt** | 13–43 kt | 21–84 kt |
-| Long term (foundation concrete) | 120–251 kt CO₂e | 29–181 kt | **91–69 kt** | n/a | 75–471 kt |
+| Immediate (steel) | 6,019–22,250 tons CO₂e | 617–1,343 tons | **5,402–20,908 tons** | 721–7,310 tons | 1,604–3,491 tons |
+| Soon (steel) | 20,700–54,000 tons CO₂e | 1,725–9,000 tons | **18,975–45,000 tons** | 2,875–12,000 tons | 4,485–23,400 tons |
+| Medium term (steel) | 95,400–194,400 tons CO₂e | 7,950–32,400 tons | **87,450–162,000 tons** | 13,250–43,200 tons | 20,670–84,240 tons |
+| Long term (foundation concrete) | 120,276–250,680 tons CO₂e | 28,845–181,200 tons | **91,431–69,480 tons** | n/a | 74,997–471,120 tons |
 
 Against recycled (EAF) steel the avoided figure is far lower, so any claim must state its baseline.
 
 ## 6. Sensitivities — what moves the answer most
 
-1. **Long-term concrete.** The long-term rows are 1,002–2,089 kt of concrete and rebar on stated technical
+1. **Long-term concrete.** The long-term rows are 1,002,300–2,089,000 tons of concrete and rebar on stated technical
    potential (75% of slab and paving, 90% of foundations) and a 0.05–0.15 substitution factor, none of it engineered.
    They are the only rows that change the total-mass share materially, and the least evidenced. Present them as
    technical potential and say so on the slide.
-2. **Precast vs metal-panel walls.** Decides whether facades are a 1.9–7.4 kt metal replacement now or a
+2. **Precast vs metal-panel walls.** Decides whether facades are a 1,858–7,432 tons metal replacement now or a
    concrete-panel replacement in the medium term behind NFPA 285 and E119.
 3. **Structural steel intensity.** The 50–100 t/MW range is a factor of two; one real takeoff from HITT, Turner or
    Fast + Epp collapses it.

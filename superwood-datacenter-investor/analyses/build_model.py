@@ -16,12 +16,12 @@ SF_M2="0.092903"
 I=wb.active; I.title="Inputs"
 header(I,1,["Parameter","Low","High","Unit","Label / confidence","Note"])
 rows=[
-("it_mw","IT load of reference campus",1000,1000,"MW","assumption","Everything downstream is linear in this"),
+("it_mw","IT load of reference data center",1000,1000,"MW","assumption","Everything downstream is linear in this"),
 ("sf_per_mw","Building area per MW",5000,10000,"sf/MW","estimated [L]","Hyperscale, single-story"),
 ("footprint_sf","Footprint per building",1e6,1e6,"sf","estimated [L]","~1,000 ft sides"),
 ("wall_sf_bldg","Exterior wall area per building",160000,160000,"sf","derived","4 × 1,000 ft × 40 ft eave"),
-("yard_screen_sf","Yard / mechanical screens and louvers (per campus)",200000,500000,"sf","estimated [L]",""),
-("fence_km","Perimeter + yard fence length",10,20,"km","estimated [L]","Campus perimeter plus transformer / generator yards"),
+("yard_screen_sf","Yard / mechanical screens and louvers (per data center)",200000,500000,"sf","estimated [L]",""),
+("fence_km","Perimeter + yard fence length",10,20,"km","estimated [L]","Data center perimeter plus transformer / generator yards"),
 ("fence_h_m","Fence height",2.5,2.5,"m","assumption",""),
 ("interior_sf","Biophilic interior paneling (admin / office wings)",100000,300000,"sf","estimated [L]",""),
 ("backplane_sf","Backplanes, trim, door kicks, sub-framing",50000,150000,"sf","estimated [L]",""),
@@ -90,7 +90,7 @@ def dref(row,c): return f"Derived!{c}{row}"
 SHEET="1 GW data center"
 M=wb.create_sheet(SHEET,1)
 HORS=("Immediate","Soon","Medium term","Long term"); HCOL={"Immediate":6,"Soon":7,"Medium term":8,"Long term":9}
-header(M,1,["Component (building, then contents)","Low  t per campus","High  t per campus","Low  cumulative t","High  cumulative t",
+header(M,1,["Component (building, then contents)","Low  tons per data center","High  tons per data center","Low  cumulative t","High  cumulative t",
             "Addressable — immediate","Addressable — soon","Addressable — medium term","Addressable — long term",
             "Low  replaced t","High  replaced t","Low  SUPERWOOD t","High  SUPERWOOD t","Gate / basis","High  not replaced t",
             "Low SW immediate","Low SW soon","Low SW medium","Low SW long","High SW immediate","High SW soon","High SW medium","High SW long"])
@@ -163,28 +163,28 @@ def srow(label,fB,fC,fmt="#,##0",bold=False):
     x=M.cell(row=r,column=2,value=fB); x.number_format=fmt; x.font=Font(bold=bold)
     y=M.cell(row=r,column=3,value=fC); y.number_format=fmt; y.font=Font(bold=bold)
     r+=1; return r-1
-M.cell(row=r,column=1,value="SUMMARY — per campus").font=tot; M.cell(row=r,column=1).fill=sect; r+=1
-rt=srow("Total mass, building and contents (t)",f"=SUM(B{first}:B{last})",f"=SUM(C{first}:C{last})",bold=True)
-rx=srow("Total excluding concrete (t)",f"=B{rt}-B{first}-B{first+1}-B{precast_row}",f"=C{rt}-C{first}-C{first+1}-C{precast_row}",bold=True)
+M.cell(row=r,column=1,value="SUMMARY — per data center").font=tot; M.cell(row=r,column=1).fill=sect; r+=1
+rt=srow("Total mass, building and contents (tons)",f"=SUM(B{first}:B{last})",f"=SUM(C{first}:C{last})",bold=True)
+rx=srow("Total excluding concrete (tons)",f"=B{rt}-B{first}-B{first+1}-B{precast_row}",f"=C{rt}-C{first}-C{first+1}-C{precast_row}",bold=True)
 r+=1
 M.cell(row=r,column=1,value="Replaced by SUPERWOOD, by horizon").font=tot; r+=1
 hor_rows={}
 for j,hor in enumerate(HORS):
     sc=CL(HCOL[hor])
-    rr=srow(f"{hor} — incumbent mass replaced (t)",f"=SUMPRODUCT(B{first}:B{last},{sc}{first}:{sc}{last})",f"=SUMPRODUCT(C{first}:C{last},{sc}{first}:{sc}{last})")
-    rs=srow(f"{hor} — SUPERWOOD required (t)",f"=SUM({CL(16+j)}{first}:{CL(16+j)}{last})",f"=SUM({CL(20+j)}{first}:{CL(20+j)}{last})")
+    rr=srow(f"{hor} — incumbent mass replaced (tons)",f"=SUMPRODUCT(B{first}:B{last},{sc}{first}:{sc}{last})",f"=SUMPRODUCT(C{first}:C{last},{sc}{first}:{sc}{last})")
+    rs=srow(f"{hor} — SUPERWOOD required (tons)",f"=SUM({CL(16+j)}{first}:{CL(16+j)}{last})",f"=SUM({CL(20+j)}{first}:{CL(20+j)}{last})")
     if hor=="Immediate":
         srow("Immediate — SUPERWOOD required (sf)",f"=B{rs}*1000/Derived!B6",f"=C{rs}*1000/Derived!C6")
         ry=srow("Immediate — years of SuperMill One output",f"=B{rs}/Derived!B7",f"=C{rs}/Derived!C7",fmt="0.0")
     else:
         ry=srow(f"{hor} — years of SuperMill Two output",f"=B{rs}/Derived!B8",f"=C{rs}/Derived!C8",fmt="0.0")
     hor_rows[hor]=(rr,rs,ry); r+=1
-rc=srow("Cumulative incumbent mass replaced (t)",f"=SUM(J{first}:J{last})",f"=SUM(K{first}:K{last})",bold=True)
-rsw=srow("Cumulative SUPERWOOD required (t)",f"=SUM(L{first}:L{last})",f"=SUM(M{first}:M{last})",bold=True)
+rc=srow("Cumulative incumbent mass replaced (tons)",f"=SUM(J{first}:J{last})",f"=SUM(K{first}:K{last})",bold=True)
+rsw=srow("Cumulative SUPERWOOD required (tons)",f"=SUM(L{first}:L{last})",f"=SUM(M{first}:M{last})",bold=True)
 rsy=srow("Cumulative years of SuperMill Two output",f"=B{rsw}/Derived!B8",f"=C{rsw}/Derived!C8",fmt="0.0")
 rsh=srow("Share of total mass replaced",f"=B{rc}/B{rt}",f"=C{rc}/C{rt}",fmt="0.0%")
 rshx=srow("Share of ex-concrete mass replaced through the medium term (excludes foundations)",f"=(B{rc}-B{hor_rows['Long term'][0]})/B{rx}",f"=(C{rc}-C{hor_rows['Long term'][0]})/C{rx}",fmt="0.0%")
-rnr=srow("Not replaced by SUPERWOOD (t)",f"=B{rt}-B{rc}",f"=C{rt}-C{rc}",bold=True)
+rnr=srow("Not replaced by SUPERWOOD (tons)",f"=B{rt}-B{rc}",f"=C{rt}-C{rc}",bold=True)
 rnrs=srow("Not replaced, share of total",f"=B{rnr}/B{rt}",f"=C{rnr}/C{rt}",fmt="0.0%")
 for rr in range(2,last+1):
     for col in (2,3,4,5,10,11,12,13,15)+tuple(range(16,24)):
@@ -192,7 +192,7 @@ for rr in range(2,last+1):
 widths(M,[58,15,15,16,16,12,12,12,12,14,14,14,14,64,16]+[11]*8); M.freeze_panes="B2"
 for col in range(16,24): M.column_dimensions[CL(col)].outlineLevel=1; M.column_dimensions[CL(col)].hidden=True
 M.cell(row=1,column=16).value="Low SW immediate (helper — grouped, unhide to see the per-horizon split)"
-ch=BarChart(); ch.type="bar"; ch.grouping="stacked"; ch.overlap=100; ch.title="High case, tonnes per campus — replaced by SUPERWOOD vs not (slab concrete row excluded)"
+ch=BarChart(); ch.type="bar"; ch.grouping="stacked"; ch.overlap=100; ch.title="High case, tons per data center — replaced by SUPERWOOD vs not (slab concrete row excluded)"
 rb=first
 ch.add_data(Reference(M,min_col=11,min_row=rb,max_row=last),titles_from_data=False)
 ch.add_data(Reference(M,min_col=15,min_row=rb,max_row=last),titles_from_data=False)
@@ -200,7 +200,7 @@ ch.set_categories(Reference(M,min_col=1,min_row=rb,max_row=last))
 from openpyxl.chart.series import SeriesLabel
 ch.series[0].title=SeriesLabel(v="Replaced by SUPERWOOD (high)"); ch.series[1].title=SeriesLabel(v="Not replaced (high)")
 ch.series[0].graphicalProperties.solidFill="E2B877"; ch.series[1].graphicalProperties.solidFill="9D8D76"
-ch.height=12; ch.width=26; ch.y_axis.title="t per campus"
+ch.height=12; ch.width=26; ch.y_axis.title="tons per data center"
 M.add_chart(ch,f"A{r+2}")
 
 # ---------------- Carbon ----------------
@@ -223,7 +223,7 @@ widths(C,[30,18,12,18,12,16,12,16,12,18,12])
 # ---------------- README ----------------
 Rd=wb.create_sheet("README",0)
 txt=["SUPERWOOD × Data Centers — material mass build-up and replacement model (2026-09-01, v2)",
-"","Reference unit: 1 GW IT-load campus. Change any yellow cell on Inputs (and the four addressable-share columns on 1 GW data center — immediate, soon, medium term, long term; a row may split across them); everything recalculates.",
+"","Reference unit: 1 GW IT-load data center. Change any yellow cell on Inputs (and the four addressable-share columns on 1 GW data center — immediate, soon, medium term, long term; a row may split across them); everything recalculates.",
 "Low column = every low input; High column = every high input. These are scenario bounds, not a distribution — vary single inputs for sensitivities.",
 "","Read the sheet 1 GW data center top to bottom: building structure and envelope first, then contents, with a running cumulative total. The right-hand columns show, for each component, the addressable share in each of the four horizons, the mass replaced, and the SUPERWOOD required (per-horizon SUPERWOOD split sits in grouped helper columns P–W). The summary block and chart follow.",
 "Horizons: Immediate (shipping now, no assembly rating) · Soon (certification-gated non-structural: platforms, railings, barriers, racking, doors) · Medium term (structural steel, roof trusses and roofs, ducting, enclosures) · Long term (foundations). Switch Inputs walls_precast to 1 to model precast perimeter walls; foundation_share and conc_sub_factor drive the long-term row.",
