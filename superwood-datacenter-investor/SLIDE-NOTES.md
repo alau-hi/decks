@@ -41,6 +41,7 @@ better than regular wood"; no approvals/standards detail; no dated milestones; d
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-04 (later): copy pass — doubled phrase on slide 9 fixed; slide 3 title agreement; internal confidence markers removed from slide notes; ton/tonne unified to tons on slide 18; unsourced "what hyperscalers increasingly buy" removed from the EAF bar; slide 16 dock label "Microsoft, Meta"; toggle hint reads "Keys M / C".
 - 2026-09-04 (later): Impeccable polish pass on the web deck — deep links re-align after the fit zoom runs (fixes
   misaligned landings at laptop sizes); the dock sits on a translucent pill so its labels read over photographs;
   slide 5 toggle carries full tab/tabpanel ARIA wiring and arrow-key switching while focused; digit-jump window

@@ -92,11 +92,11 @@ note(s, "The company, team, mills, cost roadmap and the raise are in the SUPERMI
 // ---------- 3 · THE BUYER ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
 kicker(s, "The buyer");
-title(s, "Data centers are a fast-growing buyer of structural steel, and they are short of it", L, 0.88, 11.9, 27);
+title(s, "Data centers are fast-growing buyers of structural steel, and they are short of it", L, 0.88, 11.9, 27);
 s.addImage({ path: "prep/dc_steel_frame.jpg", x: L, y: 2.0, w: 6.3, h: 6.3 * 1536 / 2752, sizing: { type: "crop", w: 6.3, h: 3.52 } });
 conceptTag(s, L + 6.3 - 2.6, 5.55);
 const buyer = [
-  ["Steel-intensive", "500–1,000 tons of structural steel and 5,000–10,000 m³ of concrete per 10 MW — literature intensities for hyperscale builds. A gigawatt data center carries roughly 50,000–100,000 tons of structural steel above the slab."],
+  ["Steel-intensive", "500–1,000 tons of structural steel and 5,000–10,000 m³ of concrete per 10 MW — published intensities for hyperscale builds. A gigawatt data center carries roughly 50,000–100,000 tons of structural steel above the slab."],
   ["Supply-chain challenged", "Customers report backlogs and a shortage of structural steel. Supply chain and timeline are the first concern they raise with us; a domestic material that is lighter to ship and faster to erect answers it directly."],
   ["Highly repeatable", "Hyperscalers build to a standard basis of design, one data center after another. A material written into that design is specified again and again."],
 ];
@@ -137,9 +137,9 @@ const half = (cwid[2] - 0.1) / 2;
 s.addImage({ path: "prep/beam_hybrid.jpg", x: cx[2], y: IMY, w: half, h: IMH, sizing: { type: "crop", w: half, h: IMH } });
 s.addImage({ path: "prep/beam_thin.jpg", x: cx[2] + half + 0.1, y: IMY, w: half, h: IMH, sizing: { type: "crop", w: half, h: IMH } });
 const cmpRows = [
-  ["What it replaces", "Concrete floor slabs and decks; some columns and beams", "Adds the steel: members, skins, screens and fences — and, ahead, enclosures and foundations"],
+  ["What it replaces", "Concrete floor slabs and decks; some columns and beams", "Adds the steel: members, skins, screens and fences; later, enclosures and foundations"],
   ["Strength", "Lumber-grade; large sections carry the load", "Tensile strength above ASTM A36 steel in samples, at one-sixth the weight; thin, dense members"],
-  ["The timber itself", "Glulam and CLT at lumber stiffness", "Mass-timber enhancement: SUPERWOOD outer laminations (~10% of section) raise a glulam beam's stiffness ~75% and strength ~100%"],
+  ["Enhancing mass timber", "Glulam and CLT at lumber stiffness", "Mass-timber enhancement: SUPERWOOD outer laminations (~10% of section) raise a glulam beam's stiffness ~75% and strength ~100%"],
   ["Exterior use", "Needs protection from weather", "Exterior grade; resists moisture, pests and rot"],
   ["Fire", "Chars; established assemblies", "Chars; far better than ordinary wood — Class A demonstrated in testing"],
   ["Code path", "Established in the building codes", "Certifiable under wood standards today; SUPERWOOD-specific standards are the goal"],
@@ -162,14 +162,14 @@ const chW = 5.4, chH = chW * 4.3 / 7.0;
 s.addImage({ path: "prep/charts/campus_mass_narrow.png", x: L, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_carbon_narrow.png", x: 6.7, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_legend.png", x: L, y: 2.08 + chH + 0.03, w: CW, h: CW * LEG_H / LEG_W });
-const sizeL = [["50–80% of the above-ground portion of a data center is steel", "Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server boxes eventually — the electronics never."]];
+const sizeL = [["50–80% of the above-ground portion of a data center is steel", "Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server enclosures eventually; never the electronics."]];
 const sizeR = [["By embodied carbon, steel is about 60% of the building materials", "At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses through the structural horizon."]];
 [[sizeL, L], [sizeR, 6.7]].forEach(([arr, x]) => arr.forEach(([head, sub]) => {
   const y = 2.08 + chH + 0.42;
   s.addText(head, { x, y, w: 5.9, h: 0.32, fontFace: SANS, fontSize: 13, bold: true, color: CREAM, margin: 0 });
   body(s, sub, x, y + 0.34, 5.9, 0.62, 10, DIM);
 }));
-note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, secondary, conf M); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Model: analyses/materials-mass-and-replacement.xlsx.", 6.78, 0.3);
+note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Model: analyses/materials-mass-and-replacement.xlsx.", 6.78, 0.3);
 
 // ---------- 6 · WHAT ONE GIGAWATT IS WORTH ----------
 s = pres.addSlide(); base(s, "InventWood · The size");
@@ -231,7 +231,7 @@ note(s, "SUPERWOOD: parallel-to-grain tension, company test data (production QC 
 // ---------- 9 · PROPERTIES ----------
 s = pres.addSlide(); base(s, "InventWood · The fit");
 kicker(s, "The fit");
-title(s, "Properties that matter on a data center data center");
+title(s, "Properties that matter in a data center");
 s.addImage({ path: "prep/prod-board.jpg", x: L, y: 1.95, w: 4.0, h: 4.0 * 427 / 640 });
 s.addText([
   t("Stronger than steel.\n", { color: CREAM }),
@@ -347,7 +347,7 @@ const sm2 = [
   ["tile_spaceframe", "Building enclosures", "Prefabricated envelope structure and skin — the co-development target with hyperscaler architects and engineers"],
   ["tile_truss2", "Trusses, roofs & long-span members", "Roof structure first; fast-to-build enclosures follow"],
   ["tile_clt", "CLT-type floor, roof & wall assemblies", "Thin, far stronger panels through the mass-timber product route"],
-  ["tile_rackocp", "Heavy equipment supports & server enclosures", "Racks come next, a few months of development; enclosures for servers and equipment follow — the electronics stay"],
+  ["tile_rackocp", "Heavy equipment supports & server enclosures", "Racks come next, a few months of development; enclosures for servers and equipment follow; the electronics are never replaced"],
 ];
 sm2.forEach(([img, head, sub], i) => {
   const col = i % 2, row = Math.floor(i / 2);
@@ -482,7 +482,7 @@ title(s, "Embodied carbon: a projection until the LCA is complete", L, 0.88, 11.
 // bars: kg CO2e per kg of material
 const bars = [
   ["Steel — global average (BF-BOF)", 1.8, ROSE, "1.8 kg"],
-  ["Steel — recycled (EAF), what hyperscalers increasingly buy", 0.7, "A0714E", "0.4–0.7 kg"],
+  ["Steel — recycled (EAF)", 0.7, "A0714E", "0.4–0.7 kg"],
   ["SUPERWOOD — manufacturing, projected", 0.5, GREEN, "0.5 kg"],
 ];
 label(s, "kg CO₂e per kg of material, cradle to gate", L, 1.95, 6);
@@ -502,10 +502,10 @@ s.addText([
 ], { x: L + 0.25, y: 5.3, w: 5.9, h: 1.1, fontFace: SANS, fontSize: 10, margin: 0, valign: "middle" });
 // right: functional unit
 panel(s, 7.3, 1.95, 5.45, 4.5, PANEL);
-label(s, "Per functional unit — replacing one tonne of steel", 7.55, 2.1, 5.0, BRIGHT);
-body(s, "SUPERWOOD needed: 0.3–0.6 t per tonne of steel replaced (substitution factor, estimate — to be engineering-stamped per element).\n\nSUPERWOOD manufacturing emissions: 0.3–0.6 t × 0.5 = 0.15–0.30 t CO₂e.\n\nAgainst average steel (1.8 t): a reduction of 83–92%.\n\nAgainst recycled steel (0.4–0.7 t): a reduction of 25–79%.\n\nAny stated reduction must name its steel baseline and its substitution factor. Both are shown here; neither is yet verified.", 7.55, 2.45, 5.0, 3.0, 10.5, DIM);
+label(s, "Per functional unit — replacing one ton of steel", 7.55, 2.1, 5.0, BRIGHT);
+body(s, "SUPERWOOD needed: 0.3–0.6 tons per ton of steel replaced (substitution factor, estimate — to be engineering-stamped per element).\n\nSUPERWOOD manufacturing emissions: 0.3–0.6 tons × 0.5 = 0.15–0.30 tons CO₂e.\n\nAgainst average steel (1.8 tons CO₂e): a reduction of 83–92%.\n\nAgainst recycled steel (0.4–0.7 tons CO₂e): a reduction of 25–79%.\n\nAny stated reduction must name its steel baseline and its substitution factor. Both are shown here; neither is yet verified.", 7.55, 2.45, 5.0, 3.0, 10.5, DIM);
 s.addText("Pre-LCA projection for a full-scale plant. LCA under way with Prof. Ming Hu, University of Notre Dame.", { x: 7.55, y: 5.55, w: 5.0, h: 0.8, fontFace: SANS, fontSize: 10.5, bold: true, color: CREAM, margin: 0, valign: "top" });
-note(s, "SUPERWOOD 0.5 kg/kg manufactured and 1.3 kg/kg biogenic: company projections, pre-LCA. Steel 1.8 kg/kg: global BF-BOF average. EAF 0.4–0.7 kg/kg: typical published range for recycled-scrap steel [conf: M]. Substitution factor 0.3–0.6: company estimate. Reductions are arithmetic on these inputs.", 6.6, 0.45);
+note(s, "SUPERWOOD 0.5 kg/kg manufactured and 1.3 kg/kg biogenic: company projections, pre-LCA. Steel 1.8 kg/kg: global BF-BOF average. EAF 0.4–0.7 kg/kg: typical published range for recycled-scrap steel. Substitution factor 0.3–0.6: company estimate. Reductions are arithmetic on these inputs.", 6.6, 0.45);
 
 // ---------- 18 · RISKS ----------
 s = pres.addSlide(); base(s, "InventWood · Risks");
@@ -514,9 +514,9 @@ title(s, "Risks and how we handle them");
 const risks = [
   ["Insurers and code officials must accept SUPERWOOD for structural use", "Start with skins and non-structural items that need no assembly rating. Qualify structural applications with the first customer, on the pathway mass timber opened."],
   ["Qualification could run longer than customer design cycles", "Sell what needs no qualification now. Hyperscalers design data centers years ahead, so basis-of-design work starts before qualification ends."],
-  ["One plant, shared across every market", "SuperMill One allocates output; a gigawatt's skins alone are one to three plant-years. SuperMill Two resolves it; that is what the raise funds."],
+  ["One plant, shared across every market", "SuperMill One's output is allocated across every market; a gigawatt's skins alone are one to three plant-years. SuperMill Two resolves it; that is what the raise funds."],
   ["Price against metal panel, fiber cement, CLT and recycled steel", "Premium skins where appearance and community acceptance carry value. Structural competitiveness arrives with SuperMill Two cost (roadmap basis, not yet realized)."],
-  ["Carbon figures are projections until the LCA lands", "Labeled pre-LCA everywhere; LCA under way with Prof. Ming Hu, University of Notre Dame. No carbon claim without its baseline and substitution factor."],
+  ["Carbon figures are projections until the LCA is complete", "Labeled pre-LCA everywhere; LCA under way with Prof. Ming Hu, University of Notre Dame. No carbon claim without its baseline and substitution factor."],
   ["Customer concentration", "Three hyperscalers plus Vertiv, Wooden Data Center and operators — and what is qualified for a data center is qualified for the wider structural market."],
 ];
 label(s, "Risk", L, 1.95, 4, BRIGHT); label(s, "How we handle it", 6.25, 1.95, 5, BRIGHT);
