@@ -17,7 +17,7 @@ rows=[("Concrete — slab on grade, paving",1200,0.75,"long"),("Concrete — fou
 ("Platforms, walkways, mezzanines, railings",15,1.0,"soon"),("Acoustic barriers, enclosures, separations",5,1.0,"soon"),
 ("Racking and equipment supports",5,1.0,"soon"),("Tray, containment, doors, misc. metals",10,0.5,"soon"),
 ("Ducting and air-distribution sheet metal",8,1.0,"med"),("Interior finishes, backplanes, trim",3,1.0,"imm"),
-("Electrical equipment and conductors",100,0,None),("Mechanical equipment, piping, loop water",50,0,None),("IT — servers and racks",70,0,None)]
+("Electrical equipment and conductors",100,0,None),("Mechanical equipment, piping, loop water",50,0,None),("IT — servers and racks",70,0.4,"long")]
 col={"imm":GOLD,"soon":GREEN,"med":WOOD,"long":TEAL}
 lab={"imm":"immediate","soon":"soon","med":"medium term","long":"long term"}
 # Embodied-carbon factors [conf: M, typical cradle-to-gate]: concrete 0.12 kg CO2e/kg; steel 1.8 (global BF-BOF average, the deck's

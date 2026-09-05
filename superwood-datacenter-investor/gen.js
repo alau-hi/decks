@@ -205,7 +205,7 @@ const chW = 5.4, chH = chW * 4.3 / 7.0;
 s.addImage({ path: "prep/charts/campus_mass_narrow.png", x: L, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_carbon_narrow.png", x: 6.7, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_legend.png", x: L, y: 2.08 + chH + 0.03, w: CW, h: CW * LEG_H / LEG_W });
-const sizeL = [["50–80% of the above-ground portion of a data center is steel", "Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; never the electronics."]];
+const sizeL = [["50–80% of the above-ground portion of a data center is steel", "Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server enclosures eventually; never the electronics."]];
 const sizeR = [["By embodied carbon, steel is about 60% of the building materials", "At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses in the immediate, soon and medium-term horizons."]];
 [[sizeL, L], [sizeR, 6.7]].forEach(([arr, x]) => arr.forEach(([head, sub]) => {
   const y = 2.08 + chH + 0.42;
@@ -224,7 +224,7 @@ const worthRows = [
   ["Immediate — skins, screens, fences", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 years of SuperMill One", 1.4, 3.1],
   ["Soon — racks, platforms, barriers", "3,500–18,000 tons", "0.1–0.6 years of SuperMill Two", 0.1, 0.6],
   ["Medium term — frame, roofs, enclosures", "16,000–65,000 tons", "0.5–2.1 years of SuperMill Two", 0.5, 2.1],
-  ["Long term — slab, foundations", "56,000–346,000 tons", "1.8–11 years of SuperMill Two", 1.8, 11],
+  ["Long term — slab, foundations", "58,000–362,000 tons", "1.8–12 years of SuperMill Two", 1.8, 12],
 ];
 const wx = [L, 5.4, 9.0], ww = [4.6, 3.4, 3.7];
 worthCols.forEach((c, i) => s.addText(c.toUpperCase(), { x: wx[i], y: 2.3, w: ww[i], h: 0.4, fontFace: SANS, fontSize: 10, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" }));
@@ -243,7 +243,7 @@ worthRows.forEach((r, ri) => {
 });
 s.addShape(pres.ShapeType.rect, { x: L, y: 5.87, w: CW, h: 0.012, fill: { color: RULE } });
 s.addText([t("SuperMill One ≈ 900 tons a year (1M sf)", { color: BRIGHT }), t("      ·      ", { color: MUTED }), t("SuperMill Two ≈ 31,000 tons a year (36M sf)", { color: BRIGHT })], { x: L, y: 6.0, w: CW, h: 0.35, fontFace: SANS, fontSize: 11.5, bold: true, margin: 0 });
-note(s, "Company estimate from the slide 6 model, low–high scenarios; 0.3–0.6 substitution factor for steel, to be engineering-stamped per element; long-term row is concrete and rebar only. Mill output at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application; see the SUPERMILLS Investor Overview.", 6.62, 0.45);
+note(s, "Company estimate from the slide 6 model, low–high scenarios; 0.3–0.6 substitution factor for steel, to be engineering-stamped per element; long-term row also includes server enclosures at 40% of IT mass (a small share of the total), electronics excluded. Mill output at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application; see the SUPERMILLS Investor Overview.", 6.62, 0.45);
 
 // ---------- 9 · PROPERTIES ----------
 s = pres.addSlide(); base(s, "InventWood · The fit");
@@ -364,7 +364,7 @@ const sm2 = [
   ["tile_mullion2", "Window mullions", "Slender, stiff curtain-wall and storefront mullions in place of aluminum and steel — light structural, non-life-safety"],
   ["tile_truss2", "Trusses, roofs & long-span members", "Roof structure first; long-span floors and canopies follow"],
   ["tile_hybrid_glulam", "CLT-type floor, roof & wall assemblies", "Starting with SUPERWOOD hybrid glulam: SUPERWOOD outer laminations on a glulam core. Thin, far stronger panels follow through the mass-timber product route"],
-  ["tile_rackocp", "Heavy equipment supports", "Racks come soon, a few months of development; heavy equipment supports and enclosures follow; the electronics are never replaced"],
+  ["tile_rackocp", "Heavy equipment supports & server enclosures", "Racks come soon, a few months of development; enclosures for servers and equipment follow; the electronics are never replaced"],
 ];
 sm2.forEach(([img, head, sub], i) => {
   const col = i % 2, row = Math.floor(i / 2);

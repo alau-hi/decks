@@ -58,7 +58,7 @@ New imagery (Higgsfield nano_banana_pro, prompts in `render/dc-steel-frame-const
   above the slab ~37%; equipment not estimated. Factors and derivation in `prep/charts/make_charts.py`.
 
 - Racks and server boxes (Alex 2026-09-04): racks are "soon" — a few months of development (slide 12 tile, "next"
-  horizon on slides 5 and 6); server enclosures were long-term until 2026-09-05, when Alex removed server boxes from the deck entirely; electronics
+  horizon on slides 5 and 6); server enclosures eventually (long-term vision, 40% of IT mass as an estimate — kept in the numbers but not in horizon labels, Alex 2026-09-05); electronics
   never. An earlier same-day move of racks to "now" was reversed.
 
 - Slide 4 photos (Alex 2026-09-04): the Microsoft Source construction photo (CLT panel set on the Northern Virginia

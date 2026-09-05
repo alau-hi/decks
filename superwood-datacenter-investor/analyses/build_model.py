@@ -43,6 +43,7 @@ rows=[
 ("elec_t_mw","Electrical: gensets, transformers, switchgear, UPS, busway, copper",50,100,"t/MW","estimated [L]","Genset 30–60 t, 1 MW UPS 10–20 t, transformer 5–8 t"),
 ("mech_t_mw","Mechanical: chillers, fan walls, coolers, piping, water",20,50,"t/MW","estimated [L]",""),
 ("it_t_mw","IT: servers and racks",15,70,"t/MW","estimated [L]","Loaded rack ~1 t; GB200 NVL72 ~1.36 t [H]"),
+("it_enclosure_share","Share of IT mass that is server and equipment enclosures (boxes), replaceable long term",0.4,0.4,"share","estimated [L]; Alex 2026-09-04","Server boxes eventually; the electronics never"),
 ("foundation_share","Share of all concrete that is foundations, footings, piers and equipment pads",0.4,0.5,"share","estimated [L]","Remainder is slab on grade, paving and yard"),
 ("slab_lt","Long-term technical potential: share of slab-on-grade and paving concrete replaceable",0.75,0.75,"share","asserted-internal (Alex, 2026-09-01) [L]","Technical potential, not a plan; no design or code pathway yet"),
 ("fdn_lt","Long-term technical potential: share of foundations, footings, piers and pads replaceable",0.9,0.9,"share","asserted-internal (Alex, 2026-09-01) [L]","Technical potential, not a plan"),
@@ -117,7 +118,7 @@ comp=[
 ("Interior finishes, backplanes, trim (admin / office)",lambda c:f"={ref('interior_t_mw',c)}*{IT(c)}","Immediate",lambda c:"1","interior","E84 Class A finish; backplanes UL 94 yellow card (not yet started)"),
 ("Electrical equipment and conductors",lambda c:f"={ref('elec_t_mw',c)}*{IT(c)}",None,lambda c:"0","zero","Gensets, transformers, switchgear, batteries, copper"),
 ("Mechanical equipment, piping, loop water",lambda c:f"={ref('mech_t_mw',c)}*{IT(c)}",None,lambda c:"0","zero","Chillers, fan walls, coolers, piping (ductwork is its own row)"),
-("IT — servers and racks",lambda c:f"={ref('it_t_mw',c)}*{IT(c)}",None,lambda c:"0","zero","Servers, racks as shipped, and their enclosures are not replaced (Alex 2026-09-05; server boxes removed from the long-term horizon). Rack masses [H]; aggregate per MW [L]"),
+("IT — servers and racks",lambda c:f"={ref('it_t_mw',c)}*{IT(c)}","Long term",lambda c:f"={ref('it_enclosure_share',c)}","steel","Server and equipment enclosures only (40% of IT mass, estimate); electronics never. Rack masses [H]; aggregate [L]"),
 ]
 r=2; data_rows=[]; precast_row=None
 for name,f,hor,share,rule,note in comp:
@@ -231,7 +232,7 @@ M.add_chart(ch,f"A{r+2}")
 C=wb.create_sheet("Carbon")
 header(C,1,["Horizon","Low incumbent emissions avoided (t CO₂e)","High","Low SUPERWOOD manufacturing (t CO₂e)","High","Low net reduction","High","Low net vs EAF steel","High","Low biogenic stored (separate)","High"])
 for i,hor in enumerate(("Immediate","Soon","Medium term","Long term"),start=2):
-    rr,rs,_=hor_rows[hor]; C.cell(row=i,column=1,value=hor+(" (concrete, rebar)" if hor=="Long term" else " (steel)"))
+    rr,rs,_=hor_rows[hor]; C.cell(row=i,column=1,value=hor+(" (concrete, rebar, server enclosures)" if hor=="Long term" else " (steel)"))
     for c,col in (("B",2),("C",3)):
         sw=f"'1 GW data center'!{c}{rs}"; sc=CL(HCOL[hor]); S=f"'1 GW data center'!"
         C.cell(row=i,column=col,value=f"=SUMPRODUCT({S}{c}{first}:{c}{last},{S}{sc}{first}:{sc}{last},{S}X{first}:X{last})")
