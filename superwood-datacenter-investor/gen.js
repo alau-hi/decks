@@ -212,7 +212,7 @@ const sizeR = [["By embodied carbon, steel is about 60% of the building material
   s.addText(head, { x, y, w: 5.9, h: 0.32, fontFace: SANS, fontSize: 13, bold: true, color: CREAM, margin: 0 });
   body(s, sub, x, y + 0.34, 5.9, 0.62, 10, DIM);
 }));
-note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: immediate = shipping; soon = 1–3 years, straightforward applications engineering; medium term = complex applications engineering, new form factors or materials engineering; long term = technical potential with no design or code pathway yet.", 6.78, 0.3);
+note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: immediate = shipping; soon = 1–3 years, straightforward applications engineering; medium term = complex applications engineering, new form factors or materials engineering; long term = 5+ years, technical potential with no design or code pathway yet.", 6.78, 0.3);
 
 // ---------- 6 · ONE DATA CENTER CAN CONSUME A SUPERMILL ----------
 s = pres.addSlide(); base(s, "InventWood · The size");
@@ -298,7 +298,7 @@ kicker(s, "The path · Immediate");
 title(s, "Immediate: skins, screens and fences from SuperMill One");
 s.addText("Every item below ships today as boards up to 8\" × 16' × 3/8\", exterior or interior grade. SuperMill One makes about one million square feet a year across all markets.",
   { x: L, y: 1.85, w: CW, h: 0.45, fontFace: SANS, fontSize: 12, color: DIM, margin: 0 });
-s.addText([t("IMMEDIATE ", { bold: true, color: BRIGHT }), t("shipping from SuperMill One   ·   ", {}), t("SOON ", { bold: true, color: BRIGHT }), t("1–3 years; straightforward applications engineering   ·   ", {}), t("MEDIUM TERM ", { bold: true, color: BRIGHT }), t("complex applications engineering such as full building systems, new form factors, or materials engineering   ·   ", {}), t("LONG TERM ", { bold: true, color: BRIGHT }), t("technical potential with no design or code pathway yet", {})], { x: L, y: 2.25, w: CW, h: 0.3, fontFace: SANS, fontSize: 9.5, color: DIM, margin: 0 });
+s.addText([t("IMMEDIATE ", { bold: true, color: BRIGHT }), t("shipping from SuperMill One   ·   ", {}), t("SOON ", { bold: true, color: BRIGHT }), t("1–3 years; straightforward applications engineering   ·   ", {}), t("MEDIUM TERM ", { bold: true, color: BRIGHT }), t("complex applications engineering such as full building systems, new form factors, or materials engineering   ·   ", {}), t("LONG TERM ", { bold: true, color: BRIGHT }), t("5+ years; technical potential with no design or code pathway yet", {})], { x: L, y: 2.25, w: CW, h: 0.3, fontFace: SANS, fontSize: 9.5, color: DIM, margin: 0 });
 const nowTiles = [
   ["tile_cladding", "Facades, cladding & rain screens"],
   ["tile_lobby", "Biophilic interiors for office space"],
@@ -327,7 +327,7 @@ s = pres.addSlide(); base(s, "InventWood · The path");
 kicker(s, "The path · Soon (1–3 years)");
 title(s, "Soon (1–3 years): applications needing straightforward applications engineering", L, 0.88, 11.9, 27);
 const gated = [
-  ["tile_barrier", "Acoustic barrier walls & equipment screens", "Acoustic performance data"],
+  ["tile_fanbox", "Fan enclosures & ducting", "Acoustic and airflow data"],
   ["tile_walkway", "Walkways & platforms", "Load and connection data"],
   ["tile_railing2", "Railings", "Load testing to code"],
   ["tile_mullion2", "Window mullions", "Thermal and structural data"],
@@ -341,8 +341,6 @@ const gated = [
     const x = L + j * cw;
     s.addImage({ path: `prep/tiles/${img}.jpg`, x: x + (cw - 1.5) / 2, y: rowY, w: 1.5, h: 1.5 });
     s.addText(lab, { x: x + 0.05, y: rowY + 1.6, w: cw - 0.1, h: 0.62, fontFace: SANS, fontSize: 10.5, bold: true, color: CREAM, align: "center", margin: 0, valign: "top" });
-    s.addText("WHAT IT NEEDS", { x: x + 0.05, y: rowY + 2.28, w: cw - 0.1, h: 0.22, fontFace: SANS, fontSize: 8, bold: true, color: BRIGHT, charSpacing: 1.5, align: "center", margin: 0 });
-    s.addText(gate, { x: x + 0.05, y: rowY + 2.52, w: cw - 0.1, h: 0.6, fontFace: SANS, fontSize: 9.5, color: MUTED, align: "center", margin: 0, valign: "top" });
   });
 }
 panel(s, L, 5.5, CW, 0.85, PANEL);
@@ -382,8 +380,8 @@ conceptTag(s, W - 3.6, 5.42, 3.0, "Concept renderings");
 
 // ---------- 14 · THE LONG-TERM VISION ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Long term");
-title(s, [t("Long term: prefabricated "), gold("envelopes"), t(", then foundations")]);
+kicker(s, "The path · Long term (5+ years)");
+title(s, [t("Long term (5+ years): prefabricated "), gold("envelopes"), t(", then foundations")]);
 const vis = [
   ["Prefabricated building envelopes", "Structure and skin shipped as panels and modules — the co-development target with our hyperscaler customers' architects and engineers. Shells that carry their own loads, weigh far less than steel and precast, and can be disassembled and moved.", "Hyperscalers are asking for this now, to simplify design and delivery and accelerate schedules."],
   ["Foundations, slabs and paving", "Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete — installed faster, with lower geotechnical demands, and potentially movable.", "Biggest unaddressed impact both to speed of development and construction, and with huge carbon impact. Geotechnical requirements greatly impact schedule and site selection."],

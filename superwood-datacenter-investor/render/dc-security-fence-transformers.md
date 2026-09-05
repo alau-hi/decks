@@ -14,3 +14,7 @@ Photorealistic product-style tile: a tall anti-climb security fence around an ou
 Alex: security fencing must be opaque — nothing behind it visible through the fence. Higgsfield job `fe279cbc-e4ea-4eb7-a97e-0fa5022c8564`. Also used on the Microsoft card (slide 16).
 
 Architectural photograph, late afternoon, of a tall opaque security fence around a data center transformer yard. The fence is about 3 meters high, built from tightly abutted vertical boards of warm medium-brown densified wood (oiled-teak tone, straight fine grain, crisp machined edges) with no gaps, so nothing behind it can be seen; a wood-clad security gate with a steel frame; neat gravel strip and low native grasses along the base; the tops of tall transformers and a lattice pylon just visible above the fence line against a soft sky. Clean, solid, well-built; realistic construction detail; no people, no text, no signage, no logos.
+
+## 2026-09-05b — tile repurposed
+
+Alex: the fluted vertical-slat acoustic screen render (see dc-acoustic-screen-yard.md, revision 2026-09-05b, job `bebe7d20-4f72-4187-b276-4d3d13d67d2d`) now serves as `tile_fence_security.jpg` on the Immediate slide and the Microsoft card. The opaque board fence render above is superseded.

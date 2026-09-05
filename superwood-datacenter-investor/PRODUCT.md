@@ -51,7 +51,7 @@ premium skins into structural applications."
 - No approvals or standards detail; no dated milestones; no dollar values per gigawatt. Horizons (Alex, 2026-09-05): Immediate =
   shipping from SuperMill One; Soon = 1–3 years, straightforward applications engineering (racks, platforms, barriers,
   doors, mullions); Medium term = complex applications engineering such as full building systems, new form factors or
-  materials engineering (structure, enclosures); Long term = technical potential with no design or code pathway yet
+  materials engineering (structure, enclosures); Long term = 5+ years; technical potential with no design or code pathway yet
   (foundations, slabs, server enclosures). Electronics never. Same names as the analyses workbook.
 - Web navigation: fixed right-hand keyword dock with live scroll-spy, named prev/next, left/right arrow section jumps,
   digit jumps, M/C toggle on slide 5. Slides fit to the viewport on desktop and scroll on phones.
