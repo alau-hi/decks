@@ -122,8 +122,8 @@ note(s, "US Census Bureau, Construction Spending (C30), private data center cons
 // ---------- 4 · COMMUNITY PUSHBACK: AESTHETICS AND NOISE ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
 kicker(s, "The buyer · The community");
-title(s, [t("Neighbors object to what they "), gold("see"), t(" and what they "), gold("hear"), t(". Local rules now regulate both, and both are things a building can fix.")], L, 0.88, 12.2, 21);
-label(s, "The two complaints about the building itself", L, 2.0, 7.2);
+title(s, [t("Community pushback now blocks or delays more data center projects than ever. "), gold("Two of the complaints are about the building"), t(", and SUPERWOOD answers both.")], L, 0.88, 12.2, 21);
+label(s, "How we deal with two of the complaints", L, 2.0, 7.2);
 const objections = [
   ["Aesthetics: windowless boxes on farmland", "Data halls, substations and generator yards land next to subdivisions and on open land. Counties answer with 500–1,000 ft setbacks, design standards, screening and landscaping requirements, and hearings where the building's appearance is argued. SUPERWOOD: facades, fences and screens that read as architecture, not industry, and a lower-carbon building to say so with."],
   ["Noise: the hum that carries", "Fan walls, chillers and monthly generator testing produce steady low-frequency noise that travels well beyond the fence line. New ordinances set decibel limits at the property line, require staggered generator testing, and call for sound-reducing design and buffering. SUPERWOOD: acoustic screens and barriers that damp sound and vibration and look good doing it."],
