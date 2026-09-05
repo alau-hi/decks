@@ -301,7 +301,7 @@ s.addText("Every item below ships today as boards up to 8\" × 16' × 3/8\", ext
 s.addText([t("IMMEDIATE ", { bold: true, color: BRIGHT }), t("shipping from SuperMill One   ·   ", {}), t("SOON ", { bold: true, color: BRIGHT }), t("1–3 years; straightforward applications engineering   ·   ", {}), t("MEDIUM TERM ", { bold: true, color: BRIGHT }), t("complex applications engineering such as full building systems, new form factors, or materials engineering   ·   ", {}), t("LONG TERM ", { bold: true, color: BRIGHT }), t("5+ years; technical potential with no design or code pathway yet", {})], { x: L, y: 2.25, w: CW, h: 0.3, fontFace: SANS, fontSize: 9.5, color: DIM, margin: 0 });
 const nowTiles = [
   ["tile_cladding", "Facades, cladding & rain screens"],
-  ["tile_lobby", "Biophilic interiors for office space"],
+  ["tile_biophilic", "Biophilic interiors"],
   ["tile_louvers2", "Louvers & equipment screening"],
   ["tile_fence_staff", "Fencing for staff outdoor spaces"],
   ["tile_fence_security", "Security fencing around transformers & outdoor infrastructure"],
