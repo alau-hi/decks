@@ -37,6 +37,9 @@ Numbering follows the live deck (the former Process and Strength slides were rem
 
 Footnotes (`.note` / `note()`): deliberately small and muted — Alex 2026-09-05: "way too many footnotes that clutter the story"; web 9px floor, no box; PPTX 6.5 pt. Sources stay on the slide but recede.
 
+## v2 (2026-09-05)
+`v2.html` is the rebuilt telling Alex asked for ("wondrous but grounded", "don't overexplain"): same decisions, one idea per slide, far fewer words, thesis as a full-bleed hero, Speed folded into Properties. Storyline and per-slide treatment in STORY-V2.md. `slides.html` stays the live v1 until Alex chooses; the PPTX generator still builds v1.
+
 ## Open items (Alex to confirm)
 - Nicer images needed for two tiles (Alex 2026-09-05): biophilic interiors (slide 10, currently the overview deck's server-hall render) and walkways & platforms (slide 11, currently the office-wing decking render).
 - Wall system in Microsoft's and Meta's standard designs (metal panel vs tilt-up) — drives the steel share and whether facades are "now".

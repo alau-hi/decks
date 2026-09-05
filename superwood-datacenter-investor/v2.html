@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%231f150c%27/%3E%3Cg fill=%27%23e2b877%27%3E%3Crect x=%277%27 y=%278%27 width=%2718%27 height=%273.5%27 rx=%271%27/%3E%3Crect x=%277%27 y=%2714.25%27 width=%2718%27 height=%273.5%27 rx=%271%27/%3E%3Crect x=%277%27 y=%2720.5%27 width=%2718%27 height=%273.5%27 rx=%271%27/%3E%3C/g%3E%3C/svg%3E">
+<title>InventWood — SUPERWOOD for Data Centers (v2)</title>
+<meta name="description" content="SUPERWOOD for Data Centers — InventWood investor companion to the SUPERMILLS Investor Overview. Why data centers, the technology fit, impact, applications, and customers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1f150c;--panel:#261a0f;--panel2:#2e2113;--cream:#f4ecdf;--cream-dim:#cdbfa9;--muted:#9d8d76;--wood:#b87d44;--wood-bright:#cda165;--gold:#e2b877;--line:rgba(228,210,180,.14);--green:#8fb356;--teal:#5ea9a2;--rose:#c9706b;--ink-deep:#1a1209;--dock:9.5rem}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:clamp(15px,.55vw + .55vh + 4.5px,32px)}
+@media (pointer:fine){html{font-size:clamp(15px,min(.55vw + .55vh + 4.5px,1.25vw),32px)}}
+body{font-family:'Inter',sans-serif;background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.deck{height:100vh;height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.deck::-webkit-scrollbar{width:0}
+::selection{background:rgba(226,184,119,.9);color:var(--ink-deep)}
+section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;padding:5vh var(--dock) 6vh 5vw;overflow:hidden}
+.wrap{width:100%;position:relative;z-index:2;display:flow-root}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01em;line-height:1.08}
+h2{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:340;text-wrap:balance;margin:.25rem 0 1.1rem}
+h2 em,h1 em{font-style:italic;color:var(--gold)}
+.kicker{font-size:max(.72rem,11px);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright)}
+.lead{font-size:clamp(.9rem,1.25vw,1.05rem);line-height:1.55;color:var(--cream-dim);font-weight:300;max-width:60ch}
+.lead b,.li b,p b{color:var(--cream);font-weight:600}
+.note{font-size:max(.6rem,9px);line-height:1.35;color:var(--muted);font-style:normal;margin-top:.8rem;max-width:110ch;opacity:.85}
+.wrap > .card p{max-width:80ch}
+.rv{opacity:0;transform:translateY(1.4rem);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.in .rv{opacity:1;transform:none}
+section.noanim .rv{transition:none}
+.in .rv:nth-child(2){transition-delay:.06s}.in .rv:nth-child(3){transition-delay:.12s}.in .rv:nth-child(4){transition-delay:.18s}.in .rv:nth-child(5){transition-delay:.24s}
+.bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center}
+.scrim{position:absolute;inset:0;z-index:1}
+img{max-width:100%;display:block}
+/* chrome */
+.brand{position:fixed;bottom:1.1rem;right:calc(var(--dock) + .4rem);z-index:95;height:1.5rem;width:max-content}.brand img{height:100%;width:auto}
+body.on-cover .brand,body.on-close .brand{display:none}
+section:focus{outline:none}
+.conf{position:fixed;bottom:1.1rem;left:1.6rem;z-index:90;font-size:max(.62rem,11px);letter-spacing:.28em;color:var(--muted);background:rgba(20,13,7,.7);padding:.3em .8em;border-radius:999px;text-transform:uppercase}
+.pager{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:.5rem;background:rgba(20,13,7,.72);padding:.25rem .35rem;border-radius:999px;backdrop-filter:blur(3px);border:1px solid var(--line)}
+.pager button{background:transparent;border:0;color:var(--cream-dim);font:500 .66rem 'Inter',sans-serif;letter-spacing:.06em;padding:.35em .9em;border-radius:999px;cursor:pointer;white-space:nowrap}
+.pager button:hover{color:var(--ink-deep);background:var(--wood-bright)}
+.pager button:disabled{opacity:.3;cursor:default;background:transparent;color:var(--cream-dim)}
+.pager .pn{font-size:max(.66rem,11px);letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums;padding:0 .3em}
+/* right-hand dock */
+nav.dock{position:fixed;right:1.1rem;top:50%;transform:translateY(-50%);z-index:96;display:flex;flex-direction:column;gap:.12rem;align-items:flex-end;max-height:92vh;overflow:hidden;background:rgba(20,13,7,.55);padding:.5rem .3rem;border-radius:1rem;backdrop-filter:blur(4px)}
+nav.dock button{border:0;background:transparent;cursor:pointer;font:500 .66rem 'Inter',sans-serif;letter-spacing:.1em;color:var(--muted);opacity:.6;padding:.14em .55em;border-radius:999px;transition:color .25s,opacity .25s,background .25s;text-align:right;white-space:nowrap}
+nav.dock button:hover,nav.dock button:focus-visible{opacity:1;color:var(--cream);outline:none}nav.dock button:focus-visible{box-shadow:0 0 0 2px var(--gold)}
+nav.dock button.active{opacity:1;color:var(--ink-deep);background:var(--wood-bright);font-weight:600}
+nav.dock i{display:block;width:1.6rem;height:1px;background:var(--line);margin:.28rem .55em}
+/* layout helpers */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;align-items:start}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.split{display:grid;grid-template-columns:1.25fr 1fr;gap:2rem;align-items:start}
+.card{background:var(--panel);border-radius:.6rem;padding:1rem 1.1rem}
+.card.tint{background:var(--panel2)}
+.card h3{font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem;color:var(--cream);margin-bottom:.35rem}
+.card p,.li p{font-size:max(.8rem,11px);line-height:1.45;color:var(--muted)}
+.num{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--wood);line-height:1}
+.li{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:start;margin-bottom:.9rem}
+.li .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--gold);margin-top:.45rem}
+.li h3{font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;margin-bottom:.15rem}
+figure{margin:0}figcaption{font-size:max(.72rem,11px);color:var(--muted);font-style:italic;margin-top:.4rem}
+.imgbox{border-radius:.5rem;overflow:hidden;background:#000}.imgbox img{width:100%;height:100%;object-fit:cover}
+table{border-collapse:collapse;width:100%;font-size:max(.76rem,11px)}
+th{text-align:left;font-size:max(.7rem,11px);letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;padding:.4rem .5rem .5rem 0;border-bottom:1px solid var(--line)}
+td{padding:.55rem .5rem .55rem 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--cream-dim);line-height:1.4}
+td:first-child{color:var(--cream);font-weight:600}
+/* cover */
+#s1{padding:0;align-items:flex-end}
+#s1 .scrim{background:linear-gradient(100deg,rgba(24,16,9,.8) 0%,rgba(24,16,9,.4) 45%,rgba(24,16,9,.12) 75%),linear-gradient(180deg,rgba(18,12,7,.1) 0%,rgba(18,12,7,.15) 40%,rgba(18,12,7,.9) 100%)}
+#s1 .wrap{padding:0 5vw 9vh}
+#s1 .wm{height:2.6rem;margin-bottom:1.2rem}
+#s1 h1{font-size:clamp(1.9rem,3.8vw,3.1rem);color:var(--cream);font-weight:340;max-width:24ch;line-height:1.1}#s1 h1 em{color:var(--gold)}
+#s1 .coverlogo{display:block;height:clamp(40px,5.2vw,68px);width:auto;margin:0 0 1.6rem -.2em}
+#s1 .covline{margin-top:1.4rem;font-size:clamp(.95rem,1.5vw,1.25rem);font-weight:600;letter-spacing:.03em;color:var(--cream)}#s1 .covline b{display:block;color:var(--wood-bright);font-weight:700;margin-top:.15em}
+#s1 .tag{position:absolute;top:1.2rem;right:calc(var(--dock) + .4rem);z-index:3;font-size:max(.7rem,11px);font-style:italic;color:var(--cream-dim)}
+
+
+.cbars{position:relative;padding-top:1.6rem}
+.cbars .cols{display:grid;grid-template-columns:repeat(13,1fr);gap:.35rem;align-items:end;height:13rem;border-bottom:1px solid var(--line)}
+.cbars .cb{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.cbars .cb i{display:block;width:100%;background:var(--wood);border-radius:.15rem .15rem 0 0}
+.cbars .cb.t12 i{background:repeating-linear-gradient(135deg,var(--gold) 0 4px,rgba(226,184,119,.45) 4px 8px)}
+.cbars .cb:nth-last-child(2) i{background:var(--gold)}
+.cbars .cb b{font-size:max(.66rem,11px);color:var(--cream-dim);font-weight:500;margin-bottom:.25rem;order:-1}
+.cbars .cb span{position:absolute;top:100%;margin-top:.35rem;font-size:max(.62rem,11px);color:var(--muted);white-space:nowrap}
+.cbars .cb.t12 span{white-space:normal;text-align:center;line-height:1.15;width:3.4rem}
+.cbars .saar{position:absolute;left:0;right:0;border-top:1px dashed var(--wood-bright);z-index:2}
+.cbars .saar span{position:absolute;left:0;bottom:.2rem;font-size:max(.68rem,11px);color:var(--wood-bright)}
+.cbars figcaption{margin-top:1.9rem}
+@media (max-width:700px), (max-width:860px) and (orientation:portrait){.cbars .cols{height:9rem;gap:.15rem}.cbars .cb b{font-size:0}.cbars .cb span{font-size:0}.cbars .cb:nth-child(1) span,.cbars .cb:nth-child(7) span,.cbars .cb.t12 span{font-size:max(.55rem,10px)}}
+#props .split{grid-template-columns:1fr 1.55fr;gap:2.4rem;align-items:center}
+#props .props{gap:1.05rem 1.3rem}#props .props img{width:2rem;height:2rem;margin-top:.15rem}
+#props .props h4{font-size:max(1.02rem,13px);letter-spacing:.06em}#props .props p{font-size:max(.95rem,12.5px);line-height:1.45;color:var(--cream-dim)}
+#props h3{font-size:1.65rem!important;margin-top:1.2rem!important}
+@media (max-width:1150px){.ladder .lhead .stages span{font-size:0!important;letter-spacing:0}.ladder .lhead .stages span::before{content:attr(data-s);font-size:max(.62rem,11px);letter-spacing:.06em}}
+.imgnote{font-size:max(.66rem,11px);font-style:italic;color:var(--muted);text-align:right;margin:.35rem 0 .2rem}
+/* dividers */
+.div .scrim{background:rgba(18,12,7,.35)}
+.div .kicker{margin-bottom:.8rem}.div h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}.div .lead{margin-top:.8rem}
+/* process flow */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.8rem;align-items:start;margin-top:1rem}
+.flow .arr{font-family:'Fraunces',serif;color:var(--gold);font-size:1.6rem;align-self:center}
+.flow h3{font-family:'Inter',sans-serif;font-size:max(.76rem,11px);letter-spacing:.08em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.35rem}
+.flow p{font-size:max(.8rem,11px);color:var(--muted);line-height:1.4;min-height:3.2em}
+.flow .imgbox{aspect-ratio:1.55;margin-top:.6rem}
+/* properties */
+.props{display:grid;grid-template-columns:auto 1fr;gap:.55rem 1rem;align-items:start}
+.props img{width:1.4rem;height:1.4rem;margin-top:.1rem}
+.props h4{font-family:'Inter',sans-serif;font-size:max(.78rem,11px);letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.props p{font-size:max(.76rem,11px);color:var(--muted);line-height:1.35}
+/* tiles */
+.tiles{display:grid;gap:.8rem;margin-top:1rem}
+.tiles.n7{grid-template-columns:repeat(7,1fr)}.tiles.n6{grid-template-columns:repeat(6,1fr)}
+.tiles .imgbox{aspect-ratio:1}
+.tiles p{font-size:max(.76rem,11px);color:var(--cream-dim);text-align:center;margin-top:.45rem;line-height:1.3}
+.tiles .gate{font-size:max(.7rem,11px);color:var(--muted);text-align:center;margin-top:.25rem;line-height:1.3}
+.tiles .gate b{display:block;font-size:max(.7rem,11px);letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.1rem}
+.cards4 .card{display:grid;grid-template-columns:5.2rem 1fr;gap:.9rem;align-items:start}
+.cards4 .card .imgbox{aspect-ratio:1}
+/* customers */
+.band{background:var(--panel2);border-radius:.45rem;padding:.55rem 1rem;display:grid;grid-template-columns:11rem 1fr;gap:1rem;align-items:center;margin-top:.55rem;font-size:max(.78rem,11px)}
+.band b{font-size:max(.66rem,11px);letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright)}.collab{display:flex;flex-wrap:wrap;gap:.6rem 2rem;align-items:center}.collab>div{display:flex;align-items:center;gap:.6rem}.collab img{height:1.05rem;width:auto;display:block}.collab .nm{font-weight:700;color:var(--cream);font-size:max(.85rem,11px)}.collab small{color:var(--muted);font-size:max(.72rem,11px)}
+.pub{background:var(--panel2);border-radius:.5rem;padding:.7rem 1rem;margin-bottom:1rem}
+.pub b{display:block;font-size:max(.7rem,11px);letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:.3rem}
+.pub p{font-size:max(.76rem,11px);line-height:1.45;color:var(--cream)}
+.profile h2 em{font-size:.7em}
+.profile .imgbox{aspect-ratio:1}
+/* close */
+#close .wrap{max-width:60rem}
+#close h1{font-size:clamp(2rem,4.2vw,3.4rem);font-weight:340}
+#close .wm{height:2.4rem;margin:1.6rem 0 1rem}
+#close .recap{list-style:none;margin:1.2rem 0 1rem;padding:0;max-width:44ch}#close .recap li{font-size:1rem;line-height:1.5;color:var(--cream);padding-left:1.1rem;position:relative;margin-bottom:.35rem}#close .recap li::before{content:"";position:absolute;left:0;top:.6em;width:.45rem;height:.45rem;border-radius:50%;background:var(--gold)}
+#close p{font-size:.9rem;color:var(--cream-dim);margin-top:.3rem}
+/* responsive */
+@media (max-width:900px), (orientation:portrait){
+  .tiles.n7,.tiles.n6{grid-template-columns:repeat(4,1fr)}
+  .split,.grid2{grid-template-columns:1fr}
+}
+@media (max-width:700px), (max-width:860px) and (orientation:portrait){
+  :root{--dock:2.6rem}
+  .split[style],.grid2[style],.grid3[style],.split,.grid2,.grid3{grid-template-columns:1fr!important}
+  table.cmp,table.risks{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #worth .chartcol{display:none}
+  table.worth,table.worth tbody{display:block}table.worth thead{display:none}
+  table.worth tr{display:grid;grid-template-columns:1fr 1fr;gap:.15rem .9rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+  table.worth td{display:block;border:0;padding:0;font-size:.9rem}table.worth td:first-child{grid-column:1/-1;margin-bottom:.15rem}
+  table.worth td:not(:first-child)::before{content:attr(data-h);display:block;font-size:max(.62rem,11px);letter-spacing:.12em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.1rem}
+  table.worth td:last-child{grid-column:1/-1}
+  table.cmp thead,table.cmp tbody,table.cmp tr{display:table;width:100%;table-layout:fixed}
+  .ladder .stages{grid-template-columns:repeat(6,minmax(0,1fr))}.ladder .lhead .stages span{font-size:0!important;letter-spacing:0}.ladder .lhead .stages span::before{content:attr(data-s);font-size:11px;letter-spacing:.04em}
+  table.cmp .thimgs{gap:.3rem}
+  .deck{scroll-snap-type:y proximity}
+  section{overflow:visible;overflow-x:clip;scroll-snap-stop:normal;padding:4.5rem var(--dock) 5rem 1.1rem;align-items:flex-start}
+  nav.dock{right:.45rem;gap:.35rem;padding:.5rem .3rem;border-radius:.6rem}
+  nav.dock button{font-size:0;width:.5rem;height:.5rem;padding:0;border-radius:50%;background:var(--muted);opacity:.5}
+  nav.dock button.active{background:var(--gold);opacity:1;transform:scale(1.4)}
+  nav.dock i{display:none}
+  .pager button span.lbl{display:none}
+  .brand{display:none}
+  .conf{display:block;top:.55rem;bottom:auto;left:.7rem;font-size:.5rem;padding:.25em .7em}
+  .cards4 .card{grid-template-columns:3.8rem 1fr}
+  .band{grid-template-columns:1fr}
+  .tag{right:3rem}
+}
+@media (prefers-reduced-motion:reduce){.rv{transition:none;opacity:1;transform:none}.deck{scroll-behavior:auto}}
+
+/* 2026-09-04 rebuild */
+.thesis .card{padding:1.2rem 1.2rem 1.3rem}.thesis .card .num{font-size:1.7rem;display:block;margin-bottom:.7rem}.thesis .card h3{font-size:.98rem;min-height:2.6em}.thesis .card p{font-size:max(.8rem,11px);line-height:1.5}
+.pub .src{display:block;font-size:max(.7rem,11px);font-style:italic;color:var(--muted);margin-top:.5rem}
+table.cmp td{font-size:clamp(.82rem,1vw,.95rem);line-height:1.45;padding:.6rem .6rem .6rem 0}table.cmp td:first-child{width:7rem;font-size:clamp(.9rem,1.05vw,1rem)}table.cmp td:nth-child(2){color:var(--muted);width:32%}table.cmp th{font-size:clamp(1rem,1.25vw,1.2rem);font-weight:700;color:var(--cream);vertical-align:bottom;padding-bottom:.6rem}table.cmp th span{display:block;margin-bottom:.45rem}table.cmp .thimgs{display:flex;gap:.5rem}table.cmp .thimgs img{flex:0 0 auto;width:auto;height:3.6rem;aspect-ratio:1.7;object-fit:cover;border-radius:.3rem}
+table.worth{width:100%;margin-top:.6rem}table.worth th{font-size:max(.75rem,11px)}table.worth td{font-size:clamp(1rem,1.25vw,1.2rem);padding:.9rem .8rem .9rem 0;line-height:1.4}table.worth td:first-child{color:var(--cream)}table.worth td.gold{color:var(--gold);font-weight:600}.yrbar{position:relative;height:.7rem;background:var(--line);border-radius:.2rem;margin-bottom:.4rem;overflow:visible}.yrbar i{position:absolute;top:0;height:100%;border-radius:.2rem;background:var(--gold)}.yrbar b{position:absolute;top:-.2rem;bottom:-.2rem;width:0;border-left:1px dashed var(--wood-bright)}
+.ladder{margin-top:.6rem}
+.ladder .lhead,.ladder .lrow{display:grid;grid-template-columns:11rem 1fr 15rem;gap:1.2rem;align-items:start}
+.ladder .lhead{padding-bottom:.3rem}.ladder .stages{display:grid;grid-template-columns:repeat(6,1fr)}
+.ladder .stages span,.ladder .lh{font-size:max(.7rem,11px);letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--wood-bright);text-align:center;line-height:1.25}
+.ladder .lh{text-align:left}
+.ladder .lrow{padding:.55rem 0 .35rem;border-top:1px solid var(--line)}
+.ladder .lrow h3{font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem}
+.ladder .lrow p{font-size:max(.76rem,11px);line-height:1.45;color:var(--cream-dim)}
+.ladder .track{position:relative;height:2.2rem}
+.ladder .track i{position:absolute;left:0;right:0;top:.5rem;height:3px;background:var(--line);border-radius:2px}
+.ladder .track i::after{content:"";position:absolute;left:0;top:0;height:3px;border-radius:2px;background:var(--wood);width:calc((var(--pos) + .5) / 6 * 100%)}
+.ladder .track b{position:absolute;top:.5rem;width:.9rem;height:.9rem;border-radius:50%;background:var(--gold);transform:translate(-50%,-38%);left:calc((var(--pos) + .5) / 6 * 100%)}
+.ladder .track em{position:absolute;left:0;top:1.15rem;font-size:max(.72rem,11px);color:var(--cream-dim);white-space:nowrap}
+.bars .bar{display:block;margin-bottom:.9rem}
+.bars .bar span{display:block;font-size:max(.78rem,11px);color:var(--cream);margin-bottom:.35rem}
+.bars .tr{position:relative;height:.95rem;background:#3a2b1a;border-radius:.2rem;overflow:hidden;width:78%;display:inline-block;vertical-align:middle}
+.bars .tr i{display:block;height:100%;border-radius:.2rem}.bars.carbon .tr{overflow:visible;width:62%}.bars.carbon .bar b{font-size:.92rem;white-space:nowrap}
+.bars .bar b{display:inline-block;font-family:'Fraunces',serif;font-size:1.05rem;color:var(--cream);margin-left:.6rem;vertical-align:middle}
+table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
+#close .wm{height:2.4rem;margin:1.6rem 0 1rem}
+@media (max-width:900px), (orientation:portrait){.ladder .lhead,.ladder .lrow{grid-template-columns:1fr}.ladder .lhead .lh{display:none}.ladder .track{margin:.3rem 0 .6rem}}
+
+.pub .logo{height:1.3rem;width:auto;margin:.6rem 0 .45rem;display:block}
+.pub .shot{position:relative;border-radius:.4rem;overflow:hidden;aspect-ratio:2.6}.pub .shot img{width:100%;height:100%;object-fit:cover}.pub .shot figcaption{position:absolute;right:.5rem;bottom:.3rem;font-size:max(.7rem,11px);font-style:italic;color:#e8decb;margin:0;text-shadow:0 0 4px rgba(0,0,0,.7)}
+.toggle{display:inline-flex;align-items:center;gap:.2rem;background:var(--panel);border-radius:999px;padding:.2rem;margin-bottom:.9rem}
+.toggle button{border:0;background:transparent;color:var(--cream-dim);font:600 .7rem 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:.45em 1em;border-radius:999px;cursor:pointer}
+.toggle button[aria-selected="true"]{background:var(--wood-bright);color:var(--ink-deep)}
+.toggle button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.toggle .hint{font-size:max(.7rem,11px);letter-spacing:.14em;color:var(--muted);padding:0 .7em}
+@media (pointer:coarse){.toggle .hint{display:none}}
+.detail{margin-left:.6rem;border:1px solid var(--line);background:transparent;color:var(--cream-dim);font:600 .7rem 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:.55em 1em;border-radius:999px;cursor:pointer;vertical-align:middle}.detail:hover,.detail:focus-visible{color:var(--cream);border-color:var(--wood-bright);outline:none}
+.defs{font-size:max(.78rem,11px);color:var(--cream-dim);line-height:1.5;margin:-.2rem 0 .9rem}.defs b{color:var(--wood-bright);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.9em}
+.hb.g .hl{font-weight:600;color:var(--cream)}.hb.g{min-height:2.6rem}.hb.g .hv em{white-space:normal}
+.view[hidden],.hbars[hidden]{display:none!important}
+#campus .li{margin:0}#campus .li h3{font-size:clamp(1.15rem,1.6vw,1.5rem);line-height:1.2;margin-bottom:.7rem;font-family:'Fraunces',serif;font-weight:400}#campus .li p{font-size:clamp(.9rem,1.1vw,1.05rem);line-height:1.55;color:var(--cream-dim)}
+
+/* HTML bar charts (slides 5 and 6) */
+.hbars{display:grid;gap:.32rem}
+.hb{display:grid;grid-template-columns:13rem 1fr 9.5rem;gap:.6rem;align-items:center;min-height:2.15rem}
+.hb .hl{font-size:max(.78rem,11px);color:var(--cream);text-align:right;line-height:1.2}
+.hb .tr{position:relative;height:.95rem;background:rgba(58,43,26,.35);border-radius:.15rem;overflow:visible}
+.hb .tr i{position:absolute;top:0;height:100%;border-radius:.15rem}
+.hb .tr .rp{left:0}.hb .tr .nr{background:#3a2b1a}
+.hb .tr .ne{left:0;width:22%;background:repeating-linear-gradient(135deg,transparent 0 3px,#3a2b1a 3px 5px);border:1px solid #3a2b1a}
+.hb .hv{font-size:max(.76rem,11px);color:var(--cream-dim);line-height:1.2;white-space:nowrap}.hb .hv em{font-style:normal;color:var(--muted);display:block;margin-left:0}.hb .hv.muted{color:var(--muted)}
+.hb.ax{margin-top:.4rem;align-items:start}.hb.ax .tr{background:none;height:1.1rem;border-top:1px solid var(--line)}
+.hb.ax .tr span{position:absolute;top:.15rem;transform:translateX(-50%);font-size:max(.7rem,11px);color:var(--muted)}
+.hb.ax .hv{font-size:max(.7rem,11px);color:var(--muted);padding-top:.15rem}
+.hleg{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;margin-top:1rem;font-size:max(.72rem,11px);color:var(--cream-dim)}.hleg i{display:inline-block;width:.85rem;height:.6rem;border-radius:.12rem;margin-right:.4rem;vertical-align:-.05rem}
+.hbars.worth{gap:1rem}.hbars.worth .hb{grid-template-columns:9rem 1fr 7.5rem;min-height:0}.hbars.worth .hb .tr{height:1.5rem}.hbars.worth .hb .tr .rg{border-radius:.2rem}
+.hbars.worth .hb .tr .mk{width:0;border-left:1px dashed var(--wood-bright);height:100%;top:0}
+.hleg.mills{margin-top:.5rem}.hleg .mkleg{display:inline-block;width:0;height:.75rem;border-left:1px dashed var(--wood-bright);margin-right:.5rem;vertical-align:middle}
+.hbars.worth .hb.ax .hv{white-space:normal}
+.hbars.worth .hb.ax .tr{height:1.4rem}.hbars.worth .hb.ax .tr span{display:none}
+.hbars.worth .hb .hl{font-size:.82rem}
+@media (max-width:700px), (max-width:860px) and (orientation:portrait){.hb{grid-template-columns:1fr;gap:.15rem;min-height:0}.hb .hl{text-align:left}.hb .hv{white-space:normal}.hb .hv em{display:inline;margin-left:.3rem}.hb.ax{display:none}.hbars.worth .hb.ax{display:grid}.hbars.worth .hb.ax .tr b{display:none}}
+
+/* v2 — wondrous but grounded: bigger statements, fewer words, full-bleed moments */
+.hero{padding:0;align-items:flex-end}
+.hero .wrap{padding:0 calc(var(--dock) + 1rem) 9vh 5vw;max-width:none}
+.hero .scrim{background:linear-gradient(180deg,rgba(24,16,9,.15) 0%,rgba(24,16,9,.55) 45%,rgba(24,16,9,.92) 100%)}
+.hero h2.big{font-size:clamp(1.9rem,3.4vw,2.9rem);max-width:30ch;line-height:1.12;margin-bottom:.9rem}
+.hero .lead{max-width:56ch;color:var(--cream)}
+h2{font-size:clamp(1.6rem,3.1vw,2.45rem)}
+.tiles p{font-size:max(.82rem,11px)}
+.thesis .card h3{min-height:0}
+.band.speed{grid-template-columns:1fr;margin-top:1.3rem;padding:.8rem 1.1rem}.band.speed p{font-size:max(.9rem,12px);color:var(--cream);line-height:1.5}
+table.cmp td{line-height:1.4}
+</style>
+</head>
+<body class="on-cover">
+<nav class="dock" id="dock" aria-label="Sections"></nav>
+<div class="pager" id="pager"><button id="prevb" aria-label="Previous section"></button><span class="pn" id="pageno"></span><button id="nextb" aria-label="Next section"></button></div>
+<div class="conf">InventWood · Confidential</div>
+<a class="brand" href="#s1" aria-label="Back to cover"><img src="assets/inventwood_logo.png" alt="InventWood"></a>
+<div class="deck" id="deck">
+<section id="s1" data-nav="Cover">
+  <div class="bg" style="background-image:url(assets/campus_hero.jpg)"></div><div class="scrim"></div>
+  <span class="tag">Concept rendering</span>
+  <div class="wrap">
+    <img class="coverlogo" src="assets/inventwood_logo.png" alt="InventWood">
+    <h1>SUPERWOOD for Data Centers</h1>
+    <p class="covline">Companion to the SUPERMILLS Investor Overview<b>September 2026</b></p>
+  </div>
+</section>
+
+<section id="thesis" data-nav="Thesis" class="hero">
+  <div class="bg" style="background-image:url(assets/tile_biophilic.jpg)"></div><div class="scrim"></div>
+  <div class="wrap">
+    <div class="kicker rv">The thesis</div>
+    <h2 class="rv big">We help data centers decarbonize and improve their impact on communities, while they accelerate SUPERWOOD's journey from <em>premium skins into structural applications</em>.</h2>
+    <p class="lead rv">Data centers are short of steel and already build with wood. SUPERWOOD is wood with tensile strength above A36 steel at one-sixth the weight. It ships today.</p>
+    <p class="imgnote rv" style="text-align:left">Concept rendering</p>
+  </div>
+</section>
+
+<section id="buyer" data-nav="Buyer">
+  <div class="wrap">
+    <div class="kicker rv">The buyer</div>
+    <h2 class="rv">US data center construction is running at <em>$75 billion a year</em>, up 57% in twelve months</h2>
+    <div class="split rv" style="grid-template-columns:1.25fr 1fr;align-items:start">
+      <figure class="cbars" aria-label="US private data center construction put in place, billions of dollars per year, 2014 to 2026">
+        <div class="saar" style="bottom:87.0%"><span>July 2026 annual rate: $75B</span></div>
+        <div class="cols"><div class="cb"><i style="height:2.1%"></i><b>2</b><span>2014</span></div><div class="cb"><i style="height:3.2%"></i><b>3</b><span>15</span></div><div class="cb"><i style="height:4.8%"></i><b>4</b><span>16</span></div><div class="cb"><i style="height:5.4%"></i><b>5</b><span>17</span></div><div class="cb"><i style="height:8.0%"></i><b>7</b><span>18</span></div><div class="cb"><i style="height:9.8%"></i><b>8</b><span>19</span></div><div class="cb"><i style="height:10.7%"></i><b>9</b><span>20</span></div><div class="cb"><i style="height:11.5%"></i><b>10</b><span>21</span></div><div class="cb"><i style="height:14.6%"></i><b>13</b><span>22</span></div><div class="cb"><i style="height:23.1%"></i><b>20</b><span>23</span></div><div class="cb"><i style="height:40.3%"></i><b>35</b><span>24</span></div><div class="cb"><i style="height:57.5%"></i><b>50</b><span>25</span></div><div class="cb t12"><i style="height:68.7%"></i><b>59</b><span>12 mo to Jul 26</span></div></div>
+        <figcaption>$ billions per year · Census Bureau, private data center construction put in place; calendar-year totals, 2026 shown as the twelve months to July</figcaption>
+      </figure>
+      <div>
+        <div class="kicker" style="margin-bottom:.6rem">Where it goes from here</div>
+        <div class="li"><span class="dot"></span><div><h3>66 GW under construction in North America</h3><p>JLL, midyear 2026. At 50–100 tons of steel per MW, that is 3.3–6.6 million tons of structural steel.</p></div></div>
+        <div class="li"><span class="dot"></span><div><h3>Global capacity roughly triples by 2030</h3><p>McKinsey: 82 GW to 219 GW. JLL: 103 GW to 200 GW.</p></div></div>
+        <div class="li"><span class="dot"></span><div><h3>Steel-intensive, steel-short, repeatable</h3><p>500–1,000 tons of structural steel per 10 MW. Customers report backlogs. One basis of design, built again and again.</p></div></div>
+      </div>
+    </div>
+    <p class="note rv">US Census Bureau, Construction Spending (C30), private data center construction: July 2026 SAAR $75.2B vs $47.8B in July 2025. JLL North America Data Center Report Midyear 2026. McKinsey (2025); JLL Global Data Center Outlook 2026. Steel intensity: arXiv 2509.21312 (secondary). Shortage statements are what customers report to InventWood.</p>
+  </div>
+</section>
+
+<section id="pushback" data-nav="Pushback">
+  <div class="wrap">
+    <div class="kicker rv">The buyer · The community</div>
+    <h2 class="rv">Community pushback now blocks or delays more data center projects than ever.</h2>
+    <div class="split rv" style="grid-template-columns:1.35fr 1fr;align-items:start">
+      <div>
+        <div class="kicker" style="margin-bottom:.6rem">Two complaints are about the building</div>
+        <div class="li"><span class="dot"></span><div><h3>Aesthetics</h3><p>Windowless boxes on farmland. Counties answer with setbacks and design standards. <b>SUPERWOOD: facades, fences and screens that read as architecture.</b></p></div></div>
+        <div class="li"><span class="dot"></span><div><h3>Noise</h3><p>Fans, chillers, generator tests. Property-line decibel limits are spreading. <b>SUPERWOOD: acoustic screens and barriers; quieter fan enclosures and ductwork.</b></p></div></div>
+      </div>
+      <div>
+        <div class="kicker" style="margin-bottom:.6rem">How strong the pushback is</div>
+        <div class="card tint"><h3>75 projects, about $130 billion, blocked or delayed in one quarter</h3><p>Q1 2026, as much as all of 2025. 833 opposition groups in 49 states.</p></div>
+        <div class="card tint" style="margin-top:.7rem"><h3>Rules are following</h3><p>Henry County, Virginia: 1,000 ft setbacks, 50 dBA at the property line.</p></div>
+      </div>
+    </div>
+    <p class="lead rv" style="margin-top:1.2rem;color:var(--cream)">We help with these two. <em style="color:var(--gold)">We can go much further</em>: into the structure of the building and what is inside it.</p>
+    <p class="note rv">Data Center Watch, Q1 2026 report (June 2026). Virginia HB 153; Henry County, VA ordinance, Aug 2026. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.</p>
+  </div>
+</section>
+
+<section id="turbo" data-nav="Wood emerging">
+  <div class="wrap">
+    <div class="kicker rv">The buyer · Wood emerging</div>
+    <h2 class="rv">Hyperscalers are already building structures with wood. We <em>turbocharge</em> wood.</h2>
+    <div class="split rv" style="grid-template-columns:1fr 1.8fr">
+      <div>
+        <div class="pub"><figure class="shot"><img src="assets/ms_clt_datacenter.jpg" alt="Cross-laminated timber panel being placed on a Microsoft datacenter under construction in Northern Virginia" loading="lazy"><figcaption>Photo: Microsoft</figcaption></figure><img class="logo" src="assets/logo_microsoft.png" alt="Microsoft"><p>Two Northern Virginia datacenters: CLT floors on a steel frame, about 35% less embodied carbon than steel construction.</p><span class="src">Microsoft Source, Nov 2024</span></div>
+        <div class="pub"><figure class="shot"><img src="assets/meta_aiken_masstimber.jpg" alt="Inside the mass-timber structure of a Meta data center administrative building" loading="lazy"><figcaption>Photo: Meta</figcaption></figure><img class="logo" src="assets/logo_meta.png" alt="Meta"><p>Mass-timber administrative buildings: Aiken, SC completed 2025; Cheyenne and Montgomery under way; about 41% less embodied carbon in the materials substituted.</p><span class="src">Meta Sustainability, 31 Jul 2025</span></div>
+      </div>
+      <div>
+        <table class="cmp">
+          <thead><tr><th></th><th><span>Mass timber today (CLT, glulam)</span><div class="thimgs"><img src="assets/beam_glulam.jpg" alt="Glulam beam" loading="lazy"></div></th><th><span>With SUPERWOOD</span><div class="thimgs"><img src="assets/beam_hybrid.jpg" alt="SUPERWOOD hybrid beam" loading="lazy"><img src="assets/beam_thin.jpg" alt="Thin SUPERWOOD beam" loading="lazy"></div></th></tr></thead>
+          <tbody>
+            <tr><td>What it replaces</td><td>Concrete floors and decks</td><td>Adds the steel: members, skins, screens, fences</td></tr>
+            <tr><td>Strength</td><td>Lumber-grade; large sections</td><td>Above A36 steel in tension at one-sixth the weight; thin members</td></tr>
+            <tr><td>Enhancing mass timber</td><td>Lumber stiffness</td><td>SUPERWOOD outer laminations, ~10% of the section: stiffness +75%, strength +100%</td></tr>
+            <tr><td>Exterior use</td><td>Needs weather protection</td><td>Exterior grade</td></tr>
+            <tr><td>Fire</td><td>Chars; established assemblies</td><td>Chars; far better than ordinary wood. Class A demonstrated</td></tr>
+            <tr><td>Code path</td><td>In the codes</td><td>Certifiable under wood standards today</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="note rv">Sources: news.microsoft.com, Nov 2024; Thornton Tomasetti project page; sustainability.atmeta.com, 31 Jul 2025. Logos and photographs are the companies' own, from the cited publications, used to identify the published projects. SUPERWOOD strength: company test data, parallel-to-grain tension. Hybrid-beam gains: derived from beam theory with SUPERWOOD modulus and strength, engineering write-up pending. Beams: concept renderings.</p>
+  </div>
+</section>
+
+<section id="campus" data-nav="Data center">
+  <div class="wrap">
+    <div class="kicker rv">The size</div>
+    <h2 class="rv">What a 1 GW data center is made of</h2>
+    <div class="toggle rv" role="tablist" aria-label="View"><button role="tab" id="tab-mass" aria-selected="true" aria-controls="view-mass view-mass-notes" data-view="mass">By mass, log scale</button><button role="tab" id="tab-carbon" aria-selected="false" aria-controls="view-carbon view-carbon-notes" tabindex="-1" data-view="carbon">By embodied carbon</button><span class="hint" title="Keyboard: M for mass, C for embodied carbon, D for detail">Keys M / C / D</span></div><button class="detail" type="button" aria-pressed="false">Show all 17 rows</button>
+    <div class="split rv" style="grid-template-columns:1.7fr 1fr;align-items:center">
+      <div class="chartcol"><div class="view" id="view-mass" role="tabpanel" aria-labelledby="tab-mass" data-view="mass"><div class="hbars grp">
+<div class="hb g"><span class="hl">Immediate — skins, screens, fences, interiors</span><div class="tr"><i class="rp" style="width:36.8%;background:var(--gold)"></i><i class="nr" style="left:36.8%;width:0.0%"></i></div><span class="hv">12,300 tons <em>100% replaceable immediately</em></span></div>
+<div class="hb g"><span class="hl">Soon — racks, platforms, barriers, doors</span><div class="tr"><i class="rp" style="width:47.1%;background:var(--green)"></i><i class="nr" style="left:47.1%;width:1.8%"></i></div><span class="hv">35,000 tons <em>86% replaceable soon</em></span></div>
+<div class="hb g"><span class="hl">Medium term — frame, roofs, ducting, enclosures</span><div class="tr"><i class="rp" style="width:61.8%;background:var(--wood)"></i><i class="nr" style="left:61.8%;width:0.0%"></i></div><span class="hv">108,000 tons <em>100% replaceable in the medium term</em></span></div>
+<div class="hb g"><span class="hl">Long term — slab, foundations, rebar</span><div class="tr"><i class="rp" style="width:95.8%;background:var(--teal)"></i><i class="nr" style="left:95.8%;width:2.4%"></i></div><span class="hv">2,570,000 tons <em>81% technical potential</em></span></div>
+<div class="hb g"><span class="hl">Not replaced — electrical and mechanical equipment</span><div class="tr"><i class="nr" style="left:0.0%;width:65.6%"></i></div><span class="hv">150,000 tons <em>not replaced</em></span></div>
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1</span><span style="left:34.4%">10</span><span style="left:60.9%">100</span><span style="left:87.4%">1,000</span></div><span class="hv">'000s of tons, log scale</span></div></div><div class="hbars det" hidden>
+<div class="hb"><span class="hl">Concrete — slab on grade, paving</span><div class="tr"><i class="rp" style="width:67.1%;background:var(--teal)"></i><i class="nr" style="left:67.1%;width:22.4%"></i></div><span class="hv">1,200,000 tons <em>75% long term</em></span></div>
+<div class="hb"><span class="hl">Concrete — foundations, footings, pads</span><div class="tr"><i class="rp" style="width:80.5%;background:var(--teal)"></i><i class="nr" style="left:80.5%;width:9.0%"></i></div><span class="hv">1,200,000 tons <em>90% long term</em></span></div>
+<div class="hb"><span class="hl">Rebar in all concrete</span><div class="tr"><i class="rp" style="width:49.3%;background:var(--teal)"></i><i class="nr" style="left:49.3%;width:11.6%"></i></div><span class="hv">100,000 tons <em>81% long term</em></span></div>
+<div class="hb"><span class="hl">Steel — primary frame</span><div class="tr"><i class="rp" style="width:50.4%;background:var(--wood)"></i><i class="nr" style="left:50.4%;width:0.0%"></i></div><span class="hv">40,000 tons <em>100% medium term</em></span></div>
+<div class="hb"><span class="hl">Steel — roof trusses, joists, deck, girts</span><div class="tr"><i class="rp" style="width:55.0%;background:var(--wood)"></i><i class="nr" style="left:55.0%;width:0.0%"></i></div><span class="hv">60,000 tons <em>100% medium term</em></span></div>
+<div class="hb"><span class="hl">Exterior skins — metal panel</span><div class="tr"><i class="rp" style="width:31.0%;background:var(--gold)"></i><i class="nr" style="left:31.0%;width:0.0%"></i></div><span class="hv">7,000 tons <em>100% immediate</em></span></div>
+<div class="hb"><span class="hl">Louvers and yard screens</span><div class="tr"><i class="rp" style="width:6.8%;background:var(--gold)"></i><i class="nr" style="left:6.8%;width:0.0%"></i></div><span class="hv">1,000 tons <em>100% immediate</em></span></div>
+<div class="hb"><span class="hl">Security and staff-area fencing</span><div class="tr"><i class="rp" style="width:8.0%;background:var(--gold)"></i><i class="nr" style="left:8.0%;width:0.0%"></i></div><span class="hv">1,000 tons <em>100% immediate</em></span></div>
+<div class="hb"><span class="hl">Platforms, walkways, mezzanines, railings</span><div class="tr"><i class="rp" style="width:39.1%;background:var(--green)"></i><i class="nr" style="left:39.1%;width:0.0%"></i></div><span class="hv">15,000 tons <em>100% soon</em></span></div>
+<div class="hb"><span class="hl">Acoustic barriers, enclosures, separations</span><div class="tr"><i class="rp" style="width:26.5%;background:var(--green)"></i><i class="nr" style="left:26.5%;width:0.0%"></i></div><span class="hv">5,000 tons <em>100% soon</em></span></div>
+<div class="hb"><span class="hl">Racking and equipment supports</span><div class="tr"><i class="rp" style="width:26.5%;background:var(--green)"></i><i class="nr" style="left:26.5%;width:0.0%"></i></div><span class="hv">5,000 tons <em>100% soon</em></span></div>
+<div class="hb"><span class="hl">Tray, containment, doors, misc. metals</span><div class="tr"><i class="rp" style="width:17.2%;background:var(--green)"></i><i class="nr" style="left:17.2%;width:17.2%"></i></div><span class="hv">10,000 tons <em>50% soon</em></span></div>
+<div class="hb"><span class="hl">Ducting and air-distribution sheet metal</span><div class="tr"><i class="rp" style="width:31.9%;background:var(--wood)"></i><i class="nr" style="left:31.9%;width:0.0%"></i></div><span class="hv">8,000 tons <em>100% medium term</em></span></div>
+<div class="hb"><span class="hl">Interior finishes, backplanes, trim</span><div class="tr"><i class="rp" style="width:20.6%;background:var(--gold)"></i><i class="nr" style="left:20.6%;width:0.0%"></i></div><span class="hv">3,000 tons <em>100% immediate</em></span></div>
+<div class="hb"><span class="hl">Electrical equipment and conductors</span><div class="tr"><i class="nr" style="left:0%;width:60.9%"></i></div><span class="hv">100,000 tons <em>not replaced</em></span></div>
+<div class="hb"><span class="hl">Mechanical equipment, piping, loop water</span><div class="tr"><i class="nr" style="left:0%;width:52.9%"></i></div><span class="hv">50,000 tons <em>not replaced</em></span></div>
+<div class="hb"><span class="hl">IT — servers and racks</span><div class="tr"><i class="rp" style="width:22.7%;background:var(--teal)"></i><i class="nr" style="left:22.7%;width:34.1%"></i></div><span class="hv">70,000 tons <em>40% long term</em></span></div>
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1</span><span style="left:34.4%">10</span><span style="left:60.9%">100</span><span style="left:87.4%">1,000</span></div><span class="hv">'000s of tons, log scale</span></div></div></div><div class="view" id="view-carbon" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden><div class="hbars grp">
+<div class="hb g"><span class="hl">Immediate — skins, screens, fences, interiors</span><div class="tr"><i class="rp" style="width:4.0%;background:var(--gold)"></i><i class="nr" style="left:4.0%;width:0.0%"></i></div><span class="hv">20,000 tons CO₂e <em>100% replaceable immediately</em></span></div>
+<div class="hb g"><span class="hl">Soon — racks, platforms, barriers, doors</span><div class="tr"><i class="rp" style="width:10.8%;background:var(--green)"></i><i class="nr" style="left:10.8%;width:1.8%"></i></div><span class="hv">63,000 tons CO₂e <em>86% replaceable soon</em></span></div>
+<div class="hb g"><span class="hl">Medium term — frame, roofs, ducting, enclosures</span><div class="tr"><i class="rp" style="width:38.8%;background:var(--wood)"></i><i class="nr" style="left:38.8%;width:0.0%"></i></div><span class="hv">194,000 tons CO₂e <em>100% replaceable in the medium term</em></span></div>
+<div class="hb g"><span class="hl">Long term — slab, foundations, rebar</span><div class="tr"><i class="rp" style="width:76.6%;background:var(--teal)"></i><i class="nr" style="left:76.6%;width:17.0%"></i></div><span class="hv">468,000 tons CO₂e <em>82% technical potential</em></span></div>
+<div class="hb g"><span class="hl">Not replaced — electrical and mechanical equipment</span><div class="tr"><i class="ne"></i></div><span class="hv muted">not estimated</span></div>
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:0%">0</span><span style="left:20%">100</span><span style="left:40%">200</span><span style="left:60%">300</span><span style="left:80%">400</span><span style="left:100%">500</span></div><span class="hv">'000s of tons CO₂e</span></div></div><div class="hbars det" hidden>
+<div class="hb"><span class="hl">Concrete — slab on grade, paving</span><div class="tr"><i class="rp" style="width:36.0%;background:var(--teal)"></i><i class="nr" style="left:36.0%;width:12.0%"></i></div><span class="hv">144,000 tons CO₂e <em>75% long term</em></span></div>
+<div class="hb"><span class="hl">Concrete — foundations, footings, pads</span><div class="tr"><i class="rp" style="width:43.2%;background:var(--teal)"></i><i class="nr" style="left:43.2%;width:4.8%"></i></div><span class="hv">144,000 tons CO₂e <em>90% long term</em></span></div>
+<div class="hb"><span class="hl">Rebar in all concrete</span><div class="tr"><i class="rp" style="width:48.6%;background:var(--teal)"></i><i class="nr" style="left:48.6%;width:11.4%"></i></div><span class="hv">180,000 tons CO₂e <em>81% long term</em></span></div>
+<div class="hb"><span class="hl">Steel — primary frame</span><div class="tr"><i class="rp" style="width:24.0%;background:var(--wood)"></i><i class="nr" style="left:24.0%;width:0.0%"></i></div><span class="hv">72,000 tons CO₂e <em>100% medium term</em></span></div>
+<div class="hb"><span class="hl">Steel — roof trusses, joists, deck, girts</span><div class="tr"><i class="rp" style="width:36.0%;background:var(--wood)"></i><i class="nr" style="left:36.0%;width:0.0%"></i></div><span class="hv">108,000 tons CO₂e <em>100% medium term</em></span></div>
+<div class="hb"><span class="hl">Exterior skins — metal panel</span><div class="tr"><i class="rp" style="width:4.4%;background:var(--gold)"></i><i class="nr" style="left:4.4%;width:0.0%"></i></div><span class="hv">13,000 tons CO₂e <em>100% immediate</em></span></div>
+<div class="hb"><span class="hl">Louvers and yard screens</span><div class="tr"><i class="rp" style="width:0.5%;background:var(--gold)"></i><i class="nr" style="left:0.5%;width:0.0%"></i></div><span class="hv">2,000 tons CO₂e <em>100% immediate</em></span></div>
+<div class="hb"><span class="hl">Security and staff-area fencing</span><div class="tr"><i class="rp" style="width:0.6%;background:var(--gold)"></i><i class="nr" style="left:0.6%;width:0.0%"></i></div><span class="hv">2,000 tons CO₂e <em>100% immediate</em></span></div>
+<div class="hb"><span class="hl">Platforms, walkways, mezzanines, railings</span><div class="tr"><i class="rp" style="width:9.0%;background:var(--green)"></i><i class="nr" style="left:9.0%;width:0.0%"></i></div><span class="hv">27,000 tons CO₂e <em>100% soon</em></span></div>
+<div class="hb"><span class="hl">Acoustic barriers, enclosures, separations</span><div class="tr"><i class="rp" style="width:3.0%;background:var(--green)"></i><i class="nr" style="left:3.0%;width:0.0%"></i></div><span class="hv">9,000 tons CO₂e <em>100% soon</em></span></div>
+<div class="hb"><span class="hl">Racking and equipment supports</span><div class="tr"><i class="rp" style="width:3.0%;background:var(--green)"></i><i class="nr" style="left:3.0%;width:0.0%"></i></div><span class="hv">9,000 tons CO₂e <em>100% soon</em></span></div>
+<div class="hb"><span class="hl">Tray, containment, doors, misc. metals</span><div class="tr"><i class="rp" style="width:3.0%;background:var(--green)"></i><i class="nr" style="left:3.0%;width:3.0%"></i></div><span class="hv">18,000 tons CO₂e <em>50% soon</em></span></div>
+<div class="hb"><span class="hl">Ducting and air-distribution sheet metal</span><div class="tr"><i class="rp" style="width:4.8%;background:var(--wood)"></i><i class="nr" style="left:4.8%;width:0.0%"></i></div><span class="hv">14,000 tons CO₂e <em>100% medium term</em></span></div>
+<div class="hb"><span class="hl">Interior finishes, backplanes, trim</span><div class="tr"><i class="rp" style="width:1.0%;background:var(--gold)"></i><i class="nr" style="left:1.0%;width:0.0%"></i></div><span class="hv">3,000 tons CO₂e <em>100% immediate</em></span></div>
+<div class="hb"><span class="hl">Electrical equipment and conductors</span><div class="tr"><i class="ne"></i></div><span class="hv muted">not estimated</span></div>
+<div class="hb"><span class="hl">Mechanical equipment, piping, loop water</span><div class="tr"><i class="ne"></i></div><span class="hv muted">not estimated</span></div>
+<div class="hb"><span class="hl">IT — servers and racks</span><div class="tr"><i class="ne"></i></div><span class="hv muted">not estimated</span></div>
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:0%">0</span><span style="left:33.3%">100</span><span style="left:66.7%">200</span><span style="left:100%">300</span></div><span class="hv">'000s of tons CO₂e</span></div></div></div><div class="hleg"><span><i style="background:var(--gold)"></i>Immediate — skins, screens, fences, interiors</span><span><i style="background:var(--green)"></i>Soon — racks, platforms, barriers, doors</span><span><i style="background:var(--wood)"></i>Medium term — frame, roofs, enclosures</span><span><i style="background:var(--teal)"></i>Long term — slab, foundations</span><span><i style="background:#3a2b1a"></i>Not replaced</span></div></div>
+      <div>
+        <div class="view" id="view-mass-notes" role="tabpanel" aria-labelledby="tab-mass" data-view="mass"><div class="li" style="grid-template-columns:1fr"><div><h3>50–80% of the above-ground portion of a data center is steel</h3><p>Skins, screens and fences now. Racks, platforms and barriers soon. Frame and roofs in the medium term. Never the electronics.</p></div></div></div>
+        <div class="view" id="view-carbon-notes" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden><div class="li" style="grid-template-columns:1fr"><div><h3>By embodied carbon, steel is about 60% of the building materials</h3><p>At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses in the immediate, soon and medium-term horizons.</p></div></div></div>
+      </div>
+    </div>
+    <p class="note rv">Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: immediate = shipping; soon = 1–3 years, straightforward applications engineering; medium term = complex applications engineering, new form factors or materials engineering; long term = 5+ years, technical potential with no design or code pathway yet.</p>
+  </div>
+</section>
+
+<section id="worth" data-nav="Worth">
+  <div class="wrap">
+    <div class="kicker rv">The size</div>
+    <h2 class="rv">Just one data center can consume the <em>entire output</em> of a SUPERMILL</h2>
+    <p class="lead rv">What one 1 GW data center could take, by horizon, against a year of each mill.</p>
+    <table class="worth rv">
+      <thead><tr><th>Horizon</th><th>SUPERWOOD required</th><th>Years of mill output <span style="font-weight:400;letter-spacing:0;text-transform:none;color:var(--muted)">· bar scale 0–12 years, tick at one year</span></th></tr></thead>
+      <tbody>
+        <tr><td data-h="Horizon">Immediate — skins, screens, fences</td><td data-h="SUPERWOOD required">1,200–2,700 tons (1.4–3.1M sf)</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i style="left:11.7%;width:14.2%"></i><b style="left:8.3%"></b></div>1.4–3.1 years of SuperMill One</td></tr>
+        <tr><td data-h="Horizon">Soon — racks, platforms, barriers</td><td data-h="SUPERWOOD required">3,500–18,000 tons</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i style="left:0.8%;width:4.2%"></i><b style="left:8.3%"></b></div>0.1–0.6 years of SuperMill Two</td></tr>
+        <tr><td data-h="Horizon">Medium term — frame, roofs, enclosures</td><td data-h="SUPERWOOD required">16,000–65,000 tons</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i style="left:4.2%;width:13.3%"></i><b style="left:8.3%"></b></div>0.5–2.1 years of SuperMill Two</td></tr>
+        <tr><td data-h="Horizon">Long term — slab, foundations</td><td data-h="SUPERWOOD required">58,000–362,000 tons</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i style="left:15.0%;width:85.0%"></i><b style="left:8.3%"></b></div>1.8–12 years of SuperMill Two</td></tr>
+      </tbody>
+    </table>
+    <div class="hleg mills rv"><span><i class="mkleg"></i>SuperMill One ≈ 900 tons a year (1M sf)</span><span><i class="mkleg"></i>SuperMill Two ≈ 31,000 tons a year (36M sf)</span></div>
+    <p class="note rv">Company estimate from the slide 6 model, low–high scenarios; 0.3–0.6 substitution factor for steel, to be engineering-stamped per element; long-term row also includes server enclosures at 40% of IT mass (a small share of the total), electronics excluded. Mill output at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application; see the SUPERMILLS Investor Overview.</p>
+  </div>
+</section>
+
+<section id="props" data-nav="Properties">
+  <div class="wrap">
+    <div class="kicker rv">The fit</div>
+    <h2 class="rv">Properties that matter in a <em>data center</em></h2>
+    <div class="split rv" style="grid-template-columns:1fr 1.7fr">
+      <div>
+        <div class="imgbox" style="aspect-ratio:1.5"><img src="assets/prod_board.jpg" alt="SUPERWOOD board" loading="lazy"></div>
+        <h3 style="font-size:1.25rem;font-weight:600;margin-top:1rem;line-height:1.25">Stronger than steel.<br><em style="color:var(--gold)">One-sixth the weight.</em><br>Made from wood, in America.</h3>
+      </div>
+      <div class="props">
+        <img src="assets/icon_strong.png" alt=""><div><h4>Strong</h4><p>Tensile strength above ASTM A36 steel in production samples</p></div>
+        <img src="assets/icon_light.png" alt=""><div><h4>Light</h4><p>One-sixth the weight of steel: smaller cranes, lighter foundations</p></div>
+        <img src="assets/icon_leaf.png" alt=""><div><h4>Naturally beautiful</h4><p>The warmth of wood, where the community sees it</p></div>
+        <img src="assets/icon_shield.png" alt=""><div><h4>Durable and impact resistant</h4><p>Harder than oak; exterior grade resists moisture, pests and rot</p></div>
+        <img src="assets/icon_thermo.png" alt=""><div><h4>Insulating, not conducting</h4><p>Thermal and electrical insulator; no thermal bridging</p></div>
+        <img src="assets/icon_vibration_cream.png" alt=""><div><h4>Sound and vibration damping</h4><p>HVAC enclosures, acoustic barriers, equipment screens</p></div>
+        <img src="assets/icon_rf.png" alt=""><div><h4>RF transparent</h4><p>Antenna screening, timing enclosures, telecom shelters</p></div>
+      </div>
+    </div>
+    <p class="note rv">Company test data; property data package and test methods available on request. Fire: chars rather than burns, far better than ordinary wood; ASTM E84 Class A demonstrated in testing, specified per order.</p>
+  <div class="band speed rv"><p><b>And it builds faster.</b> One-sixth the weight, prefabricated, reconfigurable. Mass timber saves about 20% of schedule across seven case studies; SUPERWOOD builds the same way.</p></div>
+  </div>
+</section>
+
+<section id="now" data-nav="Immediate">
+  <div class="wrap">
+    <div class="kicker rv">The path · Immediate</div>
+    <h2 class="rv">Immediate: skins, screens and fences from SuperMill One</h2>
+    <p class="lead rv">Boards up to 8" × 16' × 3/8", exterior or interior grade, shipping today. SuperMill One makes about one million square feet a year.</p>
+    <p class="defs rv"><b>Immediate</b> shipping from SuperMill One &nbsp;·&nbsp; <b>Soon</b> 1–3 years; straightforward applications engineering &nbsp;·&nbsp; <b>Medium term</b> complex applications engineering such as full building systems, new form factors, or materials engineering &nbsp;·&nbsp; <b>Long term</b> 5+ years; technical potential with no design or code pathway yet</p>
+    <div class="tiles n6 rv">
+      <div><div class="imgbox"><img src="assets/tile_cladding.jpg" alt="" loading="lazy"></div><p>Facades, cladding &amp; rain screens</p></div>
+      <div><div class="imgbox"><img src="assets/tile_biophilic.jpg" alt="Concept rendering: mass timber server hall with server racks framed in SUPERWOOD" loading="lazy"></div><p>Biophilic interiors</p></div>
+      <div><div class="imgbox"><img src="assets/tile_louvers2.jpg" alt="" loading="lazy"></div><p>Louvers &amp; equipment screening</p></div>
+      <div><div class="imgbox"><img src="assets/tile_fence_staff.jpg" alt="" loading="lazy"></div><p>Fencing for staff outdoor spaces</p></div>
+      <div><div class="imgbox"><img src="assets/tile_fence_security.jpg" alt="" loading="lazy"></div><p>Security fencing around transformers &amp; outdoor infrastructure</p></div>
+      <div><div class="imgbox"><img src="assets/tile_doorkick.jpg" alt="" loading="lazy"></div><p>Trim, door kicks &amp; sub-framing</p></div>
+    </div>
+    <p class="imgnote rv">Concept renderings</p>
+    <div class="card rv" style="margin-top:1.2rem"><p style="font-size:.82rem;color:var(--cream-dim)"><b style="color:var(--gold)">Why these first.</b> No assembly fire rating needed. They sit where the community sees the data center. They are what our hyperscaler customers asked for first.</p></div>
+  </div>
+</section>
+
+<section id="next" data-nav="Soon">
+  <div class="wrap">
+    <div class="kicker rv">The path · Soon (1–3 years)</div>
+    <h2 class="rv">Soon (1–3 years): applications needing straightforward applications engineering</h2>
+    <div class="tiles n7 rv">
+      <div><div class="imgbox"><img src="assets/tile_fanbox.jpg" alt="" loading="lazy"></div><p><b>Fan enclosures &amp; ducting</b></p></div>
+      <div><div class="imgbox"><img src="assets/tile_walkway.jpg" alt="" loading="lazy"></div><p><b>Walkways &amp; platforms</b></p></div>
+      <div><div class="imgbox"><img src="assets/tile_railing2.jpg" alt="" loading="lazy"></div><p><b>Railings</b></p></div>
+      <div><div class="imgbox"><img src="assets/tile_mullion2.jpg" alt="" loading="lazy"></div><p><b>Window mullions</b></p></div>
+      <div><div class="imgbox"><img src="assets/tile_door.jpg" alt="" loading="lazy"></div><p><b>Interior doors &amp; door protection</b></p></div>
+      <div><div class="imgbox"><img src="assets/tile_backplane.jpg" alt="" loading="lazy"></div><p><b>Equipment backplanes</b></p></div>
+      <div><div class="imgbox"><img src="assets/tile_rackocp.jpg" alt="" loading="lazy"></div><p><b>Racks &amp; equipment supports</b></p></div>
+    </div>
+    <p class="imgnote rv">Concept renderings</p>
+    <div class="card rv" style="margin-top:1.2rem"><p style="font-size:.86rem;font-style:italic;color:var(--cream-dim)">Each needs one scoped test program, co-fundable with a customer.</p></div>
+  </div>
+</section>
+
+<section id="structural" data-nav="Medium term">
+  <div class="wrap">
+    <div class="kicker rv">The path · Medium term</div>
+    <h2 class="rv">Structural: starting <em>now</em>, scaling with SuperMill Two</h2>
+    <div class="split rv" style="grid-template-columns:1fr 1.6fr">
+      <div class="card tint">
+        <div class="kicker" style="color:var(--gold);margin-bottom:.6rem">Under development with SUPERMILL ONE output</div>
+        <p style="font-size:.85rem;line-height:1.55;color:var(--cream-dim)">Truss design is starting. Mass-timber enhancement is under way. Light structural, non-life-safety components: strut-type supports, window mullions, deck boards.<br><br>Replacing structural steel is the first thing new customers ask about.</p>
+      </div>
+      <div>
+        <div class="kicker" style="margin-bottom:.6rem">At SuperMill Two scale</div>
+        <div class="grid2 cards4">
+          <div class="card"><div class="imgbox"><img src="assets/tile_mullion2.jpg" alt="" loading="lazy"></div><div><h3>Window mullions</h3><p>Slender, stiff mullions in place of aluminum and steel</p></div></div>
+          <div class="card"><div class="imgbox"><img src="assets/tile_truss2.jpg" alt="" loading="lazy"></div><div><h3>Trusses, roofs &amp; long-span members</h3><p>Roof structure first</p></div></div>
+          <div class="card"><div class="imgbox"><img src="assets/tile_hybrid_glulam.jpg" alt="SUPERWOOD hybrid glulam beam: SUPERWOOD outer laminations on a glulam core" loading="lazy"></div><div><h3>CLT-type floor, roof &amp; wall assemblies</h3><p>Starting with SUPERWOOD hybrid glulam: SUPERWOOD outer laminations on a glulam core</p></div></div>
+          <div class="card"><div class="imgbox"><img src="assets/tile_rackocp.jpg" alt="" loading="lazy"></div><div><h3>Heavy equipment supports &amp; server enclosures</h3><p>Racks soon; enclosures follow; never the electronics</p></div></div>
+        </div>
+      </div>
+    </div>
+    <p class="imgnote rv">Concept renderings</p>
+    <div class="card rv" style="margin-top:1rem"><p style="font-size:.82rem;color:var(--cream-dim)"><b style="color:var(--gold)">How qualification works.</b> A scoped test program with the first customer, on the pathway mass timber opened in the codes. Test methods and data on request.</p></div>
+  </div>
+</section>
+
+<section id="vision" data-nav="Long term">
+  <div class="wrap">
+    <div class="kicker rv">The path · Long term (5+ years)</div>
+    <h2 class="rv">Long term (5+ years): prefabricated <em>envelopes</em>, then foundations</h2>
+    <div class="grid2 rv">
+      <div class="card tint"><h3>Prefabricated building envelopes</h3><p>Structure and skin shipped as panels and modules. Self-supporting shells, far lighter than steel and precast, movable.</p><p style="margin-top:.6rem;color:var(--cream)"><b>Hyperscalers are asking for this now, to simplify design and delivery and accelerate schedules.</b></p></div>
+      <div class="card tint"><h3>Foundations, slabs and paving</h3><p>Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete.</p><p style="margin-top:.6rem;color:var(--cream)"><b>Biggest unaddressed impact both to speed of development and construction, and with huge carbon impact. Geotechnical requirements greatly impact schedule and site selection.</b></p></div>
+    </div>
+    <div class="card tint rv" style="margin-top:1rem"><p style="font-size:.78rem;font-style:italic;color:var(--cream-dim)">Technical potential, not a plan: 1–2 million tons of concrete and rebar per gigawatt. No design or code pathway yet.</p></div>
+  </div>
+</section>
+
+<section id="ladder" data-nav="Customers">
+  <div class="wrap">
+    <div class="kicker rv">The evidence</div>
+    <h2 class="rv">Three hyperscalers are engaged. Two are past <em>applications identified</em>.</h2>
+    <div class="ladder rv">
+      <div class="lhead"><span></span><div class="stages"><span data-s="Talks">Conversations</span><span data-s="Apps">Applications identified</span><span data-s="Scoped">Projects scoped</span><span data-s="Testing">Testing &amp; mockups</span><span data-s="Purchase">First purchase</span><span data-s="Design basis">Basis of design</span></div><span class="lh">What they are doing with us</span></div>
+      <div class="lrow"><h3>Microsoft</h3><div class="track" style="--pos:2"><i></i><b></b><em>Next: first skin project on one building or yard</em></div><p>Facades, interiors and fencing under discussion; roof-truss and enclosure work with their A/E firms; basis-of-design interest</p></div>
+      <div class="lrow"><h3>Meta</h3><div class="track" style="--pos:2"><i></i><b></b><em>Next: backplane listing; first facade project</em></div><p>Over a year across the ecosystem; facades and backplanes under way; structure and racking to follow</p></div>
+      <div class="lrow"><h3>Google</h3><div class="track" style="--pos:1"><i></i><b></b><em>Next: scope with their design teams</em></div><p>Just begun; focus on structural steel</p></div>
+      <div class="lrow"><h3>Vertiv</h3><div class="track" style="--pos:0"><i></i><b></b><em>Next: identify first applications</em></div><p>Exploring SUPERWOOD components</p></div>
+      <div class="lrow"><h3>Data center operators</h3><div class="track" style="--pos:0"><i></i><b></b><em>Next: fence specification and quote</em></div><p>Security fencing around outdoor infrastructure</p></div>
+    </div>
+    <div class="band rv"><b>Engineering and construction collaborators</b><div class="collab"><div><img src="assets/logo_fastepp.png" alt="Fast + Epp"><small>Structural engineers, Vancouver</small></div><div><span class="nm">Timber Engineering</span><small>Structural engineering</small></div><div><img src="assets/logo_hitt.png" alt="HITT Contracting"><small>General contractor</small></div><div><img src="assets/logo_turner.png" alt="Turner Construction"><small>General contractor</small></div></div></div>
+    <p class="note rv">Next steps undated. Published backup for Microsoft and Meta on the next slide.</p>
+  </div>
+</section>
+
+<section id="record" data-nav="Microsoft, Meta">
+  <div class="wrap">
+    <div class="kicker rv">The evidence</div>
+    <h2 class="rv">Microsoft and Meta</h2>
+    <div class="grid2 rv">
+      <div class="profile">
+        <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin-bottom:.5rem">Microsoft <em style="color:var(--gold);font-size:.7em">broad engagement</em></h3>
+        <div class="pub"><b>Published</b><p>Two Northern Virginia datacenters: CLT floors on a steel frame, about 35% less embodied carbon than steel construction, 65% less than precast. Gensler; Thornton Tomasetti.</p><span class="src">Microsoft Source, Nov 2024; Thornton Tomasetti project page</span></div>
+        <div class="kicker" style="margin-bottom:.5rem">Working with InventWood</div>
+        <div class="split" style="grid-template-columns:1fr 5.5rem;gap:1rem">
+          <div>
+            <div class="li"><span class="dot"></span><div><h3>Strategic interest</h3><p>Incorporating SUPERWOOD into the basis of design for future data centers</p></div></div>
+            <div class="li"><span class="dot"></span><div><h3>Application areas</h3><p>Roof trusses, then roofs and enclosures, with their A/E firms</p></div></div>
+            <div class="li"><span class="dot"></span><div><h3>Immediate opportunities</h3><p>Building facades · biophilic interiors · staff-area fencing · security fencing around transformers</p></div></div>
+          </div>
+          <figure><div class="imgbox" style="aspect-ratio:1"><img src="assets/tile_fence_security.jpg" alt="" loading="lazy"></div><figcaption>Concept rendering</figcaption></figure>
+        </div>
+      </div>
+      <div class="profile">
+        <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin-bottom:.5rem">Meta <em style="color:var(--gold);font-size:.7em">engaged for over a year</em></h3>
+        <div class="pub"><b>Published</b><p>Mass-timber administrative buildings: Aiken, SC completed 2025 (DPR, SmartLam); Cheyenne and Montgomery under way; about 41% less embodied carbon in the materials substituted.</p><span class="src">Meta Sustainability, 31 Jul 2025</span></div>
+        <div class="kicker" style="margin-bottom:.5rem">Working with InventWood</div>
+        <div class="split" style="grid-template-columns:1fr 5.5rem;gap:1rem">
+          <div>
+            <div class="li"><span class="dot"></span><div><h3>Broad engagement</h3><p>Every part of the data-center ecosystem, for more than a year</p></div></div>
+            <div class="li"><span class="dot"></span><div><h3>Under way</h3><p>Facade applications and equipment backplanes</p></div></div>
+            <div class="li"><span class="dot"></span><div><h3>Next</h3><p>Structural applications and racking over time</p></div></div>
+          </div>
+          <figure><div class="imgbox" style="aspect-ratio:1"><img src="assets/tile_backplane.jpg" alt="" loading="lazy"></div><figcaption>Concept rendering</figcaption></figure>
+        </div>
+      </div>
+    </div>
+    <p class="note rv">Sources: news.microsoft.com, Nov 2024; thorntontomasetti.com; sustainability.atmeta.com, 31 Jul 2025.</p>
+  </div>
+</section>
+
+<section id="carbon" data-nav="Carbon">
+  <div class="wrap">
+    <div class="kicker rv">Carbon</div>
+    <h2 class="rv">Embodied carbon: LCA based on SUPERMILL TWO projections</h2>
+    <div class="split rv" style="grid-template-columns:1.1fr 1fr">
+      <div>
+        <div class="kicker" style="margin-bottom:.8rem">kg CO₂e, cradle to gate · emissions to the right of zero, storage to the left</div>
+        <div class="bars carbon">
+          <div class="bar"><span>Steel — global average (BF-BOF), per kg of steel</span><div class="tr"><u style="position:absolute;left:26.0%;top:-.15rem;bottom:-.15rem;width:0;border-left:1px solid var(--cream-dim)"></u><i style="position:absolute;left:26.0%;width:72.0%;background:var(--rose)"></i></div><b>1.8 kg</b></div>
+          <div class="bar"><span>Steel — recycled (EAF), per kg of steel</span><div class="tr"><u style="position:absolute;left:26.0%;top:-.15rem;bottom:-.15rem;width:0;border-left:1px solid var(--cream-dim)"></u><i style="position:absolute;left:26.0%;width:16.0%;background:#a0714e"></i><i style="position:absolute;left:42.0%;width:12.0%;background:#a0714e;opacity:.45"></i></div><b>0.4–0.7 kg</b></div>
+          <div class="bar"><span>SUPERWOOD — per kg of steel substituted at 3:1 to 4:1 replacement by weight, projected: emissions right, carbon storage left</span><div class="tr"><u style="position:absolute;left:26.0%;top:-.15rem;bottom:-.15rem;width:0;border-left:1px solid var(--cream-dim)"></u><i style="position:absolute;left:22.0%;width:4.0%;background:var(--teal)"></i><i style="position:absolute;left:6.0%;width:16.0%;background:var(--teal);opacity:.45"></i><i style="position:absolute;left:26.0%;width:4.0%;background:var(--green)"></i><i style="position:absolute;left:30.0%;width:4.0%;background:var(--green);opacity:.45"></i></div><b>+0.1–0.2 · −0.1 to −0.5 kg</b></div>
+        </div>
+        <div class="card tint" style="margin-top:1rem"><p style="font-size:.8rem;color:var(--cream-dim)"><b style="color:var(--gold)">Biogenic carbon, reported separately.</b> 0.5–1.5 kg CO₂e stored per kg of SUPERWOOD. Under EN 15804 it is released at end of life and nets to zero; the lasting gain is lower manufacturing emissions.</p></div>
+      </div>
+      <div class="card">
+        <div class="kicker" style="margin-bottom:.6rem">Per functional unit — replacing one ton of steel</div>
+        <p>SUPERWOOD needed: 0.25–0.33 tons per ton of steel, a 3:1 to 4:1 replacement by weight.</p>
+        <p style="margin-top:.5rem">Emissions: × 0.5 kg/kg = about 0.1–0.2 tons CO₂e.</p>
+        <p style="margin-top:.5rem">Reduction: 89–94% against average steel; 50–86% against recycled steel.</p>
+        <p style="margin-top:.5rem">Stored in the SUPERWOOD: 0.1–0.5 tons CO₂e, biogenic, reported separately.</p>
+        <p style="margin-top:.9rem;color:var(--cream);font-weight:600">Pre-LCA projection for a full-scale plant. LCA under way with Prof. Ming Hu, University of Notre Dame.</p>
+      </div>
+    </div>
+    <p class="note rv">SUPERWOOD 0.5 kg CO₂e/kg manufactured and 0.5–1.5 kg/kg biogenic storage: company projections, pre-LCA. Steel 1.8 kg/kg: global BF-BOF average. EAF 0.4–0.7 kg/kg: typical published range for recycled-scrap steel. Replacement 3:1 to 4:1 by weight (0.25–0.33 kg SUPERWOOD per kg steel): company assumption. Reductions are arithmetic on these inputs.</p>
+  </div>
+</section>
+
+<section id="risks" data-nav="Risks">
+  <div class="wrap">
+    <div class="kicker rv">Risks</div>
+    <h2 class="rv">Risks and how we handle them</h2>
+    <table class="risks rv">
+      <thead><tr><th>Risk</th><th>How we handle it</th></tr></thead>
+      <tbody>
+        <tr><td>Insurers and code officials must accept SUPERWOOD for structural use</td><td>Start with skins that need no assembly rating. Qualify structure with the first customer, on the mass-timber pathway.</td></tr>
+        <tr><td>Qualification could run longer than customer design cycles</td><td>Sell what needs no qualification now. Basis-of-design work starts years before construction.</td></tr>
+        <tr><td>One plant, shared across every market</td><td>A gigawatt's skins alone are one to three plant-years. SuperMill Two resolves it; that is what the raise funds.</td></tr>
+        <tr><td>Price against metal panel, fiber cement, CLT and recycled steel</td><td>Premium skins where appearance carries value. Structural competitiveness arrives with SuperMill Two cost.</td></tr>
+        <tr><td>Carbon figures are projections until the LCA is complete</td><td>Labeled pre-LCA everywhere. No carbon claim without its baseline and substitution factor.</td></tr>
+        <tr><td>Customer concentration</td><td>Three hyperscalers plus Vertiv and operators. What is qualified for a data center is qualified for the wider market.</td></tr>
+      </tbody>
+    </table>
+    <p class="note rv">No probabilities are assigned. These are the conditions the data-center case depends on.</p>
+  </div>
+</section>
+
+<section id="path" data-nav="Path">
+  <div class="wrap">
+    <div class="kicker rv">The path</div>
+    <h2 class="rv">Path to first projects</h2>
+    <div class="split rv" style="grid-template-columns:1.7fr 1fr">
+      <div>
+        <div class="li"><span class="num" style="font-size:1.6rem">1</span><div><h3>Skins on one building or yard</h3><p>Facades, interiors, louvers or fencing from SuperMill One, with a willing customer. Produces an installed reference and cost data.</p></div></div>
+        <div class="li"><span class="num" style="font-size:1.6rem">2</span><div><h3>A scoped test program with that customer</h3><p>Co-funded, toward what the chosen application needs. Produces the data package the next application inherits.</p></div></div>
+        <div class="li"><span class="num" style="font-size:1.6rem">3</span><div><h3>Basis-of-design work with the customer's architect and engineer</h3><p>Enclosure and truss solutions written into the standard design. Produces a specification that repeats.</p></div></div>
+        <div class="li"><span class="num" style="font-size:1.6rem">4</span><div><h3>Measure the carbon delta</h3><p>A baseline bill-of-materials comparison. Produces defensible numbers as the LCA completes.</p></div></div>
+      </div>
+      <div>
+        <figure><div class="imgbox" style="aspect-ratio:16/9"><img src="assets/factory.jpg" alt="SuperMill One, Frederick, Maryland" loading="lazy"></div><figcaption style="text-align:center">SuperMill One, Frederick, MD</figcaption></figure>
+        <figure style="margin-top:.8rem"><div class="imgbox" style="aspect-ratio:1.9"><img src="assets/supermill_two.png" alt="Concept for SuperMill Two" loading="lazy"></div><figcaption style="text-align:center">Concept for SuperMill Two</figcaption></figure>
+      </div>
+    </div>
+    <p class="note rv">Steps are sequenced, not dated. Each names what it produces.</p>
+  </div>
+</section>
+
+<section id="close" data-nav="Close">
+  <div class="bg" style="background-image:url(assets/cover_bg.jpg)"></div><div class="scrim" style="background:rgba(18,12,7,.25)"></div>
+  <div class="wrap">
+    <h1 class="rv">Let's build what's <em>next</em>.</h1>
+    <ul class="recap rv"><li>Data centers are short of steel and already build with wood.</li><li>SUPERWOOD turbocharges that wood: skins and fences now, structure next.</li><li>One basis-of-design win with a hyperscaler is the demand case for SuperMill Two.</li></ul>
+    <p class="rv" style="margin-bottom:.4rem">Company, mills, cost roadmap and the raise: <a href="https://sw.inventwood.net/supermills-deck/" style="color:var(--wood-bright)">SUPERMILLS Investor Overview</a></p>
+    <img class="wm rv" src="assets/inventwood_logo.png" alt="InventWood">
+    <p class="rv">Alex Lau · CEO / Co-Founder · <a href="mailto:alex@inventwood.com" style="color:var(--wood-bright)">alex@inventwood.com</a></p>
+    <p class="rv">Lex Harris · Director, Capital Markets &amp; IR · <a href="mailto:lex@inventwood.com" style="color:var(--wood-bright)">lex@inventwood.com</a></p>
+  </div>
+</section>
+
+<script>
+const deck=document.getElementById('deck');
+const secs=[...document.querySelectorAll('section')];secs.forEach(s=>s.tabIndex=-1);
+const dock=document.getElementById('dock'), pageno=document.getElementById('pageno'), prevb=document.getElementById('prevb'), nextb=document.getElementById('nextb');
+/* dock: keyword labels only; dividers carry data-navhide and highlight the next content slide */
+const railBtns=[];
+secs.forEach((sec,i)=>{
+  if('navhide' in sec.dataset){railBtns.push(null);return;}
+  const b=document.createElement('button');b.textContent=sec.dataset.nav||('Slide '+(i+1));b.dataset.idx=i;b.onclick=()=>jumpTo(i);
+  dock.appendChild(b);railBtns.push(b);
+});
+const labelOf=i=>{let t=i;while(t<secs.length-1&&'navhide' in secs[t].dataset)t++;return secs[t].dataset.nav||'';};
+let cur=0;
+function setActive(i){
+  let t=i;while(t<secs.length-1&&!railBtns[t])t++;
+  railBtns.forEach(b=>{if(b)b.classList.toggle('active',+b.dataset.idx===t);});
+  pageno.textContent=String(i+1).padStart(2,'0')+' / '+secs.length;
+  prevb.disabled=i===0;nextb.disabled=i===secs.length-1;
+  prevb.innerHTML=i>0?'← <span class="lbl">'+labelOf(i-1)+'</span>':'←';
+  nextb.innerHTML=i<secs.length-1?'<span class="lbl">'+labelOf(i+1)+'</span> →':'→';
+  document.body.classList.toggle('on-cover',i===0);
+  document.body.classList.toggle('on-close',i===secs.length-1);
+  /* keyboard and assistive tech stay on the visible slide */
+  secs.forEach((s,k)=>{s.inert=k!==i;});
+}
+function reveal(sec){if(sec&&!sec.classList.contains('in'))sec.classList.add('in');}
+let jumping=false;
+function jumpTo(i){i=Math.max(0,Math.min(secs.length-1,i));
+  const target=()=>deck.scrollTop+secs[i].getBoundingClientRect().top-deck.getBoundingClientRect().top;
+  const smooth=!matchMedia('(prefers-reduced-motion:reduce)').matches&&Math.abs(i-cur)===1;
+  cur=i;setActive(i);reveal(secs[i]);jumping=true;
+  if(!secs[i].contains(document.activeElement))secs[i].focus({preventScroll:true});
+  deck.scrollTo({top:target(),behavior:smooth?'smooth':'instant'});
+  /* a smooth scroll interrupted by the next key never fires a final scroll event; verify once the deck has come to rest and hard-set */
+  clearInterval(jumpTo._iv);let last=-1,ticks=0;
+  jumpTo._iv=setInterval(()=>{const st=deck.scrollTop;ticks++;
+    if(st===last||ticks>25){clearInterval(jumpTo._iv);const tg=target();if(Math.abs(tg-st)>2)deck.scrollTo({top:tg,behavior:'instant'});jumping=false;}
+    last=st;},100);}
+prevb.onclick=()=>jumpTo(cur-1);nextb.onclick=()=>jumpTo(cur+1);
+/* scroll-spy: the section under the scrollport's midpoint is current; the first at the very top and the last at the very bottom */
+function currentIndex(){
+  if(deck.scrollTop<=2)return 0;
+  if(deck.scrollTop+deck.clientHeight>=deck.scrollHeight-2)return secs.length-1;
+  const dr=deck.getBoundingClientRect(),mid=dr.top+deck.clientHeight/2;
+  const k=secs.findIndex(s=>{const r=s.getBoundingClientRect();return r.top<=mid&&r.bottom>=mid});return k<0?cur:k;
+}
+let st;deck.addEventListener('scroll',()=>{clearTimeout(st);st=setTimeout(()=>{if(jumping)return;const i=currentIndex();cur=i;setActive(i);reveal(secs[i]);},80);},{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)reveal(e.target);}),{root:deck,threshold:.35});
+secs.forEach(s=>io.observe(s));
+/* keys: left/right, PageUp/Down, Home/End jump sections; up/down stay native scrolling; digits jump to a slide number */
+let numBuf='',numT;
+function commitNum(){const n=parseInt(numBuf,10);numBuf='';clearTimeout(numT);if(n>=1&&n<=secs.length)jumpTo(n-1);else setActive(cur);}
+addEventListener('keydown',e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();jumpTo(cur+1);}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();jumpTo(cur-1);}
+  else if(e.key==='Home'){e.preventDefault();jumpTo(0);}
+  else if(e.key==='End'){e.preventDefault();jumpTo(secs.length-1);}
+  else if(e.key>='0'&&e.key<='9'){e.preventDefault();numBuf+=e.key;clearTimeout(numT);pageno.textContent='go to '+numBuf+' …';if(numBuf.length>=2)commitNum();else numT=setTimeout(commitNum,900);}
+});
+/* fit: shrink a slide's content to the viewport on desktop (floor .6); phones scroll instead */
+const NARROW=()=>matchMedia('(max-width:700px), (max-width:860px) and (orientation:portrait), (max-height:520px)').matches;
+function fitSlides(){
+  secs.forEach(s=>{
+    const w=s.querySelector(':scope > .wrap');if(!w||s.id==='s1'||s.id==='close'||s.classList.contains('div'))return;
+    w.style.zoom='';if(NARROW())return;
+    const cs=getComputedStyle(s);const avail=deck.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+    let z=1;for(let k=0;k<8;k++){const h=w.offsetHeight*z;if(h<=avail)break;z=Math.max(.6,z*avail/h*.985);w.style.zoom=z;}
+  });
+  /* zoom changes section heights after the landing scroll; re-align the current slide to the top of the scrollport */
+  if(!jumping&&secs[cur]){const off=secs[cur].getBoundingClientRect().top-deck.getBoundingClientRect().top;if(Math.abs(off)>2)deck.scrollTo({top:deck.scrollTop+off,behavior:'instant'});}
+}
+let ft;addEventListener('resize',()=>{clearTimeout(ft);ft=setTimeout(fitSlides,150);});
+document.querySelectorAll('img[loading="lazy"]').forEach(i=>{if(!i.complete)i.addEventListener('load',()=>{clearTimeout(ft);ft=setTimeout(fitSlides,80);},{once:true});});
+/* deep links: #id lands on that slide; otherwise start where the browser restored the scroll */
+function landing(){const h=location.hash.replace('#','');const k=secs.findIndex(s=>s.id===h);if(k>=0){secs[k].classList.add('noanim');jumpTo(k);}else{const i=currentIndex();cur=i;setActive(i);reveal(secs[i]);}}
+addEventListener('load',()=>{fitSlides();landing();setTimeout(()=>{fitSlides();landing();},600);});
+addEventListener('hashchange',landing);
+if(document.fonts)document.fonts.ready.then(fitSlides);
+
+/* slide 5 toggle: mass / carbon; buttons, or M and C keys while the slide is current */
+const campusSec=document.getElementById('campus');
+function setView(v,focus){campusSec.querySelectorAll('.view').forEach(e=>{e.hidden=e.dataset.view!==v;});campusSec.querySelectorAll('.toggle button').forEach(b=>{const on=b.dataset.view===v;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;if(on&&focus)b.focus();});}
+campusSec.querySelectorAll('.toggle button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;if(secs[cur]!==campusSec)return;if(e.key==='m'||e.key==='M')setView('mass');if(e.key==='c'||e.key==='C')setView('carbon');});
+const detBtn=campusSec.querySelector('.detail');
+function setDetail(on){campusSec.querySelectorAll('.hbars.grp').forEach(e=>e.hidden=on);campusSec.querySelectorAll('.hbars.det').forEach(e=>e.hidden=!on);detBtn.setAttribute('aria-pressed',String(on));detBtn.textContent=on?'Show 5 groups':'Show all 17 rows';fitSlides();}
+detBtn.onclick=()=>setDetail(detBtn.getAttribute('aria-pressed')!=='true');
+addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;if(secs[cur]!==campusSec)return;if(e.key==='d'||e.key==='D')setDetail(detBtn.getAttribute('aria-pressed')!=='true');});
+/* arrow keys inside the toggle switch views instead of slides */
+campusSec.querySelector('.toggle').addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();e.stopPropagation();setView(document.activeElement.dataset.view==='mass'?'carbon':'mass',true);}},true);
+</script>
+</body>
+</html>
