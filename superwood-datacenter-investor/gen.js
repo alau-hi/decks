@@ -33,7 +33,7 @@ function title(slide, runs, x = L, y = 0.88, w = 11.9, size = 30) {
 function t(text, opts = {}) { return { text, options: opts }; }
 function gold(text) { return t(text, { italic: true, color: GOLD }); }
 function note(slide, text, y = 6.72, h = 0.35) {
-  slide.addText(text, { x: L, y, w: CW, h, fontFace: SANS, fontSize: 8.5, italic: true, color: MUTED, margin: 0, valign: "top" });
+  slide.addText(text, { x: L, y, w: CW, h, fontFace: SANS, fontSize: 6.5, italic: true, color: MUTED, margin: 0, valign: "top" });
 }
 function panel(slide, x, y, w, h, color = PANEL) {
   slide.addShape(pres.ShapeType.roundRect, { x, y, w, h, rectRadius: 0.09, fill: { color } });

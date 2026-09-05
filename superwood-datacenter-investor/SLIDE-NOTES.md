@@ -35,6 +35,8 @@ Numbering follows the live deck (the former Process and Strength slides were rem
 | 19 | Path | Path to first projects | Undated steps, each naming what it produces |
 | 20 | Close | Let's build what's next | Three-line recap; link to the SUPERMILLS Investor Overview; InventWood mark; contacts |
 
+Footnotes (`.note` / `note()`): deliberately small and muted — Alex 2026-09-05: "way too many footnotes that clutter the story"; web 9px floor, no box; PPTX 6.5 pt. Sources stay on the slide but recede.
+
 ## Open items (Alex to confirm)
 - Wall system in Microsoft's and Meta's standard designs (metal panel vs tilt-up) — drives the steel share and whether facades are "now".
 - Fast + Epp funding program name and dates before wide distribution.
