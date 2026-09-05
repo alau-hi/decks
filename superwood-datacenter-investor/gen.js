@@ -223,22 +223,12 @@ flow.forEach(([head, sub, img, cap], i) => {
 // ---------- 8 · STRENGTH ----------
 s = pres.addSlide(); base(s, "InventWood · The fit");
 kicker(s, "The fit");
-title(s, [t("The "), gold("strength"), t(" of SUPERWOOD")]);
-const stats = [
-  ["500 MPa", "tensile strength in production today"],
-  ["600+ MPa", "demonstrated in lab samples; pathway toward 1,000"],
-  ["1/6", "the weight of steel"],
-  ["7–9×", "the strength-to-weight ratio of A36 steel, derived below"],
-];
-stats.forEach(([big, small], i) => {
-  const cw = 3.0, x = L + i * 3.11;
-  s.addText(big, { x, y: 1.95, w: cw, h: 0.7, fontFace: SERIF, fontSize: 32, color: GOLD, margin: 0 });
-  s.addText(small, { x, y: 2.68, w: cw - 0.3, h: 0.6, fontFace: SANS, fontSize: 11.5, color: DIM, margin: 0 });
-});
-s.addImage({ path: "prep/charts/strength.png", x: 1.5, y: 3.4, w: 7.2, h: 7.2 * 3.6 / 8.2 });
-panel(s, 9.0, 3.4, 3.75, 3.15, PANEL);
-label(s, "How the ratios are derived", 9.25, 3.55, 3.3);
-body(s, "Strength: 500–600 MPa SUPERWOOD ÷ 400 MPa (A36 minimum ultimate tensile) = 1.25–1.5×.\n\nWeight: steel 7.85 t/m³ ÷ SUPERWOOD ~1.3 t/m³ ≈ 6×.\n\nStrength-to-weight: 1.25–1.5 × 6 ≈ 7–9×.\n\nAgainst the top of the A36 range (550 MPa) the strength ratio is 0.9–1.1×; “stronger than steel” is stated against the A36 minimum.", 9.25, 3.9, 3.3, 2.6, 9.5, DIM);
+title(s, [t("Production SUPERWOOD exceeds A36 steel in tension at "), gold("one-sixth"), t(" the weight")], L, 0.88, 12.2, 26);
+s.addText("500 MPa tensile strength in production, 600+ MPa in lab samples, against a 400–550 MPa range for ASTM A36. At one-sixth the weight, that is a strength-to-weight ratio of seven to nine times structural steel, derived at right.", { x: L, y: 1.95, w: CW, h: 0.8, fontFace: SANS, fontSize: 13, color: DIM, margin: 0, valign: "top" });
+s.addImage({ path: "prep/charts/strength.png", x: L, y: 2.9, w: 8.2, h: 8.2 * 3.6 / 8.2 });
+panel(s, 9.0, 2.9, 3.75, 3.65, PANEL);
+label(s, "How the ratios are derived", 9.25, 3.05, 3.3);
+body(s, "Strength: 500–600 MPa SUPERWOOD ÷ 400 MPa (A36 minimum ultimate tensile) = 1.25–1.5×.\n\nWeight: steel 7.85 t/m³ ÷ SUPERWOOD ~1.3 t/m³ ≈ 6×.\n\nStrength-to-weight: 1.25–1.5 × 6 ≈ 7–9×.\n\nAgainst the top of the A36 range (550 MPa) the strength ratio is 0.9–1.1×; “stronger than steel” is stated against the A36 minimum.", 9.25, 3.4, 3.3, 3.0, 10, DIM);
 note(s, "SUPERWOOD: parallel-to-grain tension, company test data (production QC and lab samples). Steel: ASTM A36 specifies 400–550 MPa ultimate tensile. Aluminum: 6061-T6, 310 MPa typical. Design values and test methods available on request.", 6.65, 0.4);
 
 // ---------- 9 · PROPERTIES ----------
@@ -424,7 +414,7 @@ s.addText("WHAT THEY ARE DOING WITH US", { x: gx + gw + 0.3, y: 1.85, w: 3.35, h
 panel(s, L, 6.35, CW, 0.58, PANEL2);
 s.addText([
   t("ENGINEERING AND CONSTRUCTION PARTNERS  ", { bold: true, color: BRIGHT, fontSize: 8.5, charSpacing: 1.5 }),
-  t("Fast + Epp has run over a thousand small-scale experiments on SUPERWOOD, funded by the Canadian government · Timber Engineering (structural engineering) · HITT and Turner, contractors, are advocates — they build, they do not specify", { color: CREAM, fontSize: 9.5 }),
+  t("Fast + Epp has run over a thousand small-scale experiments on SUPERWOOD, funded by the Canadian government (company statement) · Timber Engineering (structural engineering) · HITT and Turner, contractors, are advocates — they build, they do not specify", { color: CREAM, fontSize: 9.5 }),
 ], { x: L + 0.3, y: 6.35, w: CW - 0.6, h: 0.58, fontFace: SANS, margin: 0, valign: "middle" });
 note(s, "Engagement stages and partner statements as reported by InventWood, September 2026; next steps undated. Public-record backup for Microsoft and Meta on the next slide.", 6.97, 0.3);
 
@@ -567,8 +557,10 @@ note(s, "Steps are sequenced, not dated. Each names what it produces.", 6.75, 0.
 s = pres.addSlide();
 s.background = { path: "prep/cover_bg.jpg" };
 s.addText([t("Let's build what's "), gold("next"), t(".")], { x: 1.0, y: 2.6, w: 10, h: 1.0, fontFace: SERIF, fontSize: 44, color: CREAM, margin: 0 });
-s.addImage({ path: "prep/inventwood_logo.png", x: 0.9, y: 3.95, w: 4.6, h: 4.6 * 216 / 1473 });
-s.addText("Alex Lau · CEO / Co-Founder · alex@inventwood.com", { x: 1.0, y: 4.9, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
-s.addText("Lex Harris · Director, Capital Markets & IR · lex@inventwood.com", { x: 1.0, y: 5.35, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
+bullets(s, ["Data centers are short of steel and already build with wood.", "SUPERWOOD turbocharges that wood: skins and fences now, structure next.", "One basis-of-design win with a hyperscaler is the demand case for SuperMill Two."], { x: 1.0, y: 3.55, w: 7.5, h: 1.2, fontSize: 12.5, color: CREAM });
+s.addText("Company, mills, cost roadmap and the raise: SUPERMILLS Investor Overview", { x: 1.0, y: 4.8, w: 9, h: 0.3, fontFace: SANS, fontSize: 11, color: BRIGHT, margin: 0 });
+s.addImage({ path: "prep/inventwood_logo.png", x: 1.0, y: 5.25, w: 3.6, h: 3.6 * 216 / 1473 });
+s.addText("Alex Lau · CEO / Co-Founder · alex@inventwood.com", { x: 1.0, y: 5.95, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
+s.addText("Lex Harris · Director, Capital Markets & IR · lex@inventwood.com", { x: 1.0, y: 6.35, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
 
 pres.writeFile({ fileName: "SUPERWOOD-for-Data-Centers-Companion.pptx" }).then(() => console.log("written"));

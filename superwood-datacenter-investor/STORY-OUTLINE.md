@@ -83,6 +83,12 @@ New imagery (Higgsfield nano_banana_pro, prompts in `render/dc-steel-frame-const
 - Thesis wording (Alex 2026-09-04, slide 2): "We help data centers decarbonize and improve their impact on communities,
   while they accelerate SUPERWOOD's journey from premium skins into structural applications."
 
+- Impeccable critique 2026-09-04 (28/36; archive in `.impeccable/critique/`): fixed the same day — phone layout
+  (inline grid styles now overridden in the phone media query, tables scroll), slides 5 and 6 charts rebuilt as HTML bars
+  on the web (PPTX keeps the matplotlib PNGs), provenance notes enlarged and set upright, strength slide loses the stat
+  tiles for a claim title, close slide gains a three-line recap and a link to the SUPERMILLS Investor Overview
+  (sw.inventwood.net/supermills-deck), cover accent to gold, dock focus style, dead CSS removed.
+
 ## Still open
 
 - Slide 4 (Alex 2026-09-04): story is "hyperscalers are already ready to work with wood; we turbocharge wood" —

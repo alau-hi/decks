@@ -26,7 +26,7 @@ h2 em,h1 em{font-style:italic;color:var(--gold)}
 .kicker{font-size:.66rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright)}
 .lead{font-size:clamp(.9rem,1.25vw,1.05rem);line-height:1.55;color:var(--cream-dim);font-weight:300;max-width:60ch}
 .lead b,.li b,p b{color:var(--cream);font-weight:600}
-.note{font-size:.66rem;line-height:1.45;color:var(--muted);font-style:italic;margin-top:1rem}
+.note{font-size:.74rem;line-height:1.5;color:var(--cream-dim);font-style:normal;margin-top:1rem;max-width:95ch}
 .rv{opacity:0;transform:translateY(1.4rem);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .in .rv{opacity:1;transform:none}
 .in .rv:nth-child(2){transition-delay:.06s}.in .rv:nth-child(3){transition-delay:.12s}.in .rv:nth-child(4){transition-delay:.18s}.in .rv:nth-child(5){transition-delay:.24s}
@@ -45,7 +45,7 @@ body.on-cover .brand{display:none}
 /* right-hand dock */
 nav.dock{position:fixed;right:1.1rem;top:50%;transform:translateY(-50%);z-index:96;display:flex;flex-direction:column;gap:.12rem;align-items:flex-end;max-height:92vh;overflow:hidden}
 nav.dock button{border:0;background:transparent;cursor:pointer;font:500 .6rem 'Inter',sans-serif;letter-spacing:.1em;color:var(--muted);opacity:.6;padding:.14em .55em;border-radius:999px;transition:color .25s,opacity .25s,background .25s;text-align:right;white-space:nowrap}
-nav.dock button:hover{opacity:1;color:var(--cream)}
+nav.dock button:hover,nav.dock button:focus-visible{opacity:1;color:var(--cream);outline:none}nav.dock button:focus-visible{box-shadow:0 0 0 2px var(--gold)}
 nav.dock button.active{opacity:1;color:var(--ink-deep);background:var(--wood-bright);font-weight:600}
 nav.dock i{display:block;width:1.6rem;height:1px;background:var(--line);margin:.28rem .55em}
 /* layout helpers */
@@ -71,13 +71,12 @@ th{text-align:left;font-size:.62rem;letter-spacing:.14em;text-transform:uppercas
 td{padding:.55rem .5rem .55rem 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--cream-dim);line-height:1.4}
 td:first-child{color:var(--cream);font-weight:600}
 .chip{display:inline-block;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--gold);background:rgba(226,184,119,.14);padding:.3em .8em;border-radius:999px}
-.hair{height:2px;background:linear-gradient(90deg,var(--wood-bright),var(--green),var(--teal),var(--wood-bright));border-radius:1px;margin:.6rem 0 1rem;max-width:22rem}
 /* cover */
 #s1{padding:0;align-items:flex-end}
 #s1 .scrim{background:linear-gradient(100deg,rgba(24,16,9,.8) 0%,rgba(24,16,9,.4) 45%,rgba(24,16,9,.12) 75%),linear-gradient(180deg,rgba(18,12,7,.1) 0%,rgba(18,12,7,.15) 40%,rgba(18,12,7,.9) 100%)}
 #s1 .wrap{padding:0 5vw 9vh}
 #s1 .wm{height:2.6rem;margin-bottom:1.2rem}
-#s1 h1{font-size:clamp(1.9rem,3.8vw,3.1rem);color:var(--cream);font-weight:340;max-width:24ch;line-height:1.1}#s1 h1 em{color:var(--wood-bright)}
+#s1 h1{font-size:clamp(1.9rem,3.8vw,3.1rem);color:var(--cream);font-weight:340;max-width:24ch;line-height:1.1}#s1 h1 em{color:var(--gold)}
 #s1 .coverlogo{display:block;height:clamp(40px,5.2vw,68px);width:auto;margin:0 0 1.6rem -.2em}
 #s1 .covline{margin-top:1.4rem;font-size:clamp(.95rem,1.5vw,1.25rem);font-weight:600;letter-spacing:.03em;color:var(--cream)}#s1 .covline b{display:block;color:var(--wood-bright);font-weight:700;margin-top:.15em}
 #s1 .sub{margin-top:.6rem;font-size:.85rem;color:var(--cream-dim)}
@@ -85,16 +84,6 @@ td:first-child{color:var(--cream);font-weight:600}
 /* dividers */
 .div .scrim{background:rgba(18,12,7,.35)}
 .div .kicker{margin-bottom:.8rem}.div h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}.div .lead{margin-top:.8rem}
-/* agenda */
-.agenda .row{display:grid;grid-template-columns:3rem 1fr;gap:.6rem;margin-bottom:.9rem;align-items:baseline}
-.agenda .row .num{font-size:1.6rem}.agenda .row h3{font-family:'Inter',sans-serif;font-weight:600;font-size:1rem}.agenda .row p{font-size:.76rem;color:var(--muted);margin-top:.15rem}
-/* wedge */
-.pillars .card{display:grid;grid-template-columns:2.4rem 1fr;gap:.5rem}
-.pillars .card .num{font-size:1.7rem}
-.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin-top:1.1rem}
-.steps .st{background:var(--panel2);border:1px solid var(--wood);border-radius:.45rem;padding:.55rem .7rem;display:grid;grid-template-columns:auto 1fr;gap:.5rem;align-items:center;font-size:.7rem;line-height:1.3;color:var(--cream)}
-.steps .st:last-child{border-color:var(--gold)}
-.steps .st .num{font-size:1.1rem}
 /* process flow */
 .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.8rem;align-items:start;margin-top:1rem}
 .flow .arr{font-family:'Fraunces',serif;color:var(--gold);font-size:1.6rem;align-self:center}
@@ -106,29 +95,6 @@ td:first-child{color:var(--cream);font-weight:600}
 .props img{width:1.4rem;height:1.4rem;margin-top:.1rem}
 .props h4{font-family:'Inter',sans-serif;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
 .props p{font-size:.7rem;color:var(--muted);line-height:1.35}
-/* head to head */
-#h2h{padding:0}
-.h2h{display:grid;grid-template-columns:1fr 1.3fr 1fr;grid-template-rows:minmax(0,1fr);height:100vh;height:100dvh;width:100%}
-.h2h .col{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));position:relative;min-height:0;overflow:hidden}
-.h2h .col img.ph{width:100%;height:100%;object-fit:cover}
-.h2h .beam{position:absolute;top:0;height:100%;width:auto;z-index:3;pointer-events:none}
-.h2h .col.l .beam{left:-9%}.h2h .col.r .beam{right:-9%}
-.h2h .mid{background:rgba(21,14,8,.94);padding:1.4rem 1.4rem 2.8rem;display:flex;flex-direction:column;justify-content:space-between;gap:.4rem;text-align:center;position:relative;z-index:2;min-height:0;overflow:hidden}
-.h2h .mid h2{text-align:center;margin:0 auto .2rem;font-size:clamp(1.2rem,2.2vw,1.7rem)}
-.h2h .pair{display:grid;grid-template-columns:1fr 1px 1fr;gap:.6rem;align-items:start}
-.h2h .pair i{background:#5a452e;height:100%}
-.h2h .pair p{font-size:.68rem;color:var(--cream-dim);line-height:1.35}
-.h2h h3{font-size:.95rem;color:var(--cream);margin-bottom:.25rem}
-.h2h .ghg{font-family:'Fraunces',serif;font-size:1.45rem;font-weight:600;line-height:1.1}
-.h2h .band{display:flex;justify-content:space-between;font-size:.6rem;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;margin-top:.2rem}
-.h2h .mid .note{font-size:.56rem;margin-top:.35rem;line-height:1.35}
-/* engine */
-.engine{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.4rem}
-.engine .imgbox{aspect-ratio:1.5}
-.engine h3{font-family:'Inter',sans-serif;font-size:.8rem;font-weight:600;color:var(--gold);margin:.6rem 0 .25rem}
-.engine p{font-size:.7rem;color:var(--cream);line-height:1.4}
-.engine .lbl{display:inline-block;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-deep);background:var(--gold);padding:.25em .7em;border-radius:.3rem;margin-bottom:.4rem}
-.engine .lbl.g{background:var(--green)}
 /* tiles */
 .tiles{display:grid;gap:.8rem;margin-top:1rem}
 .tiles.n7{grid-template-columns:repeat(7,1fr)}.tiles.n6{grid-template-columns:repeat(6,1fr)}
@@ -139,9 +105,6 @@ td:first-child{color:var(--cream);font-weight:600}
 .cards4 .card{display:grid;grid-template-columns:5.2rem 1fr;gap:.9rem;align-items:start}
 .cards4 .card .imgbox{aspect-ratio:1}
 /* customers */
-.glance .card{border:1px solid var(--wood);min-height:9rem}
-.glance h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:400;margin-bottom:.4rem}
-.glance .chip{margin-bottom:.6rem}
 .band{background:var(--panel2);border-radius:.45rem;padding:.55rem 1rem;display:grid;grid-template-columns:11rem 1fr;gap:1rem;align-items:center;margin-top:.55rem;font-size:.78rem}
 .band b{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright)}
 .pub{background:var(--panel2);border-radius:.5rem;padding:.7rem 1rem;margin-bottom:1rem}
@@ -153,16 +116,22 @@ td:first-child{color:var(--cream);font-weight:600}
 #close .wrap{max-width:60rem}
 #close h1{font-size:clamp(2rem,4.2vw,3.4rem);font-weight:340}
 #close .wm{height:2.4rem;margin:1.6rem 0 1rem}
+#close .recap{list-style:none;margin:1.2rem 0 1rem;padding:0;max-width:44ch}#close .recap li{font-size:1rem;line-height:1.5;color:var(--cream);padding-left:1.1rem;position:relative;margin-bottom:.35rem}#close .recap li::before{content:"";position:absolute;left:0;top:.6em;width:.45rem;height:.45rem;border-radius:50%;background:var(--gold)}
 #close p{font-size:.9rem;color:var(--cream-dim);margin-top:.3rem}
 /* responsive */
 @media (max-width:900px), (orientation:portrait){
-  .grid3,.grid4,.stats,.engine{grid-template-columns:1fr 1fr}
+  .grid3,.grid4,.stats{grid-template-columns:1fr 1fr}
   .tiles.n7,.tiles.n6{grid-template-columns:repeat(4,1fr)}
   .steps{grid-template-columns:1fr}
   .split,.grid2{grid-template-columns:1fr}
 }
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){
   :root{--dock:2.6rem}
+  .split[style],.grid2[style],.grid3[style],.split,.grid2,.grid3{grid-template-columns:1fr!important}
+  table.cmp,table.worth,table.risks{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table.cmp thead,table.cmp tbody,table.cmp tr{display:table;width:100%;table-layout:fixed}
+  .ladder .stages span{font-size:.55rem}
+  .beams,table.cmp .thimgs{gap:.3rem}
   .deck{scroll-snap-type:y proximity}
   section{overflow:visible;overflow-x:clip;scroll-snap-stop:normal;padding:4.5rem var(--dock) 5rem 1.1rem;align-items:flex-start}
   nav.dock{right:.45rem;gap:.35rem}
@@ -172,10 +141,6 @@ td:first-child{color:var(--cream);font-weight:600}
   .pager button span.lbl{display:none}
   .brand{display:none}
   .conf{display:none}
-  .h2h{grid-template-columns:1fr;grid-template-rows:auto;height:auto;min-height:100dvh}
-  .h2h .mid{justify-content:flex-start;gap:.8rem;padding:1.4rem 1.1rem 1.6rem}
-  .h2h .col{grid-template-rows:none;grid-template-columns:repeat(3,1fr);height:22vh}
-  .h2h .beam{display:none}
   .cards4 .card{grid-template-columns:3.8rem 1fr}
   .band{grid-template-columns:1fr}
   .tag{right:3rem}
@@ -187,20 +152,19 @@ td:first-child{color:var(--cream);font-weight:600}
 .pub .src{display:block;font-size:.62rem;font-style:italic;color:var(--muted);margin-top:.5rem}
 table.cmp td{font-size:clamp(.82rem,1vw,.95rem);line-height:1.45;padding:.6rem .6rem .6rem 0}table.cmp td:first-child{width:7rem;font-size:clamp(.9rem,1.05vw,1rem)}table.cmp td:nth-child(2){color:var(--muted);width:32%}table.cmp th{font-size:.7rem;vertical-align:bottom;padding-bottom:.6rem}table.cmp th span{display:block;margin-bottom:.5rem}table.cmp .thimgs{display:flex;gap:.4rem}table.cmp .thimgs img{flex:1 1 0;min-width:0;aspect-ratio:1.9;object-fit:cover;border-radius:.35rem}
 table.worth th{font-size:.7rem}table.worth td{font-size:clamp(.9rem,1.05vw,1rem);padding:.75rem .6rem .75rem 0;line-height:1.4}table.worth td.gold{color:var(--gold);font-weight:600}
-.chipline{font-size:.76rem;text-align:center;color:var(--cream);padding:.7rem .8rem}
 .ladder{margin-top:.6rem}
 .ladder .lhead,.ladder .lrow{display:grid;grid-template-columns:11rem 1fr 15rem;gap:1.2rem;align-items:start}
 .ladder .lhead{padding-bottom:.3rem}.ladder .stages{display:grid;grid-template-columns:repeat(6,1fr)}
-.ladder .stages span,.ladder .lh{font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--wood-bright);text-align:center;line-height:1.25}
+.ladder .stages span,.ladder .lh{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--wood-bright);text-align:center;line-height:1.25}
 .ladder .lh{text-align:left}
 .ladder .lrow{padding:.55rem 0 .35rem;border-top:1px solid var(--line)}
 .ladder .lrow h3{font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem}
-.ladder .lrow p{font-size:.68rem;line-height:1.4;color:var(--cream-dim)}
+.ladder .lrow p{font-size:.76rem;line-height:1.45;color:var(--cream-dim)}
 .ladder .track{position:relative;height:2.2rem}
 .ladder .track i{position:absolute;left:0;right:0;top:.5rem;height:3px;background:var(--line);border-radius:2px}
 .ladder .track i::after{content:"";position:absolute;left:0;top:0;height:3px;border-radius:2px;background:var(--wood);width:calc((var(--pos) + .5) / 6 * 100%)}
 .ladder .track b{position:absolute;top:.5rem;width:.9rem;height:.9rem;border-radius:50%;background:var(--gold);transform:translate(-50%,-38%);left:calc((var(--pos) + .5) / 6 * 100%)}
-.ladder .track em{position:absolute;left:0;top:1.15rem;font-size:.62rem;color:var(--muted);white-space:nowrap}
+.ladder .track em{position:absolute;left:0;top:1.15rem;font-size:.68rem;color:var(--cream-dim);white-space:nowrap}
 .bars .bar{display:grid;grid-template-columns:1fr;margin-bottom:.9rem}
 .bars .bar span{font-size:.78rem;color:var(--cream);margin-bottom:.35rem}
 .bars .tr{position:relative;height:.95rem;background:#3a2b1a;border-radius:.2rem;overflow:hidden;width:78%;display:inline-block;vertical-align:middle}
@@ -222,6 +186,27 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
 .view[hidden]{display:none!important}
 #campus .li{margin:0}#campus .li h3{font-size:clamp(1.15rem,1.6vw,1.5rem);line-height:1.2;margin-bottom:.7rem;font-family:'Fraunces',serif;font-weight:400}#campus .li p{font-size:clamp(.9rem,1.1vw,1.05rem);line-height:1.55;color:var(--cream-dim)}
 @media (max-width:900px), (orientation:portrait){.beams{grid-template-columns:repeat(3,1fr)}}
+
+/* HTML bar charts (slides 5 and 6) */
+.hbars{display:grid;gap:.32rem}
+.hb{display:grid;grid-template-columns:minmax(9rem,13rem) 1fr minmax(7rem,11rem);gap:.6rem;align-items:center}
+.hb .hl{font-size:.74rem;color:var(--cream);text-align:right;line-height:1.2}
+.hb .tr{position:relative;height:.95rem;background:rgba(58,43,26,.35);border-radius:.15rem;overflow:visible}
+.hb .tr i{position:absolute;top:0;height:100%;border-radius:.15rem}
+.hb .tr .rp{left:0}.hb .tr .nr{background:#3a2b1a}
+.hb .tr .ne{left:0;width:22%;background:repeating-linear-gradient(135deg,transparent 0 3px,#3a2b1a 3px 5px);border:1px solid #3a2b1a}
+.hb .hv{font-size:.72rem;color:var(--cream-dim);line-height:1.2}.hb .hv em{font-style:normal;color:var(--muted);margin-left:.3rem}.hb .hv.muted{color:var(--muted)}
+.hb.ax{margin-top:.4rem;align-items:start}.hb.ax .tr{background:none;height:1.1rem;border-top:1px solid var(--line)}
+.hb.ax .tr span{position:absolute;top:.15rem;transform:translateX(-50%);font-size:.6rem;color:var(--muted)}
+.hb.ax .hv{font-size:.62rem;color:var(--muted);padding-top:.15rem}
+.hleg{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;margin-top:1rem;font-size:.66rem;color:var(--cream-dim)}.hleg i{display:inline-block;width:.85rem;height:.6rem;border-radius:.12rem;margin-right:.4rem;vertical-align:-.05rem}
+.hbars.worth{gap:1rem}.hbars.worth .hb{grid-template-columns:minmax(8rem,10rem) 1fr 5.5rem}.hbars.worth .hb .tr{height:1.5rem}.hbars.worth .hb .tr .rg{border-radius:.2rem}
+.hbars.worth .hb .tr .mk{width:0;border-left:1px dashed var(--wood-bright);height:100%;top:0}
+.hbars.worth .hb.ax .tr b{position:absolute;top:.25rem;transform:translateX(-50%);font-size:.6rem;font-weight:500;color:var(--wood-bright);white-space:nowrap}
+.hbars.worth .hb.ax .tr b:last-child{transform:translateX(-30%)}
+.hbars.worth .hb.ax .tr{height:1.4rem}.hbars.worth .hb.ax .tr span{display:none}
+.hbars.worth .hb .hl{font-size:.82rem}
+@media (max-width:700px), (max-width:860px) and (orientation:portrait){.hb{grid-template-columns:1fr;gap:.15rem}.hb .hl{text-align:left}.hb.ax{display:none}.hbars.worth .hb.ax{display:grid}.hbars.worth .hb.ax .tr b{display:none}}
 </style>
 </head>
 <body class="on-cover">
@@ -304,7 +289,43 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
     <h2 class="rv">What a GW data center is made of</h2>
     <div class="toggle rv" role="tablist" aria-label="View"><button role="tab" aria-selected="true" data-view="mass">By mass</button><button role="tab" aria-selected="false" data-view="carbon">By embodied carbon</button><span class="hint">M / C</span></div>
     <div class="split rv" style="grid-template-columns:1.7fr 1fr;align-items:center">
-      <figure><img class="view" data-view="mass" src="assets/chart_campus_mass.png" alt="Bar chart of campus mass by component with SUPERWOOD-addressable share by horizon" loading="lazy"><img class="view" data-view="carbon" src="assets/chart_campus_carbon.png" alt="Bar chart of embodied carbon by component" loading="lazy" hidden></figure>
+      <div class="chartcol"><div class="view" data-view="mass"><div class="hbars">
+<div class="hb"><span class="hl">Concrete — slab on grade, paving</span><div class="tr"><i class="rp" style="width:67.1%;background:var(--teal)"></i><i class="nr" style="left:67.1%;width:22.4%"></i></div><span class="hv">1,200 kt <em>75% long-term vision</em></span></div>
+<div class="hb"><span class="hl">Concrete — foundations, footings, pads</span><div class="tr"><i class="rp" style="width:80.5%;background:var(--teal)"></i><i class="nr" style="left:80.5%;width:9.0%"></i></div><span class="hv">1,200 kt <em>90% long-term vision</em></span></div>
+<div class="hb"><span class="hl">Rebar in all concrete</span><div class="tr"><i class="rp" style="width:49.3%;background:var(--teal)"></i><i class="nr" style="left:49.3%;width:11.6%"></i></div><span class="hv">100 kt <em>81% long-term vision</em></span></div>
+<div class="hb"><span class="hl">Steel — primary frame</span><div class="tr"><i class="rp" style="width:50.4%;background:var(--wood)"></i><i class="nr" style="left:50.4%;width:0.0%"></i></div><span class="hv">40 kt <em>100% structural</em></span></div>
+<div class="hb"><span class="hl">Steel — roof trusses, joists, deck, girts</span><div class="tr"><i class="rp" style="width:55.0%;background:var(--wood)"></i><i class="nr" style="left:55.0%;width:0.0%"></i></div><span class="hv">60 kt <em>100% structural</em></span></div>
+<div class="hb"><span class="hl">Exterior skins — metal panel</span><div class="tr"><i class="rp" style="width:31.0%;background:var(--gold)"></i><i class="nr" style="left:31.0%;width:0.0%"></i></div><span class="hv">7 kt <em>100% now</em></span></div>
+<div class="hb"><span class="hl">Louvers and yard screens</span><div class="tr"><i class="rp" style="width:6.8%;background:var(--gold)"></i><i class="nr" style="left:6.8%;width:0.0%"></i></div><span class="hv">1 kt <em>100% now</em></span></div>
+<div class="hb"><span class="hl">Security and staff-area fencing</span><div class="tr"><i class="rp" style="width:8.0%;background:var(--gold)"></i><i class="nr" style="left:8.0%;width:0.0%"></i></div><span class="hv">1 kt <em>100% now</em></span></div>
+<div class="hb"><span class="hl">Platforms, walkways, mezzanines, railings</span><div class="tr"><i class="rp" style="width:39.1%;background:var(--green)"></i><i class="nr" style="left:39.1%;width:0.0%"></i></div><span class="hv">15 kt <em>100% next</em></span></div>
+<div class="hb"><span class="hl">Acoustic barriers, enclosures, separations</span><div class="tr"><i class="rp" style="width:26.5%;background:var(--green)"></i><i class="nr" style="left:26.5%;width:0.0%"></i></div><span class="hv">5 kt <em>100% next</em></span></div>
+<div class="hb"><span class="hl">Racking and equipment supports</span><div class="tr"><i class="rp" style="width:26.5%;background:var(--green)"></i><i class="nr" style="left:26.5%;width:0.0%"></i></div><span class="hv">5 kt <em>100% next</em></span></div>
+<div class="hb"><span class="hl">Tray, containment, doors, misc. metals</span><div class="tr"><i class="rp" style="width:17.2%;background:var(--green)"></i><i class="nr" style="left:17.2%;width:17.2%"></i></div><span class="hv">10 kt <em>50% next</em></span></div>
+<div class="hb"><span class="hl">Ducting and air-distribution sheet metal</span><div class="tr"><i class="rp" style="width:31.9%;background:var(--wood)"></i><i class="nr" style="left:31.9%;width:0.0%"></i></div><span class="hv">8 kt <em>100% structural</em></span></div>
+<div class="hb"><span class="hl">Interior finishes, backplanes, trim</span><div class="tr"><i class="rp" style="width:20.6%;background:var(--gold)"></i><i class="nr" style="left:20.6%;width:0.0%"></i></div><span class="hv">3 kt <em>100% now</em></span></div>
+<div class="hb"><span class="hl">Electrical equipment and conductors</span><div class="tr"><i class="nr" style="left:0%;width:60.9%"></i></div><span class="hv">100 kt</span></div>
+<div class="hb"><span class="hl">Mechanical equipment, piping, loop water</span><div class="tr"><i class="nr" style="left:0%;width:52.9%"></i></div><span class="hv">50 kt</span></div>
+<div class="hb"><span class="hl">IT — servers and racks</span><div class="tr"><i class="rp" style="width:22.7%;background:var(--teal)"></i><i class="nr" style="left:22.7%;width:34.1%"></i></div><span class="hv">70 kt <em>40% long-term vision</em></span></div>
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1</span><span style="left:34.4%">10</span><span style="left:60.9%">100</span><span style="left:87.4%">1,000</span></div><span class="hv">kt, log scale</span></div></div></div><div class="view" data-view="carbon" hidden><div class="hbars">
+<div class="hb"><span class="hl">Concrete — slab on grade, paving</span><div class="tr"><i class="rp" style="width:36.0%;background:var(--teal)"></i><i class="nr" style="left:36.0%;width:12.0%"></i></div><span class="hv">144 kt CO₂e <em>75% long-term vision</em></span></div>
+<div class="hb"><span class="hl">Concrete — foundations, footings, pads</span><div class="tr"><i class="rp" style="width:43.2%;background:var(--teal)"></i><i class="nr" style="left:43.2%;width:4.8%"></i></div><span class="hv">144 kt CO₂e <em>90% long-term vision</em></span></div>
+<div class="hb"><span class="hl">Rebar in all concrete</span><div class="tr"><i class="rp" style="width:48.6%;background:var(--teal)"></i><i class="nr" style="left:48.6%;width:11.4%"></i></div><span class="hv">180 kt CO₂e <em>81% long-term vision</em></span></div>
+<div class="hb"><span class="hl">Steel — primary frame</span><div class="tr"><i class="rp" style="width:24.0%;background:var(--wood)"></i><i class="nr" style="left:24.0%;width:0.0%"></i></div><span class="hv">72 kt CO₂e <em>100% structural</em></span></div>
+<div class="hb"><span class="hl">Steel — roof trusses, joists, deck, girts</span><div class="tr"><i class="rp" style="width:36.0%;background:var(--wood)"></i><i class="nr" style="left:36.0%;width:0.0%"></i></div><span class="hv">108 kt CO₂e <em>100% structural</em></span></div>
+<div class="hb"><span class="hl">Exterior skins — metal panel</span><div class="tr"><i class="rp" style="width:4.4%;background:var(--gold)"></i><i class="nr" style="left:4.4%;width:0.0%"></i></div><span class="hv">13 kt CO₂e <em>100% now</em></span></div>
+<div class="hb"><span class="hl">Louvers and yard screens</span><div class="tr"><i class="rp" style="width:0.5%;background:var(--gold)"></i><i class="nr" style="left:0.5%;width:0.0%"></i></div><span class="hv">2 kt CO₂e <em>100% now</em></span></div>
+<div class="hb"><span class="hl">Security and staff-area fencing</span><div class="tr"><i class="rp" style="width:0.6%;background:var(--gold)"></i><i class="nr" style="left:0.6%;width:0.0%"></i></div><span class="hv">2 kt CO₂e <em>100% now</em></span></div>
+<div class="hb"><span class="hl">Platforms, walkways, mezzanines, railings</span><div class="tr"><i class="rp" style="width:9.0%;background:var(--green)"></i><i class="nr" style="left:9.0%;width:0.0%"></i></div><span class="hv">27 kt CO₂e <em>100% next</em></span></div>
+<div class="hb"><span class="hl">Acoustic barriers, enclosures, separations</span><div class="tr"><i class="rp" style="width:3.0%;background:var(--green)"></i><i class="nr" style="left:3.0%;width:0.0%"></i></div><span class="hv">9 kt CO₂e <em>100% next</em></span></div>
+<div class="hb"><span class="hl">Racking and equipment supports</span><div class="tr"><i class="rp" style="width:3.0%;background:var(--green)"></i><i class="nr" style="left:3.0%;width:0.0%"></i></div><span class="hv">9 kt CO₂e <em>100% next</em></span></div>
+<div class="hb"><span class="hl">Tray, containment, doors, misc. metals</span><div class="tr"><i class="rp" style="width:3.0%;background:var(--green)"></i><i class="nr" style="left:3.0%;width:3.0%"></i></div><span class="hv">18 kt CO₂e <em>50% next</em></span></div>
+<div class="hb"><span class="hl">Ducting and air-distribution sheet metal</span><div class="tr"><i class="rp" style="width:4.8%;background:var(--wood)"></i><i class="nr" style="left:4.8%;width:0.0%"></i></div><span class="hv">14 kt CO₂e <em>100% structural</em></span></div>
+<div class="hb"><span class="hl">Interior finishes, backplanes, trim</span><div class="tr"><i class="rp" style="width:1.0%;background:var(--gold)"></i><i class="nr" style="left:1.0%;width:0.0%"></i></div><span class="hv">3 kt CO₂e <em>100% now</em></span></div>
+<div class="hb"><span class="hl">Electrical equipment and conductors</span><div class="tr"><i class="ne"></i></div><span class="hv muted">not estimated</span></div>
+<div class="hb"><span class="hl">Mechanical equipment, piping, loop water</span><div class="tr"><i class="ne"></i></div><span class="hv muted">not estimated</span></div>
+<div class="hb"><span class="hl">IT — servers and racks</span><div class="tr"><i class="ne"></i></div><span class="hv muted">not estimated</span></div>
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:0%">0</span><span style="left:33.3%">100</span><span style="left:66.7%">200</span><span style="left:100%">300</span></div><span class="hv">kt CO₂e</span></div></div></div><div class="hleg"><span><i style="background:var(--gold)"></i>Now — skins, screens, fences, interiors</span><span><i style="background:var(--green)"></i>Next — racks, platforms, barriers, doors</span><span><i style="background:var(--wood)"></i>Structural — frame, roofs, enclosures</span><span><i style="background:var(--teal)"></i>Long-term vision — slab, foundations, server boxes</span><span><i style="background:#3a2b1a"></i>Not replaced</span></div></div>
       <div>
         <div class="view" data-view="mass"><div class="li" style="grid-template-columns:1fr"><div><h3>50–80% of the above-ground portion of a data center is steel</h3><p>Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server boxes eventually — the electronics never.</p></div></div></div>
         <div class="view" data-view="carbon" hidden><div class="li" style="grid-template-columns:1fr"><div><h3>By embodied carbon, steel is about 60% of the building materials</h3><p>At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses through the structural horizon.</p></div></div></div>
@@ -319,8 +340,13 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
   <div class="wrap">
     <div class="kicker rv">The size</div>
     <h2 class="rv">What one gigawatt of campus is worth to InventWood</h2>
-    <div class="split rv" style="grid-template-columns:1fr 1.35fr;align-items:center">
-      <figure><img src="assets/chart_worth.png" alt="SUPERWOOD required per gigawatt by horizon against SuperMill One and Two annual output" loading="lazy"></figure>
+    <div class="split rv" style="grid-template-columns:1.1fr 1fr;align-items:center">
+      <div class="chartcol"><div class="hbars worth">
+<div class="hb"><span class="hl">Now — skins, screens, fences</span><div class="tr"><i class="rg" style="left:5.4%;width:10.7%;background:var(--gold)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">1.2–2.7 kt</span></div>
+<div class="hb"><span class="hl">Next — racks, platforms, barriers</span><div class="tr"><i class="rg" style="left:19.6%;width:21.7%;background:var(--green)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">3.5–18 kt</span></div>
+<div class="hb"><span class="hl">Structural — frame, roofs, enclosures</span><div class="tr"><i class="rg" style="left:39.8%;width:18.6%;background:var(--wood)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">16–65 kt</span></div>
+<div class="hb"><span class="hl">Long-term vision — slab, foundations, server boxes</span><div class="tr"><i class="rg" style="left:56.8%;width:24.3%;background:var(--teal)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">58–362 kt</span></div>
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:3.0%">1</span><span style="left:33.5%">10</span><span style="left:64.1%">100</span><span style="left:94.6%">1,000</span><b style="left:1.6%">SuperMill One ≈ 0.9 kt/yr</b><b style="left:48.5%">SuperMill Two ≈ 31 kt/yr</b></div><span class="hv">kt per GW, log</span></div></div></div>
       <table class="worth">
         <thead><tr><th>Horizon</th><th>Incumbent replaced</th><th>SUPERWOOD required</th><th>Plant-years</th></tr></thead>
         <tbody>
@@ -356,13 +382,8 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
 <section id="strength" data-nav="Strength">
   <div class="wrap">
     <div class="kicker rv">The fit</div>
-    <h2 class="rv">The <em>strength</em> of SUPERWOOD</h2>
-    <div class="stats rv">
-      <div><div class="big">500 MPa</div><div class="sm">tensile strength in production today</div></div>
-      <div><div class="big">600+ MPa</div><div class="sm">demonstrated in lab samples; pathway toward 1,000</div></div>
-      <div><div class="big">1/6</div><div class="sm">the weight of steel</div></div>
-      <div><div class="big">7–9×</div><div class="sm">the strength-to-weight ratio of A36 steel, derived below</div></div>
-    </div>
+    <h2 class="rv">Production SUPERWOOD exceeds A36 steel in tension at <em>one-sixth</em> the weight</h2>
+    <p class="lead rv">500 MPa tensile strength in production, 600+ MPa in lab samples, against a 400–550 MPa range for ASTM A36. At one-sixth the weight, that is a strength-to-weight ratio of seven to nine times structural steel, derived below.</p>
     <div class="split rv" style="grid-template-columns:1.6fr 1fr;align-items:center">
       <figure><img src="assets/chart_strength.png" alt="Tensile strength: SUPERWOOD production 500 MPa, lab 600+, A36 steel 400–550, aluminum 310" loading="lazy"></figure>
       <div class="card"><div class="kicker" style="font-size:.58rem;margin-bottom:.5rem">How the ratios are derived</div><p>Strength: 500–600 MPa SUPERWOOD ÷ 400 MPa (A36 minimum ultimate tensile) = 1.25–1.5×.</p><p style="margin-top:.5rem">Weight: steel 7.85 t/m³ ÷ SUPERWOOD ~1.3 t/m³ ≈ 6×.</p><p style="margin-top:.5rem">Strength-to-weight: 1.25–1.5 × 6 ≈ 7–9×.</p><p style="margin-top:.5rem">Against the top of the A36 range (550 MPa) the strength ratio is 0.9–1.1×; “stronger than steel” is stated against the A36 minimum.</p></div>
@@ -503,7 +524,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
       <div class="lrow"><h3>Vertiv · Wooden Data Center</h3><div class="track" style="--pos:0"><i></i><b></b><em>Next: identify first applications</em></div><p>Equipment and modular data-center builders exploring SUPERWOOD components</p></div>
       <div class="lrow"><h3>Data center operators</h3><div class="track" style="--pos:0"><i></i><b></b><em>Next: fence specification and quote</em></div><p>Operators focused on security fencing around outdoor infrastructure</p></div>
     </div>
-    <div class="band rv"><b>Engineering and construction partners</b><span>Fast + Epp has run over a thousand small-scale experiments on SUPERWOOD, funded by the Canadian government · Timber Engineering (structural engineering) · HITT and Turner, contractors, are advocates — they build, they do not specify</span></div>
+    <div class="band rv"><b>Engineering and construction partners</b><span>Fast + Epp has run over a thousand small-scale experiments on SUPERWOOD, funded by the Canadian government (company statement) · Timber Engineering (structural engineering) · HITT and Turner, contractors, are advocates — they build, they do not specify</span></div>
     <p class="note rv">Engagement stages and partner statements as reported by InventWood, September 2026; next steps undated. Public-record backup for Microsoft and Meta on the next slide.</p>
   </div>
 </section>
@@ -590,7 +611,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
   </div>
 </section>
 
-<!-- 18 · RISKS -->
+<!-- 19 · RISKS -->
 <section id="risks" data-nav="Risks">
   <div class="wrap">
     <div class="kicker rv">Risks</div>
@@ -610,7 +631,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
   </div>
 </section>
 
-<!-- 19 · PATH -->
+<!-- 20 · PATH -->
 <section id="path" data-nav="Path">
   <div class="wrap">
     <div class="kicker rv">The path</div>
@@ -631,11 +652,13 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
   </div>
 </section>
 
-<!-- 20 · CLOSE -->
+<!-- 21 · CLOSE -->
 <section id="close" data-nav="Close">
   <div class="bg" style="background-image:url(assets/cover_bg.jpg)"></div><div class="scrim" style="background:rgba(18,12,7,.25)"></div>
   <div class="wrap">
     <h1 class="rv">Let's build what's <em>next</em>.</h1>
+    <ul class="recap rv"><li>Data centers are short of steel and already build with wood.</li><li>SUPERWOOD turbocharges that wood: skins and fences now, structure next.</li><li>One basis-of-design win with a hyperscaler is the demand case for SuperMill Two.</li></ul>
+    <p class="rv" style="margin-bottom:.4rem">Company, mills, cost roadmap and the raise: <a href="https://sw.inventwood.net/supermills-deck/" style="color:var(--wood-bright)">SUPERMILLS Investor Overview</a></p>
     <img class="wm rv" src="assets/inventwood_logo.png" alt="InventWood">
     <p class="rv">Alex Lau · CEO / Co-Founder · <a href="mailto:alex@inventwood.com" style="color:var(--wood-bright)">alex@inventwood.com</a></p>
     <p class="rv">Lex Harris · Director, Capital Markets &amp; IR · <a href="mailto:lex@inventwood.com" style="color:var(--wood-bright)">lex@inventwood.com</a></p>
