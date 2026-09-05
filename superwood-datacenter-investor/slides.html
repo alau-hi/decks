@@ -79,6 +79,20 @@ td:first-child{color:var(--cream);font-weight:600}
 #s1 .covline{margin-top:1.4rem;font-size:clamp(.95rem,1.5vw,1.25rem);font-weight:600;letter-spacing:.03em;color:var(--cream)}#s1 .covline b{display:block;color:var(--wood-bright);font-weight:700;margin-top:.15em}
 #s1 .tag{position:absolute;top:1.2rem;right:calc(var(--dock) + .4rem);z-index:3;font-size:max(.7rem,11px);font-style:italic;color:var(--cream-dim)}
 #sinks .note{background:rgba(20,13,7,.6);padding:.6rem .9rem;border-radius:.45rem;display:inline-block}
+
+.cbars{position:relative;padding-top:1.6rem}
+.cbars .cols{display:grid;grid-template-columns:repeat(13,1fr);gap:.35rem;align-items:end;height:13rem;border-bottom:1px solid var(--line)}
+.cbars .cb{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.cbars .cb i{display:block;width:100%;background:var(--wood);border-radius:.15rem .15rem 0 0}
+.cbars .cb.t12 i{background:repeating-linear-gradient(135deg,var(--gold) 0 4px,rgba(226,184,119,.45) 4px 8px)}
+.cbars .cb:nth-last-child(2) i{background:var(--gold)}
+.cbars .cb b{font-size:max(.66rem,11px);color:var(--cream-dim);font-weight:500;margin-bottom:.25rem;order:-1}
+.cbars .cb span{position:absolute;top:100%;margin-top:.35rem;font-size:max(.62rem,11px);color:var(--muted);white-space:nowrap}
+.cbars .cb.t12 span{white-space:normal;text-align:center;line-height:1.15;width:3.4rem}
+.cbars .saar{position:absolute;left:0;right:0;border-top:1px dashed var(--wood-bright);z-index:2}
+.cbars .saar span{position:absolute;left:0;bottom:.2rem;font-size:max(.68rem,11px);color:var(--wood-bright)}
+.cbars figcaption{margin-top:1.9rem}
+@media (max-width:700px), (max-width:860px) and (orientation:portrait){.cbars .cols{height:9rem;gap:.15rem}.cbars .cb b{font-size:0}.cbars .cb span{font-size:0}.cbars .cb:nth-child(1) span,.cbars .cb:nth-child(7) span,.cbars .cb.t12 span{font-size:max(.55rem,10px)}}
 /* dividers */
 .div .scrim{background:rgba(18,12,7,.35)}
 .div .kicker{margin-bottom:.8rem}.div h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}.div .lead{margin-top:.8rem}
@@ -248,16 +262,26 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
 <section id="buyer" data-nav="Buyer">
   <div class="wrap">
     <div class="kicker rv">The buyer</div>
-    <h2 class="rv">Data centers are fast-growing buyers of structural steel, and they are short of it</h2>
-    <div class="split rv" style="grid-template-columns:1.15fr 1fr">
-      <figure><div class="imgbox" style="aspect-ratio:16/9"><img src="assets/dc_steel_frame.jpg" alt="Concept rendering: steel-framed data hall under construction with cranes" loading="lazy"></div><figcaption>Concept rendering</figcaption></figure>
+    <h2 class="rv">US data center construction is running at <em>$75 billion a year</em>, up 57% in twelve months</h2>
+    <div class="split rv" style="grid-template-columns:1.25fr 1fr;align-items:start">
+      <figure class="cbars" aria-label="US private data center construction put in place, billions of dollars per year, 2014 to 2026">
+        <div class="saar" style="bottom:87.0%"><span>July 2026 annual rate: $75B</span></div>
+        <div class="cols"><div class="cb"><i style="height:2.1%"></i><b>2</b><span>2014</span></div><div class="cb"><i style="height:3.2%"></i><b>3</b><span>15</span></div><div class="cb"><i style="height:4.8%"></i><b>4</b><span>16</span></div><div class="cb"><i style="height:5.4%"></i><b>5</b><span>17</span></div><div class="cb"><i style="height:8.0%"></i><b>7</b><span>18</span></div><div class="cb"><i style="height:9.8%"></i><b>8</b><span>19</span></div><div class="cb"><i style="height:10.7%"></i><b>9</b><span>20</span></div><div class="cb"><i style="height:11.5%"></i><b>10</b><span>21</span></div><div class="cb"><i style="height:14.6%"></i><b>13</b><span>22</span></div><div class="cb"><i style="height:23.1%"></i><b>20</b><span>23</span></div><div class="cb"><i style="height:40.3%"></i><b>35</b><span>24</span></div><div class="cb"><i style="height:57.5%"></i><b>50</b><span>25</span></div><div class="cb t12"><i style="height:68.7%"></i><b>59</b><span>12 mo to Jul 26</span></div></div>
+        <figcaption>$ billions per year · Census Bureau, private data center construction put in place; calendar-year totals, 2026 shown as the twelve months to July</figcaption>
+      </figure>
       <div>
-        <div class="li"><span class="dot"></span><div><h3>Steel-intensive</h3><p>500–1,000 tons of structural steel and 5,000–10,000 m³ of concrete per 10 MW — published intensities for hyperscale builds. A gigawatt data center carries roughly 50,000–100,000 tons of structural steel above the slab.</p></div></div>
-        <div class="li"><span class="dot"></span><div><h3>Supply-chain challenged</h3><p>Customers report backlogs and a shortage of structural steel. Supply chain and timeline are the first concern they raise with us; a domestic material that is lighter to ship and faster to erect answers it directly.</p></div></div>
-        <div class="li"><span class="dot"></span><div><h3>Highly repeatable</h3><p>Hyperscalers build to a standard basis of design, one data center after another. A material written into that design is specified again and again.</p></div></div>
+        <div class="kicker" style="margin-bottom:.6rem">How it is projected to grow</div>
+        <div class="li"><span class="dot"></span><div><h3>66 GW under construction in North America</h3><p>JLL, midyear 2026 — more electricity than Germany uses. At the published 50–100 tons of structural steel per MW, that pipeline alone is 3.3–6.6 million tons of structural steel.</p></div></div>
+        <div class="li"><span class="dot"></span><div><h3>Global capacity roughly triples by 2030</h3><p>McKinsey: 82 GW in 2025 to about 219 GW in 2030, AI workloads driving 71% of the growth. JLL: 103 GW to 200 GW.</p></div></div>
+        <div class="li"><span class="dot"></span><div><h3>Global data center capex passes $1 trillion in 2026</h3><p>Dell'Oro: up 57% in 2025, above $1 trillion in 2026, $1.7 trillion by 2030 — mostly servers and chips; the buildings are the Census share on the left.</p></div></div>
       </div>
     </div>
-    <p class="note rv">Steel and concrete intensities: arXiv 2509.21312 (Sep 2025), citing Hasan et al. 2022 and Sharma et al. 2023 — secondary literature figures, ranges as published (metric tons); per-GW figure is that range × 1,000 MW. Shortage and backlog statements are what data-center customers report to InventWood (2026), not a published statistic.</p>
+    <div class="grid3 rv" style="margin-top:1rem">
+      <div class="card tint"><h3>Steel-intensive</h3><p>500–1,000 tons of structural steel and 5,000–10,000 m³ of concrete per 10 MW.</p></div>
+      <div class="card tint"><h3>Supply-chain challenged</h3><p>Customers report backlogs and a shortage of structural steel; supply chain and timeline are their first concern.</p></div>
+      <div class="card tint"><h3>Highly repeatable</h3><p>Hyperscalers build to a standard basis of design, one data center after another.</p></div>
+    </div>
+    <p class="note rv">US Census Bureau, Construction Spending (C30), private data center construction put in place: July 2026 preliminary seasonally adjusted annual rate $75.2B vs $47.8B in July 2025 (+57%); bars are calendar-year totals, not seasonally adjusted; buildings only, servers excluded. JLL North America Data Center Report Midyear 2026 (66 GW). McKinsey, AI power (2025). JLL Global Data Center Outlook 2026. Dell'Oro Group (2026). Steel intensity: arXiv 2509.21312, secondary; tonnage derived. Shortage statements are what customers report to InventWood.</p>
   </div>
 </section>
 

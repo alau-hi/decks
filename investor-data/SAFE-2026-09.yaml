@@ -2405,6 +2405,54 @@ facts:
       permission), and what HITT / Turner's "enthusiastic support" consisted of.
 
   # =========================================================================== datacenter
+  - id: datacenter.us_construction_spending_census
+    value: "$75.2B SAAR Jul 2026 (preliminary) vs $47.8B Jul 2025, +57%; calendar 2025 total $49.7B; 2024 $34.8B; 2023 $20.0B; 2014 $1.8B"
+    unit: USD, private data center construction put in place
+    statement: US private data center construction spending is running at a $75 billion annual rate (July 2026, preliminary), up 57% year on year; calendar-year totals rose from $1.8B (2014) to $49.7B (2025)
+    basis: published
+    confidence: H
+    source: US Census Bureau, Construction Spending (C30), privsa.xlsx and privtime.xlsx downloaded 2026-09-05; series saved in superwood-datacenter-investor/analyses/us-dc-construction-spending-census.json
+    as_of: 2026-09-05
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "Buildings only; servers and IT excluded (Cushman & Wakefield puts construction at ~20% of total data center cost). Monthly figures are preliminary/revised; annual bars are NSA sums. Supersedes the unsourced '5x in two years' line in the investor-overview register (2023 $20.0B to 2025 $49.7B is 2.5x)."
+
+  - id: datacenter.north_america_under_construction_gw
+    value: ">66 GW"
+    unit: GW under construction
+    statement: More than 66 GW of data center capacity is under construction in North America, 77% in frontier markets
+    basis: published
+    confidence: H
+    source: JLL, North America Data Center Report Midyear 2026 (11 Aug 2026), https://www.jll.com/en-us/insights/market-dynamics/north-america-data-centers
+    as_of: 2026-09-05
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "Cushman & Wakefield's 2026 comparison puts the Americas at 25.3 GW under construction with 191.3 GW in the pipeline - a different definition; cite the definition with either. Derived on slide 3: 66 GW x 50-100 t/MW = 3.3-6.6 Mt structural steel."
+
+  - id: datacenter.global_capacity_2030_forecasts
+    value: "McKinsey 82 GW (2025) -> ~219 GW (2030), AI 71% of growth; JLL 103 GW -> 200 GW by 2030"
+    unit: GW
+    statement: Global data center capacity is forecast to roughly double or triple by 2030
+    basis: published
+    confidence: M
+    source: McKinsey, AI power - expanding data center capacity to meet growing demand (2025); JLL, 2026 Global Data Center Outlook
+    as_of: 2026-09-05
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: The two forecasts differ by 25% on the 2025 base (82 vs 103 GW); both land near 200-220 GW in 2030.
+
+  - id: datacenter.global_capex_delloro
+    value: "+57% in 2025; >$1T in 2026; $1.7T by 2030"
+    unit: USD, worldwide data center capex incl. IT
+    statement: Worldwide data center capex rose 57% in 2025, passes $1 trillion in 2026 and is forecast at $1.7 trillion by 2030
+    basis: published
+    confidence: M
+    source: Dell'Oro Group press releases (2026), https://www.delloro.com/news/ai-boom-drives-data-center-capex-to-1-7-trillion-by-2030/
+    as_of: 2026-09-05
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Mostly servers, GPUs and networking; the building share is the Census construction series.
+
   - id: datacenter.racks_and_server_boxes_horizons
     value: "racks: soon (a few months of development); server enclosures: long term; electronics: never"
     unit: null

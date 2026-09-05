@@ -87,3 +87,19 @@ a.grid(axis="x",color=NR,lw=0.8); a.set_axisbelow(True)
 plt.tight_layout(); fig.savefig("prep/charts/worth.png",dpi=200,facecolor=INK); plt.close(fig)
 print("charts ok")
 
+
+
+# ---- Chart 5: US data center construction put in place (Census C30), annual, plus trailing 12 months ----
+years=['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']; vals=[1.8, 2.75, 4.12, 4.67, 6.93, 8.48, 9.23, 9.95, 12.58, 20.0, 34.8, 49.74]; t12=59.35; saar=75.166
+fig,a=plt.subplots(figsize=(8.6,4.3),facecolor=INK); clean(a)
+x=list(range(len(years)))
+a.bar(x,vals,color=[WOOD]*(len(vals)-1)+[GOLD],width=0.7)
+a.bar(len(years),t12,color=GOLD,width=0.7,hatch="//",edgecolor=INK,lw=0)
+for xi,v in zip(x,vals):
+    if v>=4: a.text(xi,v+1,f"{v:,.0f}",ha="center",fontsize=9,color=DIM)
+a.text(len(years),t12+1,f"{t12:,.0f}",ha="center",fontsize=9,color=CREAM,fontweight="bold")
+a.axhline(saar,color=BRIGHT,lw=1,ls="--"); a.text(-0.4,saar+1.2,f"July 2026 annual rate: ${saar:,.0f}B",fontsize=9.5,color=BRIGHT)
+a.set_xticks(x+[len(years)]); a.set_xticklabels([y[2:] if y!="2014" else "2014" for y in years]+["12 mo\nto Jul 26"],fontsize=9,color=DIM)
+a.set_ylabel("$ billions per year",color=MUTED); a.set_ylim(0,max(saar,t12)*1.18); a.grid(axis="y",color=NR,lw=0.8); a.set_axisbelow(True)
+plt.tight_layout(); fig.savefig("prep/charts/construction.png",dpi=200,facecolor=INK); plt.close(fig)
+print("construction chart ok")

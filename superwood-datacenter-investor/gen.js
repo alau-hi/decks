@@ -92,21 +92,32 @@ note(s, "The company, team, mills, cost roadmap and the raise are in the SUPERMI
 // ---------- 3 · THE BUYER ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
 kicker(s, "The buyer");
-title(s, "Data centers are fast-growing buyers of structural steel, and they are short of it", L, 0.88, 11.9, 27);
-s.addImage({ path: "prep/dc_steel_frame.jpg", x: L, y: 2.0, w: 6.3, h: 6.3 * 1536 / 2752, sizing: { type: "crop", w: 6.3, h: 3.52 } });
-conceptTag(s, L + 6.3 - 2.6, 5.55);
-const buyer = [
-  ["Steel-intensive", "500–1,000 tons of structural steel and 5,000–10,000 m³ of concrete per 10 MW — published intensities for hyperscale builds. A gigawatt data center carries roughly 50,000–100,000 tons of structural steel above the slab."],
-  ["Supply-chain challenged", "Customers report backlogs and a shortage of structural steel. Supply chain and timeline are the first concern they raise with us; a domestic material that is lighter to ship and faster to erect answers it directly."],
-  ["Highly repeatable", "Hyperscalers build to a standard basis of design, one data center after another. A material written into that design is specified again and again."],
+title(s, [t("US data center construction is running at "), gold("$75 billion a year"), t(", up 57% in twelve months")], L, 0.88, 12.2, 27);
+s.addImage({ path: "prep/charts/construction.png", x: L, y: 1.95, w: 6.4, h: 6.4 * 4.3 / 8.6 });
+label(s, "How it is projected to grow", 7.3, 1.95, 5.5);
+const growth = [
+  ["66 GW under construction in North America", "JLL, midyear 2026 — more electricity than Germany uses. At the published 50–100 tons of structural steel per MW, that pipeline alone is 3.3–6.6 million tons of structural steel."],
+  ["Global capacity roughly triples by 2030", "McKinsey: 82 GW in 2025 to about 219 GW in 2030, AI workloads driving 71% of the growth. JLL: 103 GW to 200 GW."],
+  ["Global data center capex passes $1 trillion in 2026", "Dell'Oro: up 57% in 2025, above $1 trillion in 2026, $1.7 trillion by 2030 — mostly servers and chips; the buildings are the Census share on the left."],
 ];
-buyer.forEach(([head, sub], i) => {
-  const x = 7.2, y = 2.0 + i * 1.22;
+growth.forEach(([head, sub], i) => {
+  const x = 7.3, y = 2.35 + i * 1.05;
   s.addShape(pres.ShapeType.ellipse, { x, y: y + 0.09, w: 0.14, h: 0.14, fill: { color: GOLD } });
-  s.addText(head, { x: x + 0.35, y, w: 5.2, h: 0.34, fontFace: SANS, fontSize: 14, bold: true, color: CREAM, margin: 0 });
-  body(s, sub, x + 0.35, y + 0.38, 5.2, 0.85, 10.5, MUTED);
+  s.addText(head, { x: x + 0.35, y, w: 5.2, h: 0.32, fontFace: SANS, fontSize: 12.5, bold: true, color: CREAM, margin: 0 });
+  body(s, sub, x + 0.35, y + 0.34, 5.2, 0.7, 9.5, MUTED);
 });
-note(s, "Steel and concrete intensities: arXiv 2509.21312 (Sep 2025), citing Hasan et al. 2022 and Sharma et al. 2023 — secondary literature figures, ranges as published (metric tons); per-GW figure is that range × 1,000 MW. Shortage and backlog statements are what data-center customers report to InventWood (2026), not a published statistic.", 6.55, 0.5);
+const why = [
+  ["Steel-intensive", "500–1,000 tons of structural steel and 5,000–10,000 m³ of concrete per 10 MW."],
+  ["Supply-chain challenged", "Customers report backlogs and a shortage of structural steel; supply chain and timeline are their first concern."],
+  ["Highly repeatable", "Hyperscalers build to a standard basis of design, one data center after another."],
+];
+why.forEach(([head, sub], i) => {
+  const cw = 3.95, x = L + i * 4.125, y = 5.5;
+  panel(s, x, y, cw, 1.0, PANEL2);
+  s.addText(head, { x: x + 0.25, y: y + 0.12, w: cw - 0.5, h: 0.3, fontFace: SANS, fontSize: 12, bold: true, color: CREAM, margin: 0 });
+  body(s, sub, x + 0.25, y + 0.42, cw - 0.5, 0.55, 9.5, DIM);
+});
+note(s, "US Census Bureau, Construction Spending (C30), private data center construction put in place: July 2026 preliminary seasonally adjusted annual rate $75.2B vs $47.8B in July 2025 (+57%); bars are calendar-year totals, not seasonally adjusted; buildings only, servers excluded. JLL North America Data Center Report Midyear 2026 (66 GW). McKinsey, AI power (2025). JLL Global Data Center Outlook 2026. Dell'Oro Group (2026). Steel intensity: arXiv 2509.21312, secondary; tonnage derived. Shortage statements are what customers report to InventWood.", 6.62, 0.45);
 
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
