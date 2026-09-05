@@ -1,0 +1,123 @@
+{
+ "materials": [
+  "steel",
+  "concrete",
+  "plastic",
+  "other"
+ ],
+ "basis": "estimated [L], 2026-09-05, at Alex's request; shares of mass",
+ "split": {
+  "Platforms, walkways, mezzanines, railings": [
+   1,
+   0,
+   0,
+   0
+  ],
+  "Acoustic barriers, enclosures, separations": [
+   0.7,
+   0,
+   0.05,
+   0.25
+  ],
+  "Racking and equipment supports": [
+   1,
+   0,
+   0,
+   0
+  ],
+  "Tray, containment, doors, misc. metals": [
+   0.85,
+   0,
+   0.05,
+   0.1
+  ],
+  "Ducting and air-distribution sheet metal": [
+   0.9,
+   0,
+   0,
+   0.1
+  ],
+  "Interior finishes, backplanes, trim": [
+   0.3,
+   0,
+   0.1,
+   0.6
+  ],
+  "Electrical equipment and conductors": [
+   0.6,
+   0,
+   0.05,
+   0.35
+  ],
+  "Mechanical equipment, piping, loop water": [
+   0.5,
+   0,
+   0.05,
+   0.45
+  ],
+  "IT — servers and racks": [
+   0.4,
+   0,
+   0.1,
+   0.5
+  ],
+  "Steel — primary frame": [
+   1,
+   0,
+   0,
+   0
+  ],
+  "Steel — roof trusses, joists, deck, girts": [
+   1,
+   0,
+   0,
+   0
+  ],
+  "Exterior skins — metal panel": [
+   0.65,
+   0,
+   0.3,
+   0.05
+  ],
+  "Louvers and yard screens": [
+   0.5,
+   0,
+   0,
+   0.5
+  ],
+  "Security and staff-area fencing": [
+   1,
+   0,
+   0,
+   0
+  ],
+  "Concrete — slab on grade, paving": [
+   0,
+   1,
+   0,
+   0
+  ],
+  "Concrete — foundations, footings, pads": [
+   0,
+   1,
+   0,
+   0
+  ],
+  "Rebar in all concrete": [
+   1,
+   0,
+   0,
+   0
+  ]
+ },
+ "notes": {
+  "Acoustic barriers, enclosures, separations": "perforated steel with mineral-wool fill",
+  "Tray, containment, doors, misc. metals": "aluminum tray and hardware in other",
+  "Interior finishes, backplanes, trim": "gypsum and wood in other; steel studs",
+  "Electrical equipment and conductors": "copper, aluminum, oil and cells in other; cable insulation plastic",
+  "Mechanical equipment, piping, loop water": "copper tubes, aluminum coils, water and refrigerant in other; HDPE pipe plastic",
+  "IT — servers and racks": "boards, silicon, copper and aluminum in other",
+  "Exterior skins — metal panel": "insulated metal panel: steel skins over a foam core",
+  "Louvers and yard screens": "largely aluminum (other)"
+ }
+}

@@ -85,7 +85,7 @@ def hrow(label,h,plant):
     return f"| {label} | {kr(h['rlo'],h['rhi'])} | {kr(h['slo'],h['shi'])}{' ('+f'{h['sflo']/1e6:.1f}–{h['sfhi']/1e6:.1f}M sf)' if 'sflo' in h else ''} | {h['ylo']:.1f}–{h['yhi']:.1f} yr of {plant} |"
 md=f"""# Material mass in a data center — the build-up, and how much SUPERWOOD can replace
 
-Date: 2026-09-05 (v8: equipment rows carry an embodied-carbon estimate for their steel content only — 60% of electrical, 50% of mechanical, 40% of IT mass at the steel factor (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
+Date: 2026-09-05 (v9: every row carries a material split (steel, concrete, plastic, other; analyses/material_split.json) and carbon is valued on the steel and concrete content only (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
 Every table below is generated from the live model [materials-mass-and-replacement.xlsx](materials-mass-and-replacement.xlsx)
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
@@ -206,14 +206,14 @@ server enclosures in the long-term horizon, carry no factor, so long-term avoide
 
 Against recycled (EAF) steel the avoided figure is far lower, so any claim must state its baseline.
 
-### 5b. Embodied carbon by component (equipment rows: steel content only)
+### 5b. Embodied carbon by component (steel and concrete content only; plastics and other materials not valued)
 
 The slide-5 "by embodied carbon" view. Factors: concrete {comp_carb[0]['fac']} kg CO₂e/kg [M], steel 1.8 [M, global
 BF-BOF average], interior finishes 1.0 [L]. Equipment (electrical, mechanical, IT) is outside a materials estimate.
 
 | Component | Class | Factor kg CO₂e/kg | Embodied carbon, low–high |
 |---|---|---|---|
-""" + NL.join(f"| {d['name']} | {d['kind']} | {(f"{d['fac']:.2f} (steel content)") if d['kind']=='equipment' else d['fac']} | {(kr(d['lo'],d['hi'])+' CO₂e') if (d['lo'] or d['hi']) else '—'} |" for d in comp_carb) + f"""
+""" + NL.join(f"| {d['name']} | {d['kind']} | {d['fac']:.2f} | {(kr(d['lo'],d['hi'])+' CO₂e') if (d['lo'] or d['hi']) else '—'} |" for d in comp_carb) + f"""
 
 | Roll-up | Low | High |
 |---|---|---|

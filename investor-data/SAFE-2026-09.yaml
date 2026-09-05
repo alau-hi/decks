@@ -2775,9 +2775,9 @@ facts:
     notes: Print as vision with the label on the slide, never as a forecast - no design or code pathway exists. A ChipMill-scale market on its own if it ever became real.
 
   - id: datacenter.equipment_steel_share
-    value: "electrical 60%, mechanical 50%, IT 40% of mass"
-    unit: share of equipment mass that is steel
-    statement: Embodied carbon of equipment is estimated for its steel content only - 60% of electrical, 50% of mechanical and 40% of IT mass at the steel factor; copper, aluminum, electronics and oil are not estimated
+    value: "material split per component (steel / concrete / plastic / other); e.g. electrical 60% steel, mechanical 50%, IT 40%, insulated metal panel 65% steel and 30% plastic, louvers 50% steel"
+    unit: share of component mass
+    statement: Every component row carries an estimated material split (analyses/material_split.json); embodied carbon is valued on the steel and concrete content only, plastics and other materials are not valued
     basis: estimated
     confidence: L
     source: analyses/materials-mass-and-replacement.md (v8), at Alex's request 2026-09-05

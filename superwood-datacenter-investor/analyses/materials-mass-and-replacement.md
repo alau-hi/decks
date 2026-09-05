@@ -1,6 +1,6 @@
 # Material mass in a data center — the build-up, and how much SUPERWOOD can replace
 
-Date: 2026-09-05 (v8: equipment rows carry an embodied-carbon estimate for their steel content only — 60% of electrical, 50% of mechanical, 40% of IT mass at the steel factor (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
+Date: 2026-09-05 (v9: every row carries a material split (steel, concrete, plastic, other; analyses/material_split.json) and carbon is valued on the steel and concrete content only (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
 Every table below is generated from the live model [materials-mass-and-replacement.xlsx](materials-mass-and-replacement.xlsx)
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
@@ -156,7 +156,7 @@ server enclosures in the long-term horizon, carry no factor, so long-term avoide
 
 Against recycled (EAF) steel the avoided figure is far lower, so any claim must state its baseline.
 
-### 5b. Embodied carbon by component (equipment rows: steel content only)
+### 5b. Embodied carbon by component (steel and concrete content only; plastics and other materials not valued)
 
 The slide-5 "by embodied carbon" view. Factors: concrete 0.12 kg CO₂e/kg [M], steel 1.8 [M, global
 BF-BOF average], interior finishes 1.0 [L]. Equipment (electrical, mechanical, IT) is outside a materials estimate.
@@ -166,21 +166,21 @@ BF-BOF average], interior finishes 1.0 [L]. Equipment (electrical, mechanical, I
 | Concrete: slab on grade, paving, yard | concrete | 0.12 | 86,400–144,000 tons CO₂e |
 | Concrete: foundations, footings, piers, equipment pads | concrete | 0.12 | 57,600–144,000 tons CO₂e |
 | Precast / tilt-up perimeter walls (precast case) | concrete | 0.12 | — |
-| Rebar in all concrete | steel | 1.8 | 54,000–180,000 tons CO₂e |
-| Structural steel — primary frame (columns, girders) | steel | 1.8 | 54,000–72,000 tons CO₂e |
-| Structural steel — roof trusses, joists, roof deck, girts | steel | 1.8 | 36,000–108,000 tons CO₂e |
-| Exterior skins — metal panel / IMP (metal-panel case) | steel | 1.8 | 3,345–13,378 tons CO₂e |
-| Louvers and yard / mechanical screens | steel | 1.8 | 334–1,672 tons CO₂e |
-| Security and staff-area fencing | steel | 1.8 | 540–1,800 tons CO₂e |
-| Platforms, walkways, mezzanines, railings, tray supports | steel | 1.8 | 9,000–27,000 tons CO₂e |
-| Acoustic barriers, enclosures, HVAC separations | steel | 1.8 | 3,600–9,000 tons CO₂e |
-| Racking and equipment supports | steel | 1.8 | 3,600–9,000 tons CO₂e |
-| Other tray, containment, doors, misc. metals | steel | 1.8 | 9,000–18,000 tons CO₂e |
-| Ducting, plenums and air-distribution sheet metal | steel | 1.8 | 5,400–14,400 tons CO₂e |
-| Interior finishes, backplanes, trim (admin / office) | mixed | 1 | 1,000–3,000 tons CO₂e |
-| Electrical equipment and conductors | equipment | 1.08 (steel content) | 54,000–108,000 tons CO₂e |
-| Mechanical equipment, piping, loop water | equipment | 0.90 (steel content) | 18,000–45,000 tons CO₂e |
-| IT — servers and racks | equipment | 0.72 (steel content) | 10,800–50,400 tons CO₂e |
+| Rebar in all concrete | steel | 1.80 | 54,000–180,000 tons CO₂e |
+| Structural steel — primary frame (columns, girders) | steel | 1.80 | 54,000–72,000 tons CO₂e |
+| Structural steel — roof trusses, joists, roof deck, girts | steel | 1.80 | 36,000–108,000 tons CO₂e |
+| Exterior skins — metal panel / IMP (metal-panel case) | steel | 1.80 | 3,345–13,378 tons CO₂e |
+| Louvers and yard / mechanical screens | steel | 1.80 | 334–1,672 tons CO₂e |
+| Security and staff-area fencing | steel | 1.80 | 540–1,800 tons CO₂e |
+| Platforms, walkways, mezzanines, railings, tray supports | steel | 1.80 | 9,000–27,000 tons CO₂e |
+| Acoustic barriers, enclosures, HVAC separations | steel | 1.80 | 3,600–9,000 tons CO₂e |
+| Racking and equipment supports | steel | 1.80 | 3,600–9,000 tons CO₂e |
+| Other tray, containment, doors, misc. metals | steel | 1.80 | 9,000–18,000 tons CO₂e |
+| Ducting, plenums and air-distribution sheet metal | steel | 1.80 | 5,400–14,400 tons CO₂e |
+| Interior finishes, backplanes, trim (admin / office) | mixed | 1.00 | 1,000–3,000 tons CO₂e |
+| Electrical equipment and conductors | equipment | 1.08 | 54,000–108,000 tons CO₂e |
+| Mechanical equipment, piping, loop water | equipment | 0.90 | 18,000–45,000 tons CO₂e |
+| IT — servers and racks | equipment | 0.72 | 10,800–50,400 tons CO₂e |
 
 | Roll-up | Low | High |
 |---|---|---|

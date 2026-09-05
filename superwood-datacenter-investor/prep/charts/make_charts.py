@@ -19,86 +19,44 @@ rows=[("Platforms, walkways, mezzanines, railings",15,1.0,"soon"),("Acoustic bar
 ("Exterior skins — metal panel",7.4,1.0,"imm"),("Louvers and yard screens",0.9,1.0,"imm"),("Security and staff-area fencing",1.0,1.0,"imm"),
 ("Concrete — slab on grade, paving",1200,0.75,"long"),("Concrete — foundations, footings, pads",1200,0.90,"long"),("Rebar in all concrete",100,0.81,"long")]
 # order: contents at the top, building structure and envelope, foundation at the bottom (Alex 2026-09-05)
-col={"imm":GOLD,"soon":GREEN,"med":WOOD,"long":TEAL}
-lab={"imm":"immediate","soon":"soon","med":"medium term","long":"long term"}
-# Embodied-carbon factors [conf: M, typical cradle-to-gate]: concrete 0.12 kg CO2e/kg; steel 1.8 (global BF-BOF average, the deck's
-# figure; EAF 0.4-0.7); interior finishes 1.0 (mixed, conf L). Metal-faced skins, louvers, fencing at the steel factor (aluminum ignored).
-F={"concrete":0.12,"steel":1.8,"mixed":1.0}
-kind=["steel"]*5+["mixed","equip","equip","equip"]+["steel"]*5+["concrete","concrete","steel"]
-EQ={"Electrical equipment and conductors":0.6,"Mechanical equipment, piping, loop water":0.5,"IT — servers and racks":0.4}  # steel share of equipment mass [L]
-carb=[(r[1]*EQ[r[0]]*F["steel"] if k=="equip" else r[1]*F[k]) for r,k in zip(rows,kind)]
-LEG=[Patch(color=GOLD,label="Immediate — skins, screens, fences, interiors"),Patch(color=GREEN,label="Soon (1–3 yr) — racks, platforms, barriers, doors"),
-     Patch(color=WOOD,label="Medium term — frame, roofs, enclosures"),Patch(color=TEAL,label="Long term — slab, foundations"),Patch(color=NR,label="Not replaced")]
-def campus(values, out, xlabel, log, narrow, unit):
+import json as _j, math
+SPLIT=_j.load(open("analyses/material_split.json"))["split"]
+MAT=[("steel",WOOD),("concrete","#8c8478"),("plastic",TEAL),("other","#5a4a36")]
+carb=[r[1]*(SPLIT[r[0]][0]*1.8+SPLIT[r[0]][1]*0.12) for r in rows]
+LEG=[Patch(color=c_,label=n.capitalize()) for n,c_ in MAT]
+def campus(values, out, xlabel, log, narrow, unit, carbon=False):
     fig,a=plt.subplots(figsize=(7.0,4.3) if narrow else (12.4,6.9),facecolor=INK); clean(a)
     fs=8 if narrow else 10.5
-    for i,(r,v,k) in enumerate(zip(rows,values,kind)):
-        if v is None:
-            a.barh(i,(0.9 if log else 60),color=INK,edgecolor=NR,hatch="///",height=0.66,lw=0.8)
-            a.text((1.05 if log else 65),i,"not estimated" if narrow else "not estimated — equipment embodied carbon is outside a materials estimate",va="center",fontsize=7.5 if narrow else 8.5,color=MUTED); continue
-        a.barh(i,v,color=WOOD,height=0.66)  # component stack, one color; replacement is the next slide's story (Alex 2026-09-05)
-        txt=f"{v*1000:,.0f} {unit}"+("  ·  steel content only" if (k=="equip" and values is carbv and not narrow) else "")
-        a.text(v*1.12 if log else v+4,i,txt,va="center",fontsize=7.5 if narrow else 10,color=DIM)
+    for i,(r,v) in enumerate(zip(rows,values)):
+        sp=SPLIT[r[0]]
+        if carbon:
+            left=0
+            for (n,c_),share,f in zip(MAT[:2],sp[:2],(1.8,0.12)):
+                w=r[1]*share*f
+                if w>0: a.barh(i,w,left=left,color=c_,height=0.66); left+=w
+        elif log:
+            # bar length is total mass on the log axis; segments show each material's share of the bar
+            lo=0.5; span=math.log10(v)-math.log10(lo); left=lo
+            for (n,c_),share in zip(MAT,sp):
+                if share<=0: continue
+                right=10**(math.log10(left)+span*share); a.barh(i,right-left,left=left,color=c_,height=0.66); left=right
+        else:
+            left=0
+            for (n,c_),share in zip(MAT,sp):
+                if share>0: a.barh(i,v*share,left=left,color=c_,height=0.66); left+=v*share
+        a.text(v*1.12 if log else v+4,i,f"{v*1000:,.0f} {unit}",va="center",fontsize=7.5 if narrow else 10,color=DIM)
     a.set_yticks(range(len(rows))); a.set_yticklabels([r[0] for r in rows],fontsize=fs,color=CREAM); a.invert_yaxis()
     if log: a.set_xscale("log"); a.set_xlim(0.5,(9000 if narrow else 40000))
     else: a.set_xlim(0,(260 if narrow else 300))
     a.set_xlabel(xlabel,color=MUTED,fontsize=8 if narrow else 10); a.grid(axis="x",color=NR,lw=0.8); a.set_axisbelow(True)
-    plt.tight_layout()
-    fig.savefig(out,dpi=170,facecolor=INK); plt.close(fig)
+    a.legend(handles=LEG[:2] if carbon else LEG,loc="lower right",fontsize=7.5 if narrow else 9,facecolor=INK,edgecolor=INK,labelcolor=DIM)
+    plt.tight_layout(); fig.savefig(out,dpi=170,facecolor=INK); plt.close(fig)
 mass=[r[1] for r in rows]; carbv=list(carb)
 campus(mass,"prep/charts/campus_mass.png","'000s of tons per 1 GW data center, high case — log scale",True,False,"tons")
-campus(carbv,"prep/charts/campus_carbon.png","'000s of tons CO₂e per 1 GW data center, high case — steel at 1.8 kg/kg (global average), concrete at 0.12",False,False,"tons CO₂e")
+campus(carbv,"prep/charts/campus_carbon.png","'000s of tons CO₂e per 1 GW data center, high case — steel and concrete content only; steel 1.8 kg/kg, concrete 0.12",False,False,"tons CO₂e",True)
 campus(mass,"prep/charts/campus_mass_narrow.png","Mass — '000s of tons per GW (log scale)",True,True,"tons")
-campus(carbv,"prep/charts/campus_carbon_narrow.png","Embodied carbon — '000s of tons CO₂e per GW",False,True,"tons")
-# legend strip for the two-up slide
-fig=plt.figure(figsize=(14,0.5),facecolor=INK); fig.legend(handles=LEG,loc="center",ncol=5,fontsize=9,facecolor=INK,edgecolor=INK,labelcolor=DIM,handlelength=1.6,columnspacing=1.6); fig.savefig("prep/charts/campus_legend.png",dpi=170,facecolor=INK,bbox_inches="tight",pad_inches=0.05); plt.close(fig)
-tot=sum(carb); steel=sum(c for c,k in zip(carb,kind) if k in("steel","equip")); conc=sum(c for c,k in zip(carb,kind) if k=="concrete")
-above=sum(c for c,k,r in zip(carb,kind,rows) if k=="steel" and not r[0].startswith("Rebar"))
-eaf=sum(r[1]*0.55 for r,k in zip(rows,kind) if k=="steel")
-print(f"building-materials carbon {tot:,.0f} kt; steel {steel/tot:.0%}, concrete {conc/tot:.0%}; steel above slab {above:,.0f} kt = {above/tot:.0%}; EAF steel share {eaf/(eaf+conc+3):.0%}")
-
-# ---- Chart 2: tensile strength, with the A36 range shown as a range ----
-fig,a=plt.subplots(figsize=(8.2,3.6),facecolor=INK); clean(a)
-names=["SUPERWOOD\nproduction","SUPERWOOD\nlab samples","Structural steel\nASTM A36","Aluminum\n6061-T6"]
-x=range(4)
-a.bar(0,500,color=GOLD,width=0.62); a.bar(1,600,color=BRIGHT,width=0.62,hatch="//",edgecolor=INK,lw=0)
-a.bar(2,400,color="#6b5334",width=0.62); a.bar(2,150,bottom=400,color="#8a6a40",width=0.62,hatch="..",edgecolor=INK,lw=0)
-a.bar(3,310,color="#6b5334",width=0.62)
-for xi,v,t in [(0,500,"500"),(1,600,"600+"),(2,550,"400–550"),(3,310,"310")]:
-    a.text(xi,v+18,t,ha="center",fontsize=13,color=CREAM,fontweight="bold")
-a.set_xticks(list(x)); a.set_xticklabels(names,fontsize=10.5,color=CREAM); a.set_yticks([0,200,400,600]); a.set_ylim(0,700)
-a.set_ylabel("Tensile strength, MPa",color=MUTED); a.grid(axis="y",color=NR,lw=0.8); a.set_axisbelow(True)
-plt.tight_layout(); fig.savefig("prep/charts/strength.png",dpi=200,facecolor=INK); plt.close(fig)
-
-# ---- Chart 3: what one gigawatt is worth — SUPERWOOD required by horizon, low/high, in plant-years ----
-hor=["Immediate\nskins, screens, fences","Soon\nracks, platforms, barriers","Medium term\nframe, roofs, enclosures","Long term\nslab, foundations"]
-lo=[1.2,3.5,16,58]; hi=[2.7,18,65,362]   # kt SUPERWOOD required per GW (analyses §4)
-fig,a=plt.subplots(figsize=(8.6,4.2),facecolor=INK); clean(a)
-cols=[GOLD,GREEN,WOOD,TEAL]
-for i,(l,h) in enumerate(zip(lo,hi)):
-    a.barh(i,h-l,left=l,color=cols[i],height=0.55); a.plot([l],[i],marker="|",color=CREAM,ms=14,mew=2)
-    a.text(h*1.12,i,f"{l*1000:,.0f}–{h*1000:,.0f} tons",va="center",fontsize=11,color=CREAM)
-a.set_yticks(range(4)); a.set_yticklabels(hor,fontsize=10.5,color=CREAM); a.invert_yaxis()
-a.set_xscale("log"); a.set_xlim(0.8,2000); a.set_xlabel("'000s of tons of SUPERWOOD per 1 GW data center, low–high scenario (log scale)",color=MUTED,fontsize=10)
-a.axvline(0.9,color=BRIGHT,lw=1,ls="--"); a.text(0.9,-0.75,"SuperMill One ≈ 900 tons/yr",fontsize=9,color=BRIGHT,ha="center")
-a.axvline(31,color=BRIGHT,lw=1,ls="--"); a.text(31,-0.75,"SuperMill Two ≈ 31,000 tons/yr",fontsize=9,color=BRIGHT,ha="center")
-a.grid(axis="x",color=NR,lw=0.8); a.set_axisbelow(True)
-plt.tight_layout(); fig.savefig("prep/charts/worth.png",dpi=200,facecolor=INK); plt.close(fig)
-print("charts ok")
-
-
-
-# ---- Chart 5: US data center construction put in place (Census C30), annual, plus trailing 12 months ----
-years=['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']; vals=[1.8, 2.75, 4.12, 4.67, 6.93, 8.48, 9.23, 9.95, 12.58, 20.0, 34.8, 49.74]; t12=59.35; saar=75.166
-fig,a=plt.subplots(figsize=(8.6,4.3),facecolor=INK); clean(a)
-x=list(range(len(years)))
-a.bar(x,vals,color=[WOOD]*(len(vals)-1)+[GOLD],width=0.7)
-a.bar(len(years),t12,color=GOLD,width=0.7,hatch="//",edgecolor=INK,lw=0)
-for xi,v in zip(x,vals):
-    if v>=4: a.text(xi,v+1,f"{v:,.0f}",ha="center",fontsize=9,color=DIM)
-a.text(len(years),t12+1,f"{t12:,.0f}",ha="center",fontsize=9,color=CREAM,fontweight="bold")
-a.axhline(saar,color=BRIGHT,lw=1,ls="--"); a.text(-0.4,saar+1.2,f"July 2026 annual rate: ${saar:,.0f}B",fontsize=9.5,color=BRIGHT)
-a.set_xticks(x+[len(years)]); a.set_xticklabels([y[2:] if y!="2014" else "2014" for y in years]+["12 mo\nto Jul 26"],fontsize=9,color=DIM)
-a.set_ylabel("$ billions per year",color=MUTED); a.set_ylim(0,max(saar,t12)*1.18); a.grid(axis="y",color=NR,lw=0.8); a.set_axisbelow(True)
-plt.tight_layout(); fig.savefig("prep/charts/construction.png",dpi=200,facecolor=INK); plt.close(fig)
-print("construction chart ok")
+campus(carbv,"prep/charts/campus_carbon_narrow.png","Embodied carbon — '000s of tons CO₂e per GW (steel and concrete content)",False,True,"tons",True)
+tot=sum(carb); steel=sum(r[1]*SPLIT[r[0]][0]*1.8 for r in rows)
+bm=[r for r in rows if not (r[0].startswith("Electrical") or r[0].startswith("Mechanical") or r[0].startswith("IT"))]
+bm_steel=sum(r[1]*SPLIT[r[0]][0]*1.8 for r in bm); bm_tot=sum(r[1]*(SPLIT[r[0]][0]*1.8+SPLIT[r[0]][1]*0.12) for r in bm)
+print(f"carbon total {tot:,.0f} kt; steel {steel/tot:.0%}; building materials only: steel {bm_steel/bm_tot:.0%}; equipment steel {tot-bm_tot:,.0f} kt")
