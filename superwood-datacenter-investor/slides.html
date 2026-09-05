@@ -173,7 +173,7 @@ td:first-child{color:var(--cream);font-weight:600}
 .thesis .card{padding:1.2rem 1.2rem 1.3rem}.thesis .card .num{font-size:1.7rem;display:block;margin-bottom:.7rem}.thesis .card h3{font-size:.98rem;min-height:2.6em}.thesis .card p{font-size:max(.8rem,11px);line-height:1.5}
 .pub .src{display:block;font-size:max(.7rem,11px);font-style:italic;color:var(--muted);margin-top:.5rem}
 table.cmp td{font-size:clamp(.82rem,1vw,.95rem);line-height:1.45;padding:.6rem .6rem .6rem 0}table.cmp td:first-child{width:7rem;font-size:clamp(.9rem,1.05vw,1rem)}table.cmp td:nth-child(2){color:var(--muted);width:32%}table.cmp th{font-size:clamp(1rem,1.25vw,1.2rem);font-weight:700;color:var(--cream);vertical-align:bottom;padding-bottom:.6rem}table.cmp th span{display:block;margin-bottom:.45rem}table.cmp .thimgs{display:flex;gap:.5rem}table.cmp .thimgs img{flex:0 0 auto;width:auto;height:3.6rem;aspect-ratio:1.7;object-fit:cover;border-radius:.3rem}
-table.worth{width:100%;margin-top:.6rem}table.worth th{font-size:max(.75rem,11px)}table.worth td{font-size:clamp(1rem,1.25vw,1.2rem);padding:.9rem .8rem .9rem 0;line-height:1.4}table.worth td:first-child{color:var(--cream)}table.worth td.gold{color:var(--gold);font-weight:600}
+table.worth{width:100%;margin-top:.6rem}table.worth th{font-size:max(.75rem,11px)}table.worth td{font-size:clamp(1rem,1.25vw,1.2rem);padding:.9rem .8rem .9rem 0;line-height:1.4}table.worth td:first-child{color:var(--cream)}table.worth td.gold{color:var(--gold);font-weight:600}.yrbar{position:relative;height:.7rem;background:var(--line);border-radius:.2rem;margin-bottom:.4rem;overflow:visible}.yrbar i{position:absolute;top:0;height:100%;border-radius:.2rem;background:var(--gold)}.yrbar b{position:absolute;top:-.2rem;bottom:-.2rem;width:0;border-left:1px dashed var(--wood-bright)}
 .ladder{margin-top:.6rem}
 .ladder .lhead,.ladder .lrow{display:grid;grid-template-columns:11rem 1fr 15rem;gap:1.2rem;align-items:start}
 .ladder .lhead{padding-bottom:.3rem}.ladder .stages{display:grid;grid-template-columns:repeat(6,1fr)}
@@ -412,12 +412,12 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
     <h2 class="rv">Just one data center can consume the <em>entire output</em> of a SUPERMILL</h2>
     <p class="lead rv">SUPERWOOD a 1 GW data center could require, by horizon, against what each mill makes in a year.</p>
     <table class="worth rv">
-      <thead><tr><th>Horizon</th><th>SUPERWOOD required</th><th>Years of mill output</th></tr></thead>
+      <thead><tr><th>Horizon</th><th>SUPERWOOD required</th><th>Years of mill output <span style="font-weight:400;letter-spacing:0;text-transform:none;color:var(--muted)">· bar scale 0–12 years, tick at one year</span></th></tr></thead>
       <tbody>
-        <tr><td data-h="Horizon">Immediate — skins, screens, fences</td><td data-h="SUPERWOOD required">1,200–2,700 tons (1.4–3.1M sf)</td><td class="gold" data-h="Years of mill output">1.4–3.1 years of SuperMill One</td></tr>
-        <tr><td data-h="Horizon">Soon — racks, platforms, barriers</td><td data-h="SUPERWOOD required">3,500–18,000 tons</td><td class="gold" data-h="Years of mill output">0.1–0.6 years of SuperMill Two</td></tr>
-        <tr><td data-h="Horizon">Medium term — frame, roofs, enclosures</td><td data-h="SUPERWOOD required">16,000–65,000 tons</td><td class="gold" data-h="Years of mill output">0.5–2.1 years of SuperMill Two</td></tr>
-        <tr><td data-h="Horizon">Long term — slab, foundations, server boxes</td><td data-h="SUPERWOOD required">58,000–362,000 tons</td><td class="gold" data-h="Years of mill output">1.8–12 years of SuperMill Two</td></tr>
+        <tr><td data-h="Horizon">Immediate — skins, screens, fences</td><td data-h="SUPERWOOD required">1,200–2,700 tons (1.4–3.1M sf)</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i style="left:11.7%;width:14.2%"></i><b style="left:8.3%"></b></div>1.4–3.1 years of SuperMill One</td></tr>
+        <tr><td data-h="Horizon">Soon — racks, platforms, barriers</td><td data-h="SUPERWOOD required">3,500–18,000 tons</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i style="left:0.8%;width:4.2%"></i><b style="left:8.3%"></b></div>0.1–0.6 years of SuperMill Two</td></tr>
+        <tr><td data-h="Horizon">Medium term — frame, roofs, enclosures</td><td data-h="SUPERWOOD required">16,000–65,000 tons</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i style="left:4.2%;width:13.3%"></i><b style="left:8.3%"></b></div>0.5–2.1 years of SuperMill Two</td></tr>
+        <tr><td data-h="Horizon">Long term — slab, foundations, server boxes</td><td data-h="SUPERWOOD required">58,000–362,000 tons</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i style="left:15.0%;width:85.0%"></i><b style="left:8.3%"></b></div>1.8–12 years of SuperMill Two</td></tr>
       </tbody>
     </table>
     <div class="hleg mills rv"><span><i class="mkleg"></i>SuperMill One ≈ 900 tons a year (1M sf)</span><span><i class="mkleg"></i>SuperMill Two ≈ 31,000 tons a year (36M sf)</span></div>

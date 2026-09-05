@@ -221,17 +221,25 @@ title(s, [t("Just one data center can consume the "), gold("entire output"), t("
 body(s, "SUPERWOOD a 1 GW data center could require, by horizon, against what each mill makes in a year.", L, 1.75, 11, 0.35, 12, DIM);
 const worthCols = ["Horizon", "SUPERWOOD required", "Years of mill output"];
 const worthRows = [
-  ["Immediate — skins, screens, fences", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 years of SuperMill One"],
-  ["Soon — racks, platforms, barriers", "3,500–18,000 tons", "0.1–0.6 years of SuperMill Two"],
-  ["Medium term — frame, roofs, enclosures", "16,000–65,000 tons", "0.5–2.1 years of SuperMill Two"],
-  ["Long term — slab, foundations, server boxes", "58,000–362,000 tons", "1.8–12 years of SuperMill Two"],
+  ["Immediate — skins, screens, fences", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 years of SuperMill One", 1.4, 3.1],
+  ["Soon — racks, platforms, barriers", "3,500–18,000 tons", "0.1–0.6 years of SuperMill Two", 0.1, 0.6],
+  ["Medium term — frame, roofs, enclosures", "16,000–65,000 tons", "0.5–2.1 years of SuperMill Two", 0.5, 2.1],
+  ["Long term — slab, foundations, server boxes", "58,000–362,000 tons", "1.8–12 years of SuperMill Two", 1.8, 12],
 ];
 const wx = [L, 5.4, 9.0], ww = [4.6, 3.4, 3.7];
 worthCols.forEach((c, i) => s.addText(c.toUpperCase(), { x: wx[i], y: 2.3, w: ww[i], h: 0.4, fontFace: SANS, fontSize: 10, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" }));
+s.addText("bar scale 0–12 years, dashed tick at one year", { x: wx[2], y: 2.05, w: ww[2], h: 0.25, fontFace: SANS, fontSize: 8, italic: true, color: MUTED, margin: 0, valign: "bottom" });
+const YRS = 12, ybw = ww[2];
 worthRows.forEach((r, ri) => {
   const y = 2.85 + ri * 0.78;
   s.addShape(pres.ShapeType.rect, { x: L, y: y - 0.1, w: CW, h: 0.012, fill: { color: RULE } });
-  r.forEach((c, ci) => s.addText(c, { x: wx[ci], y, w: ww[ci], h: 0.6, fontFace: SANS, fontSize: 15, bold: ci !== 1, color: ci === 0 ? CREAM : (ci === 2 ? GOLD : DIM), margin: 0, valign: "middle" }));
+  [0, 1].forEach(ci => s.addText(r[ci], { x: wx[ci], y, w: ww[ci], h: 0.6, fontFace: SANS, fontSize: 15, bold: ci === 0, color: ci === 0 ? CREAM : DIM, margin: 0, valign: "middle" }));
+  // years of mill output: range bar on a 0–12 year scale, label beneath
+  const lo = r[3], hi = r[4];
+  s.addShape(pres.ShapeType.rect, { x: wx[2], y: y + 0.05, w: ybw, h: 0.13, fill: { color: RULE } });
+  s.addShape(pres.ShapeType.rect, { x: wx[2] + ybw * lo / YRS, y: y + 0.05, w: Math.max(ybw * (hi - lo) / YRS, 0.05), h: 0.13, fill: { color: GOLD } });
+  s.addShape(pres.ShapeType.line, { x: wx[2] + ybw / YRS, y: y, w: 0, h: 0.23, line: { color: BRIGHT, width: 0.75, dashType: "dash" } });
+  s.addText(r[2], { x: wx[2], y: y + 0.22, w: ww[2], h: 0.36, fontFace: SANS, fontSize: 13, bold: true, color: GOLD, margin: 0, valign: "middle" });
 });
 s.addShape(pres.ShapeType.rect, { x: L, y: 5.87, w: CW, h: 0.012, fill: { color: RULE } });
 s.addText([t("SuperMill One ≈ 900 tons a year (1M sf)", { color: BRIGHT }), t("      ·      ", { color: MUTED }), t("SuperMill Two ≈ 31,000 tons a year (36M sf)", { color: BRIGHT })], { x: L, y: 6.0, w: CW, h: 0.35, fontFace: SANS, fontSize: 11.5, bold: true, margin: 0 });
