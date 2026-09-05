@@ -119,38 +119,36 @@ why.forEach(([head, sub], i) => {
 });
 note(s, "US Census Bureau, Construction Spending (C30), private data center construction put in place: July 2026 preliminary seasonally adjusted annual rate $75.2B vs $47.8B in July 2025 (+57%); bars are calendar-year totals, not seasonally adjusted; buildings only, servers excluded. JLL North America Data Center Report Midyear 2026 (66 GW). McKinsey, AI power (2025). JLL Global Data Center Outlook 2026. Dell'Oro Group (2026). Steel intensity: arXiv 2509.21312, secondary; tonnage derived. Shortage statements are what customers report to InventWood.", 6.62, 0.45);
 
-// ---------- 4 · COMMUNITY PUSHBACK ----------
+// ---------- 4 · COMMUNITY PUSHBACK: AESTHETICS AND NOISE ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
 kicker(s, "The buyer · The community");
-title(s, [t("Community pushback now delays more data center projects than ever. Most of it is about power and water; "), gold("two complaints are about the building itself"), t(".")], L, 0.88, 12.2, 21);
-label(s, "What neighbors object to", L, 2.0, 7.2);
+title(s, [t("Neighbors object to what they "), gold("see"), t(" and what they "), gold("hear"), t(". Local rules now regulate both, and both are things a building can fix.")], L, 0.88, 12.2, 21);
+label(s, "The two complaints about the building itself", L, 2.0, 7.2);
 const objections = [
-  ["Electricity bills and grid strain", "77% of Americans worry data centers will raise their electricity bills. Utilities build generation and lines for one large load; households fear carrying the cost. Not a materials problem."],
-  ["Water for cooling", "Evaporative cooling draws on local supply; closed-loop cooling is now written into ordinances. Not a materials problem."],
-  ["Noise", "Cooling fans and generator testing produce a low-frequency hum that carries; new local codes set decibel limits at the property line. SUPERWOOD: acoustic screens and barriers that damp sound and look like architecture."],
-  ["Visual mass and land use", "Windowless boxes and substations on farmland and next to subdivisions; counties answer with 500–1,000 ft setbacks, design standards and screening rules. SUPERWOOD: facades, fences and screens that neighbors accept, and a lower-carbon building."],
-  ["Diesel backup generators", "Hundreds of engines per site; air-quality rules now require the cleanest tier. Not a materials problem."],
-  ["Few jobs, tax breaks, secrecy", "Large abatements for small permanent headcounts, and non-disclosure agreements that keep the buyer's name out of the hearing. Not a materials problem."],
+  ["Aesthetics: windowless boxes on farmland", "Data halls, substations and generator yards land next to subdivisions and on open land. Counties answer with 500–1,000 ft setbacks, design standards, screening and landscaping requirements, and hearings where the building's appearance is argued. SUPERWOOD: facades, fences and screens that read as architecture, not industry, and a lower-carbon building to say so with."],
+  ["Noise: the hum that carries", "Fan walls, chillers and monthly generator testing produce steady low-frequency noise that travels well beyond the fence line. New ordinances set decibel limits at the property line, require staggered generator testing, and call for sound-reducing design and buffering. SUPERWOOD: acoustic screens and barriers that damp sound and vibration and look good doing it."],
 ];
 objections.forEach(([head, sub], i) => {
-  const x = L, y = 2.4 + i * 0.68;
-  s.addShape(pres.ShapeType.ellipse, { x, y: y + 0.08, w: 0.13, h: 0.13, fill: { color: GOLD } });
-  s.addText(head, { x: x + 0.3, y, w: 6.9, h: 0.26, fontFace: SANS, fontSize: 11.5, bold: true, color: CREAM, margin: 0 });
-  body(s, sub, x + 0.3, y + 0.26, 6.9, 0.42, 8.5, MUTED);
+  const x = L, y = 2.4 + i * 1.35;
+  s.addShape(pres.ShapeType.ellipse, { x, y: y + 0.09, w: 0.14, h: 0.14, fill: { color: GOLD } });
+  s.addText(head, { x: x + 0.32, y, w: 6.9, h: 0.3, fontFace: SANS, fontSize: 12.5, bold: true, color: CREAM, margin: 0 });
+  body(s, sub, x + 0.32, y + 0.32, 6.9, 1.0, 9.5, MUTED);
 });
+panel(s, L, 5.15, 7.2, 1.3, PANEL);
+s.addText("Why it matters to us", { x: L + 0.22, y: 5.25, w: 6.8, h: 0.3, fontFace: SANS, fontSize: 11.5, bold: true, color: CREAM, margin: 0 });
+body(s, "Entitlement is where hyperscalers now lose time. Facades, screens and fences a community accepts are a schedule argument, not decoration. Power, water and rates drive much of the opposition too; those are outside our scope.", L + 0.22, 5.55, 6.8, 0.85, 9.5, DIM);
 label(s, "How big the pushback has become", 8.0, 2.0, 4.8);
 const scale = [
-  ["75 projects, about $130 billion, blocked or delayed in one quarter", "January to March 2026: as much as in all of 2025. 833 active opposition groups in 49 states, more than double the count at the end of 2025. Moratorium bills introduced in 14 states.", PANEL2],
-  ["The least-wanted development in America", "Asked about ten kinds of local development, Americans ranked data centers last: 26% support one nearby, 46% oppose. Housing led at 58%.", PANEL2],
-  ["Why it matters to us", "Entitlement is where hyperscalers now lose time. Facades, screens and fences a community accepts are a schedule argument, not decoration. Power, water and rates are outside our scope, and we say so.", PANEL],
+  ["75 projects, about $130 billion, blocked or delayed in one quarter", "January to March 2026: as much as in all of 2025. 833 active opposition groups in 49 states, more than double the count at the end of 2025."],
+  ["What new local rules ask for", "Henry County, Virginia, August 2026: rezoning plus a special-use permit, 1,000 ft setbacks, a 50 dBA noise limit. Virginia's 500 ft setback is becoming the reference. Calvert County, Maryland: use standards for setbacks, design and noise, with buffering and staggered generator testing named as mitigation."],
 ];
-scale.forEach(([head, sub, col], i) => {
-  const x = 8.0, y = 2.4 + i * 1.38, cw = 4.75;
-  panel(s, x, y, cw, 1.26, col);
-  s.addText(head, { x: x + 0.22, y: y + 0.12, w: cw - 0.44, h: 0.42, fontFace: SANS, fontSize: 11, bold: true, color: CREAM, margin: 0 });
-  body(s, sub, x + 0.22, y + 0.56, cw - 0.44, 0.66, 8.5, DIM);
+scale.forEach(([head, sub], i) => {
+  const x = 8.0, y = 2.4 + i * 2.05, cw = 4.75;
+  panel(s, x, y, cw, 1.9, PANEL2);
+  s.addText(head, { x: x + 0.22, y: y + 0.14, w: cw - 0.44, h: 0.45, fontFace: SANS, fontSize: 11.5, bold: true, color: CREAM, margin: 0 });
+  body(s, sub, x + 0.22, y + 0.62, cw - 0.44, 1.2, 9.5, DIM);
 });
-note(s, "Data Center Watch, Q1 2026 report (June 2026): 75 projects, ~$130B, 833 groups, 49 states, 14 states with moratorium bills. Reuters/Ipsos 2026 survey (77% worry about electricity bills) as cited by Brookings, Aug 2026. ITIF and Public First survey, Aug 2026 (26% support, 46% oppose; last of ten development types). Setbacks and noise limits: Virginia HB 153 (500 ft); Henry County, VA ordinance, Aug 2026 (1,000 ft, 50 dBA, closed-loop cooling); Virginia DEQ generator rule, Jul 2026. Issue list is general reporting, not a ranked survey.", 6.62, 0.45);
+note(s, "Data Center Watch, Q1 2026 report (June 2026): 75 projects, ~$130B, 833 groups, 49 states. Ordinances: Virginia HB 153 (500 ft); Henry County, VA, Aug 2026 (1,000 ft, 50 dBA, closed-loop cooling); Calvert County, MD zoning ordinance and moratorium, Aug 2026. Issue descriptions are general reporting, not a ranked survey; electricity rates and water are the other leading objections and are not addressed by SUPERWOOD.", 6.62, 0.45);
 
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");

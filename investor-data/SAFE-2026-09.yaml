@@ -2438,8 +2438,8 @@ facts:
     source: ITIF and Public First survey as reported by Route Fifty, Sep 2026, https://www.route-fifty.com/artificial-intelligence/2026/09/data-centers-are-americans-least-favored-development-poll-finds/415751/ ; Reuters/Ipsos 2026 as cited by Brookings, 25 Aug 2026, https://www.brookings.edu/articles/why-data-centers-are-a-top-issue-in-the-2026-midterms/
     as_of: 2026-09-05
     status: canonical
-    printed_in: [superwood-datacenter-investor]
-    notes: "Secondary citations; sample sizes not captured. Gallup 2026 (>70% oppose nearby) and Annenberg (61% oppose) exist but were not verified at source."
+    printed_in: []
+    notes: "Not printed after 2026-09-05 (pushback slide narrowed to aesthetics and noise). Secondary citations; sample sizes not captured. Gallup 2026 (>70% oppose nearby) and Annenberg (61% oppose) exist but were not verified at source."
 
   - id: datacenter.local_ordinance_examples_2026
     value: "500 ft setback (VA HB 153); 1,000 ft, 50 dBA, closed-loop cooling (Henry County VA, Aug 2026); Tier 4 generators (VA DEQ, Jul 2026)"
