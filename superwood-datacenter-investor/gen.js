@@ -409,7 +409,7 @@ const accounts = [
   ["Microsoft", 2, "Facades, biophilic interiors, staff and security fencing under discussion; roof-truss and enclosure work with their architecture and engineering firms; interest in SUPERWOOD in the basis of design", "First skin project on one building or yard"],
   ["Meta", 2, "Engaged for over a year across the data-center ecosystem; facade applications and backplanes under way; structural applications and racking to follow", "Backplane listing; first facade project"],
   ["Google", 1, "Engagement just begun; initial focus on replacement of structural steel", "Scope with their design teams"],
-  ["Vertiv · Wooden Data Center", 0, "Equipment and modular data-center builders exploring SUPERWOOD components", "Identify first applications"],
+  ["Vertiv", 0, "Data center equipment builder exploring SUPERWOOD components", "Identify first applications"],
   ["Data center operators", 0, "Operators focused on security fencing around outdoor infrastructure", "Fence specification and quote"],
 ];
 accounts.forEach(([name, stage, what, next], r) => {
@@ -425,10 +425,20 @@ accounts.forEach(([name, stage, what, next], r) => {
 });
 s.addText("WHAT THEY ARE DOING WITH US", { x: gx + gw + 0.3, y: 1.85, w: 3.35, h: 0.55, fontFace: SANS, fontSize: 6.5, bold: true, color: BRIGHT, charSpacing: 0.5, margin: 0, valign: "bottom" });
 panel(s, L, 6.35, CW, 0.58, PANEL2);
-s.addText([
-  t("ENGINEERING AND CONSTRUCTION PARTNERS  ", { bold: true, color: BRIGHT, fontSize: 8.5, charSpacing: 1.5 }),
-  t("Fast + Epp has run over a thousand small-scale experiments on SUPERWOOD, funded by the Canadian government · Timber Engineering (structural engineering) · HITT and Turner, contractors, are advocates — they build, they do not specify", { color: CREAM, fontSize: 9.5 }),
-], { x: L + 0.3, y: 6.35, w: CW - 0.6, h: 0.58, fontFace: SANS, margin: 0, valign: "middle" });
+s.addText("ENGINEERING AND CONSTRUCTION COLLABORATORS", { x: L + 0.3, y: 6.35, w: 2.6, h: 0.58, fontFace: SANS, fontSize: 8, bold: true, color: BRIGHT, charSpacing: 1.5, margin: 0, valign: "middle" });
+// logos (cream renders of the firms' marks) with a one-line descriptor; Timber Engineering has no mark on file, so name in type
+const collab = [
+  ["prep/logo_fastepp.png", 1600 / 328, null, "Structural engineers, Vancouver"],
+  [null, 0, "Timber Engineering", "Structural engineering"],
+  ["prep/logo_hitt.png", 354 / 90, null, "General contractor"],
+  ["prep/logo_turner.png", 1600 / 469, null, "General contractor"],
+];
+collab.forEach(([logo, ar, name, desc], i) => {
+  const x = 3.4 + i * 2.35, lh = 0.19;
+  if (logo) s.addImage({ path: logo, x, y: 6.44, w: lh * ar, h: lh });
+  else s.addText(name, { x, y: 6.4, w: 2.2, h: 0.27, fontFace: SANS, fontSize: 10, bold: true, color: CREAM, margin: 0, valign: "middle" });
+  s.addText(desc, { x, y: 6.67, w: 2.2, h: 0.22, fontFace: SANS, fontSize: 7.5, color: MUTED, margin: 0, valign: "top" });
+});
 note(s, "Next steps undated. Published backup for Microsoft and Meta on the next slide.", 6.97, 0.3);
 
 // ---------- 16 · MICROSOFT AND META, ON THE RECORD AND WITH US ----------
