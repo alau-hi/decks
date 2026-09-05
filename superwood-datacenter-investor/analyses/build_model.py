@@ -250,11 +250,12 @@ header(SS,1,["Above-ground component (contents included)","Low tons","High tons"
 fr={"Structural steel — primary":(1,1,"steel by definition"),"Structural steel — roof":(1,1,"steel by definition"),"Exterior skins":(0.85,0.95,"steel-faced IMP; some aluminum"),
 "Louvers":(0.4,0.7,"aluminum common"),"Security":(0.9,1,"chain-link, palisade, posts"),"Platforms":(0.95,1,"structural and misc. steel"),"Acoustic":(0.7,0.9,"steel panels with absorptive fill"),
 "Racking":(0.95,1,"steel"),"Other tray":(0.85,0.95,"mostly steel, some aluminum"),"Ducting":(0.95,1,"galvanized steel"),"Interior finishes":(0.2,0.4,"gypsum, wood, steel studs"),
-"Electrical":(0.5,0.65,"enclosures, cores, gensets, switchgear; rest copper, oil, batteries"),"Mechanical":(0.45,0.65,"chillers, piping steel; water, copper, refrigerant not"),"IT":(0.4,0.6,"steel chassis and racks; aluminum, PCBs, copper")}
+"Electrical":(0.5,0.65,"enclosures, cores, gensets, switchgear; rest copper, oil, batteries"),"Mechanical":(0.45,0.65,"chillers, piping steel; water, copper, refrigerant not"),"IT":(0.4,0.6,"steel chassis and racks; aluminum, PCBs, copper"),
+"Precast":(0.03,0.05,"rebar in precast/tilt-up panels; row is zero unless Inputs walls_precast = 1")}
 rr=2; ss_rows=[]
 for x in data_rows:
     nm=M.cell(row=x,column=1).value
-    if nm.startswith("Concrete") or nm.startswith("Precast") or nm.startswith("Rebar"): continue
+    if nm.startswith("Concrete") or nm.startswith("Rebar"): continue
     key=[k for k in fr if nm.startswith(k)]
     if not key: continue
     lo_f,hi_f,basis=fr[key[0]]
@@ -274,10 +275,26 @@ SS.cell(row=rr,column=2,value=f"=(B{ss_steel}+'{SHEET}'!B{rebar_row})/(B{ss_tot}
 for col in (2,3): SS.cell(row=rr,column=col).number_format="0%"
 rr+=1
 SS.cell(row=rr,column=1,value="Structure and envelope only (first five rows)").font=Font(bold=True)
-SS.cell(row=rr,column=2,value=f"=SUM(F{f1}:F{f1+4})/SUM(B{f1}:B{f1+4})"); SS.cell(row=rr,column=3,value=f"=SUM(G{f1}:G{f1+4})/SUM(C{f1}:C{f1+4})"); ss_se=rr
+SS.cell(row=rr,column=2,value=f"=SUM(F{f1}:F{f1+5})/SUM(B{f1}:B{f1+5})"); SS.cell(row=rr,column=3,value=f"=SUM(G{f1}:G{f1+5})/SUM(C{f1}:C{f1+5})"); ss_se=rr
 for col in (2,3): SS.cell(row=rr,column=col).number_format="0%"
 rr+=2
-SS.cell(row=rr,column=1,value="Excludes slab on grade, paving, foundations and all concrete. Steel fractions per component are estimates [conf: L] (yellow cells). Printed band on the deck: 50–80% (Alex, 2026-09-04). Precast/tilt-up walls would add above-ground concrete and lower the share sharply.")
+SS.cell(row=rr,column=1,value="WALL SYSTEM CASES (independent of the Inputs toggle)").font=tot; SS.cell(row=rr,column=1).fill=sect; rr+=1
+pre_row=[x for x in ss_rows if SS.cell(row=x,column=1).value.startswith("Precast")][0]; skin_row=[x for x in ss_rows if SS.cell(row=x,column=1).value.startswith("Exterior")][0]
+# forced precast mass and metal-skin mass, regardless of the flag
+SS.cell(row=rr,column=1,value="Tilt-up / precast wall mass if chosen (tons)"); SS.cell(row=rr,column=2,value=f"=Derived!B4*{ref('precast_thk_m','B')}*{ref('concrete_t_m3','B')}").fill=calc; SS.cell(row=rr,column=3,value=f"=Derived!C4*{ref('precast_thk_m','C')}*{ref('concrete_t_m3','C')}").fill=calc; ss_pre=rr; rr+=1
+SS.cell(row=rr,column=1,value="Metal-panel skin mass if chosen (tons)"); SS.cell(row=rr,column=2,value=f"=Derived!B4*{ref('panel_kg_m2','B')}/1000").fill=calc; SS.cell(row=rr,column=3,value=f"=Derived!C4*{ref('panel_kg_m2','C')}/1000").fill=calc; ss_skin=rr; rr+=1
+# metal-panel case: total and steel with the skin row forced in and precast forced out
+SS.cell(row=rr,column=1,value="Steel share — metal-panel walls").font=Font(bold=True)
+for c,col in (("B",2),("C",3)):
+    tot_=f"({c}{ss_tot}-{c}{pre_row}-{c}{skin_row}+{c}{ss_skin})"; st_=f"({c}{ss_steel}-F{pre_row}-F{skin_row}+{c}{ss_skin}*{ 'D' if c=='B' else 'E'}{skin_row})".replace("F{pre_row}",f"{'F' if c=='B' else 'G'}{pre_row}").replace("F{skin_row}",f"{'F' if c=='B' else 'G'}{skin_row}")
+    SS.cell(row=rr,column=col,value=f"={st_}/{tot_}").number_format="0%"
+ss_mp=rr; rr+=1
+SS.cell(row=rr,column=1,value="Steel share — tilt-up / precast concrete walls").font=Font(bold=True)
+for c,col in (("B",2),("C",3)):
+    tot_=f"({c}{ss_tot}-{c}{pre_row}-{c}{skin_row}+{c}{ss_pre})"; st_=f"({c}{ss_steel}-{'F' if c=='B' else 'G'}{pre_row}-{'F' if c=='B' else 'G'}{skin_row}+{c}{ss_pre}*{'D' if c=='B' else 'E'}{pre_row})"
+    SS.cell(row=rr,column=col,value=f"={st_}/{tot_}").number_format="0%"
+ss_tu=rr; rr+=2
+SS.cell(row=rr,column=1,value="Excludes slab on grade, paving and foundations. The wall system matters: the main block follows Inputs walls_precast (0 = metal panel, 1 = tilt-up/precast); the two case rows above force each wall system regardless of the toggle. Steel fractions per component are estimates [conf: L] (yellow cells). Printed band on the deck: 50–80% (Alex, 2026-09-04), covering both wall systems.")
 for col in (2,3,6,7): SS.cell(row=ss_tot,column=col).number_format="#,##0"; SS.cell(row=ss_steel,column=col).number_format="#,##0"
 widths(SS,[58,14,14,16,16,14,14,64]); SS.freeze_panes="B2"
 
@@ -294,4 +311,4 @@ txt=["SUPERWOOD × Data Centers — material mass, embodied carbon and replaceme
 for i,s in enumerate(txt,1): Rd.cell(row=i,column=1,value=s)
 Rd.column_dimensions["A"].width=150
 wb.save("materials-mass-and-replacement.xlsx"); print("saved; data rows",first,last,"summary ends",r)
-import json; json.dump({"sheet":SHEET,"first":first,"last":last,"rt":rt,"rx":rx,"hor":hor_rows,"rc":rc,"rsw":rsw,"rsy":rsy,"rsh":rsh,"rshx":rshx,"rnr":rnr,"rnrs":rnrs,"data_rows":data_rows,"precast":precast_row,"rcb":rcb,"rcs":rcs,"rcc":rcc,"rcss":rcss,"rccs":rccs,"rcas":rcas,"rceaf":rceaf,"ss_rows":ss_rows,"ss_tot":ss_tot,"ss_steel":ss_steel,"ss_share":ss_share,"ss_share_rebar":ss_share_rebar,"ss_se":ss_se},open("model_rows.json","w"))
+import json; json.dump({"sheet":SHEET,"first":first,"last":last,"rt":rt,"rx":rx,"hor":hor_rows,"rc":rc,"rsw":rsw,"rsy":rsy,"rsh":rsh,"rshx":rshx,"rnr":rnr,"rnrs":rnrs,"data_rows":data_rows,"precast":precast_row,"rcb":rcb,"rcs":rcs,"rcc":rcc,"rcss":rcss,"rccs":rccs,"rcas":rcas,"rceaf":rceaf,"ss_rows":ss_rows,"ss_tot":ss_tot,"ss_steel":ss_steel,"ss_share":ss_share,"ss_share_rebar":ss_share_rebar,"ss_se":ss_se,"ss_mp":ss_mp,"ss_tu":ss_tu,"ss_pre":ss_pre},open("model_rows.json","w"))

@@ -2481,7 +2481,7 @@ facts:
     notes: Derivation kept in reviews/FRESH-LOOK-2026-09-04.md for reference; do not reintroduce without a price basis decision.
 
   - id: datacenter.steel_share_above_ground_estimate
-    value: "50-80% (printed band, Alex 2026-09-04); independent estimate 66-80%, ~60-65% if equipment steel fractions are 40%"
+    value: "50-80% (printed band, Alex 2026-09-04); model 69-79% with metal-panel walls, 56-66% with tilt-up/precast walls; ~60-65% if equipment steel fractions are 40%"
     unit: share of above-ground mass incl. contents, metal-panel-wall case
     statement: Roughly three-quarters of a data center's above-ground material, including all contents, is steel - independent estimate; the "~60%" ex-concrete figure is conservative
     basis: estimated

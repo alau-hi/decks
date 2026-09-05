@@ -36,7 +36,7 @@ CB={k:(ev(S,f"B{meta[k]}"),ev(S,f"C{meta[k]}")) for k in ("rcb","rcs","rcc","rcs
 comp_carb=[dict(name=M.cell(row=r,column=1).value,kind=M.cell(row=r,column=28).value,fac=ev(S,f"X{r}"),lo=ev(S,f"Y{r}"),hi=ev(S,f"Z{r}")) for r in meta["data_rows"] if M.cell(row=r,column=2).value is not None]
 SSH=wb["Steel share"]
 ss=[dict(name=SSH.cell(row=r,column=1).value,lo=ev("Steel share",f"B{r}"),hi=ev("Steel share",f"C{r}"),flo=SSH.cell(row=r,column=4).value,fhi=SSH.cell(row=r,column=5).value,slo=ev("Steel share",f"F{r}"),shi=ev("Steel share",f"G{r}"),basis=SSH.cell(row=r,column=8).value) for r in meta["ss_rows"]]
-SST={k:(ev("Steel share",f"B{meta[k]}"),ev("Steel share",f"C{meta[k]}")) for k in ("ss_tot","ss_steel","ss_share","ss_share_rebar","ss_se")}
+SST={k:(ev("Steel share",f"B{meta[k]}"),ev("Steel share",f"C{meta[k]}")) for k in ("ss_tot","ss_steel","ss_share","ss_share_rebar","ss_se","ss_mp","ss_tu","ss_pre")}
 print("CARBON",[[ (round(x) if isinstance(x,(int,float)) else x) for x in c] for c in carb])
 
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
@@ -239,13 +239,16 @@ are estimates [conf: L] and editable in the workbook. Printed band on the deck: 
 
 | Share | Low | High |
 |---|---|---|
-| Steel share of above-ground mass | {SST['ss_share'][0]:.0%} | {SST['ss_share'][1]:.0%} |
+| Steel share of above-ground mass (wall system per Inputs toggle) | {SST['ss_share'][0]:.0%} | {SST['ss_share'][1]:.0%} |
+| — with metal-panel / IMP walls | {SST['ss_mp'][0]:.0%} | {SST['ss_mp'][1]:.0%} |
+| — with tilt-up / precast concrete walls ({kr(*SST['ss_pre'])} of panel) | {SST['ss_tu'][0]:.0%} | {SST['ss_tu'][1]:.0%} |
 | Including slab rebar (at-grade steel) | {SST['ss_share_rebar'][0]:.0%} | {SST['ss_share_rebar'][1]:.0%} |
 | Structure and envelope only | {SST['ss_se'][0]:.0%} | {SST['ss_se'][1]:.0%} |
 
 Equipment is 55–60% of above-ground mass, so the answer turns on how much of a genset, switchgear lineup, chiller and
-server rack is steel; at 40% for all equipment the share falls to about 60–65%. Precast or tilt-up perimeter walls would
-add above-ground concrete and lower the share sharply. Narrative: [steel-share-above-ground.md](steel-share-above-ground.md).
+server rack is steel; at 40% for all equipment the share falls to about 60–65%. The wall system is the other lever:
+tilt-up or precast concrete walls add tens of thousands of tons of above-ground concrete and pull the share down by
+about ten points, which is why the deck prints a 50–80% band rather than a point. Narrative: [steel-share-above-ground.md](steel-share-above-ground.md).
 
 ## 6. Sensitivities — what moves the answer most
 

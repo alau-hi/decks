@@ -172,7 +172,7 @@ const sizeR = [["By embodied carbon, steel is about 60% of the building material
   s.addText(head, { x, y, w: 5.9, h: 0.32, fontFace: SANS, fontSize: 13, bold: true, color: CREAM, margin: 0 });
   body(s, sub, x, y + 0.34, 5.9, 0.62, 10, DIM);
 }));
-note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, secondary, conf M); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate. Model: analyses/materials-mass-and-replacement.xlsx.", 6.78, 0.3);
+note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, secondary, conf M); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Model: analyses/materials-mass-and-replacement.xlsx.", 6.78, 0.3);
 
 // ---------- 6 · WHAT ONE GIGAWATT IS WORTH ----------
 s = pres.addSlide(); base(s, "InventWood · The size");

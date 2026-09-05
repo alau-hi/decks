@@ -201,6 +201,7 @@ are estimates [conf: L] and editable in the workbook. Printed band on the deck: 
 
 | Component | Mass, low–high | Steel fraction | Steel, low–high | Basis |
 |---|---|---|---|---|
+| Precast / tilt-up perimeter walls (precast case) | — | 3%–5% | — | rebar in precast/tilt-up panels; row is zero unless Inputs walls_precast = 1 |
 | Structural steel — primary frame (columns, girders) | 30,000–40,000 tons | 100%–100% | 30,000–40,000 tons | steel by definition |
 | Structural steel — roof trusses, joists, roof deck, girts | 20,000–60,000 tons | 100%–100% | 20,000–60,000 tons | steel by definition |
 | Exterior skins — metal panel / IMP (metal-panel case) | 1,858–7,432 tons | 85%–95% | 1,579–7,061 tons | steel-faced IMP; some aluminum |
@@ -219,13 +220,16 @@ are estimates [conf: L] and editable in the workbook. Printed band on the deck: 
 
 | Share | Low | High |
 |---|---|---|
-| Steel share of above-ground mass | 69% | 78% |
+| Steel share of above-ground mass (wall system per Inputs toggle) | 69% | 78% |
+| — with metal-panel / IMP walls | 69% | 79% |
+| — with tilt-up / precast concrete walls (35,675–71,350 tons of panel) | 56% | 66% |
 | Including slab rebar (at-grade steel) | 74% | 82% |
 | Structure and envelope only | 99% | 99% |
 
 Equipment is 55–60% of above-ground mass, so the answer turns on how much of a genset, switchgear lineup, chiller and
-server rack is steel; at 40% for all equipment the share falls to about 60–65%. Precast or tilt-up perimeter walls would
-add above-ground concrete and lower the share sharply. Narrative: [steel-share-above-ground.md](steel-share-above-ground.md).
+server rack is steel; at 40% for all equipment the share falls to about 60–65%. The wall system is the other lever:
+tilt-up or precast concrete walls add tens of thousands of tons of above-ground concrete and pull the share down by
+about ten points, which is why the deck prints a 50–80% band rather than a point. Narrative: [steel-share-above-ground.md](steel-share-above-ground.md).
 
 ## 6. Sensitivities — what moves the answer most
 

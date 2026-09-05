@@ -49,9 +49,9 @@ the framing the July review called wrong.
 
 ## Sensitivities, in order
 
-1. **Perimeter walls.** With precast or tilt-up concrete walls instead of metal panel, above-ground concrete enters
-   the denominator (hundreds of kt per GW) and the steel share falls well below this band. Confirm which wall
-   system the customers' standard designs use.
+1. **Perimeter walls.** With tilt-up or precast concrete walls instead of metal panel, 36,000–71,000 tons of panel
+   enter the denominator and the steel share falls to about 56–66% (workbook, *Steel share* sheet, wall-system cases).
+   Confirm which wall system the customers' standard designs use.
 2. **Equipment steel fractions** (above).
 3. **Structural steel intensity**, 50–100 t/MW (published, secondary): a factor of two, but it moves numerator and
    denominator together, so the share is less sensitive to it than the absolute tonnage is.
