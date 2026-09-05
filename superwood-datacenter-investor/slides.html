@@ -187,10 +187,10 @@ table.worth{width:100%;margin-top:.6rem}table.worth th{font-size:max(.75rem,11px
 .ladder .track i::after{content:"";position:absolute;left:0;top:0;height:3px;border-radius:2px;background:var(--wood);width:calc((var(--pos) + .5) / 6 * 100%)}
 .ladder .track b{position:absolute;top:.5rem;width:.9rem;height:.9rem;border-radius:50%;background:var(--gold);transform:translate(-50%,-38%);left:calc((var(--pos) + .5) / 6 * 100%)}
 .ladder .track em{position:absolute;left:0;top:1.15rem;font-size:max(.72rem,11px);color:var(--cream-dim);white-space:nowrap}
-.bars .bar{display:grid;grid-template-columns:1fr;margin-bottom:.9rem}
-.bars .bar span{font-size:max(.78rem,11px);color:var(--cream);margin-bottom:.35rem}
+.bars .bar{display:block;margin-bottom:.9rem}
+.bars .bar span{display:block;font-size:max(.78rem,11px);color:var(--cream);margin-bottom:.35rem}
 .bars .tr{position:relative;height:.95rem;background:#3a2b1a;border-radius:.2rem;overflow:hidden;width:78%;display:inline-block;vertical-align:middle}
-.bars .tr i{display:block;height:100%;border-radius:.2rem}.bars.carbon .tr{overflow:visible}
+.bars .tr i{display:block;height:100%;border-radius:.2rem}.bars.carbon .tr{overflow:visible;width:72%}.bars.carbon .bar b{font-size:.95rem;white-space:nowrap}
 .bars .bar b{display:inline-block;font-family:'Fraunces',serif;font-size:1.05rem;color:var(--cream);margin-left:.6rem;vertical-align:middle}
 table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
 #close .wm{height:2.4rem;margin:1.6rem 0 1rem}
