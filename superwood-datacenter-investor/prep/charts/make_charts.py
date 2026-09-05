@@ -34,17 +34,14 @@ def campus(values, out, xlabel, log, narrow, unit):
         if v is None:
             a.barh(i,(0.9 if log else 60),color=INK,edgecolor=NR,hatch="///",height=0.66,lw=0.8)
             a.text((1.05 if log else 65),i,"not estimated" if narrow else "not estimated — equipment embodied carbon is outside a materials estimate",va="center",fontsize=7.5 if narrow else 8.5,color=MUTED); continue
-        a.barh(i,v*r[2],color=col.get(r[3],NR),height=0.66); a.barh(i,v*(1-r[2]),left=v*r[2],color=NR,height=0.66)
-        txt=f"{v*1000:,.0f} {unit}" if narrow else f"{v*1000:,.0f} {unit}"+(f"  ·  {r[2]:.0%} {lab[r[3]]}" if r[2] else "")
+        a.barh(i,v,color=WOOD,height=0.66)  # component stack, one color; replacement is the next slide's story (Alex 2026-09-05)
+        txt=f"{v*1000:,.0f} {unit}"
         a.text(v*1.12 if log else v+4,i,txt,va="center",fontsize=7.5 if narrow else 10,color=DIM)
     a.set_yticks(range(len(rows))); a.set_yticklabels([r[0] for r in rows],fontsize=fs,color=CREAM); a.invert_yaxis()
     if log: a.set_xscale("log"); a.set_xlim(0.5,(9000 if narrow else 40000))
     else: a.set_xlim(0,(260 if narrow else 300))
     a.set_xlabel(xlabel,color=MUTED,fontsize=8 if narrow else 10); a.grid(axis="x",color=NR,lw=0.8); a.set_axisbelow(True)
-    if not narrow:
-        fig.legend(handles=LEG,loc="lower center",ncol=3,fontsize=9.5,facecolor=INK,edgecolor=INK,bbox_to_anchor=(0.5,-0.01),labelcolor=DIM)
-        plt.tight_layout(rect=(0,0.1,1,1))
-    else: plt.tight_layout()
+    plt.tight_layout()
     fig.savefig(out,dpi=170,facecolor=INK); plt.close(fig)
 mass=[r[1] for r in rows]; carbv=[c if k else None for c,k in zip(carb,kind)]
 campus(mass,"prep/charts/campus_mass.png","'000s of tons per 1 GW data center, high case — log scale",True,False,"tons")
