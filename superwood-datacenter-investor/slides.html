@@ -173,7 +173,7 @@ td:first-child{color:var(--cream);font-weight:600}
 .thesis .card{padding:1.2rem 1.2rem 1.3rem}.thesis .card .num{font-size:1.7rem;display:block;margin-bottom:.7rem}.thesis .card h3{font-size:.98rem;min-height:2.6em}.thesis .card p{font-size:max(.8rem,11px);line-height:1.5}
 .pub .src{display:block;font-size:max(.7rem,11px);font-style:italic;color:var(--muted);margin-top:.5rem}
 table.cmp td{font-size:clamp(.82rem,1vw,.95rem);line-height:1.45;padding:.6rem .6rem .6rem 0}table.cmp td:first-child{width:7rem;font-size:clamp(.9rem,1.05vw,1rem)}table.cmp td:nth-child(2){color:var(--muted);width:32%}table.cmp th{font-size:clamp(1rem,1.25vw,1.2rem);font-weight:700;color:var(--cream);vertical-align:bottom;padding-bottom:.6rem}table.cmp th span{display:block;margin-bottom:.45rem}table.cmp .thimgs{display:flex;gap:.4rem;max-width:14rem}table.cmp .thimgs img{flex:1 1 0;min-width:0;height:2.6rem;object-fit:cover;border-radius:.3rem}
-table.worth th{font-size:max(.7rem,11px)}table.worth td{font-size:clamp(.9rem,1.05vw,1rem);padding:.75rem .6rem .75rem 0;line-height:1.4}table.worth td.gold{color:var(--gold);font-weight:600}
+table.worth{width:100%;margin-top:.6rem}table.worth th{font-size:max(.75rem,11px)}table.worth td{font-size:clamp(1rem,1.25vw,1.2rem);padding:.9rem .8rem .9rem 0;line-height:1.4}table.worth td:first-child{color:var(--cream)}table.worth td.gold{color:var(--gold);font-weight:600}
 .ladder{margin-top:.6rem}
 .ladder .lhead,.ladder .lrow{display:grid;grid-template-columns:11rem 1fr 15rem;gap:1.2rem;align-items:start}
 .ladder .lhead{padding-bottom:.3rem}.ladder .stages{display:grid;grid-template-columns:repeat(6,1fr)}
@@ -409,26 +409,19 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
 <section id="worth" data-nav="Worth">
   <div class="wrap">
     <div class="kicker rv">The size</div>
-    <h2 class="rv">How much SUPERWOOD could a 1 GW data center require?</h2>
-    <div class="split rv worthsplit" style="grid-template-columns:1.35fr 1fr;align-items:start">
-      <table class="worth">
-        <thead><tr><th>Horizon</th><th>Incumbent replaced</th><th>SUPERWOOD required</th><th>Plant-years</th></tr></thead>
-        <tbody>
-          <tr><td data-h="Horizon">Immediate — skins, screens, fences</td><td data-h="Incumbent replaced">3,300–12,000 tons</td><td data-h="SUPERWOOD required">1,200–2,700 tons (1.4–3.1M sf)</td><td class="gold" data-h="Plant-years">1.4–3.1 yr of SuperMill One</td></tr>
-          <tr><td data-h="Horizon">Soon — racks, platforms, barriers</td><td data-h="Incumbent replaced">12,000–30,000 tons</td><td data-h="SUPERWOOD required">3,500–18,000 tons</td><td class="gold" data-h="Plant-years">0.1–0.6 yr of SuperMill Two</td></tr>
-          <tr><td data-h="Horizon">Medium term — frame, roofs, enclosures</td><td data-h="Incumbent replaced">53,000–108,000 tons</td><td data-h="SUPERWOOD required">16,000–65,000 tons</td><td class="gold" data-h="Plant-years">0.5–2.1 yr of SuperMill Two</td></tr>
-          <tr><td data-h="Horizon">Long term — slab, foundations, server boxes</td><td data-h="Incumbent replaced">1,002,000–2,089,000 tons</td><td data-h="SUPERWOOD required">58,000–362,000 tons</td><td class="gold" data-h="Plant-years">1.8–12 yr of SuperMill Two</td></tr>
-        </tbody>
-      </table>
-      <div class="chartcol"><div class="hbars worth">
-<div class="hb"><span class="hl">Immediate — skins, screens, fences</span><div class="tr"><i class="rg" style="left:5.4%;width:10.7%;background:var(--gold)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">1,200–2,700 tons</span></div>
-<div class="hb"><span class="hl">Soon — racks, platforms, barriers</span><div class="tr"><i class="rg" style="left:19.6%;width:21.7%;background:var(--green)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">3,500–18,000 tons</span></div>
-<div class="hb"><span class="hl">Medium term — frame, roofs, enclosures</span><div class="tr"><i class="rg" style="left:39.8%;width:18.6%;background:var(--wood)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">16,000–65,000 tons</span></div>
-<div class="hb"><span class="hl">Long term — slab, foundations, server boxes</span><div class="tr"><i class="rg" style="left:56.8%;width:24.3%;background:var(--teal)"></i><i class="mk" style="left:1.6%"></i><i class="mk" style="left:48.5%"></i></div><span class="hv">58,000–362,000 tons</span></div>
-<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:3.0%">1</span><span style="left:33.5%">10</span><span style="left:64.1%">100</span><span style="left:94.6%">1,000</span></div><span class="hv">'000s of tons per GW, log scale</span></div></div><div class="hleg mills"><span><i class="mkleg"></i>SuperMill One ≈ 900 tons/yr</span><span><i class="mkleg"></i>SuperMill Two ≈ 31,000 tons/yr</span></div></div>
-    </div>
-    <div class="card rv" style="margin-top:1rem"><p style="font-size:.86rem;color:var(--cream-dim)"><b style="color:var(--gold)">Two or three gigawatts of data center would take all of SuperMill Two's output for years.</b> A basis-of-design win with one hyperscaler is the demand case for the second mill. It is also the capacity constraint.</p></div>
-    <p class="note rv">Quantities: company estimate (slide 5 model; low–high scenarios). Incumbent replaced is steel except the long-term row (concrete, rebar, and server enclosures at 40% of IT mass — estimate; electronics excluded). SUPERWOOD required uses a 0.3–0.6 substitution factor for steel (estimate, to be engineering-stamped per element). Plant output: SuperMill One ≈ 900 tons/yr (1M sf), SuperMill Two ≈ 31,000 tons/yr (36M sf) at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application; see the SUPERMILLS Investor Overview for the cost roadmap.</p>
+    <h2 class="rv">Just one data center can consume the <em>entire output</em> of a SUPERMILL</h2>
+    <p class="lead rv">SUPERWOOD a 1 GW data center could require, by horizon, against what each mill makes in a year.</p>
+    <table class="worth rv">
+      <thead><tr><th>Horizon</th><th>SUPERWOOD required</th><th>Years of mill output</th></tr></thead>
+      <tbody>
+        <tr><td data-h="Horizon">Immediate — skins, screens, fences</td><td data-h="SUPERWOOD required">1,200–2,700 tons (1.4–3.1M sf)</td><td class="gold" data-h="Years of mill output">1.4–3.1 years of SuperMill One</td></tr>
+        <tr><td data-h="Horizon">Soon — racks, platforms, barriers</td><td data-h="SUPERWOOD required">3,500–18,000 tons</td><td class="gold" data-h="Years of mill output">0.1–0.6 years of SuperMill Two</td></tr>
+        <tr><td data-h="Horizon">Medium term — frame, roofs, enclosures</td><td data-h="SUPERWOOD required">16,000–65,000 tons</td><td class="gold" data-h="Years of mill output">0.5–2.1 years of SuperMill Two</td></tr>
+        <tr><td data-h="Horizon">Long term — slab, foundations, server boxes</td><td data-h="SUPERWOOD required">58,000–362,000 tons</td><td class="gold" data-h="Years of mill output">1.8–12 years of SuperMill Two</td></tr>
+      </tbody>
+    </table>
+    <div class="hleg mills rv"><span><i class="mkleg"></i>SuperMill One ≈ 900 tons a year (1M sf)</span><span><i class="mkleg"></i>SuperMill Two ≈ 31,000 tons a year (36M sf)</span></div>
+    <p class="note rv">Company estimate from the slide 6 model, low–high scenarios; 0.3–0.6 substitution factor for steel, to be engineering-stamped per element; long-term row includes server enclosures at 40% of IT mass, electronics excluded. Mill output at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application; see the SUPERMILLS Investor Overview.</p>
   </div>
 </section>
 

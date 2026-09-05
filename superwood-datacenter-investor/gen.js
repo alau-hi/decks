@@ -214,31 +214,28 @@ const sizeR = [["By embodied carbon, steel is about 60% of the building material
 }));
 note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: immediate = shipping; soon = 1–3 years, straightforward applications engineering; medium term = complex applications engineering, new form factors or materials engineering; long term = technical potential with no design or code pathway yet.", 6.78, 0.3);
 
-// ---------- 6 · WHAT ONE GIGAWATT IS WORTH ----------
+// ---------- 6 · ONE DATA CENTER CAN CONSUME A SUPERMILL ----------
 s = pres.addSlide(); base(s, "InventWood · The size");
 kicker(s, "The size");
-title(s, "How much SUPERWOOD could a 1 GW data center require?", L, 0.88, 11.9, 27);
-s.addImage({ path: "prep/charts/worth.png", x: L, y: 2.15, w: 5.0, h: 5.0 * 4.2 / 8.6 });
-const worthCols = ["Horizon", "Incumbent replaced", "SUPERWOOD required", "Plant-years"];
+title(s, [t("Just one data center can consume the "), gold("entire output"), t(" of a SUPERMILL")], L, 0.88, 11.9, 27);
+body(s, "SUPERWOOD a 1 GW data center could require, by horizon, against what each mill makes in a year.", L, 1.75, 11, 0.35, 12, DIM);
+const worthCols = ["Horizon", "SUPERWOOD required", "Years of mill output"];
 const worthRows = [
-  ["Immediate — skins, screens, fences", "3,300–12,000 tons", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 yr of SuperMill One"],
-  ["Soon — racks, platforms, barriers", "12,000–30,000 tons", "3,500–18,000 tons", "0.1–0.6 yr of SuperMill Two"],
-  ["Medium term — frame, roofs, enclosures", "53,000–108,000 tons", "16,000–65,000 tons", "0.5–2.1 yr of SuperMill Two"],
-  ["Long term — slab, foundations, server boxes", "1,002,000–2,089,000 tons", "58,000–362,000 tons", "1.8–12 yr of SuperMill Two"],
+  ["Immediate — skins, screens, fences", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 years of SuperMill One"],
+  ["Soon — racks, platforms, barriers", "3,500–18,000 tons", "0.1–0.6 years of SuperMill Two"],
+  ["Medium term — frame, roofs, enclosures", "16,000–65,000 tons", "0.5–2.1 years of SuperMill Two"],
+  ["Long term — slab, foundations, server boxes", "58,000–362,000 tons", "1.8–12 years of SuperMill Two"],
 ];
-const wx = [5.9, 8.2, 9.6, 11.0], ww = [2.2, 1.3, 1.3, 1.75];
-worthCols.forEach((c, i) => s.addText(c.toUpperCase(), { x: wx[i], y: 1.9, w: ww[i], h: 0.5, fontFace: SANS, fontSize: 9, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" }));
+const wx = [L, 5.4, 9.0], ww = [4.6, 3.4, 3.7];
+worthCols.forEach((c, i) => s.addText(c.toUpperCase(), { x: wx[i], y: 2.3, w: ww[i], h: 0.4, fontFace: SANS, fontSize: 10, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" }));
 worthRows.forEach((r, ri) => {
-  const y = 2.55 + ri * 0.82;
-  s.addShape(pres.ShapeType.rect, { x: 5.9, y: y - 0.08, w: 6.85, h: 0.012, fill: { color: RULE } });
-  r.forEach((c, ci) => s.addText(c, { x: wx[ci], y, w: ww[ci], h: 0.7, fontFace: SANS, fontSize: ci === 0 ? 12 : 11.5, bold: ci === 0 || ci === 3, color: ci === 0 ? CREAM : (ci === 3 ? GOLD : DIM), margin: 0, valign: "top" }));
+  const y = 2.85 + ri * 0.78;
+  s.addShape(pres.ShapeType.rect, { x: L, y: y - 0.1, w: CW, h: 0.012, fill: { color: RULE } });
+  r.forEach((c, ci) => s.addText(c, { x: wx[ci], y, w: ww[ci], h: 0.6, fontFace: SANS, fontSize: 15, bold: ci !== 1, color: ci === 0 ? CREAM : (ci === 2 ? GOLD : DIM), margin: 0, valign: "middle" }));
 });
-panel(s, L, 5.95, CW, 0.7, PANEL);
-s.addText([
-  t("Two or three gigawatts of data center would take all of SuperMill Two's output for years.  ", { bold: true, color: GOLD }),
-  t("A basis-of-design win with one hyperscaler is the demand case for the second mill. It is also the capacity constraint.", { color: DIM }),
-], { x: L + 0.3, y: 6.0, w: CW - 0.6, h: 0.6, fontFace: SANS, fontSize: 12, margin: 0, valign: "middle" });
-note(s, "Company estimate (slide 5 model; low–high scenarios). Incumbent replaced is steel except the long-term row (concrete, rebar, server enclosures at 40% of IT mass — estimate; electronics excluded). SUPERWOOD required uses a 0.3–0.6 steel substitution factor (estimate). Plant output: SuperMill One ≈ 900 tons/yr (1M sf), SuperMill Two ≈ 31,000 tons/yr (36M sf) at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application.", 6.72, 0.36);
+s.addShape(pres.ShapeType.rect, { x: L, y: 5.87, w: CW, h: 0.012, fill: { color: RULE } });
+s.addText([t("SuperMill One ≈ 900 tons a year (1M sf)", { color: BRIGHT }), t("      ·      ", { color: MUTED }), t("SuperMill Two ≈ 31,000 tons a year (36M sf)", { color: BRIGHT })], { x: L, y: 6.0, w: CW, h: 0.35, fontFace: SANS, fontSize: 11.5, bold: true, margin: 0 });
+note(s, "Company estimate from the slide 6 model, low–high scenarios; 0.3–0.6 substitution factor for steel, to be engineering-stamped per element; long-term row includes server enclosures at 40% of IT mass, electronics excluded. Mill output at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application; see the SUPERMILLS Investor Overview.", 6.62, 0.45);
 
 // ---------- 9 · PROPERTIES ----------
 s = pres.addSlide(); base(s, "InventWood · The fit");
