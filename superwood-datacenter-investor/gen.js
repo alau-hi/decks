@@ -507,35 +507,36 @@ kicker(s, "Carbon");
 title(s, "Embodied carbon: a projection until the LCA is complete", L, 0.88, 11.9, 27);
 // bars on one axis: emissions to the right of zero, storage to the left. Ranges: solid to the low value, faded to the high.
 const bars = [
-  ["Steel — global average (BF-BOF), per kg of steel", 1.8, 1.8, ROSE, "1.8 kg"],
-  ["Steel — recycled (EAF), per kg of steel", 0.4, 0.7, "A0714E", "0.4–0.7 kg"],
-  ["SUPERWOOD — per kg of steel substituted, projected", 0.1, 0.2, GREEN, "0.1–0.2 kg"],
-  ["SUPERWOOD — carbon storage, per kg of SUPERWOOD", -0.5, -1.5, TEAL, "−0.5 to −1.5 kg"],
+  ["Steel — global average (BF-BOF), per kg of steel", 0, 0, 1.8, 1.8, ROSE, "1.8 kg"],
+  ["Steel — recycled (EAF), per kg of steel", 0, 0, 0.4, 0.7, "A0714E", "0.4–0.7 kg"],
+  ["SUPERWOOD — per kg of steel substituted at 3:1 to 4:1, projected: emissions right, carbon storage left", 0.1, 0.5, 0.1, 0.2, GREEN, "+0.1–0.2 · −0.1 to −0.5 kg"],
 ];
 label(s, "kg CO₂e, cradle to gate · emissions right of zero, storage left", L, 1.95, 6.4);
-const bx = L, bw = 5.2, kS = bw / 3.3, zx = bx + 1.5 * kS;
-bars.forEach(([lab, lo, hi, colr, txt], i) => {
-  const y = 2.3 + i * 0.72;
-  s.addText(lab, { x: bx, y, w: 6.4, h: 0.26, fontFace: SANS, fontSize: 10, color: CREAM, margin: 0 });
-  s.addShape(pres.ShapeType.rect, { x: bx, y: y + 0.3, w: bw, h: 0.26, fill: { color: RULE } });
-  const a = Math.min(Math.abs(lo), Math.abs(hi)), b = Math.max(Math.abs(lo), Math.abs(hi)), neg = lo < 0;
-  const x0 = neg ? zx - a * kS : zx, x1 = neg ? zx - b * kS : zx + a * kS;
-  s.addShape(pres.ShapeType.rect, { x: x0, y: y + 0.3, w: a * kS, h: 0.26, fill: { color: colr } });
-  if (b > a) s.addShape(pres.ShapeType.rect, { x: x1, y: y + 0.3, w: (b - a) * kS, h: 0.26, fill: { color: colr, transparency: 55 } });
-  s.addShape(pres.ShapeType.line, { x: zx, y: y + 0.26, w: 0, h: 0.34, line: { color: DIM, width: 0.75 } });
-  s.addText(txt, { x: neg ? bx : zx + b * kS + 0.1, y: y + 0.26, w: neg ? zx - b * kS - bx - 0.1 : 1.4, h: 0.34, fontFace: SERIF, fontSize: 13, bold: true, color: CREAM, margin: 0, valign: "middle", align: neg ? "right" : "left" });
+const bx = L, bw = 4.9, kS = bw / 2.4, zx = bx + 0.6 * kS;
+bars.forEach(([lab, nlo, nhi, plo, phi, colr, txt], i) => {
+  const y = 2.35 + i * 0.95;
+  s.addText(lab, { x: bx, y, w: 6.4, h: 0.3, fontFace: SANS, fontSize: 10, color: CREAM, margin: 0 });
+  s.addShape(pres.ShapeType.rect, { x: bx, y: y + 0.34, w: bw, h: 0.28, fill: { color: RULE } });
+  s.addShape(pres.ShapeType.rect, { x: zx, y: y + 0.34, w: plo * kS, h: 0.28, fill: { color: colr } });
+  if (phi > plo) s.addShape(pres.ShapeType.rect, { x: zx + plo * kS, y: y + 0.34, w: (phi - plo) * kS, h: 0.28, fill: { color: colr, transparency: 55 } });
+  if (nhi > 0) {
+    s.addShape(pres.ShapeType.rect, { x: zx - nlo * kS, y: y + 0.34, w: nlo * kS, h: 0.28, fill: { color: TEAL } });
+    s.addShape(pres.ShapeType.rect, { x: zx - nhi * kS, y: y + 0.34, w: (nhi - nlo) * kS, h: 0.28, fill: { color: TEAL, transparency: 55 } });
+  }
+  s.addShape(pres.ShapeType.line, { x: zx, y: y + 0.3, w: 0, h: 0.36, line: { color: DIM, width: 0.75 } });
+  s.addText(txt, { x: bx + bw + 0.12, y: y + 0.3, w: 1.6, h: 0.36, fontFace: SERIF, fontSize: 11.5, bold: true, color: CREAM, margin: 0, valign: "middle" });
 });
 panel(s, L, 5.25, 6.4, 1.2, PANEL2);
 s.addText([
   t("Biogenic carbon, reported separately.  ", { bold: true, color: GOLD }),
-  t("SUPERWOOD stores 0.5–1.5 kg CO₂e per kg as biogenic carbon. Under EN 15804 it is released again in the end-of-life module, so it nets to zero over the life cycle; the lasting advantage is lower manufacturing emissions.", { color: DIM }),
+  t("SUPERWOOD stores 0.5–1.5 kg CO₂e per kg of SUPERWOOD as biogenic carbon, 0.1–0.5 kg per kg of steel it substitutes. Under EN 15804 it is released again in the end-of-life module, so it nets to zero over the life cycle; the lasting advantage is lower manufacturing emissions.", { color: DIM }),
 ], { x: L + 0.25, y: 5.3, w: 5.9, h: 1.1, fontFace: SANS, fontSize: 10, margin: 0, valign: "middle" });
 // right: functional unit
 panel(s, 7.3, 1.95, 5.45, 4.5, PANEL);
 label(s, "Per functional unit — replacing one ton of steel", 7.55, 2.1, 5.0, BRIGHT);
-body(s, "SUPERWOOD needed: 0.3–0.6 tons per ton of steel replaced (substitution factor, estimate — to be engineering-stamped per element).\n\nSUPERWOOD manufacturing emissions: about 0.1–0.2 tons CO₂e per ton of steel substituted.\n\nAgainst average steel (1.8 tons CO₂e): a reduction of 89–94%.\n\nAgainst recycled steel (0.4–0.7 tons CO₂e): a reduction of 50–86%.\n\nCarbon stored in the SUPERWOOD: 0.15–0.9 tons CO₂e per ton of steel replaced, biogenic, reported separately.\n\nAny stated reduction must name its steel baseline and its substitution factor. Both are shown here; neither is yet verified.", 7.55, 2.45, 5.0, 3.1, 9.5, DIM);
+body(s, "SUPERWOOD needed: 0.25–0.33 tons per ton of steel replaced — a 3:1 to 4:1 average replacement value, to be engineering-stamped per element.\n\nSUPERWOOD manufacturing emissions: 0.25–0.33 tons × 0.5 = about 0.1–0.2 tons CO₂e per ton of steel substituted.\n\nAgainst average steel (1.8 tons CO₂e): a reduction of 89–94%.\n\nAgainst recycled steel (0.4–0.7 tons CO₂e): a reduction of 50–86%.\n\nCarbon stored in the SUPERWOOD: 0.25–0.33 tons × 0.5–1.5 = 0.1–0.5 tons CO₂e per ton of steel replaced, biogenic, reported separately.\n\nAny stated reduction must name its steel baseline and its substitution factor. Both are shown here; neither is yet verified.", 7.55, 2.45, 5.0, 3.1, 9.5, DIM);
 s.addText("Pre-LCA projection for a full-scale plant. LCA under way with Prof. Ming Hu, University of Notre Dame.", { x: 7.55, y: 5.6, w: 5.0, h: 0.75, fontFace: SANS, fontSize: 10.5, bold: true, color: CREAM, margin: 0, valign: "top" });
-note(s, "SUPERWOOD 0.1–0.2 kg CO₂e per kg of steel substituted and 0.5–1.5 kg/kg biogenic storage: company projections, pre-LCA. Steel 1.8 kg/kg: global BF-BOF average. EAF 0.4–0.7 kg/kg: typical published range for recycled-scrap steel. Substitution factor 0.3–0.6: company estimate. Reductions are arithmetic on these inputs.", 6.6, 0.45);
+note(s, "SUPERWOOD 0.5 kg CO₂e/kg manufactured and 0.5–1.5 kg/kg biogenic storage: company projections, pre-LCA. Steel 1.8 kg/kg: global BF-BOF average. EAF 0.4–0.7 kg/kg: typical published range for recycled-scrap steel. Replacement value 3:1 to 4:1 (0.25–0.33 kg SUPERWOOD per kg steel): company assumption. Reductions are arithmetic on these inputs.", 6.6, 0.45);
 
 // ---------- 18 · RISKS ----------
 s = pres.addSlide(); base(s, "InventWood · Risks");

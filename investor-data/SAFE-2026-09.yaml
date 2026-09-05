@@ -1609,7 +1609,7 @@ facts:
     as_of: 2026-09-05
     status: canonical
     printed_in: [superwood-datacenter-investor]
-    notes: "Does not reconcile arithmetically with carbon.superwood_manufacturing_kgco2e_per_kg (0.5) x datacenter.substitution_factor_steel (0.3-0.6) = 0.15-0.30; implies about 0.33 kg/kg manufacturing at those substitution factors, or a lower substitution factor. Reconcile with the LCA."
+    notes: "Reconciles with carbon.superwood_manufacturing_kgco2e_per_kg (0.5) at the 3:1 to 4:1 replacement value Alex gave on 2026-09-05 (0.25-0.33 kg SUPERWOOD per kg steel): 0.125-0.167. Storage on the same basis: 0.5-1.5 x 0.25-0.33 = 0.1-0.5 kg CO2e per kg steel substituted. The analyses model and the Worth slide still use datacenter.substitution_factor_steel 0.3-0.6 - conflict, Alex to decide whether to propagate."
 
   - id: carbon.steel_baseline_kgco2e_per_kg
     value: 1.8
