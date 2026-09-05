@@ -6,8 +6,8 @@ GENERATED from `SAFE-2026-09.yaml` by `build.py`. Every cluster of facts linked 
 
 ### C1. Carbon set - Canva (0.5 / 1.3 per kg) vs TEM Jan 2026 (0.39 / 1.8 per t)
 
-- `carbon.superwood_biogenic_stored_kgco2e_per_kg` [canonical, internal, M] **1.3** kg CO2e / kg SUPERWOOD - SUPERWOOD stores 1.3 kg CO2e per kg as biogenic carbon - reported separately, and released in module C under EN 15804; printed in: superwood-datacenter-investor
-  - Under reporting standards all biogenic carbon is released in module C, so the product is net zero on biogenic and must win on manufacturing emissions. Never net the 1.3 against the 0.5 in a headline.
+- `carbon.superwood_biogenic_stored_kgco2e_per_kg` [canonical, internal, M] **0.5-1.5 (1.3 in the Canva set)** kg CO2e / kg SUPERWOOD - SUPERWOOD stores 0.5-1.5 kg CO2e per kg as biogenic carbon (Alex 2026-09-05; Canva set says 1.3) - reported separately, and released in module C under EN 15804; printed in: superwood-datacenter-investor
+  - Under reporting standards all biogenic carbon is released in module C, so the product is net zero on biogenic and must win on manufacturing emissions. Never net storage against manufacturing in a headline. Range 0.5-1.5 from Alex 2026-09-05 for the datacenter investor deck; the Canva set prints 1.3 - reconcile before wide distribution.
 - `carbon.superwood_manufacturing_kgco2e_per_kg` [canonical, internal, M] **0.5** kg CO2e / kg SUPERWOOD - SUPERWOOD manufacturing emissions are projected at 0.5 kg CO2e per kg at a full-scale plant (pre-LCA projection); printed in: superwood-datacenter-investor
   - Confidence not labeled in the source registers (the overview register has only "net carbon sink... an LCA would be the backup" at internal M); recorded M. Always print with carbon.lca_status.
 - `carbon.tem_jan2026_set` [superseded, internal, L] **0.39 emitted / 1.8 stored (per t, as written)** as written in the TEM review - TEM Jan 2026 carbon figures - 0.39 emitted / 1.8 stored per t; printed in: -
