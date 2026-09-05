@@ -208,37 +208,6 @@ s.addText([
 ], { x: L + 0.3, y: 6.0, w: CW - 0.6, h: 0.6, fontFace: SANS, fontSize: 12, margin: 0, valign: "middle" });
 note(s, "Company estimate (slide 5 model; low–high scenarios). Incumbent replaced is steel except the long-term row (concrete, rebar, server enclosures at 40% of IT mass — estimate; electronics excluded). SUPERWOOD required uses a 0.3–0.6 steel substitution factor (estimate). Plant output: SuperMill One ≈ 900 tons/yr (1M sf), SuperMill Two ≈ 31,000 tons/yr (36M sf) at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application.", 6.72, 0.36);
 
-// ---------- 7 · PROCESS ----------
-s = pres.addSlide(); base(s, "InventWood · The fit");
-kicker(s, "The fit");
-title(s, [t("We unlock the power of "), gold("cellulose")]);
-s.addText("Our patented process transforms ordinary wood into SUPERWOOD — an environmentally benign process using chemistry common to food and pulp processing.",
-  { x: L, y: 1.85, w: CW, h: 0.4, fontFace: SANS, fontSize: 13, color: DIM, margin: 0 });
-const flow = [
-  ["01 · Start with woody feedstock", "Hardwoods, softwoods, bamboo, underutilized species, waste wood", "prep/feed-timber.jpg", "Before: open cell vessels"],
-  ["02 · Molecular re-engineering & densification", "3–4× density increase, elimination of pores and defects, new hydrogen bonds across fibers", "prep/proc-compress.png", "No added glues · No polymer binders"],
-  ["03 · SUPERWOOD", "Samples more than 50% stronger than A36 steel in tension, at one-sixth the weight", "media/image75.png", "After: collapsed, interlocking vessels"],
-];
-flow.forEach(([head, sub, img, cap], i) => {
-  const cw = 3.85, x = L + i * 4.2;
-  s.addText(head, { x, y: 2.4, w: cw, h: 0.55, fontFace: SANS, fontSize: 11, bold: true, color: BRIGHT, charSpacing: 1, margin: 0 });
-  body(s, sub, x, 2.95, cw, 0.6, 10.5, MUTED);
-  s.addImage({ path: img, x, y: 3.7, w: cw, h: 2.35, sizing: { type: "crop", w: cw, h: 2.35 } });
-  s.addText(cap, { x, y: 6.15, w: cw, h: 0.35, fontFace: SANS, fontSize: 9.5, italic: true, color: i === 1 ? BRIGHT : MUTED, align: "center", margin: 0 });
-  if (i < 2) s.addText("→", { x: x + cw + 0.01, y: 4.6, w: 0.35, h: 0.5, fontFace: SERIF, fontSize: 22, color: GOLD, margin: 0 });
-});
-
-// ---------- 8 · STRENGTH ----------
-s = pres.addSlide(); base(s, "InventWood · The fit");
-kicker(s, "The fit");
-title(s, [t("Production SUPERWOOD exceeds A36 steel in tension at "), gold("one-sixth"), t(" the weight")], L, 0.88, 12.2, 26);
-s.addText("500 MPa tensile strength in production, 600+ MPa in lab samples, against a 400–550 MPa range for ASTM A36. At one-sixth the weight, that is a strength-to-weight ratio of seven to nine times structural steel, derived at right.", { x: L, y: 1.95, w: CW, h: 0.8, fontFace: SANS, fontSize: 13, color: DIM, margin: 0, valign: "top" });
-s.addImage({ path: "prep/charts/strength.png", x: L, y: 2.9, w: 8.2, h: 8.2 * 3.6 / 8.2 });
-panel(s, 9.0, 2.9, 3.75, 3.65, PANEL);
-label(s, "How the ratios are derived", 9.25, 3.05, 3.3);
-body(s, "Strength: 500–600 MPa SUPERWOOD ÷ 400 MPa (A36 minimum ultimate tensile) = 1.25–1.5×.\n\nWeight: steel 7.85 t/m³ ÷ SUPERWOOD ~1.3 t/m³ ≈ 6×.\n\nStrength-to-weight: 1.25–1.5 × 6 ≈ 7–9×.\n\nAgainst the top of the A36 range (550 MPa) the strength ratio is 0.9–1.1×; “stronger than steel” is stated against the A36 minimum.", 9.25, 3.4, 3.3, 3.0, 10, DIM);
-note(s, "SUPERWOOD: parallel-to-grain tension, company test data (production QC and lab samples). Steel: ASTM A36 specifies 400–550 MPa ultimate tensile. Aluminum: 6061-T6, 310 MPa typical. Design values and test methods available on request.", 6.65, 0.4);
-
 // ---------- 9 · PROPERTIES ----------
 s = pres.addSlide(); base(s, "InventWood · The fit");
 kicker(s, "The fit");

@@ -18,8 +18,7 @@ better than regular wood"; no approvals/standards detail; no dated milestones; d
 | 4 | Turbocharge | Hyperscalers already build structures with wood; we turbocharge wood | Title verbatim ("…building structures with wood. We turbocharge wood."); Microsoft and Meta logos and their own project photos (credited); beams: glulam under the mass-timber header, hybrid and thin SUPERWOOD beams under the SUPERWOOD header; thin beam shown as stacked 1/4" boards, same camera and color as the hybrid; no beam captions; no column labels ("on the public record", "what SUPERWOOD adds"); code path: certifiable under wood standards today, SUPERWOOD-specific standards the goal; larger table text |
 | 5 | Data center | What a 1 GW data center is made of, by mass and by embodied carbon | Title "What a 1 GW data center is made of" (Alex 2026-09-05); web shows 5 horizon groups by default with "Show all 17 rows" (key D); PPTX keeps the full charts; toggle mass/carbon (web; PPTX side by side); rows must not shift between views; headline "50–80% of the above-ground portion of a data center is steel" (band covers metal-panel and tilt-up walls); do NOT mention concrete's share of total mass, the 5%-of-total line, or "only the long-term vision moves the total"; right-hand notes large and legible |
 | 6 | Worth | How much SUPERWOOD could a 1 GW data center require? | Title per Alex 2026-09-05; table is the primary element, chart secondary (hidden on phones, table stacks as cards); mill capacities as a legend line; no dollar values; incumbent replaced, SUPERWOOD required, plant-years; larger table text; racks in "next" |
-| 7 | Process | We unlock the power of cellulose | Kept to the 2026-09-02 wording; the three manufacturing specifics (off-the-shelf equipment, food-grade solution, near-zero wastewater) removed |
-| 8 | Strength | Production SUPERWOOD exceeds A36 steel in tension at one-sixth the weight | Claim title, no stat tiles; chart with A36 shown as a 400–550 MPa range; derivation card |
+| 7–8 | (removed) | Process and Strength slides removed 2026-09-05 (Alex) | Company-level technology content lives in the SUPERMILLS Investor Overview; the strength derivation card is retired with them |
 | 9 | Properties | Properties that matter on a data center | Fire wording per convention; no unsourced multipliers (100×/400×, 3× oak) |
 | 10 | Speed | Faster to build: lighter, prefabricated, reconfigurable | Restored from the original deck's "speed and scale of deployment"; mass-timber schedule figures as analogy only (ULI) |
 | 11 | Now | Skins, screens and fences from SuperMill One | Racks are NOT here (see 12) |
@@ -41,6 +40,7 @@ better than regular wood"; no approvals/standards detail; no dated milestones; d
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-05: slides 7 (Process) and 8 (Strength) removed at Alex's request; deck is 19 slides.
 - 2026-09-05: slide 3 rebuilt around the Census construction-spending headline and growth projections; four new register facts (Census, JLL, McKinsey/JLL, Dell'Oro).
 - 2026-09-05: horizon taxonomy fixed (Alex): Immediate (shipping) / Soon (1–3 years, straightforward applications
   engineering) / Medium term (complex applications engineering such as full building systems, new form factors, or
