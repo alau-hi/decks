@@ -11,3 +11,4 @@ node_modules/
 # Visual-companion brainstorm artifacts
 .superpowers/
 .env*
+tools/pdf/.venv
