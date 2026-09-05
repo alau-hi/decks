@@ -63,6 +63,9 @@ rows=[
 ("co2_sw","SUPERWOOD manufacturing emissions",0.5,0.5,"kg CO₂e/kg","internal, pre-LCA [L]","Canva DCII deck; LCA under way, Prof. Ming Hu, Notre Dame"),
 ("co2_bio","SUPERWOOD biogenic carbon stored",1.3,1.3,"kg CO₂e/kg","internal, pre-LCA [L]","Report separately; module C release under EN 15804"),
 ("co2_mixed","Interior finishes emissions (gypsum, wood, steel studs — mixed)",1.0,1.0,"kg CO₂e/kg","estimated [L]","Used only for the interior finishes row"),
+("elec_steel_share","Steel share of electrical equipment mass (gensets, transformers, switchgear, UPS cabinets)",0.6,0.6,"share","estimated [L]; Alex asked for the estimate 2026-09-05","Cast iron and steel in engines, transformer cores and tanks, switchgear and UPS enclosures; copper, aluminum, oil and cells excluded"),
+("mech_steel_share","Steel share of mechanical equipment mass (chillers, fan walls, coolers, piping)",0.5,0.5,"share","estimated [L]","Shells, frames, casings and steel piping; copper tubes, aluminum coils and loop water excluded"),
+("it_steel_share","Steel share of IT mass (rack frames, server chassis)",0.4,0.4,"share","estimated [L]","Same 40% enclosure share used for the long-term replacement row"),
 ]
 R={}
 for i,(k,name,lo,hi,unit,lab,note) in enumerate(rows,start=2):
@@ -160,7 +163,11 @@ for name,f,hor,share,rule,note in comp:
     kind = "concrete" if (name.startswith("Concrete") or name.startswith("Precast")) else "equipment" if (name.startswith("Electrical") or name.startswith("Mechanical") or name.startswith("IT")) else "mixed" if rule=="interior" else "steel"
     M.cell(row=r,column=28,value=kind)
     if kind=="equipment":
-        M.cell(row=r,column=24,value="not estimated"); M.cell(row=r,column=25,value=0).fill=calc; M.cell(row=r,column=26,value=0).fill=calc; M.cell(row=r,column=27,value=0)
+        # steel content only: share of mass that is steel x the steel factor (Alex 2026-09-05)
+        sk={"Electrical":"elec_steel_share","Mechanical":"mech_steel_share","IT":"it_steel_share"}[name.split(" ")[0]]
+        M.cell(row=r,column=24,value=f"={ref(sk,'B')}*{ref('co2_steel','B')}").fill=calc
+        M.cell(row=r,column=27,value=f"={ref(sk,'B')}*{ref('co2_eaf','C')}").fill=calc
+        M.cell(row=r,column=25,value=f"=B{r}*X{r}").fill=calc; M.cell(row=r,column=26,value=f"=C{r}*X{r}").fill=calc
     else:
         fk={"concrete":"co2_conc","steel":"co2_steel","mixed":"co2_mixed"}[kind]
         M.cell(row=r,column=24,value=f"={ref(fk,'B')}").fill=calc

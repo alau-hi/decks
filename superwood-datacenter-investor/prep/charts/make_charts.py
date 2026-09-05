@@ -11,31 +11,33 @@ def clean(a):
 
 # ---- Charts 1 & 4: campus mass and embodied carbon, same rows (wide for web; narrow two-up for the PPTX) ----
 # Data: analyses/materials-mass-and-replacement.md (v4, 2026-09-01). kt per 1 GW, high case; replaceable share; horizon.
-rows=[("Concrete — slab on grade, paving",1200,0.75,"long"),("Concrete — foundations, footings, pads",1200,0.90,"long"),
-("Rebar in all concrete",100,0.81,"long"),("Steel — primary frame",40,1.0,"med"),("Steel — roof trusses, joists, deck, girts",60,1.0,"med"),
-("Exterior skins — metal panel",7.4,1.0,"imm"),("Louvers and yard screens",0.9,1.0,"imm"),("Security and staff-area fencing",1.0,1.0,"imm"),
-("Platforms, walkways, mezzanines, railings",15,1.0,"soon"),("Acoustic barriers, enclosures, separations",5,1.0,"soon"),
+rows=[("Platforms, walkways, mezzanines, railings",15,1.0,"soon"),("Acoustic barriers, enclosures, separations",5,1.0,"soon"),
 ("Racking and equipment supports",5,1.0,"soon"),("Tray, containment, doors, misc. metals",10,0.5,"soon"),
 ("Ducting and air-distribution sheet metal",8,1.0,"med"),("Interior finishes, backplanes, trim",3,1.0,"imm"),
-("Electrical equipment and conductors",100,0,None),("Mechanical equipment, piping, loop water",50,0,None),("IT — servers and racks",70,0.4,"long")]
+("Electrical equipment and conductors",100,0,None),("Mechanical equipment, piping, loop water",50,0,None),("IT — servers and racks",70,0.4,"long"),
+("Steel — primary frame",40,1.0,"med"),("Steel — roof trusses, joists, deck, girts",60,1.0,"med"),
+("Exterior skins — metal panel",7.4,1.0,"imm"),("Louvers and yard screens",0.9,1.0,"imm"),("Security and staff-area fencing",1.0,1.0,"imm"),
+("Concrete — slab on grade, paving",1200,0.75,"long"),("Concrete — foundations, footings, pads",1200,0.90,"long"),("Rebar in all concrete",100,0.81,"long")]
+# order: contents at the top, building structure and envelope, foundation at the bottom (Alex 2026-09-05)
 col={"imm":GOLD,"soon":GREEN,"med":WOOD,"long":TEAL}
 lab={"imm":"immediate","soon":"soon","med":"medium term","long":"long term"}
 # Embodied-carbon factors [conf: M, typical cradle-to-gate]: concrete 0.12 kg CO2e/kg; steel 1.8 (global BF-BOF average, the deck's
 # figure; EAF 0.4-0.7); interior finishes 1.0 (mixed, conf L). Metal-faced skins, louvers, fencing at the steel factor (aluminum ignored).
 F={"concrete":0.12,"steel":1.8,"mixed":1.0}
-kind=["concrete","concrete","steel","steel","steel","steel","steel","steel","steel","steel","steel","steel","steel","mixed",None,None,None]
-carb=[(r[1]*F[k] if k else 0) for r,k in zip(rows,kind)]
+kind=["steel"]*5+["mixed","equip","equip","equip"]+["steel"]*5+["concrete","concrete","steel"]
+EQ={"Electrical equipment and conductors":0.6,"Mechanical equipment, piping, loop water":0.5,"IT — servers and racks":0.4}  # steel share of equipment mass [L]
+carb=[(r[1]*EQ[r[0]]*F["steel"] if k=="equip" else r[1]*F[k]) for r,k in zip(rows,kind)]
 LEG=[Patch(color=GOLD,label="Immediate — skins, screens, fences, interiors"),Patch(color=GREEN,label="Soon (1–3 yr) — racks, platforms, barriers, doors"),
      Patch(color=WOOD,label="Medium term — frame, roofs, enclosures"),Patch(color=TEAL,label="Long term — slab, foundations"),Patch(color=NR,label="Not replaced")]
 def campus(values, out, xlabel, log, narrow, unit):
     fig,a=plt.subplots(figsize=(7.0,4.3) if narrow else (12.4,6.9),facecolor=INK); clean(a)
     fs=8 if narrow else 10.5
-    for i,(r,v) in enumerate(zip(rows,values)):
+    for i,(r,v,k) in enumerate(zip(rows,values,kind)):
         if v is None:
             a.barh(i,(0.9 if log else 60),color=INK,edgecolor=NR,hatch="///",height=0.66,lw=0.8)
             a.text((1.05 if log else 65),i,"not estimated" if narrow else "not estimated — equipment embodied carbon is outside a materials estimate",va="center",fontsize=7.5 if narrow else 8.5,color=MUTED); continue
         a.barh(i,v,color=WOOD,height=0.66)  # component stack, one color; replacement is the next slide's story (Alex 2026-09-05)
-        txt=f"{v*1000:,.0f} {unit}"
+        txt=f"{v*1000:,.0f} {unit}"+("  ·  steel content only" if (k=="equip" and values is carbv and not narrow) else "")
         a.text(v*1.12 if log else v+4,i,txt,va="center",fontsize=7.5 if narrow else 10,color=DIM)
     a.set_yticks(range(len(rows))); a.set_yticklabels([r[0] for r in rows],fontsize=fs,color=CREAM); a.invert_yaxis()
     if log: a.set_xscale("log"); a.set_xlim(0.5,(9000 if narrow else 40000))
@@ -43,14 +45,14 @@ def campus(values, out, xlabel, log, narrow, unit):
     a.set_xlabel(xlabel,color=MUTED,fontsize=8 if narrow else 10); a.grid(axis="x",color=NR,lw=0.8); a.set_axisbelow(True)
     plt.tight_layout()
     fig.savefig(out,dpi=170,facecolor=INK); plt.close(fig)
-mass=[r[1] for r in rows]; carbv=[c if k else None for c,k in zip(carb,kind)]
+mass=[r[1] for r in rows]; carbv=list(carb)
 campus(mass,"prep/charts/campus_mass.png","'000s of tons per 1 GW data center, high case — log scale",True,False,"tons")
 campus(carbv,"prep/charts/campus_carbon.png","'000s of tons CO₂e per 1 GW data center, high case — steel at 1.8 kg/kg (global average), concrete at 0.12",False,False,"tons CO₂e")
 campus(mass,"prep/charts/campus_mass_narrow.png","Mass — '000s of tons per GW (log scale)",True,True,"tons")
 campus(carbv,"prep/charts/campus_carbon_narrow.png","Embodied carbon — '000s of tons CO₂e per GW",False,True,"tons")
 # legend strip for the two-up slide
 fig=plt.figure(figsize=(14,0.5),facecolor=INK); fig.legend(handles=LEG,loc="center",ncol=5,fontsize=9,facecolor=INK,edgecolor=INK,labelcolor=DIM,handlelength=1.6,columnspacing=1.6); fig.savefig("prep/charts/campus_legend.png",dpi=170,facecolor=INK,bbox_inches="tight",pad_inches=0.05); plt.close(fig)
-tot=sum(carb); steel=sum(c for c,k in zip(carb,kind) if k=="steel"); conc=sum(c for c,k in zip(carb,kind) if k=="concrete")
+tot=sum(carb); steel=sum(c for c,k in zip(carb,kind) if k in("steel","equip")); conc=sum(c for c,k in zip(carb,kind) if k=="concrete")
 above=sum(c for c,k,r in zip(carb,kind,rows) if k=="steel" and not r[0].startswith("Rebar"))
 eaf=sum(r[1]*0.55 for r,k in zip(rows,kind) if k=="steel")
 print(f"building-materials carbon {tot:,.0f} kt; steel {steel/tot:.0%}, concrete {conc/tot:.0%}; steel above slab {above:,.0f} kt = {above/tot:.0%}; EAF steel share {eaf/(eaf+conc+3):.0%}")

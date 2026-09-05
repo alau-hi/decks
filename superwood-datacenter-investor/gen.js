@@ -203,13 +203,13 @@ const chW = 5.4, chH = chW * 4.3 / 7.0;
 s.addImage({ path: "prep/charts/campus_mass_narrow.png", x: L, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_carbon_narrow.png", x: 6.7, y: 2.08, w: chW, h: chH });
 const sizeL = [["50–80% of the above-ground portion of a data center is steel", "Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server enclosures eventually; never the electronics."]];
-const sizeR = [["By embodied carbon, steel is about 60% of the building materials", "At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon."]];
+const sizeR = [["By embodied carbon, steel is about 70% of everything estimated, including the steel inside the equipment", "Building materials alone are about 60% steel at the global-average factor, about a third with recycled steel. The steel in electrical, mechanical and IT equipment adds roughly 200,000 tons CO₂e."]];
 [[sizeL, L], [sizeR, 6.7]].forEach(([arr, x]) => arr.forEach(([head, sub]) => {
   const y = 2.08 + chH + 0.42;
   s.addText(head, { x, y, w: 5.9, h: 0.32, fontFace: SANS, fontSize: 13, bold: true, color: CREAM, margin: 0 });
   body(s, sub, x, y + 0.34, 5.9, 0.62, 10, DIM);
 }));
-note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: immediate = shipping; soon = 1–3 years, straightforward applications engineering; medium term = complex applications engineering, new form factors or materials engineering; long term = 5+ years, technical potential with no design or code pathway yet.", 6.78, 0.3);
+note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment rows count steel content only (60% of electrical, 50% of mechanical, 40% of IT mass, estimates); copper, aluminum, electronics and oil not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: immediate = shipping; soon = 1–3 years, straightforward applications engineering; medium term = complex applications engineering, new form factors or materials engineering; long term = 5+ years, technical potential with no design or code pathway yet.", 6.78, 0.3);
 
 // ---------- 6 · ONE DATA CENTER CAN CONSUME A SUPERMILL ----------
 s = pres.addSlide(); base(s, "InventWood · The size");

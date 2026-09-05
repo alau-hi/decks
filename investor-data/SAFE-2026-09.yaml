@@ -2774,6 +2774,18 @@ facts:
     printed_in: [superwood-datacenter-investor]
     notes: Print as vision with the label on the slide, never as a forecast - no design or code pathway exists. A ChipMill-scale market on its own if it ever became real.
 
+  - id: datacenter.equipment_steel_share
+    value: "electrical 60%, mechanical 50%, IT 40% of mass"
+    unit: share of equipment mass that is steel
+    statement: Embodied carbon of equipment is estimated for its steel content only - 60% of electrical, 50% of mechanical and 40% of IT mass at the steel factor; copper, aluminum, electronics and oil are not estimated
+    basis: estimated
+    confidence: L
+    source: analyses/materials-mass-and-replacement.md (v8), at Alex's request 2026-09-05
+    as_of: 2026-09-05
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "High case: 108,000 + 45,000 + 50,400 = about 200,000 t CO2e per GW at 1.8 kg/kg. Lifts steel's share of estimated embodied carbon from about 60% (building materials) to about 70% (everything estimated)."
+
   - id: datacenter.substitution_factor_steel
     value: 0.3-0.6
     unit: kg SUPERWOOD per kg steel

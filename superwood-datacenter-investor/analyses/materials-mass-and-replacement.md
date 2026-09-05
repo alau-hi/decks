@@ -1,6 +1,6 @@
 # Material mass in a data center — the build-up, and how much SUPERWOOD can replace
 
-Date: 2026-09-04 (v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
+Date: 2026-09-05 (v8: equipment rows carry an embodied-carbon estimate for their steel content only — 60% of electrical, 50% of mechanical, 40% of IT mass at the steel factor (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
 Every table below is generated from the live model [materials-mass-and-replacement.xlsx](materials-mass-and-replacement.xlsx)
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
@@ -152,11 +152,11 @@ server enclosures in the long-term horizon, carry no factor, so long-term avoide
 | Immediate (steel) | 5,219–19,850 tons CO₂e | 617–1,343 tons | **4,602–18,508 tons** | 2,024–8,210 tons | 1,604–3,491 tons |
 | Soon (steel) | 20,700–54,000 tons CO₂e | 1,725–9,000 tons | **18,975–45,000 tons** | 6,325–12,000 tons | 4,485–23,400 tons |
 | Medium term (steel) | 95,400–194,400 tons CO₂e | 7,950–32,400 tons | **87,450–162,000 tons** | 29,150–43,200 tons | 20,670–84,240 tons |
-| Long term (foundation concrete) | 160,380–383,400 tons CO₂e | 28,845–181,200 tons | **131,535–202,200 tons** | 104,805–113,100 tons | 74,997–471,120 tons |
+| Long term (foundation concrete) | 164,700–403,560 tons CO₂e | 28,845–181,200 tons | **135,855–222,360 tons** | 106,485–120,940 tons | 74,997–471,120 tons |
 
 Against recycled (EAF) steel the avoided figure is far lower, so any claim must state its baseline.
 
-### 5b. Embodied carbon by component (building materials; equipment not estimated)
+### 5b. Embodied carbon by component (equipment rows: steel content only)
 
 The slide-5 "by embodied carbon" view. Factors: concrete 0.12 kg CO₂e/kg [M], steel 1.8 [M, global
 BF-BOF average], interior finishes 1.0 [L]. Equipment (electrical, mechanical, IT) is outside a materials estimate.
@@ -178,17 +178,17 @@ BF-BOF average], interior finishes 1.0 [L]. Equipment (electrical, mechanical, I
 | Other tray, containment, doors, misc. metals | steel | 1.8 | 9,000–18,000 tons CO₂e |
 | Ducting, plenums and air-distribution sheet metal | steel | 1.8 | 5,400–14,400 tons CO₂e |
 | Interior finishes, backplanes, trim (admin / office) | mixed | 1 | 1,000–3,000 tons CO₂e |
-| Electrical equipment and conductors | equipment | — | not estimated |
-| Mechanical equipment, piping, loop water | equipment | — | not estimated |
-| IT — servers and racks | equipment | — | not estimated |
+| Electrical equipment and conductors | equipment | 1.08 (steel content) | 54,000–108,000 tons CO₂e |
+| Mechanical equipment, piping, loop water | equipment | 0.90 (steel content) | 18,000–45,000 tons CO₂e |
+| IT — servers and racks | equipment | 0.72 (steel content) | 10,800–50,400 tons CO₂e |
 
 | Roll-up | Low | High |
 |---|---|---|
-| Embodied carbon, building materials | 323,819 tons CO₂e | 745,250 tons CO₂e |
-| Steel share | 55% | 61% |
-| Concrete share | 44% | 39% |
-| Steel above the slab (steel excl. rebar), share | 39% | 37% |
-| Steel share if steel is recycled (EAF, 0.7 kg/kg) | 32% | 38% |
+| Embodied carbon, building materials | 406,619 tons CO₂e | 948,650 tons CO₂e |
+| Steel share | 44% | 48% |
+| Concrete share | 35% | 30% |
+| Steel above the slab (steel excl. rebar), share | 31% | 29% |
+| Steel share if steel is recycled (EAF, 0.7 kg/kg) | 28% | 32% |
 
 By embodied carbon, steel is roughly 55–60% of the building materials and concrete roughly 40–45% at the global-average
 steel factor; with recycled steel the steel share falls to about a third. The steel above the slab — what SUPERWOOD
