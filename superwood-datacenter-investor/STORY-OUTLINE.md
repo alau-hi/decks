@@ -80,6 +80,9 @@ New imagery (Higgsfield nano_banana_pro, prompts in `render/dc-steel-frame-const
   the close slide carry the InventWood mark. The SUPERMILLS deck itself (synced into superwood-presentation/ from
   alau-hi/supermills-america) still titles itself "SUPERMILLS America" — rename there.
 
+- Thesis wording (Alex 2026-09-04, slide 2): "We help data centers decarbonize and improve their impact on communities,
+  while they accelerate SUPERWOOD's journey from premium skins into structural applications."
+
 ## Still open
 
 - Slide 4 (Alex 2026-09-04): story is "hyperscalers are already ready to work with wood; we turbocharge wood" —

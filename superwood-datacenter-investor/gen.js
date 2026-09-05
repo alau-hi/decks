@@ -74,7 +74,7 @@ s.addText("Concept rendering", { x: W - 2.3, y: 0.25, w: 1.9, h: 0.25, fontFace:
 // ---------- 2 · THESIS ----------
 s = pres.addSlide(); base(s, "InventWood · The thesis");
 kicker(s, "The thesis");
-title(s, [t("Data centers turn SUPERWOOD from a premium skin into a "), gold("structural"), t(" material")]);
+title(s, [t("We help data centers decarbonize and improve their impact on communities, while they accelerate SUPERWOOD's journey from premium skins into "), gold("structural"), t(" applications")], L, 0.88, 12.2, 24);
 const thesis = [
   ["The buyer is short of steel and already building with wood",
    "Data centers are among the fastest-growing buyers of structural steel. Customers report backlogs and shortages, and Microsoft and Meta already build data-center structures in mass timber."],
