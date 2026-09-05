@@ -81,7 +81,7 @@ const thesis = [
   ["We turbocharge the wood they already use",
    "Mass timber replaces concrete floors. SUPERWOOD, stronger than A36 steel in tension at one-sixth the weight, adds the steel: members, skins and screens — and strengthens the mass timber itself. It ships today from SuperMill One; truss design and mass-timber enhancement are under way."],
   ["One basis-of-design win is SuperMill Two-scale demand",
-   "A gigawatt campus's skins alone are one to three years of SuperMill One's output; its structure is a year or more of SuperMill Two. The long game is prefabricated envelopes and, eventually, foundations."],
+   "A gigawatt campus's skins alone are one to three years of SuperMill One's output; its structure is a year or more of SuperMill Two. Long term: prefabricated envelopes and, eventually, foundations."],
 ];
 thesis.forEach(([head, sub], i) => {
   const cw = 3.95, x = L + i * 4.125, y = 2.1;
@@ -195,8 +195,8 @@ worthRows.forEach((r, ri) => {
 });
 panel(s, L, 5.95, CW, 0.7, PANEL);
 s.addText([
-  t("Two or three gigawatts of campus absorb SuperMill Two for years.  ", { bold: true, color: GOLD }),
-  t("That is the offtake argument and the capacity risk in one number — and why a basis-of-design win with one hyperscaler is the demand anchor for the second mill.", { color: DIM }),
+  t("Two or three gigawatts of campus would take all of SuperMill Two's output for years.  ", { bold: true, color: GOLD }),
+  t("A basis-of-design win with one hyperscaler is the demand case for the second mill. It is also the capacity constraint.", { color: DIM }),
 ], { x: L + 0.3, y: 6.0, w: CW - 0.6, h: 0.6, fontFace: SANS, fontSize: 12, margin: 0, valign: "middle" });
 note(s, "Company estimate (slide 5 model; low–high scenarios). Incumbent replaced is steel except the long-term row (concrete, rebar, server enclosures at 40% of IT mass — estimate; electronics excluded). SUPERWOOD required uses a 0.3–0.6 steel substitution factor (estimate). Plant output: SuperMill One ≈ 0.9 kt/yr (1M sf), SuperMill Two ≈ 31 kt/yr (36M sf) at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application.", 6.72, 0.36);
 
@@ -223,7 +223,7 @@ flow.forEach(([head, sub, img, cap], i) => {
 // ---------- 8 · STRENGTH ----------
 s = pres.addSlide(); base(s, "InventWood · The fit");
 kicker(s, "The fit");
-title(s, [t("The "), gold("strength"), t(" of SUPERWOOD, one number set")]);
+title(s, [t("The "), gold("strength"), t(" of SUPERWOOD")]);
 const stats = [
   ["500 MPa", "tensile strength in production today"],
   ["600+ MPa", "demonstrated in lab samples; pathway toward 1,000"],
@@ -271,9 +271,9 @@ note(s, "Company test data; property data package and test methods available on 
 // ---------- 10 · SPEED AND MODULARITY ----------
 s = pres.addSlide(); base(s, "InventWood · The fit");
 kicker(s, "The fit");
-title(s, [t("Speed is the data-center benefit: lighter, "), gold("prefabricated"), t(", reconfigurable")], L, 0.88, 11.9, 27);
+title(s, [t("Faster to build: lighter, "), gold("prefabricated"), t(", reconfigurable")], L, 0.88, 11.9, 27);
 const speed = [
-  ["One-sixth the weight of steel", "Smaller cranes and crews, easier transport, lighter foundations. Time to power is the metric hyperscalers optimize."],
+  ["One-sixth the weight of steel", "Smaller cranes and crews, easier transport, lighter foundations. Time to power is what hyperscalers optimize."],
   ["Prefabricated to precision", "Panels and modules built off site and set like mass timber — standardized designs, plug-and-play systems."],
   ["Designed for assembly and disassembly", "Reusable, reconfigurable components for infrastructure that changes with every hardware generation."],
   ["Mass timber's schedule record", "About 20% average schedule savings across seven case studies, up to 25–30% in others. SUPERWOOD builds the same way."],
@@ -341,7 +341,7 @@ const gated = [
   });
 }
 panel(s, L, 5.5, CW, 0.85, PANEL);
-s.addText("Each of these is a scoped test program, not a research question — and the natural first co-funded project with a customer. Which comes first depends on which a customer picks up first.",
+s.addText("Each needs one scoped test program, which can be co-funded with a customer. Order depends on which a customer picks up first.",
   { x: L + 0.3, y: 5.55, w: CW - 0.6, h: 0.75, fontFace: SANS, fontSize: 11.5, italic: true, color: DIM, margin: 0, valign: "middle" });
 conceptTag(s, W - 3.6, 6.6, 3.0, "Concept renderings");
 
@@ -372,17 +372,17 @@ sm2.forEach(([img, head, sub], i) => {
 panel(s, L, 5.7, CW, 0.9, PANEL);
 s.addText([
   t("How qualification works.  ", { bold: true, color: GOLD }),
-  t("Every structural application is qualified through a scoped test program with the customer who picks it up first, on the pathway mass timber has already opened in the building codes, with insurer acceptance for structural use. Test methods and property data are available on request. This is the Microsoft and Google conversation, and it is SuperMill Two-scale demand.", { color: DIM }),
+  t("Every structural application is qualified through a scoped test program with the customer who picks it up first, on the pathway mass timber has already opened in the building codes, with insurer acceptance for structural use. Test methods and property data are available on request. This is what Microsoft and Google are asking about.", { color: DIM }),
 ], { x: L + 0.3, y: 5.75, w: CW - 0.6, h: 0.8, fontFace: SANS, fontSize: 10.5, margin: 0, valign: "middle" });
 conceptTag(s, W - 3.6, 6.65, 3.0, "Concept renderings");
 
 // ---------- 14 · THE LONG-TERM VISION ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · The long game");
-title(s, [t("Where this goes: prefabricated "), gold("envelopes"), t(", then foundations")]);
+kicker(s, "The path · Long term");
+title(s, [t("Long term: prefabricated "), gold("envelopes"), t(", then foundations")]);
 const vis = [
-  ["prep/app_shell.jpg", 1200 / 896, "Prefabricated building envelopes", "Structure and skin shipped as panels and modules and set in days — the co-development target with our hyperscaler customers' architects and engineers. Optimized shells that carry their own loads, weigh a fraction of steel and precast, and can be taken apart and moved."],
-  ["prep/dc_wood_foundation.jpg", 1376 / 768, "Foundations, slabs and paving", "Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete — installed faster, with lower geotechnical demands, and potentially movable. Concrete is three-quarters of a campus by mass; this is where the material would change the whole building."],
+  ["prep/app_shell.jpg", 1200 / 896, "Prefabricated building envelopes", "Structure and skin shipped as panels and modules — the co-development target with our hyperscaler customers' architects and engineers. Shells that carry their own loads, weigh far less than steel and precast, and can be disassembled and moved."],
+  ["prep/dc_wood_foundation.jpg", 1376 / 768, "Foundations, slabs and paving", "Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete — installed faster, with lower geotechnical demands, and potentially movable."],
 ];
 vis.forEach(([img, ar, head, sub], i) => {
   const cw = 6.0, x = L + i * 6.2, y = 1.95, ih = 2.55;
@@ -391,14 +391,14 @@ vis.forEach(([img, ar, head, sub], i) => {
   body(s, sub, x, y + ih + 0.55, cw, 1.05, 10.5, MUTED);
 });
 panel(s, L, 6.15, CW, 0.6, PANEL2);
-s.addText("Stated technical potential, not an engineered plan: through the structural horizon SUPERWOOD addresses about 5% of campus mass; foundations and slabs would raise the ceiling to about three-quarters — on the order of 1–2 million tonnes of concrete and rebar per gigawatt. No design or code pathway exists yet.",
+s.addText("Stated technical potential, not an engineered plan: slab, paving and foundations are on the order of 1–2 million tons of concrete and rebar per gigawatt. No design or code pathway exists yet.",
   { x: L + 0.3, y: 6.15, w: CW - 0.6, h: 0.6, fontFace: SANS, fontSize: 9.5, italic: true, color: DIM, margin: 0, valign: "middle" });
 conceptTag(s, W - 3.6, 4.5, 3.0, "Concept renderings");
 
 // ---------- 15 · EVERY ACCOUNT ON ONE LADDER ----------
 s = pres.addSlide(); base(s, "InventWood · The evidence");
 kicker(s, "The evidence");
-title(s, "Every account on one ladder");
+title(s, "Customer engagement");
 const stages = ["Conversations", "Applications identified", "Projects scoped", "Testing & mockups", "First purchase", "Basis of design"];
 const gx = 3.6, gw = 5.4, sw = gw / stages.length, rowY0 = 2.45, rowH = 0.78;
 stages.forEach((st, i) => s.addText(st.toUpperCase(), { x: gx + i * sw, y: 1.85, w: sw, h: 0.55, fontFace: SANS, fontSize: 6.5, bold: true, color: BRIGHT, charSpacing: 0.5, align: "center", margin: 0, valign: "bottom" }));
@@ -431,7 +431,7 @@ note(s, "Engagement stages and partner statements as reported by InventWood, Sep
 // ---------- 16 · MICROSOFT AND META, ON THE RECORD AND WITH US ----------
 s = pres.addSlide(); base(s, "InventWood · The evidence");
 kicker(s, "The evidence");
-title(s, "Microsoft and Meta: on the record, and with us");
+title(s, "Microsoft and Meta");
 const profiles = [
   ["Microsoft", "broad engagement",
    "Two Northern Virginia datacenters built with cross-laminated timber floor panels on a steel frame — an estimated 35% embodied-carbon reduction vs. conventional steel construction and 65% vs. precast concrete. Design by Gensler; structural engineering by Thornton Tomasetti.",
@@ -452,7 +452,7 @@ profiles.forEach(([name, stage, pubTxt, src, pts, img, cap], i) => {
   const cw = 6.0, x = L + i * 6.2;
   s.addText([t(name), t("  " + stage, { italic: true, color: GOLD, fontSize: 14 })], { x, y: 1.9, w: cw, h: 0.5, fontFace: SERIF, fontSize: 22, color: CREAM, margin: 0 });
   panel(s, x, 2.5, cw, 1.45, PANEL2);
-  label(s, "On the public record", x + 0.25, 2.58, 4, BRIGHT);
+  label(s, "Published", x + 0.25, 2.58, 4, BRIGHT);
   body(s, pubTxt, x + 0.25, 2.85, cw - 0.5, 0.85, 9, CREAM);
   s.addText(src, { x: x + 0.25, y: 3.68, w: cw - 0.5, h: 0.22, fontFace: SANS, fontSize: 7.5, italic: true, color: MUTED, margin: 0 });
   label(s, "Working with InventWood", x, 4.1, 4, BRIGHT);
@@ -476,7 +476,7 @@ s.addText("THE VISION", { x: L, y: 0.6, w: 6, h: 0.32, fontFace: SANS, fontSize:
 s.addText([t("Can the world's data centers be "), gold("big, beautiful carbon sinks"), t("?")], { x: L, y: 1.0, w: 12.2, h: 1.6, fontFace: SERIF, fontSize: 40, color: CREAM, margin: 0, valign: "top" });
 const vis3 = [
   ["Big", "A gigawatt campus is millions of square feet of skins and screens and tens of thousands of tonnes of structure — and hyperscalers build campus after campus to one design."],
-  ["Beautiful", "Warm, quiet, biophilic exteriors and interiors that change what a planning commission sees — the social license to build and to scale."],
+  ["Beautiful", "Warm, quiet, biophilic exteriors and interiors that ease community and planning approval."],
   ["Carbon sinks", "Built from a material that stores about 1.3 kg CO₂e of biogenic carbon per kg and displaces the steel that carries most of the building materials' embodied carbon."],
 ];
 vis3.forEach(([head, sub], i) => {
@@ -485,13 +485,13 @@ vis3.forEach(([head, sub], i) => {
   s.addText(head, { x: x + 0.3, y: y + 0.22, w: cw - 0.6, h: 0.5, fontFace: SERIF, fontSize: 22, color: GOLD, margin: 0 });
   body(s, sub, x + 0.3, y + 0.8, cw - 0.6, 1.25, 11, CREAM);
 });
-s.addText("Whether a building nets out as a store of carbon depends on the LCA (under way with Prof. Ming Hu, University of Notre Dame), on what steel and concrete SUPERWOOD displaces, and on end-of-life accounting. The next slide sizes and labels the claim. Concept rendering.",
+s.addText("Whether a building nets out as a store of carbon depends on the LCA (under way with Prof. Ming Hu, University of Notre Dame), on what steel and concrete SUPERWOOD displaces, and on end-of-life accounting. The next slide gives the numbers and their basis. Concept rendering.",
   { x: L, y: 6.65, w: CW, h: 0.45, fontFace: SANS, fontSize: 8.5, italic: true, color: DIM, margin: 0, valign: "top" });
 
 // ---------- 18 · THE CARBON CLAIM ----------
 s = pres.addSlide(); base(s, "InventWood · Carbon");
 kicker(s, "Carbon");
-title(s, "The carbon claim, sized and labeled: a projection until the LCA lands", L, 0.88, 11.9, 27);
+title(s, "Embodied carbon: a projection until the LCA is complete", L, 0.88, 11.9, 27);
 // bars: kg CO2e per kg of material
 const bars = [
   ["Steel — global average (BF-BOF)", 1.8, ROSE, "1.8 kg"],
@@ -511,7 +511,7 @@ bars.forEach(([lab, v, colr, txt], i) => {
 panel(s, L, 5.25, 6.4, 1.2, PANEL2);
 s.addText([
   t("Biogenic carbon, reported separately.  ", { bold: true, color: GOLD }),
-  t("SUPERWOOD stores about 1.3 kg CO₂e of biogenic carbon per kg. Under EN 15804 it is released again in the end-of-life module, so it nets to zero over the life cycle. The durable advantage is manufacturing emissions, not storage.", { color: DIM }),
+  t("SUPERWOOD stores about 1.3 kg CO₂e of biogenic carbon per kg. Under EN 15804 it is released again in the end-of-life module, so it nets to zero over the life cycle. The lasting advantage is lower manufacturing emissions, not storage.", { color: DIM }),
 ], { x: L + 0.25, y: 5.3, w: 5.9, h: 1.1, fontFace: SANS, fontSize: 10, margin: 0, valign: "middle" });
 // right: functional unit
 panel(s, 7.3, 1.95, 5.45, 4.5, PANEL);
@@ -523,11 +523,11 @@ note(s, "SUPERWOOD 0.5 kg/kg manufactured and 1.3 kg/kg biogenic: company projec
 // ---------- 18 · RISKS ----------
 s = pres.addSlide(); base(s, "InventWood · Risks");
 kicker(s, "Risks");
-title(s, "What has to be true, and what could stop it");
+title(s, "Risks and how we handle them");
 const risks = [
   ["Insurers and code officials must accept SUPERWOOD for structural use", "Start with skins and non-structural items that need no assembly rating. Qualify structural applications with the first customer, on the pathway mass timber opened."],
   ["Qualification could run longer than customer design cycles", "Sell what needs no qualification now. Hyperscalers design campuses years ahead, so basis-of-design work starts before qualification ends."],
-  ["One plant, shared across every market", "SuperMill One allocates output; a gigawatt's skins alone are one to three plant-years. SuperMill Two is the answer — and the raise."],
+  ["One plant, shared across every market", "SuperMill One allocates output; a gigawatt's skins alone are one to three plant-years. SuperMill Two resolves it; that is what the raise funds."],
   ["Price against metal panel, fiber cement, CLT and recycled steel", "Premium skins where appearance and community acceptance carry value. Structural competitiveness arrives with SuperMill Two cost (roadmap basis, not yet realized)."],
   ["Carbon figures are projections until the LCA lands", "Labeled pre-LCA everywhere; LCA under way with Prof. Ming Hu, University of Notre Dame. No carbon claim without its baseline and substitution factor."],
   ["Customer concentration", "Three hyperscalers plus Vertiv, Wooden Data Center and operators — and what is qualified for a data center is qualified for the wider structural market."],
@@ -539,14 +539,14 @@ risks.forEach(([r, m], i) => {
   s.addText(r, { x: L, y, w: 5.4, h: 0.62, fontFace: SANS, fontSize: 11, bold: true, color: CREAM, margin: 0, valign: "top" });
   body(s, m, 6.25, y, 6.5, 0.62, 10, DIM);
 });
-note(s, "No probabilities are assigned; these are the conditions the data-center thesis depends on, stated so they can be tracked.", 6.75, 0.3);
+note(s, "No probabilities are assigned. These are the conditions the data-center case depends on.", 6.75, 0.3);
 
 // ---------- 19 · PATH TO FIRST PROJECTS ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
 kicker(s, "The path");
-title(s, "A concrete path to first projects");
+title(s, "Path to first projects");
 const nexts = [
-  ["Skins on one building or yard", "Facades, interiors, louvers, staff-area or security fencing — installed from SuperMill One output on a friendly site. Produces an installed reference and installed-cost data."],
+  ["Skins on one building or yard", "Facades, interiors, louvers, staff-area or security fencing — installed from SuperMill One output with a willing customer. Produces an installed reference and installed-cost data."],
   ["A scoped test program with that customer", "Toward whatever the chosen application needs, co-funded. Produces the data package the next application inherits."],
   ["Basis-of-design work with the customer's architect and engineer", "Structural enclosure and truss solutions that can be written into the standard campus design. Produces a specification that repeats."],
   ["Measure the carbon delta", "A baseline bill-of-materials comparison and verification plan. Produces defensible numbers as the LCA completes."],
