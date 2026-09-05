@@ -126,7 +126,7 @@ title(s, [t("Community pushback now blocks or delays more data center projects t
 label(s, "How we deal with two of the complaints", L, 2.1, 7.2);
 const objections = [
   ["Aesthetics", "Windowless boxes on farmland. Counties answer with 500–1,000 ft setbacks and design standards.", "SUPERWOOD: facades, fences and screens that read as architecture."],
-  ["Noise", "Fan walls, chillers and generator tests hum past the fence line. Ordinances now set decibel limits at the property line.", "SUPERWOOD: acoustic screens and barriers."],
+  ["Noise", "Fan walls, chillers and generator tests hum past the fence line. Ordinances now set decibel limits at the property line.", "SUPERWOOD: acoustic screens and barriers; potentially sound-damping ductwork and fan enclosures at the source."],
 ];
 objections.forEach(([head, sub, ans], i) => {
   const x = L, y = 2.55 + i * 1.45;
