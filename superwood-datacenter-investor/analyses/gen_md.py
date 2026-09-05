@@ -85,7 +85,7 @@ def hrow(label,h,plant):
     return f"| {label} | {kr(h['rlo'],h['rhi'])} | {kr(h['slo'],h['shi'])}{' ('+f'{h['sflo']/1e6:.1f}–{h['sfhi']/1e6:.1f}M sf)' if 'sflo' in h else ''} | {h['ylo']:.1f}–{h['yhi']:.1f} yr of {plant} |"
 md=f"""# Material mass in a data center — the build-up, and how much SUPERWOOD can replace
 
-Date: 2026-09-04 (v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
+Date: 2026-09-05 (v7: server and equipment enclosures removed from the long-term horizon — IT is never replaced (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
 Every table below is generated from the live model [materials-mass-and-replacement.xlsx](materials-mass-and-replacement.xlsx)
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
@@ -102,7 +102,7 @@ Low and high columns are whole scenarios (all-low inputs, all-high inputs), not 
 | **Immediate** | Replacements shipping now | SuperMill One boards to 8" × 16' × 3/8" | None beyond E84 Class A where a finish rating applies |
 | **Soon** | Non-structural items behind one scoped test program — racks, platforms, barriers, doors | SuperMill One, then SuperMill Two | A scoped test program per application; racks are a few months of development |
 | **Medium term** | Structural steel (primary and roof), roof trusses and roofs, ducting, enclosures | SuperMill Two boards and veneers | Mass-timber qualification pathway, ICC-ES, E119, NFPA 285, FM acceptance; NFPA 90A / UL 181 for ducting |
-| **Long term** | Concrete: 75% of slab-on-grade and paving, 90% of foundations, footings, piers and pads, with the rebar in each; server and equipment enclosures (40% of IT mass, estimate) — never the electronics | ChipMill-scale products | Stated technical potential (Alex, 2026-09-01 and 2026-09-04); no design or code pathway yet |
+| **Long term** | Concrete: 75% of slab-on-grade and paving, 90% of foundations, footings, piers and pads, with the rebar in each — never the electronics | ChipMill-scale products | Stated technical potential (Alex, 2026-09-01 and 2026-09-04); no design or code pathway yet |
 
 ## 1. Assumptions that drive the build-up
 
@@ -198,7 +198,7 @@ Deck figures: steel 1.8 kg CO₂e/kg (global BF-BOF average), concrete 0.12 kg/k
 1.3 kg/kg biogenic carbon stored — **pre-LCA projections at scale; LCA under way with Prof. Ming Hu, University of Notre
 Dame.** Biogenic storage reported separately (EN 15804 module C). Each component is valued at its own factor: concrete
 rows at 0.12, steel rows (including rebar) at 1.8, interior finishes at 1.0 [estimate]; equipment rows, including the
-server enclosures in the long-term horizon, carry no factor, so long-term avoided emissions count concrete and rebar only. The "vs EAF" column revalues steel at 0.7 kg/kg (recycled, high end).
+IT equipment carry no factor, so long-term avoided emissions count concrete and rebar only. The "vs EAF" column revalues steel at 0.7 kg/kg (recycled, high end).
 
 | Horizon | Incumbent emissions avoided | SUPERWOOD manufacturing | Net reduction | Net vs EAF steel | Biogenic stored (separate) |
 |---|---|---|---|---|---|

@@ -14,3 +14,9 @@ Photorealistic architectural photograph, golden-hour light. A data center equipm
 - Board width grounded in SUPERWOOD product geometry (boards up to 8" wide) — avoid wide sheet goods.
 - The model will want to add rustic knots/weathering — the "engineered, crisp edges, uniform boards, no knots" sentence counters that.
 - Slide labels this "concept rendering" — keep it plausible, not fantastical.
+
+## Revision 2026-09-05 (current Soon tile, `tile_barrier.jpg`)
+
+Alex: acoustic barrier walls and equipment screens should run vertically; show board and batten. Higgsfield job `9c77c8e4-86ab-4fc8-ae61-c405766b43fb`, 1:1.
+
+Architectural photograph, late afternoon, of a tall acoustic barrier wall and equipment screen at a data center equipment yard, built in board-and-batten style from warm medium-brown densified wood: wide vertical boards with narrower vertical battens over every joint, all running straight up and down, oiled-teak tone, straight fine grain, crisp machined edges, no knots, no gaps. The wall is about 4 meters high on a dark steel subframe; the grey tops of large chillers and generators are just visible above it. Three-quarter view along the wall showing the vertical rhythm of boards and battens, clean gravel strip and low native grasses at the base, soft sky. Engineered and industrial-grade, not rustic. No people, no text, no signage, no logos.

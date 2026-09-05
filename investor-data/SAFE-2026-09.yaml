@@ -2490,9 +2490,9 @@ facts:
     notes: Mostly servers, GPUs and networking; the building share is the Census construction series.
 
   - id: datacenter.racks_and_server_boxes_horizons
-    value: "racks: soon (a few months of development); server enclosures: long term; electronics: never"
+    value: "racks: soon (a few months of development); server enclosures and electronics: not addressed"
     unit: null
-    statement: In a data center SUPERWOOD can address racks soon (a few months of development), server enclosures (boxes) eventually, and the electronics never
+    statement: In a data center SUPERWOOD can address racks soon (a few months of development); server enclosures were dropped from the long-term horizon on 2026-09-05 (Alex), and the electronics never
     basis: asserted-internal
     confidence: M
     source: Alex Lau 2026-09-04
