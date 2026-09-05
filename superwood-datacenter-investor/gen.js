@@ -122,8 +122,8 @@ note(s, "US Census Bureau, Construction Spending (C30), private data center cons
 // ---------- 4 · COMMUNITY PUSHBACK: AESTHETICS AND NOISE ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
 kicker(s, "The buyer · The community");
-title(s, [t("Community pushback now blocks or delays more data center projects than ever. "), gold("Two of the complaints are about the building.")], L, 0.88, 12.2, 23);
-label(s, "How we deal with two of the complaints", L, 2.1, 7.2);
+title(s, [t("Community pushback now blocks or delays more data center projects than ever. We help with two of the complaints, "), gold("and can go much further"), t(".")], L, 0.88, 12.2, 23);
+label(s, "Where we help today", L, 2.1, 7.2);
 const objections = [
   ["Aesthetics", "Windowless boxes on farmland. Counties answer with 500–1,000 ft setbacks and design standards.", "SUPERWOOD: facades, fences and screens that read as architecture."],
   ["Noise", "Fan walls, chillers and generator tests hum past the fence line. Ordinances now set decibel limits at the property line.", "SUPERWOOD: acoustic screens and barriers; potentially sound-damping ductwork and fan enclosures at the source."],
@@ -135,8 +135,9 @@ objections.forEach(([head, sub, ans], i) => {
   body(s, sub, x + 0.32, y + 0.38, 6.9, 0.5, 11, MUTED);
   s.addText(ans, { x: x + 0.32, y: y + 0.9, w: 6.9, h: 0.3, fontFace: SANS, fontSize: 11, bold: true, color: CREAM, margin: 0 });
 });
-panel(s, L, 5.55, 7.2, 0.7, PANEL);
-body(s, "Entitlement is where hyperscalers lose time. Power, water and rates are outside our scope.", L + 0.25, 5.6, 6.8, 0.6, 11, DIM);
+panel(s, L, 5.45, 7.2, 1.0, PANEL);
+s.addText("Where we can go much further", { x: L + 0.25, y: 5.52, w: 6.8, h: 0.3, fontFace: SANS, fontSize: 12.5, bold: true, color: CREAM, margin: 0 });
+body(s, "Into the structure of the buildings and what is inside them: trusses, floors, enclosures, racks. Wood is already emerging in data center structures. Power, water and rates are outside our scope.", L + 0.25, 5.84, 6.8, 0.6, 10.5, DIM);
 label(s, "How strong the pushback is", 8.0, 2.1, 4.8);
 const scale = [
   ["75 projects, about $130 billion, blocked or delayed in one quarter", "January to March 2026, as much as in all of 2025. 833 opposition groups in 49 states."],
@@ -152,7 +153,7 @@ note(s, "Data Center Watch, Q1 2026 report (June 2026). Virginia HB 153; Henry C
 
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
-kicker(s, "The buyer · The fit");
+kicker(s, "The buyer · Wood emerging");
 title(s, [t("Hyperscalers are already building structures with wood. We "), gold("turbocharge"), t(" wood.")], L, 0.88, 12.2, 23);
 const pub = [
   ["prep/logo_microsoft.png", 1688 / 360, "prep/ms_clt_datacenter.jpg", "Photo: Microsoft", "Two Northern Virginia datacenters with cross-laminated timber floors on a steel frame — about 35% less embodied carbon than conventional steel construction, 65% less than precast. Gensler; Thornton Tomasetti.", "Microsoft Source, Nov 2024"],
