@@ -78,7 +78,7 @@ const thesis = [
   ["We turbocharge the wood they already use",
    "Mass timber replaces concrete floors. SUPERWOOD, stronger than A36 steel in tension at one-sixth the weight, adds the steel: members, skins and screens — and strengthens the mass timber itself. It ships today from SuperMill One; truss design and mass-timber enhancement are under way."],
   ["One basis-of-design win is SuperMill Two-scale demand",
-   "A gigawatt data center's skins alone are one to three years of SuperMill One's output; its structure is a year or more of SuperMill Two. Later: prefabricated envelopes and, eventually, foundations."],
+   "A gigawatt data center's skins alone are one to three years of SuperMill One's output; its structure is a year or more of SuperMill Two. Long term: prefabricated envelopes and, eventually, foundations."],
 ];
 thesis.forEach(([head, sub], i) => {
   const cw = 3.95, x = L + i * 4.125, y = 2.1;
@@ -163,13 +163,13 @@ s.addImage({ path: "prep/charts/campus_mass_narrow.png", x: L, y: 2.08, w: chW, 
 s.addImage({ path: "prep/charts/campus_carbon_narrow.png", x: 6.7, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_legend.png", x: L, y: 2.08 + chH + 0.03, w: CW, h: CW * LEG_H / LEG_W });
 const sizeL = [["50–80% of the above-ground portion of a data center is steel", "Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server enclosures eventually; never the electronics."]];
-const sizeR = [["By embodied carbon, steel is about 60% of the building materials", "At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses now, soon and later."]];
+const sizeR = [["By embodied carbon, steel is about 60% of the building materials", "At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses in the immediate, soon and medium-term horizons."]];
 [[sizeL, L], [sizeR, 6.7]].forEach(([arr, x]) => arr.forEach(([head, sub]) => {
   const y = 2.08 + chH + 0.42;
   s.addText(head, { x, y, w: 5.9, h: 0.32, fontFace: SANS, fontSize: 13, bold: true, color: CREAM, margin: 0 });
   body(s, sub, x, y + 0.34, 5.9, 0.62, 10, DIM);
 }));
-note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: now = shipping; soon = 1–3 years, straightforward applications engineering; later = complex applications engineering, new form factors or materials engineering.", 6.78, 0.3);
+note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: immediate = shipping; soon = 1–3 years, straightforward applications engineering; medium term = complex applications engineering, new form factors or materials engineering; long term = technical potential with no design or code pathway yet.", 6.78, 0.3);
 
 // ---------- 6 · WHAT ONE GIGAWATT IS WORTH ----------
 s = pres.addSlide(); base(s, "InventWood · The size");
@@ -178,10 +178,10 @@ title(s, "How much SUPERWOOD could a 1 GW data center require?", L, 0.88, 11.9, 
 s.addImage({ path: "prep/charts/worth.png", x: L, y: 2.15, w: 5.0, h: 5.0 * 4.2 / 8.6 });
 const worthCols = ["Horizon", "Incumbent replaced", "SUPERWOOD required", "Plant-years"];
 const worthRows = [
-  ["Now — skins, screens, fences", "3,300–12,000 tons", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 yr of SuperMill One"],
+  ["Immediate — skins, screens, fences", "3,300–12,000 tons", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 yr of SuperMill One"],
   ["Soon — racks, platforms, barriers", "12,000–30,000 tons", "3,500–18,000 tons", "0.1–0.6 yr of SuperMill Two"],
-  ["Later: structure — frame, roofs, enclosures", "53,000–108,000 tons", "16,000–65,000 tons", "0.5–2.1 yr of SuperMill Two"],
-  ["Later: vision — slab, foundations, server boxes", "1,002,000–2,089,000 tons", "58,000–362,000 tons", "1.8–12 yr of SuperMill Two"],
+  ["Medium term — frame, roofs, enclosures", "53,000–108,000 tons", "16,000–65,000 tons", "0.5–2.1 yr of SuperMill Two"],
+  ["Long term — slab, foundations, server boxes", "1,002,000–2,089,000 tons", "58,000–362,000 tons", "1.8–12 yr of SuperMill Two"],
 ];
 const wx = [5.9, 8.2, 9.6, 11.0], ww = [2.2, 1.3, 1.3, 1.75];
 worthCols.forEach((c, i) => s.addText(c.toUpperCase(), { x: wx[i], y: 1.9, w: ww[i], h: 0.5, fontFace: SANS, fontSize: 9, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" }));
@@ -239,13 +239,13 @@ s.addText([
   t("Made from wood, in America.", { color: CREAM }),
 ], { x: L, y: 4.85, w: 4.0, h: 1.7, fontFace: SERIF, fontSize: 19, bold: true, margin: 0, valign: "top" });
 const props = [
-  ["icon_fire", "Fire performance", "Chars rather than burns — far better in fire than ordinary wood. ASTM E84 Class A demonstrated in testing; specified per order"],
-  ["icon_shield", "Durable and impact resistant", "Harder and more dent-resistant than oak; impact and storm resistant — suited to fences, screens and door protection"],
-  ["icon_droplet", "Resists moisture, pests and rot", "Exterior grade for facades, yards and fences; no rust; resists termites, mold and fungus"],
-  ["icon_thermo", "Insulating, not conducting", "Thermal and electrical insulator — no thermal bridging, and non-conductive around electrical infrastructure"],
-  ["icon_vibration_cream", "Sound and vibration damping", "Better damping than steel — the basis for acoustic barriers and equipment screens"],
-  ["icon_rf", "RF transparent", "Useful in niches: antenna screening, timing-antenna enclosures, telecom shelters"],
+  ["icon_strong", "Strong", "Able to carry the required loads — tensile strength above ASTM A36 steel in production samples"],
+  ["icon_light", "Light", "One-sixth the weight of steel: faster and safer to transport and install, and reduced structural requirements"],
   ["icon_leaf", "Naturally beautiful", "The texture, colors and warmth of wood — the biophilic, community-facing surface"],
+  ["icon_shield", "Durable and impact resistant", "Harder and more dent-resistant than oak; impact and storm resistant; exterior grade resists moisture, pests and rot"],
+  ["icon_thermo", "Insulating, not conducting", "Thermal and electrical insulator — no thermal bridging, and non-conductive around electrical infrastructure"],
+  ["icon_vibration_cream", "Sound and vibration damping", "Particularly for HVAC enclosures, acoustic barriers and equipment screens"],
+  ["icon_rf", "RF transparent", "Useful in niches: antenna screening, timing-antenna enclosures, telecom shelters"],
 ];
 props.forEach(([icon, head, sub], i) => {
   const y = 1.95 + i * 0.68;
@@ -253,7 +253,7 @@ props.forEach(([icon, head, sub], i) => {
   s.addText(head.toUpperCase(), { x: 5.6, y, w: 7.2, h: 0.28, fontFace: SANS, fontSize: 11.5, bold: true, color: CREAM, charSpacing: 1, margin: 0 });
   body(s, sub, 5.6, y + 0.29, 7.2, 0.38, 9.5, MUTED);
 });
-note(s, "Company test data; property data package and test methods available on request. Fire: Class A is a demonstrated capability, not a rating carried by every board.", 6.7, 0.35);
+note(s, "Company test data; property data package and test methods available on request. Fire: chars rather than burns, far better than ordinary wood; ASTM E84 Class A demonstrated in testing, specified per order.", 6.7, 0.35);
 
 // ---------- 10 · SPEED AND MODULARITY ----------
 s = pres.addSlide(); base(s, "InventWood · The fit");
@@ -277,11 +277,11 @@ note(s, "Schedule figures are mass-timber case studies (ULI Urban Land: ~20% ave
 
 // ---------- 11 · NOW ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Now");
-title(s, "Now: skins, screens and fences from SuperMill One");
+kicker(s, "The path · Immediate");
+title(s, "Immediate: skins, screens and fences from SuperMill One");
 s.addText("Every item below ships today as boards up to 8\" × 16' × 3/8\", exterior or interior grade. SuperMill One makes about one million square feet a year across all markets.",
   { x: L, y: 1.85, w: CW, h: 0.45, fontFace: SANS, fontSize: 12, color: DIM, margin: 0 });
-s.addText([t("NOW ", { bold: true, color: BRIGHT }), t("shipping from SuperMill One   ·   ", {}), t("SOON ", { bold: true, color: BRIGHT }), t("1–3 years; straightforward applications engineering   ·   ", {}), t("LATER ", { bold: true, color: BRIGHT }), t("complex applications engineering such as full building systems, new form factors, or materials engineering", {})], { x: L, y: 2.25, w: CW, h: 0.3, fontFace: SANS, fontSize: 9.5, color: DIM, margin: 0 });
+s.addText([t("IMMEDIATE ", { bold: true, color: BRIGHT }), t("shipping from SuperMill One   ·   ", {}), t("SOON ", { bold: true, color: BRIGHT }), t("1–3 years; straightforward applications engineering   ·   ", {}), t("MEDIUM TERM ", { bold: true, color: BRIGHT }), t("complex applications engineering such as full building systems, new form factors, or materials engineering   ·   ", {}), t("LONG TERM ", { bold: true, color: BRIGHT }), t("technical potential with no design or code pathway yet", {})], { x: L, y: 2.25, w: CW, h: 0.3, fontFace: SANS, fontSize: 9.5, color: DIM, margin: 0 });
 const nowTiles = [
   ["tile_cladding", "Facades, cladding & rain screens"],
   ["tile_lobby", "Biophilic interiors for office space"],
@@ -335,7 +335,7 @@ conceptTag(s, W - 3.6, 6.6, 3.0, "Concept renderings");
 
 // ---------- 13 · STRUCTURAL ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Later");
+kicker(s, "The path · Medium term");
 title(s, [t("Structural: starting "), gold("now"), t(", scaling with SuperMill Two")]);
 // left: under way now
 panel(s, L, 1.95, 4.6, 3.55, PANEL2);
@@ -366,8 +366,8 @@ conceptTag(s, W - 3.6, 6.65, 3.0, "Concept renderings");
 
 // ---------- 14 · THE LONG-TERM VISION ----------
 s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Later, the long-term vision");
-title(s, [t("Later, the long-term vision: prefabricated "), gold("envelopes"), t(", then foundations")]);
+kicker(s, "The path · Long term");
+title(s, [t("Long term: prefabricated "), gold("envelopes"), t(", then foundations")]);
 const vis = [
   ["prep/app_shell.jpg", 1200 / 896, "Prefabricated building envelopes", "Structure and skin shipped as panels and modules — the co-development target with our hyperscaler customers' architects and engineers. Shells that carry their own loads, weigh far less than steel and precast, and can be disassembled and moved."],
   ["prep/dc_wood_foundation.jpg", 1376 / 768, "Foundations, slabs and paving", "Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete — installed faster, with lower geotechnical demands, and potentially movable."],
@@ -412,9 +412,9 @@ s.addText("WHAT THEY ARE DOING WITH US", { x: gx + gw + 0.3, y: 1.85, w: 3.35, h
 panel(s, L, 6.35, CW, 0.58, PANEL2);
 s.addText([
   t("ENGINEERING AND CONSTRUCTION PARTNERS  ", { bold: true, color: BRIGHT, fontSize: 8.5, charSpacing: 1.5 }),
-  t("Fast + Epp has run over a thousand small-scale experiments on SUPERWOOD, funded by the Canadian government (company statement) · Timber Engineering (structural engineering) · HITT and Turner, contractors, are advocates — they build, they do not specify", { color: CREAM, fontSize: 9.5 }),
+  t("Fast + Epp has run over a thousand small-scale experiments on SUPERWOOD, funded by the Canadian government · Timber Engineering (structural engineering) · HITT and Turner, contractors, are advocates — they build, they do not specify", { color: CREAM, fontSize: 9.5 }),
 ], { x: L + 0.3, y: 6.35, w: CW - 0.6, h: 0.58, fontFace: SANS, margin: 0, valign: "middle" });
-note(s, "Engagement stages and partner statements as reported by InventWood, September 2026; next steps undated. Public-record backup for Microsoft and Meta on the next slide.", 6.97, 0.3);
+note(s, "Next steps undated. Published backup for Microsoft and Meta on the next slide.", 6.97, 0.3);
 
 // ---------- 16 · MICROSOFT AND META, ON THE RECORD AND WITH US ----------
 s = pres.addSlide(); base(s, "InventWood · The evidence");
@@ -453,7 +453,7 @@ profiles.forEach(([name, stage, pubTxt, src, pts, img, cap], i) => {
   s.addImage({ path: img, x: x + cw - 1.5, y: 4.42, w: 1.5, h: 1.5 });
   s.addText(cap, { x: x + cw - 2.6, y: 5.97, w: 2.6, h: 0.4, fontFace: SANS, fontSize: 7.5, italic: true, color: MUTED, align: "right", margin: 0 });
 });
-note(s, "Engagement statements as reported by InventWood, September 2026. Sources: news.microsoft.com, Nov 2024; thorntontomasetti.com; sustainability.atmeta.com, 31 Jul 2025.", 6.6, 0.4);
+note(s, "Sources: news.microsoft.com, Nov 2024; thorntontomasetti.com; sustainability.atmeta.com, 31 Jul 2025.", 6.6, 0.4);
 
 // ---------- 17 · THE VISION ----------
 s = pres.addSlide();
@@ -555,7 +555,7 @@ note(s, "Steps are sequenced, not dated. Each names what it produces.", 6.75, 0.
 s = pres.addSlide();
 s.background = { path: "prep/cover_bg.jpg" };
 s.addText([t("Let's build what's "), gold("next"), t(".")], { x: 1.0, y: 2.6, w: 10, h: 1.0, fontFace: SERIF, fontSize: 44, color: CREAM, margin: 0 });
-bullets(s, ["Data centers are short of steel and already build with wood.", "SUPERWOOD turbocharges that wood: skins and fences now, structure later.", "One basis-of-design win with a hyperscaler is the demand case for SuperMill Two."], { x: 1.0, y: 3.55, w: 7.5, h: 1.2, fontSize: 12.5, color: CREAM });
+bullets(s, ["Data centers are short of steel and already build with wood.", "SUPERWOOD turbocharges that wood: skins and fences now, structure in the medium term.", "One basis-of-design win with a hyperscaler is the demand case for SuperMill Two."], { x: 1.0, y: 3.55, w: 7.5, h: 1.2, fontSize: 12.5, color: CREAM });
 s.addText("Company, mills, cost roadmap and the raise: SUPERMILLS Investor Overview", { x: 1.0, y: 4.8, w: 9, h: 0.3, fontFace: SANS, fontSize: 11, color: BRIGHT, margin: 0 });
 s.addImage({ path: "prep/inventwood_logo.png", x: 1.0, y: 5.25, w: 3.6, h: 3.6 * 216 / 1473 });
 s.addText("Alex Lau · CEO / Co-Founder · alex@inventwood.com", { x: 1.0, y: 5.95, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });

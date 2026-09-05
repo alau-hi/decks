@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="256" height="256" fill="none" stroke="#F4ECDF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- feather -->
+  <path d="M50 12c-14 0-30 12-34 30l-4 10 10-4c18-4 30-20 30-34z"/>
+  <path d="M16 48L46 16M26 40h12M22 30h10"/>
+</svg>
