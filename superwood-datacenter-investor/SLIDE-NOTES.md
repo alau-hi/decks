@@ -1,0 +1,44 @@
+# SUPERWOOD for Data Centers — slide notes
+
+Per-slide intent and Alex's instructions, kept current with every change. Decisions here are the authority on wording
+and scope; `STORY-OUTLINE.md` holds the history, `reviews/` the critiques, `../investor-data/` the numbers.
+Web: https://superwood-datacenter-investor.vercel.app · PPTX/PDF rebuilt only on request.
+
+Conventions (Alex, 2026-09-04): units in tons or '000s of tons, never kt; say "data center", not "campus"; no fluffy
+language; the sibling deck is the **SUPERMILLS Investor Overview** (sw.inventwood.net/supermills-deck); branded
+InventWood; deploy the web deck on every change, rebuild PPTX/PDF only when asked; carbon figures are the Canva set
+(0.5 / 1.3 / steel 1.8), pre-LCA, Prof. Ming Hu named; fire = Class A demonstrated, not guaranteed per board, "much
+better than regular wood"; no approvals/standards detail; no dated milestones; density 1.3 t/m³.
+
+| # | Slide | Intent | Alex's notes and decisions |
+|---|---|---|---|
+| 1 | Cover | InventWood-branded, aligned with the SUPERMILLS Investor Overview cover | InventWood mark above the title; "SUPERWOOD for Data Centers — turbocharging the wood hyperscalers already build with"; "Companion to the SUPERMILLS Investor Overview / September 2026"; one Confidential mark only |
+| 2 | Thesis | State the thesis in one line, three supporting cards | Wording: "We help data centers decarbonize and improve their impact on communities, while they accelerate SUPERWOOD's journey from premium skins into structural applications" |
+| 3 | The buyer | Data centers are steel-intensive, supply-chain challenged, highly repeatable | Labels exactly: Steel-intensive · Supply-chain challenged · Highly repeatable; tons, not t/kt; steel-frame construction render, not a wood render |
+| 4 | Turbocharge | Hyperscalers already build structures with wood; we turbocharge wood | Title verbatim ("…building structures with wood. We turbocharge wood."); Microsoft and Meta logos and their own project photos (credited); beams: glulam under the mass-timber header, hybrid and thin SUPERWOOD beams under the SUPERWOOD header; thin beam shown as stacked 1/4" boards, same camera and color as the hybrid; no beam captions; no column labels ("on the public record", "what SUPERWOOD adds"); code path: certifiable under wood standards today, SUPERWOOD-specific standards the goal; larger table text |
+| 5 | Data center | What a GW data center is made of, by mass and by embodied carbon | Title "What a GW data center is made of"; toggle mass/carbon (web; PPTX side by side); rows must not shift between views; headline "50–80% of the above-ground portion of a data center is steel" (band covers metal-panel and tilt-up walls); do NOT mention concrete's share of total mass, the 5%-of-total line, or "only the long-term vision moves the total"; right-hand notes large and legible |
+| 6 | Worth | What one gigawatt of data center is worth to InventWood | No dollar values; incumbent replaced, SUPERWOOD required, plant-years; larger table text; racks in "next" |
+| 7 | Process | We unlock the power of cellulose | Kept to the 2026-09-02 wording; the three manufacturing specifics (off-the-shelf equipment, food-grade solution, near-zero wastewater) removed |
+| 8 | Strength | Production SUPERWOOD exceeds A36 steel in tension at one-sixth the weight | Claim title, no stat tiles; chart with A36 shown as a 400–550 MPa range; derivation card |
+| 9 | Properties | Properties that matter on a data center | Fire wording per convention; no unsourced multipliers (100×/400×, 3× oak) |
+| 10 | Speed | Faster to build: lighter, prefabricated, reconfigurable | Restored from the original deck's "speed and scale of deployment"; mass-timber schedule figures as analogy only (ULI) |
+| 11 | Now | Skins, screens and fences from SuperMill One | Racks are NOT here (see 12) |
+| 12 | Soon | "Soon: applications requiring straightforward testing and engineering" | Racks belong here — a few months of development; gates in plain words, no standards |
+| 13 | Structural | Structural: starting now, scaling with SuperMill Two | Left block label "Under development with SUPERMILL ONE output": truss design starting; mass-timber enhancement under way; light structural components (non-life-safety: strut-type supports, window mullions, deck boards). "Building enclosures" is its own card — enclosures and structural components are different things. Qualification band in plain words; do not say "this is what Microsoft and Google are asking about" |
+| 14 | Long term | Prefabricated envelopes, then foundations | Long-term vision slide Alex asked for; labeled technical potential; no 5%/three-quarters mass lines |
+| 15 | Customers | Customer engagement ladder | Stages as reported by InventWood; next steps undated; Fast + Epp: over a thousand small-scale experiments, Canadian-government funded (company statement; program name pending); HITT and Turner are contractor advocates, they do not specify; no "used with permission" line |
+| 16 | Microsoft and Meta | Published projects, and work with InventWood | Title just "Microsoft and Meta"; blocks "Published" and "Working with InventWood" |
+| 17 | Carbon sinks | The vision | Title verbatim: "Can the world's data centers be big, beautiful carbon sinks?"; three cards (Big, Beautiful, Carbon sinks); LCA caveat in footer |
+| 18 | Carbon | Embodied carbon: a projection until the LCA is complete | Canva set; both steel baselines; functional-unit derivation with substitution factor; biogenic separate |
+| 19 | Risks | Risks and how we handle them | No standards detail; SuperMill Two "is what the raise funds" |
+| 20 | Path | Path to first projects | Undated steps, each naming what it produces |
+| 21 | Close | Let's build what's next | Three-line recap; link to the SUPERMILLS Investor Overview; InventWood mark; contacts |
+
+## Open items (Alex to confirm)
+- Wall system in Microsoft's and Meta's standard designs (metal panel vs tilt-up) — drives the steel share and whether facades are "now".
+- Fast + Epp funding program name and dates before wide distribution.
+- Third-party press photos on slide 4 (Microsoft, Meta) — confirm use before the deck goes wide.
+- SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
+
+## Change log
+- 2026-09-04: full rebuild from the fresh-look review; all decisions above taken the same day. See STORY-OUTLINE.md.

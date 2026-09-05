@@ -341,13 +341,13 @@ kicker(s, "The path · Structural");
 title(s, [t("Structural: starting "), gold("now"), t(", scaling with SuperMill Two")]);
 // left: under way now
 panel(s, L, 1.95, 4.6, 3.55, PANEL2);
-label(s, "Under way from today's boards", L + 0.3, 2.1, 4.0, GOLD);
+label(s, "Under development with SUPERMILL ONE output", L + 0.3, 2.1, 4.0, GOLD);
 s.addImage({ path: "prep/tiles/tile_truss2.jpg", x: L + 0.3, y: 2.45, w: 1.5, h: 1.5 });
-body(s, "Structural work has begun. Truss design is starting, and mass-timber enhancement — SUPERWOOD laminations that stiffen and strengthen glulam and CLT-type members — is under way. We expect structural sales on the way to SuperMill Two.\n\nReplacing structural steel is the first thing new data-center customers ask about.", L + 2.0, 2.45, 2.9, 3.0, 10.5, DIM);
+body(s, "Truss design is starting. Mass-timber enhancement — SUPERWOOD laminations that stiffen and strengthen glulam and CLT-type members — is under way. Light structural components (non-life-safety): strut-type supports, window mullions, deck boards.\n\nWe expect structural sales on the way to SuperMill Two. Replacing structural steel is the first thing new data-center customers ask about.", L + 2.0, 2.45, 2.9, 3.0, 10, DIM);
 // right: at SuperMill Two scale
 label(s, "At SuperMill Two scale", 5.5, 2.1, 6.0);
 const sm2 = [
-  ["tile_spaceframe", "Building enclosures & structural components", "The co-development target with hyperscaler architects and engineers"],
+  ["tile_spaceframe", "Building enclosures", "Prefabricated envelope structure and skin — the co-development target with hyperscaler architects and engineers"],
   ["tile_truss2", "Trusses, roofs & long-span members", "Roof structure first; fast-to-build enclosures follow"],
   ["tile_clt", "CLT-type floor, roof & wall assemblies", "Thin, far stronger panels through the mass-timber product route"],
   ["tile_rackocp", "Heavy equipment supports & server enclosures", "Racks come next, a few months of development; enclosures for servers and equipment follow — the electronics stay"],
@@ -362,7 +362,7 @@ sm2.forEach(([img, head, sub], i) => {
 panel(s, L, 5.7, CW, 0.9, PANEL);
 s.addText([
   t("How qualification works.  ", { bold: true, color: GOLD }),
-  t("Every structural application is qualified through a scoped test program with the customer who picks it up first, on the pathway mass timber has already opened in the building codes, with insurer acceptance for structural use. Test methods and property data are available on request. This is what Microsoft and Google are asking about.", { color: DIM }),
+  t("Every structural application is qualified through a scoped test program with the customer who picks it up first, on the pathway mass timber has already opened in the building codes, with insurer acceptance for structural use. Test methods and property data are available on request.", { color: DIM }),
 ], { x: L + 0.3, y: 5.75, w: CW - 0.6, h: 0.8, fontFace: SANS, fontSize: 10.5, margin: 0, valign: "middle" });
 conceptTag(s, W - 3.6, 6.65, 3.0, "Concept renderings");
 
