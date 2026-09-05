@@ -23,12 +23,13 @@ section{min-height:100vh;min-height:100dvh;scroll-snap-align:start;scroll-snap-s
 h1,h2,h3{font-family:'Fraunces',serif;font-weight:400;letter-spacing:-.01em;line-height:1.08}
 h2{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:340;text-wrap:balance;margin:.25rem 0 1.1rem}
 h2 em,h1 em{font-style:italic;color:var(--gold)}
-.kicker{font-size:.66rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright)}
+.kicker{font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright)}
 .lead{font-size:clamp(.9rem,1.25vw,1.05rem);line-height:1.55;color:var(--cream-dim);font-weight:300;max-width:60ch}
 .lead b,.li b,p b{color:var(--cream);font-weight:600}
 .note{font-size:.74rem;line-height:1.5;color:var(--cream-dim);font-style:normal;margin-top:1rem;max-width:95ch}
 .rv{opacity:0;transform:translateY(1.4rem);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .in .rv{opacity:1;transform:none}
+section.noanim .rv{transition:none}
 .in .rv:nth-child(2){transition-delay:.06s}.in .rv:nth-child(3){transition-delay:.12s}.in .rv:nth-child(4){transition-delay:.18s}.in .rv:nth-child(5){transition-delay:.24s}
 .bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center}
 .scrim{position:absolute;inset:0;z-index:1}
@@ -36,41 +37,36 @@ img{max-width:100%;display:block}
 /* chrome */
 .brand{position:fixed;bottom:1.1rem;right:calc(var(--dock) + .4rem);z-index:95;height:1.5rem;width:max-content}.brand img{height:100%;width:auto}
 body.on-cover .brand{display:none}
-.conf{position:fixed;bottom:1.1rem;left:1.6rem;z-index:90;font-size:.58rem;letter-spacing:.28em;color:var(--muted);background:rgba(20,13,7,.7);padding:.3em .8em;border-radius:999px;text-transform:uppercase}
+.conf{position:fixed;bottom:1.1rem;left:1.6rem;z-index:90;font-size:.62rem;letter-spacing:.28em;color:var(--muted);background:rgba(20,13,7,.7);padding:.3em .8em;border-radius:999px;text-transform:uppercase}
 .pager{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:.5rem;background:rgba(20,13,7,.72);padding:.25rem .35rem;border-radius:999px;backdrop-filter:blur(3px);border:1px solid var(--line)}
 .pager button{background:transparent;border:0;color:var(--cream-dim);font:500 .66rem 'Inter',sans-serif;letter-spacing:.06em;padding:.35em .9em;border-radius:999px;cursor:pointer;white-space:nowrap}
 .pager button:hover{color:var(--ink-deep);background:var(--wood-bright)}
 .pager button:disabled{opacity:.3;cursor:default;background:transparent;color:var(--cream-dim)}
-.pager .pn{font-size:.6rem;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums;padding:0 .3em}
+.pager .pn{font-size:.66rem;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums;padding:0 .3em}
 /* right-hand dock */
-nav.dock{position:fixed;right:1.1rem;top:50%;transform:translateY(-50%);z-index:96;display:flex;flex-direction:column;gap:.12rem;align-items:flex-end;max-height:92vh;overflow:hidden}
-nav.dock button{border:0;background:transparent;cursor:pointer;font:500 .6rem 'Inter',sans-serif;letter-spacing:.1em;color:var(--muted);opacity:.6;padding:.14em .55em;border-radius:999px;transition:color .25s,opacity .25s,background .25s;text-align:right;white-space:nowrap}
+nav.dock{position:fixed;right:1.1rem;top:50%;transform:translateY(-50%);z-index:96;display:flex;flex-direction:column;gap:.12rem;align-items:flex-end;max-height:92vh;overflow:hidden;background:rgba(20,13,7,.55);padding:.5rem .3rem;border-radius:1rem;backdrop-filter:blur(4px)}
+nav.dock button{border:0;background:transparent;cursor:pointer;font:500 .66rem 'Inter',sans-serif;letter-spacing:.1em;color:var(--muted);opacity:.6;padding:.14em .55em;border-radius:999px;transition:color .25s,opacity .25s,background .25s;text-align:right;white-space:nowrap}
 nav.dock button:hover,nav.dock button:focus-visible{opacity:1;color:var(--cream);outline:none}nav.dock button:focus-visible{box-shadow:0 0 0 2px var(--gold)}
 nav.dock button.active{opacity:1;color:var(--ink-deep);background:var(--wood-bright);font-weight:600}
 nav.dock i{display:block;width:1.6rem;height:1px;background:var(--line);margin:.28rem .55em}
 /* layout helpers */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;align-items:start}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
 .split{display:grid;grid-template-columns:1.25fr 1fr;gap:2rem;align-items:start}
 .card{background:var(--panel);border-radius:.6rem;padding:1rem 1.1rem}
 .card.tint{background:var(--panel2)}
 .card h3{font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem;color:var(--cream);margin-bottom:.35rem}
-.card p,.li p{font-size:.76rem;line-height:1.45;color:var(--muted)}
+.card p,.li p{font-size:.8rem;line-height:1.45;color:var(--muted)}
 .num{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--wood);line-height:1}
 .li{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:start;margin-bottom:.9rem}
 .li .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--gold);margin-top:.45rem}
 .li h3{font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;margin-bottom:.15rem}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1rem 0 1.4rem}
-.stats .big{font-family:'Fraunces',serif;font-size:2.1rem;color:var(--gold);line-height:1}
-.stats .sm{font-size:.74rem;color:var(--cream-dim);margin-top:.35rem;line-height:1.35}
-figure{margin:0}figcaption{font-size:.64rem;color:var(--muted);font-style:italic;margin-top:.4rem}
+figure{margin:0}figcaption{font-size:.72rem;color:var(--muted);font-style:italic;margin-top:.4rem}
 .imgbox{border-radius:.5rem;overflow:hidden;background:#000}.imgbox img{width:100%;height:100%;object-fit:cover}
 table{border-collapse:collapse;width:100%;font-size:.76rem}
-th{text-align:left;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;padding:.4rem .5rem .5rem 0;border-bottom:1px solid var(--line)}
+th{text-align:left;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;padding:.4rem .5rem .5rem 0;border-bottom:1px solid var(--line)}
 td{padding:.55rem .5rem .55rem 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--cream-dim);line-height:1.4}
 td:first-child{color:var(--cream);font-weight:600}
-.chip{display:inline-block;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--gold);background:rgba(226,184,119,.14);padding:.3em .8em;border-radius:999px}
 /* cover */
 #s1{padding:0;align-items:flex-end}
 #s1 .scrim{background:linear-gradient(100deg,rgba(24,16,9,.8) 0%,rgba(24,16,9,.4) 45%,rgba(24,16,9,.12) 75%),linear-gradient(180deg,rgba(18,12,7,.1) 0%,rgba(18,12,7,.15) 40%,rgba(18,12,7,.9) 100%)}
@@ -79,36 +75,35 @@ td:first-child{color:var(--cream);font-weight:600}
 #s1 h1{font-size:clamp(1.9rem,3.8vw,3.1rem);color:var(--cream);font-weight:340;max-width:24ch;line-height:1.1}#s1 h1 em{color:var(--gold)}
 #s1 .coverlogo{display:block;height:clamp(40px,5.2vw,68px);width:auto;margin:0 0 1.6rem -.2em}
 #s1 .covline{margin-top:1.4rem;font-size:clamp(.95rem,1.5vw,1.25rem);font-weight:600;letter-spacing:.03em;color:var(--cream)}#s1 .covline b{display:block;color:var(--wood-bright);font-weight:700;margin-top:.15em}
-#s1 .sub{margin-top:.6rem;font-size:.85rem;color:var(--cream-dim)}
-.tag{position:absolute;top:1.2rem;right:calc(var(--dock) + .4rem);z-index:3;font-size:.6rem;font-style:italic;color:var(--cream-dim)}
+#s1 .tag{position:absolute;top:1.2rem;right:calc(var(--dock) + .4rem);z-index:3;font-size:.7rem;font-style:italic;color:var(--cream-dim)}
 /* dividers */
 .div .scrim{background:rgba(18,12,7,.35)}
 .div .kicker{margin-bottom:.8rem}.div h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}.div .lead{margin-top:.8rem}
 /* process flow */
 .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.8rem;align-items:start;margin-top:1rem}
 .flow .arr{font-family:'Fraunces',serif;color:var(--gold);font-size:1.6rem;align-self:center}
-.flow h3{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.35rem}
-.flow p{font-size:.76rem;color:var(--muted);line-height:1.4;min-height:3.2em}
+.flow h3{font-family:'Inter',sans-serif;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.35rem}
+.flow p{font-size:.8rem;color:var(--muted);line-height:1.4;min-height:3.2em}
 .flow .imgbox{aspect-ratio:1.55;margin-top:.6rem}
 /* properties */
 .props{display:grid;grid-template-columns:auto 1fr;gap:.55rem 1rem;align-items:start}
 .props img{width:1.4rem;height:1.4rem;margin-top:.1rem}
-.props h4{font-family:'Inter',sans-serif;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
-.props p{font-size:.7rem;color:var(--muted);line-height:1.35}
+.props h4{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.props p{font-size:.76rem;color:var(--muted);line-height:1.35}
 /* tiles */
 .tiles{display:grid;gap:.8rem;margin-top:1rem}
 .tiles.n7{grid-template-columns:repeat(7,1fr)}.tiles.n6{grid-template-columns:repeat(6,1fr)}
 .tiles .imgbox{aspect-ratio:1}
-.tiles p{font-size:.7rem;color:var(--cream-dim);text-align:center;margin-top:.45rem;line-height:1.3}
-.tiles .gate{font-size:.6rem;color:var(--muted);text-align:center;margin-top:.25rem;line-height:1.3}
-.tiles .gate b{display:block;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.1rem}
+.tiles p{font-size:.76rem;color:var(--cream-dim);text-align:center;margin-top:.45rem;line-height:1.3}
+.tiles .gate{font-size:.7rem;color:var(--muted);text-align:center;margin-top:.25rem;line-height:1.3}
+.tiles .gate b{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;margin-bottom:.1rem}
 .cards4 .card{display:grid;grid-template-columns:5.2rem 1fr;gap:.9rem;align-items:start}
 .cards4 .card .imgbox{aspect-ratio:1}
 /* customers */
 .band{background:var(--panel2);border-radius:.45rem;padding:.55rem 1rem;display:grid;grid-template-columns:11rem 1fr;gap:1rem;align-items:center;margin-top:.55rem;font-size:.78rem}
-.band b{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright)}
+.band b{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright)}
 .pub{background:var(--panel2);border-radius:.5rem;padding:.7rem 1rem;margin-bottom:1rem}
-.pub b{display:block;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:.3rem}
+.pub b{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);margin-bottom:.3rem}
 .pub p{font-size:.76rem;line-height:1.45;color:var(--cream)}
 .profile h2 em{font-size:.7em}
 .profile .imgbox{aspect-ratio:1}
@@ -120,9 +115,7 @@ td:first-child{color:var(--cream);font-weight:600}
 #close p{font-size:.9rem;color:var(--cream-dim);margin-top:.3rem}
 /* responsive */
 @media (max-width:900px), (orientation:portrait){
-  .grid3,.grid4,.stats{grid-template-columns:1fr 1fr}
   .tiles.n7,.tiles.n6{grid-template-columns:repeat(4,1fr)}
-  .steps{grid-template-columns:1fr}
   .split,.grid2{grid-template-columns:1fr}
 }
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){
@@ -131,10 +124,10 @@ td:first-child{color:var(--cream);font-weight:600}
   table.cmp,table.worth,table.risks{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
   table.cmp thead,table.cmp tbody,table.cmp tr{display:table;width:100%;table-layout:fixed}
   .ladder .stages span{font-size:.55rem}
-  .beams,table.cmp .thimgs{gap:.3rem}
+  table.cmp .thimgs{gap:.3rem}
   .deck{scroll-snap-type:y proximity}
   section{overflow:visible;overflow-x:clip;scroll-snap-stop:normal;padding:4.5rem var(--dock) 5rem 1.1rem;align-items:flex-start}
-  nav.dock{right:.45rem;gap:.35rem}
+  nav.dock{right:.45rem;gap:.35rem;padding:.5rem .3rem;border-radius:.6rem}
   nav.dock button{font-size:0;width:.5rem;height:.5rem;padding:0;border-radius:50%;background:var(--muted);opacity:.5}
   nav.dock button.active{background:var(--gold);opacity:1;transform:scale(1.4)}
   nav.dock i{display:none}
@@ -149,13 +142,13 @@ td:first-child{color:var(--cream);font-weight:600}
 
 /* 2026-09-04 rebuild */
 .thesis .card{padding:1.2rem 1.2rem 1.3rem}.thesis .card .num{font-size:1.7rem;display:block;margin-bottom:.7rem}.thesis .card h3{font-size:.98rem;min-height:2.6em}.thesis .card p{font-size:.8rem;line-height:1.5}
-.pub .src{display:block;font-size:.62rem;font-style:italic;color:var(--muted);margin-top:.5rem}
-table.cmp td{font-size:clamp(.82rem,1vw,.95rem);line-height:1.45;padding:.6rem .6rem .6rem 0}table.cmp td:first-child{width:7rem;font-size:clamp(.9rem,1.05vw,1rem)}table.cmp td:nth-child(2){color:var(--muted);width:32%}table.cmp th{font-size:.7rem;vertical-align:bottom;padding-bottom:.6rem}table.cmp th span{display:block;margin-bottom:.5rem}table.cmp .thimgs{display:flex;gap:.4rem}table.cmp .thimgs img{flex:1 1 0;min-width:0;aspect-ratio:1.9;object-fit:cover;border-radius:.35rem}
+.pub .src{display:block;font-size:.7rem;font-style:italic;color:var(--muted);margin-top:.5rem}
+table.cmp td{font-size:clamp(.82rem,1vw,.95rem);line-height:1.45;padding:.6rem .6rem .6rem 0}table.cmp td:first-child{width:7rem;font-size:clamp(.9rem,1.05vw,1rem)}table.cmp td:nth-child(2){color:var(--muted);width:32%}table.cmp th{font-size:.72rem;vertical-align:bottom;padding-bottom:.6rem}table.cmp th span{display:block;margin-bottom:.5rem}table.cmp .thimgs{display:flex;gap:.4rem}table.cmp .thimgs img{flex:1 1 0;min-width:0;aspect-ratio:1.9;object-fit:cover;border-radius:.35rem}
 table.worth th{font-size:.7rem}table.worth td{font-size:clamp(.9rem,1.05vw,1rem);padding:.75rem .6rem .75rem 0;line-height:1.4}table.worth td.gold{color:var(--gold);font-weight:600}
 .ladder{margin-top:.6rem}
 .ladder .lhead,.ladder .lrow{display:grid;grid-template-columns:11rem 1fr 15rem;gap:1.2rem;align-items:start}
 .ladder .lhead{padding-bottom:.3rem}.ladder .stages{display:grid;grid-template-columns:repeat(6,1fr)}
-.ladder .stages span,.ladder .lh{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--wood-bright);text-align:center;line-height:1.25}
+.ladder .stages span,.ladder .lh{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--wood-bright);text-align:center;line-height:1.25}
 .ladder .lh{text-align:left}
 .ladder .lrow{padding:.55rem 0 .35rem;border-top:1px solid var(--line)}
 .ladder .lrow h3{font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem}
@@ -164,7 +157,7 @@ table.worth th{font-size:.7rem}table.worth td{font-size:clamp(.9rem,1.05vw,1rem)
 .ladder .track i{position:absolute;left:0;right:0;top:.5rem;height:3px;background:var(--line);border-radius:2px}
 .ladder .track i::after{content:"";position:absolute;left:0;top:0;height:3px;border-radius:2px;background:var(--wood);width:calc((var(--pos) + .5) / 6 * 100%)}
 .ladder .track b{position:absolute;top:.5rem;width:.9rem;height:.9rem;border-radius:50%;background:var(--gold);transform:translate(-50%,-38%);left:calc((var(--pos) + .5) / 6 * 100%)}
-.ladder .track em{position:absolute;left:0;top:1.15rem;font-size:.68rem;color:var(--cream-dim);white-space:nowrap}
+.ladder .track em{position:absolute;left:0;top:1.15rem;font-size:.72rem;color:var(--cream-dim);white-space:nowrap}
 .bars .bar{display:grid;grid-template-columns:1fr;margin-bottom:.9rem}
 .bars .bar span{font-size:.78rem;color:var(--cream);margin-bottom:.35rem}
 .bars .tr{position:relative;height:.95rem;background:#3a2b1a;border-radius:.2rem;overflow:hidden;width:78%;display:inline-block;vertical-align:middle}
@@ -175,34 +168,31 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
 @media (max-width:900px), (orientation:portrait){.ladder .lhead,.ladder .lrow{grid-template-columns:1fr}.ladder .lhead .lh{display:none}.ladder .track{margin:.3rem 0 .6rem}}
 
 .pub .logo{height:1.3rem;width:auto;margin:.6rem 0 .45rem;display:block}
-.pub .shot{position:relative;border-radius:.4rem;overflow:hidden;aspect-ratio:2.6}.pub .shot img{width:100%;height:100%;object-fit:cover}.pub .shot figcaption{position:absolute;right:.5rem;bottom:.3rem;font-size:.55rem;font-style:italic;color:#e8decb;margin:0;text-shadow:0 0 4px rgba(0,0,0,.7)}
-.beams{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:.8rem}
-.beams figcaption{font-size:.62rem;text-align:center;font-style:italic;color:var(--muted)}.beams figcaption.hi{color:var(--wood-bright)}
+.pub .shot{position:relative;border-radius:.4rem;overflow:hidden;aspect-ratio:2.6}.pub .shot img{width:100%;height:100%;object-fit:cover}.pub .shot figcaption{position:absolute;right:.5rem;bottom:.3rem;font-size:.7rem;font-style:italic;color:#e8decb;margin:0;text-shadow:0 0 4px rgba(0,0,0,.7)}
 .toggle{display:inline-flex;align-items:center;gap:.2rem;background:var(--panel);border-radius:999px;padding:.2rem;margin-bottom:.9rem}
-.toggle button{border:0;background:transparent;color:var(--cream-dim);font:600 .66rem 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:.45em 1em;border-radius:999px;cursor:pointer}
+.toggle button{border:0;background:transparent;color:var(--cream-dim);font:600 .7rem 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:.45em 1em;border-radius:999px;cursor:pointer}
 .toggle button[aria-selected="true"]{background:var(--wood-bright);color:var(--ink-deep)}
 .toggle button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.toggle .hint{font-size:.55rem;letter-spacing:.14em;color:var(--muted);padding:0 .7em}
+.toggle .hint{font-size:.7rem;letter-spacing:.14em;color:var(--muted);padding:0 .7em}
 .view[hidden]{display:none!important}
 #campus .li{margin:0}#campus .li h3{font-size:clamp(1.15rem,1.6vw,1.5rem);line-height:1.2;margin-bottom:.7rem;font-family:'Fraunces',serif;font-weight:400}#campus .li p{font-size:clamp(.9rem,1.1vw,1.05rem);line-height:1.55;color:var(--cream-dim)}
-@media (max-width:900px), (orientation:portrait){.beams{grid-template-columns:repeat(3,1fr)}}
 
 /* HTML bar charts (slides 5 and 6) */
 .hbars{display:grid;gap:.32rem}
 .hb{display:grid;grid-template-columns:13rem 1fr 9.5rem;gap:.6rem;align-items:center;min-height:2.15rem}
-.hb .hl{font-size:.74rem;color:var(--cream);text-align:right;line-height:1.2}
+.hb .hl{font-size:.78rem;color:var(--cream);text-align:right;line-height:1.2}
 .hb .tr{position:relative;height:.95rem;background:rgba(58,43,26,.35);border-radius:.15rem;overflow:visible}
 .hb .tr i{position:absolute;top:0;height:100%;border-radius:.15rem}
 .hb .tr .rp{left:0}.hb .tr .nr{background:#3a2b1a}
 .hb .tr .ne{left:0;width:22%;background:repeating-linear-gradient(135deg,transparent 0 3px,#3a2b1a 3px 5px);border:1px solid #3a2b1a}
-.hb .hv{font-size:.72rem;color:var(--cream-dim);line-height:1.2;white-space:nowrap}.hb .hv em{font-style:normal;color:var(--muted);display:block;margin-left:0}.hb .hv.muted{color:var(--muted)}
+.hb .hv{font-size:.76rem;color:var(--cream-dim);line-height:1.2;white-space:nowrap}.hb .hv em{font-style:normal;color:var(--muted);display:block;margin-left:0}.hb .hv.muted{color:var(--muted)}
 .hb.ax{margin-top:.4rem;align-items:start}.hb.ax .tr{background:none;height:1.1rem;border-top:1px solid var(--line)}
-.hb.ax .tr span{position:absolute;top:.15rem;transform:translateX(-50%);font-size:.6rem;color:var(--muted)}
-.hb.ax .hv{font-size:.62rem;color:var(--muted);padding-top:.15rem}
-.hleg{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;margin-top:1rem;font-size:.66rem;color:var(--cream-dim)}.hleg i{display:inline-block;width:.85rem;height:.6rem;border-radius:.12rem;margin-right:.4rem;vertical-align:-.05rem}
+.hb.ax .tr span{position:absolute;top:.15rem;transform:translateX(-50%);font-size:.7rem;color:var(--muted)}
+.hb.ax .hv{font-size:.7rem;color:var(--muted);padding-top:.15rem}
+.hleg{display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;margin-top:1rem;font-size:.72rem;color:var(--cream-dim)}.hleg i{display:inline-block;width:.85rem;height:.6rem;border-radius:.12rem;margin-right:.4rem;vertical-align:-.05rem}
 .hbars.worth{gap:1rem}.hbars.worth .hb{grid-template-columns:10rem 1fr 8rem;min-height:0}.hbars.worth .hb .tr{height:1.5rem}.hbars.worth .hb .tr .rg{border-radius:.2rem}
 .hbars.worth .hb .tr .mk{width:0;border-left:1px dashed var(--wood-bright);height:100%;top:0}
-.hbars.worth .hb.ax .tr b{position:absolute;top:.25rem;transform:translateX(-50%);font-size:.6rem;font-weight:500;color:var(--wood-bright);white-space:nowrap}
+.hbars.worth .hb.ax .tr b{position:absolute;top:.25rem;transform:translateX(-50%);font-size:.7rem;font-weight:500;color:var(--wood-bright);white-space:nowrap}
 .hbars.worth .hb.ax .tr b:last-child{transform:translateX(-30%)}
 .hbars.worth .hb.ax .tr{height:1.4rem}.hbars.worth .hb.ax .tr span{display:none}
 .hbars.worth .hb .hl{font-size:.82rem}
@@ -287,9 +277,9 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
   <div class="wrap">
     <div class="kicker rv">The size</div>
     <h2 class="rv">What a GW data center is made of</h2>
-    <div class="toggle rv" role="tablist" aria-label="View"><button role="tab" aria-selected="true" data-view="mass">By mass</button><button role="tab" aria-selected="false" data-view="carbon">By embodied carbon</button><span class="hint">M / C</span></div>
+    <div class="toggle rv" role="tablist" aria-label="View"><button role="tab" id="tab-mass" aria-selected="true" aria-controls="view-mass view-mass-notes" data-view="mass">By mass</button><button role="tab" id="tab-carbon" aria-selected="false" aria-controls="view-carbon view-carbon-notes" tabindex="-1" data-view="carbon">By embodied carbon</button><span class="hint">M / C</span></div>
     <div class="split rv" style="grid-template-columns:1.7fr 1fr;align-items:center">
-      <div class="chartcol"><div class="view" data-view="mass"><div class="hbars">
+      <div class="chartcol"><div class="view" id="view-mass" role="tabpanel" aria-labelledby="tab-mass" data-view="mass"><div class="hbars">
 <div class="hb"><span class="hl">Concrete — slab on grade, paving</span><div class="tr"><i class="rp" style="width:67.1%;background:var(--teal)"></i><i class="nr" style="left:67.1%;width:22.4%"></i></div><span class="hv">1,200,000 tons <em>75% long-term vision</em></span></div>
 <div class="hb"><span class="hl">Concrete — foundations, footings, pads</span><div class="tr"><i class="rp" style="width:80.5%;background:var(--teal)"></i><i class="nr" style="left:80.5%;width:9.0%"></i></div><span class="hv">1,200,000 tons <em>90% long-term vision</em></span></div>
 <div class="hb"><span class="hl">Rebar in all concrete</span><div class="tr"><i class="rp" style="width:49.3%;background:var(--teal)"></i><i class="nr" style="left:49.3%;width:11.6%"></i></div><span class="hv">100,000 tons <em>81% long-term vision</em></span></div>
@@ -307,7 +297,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
 <div class="hb"><span class="hl">Electrical equipment and conductors</span><div class="tr"><i class="nr" style="left:0%;width:60.9%"></i></div><span class="hv">100,000 tons</span></div>
 <div class="hb"><span class="hl">Mechanical equipment, piping, loop water</span><div class="tr"><i class="nr" style="left:0%;width:52.9%"></i></div><span class="hv">50,000 tons</span></div>
 <div class="hb"><span class="hl">IT — servers and racks</span><div class="tr"><i class="rp" style="width:22.7%;background:var(--teal)"></i><i class="nr" style="left:22.7%;width:34.1%"></i></div><span class="hv">70,000 tons <em>40% long-term vision</em></span></div>
-<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1</span><span style="left:34.4%">10</span><span style="left:60.9%">100</span><span style="left:87.4%">1,000</span></div><span class="hv">'000s of tons, log scale</span></div></div></div><div class="view" data-view="carbon" hidden><div class="hbars">
+<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1</span><span style="left:34.4%">10</span><span style="left:60.9%">100</span><span style="left:87.4%">1,000</span></div><span class="hv">'000s of tons, log scale</span></div></div></div><div class="view" id="view-carbon" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden><div class="hbars">
 <div class="hb"><span class="hl">Concrete — slab on grade, paving</span><div class="tr"><i class="rp" style="width:36.0%;background:var(--teal)"></i><i class="nr" style="left:36.0%;width:12.0%"></i></div><span class="hv">144,000 tons CO₂e <em>75% long-term vision</em></span></div>
 <div class="hb"><span class="hl">Concrete — foundations, footings, pads</span><div class="tr"><i class="rp" style="width:43.2%;background:var(--teal)"></i><i class="nr" style="left:43.2%;width:4.8%"></i></div><span class="hv">144,000 tons CO₂e <em>90% long-term vision</em></span></div>
 <div class="hb"><span class="hl">Rebar in all concrete</span><div class="tr"><i class="rp" style="width:48.6%;background:var(--teal)"></i><i class="nr" style="left:48.6%;width:11.4%"></i></div><span class="hv">180,000 tons CO₂e <em>81% long-term vision</em></span></div>
@@ -327,8 +317,8 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
 <div class="hb"><span class="hl">IT — servers and racks</span><div class="tr"><i class="ne"></i></div><span class="hv muted">not estimated</span></div>
 <div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:0%">0</span><span style="left:33.3%">100</span><span style="left:66.7%">200</span><span style="left:100%">300</span></div><span class="hv">'000s of tons CO₂e</span></div></div></div><div class="hleg"><span><i style="background:var(--gold)"></i>Now — skins, screens, fences, interiors</span><span><i style="background:var(--green)"></i>Next — racks, platforms, barriers, doors</span><span><i style="background:var(--wood)"></i>Structural — frame, roofs, enclosures</span><span><i style="background:var(--teal)"></i>Long-term vision — slab, foundations, server boxes</span><span><i style="background:#3a2b1a"></i>Not replaced</span></div></div>
       <div>
-        <div class="view" data-view="mass"><div class="li" style="grid-template-columns:1fr"><div><h3>50–80% of the above-ground portion of a data center is steel</h3><p>Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server boxes eventually — the electronics never.</p></div></div></div>
-        <div class="view" data-view="carbon" hidden><div class="li" style="grid-template-columns:1fr"><div><h3>By embodied carbon, steel is about 60% of the building materials</h3><p>At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses through the structural horizon.</p></div></div></div>
+        <div class="view" id="view-mass-notes" role="tabpanel" aria-labelledby="tab-mass" data-view="mass"><div class="li" style="grid-template-columns:1fr"><div><h3>50–80% of the above-ground portion of a data center is steel</h3><p>Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server boxes eventually — the electronics never.</p></div></div></div>
+        <div class="view" id="view-carbon-notes" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden><div class="li" style="grid-template-columns:1fr"><div><h3>By embodied carbon, steel is about 60% of the building materials</h3><p>At the global-average steel factor; about a third with recycled steel. The steel above the slab alone carries roughly 37% of the building materials' embodied carbon — the share SUPERWOOD addresses through the structural horizon.</p></div></div></div>
       </div>
     </div>
     <p class="note rv">Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, secondary, conf M); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; equipment embodied carbon not estimated. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs.</p>
@@ -386,7 +376,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
     <p class="lead rv">500 MPa tensile strength in production, 600+ MPa in lab samples, against a 400–550 MPa range for ASTM A36. At one-sixth the weight, that is a strength-to-weight ratio of seven to nine times structural steel, derived below.</p>
     <div class="split rv" style="grid-template-columns:1.6fr 1fr;align-items:center">
       <figure><img src="assets/chart_strength.png" alt="Tensile strength: SUPERWOOD production 500 MPa, lab 600+, A36 steel 400–550, aluminum 310" loading="lazy"></figure>
-      <div class="card"><div class="kicker" style="font-size:.58rem;margin-bottom:.5rem">How the ratios are derived</div><p>Strength: 500–600 MPa SUPERWOOD ÷ 400 MPa (A36 minimum ultimate tensile) = 1.25–1.5×.</p><p style="margin-top:.5rem">Weight: steel 7.85 t/m³ ÷ SUPERWOOD ~1.3 t/m³ ≈ 6×.</p><p style="margin-top:.5rem">Strength-to-weight: 1.25–1.5 × 6 ≈ 7–9×.</p><p style="margin-top:.5rem">Against the top of the A36 range (550 MPa) the strength ratio is 0.9–1.1×; “stronger than steel” is stated against the A36 minimum.</p></div>
+      <div class="card"><div class="kicker" style="margin-bottom:.5rem">How the ratios are derived</div><p>Strength: 500–600 MPa SUPERWOOD ÷ 400 MPa (A36 minimum ultimate tensile) = 1.25–1.5×.</p><p style="margin-top:.5rem">Weight: steel 7.85 t/m³ ÷ SUPERWOOD ~1.3 t/m³ ≈ 6×.</p><p style="margin-top:.5rem">Strength-to-weight: 1.25–1.5 × 6 ≈ 7–9×.</p><p style="margin-top:.5rem">Against the top of the A36 range (550 MPa) the strength ratio is 0.9–1.1×; “stronger than steel” is stated against the A36 minimum.</p></div>
     </div>
     <p class="note rv">SUPERWOOD: parallel-to-grain tension, company test data (production QC and lab samples). Steel: ASTM A36 specifies 400–550 MPa ultimate tensile. Aluminum: 6061-T6, 310 MPa typical. Design values and test methods available on request.</p>
   </div>
@@ -479,11 +469,11 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
     <h2 class="rv">Structural: starting <em>now</em>, scaling with SuperMill Two</h2>
     <div class="split rv" style="grid-template-columns:1fr 1.6fr">
       <div class="card tint" style="display:grid;grid-template-columns:5rem 1fr;gap:.9rem;align-items:start">
-        <div><div class="kicker" style="font-size:.56rem;color:var(--gold);margin-bottom:.5rem;grid-column:1/-1">Under development with SUPERMILL ONE output</div><div class="imgbox" style="aspect-ratio:1"><img src="assets/tile_truss2.jpg" alt="" loading="lazy"></div></div>
+        <div><div class="kicker" style="color:var(--gold);margin-bottom:.5rem;grid-column:1/-1">Under development with SUPERMILL ONE output</div><div class="imgbox" style="aspect-ratio:1"><img src="assets/tile_truss2.jpg" alt="" loading="lazy"></div></div>
         <p style="font-size:.8rem;line-height:1.5;color:var(--cream-dim);align-self:center">Truss design is starting. Mass-timber enhancement — SUPERWOOD laminations that stiffen and strengthen glulam and CLT-type members — is under way. Light structural components (non-life-safety): strut-type supports, window mullions, deck boards.<br><br>We expect structural sales on the way to SuperMill Two. Replacing structural steel is the first thing new data-center customers ask about.</p>
       </div>
       <div>
-        <div class="kicker" style="font-size:.56rem;margin-bottom:.6rem">At SuperMill Two scale</div>
+        <div class="kicker" style="margin-bottom:.6rem">At SuperMill Two scale</div>
         <div class="grid2 cards4">
           <div class="card"><div class="imgbox"><img src="assets/tile_spaceframe.jpg" alt="" loading="lazy"></div><div><h3>Building enclosures</h3><p>Prefabricated envelope structure and skin — the co-development target with hyperscaler architects and engineers</p></div></div>
           <div class="card"><div class="imgbox"><img src="assets/tile_truss2.jpg" alt="" loading="lazy"></div><div><h3>Trusses, roofs &amp; long-span members</h3><p>Roof structure first; fast-to-build enclosures follow</p></div></div>
@@ -538,7 +528,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
       <div class="profile">
         <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin-bottom:.5rem">Microsoft <em style="color:var(--gold);font-size:.7em">broad engagement</em></h3>
         <div class="pub"><b>Published</b><p>Two Northern Virginia datacenters built with cross-laminated timber floor panels on a steel frame — an estimated 35% embodied-carbon reduction vs. conventional steel construction and 65% vs. precast concrete. Design by Gensler; structural engineering by Thornton Tomasetti.</p><span class="src">Microsoft Source, Nov 2024; Thornton Tomasetti project page</span></div>
-        <div class="kicker" style="font-size:.56rem;margin-bottom:.5rem">Working with InventWood</div>
+        <div class="kicker" style="margin-bottom:.5rem">Working with InventWood</div>
         <div class="split" style="grid-template-columns:1fr 5.5rem;gap:1rem">
           <div>
             <div class="li"><span class="dot"></span><div><h3>Strategic interest</h3><p>Incorporating SUPERWOOD into the basis of design for future data centers</p></div></div>
@@ -551,7 +541,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
       <div class="profile">
         <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin-bottom:.5rem">Meta <em style="color:var(--gold);font-size:.7em">engaged for over a year</em></h3>
         <div class="pub"><b>Published</b><p>Piloting mass timber for data center administrative buildings: first completed in 2025 at Aiken, South Carolina (DPR, SmartLam); projects under way in Cheyenne, Wyoming and Montgomery, Alabama — about a 41% reduction in the embodied carbon of the materials substituted.</p><span class="src">Meta Sustainability, 31 Jul 2025</span></div>
-        <div class="kicker" style="font-size:.56rem;margin-bottom:.5rem">Working with InventWood</div>
+        <div class="kicker" style="margin-bottom:.5rem">Working with InventWood</div>
         <div class="split" style="grid-template-columns:1fr 5.5rem;gap:1rem">
           <div>
             <div class="li"><span class="dot"></span><div><h3>Broad engagement</h3><p>Across every part of the data-center ecosystem, for more than a year</p></div></div>
@@ -589,7 +579,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
     <h2 class="rv">Embodied carbon: a projection until the LCA is complete</h2>
     <div class="split rv" style="grid-template-columns:1.1fr 1fr">
       <div>
-        <div class="kicker" style="font-size:.56rem;margin-bottom:.8rem">kg CO₂e per kg of material, cradle to gate</div>
+        <div class="kicker" style="margin-bottom:.8rem">kg CO₂e per kg of material, cradle to gate</div>
         <div class="bars">
           <div class="bar"><span>Steel — global average (BF-BOF)</span><div class="tr"><i style="width:100%;background:var(--rose)"></i></div><b>1.8 kg</b></div>
           <div class="bar"><span>Steel — recycled (EAF), what hyperscalers increasingly buy</span><div class="tr"><i style="width:39%;background:#a0714e;opacity:.55"></i><i style="width:22%;background:#a0714e;position:absolute;left:0;top:0"></i></div><b>0.4–0.7 kg</b></div>
@@ -598,7 +588,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:.78rem}
         <div class="card tint" style="margin-top:1rem"><p style="font-size:.8rem;color:var(--cream-dim)"><b style="color:var(--gold)">Biogenic carbon, reported separately.</b> SUPERWOOD stores about 1.3 kg CO₂e of biogenic carbon per kg. Under EN 15804 it is released again in the end-of-life module, so it nets to zero over the life cycle. The lasting advantage is lower manufacturing emissions, not storage.</p></div>
       </div>
       <div class="card">
-        <div class="kicker" style="font-size:.56rem;margin-bottom:.6rem">Per functional unit — replacing one tonne of steel</div>
+        <div class="kicker" style="margin-bottom:.6rem">Per functional unit — replacing one tonne of steel</div>
         <p>SUPERWOOD needed: 0.3–0.6 t per tonne of steel replaced (substitution factor, estimate — to be engineering-stamped per element).</p>
         <p style="margin-top:.5rem">SUPERWOOD manufacturing emissions: 0.3–0.6 t × 0.5 = 0.15–0.30 t CO₂e.</p>
         <p style="margin-top:.5rem">Against average steel (1.8 t): a reduction of 83–92%.</p>
@@ -726,7 +716,7 @@ addEventListener('keydown',e=>{
   else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();jumpTo(cur-1);}
   else if(e.key==='Home'){e.preventDefault();jumpTo(0);}
   else if(e.key==='End'){e.preventDefault();jumpTo(secs.length-1);}
-  else if(e.key>='0'&&e.key<='9'){e.preventDefault();numBuf+=e.key;clearTimeout(numT);pageno.textContent='go to '+numBuf+' …';if(numBuf.length>=2)commitNum();else numT=setTimeout(commitNum,650);}
+  else if(e.key>='0'&&e.key<='9'){e.preventDefault();numBuf+=e.key;clearTimeout(numT);pageno.textContent='go to '+numBuf+' …';if(numBuf.length>=2)commitNum();else numT=setTimeout(commitNum,900);}
 });
 /* fit: shrink a slide's content to the viewport on desktop (floor .6); phones scroll instead */
 const NARROW=()=>matchMedia('(max-width:700px), (max-width:860px) and (orientation:portrait), (max-height:520px)').matches;
@@ -737,20 +727,24 @@ function fitSlides(){
     const cs=getComputedStyle(s);const avail=deck.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
     let z=1;for(let k=0;k<8;k++){const h=w.offsetHeight*z;if(h<=avail)break;z=Math.max(.6,z*avail/h*.985);w.style.zoom=z;}
   });
+  /* zoom changes section heights after the landing scroll; re-align the current slide to the top of the scrollport */
+  if(!jumping&&secs[cur]){const off=secs[cur].getBoundingClientRect().top-deck.getBoundingClientRect().top;if(Math.abs(off)>2)deck.scrollTo({top:deck.scrollTop+off,behavior:'instant'});}
 }
 let ft;addEventListener('resize',()=>{clearTimeout(ft);ft=setTimeout(fitSlides,150);});
 document.querySelectorAll('img[loading="lazy"]').forEach(i=>{if(!i.complete)i.addEventListener('load',()=>{clearTimeout(ft);ft=setTimeout(fitSlides,80);},{once:true});});
 /* deep links: #id lands on that slide; otherwise start where the browser restored the scroll */
-function landing(){const h=location.hash.replace('#','');const k=secs.findIndex(s=>s.id===h);if(k>=0){jumpTo(k);}else{const i=currentIndex();cur=i;setActive(i);reveal(secs[i]);}}
+function landing(){const h=location.hash.replace('#','');const k=secs.findIndex(s=>s.id===h);if(k>=0){secs[k].classList.add('noanim');jumpTo(k);}else{const i=currentIndex();cur=i;setActive(i);reveal(secs[i]);}}
 addEventListener('load',()=>{fitSlides();landing();setTimeout(()=>{fitSlides();landing();},600);});
 addEventListener('hashchange',landing);
 if(document.fonts)document.fonts.ready.then(fitSlides);
 
 /* slide 5 toggle: mass / carbon; buttons, or M and C keys while the slide is current */
 const campusSec=document.getElementById('campus');
-function setView(v){campusSec.querySelectorAll('.view').forEach(e=>{e.hidden=e.dataset.view!==v;});campusSec.querySelectorAll('.toggle button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.view===v)));}
+function setView(v,focus){campusSec.querySelectorAll('.view').forEach(e=>{e.hidden=e.dataset.view!==v;});campusSec.querySelectorAll('.toggle button').forEach(b=>{const on=b.dataset.view===v;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;if(on&&focus)b.focus();});}
 campusSec.querySelectorAll('.toggle button').forEach(b=>b.onclick=()=>setView(b.dataset.view));
 addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;if(secs[cur]!==campusSec)return;if(e.key==='m'||e.key==='M')setView('mass');if(e.key==='c'||e.key==='C')setView('carbon');});
+/* arrow keys inside the toggle switch views instead of slides */
+campusSec.querySelector('.toggle').addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();e.stopPropagation();setView(document.activeElement.dataset.view==='mass'?'carbon':'mass',true);}},true);
 </script>
 </body>
 </html>

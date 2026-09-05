@@ -41,4 +41,9 @@ better than regular wood"; no approvals/standards detail; no dated milestones; d
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-04 (later): Impeccable polish pass on the web deck — deep links re-align after the fit zoom runs (fixes
+  misaligned landings at laptop sizes); the dock sits on a translucent pill so its labels read over photographs;
+  slide 5 toggle carries full tab/tabpanel ARIA wiring and arrow-key switching while focused; digit-jump window
+  650→900 ms; deep-link landings reveal instantly; smallest text roles raised to clear an 11px floor at a 16px root;
+  dead CSS removed.
 - 2026-09-04: full rebuild from the fresh-look review; all decisions above taken the same day. See STORY-OUTLINE.md.
