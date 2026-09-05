@@ -377,15 +377,16 @@ s = pres.addSlide(); base(s, "InventWood · The path");
 kicker(s, "The path · Long term");
 title(s, [t("Long term: prefabricated "), gold("envelopes"), t(", then foundations")]);
 const vis = [
-  ["prep/app_shell.jpg", 1200 / 896, "Prefabricated building envelopes", "Structure and skin shipped as panels and modules — the co-development target with our hyperscaler customers' architects and engineers. Shells that carry their own loads, weigh far less than steel and precast, and can be disassembled and moved."],
-  ["prep/dc_wood_foundation.jpg", 1376 / 768, "Foundations, slabs and paving", "Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete — installed faster, with lower geotechnical demands, and potentially movable."],
+  ["Prefabricated building envelopes", "Structure and skin shipped as panels and modules — the co-development target with our hyperscaler customers' architects and engineers. Shells that carry their own loads, weigh far less than steel and precast, and can be disassembled and moved.", "Hyperscalers are asking for this now, to simplify design and delivery and accelerate schedules."],
+  ["Foundations, slabs and paving", "Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete — installed faster, with lower geotechnical demands, and potentially movable.", "Biggest unaddressed impact both to speed of development and construction, and with huge carbon impact. Geotechnical requirements greatly impact schedule and site selection."],
 ];
-vis.forEach(([img, ar, head, sub], i) => {
+vis.forEach(([head, sub, why], i) => {
   // text only — Alex 2026-09-05: no renderings on the long-term slide yet
-  const cw = 6.0, x = L + i * 6.2, y = 2.2;
-  panel(s, x, y, cw, 2.6, PANEL2);
+  const cw = 6.0, x = L + i * 6.2, y = 2.1;
+  panel(s, x, y, cw, 3.7, PANEL2);
   s.addText(head, { x: x + 0.3, y: y + 0.25, w: cw - 0.6, h: 0.4, fontFace: SANS, fontSize: 15, bold: true, color: CREAM, margin: 0 });
-  body(s, sub, x + 0.3, y + 0.75, cw - 0.6, 1.7, 11.5, MUTED);
+  body(s, sub, x + 0.3, y + 0.75, cw - 0.6, 1.5, 11.5, MUTED);
+  s.addText(why, { x: x + 0.3, y: y + 2.4, w: cw - 0.6, h: 1.1, fontFace: SANS, fontSize: 11.5, bold: true, color: CREAM, margin: 0, valign: "top" });
 });
 panel(s, L, 6.15, CW, 0.6, PANEL2);
 s.addText("Stated technical potential, not an engineered plan: slab, paving and foundations are on the order of 1–2 million tons of concrete and rebar per gigawatt. No design or code pathway exists yet.",
