@@ -27,6 +27,7 @@ datacenters: { label: 'SUPERWOOD for Data Centers', prefix: '/datacenters', home
 - headers: `/datacenters/assets/(.*)` → `Cache-Control: public, max-age=86400, stale-while-revalidate=604800`.
 - `.vercelignore`: `superwood-datacenter-investor/*`, `!superwood-datacenter-investor/slides.html`, `!superwood-datacenter-investor/assets`.
 - Never set `trailingSlash` (same loop hazard as supermills).
+- redirect `/superwood-datacenter-investor`, `/superwood-datacenter-investor/` and `/superwood-datacenter-investor/:path*` → `/datacenters/…` (307): the internal directory path must always come back under the gated prefix, otherwise the middleware sees an unregistered path and asks for no password (this is what the supermills legacy-URL redirects do incidentally).
 
 ## Gate flow (unchanged code)
 
@@ -51,6 +52,6 @@ Superwood deck, the sync script, the gate page, `api/stats.mjs`, the schema. Sup
 2. `GET /datacenters/` with no cookies → 200 gate page, `_swx=3`, `Cache-Control: no-store`.
 3. With a minted `sw_auth` only → gate page, `_swx=2`; with `sw_auth` + an old-style `sw_deck_datacenters` cookie → still `_swx=2`.
 4. With `sw_auth` + minted `sw_pw_supermills_password` → 200, `<title>SUPERWOOD for Data Centers`, and `/datacenters/assets/inventwood_logo.png?v=29cddb1d` → 200 image with the cache header.
-5. `/datacenters/PRODUCT.md`, `/datacenters/index`, `/datacenters/gate` (Alex's copies) → 404 (or gate/308 per cleanUrls), never content.
+5. The deck's internal path never serves content outside the gated prefix: with only a valid `sw_auth` cookie, `/superwood-datacenter-investor/slides`, `/superwood-datacenter-investor/slides.html` and `/superwood-datacenter-investor/assets/inventwood_logo.png` each 307 to the `/datacenters/…` equivalent (never 200 with deck content); `/datacenters/PRODUCT.md`, `/datacenters/gate`, `/datacenters/middleware.js` and Alex's `index.html` stub → 404 (or a cleanUrls 308 that ends in 404 / the gated deck page), never content.
 6. `/intro` behaves as before; `/supermills-deck/` passes with the same `sw_pw_supermills_password` cookie (one unlock for both decks) and asks for the password with only the old `sw_deck_supermills` cookie.
 7. `/api/stats?deck=datacenters` (with the stats key) → 200 with `deck: 'datacenters'` and three entries in `decks`; after one real visit the heatmap shows 19 slides.

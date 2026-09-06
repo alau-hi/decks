@@ -30,6 +30,21 @@
       "source": "/datacenters",
       "destination": "/datacenters/",
       "permanent": false
+    },
+    {
+      "source": "/superwood-datacenter-investor",
+      "destination": "/datacenters/",
+      "permanent": false
+    },
+    {
+      "source": "/superwood-datacenter-investor/",
+      "destination": "/datacenters/",
+      "permanent": false
+    },
+    {
+      "source": "/superwood-datacenter-investor/:path*",
+      "destination": "/datacenters/:path*",
+      "permanent": false
     }
   ],
   "rewrites": [
