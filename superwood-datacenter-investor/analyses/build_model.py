@@ -50,6 +50,7 @@ rows=[
 ("conc_sub_factor","kg SUPERWOOD per kg of concrete replaced",0.05,0.15,"kg/kg","estimated [L]","Lightweight insulated wood-foundation concept; no design exists yet"),
 ("duct_t_mw","Ducting, plenums and air-distribution sheet metal",3,8,"t/MW","estimated [L]","Separate from the mechanical-equipment row"),
 ("co2_conc","Concrete emissions",0.12,0.12,"kg CO₂e/kg","industry range [M]","Ready-mix, cradle to gate; typical 0.10–0.15"),
+("co2_plastic","Polymers in paints, foam cores and plastic trim (average)",3.0,3.0,"kg CO₂e/kg","industry range [M]; Alex 2026-09-05","Cradle to gate; polyolefins and PVC about 2–2.5, polyurethane foam 3–4, coatings higher"),
 ("board_mm","SUPERWOOD average board thickness",7.2,7.2,"mm","internal TEM basis [H]",""),
 ("sw_kg_m3","SUPERWOOD density",1300,1300,"kg/m³","internal TEM [H]",""),
 ("sm1_sf","SuperMill One output",1e6,1e6,"sf/yr","internal [H]",""),
@@ -63,9 +64,6 @@ rows=[
 ("co2_sw","SUPERWOOD manufacturing emissions",0.5,0.5,"kg CO₂e/kg","internal, pre-LCA [L]","Canva DCII deck; LCA under way, Prof. Ming Hu, Notre Dame"),
 ("co2_bio","SUPERWOOD biogenic carbon stored",1.3,1.3,"kg CO₂e/kg","internal, pre-LCA [L]","Report separately; module C release under EN 15804"),
 ("co2_mixed","Interior finishes emissions (gypsum, wood, steel studs — mixed)",1.0,1.0,"kg CO₂e/kg","estimated [L]","Used only for the interior finishes row"),
-("elec_steel_share","Steel share of electrical equipment mass (gensets, transformers, switchgear, UPS cabinets)",0.6,0.6,"share","estimated [L]; Alex asked for the estimate 2026-09-05","Cast iron and steel in engines, transformer cores and tanks, switchgear and UPS enclosures; copper, aluminum, oil and cells excluded"),
-("mech_steel_share","Steel share of mechanical equipment mass (chillers, fan walls, coolers, piping)",0.5,0.5,"share","estimated [L]","Shells, frames, casings and steel piping; copper tubes, aluminum coils and loop water excluded"),
-("it_steel_share","Steel share of IT mass (rack frames, server chassis)",0.4,0.4,"share","estimated [L]","Same 40% enclosure share used for the long-term replacement row"),
 ]
 R={}
 for i,(k,name,lo,hi,unit,lab,note) in enumerate(rows,start=2):
@@ -98,7 +96,13 @@ header(M,1,["Component (building, then contents)","Low  tons per data center","H
             "Addressable — immediate","Addressable — soon","Addressable — medium term","Addressable — long term",
             "Low  replaced t","High  replaced t","Low  SUPERWOOD t","High  SUPERWOOD t","Gate / basis","High  not replaced t",
             "Low SW immediate","Low SW soon","Low SW medium","Low SW long","High SW immediate","High SW soon","High SW medium","High SW long",
-            "Carbon factor (kg CO₂e/kg)","Low embodied carbon (t CO₂e)","High embodied carbon (t CO₂e)","EAF-basis factor (kg CO₂e/kg)","Material class"])
+            "Carbon factor (kg CO₂e/kg)","Low embodied carbon (t CO₂e)","High embodied carbon (t CO₂e)","EAF-basis factor (kg CO₂e/kg)","Material class","Steel share","Concrete share","Plastic share","Other share"])
+import json as _json; SPLIT=_json.load(open("material_split.json"))["split"]
+def split_for(name):
+    n=name.replace("Structural steel — ","Steel — ").replace("Concrete: slab on grade, paving, yard","Concrete — slab on grade, paving").replace("Concrete: foundations, footings, piers, equipment pads","Concrete — foundations, footings, pads")
+    for k,v in SPLIT.items():
+        if n.split(" (")[0].startswith(k.split(" (")[0][:24]): return v
+    return None
 IT=lambda c: ref('it_mw',c)
 # (name, mass formula, horizon, share formula, sw rule, note)
 comp=[
@@ -159,20 +163,14 @@ for name,f,hor,share,rule,note in comp:
         for j,h in enumerate(HORS):
             M.cell(row=r,column=base+j,value=f"=IF({tot_share}=0,0,{CL(scol)}{r}*{CL(HCOL[h])}{r}/{tot_share})").fill=calc
     M.cell(row=r,column=15,value=f"=C{r}-K{r}").fill=calc
-    # embodied carbon per row: factor by material class (equipment rows not estimated)
+    # embodied carbon per row: steel, concrete and plastic content at their factors; "other" (copper, aluminum, water, gypsum, wood, electronics) carries no factor (Alex 2026-09-05)
     kind = "concrete" if (name.startswith("Concrete") or name.startswith("Precast")) else "equipment" if (name.startswith("Electrical") or name.startswith("Mechanical") or name.startswith("IT")) else "mixed" if rule=="interior" else "steel"
     M.cell(row=r,column=28,value=kind)
-    if kind=="equipment":
-        # steel content only: share of mass that is steel x the steel factor (Alex 2026-09-05)
-        sk={"Electrical":"elec_steel_share","Mechanical":"mech_steel_share","IT":"it_steel_share"}[name.split(" ")[0]]
-        M.cell(row=r,column=24,value=f"={ref(sk,'B')}*{ref('co2_steel','B')}").fill=calc
-        M.cell(row=r,column=27,value=f"={ref(sk,'B')}*{ref('co2_eaf','C')}").fill=calc
-        M.cell(row=r,column=25,value=f"=B{r}*X{r}").fill=calc; M.cell(row=r,column=26,value=f"=C{r}*X{r}").fill=calc
-    else:
-        fk={"concrete":"co2_conc","steel":"co2_steel","mixed":"co2_mixed"}[kind]
-        M.cell(row=r,column=24,value=f"={ref(fk,'B')}").fill=calc
-        M.cell(row=r,column=27,value=f"={ref('co2_eaf','C') if kind=='steel' else ref(fk,'B')}").fill=calc
-        M.cell(row=r,column=25,value=f"=B{r}*X{r}").fill=calc; M.cell(row=r,column=26,value=f"=C{r}*X{r}").fill=calc
+    sp=split_for(name) or ([0,1,0,0] if kind=="concrete" else [1,0,0,0])
+    for j,v in enumerate(sp): M.cell(row=r,column=29+j,value=v).fill=inp
+    M.cell(row=r,column=24,value=f"=AC{r}*{ref('co2_steel','B')}+AD{r}*{ref('co2_conc','B')}+AE{r}*{ref('co2_plastic','B')}").fill=calc
+    M.cell(row=r,column=27,value=f"=AC{r}*{ref('co2_eaf','C')}+AD{r}*{ref('co2_conc','B')}+AE{r}*{ref('co2_plastic','B')}").fill=calc
+    M.cell(row=r,column=25,value=f"=B{r}*X{r}").fill=calc; M.cell(row=r,column=26,value=f"=C{r}*X{r}").fill=calc
     r+=1
 first,last=data_rows[0],data_rows[-1]
 r+=1
@@ -218,7 +216,7 @@ rceaf=srow("Steel share if steel is recycled (EAF factor, high end)",f'=SUMPRODU
 for rr in range(2,last+1):
     for col in (2,3,4,5,10,11,12,13,15)+tuple(range(16,24)):
         if M.cell(row=rr,column=col).number_format=="General": M.cell(row=rr,column=col).number_format="#,##0"
-widths(M,[58,15,15,16,16,12,12,12,12,14,14,14,14,64,16]+[11]*8+[14,18,18,14,12]); M.freeze_panes="B2"
+widths(M,[58,15,15,16,16,12,12,12,12,14,14,14,14,64,16]+[11]*8+[14,18,18,14,12,10,10,10,10]); M.freeze_panes="B2"
 for rr in range(first,last+1):
     for col in (25,26): M.cell(row=rr,column=col).number_format="#,##0"
     M.cell(row=rr,column=24).number_format="0.00"; M.cell(row=rr,column=27).number_format="0.00"

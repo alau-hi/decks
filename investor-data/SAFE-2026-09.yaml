@@ -1611,6 +1611,18 @@ facts:
     printed_in: [superwood-datacenter-investor]
     notes: "Reconciles with carbon.superwood_manufacturing_kgco2e_per_kg (0.5) at the 3:1 to 4:1 replacement value Alex gave on 2026-09-05 (0.25-0.33 kg SUPERWOOD per kg steel): 0.125-0.167. Storage on the same basis: 0.5-1.5 x 0.25-0.33 = 0.1-0.5 kg CO2e per kg steel substituted. The analyses model and the Worth slide still use datacenter.substitution_factor_steel 0.3-0.6 - conflict, Alex to decide whether to propagate."
 
+  - id: carbon.plastic_kgco2e_per_kg
+    value: 3.0
+    unit: kg CO2e per kg
+    statement: Polymers in paints, foam cores and plastic trim are valued at an average 3.0 kg CO2e per kg, cradle to gate
+    basis: estimated
+    confidence: M
+    source: general industry range - polyolefins and PVC about 2-2.5, polyurethane foam 3-4, coatings higher; adopted at Alex's direction 2026-09-05
+    as_of: 2026-09-05
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "Applied to the plastic share of each component in analyses/material_split.json (datacenter deck slide 6). Adds about 50,000 t CO2e per GW, high case."
+
   - id: carbon.steel_baseline_kgco2e_per_kg
     value: 1.8
     unit: kg CO2e / kg steel

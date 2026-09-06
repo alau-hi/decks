@@ -149,10 +149,10 @@ server enclosures in the long-term horizon, carry no factor, so long-term avoide
 
 | Horizon | Incumbent emissions avoided | SUPERWOOD manufacturing | Net reduction | Net vs EAF steel | Biogenic stored (separate) |
 |---|---|---|---|---|---|
-| Immediate (steel) | 5,219–19,850 tons CO₂e | 617–1,343 tons | **4,602–18,508 tons** | 2,024–8,210 tons | 1,604–3,491 tons |
-| Soon (steel) | 20,700–54,000 tons CO₂e | 1,725–9,000 tons | **18,975–45,000 tons** | 6,325–12,000 tons | 4,485–23,400 tons |
+| Immediate (steel) | 5,561–21,377 tons CO₂e | 617–1,343 tons | **4,944–20,034 tons** | 2,751–11,608 tons | 1,604–3,491 tons |
+| Soon (steel) | 19,920–52,050 tons CO₂e | 1,725–9,000 tons | **18,195–43,050 tons** | 6,205–11,700 tons | 4,485–23,400 tons |
 | Medium term (steel) | 95,400–194,400 tons CO₂e | 7,950–32,400 tons | **87,450–162,000 tons** | 29,150–43,200 tons | 20,670–84,240 tons |
-| Long term (foundation concrete) | 164,700–403,560 tons CO₂e | 28,845–181,200 tons | **135,855–222,360 tons** | 106,485–120,940 tons | 74,997–471,120 tons |
+| Long term (foundation concrete) | 166,500–411,960 tons CO₂e | 28,845–181,200 tons | **137,655–230,760 tons** | 108,285–129,340 tons | 74,997–471,120 tons |
 
 Against recycled (EAF) steel the avoided figure is far lower, so any claim must state its baseline.
 
@@ -169,26 +169,26 @@ BF-BOF average], interior finishes 1.0 [L]. Equipment (electrical, mechanical, I
 | Rebar in all concrete | steel | 1.80 | 54,000–180,000 tons CO₂e |
 | Structural steel — primary frame (columns, girders) | steel | 1.80 | 54,000–72,000 tons CO₂e |
 | Structural steel — roof trusses, joists, roof deck, girts | steel | 1.80 | 36,000–108,000 tons CO₂e |
-| Exterior skins — metal panel / IMP (metal-panel case) | steel | 1.80 | 3,345–13,378 tons CO₂e |
+| Exterior skins — metal panel / IMP (metal-panel case) | steel | 2.07 | 3,846–15,385 tons CO₂e |
 | Louvers and yard / mechanical screens | steel | 1.80 | 334–1,672 tons CO₂e |
 | Security and staff-area fencing | steel | 1.80 | 540–1,800 tons CO₂e |
 | Platforms, walkways, mezzanines, railings, tray supports | steel | 1.80 | 9,000–27,000 tons CO₂e |
-| Acoustic barriers, enclosures, HVAC separations | steel | 1.80 | 3,600–9,000 tons CO₂e |
+| Acoustic barriers, enclosures, HVAC separations | steel | 1.41 | 2,820–7,050 tons CO₂e |
 | Racking and equipment supports | steel | 1.80 | 3,600–9,000 tons CO₂e |
 | Other tray, containment, doors, misc. metals | steel | 1.80 | 9,000–18,000 tons CO₂e |
 | Ducting, plenums and air-distribution sheet metal | steel | 1.80 | 5,400–14,400 tons CO₂e |
-| Interior finishes, backplanes, trim (admin / office) | mixed | 1.00 | 1,000–3,000 tons CO₂e |
-| Electrical equipment and conductors | equipment | 1.08 | 54,000–108,000 tons CO₂e |
-| Mechanical equipment, piping, loop water | equipment | 0.90 | 18,000–45,000 tons CO₂e |
-| IT — servers and racks | equipment | 0.72 | 10,800–50,400 tons CO₂e |
+| Interior finishes, backplanes, trim (admin / office) | mixed | 0.84 | 840–2,520 tons CO₂e |
+| Electrical equipment and conductors | equipment | 1.23 | 61,500–123,000 tons CO₂e |
+| Mechanical equipment, piping, loop water | equipment | 1.05 | 21,000–52,500 tons CO₂e |
+| IT — servers and racks | equipment | 1.02 | 15,300–71,400 tons CO₂e |
 
 | Roll-up | Low | High |
 |---|---|---|
-| Embodied carbon, building materials | 406,619 tons CO₂e | 948,650 tons CO₂e |
-| Steel share | 44% | 48% |
-| Concrete share | 35% | 30% |
-| Steel above the slab (steel excl. rebar), share | 31% | 29% |
-| Steel share if steel is recycled (EAF, 0.7 kg/kg) | 28% | 32% |
+| Embodied carbon, building materials | 421,181 tons CO₂e | 991,727 tons CO₂e |
+| Steel share | 42% | 46% |
+| Concrete share | 34% | 29% |
+| Steel above the slab (steel excl. rebar), share | 30% | 28% |
+| Steel share if steel is recycled (EAF, 0.7 kg/kg) | 27% | 31% |
 
 By embodied carbon, steel is roughly 55–60% of the building materials and concrete roughly 40–45% at the global-average
 steel factor; with recycled steel the steel share falls to about a third. The steel above the slab — what SUPERWOOD
