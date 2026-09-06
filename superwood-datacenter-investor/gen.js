@@ -428,16 +428,16 @@ panel(s, L, 6.35, CW, 0.58, PANEL2);
 s.addText("ENGINEERING AND CONSTRUCTION COLLABORATORS", { x: L + 0.3, y: 6.35, w: 2.6, h: 0.58, fontFace: SANS, fontSize: 8, bold: true, color: BRIGHT, charSpacing: 1.5, margin: 0, valign: "middle" });
 // logos (cream renders of the firms' marks) with a one-line descriptor; Timber Engineering has no mark on file, so name in type
 const collab = [
-  ["prep/logo_fastepp.png", 1600 / 328, null, "Structural engineers, Vancouver"],
-  [null, 0, "Timber Engineering", "Structural engineering"],
-  ["prep/logo_hitt.png", 354 / 90, null, "General contractor"],
-  ["prep/logo_turner.png", 1600 / 469, null, "General contractor"],
+  ["prep/logo_fastepp.png", 1600 / 328, null, "Top timber engineers"],
+  ["prep/logo_hitt.png", 354 / 90, null, "#1 US data center contractor, ENR 2025"],
+  ["prep/logo_turner.png", 1600 / 469, null, "#1 US contractor, ENR Top 400"],
+  [null, 0, "Don Davies, advisor", "Former president of MKA; structural engineer for several hyperscalers"],
 ];
 collab.forEach(([logo, ar, name, desc], i) => {
   const x = 3.4 + i * 2.35, lh = 0.19;
   if (logo) s.addImage({ path: logo, x, y: 6.44, w: lh * ar, h: lh });
   else s.addText(name, { x, y: 6.4, w: 2.2, h: 0.27, fontFace: SANS, fontSize: 10, bold: true, color: CREAM, margin: 0, valign: "middle" });
-  s.addText(desc, { x, y: 6.67, w: 2.2, h: 0.22, fontFace: SANS, fontSize: 7.5, color: MUTED, margin: 0, valign: "top" });
+  s.addText(desc, { x, y: 6.64, w: 2.25, h: 0.3, fontFace: SANS, fontSize: 7, color: MUTED, margin: 0, valign: "top" });
 });
 note(s, "Next steps undated. Published backup for Microsoft and Meta on the next slide.", 6.97, 0.3);
 
