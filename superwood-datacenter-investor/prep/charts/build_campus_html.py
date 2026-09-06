@@ -51,6 +51,7 @@ def rows_html(view,case=DEFAULT):
         grp=ROWS[i:i+n]; bar,hv,gc=group_cells(grp,view)
         attr=f' data-row="group-{gid}"' if gid=="foundation" else ""
         out+=f'<div class="hb hd"{attr}><span class="hl">{title}</span><div class="tr">{bar}</div><span class="hv">{hv}</span>{bubbles(gc)}</div>\n'
+        if gid=="foundation": out+='<div class="hb soilrow"><span class="hl"></span>'+SLIDER+'</div>\n'
         for name,kt in grp:
             bar,hv=row_cells(name,kt,view); attr=f' data-row="{CONC[name]}"' if name in CONC else ""
             out+=f'<div class="hb"{attr}><span class="hl">{name}</span><div class="tr">{bar}</div><span class="hv">{hv}</span>{bubbles(cum(name))}</div>\n'
@@ -75,7 +76,7 @@ AX_M='<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span sty
 AX_C='<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:0%">0</span><span style="left:20%">100,000</span><span style="left:40%">200,000</span><span style="left:60%">300,000</span><span style="left:80%">400,000</span><span style="left:100%;transform:translateX(-100%)">500,000</span></div><span class="hv">tons CO₂e</span><span></span></div>'
 LEG_M='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel</span><span><i style="background:#8c8478"></i>Concrete</span><span><i style="background:var(--teal)"></i>Plastic</span><span><i style="background:#5a4a36"></i>Other: copper, aluminum, water, gypsum, wood, electronics</span><span class="muted">Bar length is mass on a log scale; segments show each material\'s share</span></div>'
 LEG_C='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel at 1.8 kg CO₂e/kg</span><span><i style="background:#8c8478"></i>Concrete at 0.12</span><span><i style="background:var(--teal)"></i>Polymers at an average 3.0</span><span class="muted">Other materials not valued</span></div>'
-SLIDER='<label class="soils"><span class="lab">Soils</span><input type="range" class="soils-range" min="1" max="3" step="1" value="2" aria-valuetext="Moderate" aria-label="Soil conditions for foundations"><output class="soils-out">Moderate</output></label>'
+SLIDER='<label class="soils"><span class="lab">Soil conditions for the foundations</span><span class="ctl"><input type="range" class="soils-range" min="1" max="3" step="1" value="2" aria-valuetext="Moderate" aria-label="Soil conditions for foundations: good, moderate or poor"><span class="ticks"><i>Good</i><i>Moderate</i><i>Poor</i></span></span><output class="soils-out">Moderate soils</output></label>'
 def rebuild(path):
     h=R(path); a=h.index('<section id="campus"'); b=h.index('</section>',a); sec=h[a:b]
     li_m=re.search(r'<div class="view" id="view-mass-notes"[^>]*>(<div class="li".*?</p></div></div>)',sec,re.S).group(1)
@@ -96,7 +97,6 @@ def rebuild(path):
       <div class="sidecol">
         <div class="view" id="view-mass-notes" role="tabpanel" aria-labelledby="tab-mass" data-view="mass">{li_m}{LEG_M}</div>
         <div class="view" id="view-carbon-notes" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden>{li_c}{LEG_C}</div>
-        {SLIDER}
         {foot}
       </div>
     </div>
@@ -109,8 +109,8 @@ def rebuild(path):
     w=scenario_data()[DEFAULT]["worth"]
     sec=re.sub(r'<td data-h="Horizon">Long term — slab, foundations</td><td data-h="SUPERWOOD required">[^<]*</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i style="[^"]*"></i><b style="left:8.3%"></b></div>[^<]*</td>',
         f'<td data-h="Horizon">Long term — slab, foundations</td><td data-h="SUPERWOOD required" data-worth="sw">{w["sw"]}</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i data-worth="bar" style="left:{w["left"]};width:{w["width"]}"></i><b style="left:8.3%"></b></div><span data-worth="yr">{w["yr"]}</span></td>',sec)
-    if 'soils-range' not in sec:
-        sec=sec.replace('<div class="hleg mills rv">','<div class="hleg mills rv">'+SLIDER.replace('<label class="soils">','<label class="soils inline">'),1)
+    sec=re.sub(r'<label class="soils inline">.*?</label>','',sec,flags=re.S)
+    sec=sec.replace('<td data-h="Horizon">Long term — slab, foundations</td>','<td data-h="Horizon">Long term — slab, foundations'+SLIDER.replace('<label class="soils">','<label class="soils cell">')+'</td>',1)
     h=h[:a]+sec+h[b:]
     # data + JS
     data=json.dumps(scenario_data(),ensure_ascii=False)
@@ -127,7 +127,8 @@ addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;if(!['ca
 /* end soils */
 '''
     h=h.replace("</script>\n</body>",js.replace("__SOILDATA__",data)+"</script>\n</body>",1)
+    h=re.sub(r"\.soils\{.*?\.soils\.inline\{[^}]*\}\n","",h,flags=re.S)
     if ".soils{" not in h:
-        h=h.replace("/* dividers */",".soils{display:flex;align-items:center;gap:.7rem;margin-top:1.2rem;font-size:max(.85rem,12px);color:var(--cream)}.soils .lab{font-size:max(.66rem,11px);letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600}.soils input{accent-color:var(--gold);width:9rem;cursor:pointer}.soils input:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}.soils-out{min-width:5rem;color:var(--gold);font-weight:600}.soils.inline{display:inline-flex;margin:0 0 0 2rem;vertical-align:middle}\n/* dividers */",1)
+        h=h.replace("/* dividers */",".soils{display:flex;align-items:center;gap:1rem;font-size:max(.85rem,12px);color:var(--cream)}.soils .lab{font-size:max(.68rem,11px);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;white-space:nowrap}.soils .ctl{display:flex;flex-direction:column;gap:.15rem}.soils input{accent-color:var(--gold);width:11rem;cursor:pointer;margin:0}.soils input:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}.soils .ticks{display:flex;justify-content:space-between;width:11rem;font-size:max(.62rem,10px);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.soils .ticks i{font-style:normal}.soils-out{min-width:7rem;color:var(--cream);font-weight:600}.hb.soilrow{min-height:2.6rem;margin:.1rem 0 .4rem}.hb.soilrow .soils{grid-column:2/-1;padding:.35rem .6rem;border:1px dashed var(--wood-bright);border-radius:.5rem;background:rgba(226,184,119,.05)}.soils.cell{margin-top:.5rem;gap:.7rem}.soils.cell .lab{font-size:max(.62rem,10px)}.soils.cell input,.soils.cell .ticks{width:9rem}\n/* dividers */",1)
     W(path,h); print(path,"divs",sec.count("<div"),sec.count("</div>"),"ok")
 for p in ("slides.html","v2.html"): rebuild(p)
