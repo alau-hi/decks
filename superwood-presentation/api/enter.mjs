@@ -3,11 +3,11 @@ import { sql } from './_db.mjs';
 import { DECKS, deckFromPath } from './_decks.mjs';
 
 // One gate endpoint for everything the visitor still owes for the page they
-// asked for: their email (sw_auth), the deck's shared password (sw_deck_<id>),
+// asked for: their email (sw_auth), the deck's shared password (sw_pw_<var>),
 // or both. What is needed is computed here from the cookies + `next`, never
 // trusted from the page. Nothing is written until every needed field passes.
 
-const MAX_AGE = 30 * 24 * 3600; // 30 days — sw_auth and sw_deck_* alike
+const MAX_AGE = 30 * 24 * 3600; // 30 days — sw_auth and sw_pw_* alike
 
 const enc = new TextEncoder();
 async function hmacHex(data, secret) {
@@ -53,11 +53,13 @@ async function authedEmail(req) {
   try { return Buffer.from(emailB64, 'base64url').toString('utf8'); } catch { return null; }
 }
 
-// True when this browser already passed the deck's shared password.
-async function deckPassed(req, deckId) {
-  const parts = String(getCookie(req, `sw_deck_${deckId}`) || '').split('.');
+// True when this browser already passed the shared password stored in the
+// named env var (cookie keyed to the variable so decks sharing a password
+// share the unlock).
+async function passwordPassed(req, varName) {
+  const parts = String(getCookie(req, `sw_pw_${varName.toLowerCase()}`) || '').split('.');
   if (parts.length !== 2) return false;
-  const sig = await hmacHex(`deck.${deckId}.${parts[0]}`, process.env.AUTH_SECRET || '');
+  const sig = await hmacHex(`pw.${varName}.${parts[0]}`, process.env.AUTH_SECRET || '');
   return sig === parts[1] && Number(parts[0]) > Date.now();
 }
 
@@ -65,10 +67,11 @@ async function deckPassed(req, deckId) {
 async function needFor(req, target) {
   const deckId = deckFromPath(target);
   const deck = DECKS[deckId];
-  const deckPw = deck && deck.password ? (process.env[deck.password] || '') : '';
+  const pwVar = deck && deck.password ? deck.password : '';
+  const deckPw = pwVar ? (process.env[pwVar] || '') : '';
   const knownEmail = await authedEmail(req);
-  const needPassword = !!deckPw && !(await deckPassed(req, deckId));
-  return { deckId, deckPw, knownEmail, needPassword };
+  const needPassword = !!deckPw && !(await passwordPassed(req, pwVar));
+  return { deckId, pwVar, deckPw, knownEmail, needPassword };
 }
 
 export default async function handler(req, res) {
@@ -92,7 +95,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ redirect: target });
   }
 
-  const { deckId, deckPw, knownEmail, needPassword } = await needFor(req, target);
+  const { deckId, pwVar, deckPw, knownEmail, needPassword } = await needFor(req, target);
   const needEmail = !knownEmail;
 
   // Validate everything before writing anything: a wrong password must not
@@ -150,8 +153,8 @@ export default async function handler(req, res) {
 
   if (needPassword) {
     const exp = Date.now() + MAX_AGE * 1000;
-    const sig = await hmacHex(`deck.${deckId}.${exp}`, process.env.AUTH_SECRET);
-    cookies.push(`sw_deck_${deckId}=${exp}.${sig}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${MAX_AGE}${domain}`);
+    const sig = await hmacHex(`pw.${pwVar}.${exp}`, process.env.AUTH_SECRET);
+    cookies.push(`sw_pw_${pwVar.toLowerCase()}=${exp}.${sig}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${MAX_AGE}${domain}`);
   }
 
   if (cookies.length) res.setHeader('Set-Cookie', cookies);

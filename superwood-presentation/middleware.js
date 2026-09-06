@@ -26,11 +26,13 @@ function b64urlDecode(s) {
   return atob(padded);
 }
 
-// True when this browser already passed the deck's shared password.
-async function deckPassed(req, deckId) {
-  const parts = String(getCookie(req, `sw_deck_${deckId}`) || '').split('.');
+// True when this browser already passed the shared password stored in the
+// named env var. Keyed to the variable, not the deck: every deck that names
+// the same variable is unlocked by one entry (like sw_auth covers the site).
+async function passwordPassed(req, varName) {
+  const parts = String(getCookie(req, `sw_pw_${varName.toLowerCase()}`) || '').split('.');
   if (parts.length !== 2) return false;
-  const sig = await hmacHex(`deck.${deckId}.${parts[0]}`, process.env.AUTH_SECRET || '');
+  const sig = await hmacHex(`pw.${varName}.${parts[0]}`, process.env.AUTH_SECRET || '');
   return sig === parts[1] && Number(parts[0]) > Date.now();
 }
 
@@ -96,7 +98,7 @@ export default async function middleware(req) {
         }
         // Per-deck shared password (see api/_decks.mjs): only decks that
         // declare a password env var, and only where that var is set.
-        if (deckPw && !(await deckPassed(req, deckId))) return toGate(req, NEED_PASSWORD);
+        if (deckPw && !(await passwordPassed(req, deck.password))) return toGate(req, NEED_PASSWORD);
         // Keep the viewer identity on the URL so the deck's per-slide
         // analytics (?v=) attribute return visits too.
         if (path === '/intro' && !url.searchParams.has('v')) {
@@ -114,5 +116,5 @@ export default async function middleware(req) {
   }
   // Not signed in: ask for the email, plus the deck password if this deck has
   // one and the browser has not passed it yet.
-  return toGate(req, NEED_EMAIL | (deckPw && !(await deckPassed(req, deckId)) ? NEED_PASSWORD : 0));
+  return toGate(req, NEED_EMAIL | (deckPw && !(await passwordPassed(req, deck.password)) ? NEED_PASSWORD : 0));
 }
