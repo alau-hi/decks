@@ -113,7 +113,7 @@ s = pres.addSlide(); base(s, "InventWood · The buyer");
 kicker(s, "The buyer · Industry challenged by communities");
 title(s, "Community pushback now blocks or delays more data center projects than ever.", L, 0.88, 12.2, 25);
 const complaints = [
-  ["prep/tiles/tile_fence_security.jpg", "Aesthetics", "Windowless boxes on farmland. Counties answer with setbacks and design standards.", "Facades, fences and screens that read as architecture."],
+  ["prep/entrance_office.jpg", "Aesthetics", "Windowless boxes on farmland. Counties answer with setbacks and design standards.", "Facades, fences and screens that read as architecture."],
   ["prep/tiles/tile_fanbox.jpg", "Noise", "Fans, chillers, generator tests. Property-line decibel limits are spreading.", "Acoustic screens and barriers; quieter fan enclosures and ductwork."],
 ];
 complaints.forEach(([img, head, sub, ans], i) => {
