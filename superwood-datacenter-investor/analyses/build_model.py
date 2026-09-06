@@ -62,6 +62,36 @@ rows=[
 ("hybrid_kg_m2","SUPERWOOD in a hybrid wall panel replacing precast",20,40,"kg/m²","estimated [L]","Panel design unsettled"),
 ("share_other","Addressable share of other tray / containment / doors (medium term)",0.5,0.5,"share","estimated [L]",""),
 ("rebar_frontier","Count rebar as addressable in the long term? (0/1)",0,0,"flag","choice","Rebar is a frontier market with no pathway; off by default"),
+("concrete_basis","Concrete basis: 0 = published per-MW intensity, 1 = footprint bottom-up (Foundations sheet)",0,0,"switch","choice","Scenario switch, added 2026-09-06; the deck prints the per-MW basis until Alex decides"),
+("soil_case","Soil case for the footprint basis: 1 good (spread footings), 2 moderate (lean concrete, larger footings), 3 poor (piles, pile caps, structural slab)",1,1,"switch","choice","Geotechnical allowance, Foundations sheet"),
+("slab_thk_in","Hall slab on grade thickness",6,8,"in","estimated [L]",""),
+("thick_share","Share of hall floor thickened (electrical rooms, dense rack rows)",0.15,0.25,"share","estimated [L]",""),
+("thick_thk_in","Thickened slab thickness",10,12,"in","estimated [L]",""),
+("bay_ft","Column bay",40,40,"ft","estimated [L]","Square bays"),
+("footing_ft","Spread footing plan dimension",8,10,"ft","estimated [L]","Square footings"),
+("footing_d_ft","Spread footing depth",2,2.5,"ft","estimated [L]",""),
+("gb_w_ft","Perimeter grade beam width",2,2.5,"ft","estimated [L]",""),
+("gb_d_ft","Perimeter grade beam depth",3,3.5,"ft","estimated [L]",""),
+("genset_mw","Generator unit size",3,2.5,"MW","estimated [L]","Smaller units in the high case mean more pads"),
+("genset_redund","Generator redundancy factor",1.1,1.25,"factor","estimated [L]","N+1 to N+25%"),
+("genset_pad_cf","Generator pad volume",480,787.5,"cf","estimated [L]","40x12x1 ft to 45x14x1.25 ft"),
+("xfmr_per_gen","Transformer / switchgear pads per generator",0.5,0.6,"count","estimated [L]",""),
+("xfmr_pad_cf","Transformer / switchgear pad volume",300,562.5,"cf","estimated [L]","20x15x1 ft to 25x18x1.25 ft"),
+("mech_pad_share","Mechanical equipment pads as a share of floor area",0.05,0.08,"share","estimated [L]","Chillers, coolers, fan walls on grade or roof"),
+("mech_pad_thk_in","Mechanical pad thickness",8,10,"in","estimated [L]",""),
+("site_paving_ratio","Site paving, roads, yards, parking as a multiple of building footprint",0.8,1.5,"ratio","estimated [L]",""),
+("site_paving_thk_in","Site paving thickness",6,8,"in","estimated [L]",""),
+("lean_share","Case 2: share of footprint over-excavated and replaced with lean concrete / CLSM",0.3,0.6,"share","estimated [L]",""),
+("lean_thk_in","Case 2: lean concrete thickness",6,12,"in","estimated [L]",""),
+("found_uplift","Case 2: enlargement of footings, grade beams and pads",0.3,0.3,"factor","estimated [L]",""),
+("piles_per_col","Case 3: piles or drilled piers per column",3,4,"count","estimated [L]",""),
+("pile_dia_ft","Case 3: pile diameter",1.5,2,"ft","estimated [L]",""),
+("pile_len_ft","Case 3: pile length",40,60,"ft","estimated [L]",""),
+("cap_cf","Case 3: pile cap volume per column (replaces the spread footing)",300,504,"cf","estimated [L]","10x10x3 ft to 12x12x3.5 ft"),
+("gb_pier_spacing_ft","Case 3: pier spacing under grade beams",20,15,"ft","estimated [L]",""),
+("struct_slab_add_in","Case 3: slab thickening to a structural slab",2,4,"in","estimated [L]",""),
+("yard_mat_acres","Substation / transformer yard mats per GW",10,20,"acres","estimated [L]",""),
+("yard_mat_thk_in","Yard mat thickness",18,24,"in","estimated [L]",""),
 ("co2_steel","Steel emissions, global average (BF-BOF)",1.8,1.8,"kg CO₂e/kg","published-class [M]",""),
 ("co2_eaf","Steel emissions, recycled (EAF)",0.4,0.7,"kg CO₂e/kg","industry range [M]",""),
 ("co2_sw","SUPERWOOD manufacturing emissions",0.5,0.5,"kg CO₂e/kg","internal, pre-LCA [L]","Canva DCII deck; LCA under way, Prof. Ming Hu, Notre Dame"),
@@ -91,6 +121,54 @@ for i,(n,f,u) in enumerate(der,start=2):
 widths(D,[40,16,16,10])
 def dref(row,c): return f"Derived!{c}{row}"
 
+# ---------------- Foundations (footprint-based concrete with soil cases) ----------------
+F=wb.create_sheet("Foundations")
+header(F,1,["Element","Low  m³","High  m³","Basis"])
+CFT="0.0283168"  # m³ per cubic foot
+FR={}
+fdef=[
+("sf","Building floor area, sf",lambda c:f"={ref('sf_per_mw',c)}*{ref('it_mw',c)}","from Inputs"),
+("perim","Total hall perimeter, ft",lambda c:f"={dref(2,c)}*4*SQRT({ref('footprint_sf',c)})","buildings x 4 sides"),
+("cols","Columns",lambda c:f"={c}{{sf}}/({ref('bay_ft',c)}^2)","one per bay"),
+("slab","Hall slab on grade",lambda c:f"={c}{{sf}}*{ref('slab_thk_in',c)}/12*{CFT}","6–8 in over the floor"),
+("thick","Thickened slab zones",lambda c:f"={c}{{sf}}*{ref('thick_share',c)}*({ref('thick_thk_in',c)}-{ref('slab_thk_in',c)})/12*{CFT}","extra depth over 15–25% of the floor"),
+("footings","Column footings",lambda c:f"={c}{{cols}}*{ref('footing_ft',c)}^2*{ref('footing_d_ft',c)}*{CFT}","spread footings, good soils"),
+("gb","Perimeter grade beams",lambda c:f"={c}{{perim}}*{ref('gb_w_ft',c)}*{ref('gb_d_ft',c)}*{CFT}",""),
+("gens","Generators",lambda c:f"={ref('it_mw',c)}/{ref('genset_mw',c)}*{ref('genset_redund',c)}","units incl. redundancy"),
+("genpads","Generator pads",lambda c:f"={c}{{gens}}*{ref('genset_pad_cf',c)}*{CFT}",""),
+("xfpads","Transformer and switchgear pads",lambda c:f"={c}{{gens}}*{ref('xfmr_per_gen',c)}*{ref('xfmr_pad_cf',c)}*{CFT}",""),
+("mechpads","Mechanical equipment pads",lambda c:f"={c}{{sf}}*{ref('mech_pad_share',c)}*{ref('mech_pad_thk_in',c)}/12*{CFT}",""),
+("caseA","Case 1 good soils — building and pads",lambda c:f"={c}{{slab}}+{c}{{thick}}+{c}{{footings}}+{c}{{gb}}+{c}{{genpads}}+{c}{{xfpads}}+{c}{{mechpads}}","sum"),
+("lean","Case 2 — lean concrete / CLSM under footprint",lambda c:f"={c}{{sf}}*{ref('lean_share',c)}*{ref('lean_thk_in',c)}/12*{CFT}",""),
+("uplift","Case 2 — larger footings, grade beams and pads",lambda c:f"=({c}{{footings}}+{c}{{gb}}+{c}{{genpads}}+{c}{{xfpads}}+{c}{{mechpads}})*{ref('found_uplift',c)}",""),
+("caseB_allow","Case 2 moderate soils — allowance",lambda c:f"={c}{{lean}}+{c}{{uplift}}","added to case 1"),
+("piles","Case 3 — piles or drilled piers under columns",lambda c:f"={c}{{cols}}*{ref('piles_per_col',c)}*PI()*({ref('pile_dia_ft',c)}/2)^2*{ref('pile_len_ft',c)}*{CFT}",""),
+("caps","Case 3 — pile caps net of spread footings",lambda c:f"={c}{{cols}}*{ref('cap_cf',c)}*{CFT}-{c}{{footings}}",""),
+("gbpiers","Case 3 — piers under grade beams",lambda c:f"={c}{{perim}}/{ref('gb_pier_spacing_ft',c)}*PI()*({ref('pile_dia_ft',c)}/2)^2*{ref('pile_len_ft',c)}*{CFT}",""),
+("structslab","Case 3 — structural slab thickening",lambda c:f"={c}{{sf}}*{ref('struct_slab_add_in',c)}/12*{CFT}",""),
+("caseC_allow","Case 3 poor soils — allowance",lambda c:f"={c}{{piles}}+{c}{{caps}}+{c}{{gbpiers}}+{c}{{structslab}}","added to case 1"),
+("allow","Selected soil allowance",lambda c:f"=CHOOSE({ref('soil_case',c)},0,{c}{{caseB_allow}},{c}{{caseC_allow}})","Inputs soil_case"),
+("paving","Site paving, roads, yards, parking",lambda c:f"={c}{{sf}}*{ref('site_paving_ratio',c)}*{ref('site_paving_thk_in',c)}/12*{CFT}",""),
+("yardmats","Substation / transformer yard mats",lambda c:f"={ref('yard_mat_acres',c)}*{ref('it_mw',c)}/1000*43560*{ref('yard_mat_thk_in',c)}/12*{CFT}",""),
+("allin","All-in with site work, selected soil case",lambda c:f"={c}{{caseA}}+{c}{{allow}}+{c}{{paving}}+{c}{{yardmats}}","sum"),
+("slab_basis_m3","Slab and paving, footprint basis (m³)",lambda c:f"={c}{{slab}}+{c}{{thick}}+{c}{{paving}}+IF({ref('soil_case',c)}=3,{c}{{structslab}},0)","feeds the main sheet when concrete_basis = 1"),
+("found_basis_m3","Foundations, footings and pads, footprint basis (m³)",lambda c:f"={c}{{footings}}+{c}{{gb}}+{c}{{genpads}}+{c}{{xfpads}}+{c}{{mechpads}}+{c}{{yardmats}}+IF({ref('soil_case',c)}=2,{c}{{caseB_allow}},IF({ref('soil_case',c)}=3,{c}{{piles}}+{c}{{caps}}+{c}{{gbpiers}},0))","feeds the main sheet when concrete_basis = 1"),
+("slab_basis_t","Slab and paving, footprint basis (t)",lambda c:f"={c}{{slab_basis_m3}}*{ref('concrete_t_m3',c)}",""),
+("found_basis_t","Foundations, footings and pads, footprint basis (t)",lambda c:f"={c}{{found_basis_m3}}*{ref('concrete_t_m3',c)}",""),
+("permw_m3","Per-MW basis for comparison (m³)",lambda c:f"={ref('concrete_m3_mw',c)}*{ref('it_mw',c)}","published, secondary"),
+]
+for i,(k,n,f,basis) in enumerate(fdef,start=2): FR[k]=i
+for i,(k,n,f,basis) in enumerate(fdef,start=2):
+    F.cell(row=i,column=1,value=n); F.cell(row=i,column=4,value=basis)
+    for c,col in (("B",2),("C",3)):
+        formula=f(c)
+        for kk,rr in FR.items(): formula=formula.replace("{"+kk+"}",str(rr))
+        x=F.cell(row=i,column=col,value=formula); x.fill=calc; x.number_format="#,##0"
+    if k in ("caseA","caseB_allow","caseC_allow","allin","slab_basis_t","found_basis_t"): F.cell(row=i,column=1).font=tot
+F.cell(row=len(fdef)+3,column=1,value="Wall system: tilt-up versus insulated metal panel is the Inputs walls_precast switch (precast row on the main sheet, steel-share sheet reports both). Soil cases and the concrete basis switch are Inputs soil_case and concrete_basis. All element inputs are estimates [L]; see foundation-bottom-up.md.")
+widths(F,[58,16,16,44])
+def fref(k,c): return f"Foundations!{c}{FR[k]}"
+
 # ---------------- 1 GW data center (main sheet) ----------------
 SHEET="1 GW data center"
 M=wb.create_sheet(SHEET,1)
@@ -110,10 +188,10 @@ IT=lambda c: ref('it_mw',c)
 # (name, mass formula, horizon, share formula, sw rule, note)
 comp=[
 ("BUILDING — STRUCTURE AND ENVELOPE",None,None,None,None,None),
-("Concrete: slab on grade, paving, yard",lambda c:f"={ref('concrete_m3_mw',c)}*(1-{ref('foundation_share',c)})*{ref('concrete_t_m3',c)}*{IT(c)}-{{precast}}","Long term",lambda c:f"={ref('slab_lt',c)}","concrete","Technical potential per Alex (75%); no design or code pathway yet. arXiv 2509.21312 [M] for total concrete"),
-("Concrete: foundations, footings, piers, equipment pads",lambda c:f"={ref('concrete_m3_mw',c)}*{ref('foundation_share',c)}*{ref('concrete_t_m3',c)}*{IT(c)}","Long term",lambda c:f"={ref('fdn_lt',c)}","concrete","Technical potential per Alex (90%); lightweight insulated SUPERWOOD foundations — geotechnical, durability and code pathway all open"),
+("Concrete: slab on grade, paving, yard",lambda c:f"=IF({ref('concrete_basis',c)}=1,{fref('slab_basis_t',c)},{ref('concrete_m3_mw',c)}*(1-{ref('foundation_share',c)})*{ref('concrete_t_m3',c)}*{IT(c)})-{{precast}}","Long term",lambda c:f"={ref('slab_lt',c)}","concrete","Technical potential per Alex (75%); no design or code pathway yet. arXiv 2509.21312 [M] for total concrete"),
+("Concrete: foundations, footings, piers, equipment pads",lambda c:f"=IF({ref('concrete_basis',c)}=1,{fref('found_basis_t',c)},{ref('concrete_m3_mw',c)}*{ref('foundation_share',c)}*{ref('concrete_t_m3',c)}*{IT(c)})","Long term",lambda c:f"={ref('fdn_lt',c)}","concrete","Technical potential per Alex (90%); lightweight insulated SUPERWOOD foundations — geotechnical, durability and code pathway all open"),
 ("Precast / tilt-up perimeter walls (precast case)",lambda c:f"={ref('walls_precast',c)}*{dref(4,c)}*{ref('precast_thk_m',c)}*{ref('concrete_t_m3',c)}","Medium term",lambda c:"1","hybrid","Hybrid SUPERWOOD wall panels; NFPA 285 + E119 assemblies. Active when Inputs walls_precast = 1"),
-("Rebar in all concrete",lambda c:f"={ref('concrete_m3_mw',c)}*{ref('rebar_kg_m3',c)}/1000*{IT(c)}","Long term",lambda c:f"={ref('foundation_share',c)}*{ref('fdn_lt',c)}+(1-{ref('foundation_share',c)})*{ref('slab_lt',c)}","steel","Rebar follows the concrete it sits in: foundation share × 90% + slab share × 75%"),
+("Rebar in all concrete",lambda c:f"=IF({ref('concrete_basis',c)}=1,{fref('slab_basis_m3',c)}+{fref('found_basis_m3',c)},{ref('concrete_m3_mw',c)}*{IT(c)})*{ref('rebar_kg_m3',c)}/1000","Long term",lambda c:f"={ref('foundation_share',c)}*{ref('fdn_lt',c)}+(1-{ref('foundation_share',c)})*{ref('slab_lt',c)}","steel","Rebar follows the concrete it sits in: foundation share × 90% + slab share × 75%"),
 ("Structural steel — primary frame (columns, girders)",lambda c:f"={ref('steel_t_mw',c)}*(1-{ref('secondary_share',c)})*{IT(c)}","Medium term",lambda c:"1","steel","ICC-ES via the mass-timber qualification pathway; FM acceptance; E119"),
 ("Structural steel — roof trusses, joists, roof deck, girts",lambda c:f"={ref('steel_t_mw',c)}*{ref('secondary_share',c)}*{IT(c)}","Medium term",lambda c:"1","steel","Design values and connection data; trusses carry no fire-resistance requirement"),
 ("Exterior skins — metal panel / IMP (metal-panel case)",lambda c:f"=(1-{ref('walls_precast',c)})*{dref(4,c)}*{ref('panel_kg_m2',c)}/1000","Immediate",lambda c:"1","skins","Shipping now; area-for-area rain screen"),
@@ -319,4 +397,4 @@ txt=["SUPERWOOD × Data Centers — material mass, embodied carbon and replaceme
 for i,s in enumerate(txt,1): Rd.cell(row=i,column=1,value=s)
 Rd.column_dimensions["A"].width=150
 wb.save("materials-mass-and-replacement.xlsx"); print("saved; data rows",first,last,"summary ends",r)
-import json; json.dump({"sheet":SHEET,"first":first,"last":last,"rt":rt,"rx":rx,"hor":hor_rows,"rc":rc,"rsw":rsw,"rsy":rsy,"rsh":rsh,"rshx":rshx,"rnr":rnr,"rnrs":rnrs,"data_rows":data_rows,"precast":precast_row,"rcb":rcb,"rcs":rcs,"rcc":rcc,"rcss":rcss,"rccs":rccs,"rcas":rcas,"rceaf":rceaf,"ss_rows":ss_rows,"ss_tot":ss_tot,"ss_steel":ss_steel,"ss_share":ss_share,"ss_share_rebar":ss_share_rebar,"ss_se":ss_se,"ss_mp":ss_mp,"ss_tu":ss_tu,"ss_pre":ss_pre},open("model_rows.json","w"))
+import json; json.dump({"FR_names":{F.cell(row=r,column=1).value:r for r in FR.values()},"R":R,"sheet":SHEET,"first":first,"last":last,"rt":rt,"rx":rx,"hor":hor_rows,"rc":rc,"rsw":rsw,"rsy":rsy,"rsh":rsh,"rshx":rshx,"rnr":rnr,"rnrs":rnrs,"data_rows":data_rows,"precast":precast_row,"rcb":rcb,"rcs":rcs,"rcc":rcc,"rcss":rcss,"rccs":rccs,"rcas":rcas,"rceaf":rceaf,"ss_rows":ss_rows,"ss_tot":ss_tot,"ss_steel":ss_steel,"ss_share":ss_share,"ss_share_rebar":ss_share_rebar,"ss_se":ss_se,"ss_mp":ss_mp,"ss_tu":ss_tu,"ss_pre":ss_pre},open("model_rows.json","w"))

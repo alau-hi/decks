@@ -1,6 +1,6 @@
 # Material mass in a data center — the build-up, and how much SUPERWOOD can replace
 
-Date: 2026-09-06 (v11: loaded-rack material analysis applied — IT 50% steel, server enclosures 30% long term; mechanical shells and fan-wall frames 25% medium term, fan blades 2% long term (Alex 2026-09-06); v10: IT row spans two horizons — rack cabinets 18% of IT mass soon, server enclosures 22% long term (Alex 2026-09-06); v9: every row carries a material split (steel, concrete, plastic, other; analyses/material_split.json) and carbon is valued on the steel and concrete content only (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
+Date: 2026-09-06 (v12: Foundations scenario sheet — footprint-based concrete with soil cases 1–3 and a concrete_basis switch beside the per-MW intensity; v11: loaded-rack material analysis applied — IT 50% steel, server enclosures 30% long term; mechanical shells and fan-wall frames 25% medium term, fan blades 2% long term (Alex 2026-09-06); v10: IT row spans two horizons — rack cabinets 18% of IT mass soon, server enclosures 22% long term (Alex 2026-09-06); v9: every row carries a material split (steel, concrete, plastic, other; analyses/material_split.json) and carbon is valued on the steel and concrete content only (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
 Every table below is generated from the live model [materials-mass-and-replacement.xlsx](materials-mass-and-replacement.xlsx)
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
@@ -256,6 +256,45 @@ about ten points, which is why the deck prints a 50–80% band rather than a poi
 - Fast + Epp to state substitution factors for two or three elements (truss, joist, wall panel), and a first opinion
   on whether a SUPERWOOD foundation system is even a sensible engineering target.
 - Confirm with Microsoft and Meta whether their standard design uses precast or metal-panel walls.
+
+
+## 6. Foundations by footprint and soil case (scenario sheet, added 2026-09-06)
+
+The workbook carries a footprint-based concrete path beside the published per-MW intensity (Inputs `concrete_basis`, default 0 = per-MW; `soil_case` 1 good, 2 moderate, 3 poor). Values below evaluate the Foundations sheet at the current inputs; units are m³ except the two "(t)" rows and the counts.
+
+| Element | Low | High |
+|---|---|---|
+| Building floor area, sf | 5,000,000 | 10,000,000 |
+| Total hall perimeter, ft | 20,000 | 40,000 |
+| Columns | 3,125 | 6,250 |
+| Hall slab on grade | 70,792 | 188,779 |
+| Thickened slab zones | 7,079 | 23,597 |
+| Column footings | 11,327 | 44,245 |
+| Perimeter grade beams | 3,398 | 9,911 |
+| Generators | 367 | 500 |
+| Generator pads | 4,984 | 11,150 |
+| Transformer and switchgear pads | 1,557 | 4,778 |
+| Mechanical equipment pads | 4,719 | 18,878 |
+| Case 1 good soils — building and pads | 103,857 | 301,338 |
+| Case 2 — lean concrete / CLSM under footprint | 21,238 | 169,901 |
+| Case 2 — larger footings, grade beams and pads | 7,796 | 26,689 |
+| Case 2 moderate soils — allowance | 29,033 | 196,589 |
+| Case 3 — piles or drilled piers under columns | 18,765 | 133,440 |
+| Case 3 — pile caps net of spread footings | 15,220 | 44,953 |
+| Case 3 — piers under grade beams | 2,002 | 14,234 |
+| Case 3 — structural slab thickening | 23,597 | 94,389 |
+| Case 3 poor soils — allowance | 59,584 | 287,016 |
+| Selected soil allowance | 0 | 0 |
+| Site paving, roads, yards, parking | 56,634 | 283,168 |
+| Substation / transformer yard mats | 18,502 | 49,339 |
+| All-in with site work, selected soil case | 178,992 | 633,845 |
+| Slab and paving, footprint basis (m³) | 134,505 | 495,544 |
+| Foundations, footings and pads, footprint basis (m³) | 44,488 | 138,301 |
+| Slab and paving, footprint basis (t) | 322,812 | 1,189,306 |
+| Foundations, footings and pads, footprint basis (t) | 106,770 | 331,923 |
+| Per-MW basis for comparison (m³) | 500,000 | 1,000,000 |
+
+Current concrete basis: published per-MW intensity, soil case 1. Wall system, tilt-up versus insulated metal panel, is the `walls_precast` switch; its concrete appears on the precast row of the main sheet and the steel-share sheet reports both cases. All element inputs are estimates [L]; derivation in foundation-bottom-up.md.
 
 ## Sources
 

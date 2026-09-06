@@ -7,7 +7,10 @@ def ev(sheet,coord):
     v=wb[sheet][coord].value
     if isinstance(v,str) and v.startswith("="): return xl.evaluate(f"'{sheet}'!{coord}")
     return v
-S=meta.get("sheet","1 GW data center"); rows=[]; HORS=("Immediate","Soon","Medium term","Long term")
+S=meta.get("sheet","1 GW data center"); rows=[]
+FOUND_ROWS=[(r,n) for n,r in sorted(meta.get("FR_names",{}).items(), key=lambda x:x[1])]
+_cb=ev('Inputs','B%d'%meta['R']['concrete_basis']); _sc=int(ev('Inputs','B%d'%meta['R']['soil_case']))
+BASIS_TXT=('footprint bottom-up' if _cb==1 else 'published per-MW intensity')+f', soil case {_sc}'; HORS=("Immediate","Soon","Medium term","Long term")
 for r in meta["data_rows"]:
     sh={h:float(ev(S,f"{col}{r}")) for h,col in zip(HORS,"FGHI")}
     hor=max(sh,key=sh.get) if sum(sh.values())>0 else "Not addressed"
@@ -85,7 +88,7 @@ def hrow(label,h,plant):
     return f"| {label} | {kr(h['rlo'],h['rhi'])} | {kr(h['slo'],h['shi'])}{' ('+f'{h['sflo']/1e6:.1f}–{h['sfhi']/1e6:.1f}M sf)' if 'sflo' in h else ''} | {h['ylo']:.1f}–{h['yhi']:.1f} yr of {plant} |"
 md=f"""# Material mass in a data center — the build-up, and how much SUPERWOOD can replace
 
-Date: 2026-09-06 (v11: loaded-rack material analysis applied — IT 50% steel, server enclosures 30% long term; mechanical shells and fan-wall frames 25% medium term, fan blades 2% long term (Alex 2026-09-06); v10: IT row spans two horizons — rack cabinets 18% of IT mass soon, server enclosures 22% long term (Alex 2026-09-06); v9: every row carries a material split (steel, concrete, plastic, other; analyses/material_split.json) and carbon is valued on the steel and concrete content only (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
+Date: 2026-09-06 (v12: Foundations scenario sheet — footprint-based concrete with soil cases 1–3 and a concrete_basis switch beside the per-MW intensity; v11: loaded-rack material analysis applied — IT 50% steel, server enclosures 30% long term; mechanical shells and fan-wall frames 25% medium term, fan blades 2% long term (Alex 2026-09-06); v10: IT row spans two horizons — rack cabinets 18% of IT mass soon, server enclosures 22% long term (Alex 2026-09-06); v9: every row carries a material split (steel, concrete, plastic, other; analyses/material_split.json) and carbon is valued on the steel and concrete content only (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
 Every table below is generated from the live model [materials-mass-and-replacement.xlsx](materials-mass-and-replacement.xlsx)
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
@@ -275,6 +278,17 @@ about ten points, which is why the deck prints a 50–80% band rather than a poi
 - Fast + Epp to state substitution factors for two or three elements (truss, joist, wall panel), and a first opinion
   on whether a SUPERWOOD foundation system is even a sensible engineering target.
 - Confirm with Microsoft and Meta whether their standard design uses precast or metal-panel walls.
+
+
+## 6. Foundations by footprint and soil case (scenario sheet, added 2026-09-06)
+
+The workbook carries a footprint-based concrete path beside the published per-MW intensity (Inputs `concrete_basis`, default 0 = per-MW; `soil_case` 1 good, 2 moderate, 3 poor). Values below evaluate the Foundations sheet at the current inputs; units are m³ except the two "(t)" rows and the counts.
+
+| Element | Low | High |
+|---|---|---|
+""" + NL.join(f"| {n} | {ev('Foundations','B%d'%r):,.0f} | {ev('Foundations','C%d'%r):,.0f} |" for r,n in FOUND_ROWS) + """
+
+Current concrete basis: """ + BASIS_TXT + """. Wall system, tilt-up versus insulated metal panel, is the `walls_precast` switch; its concrete appears on the precast row of the main sheet and the steel-share sheet reports both cases. All element inputs are estimates [L]; derivation in foundation-bottom-up.md.
 
 ## Sources
 

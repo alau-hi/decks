@@ -65,3 +65,16 @@ The workbook carries this as the `walls_precast` switch (default 0, metal panel)
 | Tilt-up or precast concrete | 8–9 in panels over the same wall area: 15,000–34,000 m³, 36,000–82,000 tons, plus 60–100 kg/m³ of rebar and heavier panel-line footings | metal panel row drops to zero | Medium term: hybrid SUPERWOOD wall panel, gated by NFPA 285 and ASTM E119 assemblies |
 
 Tilt-up therefore adds about 5–10% to the building-and-pads concrete above and moves the facade from an immediate SUPERWOOD skin to a medium-term structural panel. It is also why the steel share of the above-ground building spans 56–66% for tilt-up against 69–79% for metal panel (steel-share sheet). Which system Microsoft's and Meta's standard designs use is still the open item that decides this.
+
+## Scenario sheet in the workbook (added 2026-09-06)
+
+The Foundations sheet of `materials-mass-and-replacement.xlsx` now carries every element above as an input, with `concrete_basis` (0 = published per-MW intensity, the deck's default; 1 = footprint bottom-up) and `soil_case` (1 good, 2 moderate, 3 poor) on the Inputs sheet. Wall system stays on `walls_precast`. Evaluated at the current inputs:
+
+| Scenario | Slab and paving, tons | Foundations and pads, tons | Rebar, tons | Long-term SUPERWOOD, tons |
+|---|---|---|---|---|
+| Per-MW basis (deck today) | 720,000 – 1,200,000 | 480,000 – 1,200,000 | 30,000 – 100,000 | 57,000 – 359,000 |
+| Footprint, good soils | 323,000 – 1,189,000 | 107,000 – 332,000 | 11,000 – 63,000 | 21,000 – 223,000 |
+| Footprint, moderate soils | 323,000 – 1,189,000 | 176,000 – 804,000 | 12,000 – 83,000 | 25,000 – 296,000 |
+| Footprint, poor soils | 379,000 – 1,416,000 | 193,000 – 794,000 | 14,000 – 92,000 | 28,000 – 324,000 |
+
+Reading: the footprint basis on good soils halves the long-term SUPERWOOD range at the low end; on poor soils with full site work the high end approaches the per-MW figure. The slide 6 and 7 figures still print the per-MW basis until Alex chooses a scenario.
