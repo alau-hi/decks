@@ -467,7 +467,7 @@ profiles.forEach(([name, stage, pubTxt, src, pts, img, cap], i) => {
   s.addImage({ path: img, x: x + cw - 1.5, y: 4.42, w: 1.5, h: 1.5 });
   s.addText(cap, { x: x + cw - 2.6, y: 5.97, w: 2.6, h: 0.4, fontFace: SANS, fontSize: 7.5, italic: true, color: MUTED, align: "right", margin: 0 });
 });
-s.addNotes("Sources and details. Microsoft: Microsoft Source, Nov 2024 — two Northern Virginia datacenters with CLT floor panels on a steel frame, about 35% less embodied carbon than conventional steel construction and 65% less than precast; Gensler; Thornton Tomasetti project page. Meta: Meta Sustainability, 31 Jul 2025 — mass-timber pilot for administrative buildings; Aiken SC completed 2025 (DPR, SmartLam); Cheyenne WY and Montgomery AL under way; about 41% less embodied carbon in the materials substituted.");
+s.addNotes("Sources and details. Microsoft: Microsoft Source, Nov 2024, https://news.microsoft.com/source/features/sustainability/microsoft-builds-first-datacenters-with-wood-to-slash-carbon-emissions/ — two Northern Virginia datacenters with CLT floor panels on a steel frame, about 35% less embodied carbon than conventional steel construction and 65% less than precast; Gensler; Thornton Tomasetti project page https://www.thorntontomasetti.com/project/microsoft-mass-timber-data-centers. Meta: Meta Sustainability, 31 Jul 2025, https://sustainability.atmeta.com/blog/2025/07/31/meta-pilots-mass-timber-for-more-sustainable-data-center-construction/ — mass-timber pilot for administrative buildings; Aiken SC completed 2025 (DPR, SmartLam); Cheyenne WY and Montgomery AL under way; about 41% less embodied carbon in the materials substituted.");
 
 // ---------- 18 · THE CARBON CLAIM ----------
 s = pres.addSlide(); base(s, "InventWood · Carbon");
