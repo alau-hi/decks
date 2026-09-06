@@ -59,7 +59,7 @@ def rebuild(path):
     foot=re.search(r'<p class="note rv">.*?</p>',sec,re.S).group(0)
     s0=sec.index('<div class="split rv'); s1=sec.rindex('</div>')  # the last </div> in the section closes .wrap; rebuild everything between
     # everything from the split to the end of .wrap is rebuilt: chart left, notes + legend + footnote right
-    block=f'''<div class="split rv campus" style="grid-template-columns:2.6fr 1fr;align-items:start">
+    block=f'''<div class="split rv campus" style="grid-template-columns:2.6fr 1fr;align-items:stretch">
       <div class="chartcol">
         <div class="view" id="view-mass" role="tabpanel" aria-labelledby="tab-mass" data-view="mass"><div class="hbars det">
 {rows_html("mass")}{AX_M}
