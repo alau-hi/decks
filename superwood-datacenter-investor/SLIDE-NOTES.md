@@ -42,7 +42,7 @@ Footnotes (`.note` / `note()`): deliberately small and muted — Alex 2026-09-05
 
 Nav labels renamed 2026-09-06 (Alex): slide 6 "Materials", slide 7 "SUPERMILLS Needed"; slide titles unchanged.
 
-Dock has no background box (Alex 2026-09-06). Slide 6 kicker reads "Materials" (Alex 2026-09-06).
+Dock has no background box (Alex 2026-09-06). Arrow keys pressed during a slide animation are buffered (up to three) and replayed when the scroll settles (Alex 2026-09-06). Slide 6 kicker reads "Materials" (Alex 2026-09-06).
 
 ## Open items (Alex to confirm)
 - Concrete intensity (500–1,000 m³/MW) is building core and shell only, traced to Schneider WP99's 1 MW reference design (0.23 t CO₂e/m², concrete 85%); site paving, parking and yards are NOT in it, and the design is low-density (~13,000 ft²/MW). Decide whether to add a site-work concrete row and rescale the building row for hyperscale density (2026-09-06).
