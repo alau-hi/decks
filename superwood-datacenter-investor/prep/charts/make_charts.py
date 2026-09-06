@@ -132,8 +132,8 @@ a.bar(len(years),t12,color=GOLD,width=0.7,hatch="//",edgecolor=INK,lw=0)
 for xi,v in zip(x,vals):
     if xi>=len(vals)-3: a.text(xi,v+1,f"{v:,.0f}",ha="center",fontsize=10,color=DIM)  # values on the last bars only
 a.text(len(years),t12+1,f"{t12:,.0f}",ha="center",fontsize=9,color=CREAM,fontweight="bold")
-a.axhline(saar,color=BRIGHT,lw=1,ls="--"); a.text(-0.4,saar+1.2,f"July 2026 annual rate: ${saar:,.0f}B",fontsize=9.5,color=BRIGHT)
-a.set_xticks(x+[len(years)]); a.set_xticklabels([(y if i%2==0 else "") for i,y in enumerate(years)]+["12 mo\nto Jul 26"],fontsize=9,color=DIM)
+a.plot([len(years)-0.5,len(years)+0.5],[saar,saar],color=BRIGHT,lw=1,ls="--"); a.text(len(years)+0.5,saar+1.2,f"July 2026 annual rate: ${saar:,.0f}B",fontsize=9.5,color=BRIGHT,ha="right")
+a.set_xticks(x+[len(years)]); a.set_xticklabels(years+["12 mo to\nJul 2026"],fontsize=8,color=DIM)
 a.set_ylabel("$ billions per year",color=MUTED); a.set_ylim(0,max(saar,t12)*1.18); a.grid(axis="y",color=NR,lw=0.8); a.set_axisbelow(True)
 plt.tight_layout(); fig.savefig("prep/charts/construction.png",dpi=200,facecolor=INK); plt.close(fig)
 print("construction chart ok")
