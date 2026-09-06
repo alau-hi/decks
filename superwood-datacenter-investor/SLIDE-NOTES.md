@@ -44,6 +44,8 @@ Nav labels renamed 2026-09-06 (Alex): slide 6 "Materials", slide 7 "SUPERMILLS N
 
 Dock has no background box (Alex 2026-09-06). Arrow keys pressed during a slide animation are buffered (up to three) and replayed when the scroll settles (Alex 2026-09-06). Slide 6 kicker reads "Materials" (Alex 2026-09-06).
 
+Deploy note 2026-09-06: the Vercel Hobby plan allows 100 deployments a day and the quota ran out at 23:45 PT. Production (aoqqsgg3l) has slide 15 pop-ups and partial slide 16 on /slides only; still to deploy when the quota resets: v2 pop-ups and graduated ranges, the carbon slide's LCA statement in place of the right-hand box, the storage gradient direction fix, and the slide 6 axis label anchoring. All are committed and pushed.
+
 ## Open items (Alex to confirm)
 - Concrete intensity (500–1,000 m³/MW) is building core and shell only, traced to Schneider WP99's 1 MW reference design (0.23 t CO₂e/m², concrete 85%); site paving, parking and yards are NOT in it, and the design is low-density (~13,000 ft²/MW). Decide whether to add a site-work concrete row and rescale the building row for hyperscale density (2026-09-06).
 - Wall system in Microsoft's and Meta's standard designs (metal panel vs tilt-up) — drives the steel share and whether facades are "now".
