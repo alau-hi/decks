@@ -283,8 +283,8 @@ conceptTag(s, 7.3 + 5.45 - 2.6, 5.08);
 note(s, "Schedule figures are mass-timber case studies (ULI Urban Land: ~20% average across seven case studies, 12.7 vs 15.4 months; other studies 25–30%), used as an analogy for a material that builds the same way. No SUPERWOOD schedule data yet.", 6.55, 0.5);
 
 // ---------- 11 · NOW ----------
-s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Immediate");
+s = pres.addSlide(); base(s, "InventWood · Applications");
+kicker(s, "Applications · Immediate");
 title(s, "Immediate: skins, screens and fences from SuperMill One");
 s.addText("Every item below ships today as boards up to 8\" × 16' × 3/8\", exterior or interior grade. SuperMill One makes about one million square feet a year across all markets.",
   { x: L, y: 1.85, w: CW, h: 0.45, fontFace: SANS, fontSize: 12, color: DIM, margin: 0 });
@@ -313,8 +313,8 @@ s.addText([
 conceptTag(s, W - 3.6, 5.02, 3.0, "Concept renderings");
 
 // ---------- 12 · NEXT ----------
-s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Soon (1–3 years)");
+s = pres.addSlide(); base(s, "InventWood · Applications");
+kicker(s, "Applications · Soon (1–3 years)");
 title(s, "Soon (1–3 years): applications needing straightforward applications engineering", L, 0.88, 11.9, 27);
 const gated = [
   ["tile_fanbox", "Fan enclosures & ducting", "Acoustic and airflow data"],
@@ -339,8 +339,8 @@ s.addText("Each needs one scoped test program, which can be co-funded with a cus
 conceptTag(s, W - 3.6, 5.2, 3.0, "Concept renderings");
 
 // ---------- 13 · STRUCTURAL ----------
-s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Medium term");
+s = pres.addSlide(); base(s, "InventWood · Applications");
+kicker(s, "Applications · Medium term");
 title(s, [t("Structural: starting "), gold("now"), t(", scaling with SuperMill Two")]);
 // left: under way now
 panel(s, L, 1.95, 4.6, 3.55, PANEL2);
@@ -369,8 +369,8 @@ s.addText([
 conceptTag(s, W - 3.6, 5.42, 3.0, "Concept renderings");
 
 // ---------- 14 · THE LONG-TERM VISION ----------
-s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path · Long term (5+ years)");
+s = pres.addSlide(); base(s, "InventWood · Applications");
+kicker(s, "Applications · Long term (5+ years)");
 title(s, [t("Long term (5+ years): prefabricated "), gold("envelopes"), t(", then foundations")]);
 const vis = [
   ["Prefabricated building envelopes", "Structure and skin shipped as panels and modules — the co-development target with our hyperscaler customers' architects and engineers. Shells that carry their own loads, weigh far less than steel and precast, and can be disassembled and moved.", "Hyperscalers are asking for this now, to simplify design and delivery and accelerate schedules."],
@@ -390,8 +390,8 @@ s.addText("Stated technical potential, not an engineered plan: slab, paving and 
   { x: L + 0.3, y: 6.15, w: CW - 0.6, h: 0.6, fontFace: SANS, fontSize: 9.5, italic: true, color: DIM, margin: 0, valign: "middle" });
 
 // ---------- 15 · EVERY ACCOUNT ON ONE LADDER ----------
-s = pres.addSlide(); base(s, "InventWood · The evidence");
-kicker(s, "The evidence");
+s = pres.addSlide(); base(s, "InventWood · Customers");
+kicker(s, "Customers");
 title(s, "Customer engagement");
 const stages = ["Conversations", "Applications identified", "Projects scoped", "Testing & mockups", "First purchase", "Basis of design"];
 const gx = 3.6, gw = 5.4, sw = gw / stages.length, rowY0 = 2.45, rowH = 0.78;
