@@ -25,6 +25,11 @@
       "source": "/supermills-america-overview/:path*",
       "destination": "/supermills-deck/:path*",
       "permanent": false
+    },
+    {
+      "source": "/datacenters",
+      "destination": "/datacenters/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -39,6 +44,14 @@
     {
       "source": "/supermills-deck/:path+",
       "destination": "/supermills-america-overview/:path+"
+    },
+    {
+      "source": "/datacenters/",
+      "destination": "/superwood-datacenter-investor/slides"
+    },
+    {
+      "source": "/datacenters/:path+",
+      "destination": "/superwood-datacenter-investor/:path+"
     }
   ],
   "headers": [
@@ -53,6 +66,15 @@
     },
     {
       "source": "/supermills-deck/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/datacenters/assets/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

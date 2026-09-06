@@ -11,5 +11,13 @@ supermills-america-overview/*
 !supermills-america-overview/slides.html
 !supermills-america-overview/assets
 
+# Alex's data center deck (in-repo, co-owned) ships slides.html + assets/ only.
+# His deck-local gate copies (gate.html, middleware.js, api/, vercel.json), the
+# index.html stub, sources, prep/, archive/, media/, PDF and PPTX stay off the
+# site. Same load-bearing index.html exclusion as above.
+superwood-datacenter-investor/*
+!superwood-datacenter-investor/slides.html
+!superwood-datacenter-investor/assets
+
 # Never ship a pulled env file (vercel env pull … .env.check).
 .env*
