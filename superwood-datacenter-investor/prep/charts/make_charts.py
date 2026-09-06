@@ -20,7 +20,12 @@ rows=[("Platforms, walkways, mezzanines, railings",15,1.0,"soon"),("Acoustic bar
 ("Concrete — slab on grade, paving",1200,0.75,"long"),("Concrete — foundations, footings, pads",1200,0.90,"long"),("Rebar in all concrete",100,0.81,"long")]
 # order: contents at the top, building structure and envelope, foundation at the bottom (Alex 2026-09-05)
 import json as _j, math
-SPLIT=_j.load(open("analyses/material_split.json"))["split"]
+_d=_j.load(open("analyses/material_split.json")); SPLIT=_d["split"]; HZ=_d["horizon"]
+HORDER=["imm","soon","med","long"]
+def cum(name):
+    h=HZ[name]["horizon"]; s=HZ[name]["share"]
+    return [s if (h is not None and HORDER.index(h)<=j) else 0.0 for j in range(4)]
+from matplotlib.patches import Circle, Wedge
 MAT=[("steel",WOOD),("concrete","#8c8478"),("plastic",TEAL),("other","#5a4a36")]
 carb=[r[1]*(SPLIT[r[0]][0]*1.8+SPLIT[r[0]][1]*0.12+SPLIT[r[0]][2]*3.0) for r in rows]
 LEG=[Patch(color=c_,label=n.capitalize()) for n,c_ in MAT]
@@ -30,15 +35,20 @@ def with_totals(vals):
     out=[]; i=0
     for title,n in GROUP_ROWS:
         grp=rows[i:i+n]; gk=sum(r[1] for r in grp); gsp=[sum(r[1]*SPLIT[r[0]][j] for r in grp)/gk for j in range(4)]
-        out.append((title.upper(),sum(vals[i:i+n]),gsp,True,gk))
-        for r,v in zip(grp,vals[i:i+n]): out.append((r[0],v,SPLIT[r[0]],False,r[1]))
+        gc=[sum(r[1]*cum(r[0])[j] for r in grp)/gk for j in range(4)]
+        out.append((title.upper(),sum(vals[i:i+n]),gsp,True,gk,gc))
+        for r,v in zip(grp,vals[i:i+n]): out.append((r[0],v,SPLIT[r[0]],False,r[1],cum(r[0])))
         i+=n
     return out
 def campus(values, out, xlabel, log, narrow, unit, carbon=False):
-    fig,a=plt.subplots(figsize=(7.0,4.8) if narrow else (12.4,7.6),facecolor=INK); clean(a)
+    fig,(a,a2)=plt.subplots(1,2,figsize=(8.0,4.8) if narrow else (12.4,7.6),facecolor=INK,gridspec_kw={"width_ratios":[5.4,1.0],"wspace":0.02},sharey=True); clean(a); clean(a2)
     fs=8 if narrow else 10.5
     disp=with_totals(values)
-    for i,(lab,v,sp,is_t,massk) in enumerate(disp):
+    for i,(lab,v,sp,is_t,massk,cc) in enumerate(disp):
+        for j,p in enumerate(cc):
+            rr=0.36 if is_t else 0.28
+            a2.add_patch(Circle((j,i),rr,fill=False,ec=BRIGHT if p>0 else NR,lw=0.8))
+            if p>0: a2.add_patch(Wedge((j,i),rr,90-360*p,90,fc=GOLD,ec="none"))
         hh=0.78 if is_t else 0.6
         if carbon:
             left=0
@@ -58,11 +68,15 @@ def campus(values, out, xlabel, log, narrow, unit, carbon=False):
     a.set_yticks(range(len(disp))); a.set_yticklabels([d[0] for d in disp],fontsize=fs,color=CREAM); a.invert_yaxis()
     for t,d in zip(a.get_yticklabels(),disp):
         if d[3]: t.set_fontweight('bold'); t.set_color(BRIGHT); t.set_fontsize(fs-1)
-    if log: a.set_xscale("log"); a.set_xlim(0.5,(9000 if narrow else 40000))
-    else: a.set_xlim(0,(520 if narrow else 560))
+    if log: a.set_xscale("log"); a.set_xlim(0.5,40000)
+    else: a.set_xlim(0,(640 if narrow else 620))
     a.set_xlabel(xlabel,color=MUTED,fontsize=8 if narrow else 10); a.grid(axis="x",color=NR,lw=0.8); a.set_axisbelow(True)
-    a.legend(handles=LEG[:3] if carbon else LEG,loc="lower right",fontsize=9 if narrow else 12,facecolor=INK,edgecolor=INK,labelcolor=DIM)
-    plt.tight_layout(); fig.savefig(out,dpi=170,facecolor=INK); plt.close(fig)
+    fig.legend(handles=LEG[:3] if carbon else LEG,loc="lower center",ncol=4,fontsize=8.5 if narrow else 11,facecolor=INK,edgecolor=INK,labelcolor=DIM,handlelength=1.4,columnspacing=1.4)
+    a2.set_xlim(-0.6,3.6); a2.set_aspect("equal"); a2.set_xticks([]); a2.grid(False); a2.tick_params(left=False)
+    for j,lab_ in enumerate(("Now","Soon","Med","Long")): a2.text(j,-0.75,lab_,ha="center",va="bottom",fontsize=6.5 if narrow else 8,color=BRIGHT,fontweight="bold",rotation=90)
+    a2.text(1.5,-2.9,"% substitutable\nwith wood",ha="center",va="bottom",fontsize=6 if narrow else 7.5,color=MUTED)
+    a.set_ylim(len(disp)-0.5,-4.2)
+    fig.subplots_adjust(left=0.33 if narrow else 0.27,right=0.985,top=0.975,bottom=0.17 if narrow else 0.12); fig.savefig(out,dpi=170,facecolor=INK); plt.close(fig)
 mass=[r[1] for r in rows]; carbv=list(carb)
 campus(mass,"prep/charts/campus_mass.png","'000s of tons per 1 GW data center, high case — log scale",True,False,"tons")
 campus(carbv,"prep/charts/campus_carbon.png","'000s of tons CO₂e per 1 GW data center, high case — steel, concrete and plastic content; steel 1.8 kg/kg, concrete 0.12, polymers 3.0",False,False,"tons CO₂e",True)

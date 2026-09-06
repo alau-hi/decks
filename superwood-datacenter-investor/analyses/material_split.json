@@ -126,5 +126,80 @@
   "Exterior skins — metal panel": "insulated metal panel: steel skins over a foam core",
   "Louvers and yard screens": "largely aluminum (other)",
   "Louvers, screens and fencing": "display row on slide 6 combining louvers and yard screens (0.9 kt, half aluminum) with security and staff-area fencing (1.0 kt, steel); the workbook keeps them separate"
- }
+ },
+ "horizon": {
+  "Platforms, walkways, mezzanines, railings": {
+   "horizon": "soon",
+   "share": 1.0
+  },
+  "Acoustic barriers, enclosures, separations": {
+   "horizon": "soon",
+   "share": 1.0
+  },
+  "Racking and equipment supports": {
+   "horizon": "soon",
+   "share": 1.0
+  },
+  "Tray, containment, doors, misc. metals": {
+   "horizon": "soon",
+   "share": 0.5
+  },
+  "Ducting and air-distribution sheet metal": {
+   "horizon": "med",
+   "share": 1.0
+  },
+  "Interior finishes, backplanes, trim": {
+   "horizon": "imm",
+   "share": 1.0
+  },
+  "Electrical equipment and conductors": {
+   "horizon": null,
+   "share": 0.0
+  },
+  "Mechanical equipment, piping, loop water": {
+   "horizon": null,
+   "share": 0.0
+  },
+  "IT — servers and racks": {
+   "horizon": "long",
+   "share": 0.4
+  },
+  "Steel — primary frame": {
+   "horizon": "med",
+   "share": 1.0
+  },
+  "Steel — roof trusses, joists, deck, girts": {
+   "horizon": "med",
+   "share": 1.0
+  },
+  "Exterior skins — metal panel": {
+   "horizon": "imm",
+   "share": 1.0
+  },
+  "Louvers and yard screens": {
+   "horizon": "imm",
+   "share": 1.0
+  },
+  "Security and staff-area fencing": {
+   "horizon": "imm",
+   "share": 1.0
+  },
+  "Louvers, screens and fencing": {
+   "horizon": "imm",
+   "share": 1.0
+  },
+  "Concrete — slab on grade, paving": {
+   "horizon": "long",
+   "share": 0.75
+  },
+  "Concrete — foundations, footings, pads": {
+   "horizon": "long",
+   "share": 0.9
+  },
+  "Rebar in all concrete": {
+   "horizon": "long",
+   "share": 0.81
+  }
+ },
+ "horizon_note": "horizon = when the component becomes substitutable with SUPERWOOD (imm now, soon 1-3 yr, med, long 5+ yr); share = addressable fraction of the component's mass at that horizon and after, from the workbook. Bubbles on slide 6 show the cumulative share by horizon."
 }
