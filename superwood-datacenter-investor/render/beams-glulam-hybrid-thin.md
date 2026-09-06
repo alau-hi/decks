@@ -40,3 +40,7 @@ Same camera. The beam is about twenty quarter-inch boards stacked flat one on to
 ## Revision 3 (Alex, 2026-09-04): image-to-image from the hybrid render
 
 SUPERWOOD-only beam generated from the hybrid beam job as reference ("keep this image exactly the same except..."): same camera and direction, whole beam in the dark dense wood of the hybrid plates, about twenty quarter-inch boards stacked flat.
+
+## Revision 4 (Alex, 2026-09-06): SUPERWOOD-only beam at half the thickness
+
+Image-to-image from the current beam_thin.jpg (Higgsfield job 9751f6c2): same camera, direction, studio and laminated dense wood; cross-section half as wide and half as deep, same length, about ten lamination lines. Displayed mirrored on the web as before.
