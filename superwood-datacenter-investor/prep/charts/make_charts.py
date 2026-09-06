@@ -32,6 +32,7 @@ MAT=[("steel",WOOD),("concrete","#8c8478"),("plastic",TEAL),("other","#5a4a36")]
 carb=[r[1]*(SPLIT[r[0]][0]*1.8+SPLIT[r[0]][1]*0.12+SPLIT[r[0]][2]*3.0) for r in rows]
 LEG=[Patch(color=c_,label=n.capitalize()) for n,c_ in MAT]
 GROUP_ROWS=[("Contents — fit-out and equipment",9),("Building — structure and envelope",4),("Foundation — slab, footings, rebar",3)]
+DISP={"Steel — primary frame":"Primary frame","Steel — roof trusses, joists, deck, girts":"Roof trusses, joists, deck, girts"}
 def with_totals(vals):
     """insert a bold subtotal row at the head of each group: (label, value, split, is_total)"""
     out=[]; i=0
@@ -39,7 +40,7 @@ def with_totals(vals):
         grp=rows[i:i+n]; gk=sum(r[1] for r in grp); gsp=[sum(r[1]*SPLIT[r[0]][j] for r in grp)/gk for j in range(4)]
         gc=[sum(r[1]*cum(r[0])[j] for r in grp)/gk for j in range(4)]
         out.append((title.upper(),sum(vals[i:i+n]),gsp,True,gk,gc))
-        for r,v in zip(grp,vals[i:i+n]): out.append((r[0],v,SPLIT[r[0]],False,r[1],cum(r[0])))
+        for r,v in zip(grp,vals[i:i+n]): out.append((DISP.get(r[0],r[0]),v,SPLIT[r[0]],False,r[1],cum(r[0])))
         i+=n
     return out
 def campus(values, out, xlabel, log, narrow, unit, carbon=False):
