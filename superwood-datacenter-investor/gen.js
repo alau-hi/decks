@@ -517,6 +517,7 @@ s.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: W * 0.62, h: H, fill: { color: 
 s.addText([t("Let’s work together to build AI buildings that are "), gold("better to build"), t(", good for people, and good for the world.")], { x: 1.0, y: 2.0, w: 11, h: 1.6, fontFace: SERIF, fontSize: 34, color: CREAM, margin: 0 });
 s.addText("Alex Lau · CEO / Co-Founder · alex@inventwood.com", { x: 1.0, y: 5.95, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
 s.addText("Lex Harris · Director, Capital Markets & IR · lex@inventwood.com", { x: 1.0, y: 6.35, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
+s.addText("Company, mills, cost roadmap and the raise: SUPERMILLS Investor Overview (sw.inventwood.net/supermills-deck)", { x: 1.0, y: 6.72, w: 10, h: 0.3, fontFace: SANS, fontSize: 10, color: MUTED, margin: 0 });
 
 // ---------- APPENDIX · CARBON ----------
 s = newSlide(); base(s, "InventWood · Appendix");
