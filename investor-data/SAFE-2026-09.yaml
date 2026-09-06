@@ -1768,7 +1768,7 @@ facts:
     url: https://www.grandviewresearch.com/industry-analysis/steel-market
     as_of: 2026-09-04
     status: canonical
-    printed_in: [investor-overview]
+    printed_in: [investor-overview, superwood-datacenter-investor]
     notes: On-slide tooltip discloses the full span. Implied ~$960/t at $1.82T / 1.89 Bt; SteelOnTheNet's $0.9-1.0T implies ~$480-530/t (mill pricing). Structural steel sub-market only $174.51B by 2030 (Grand View).
 
   - id: market.crude_steel_production_2025
@@ -1794,7 +1794,7 @@ facts:
     url: https://www.grandviewresearch.com/industry-analysis/ready-mix-concrete-market
     as_of: 2026-09-04
     status: canonical
-    printed_in: [investor-overview]
+    printed_in: [investor-overview, superwood-datacenter-investor]
     notes: Excludes site-mixed concrete, so conservative. "Together, about $2 trillion a year" with steel is the on-slide framing.
 
   - id: market.aluminum_global_usd
@@ -1818,7 +1818,7 @@ facts:
     source: investor-overview register (Markets) - NEEDS SOURCE; decision 2026-08-22 to hold at $100B until backup lands
     as_of: 2026-09-04
     status: canonical
-    printed_in: [investor-overview]
+    printed_in: [investor-overview, superwood-datacenter-investor]
     notes: Cross-slide issue - TAM figures on slides 13, 14, 19 have no external backup. Load-bearing for a non-environmental audience.
 
   - id: market.tam_structural_members
@@ -1830,7 +1830,7 @@ facts:
     source: investor-overview register (Markets) - NEEDS SOURCE
     as_of: 2026-09-04
     status: canonical
-    printed_in: [investor-overview]
+    printed_in: [investor-overview, superwood-datacenter-investor]
     notes: null
 
   - id: market.tam_optimized_buildings
@@ -1842,7 +1842,7 @@ facts:
     source: investor-overview register (Markets) - NEEDS SOURCE; largest and least substantiated of the three
     as_of: 2026-09-04
     status: canonical
-    printed_in: [investor-overview]
+    printed_in: [investor-overview, superwood-datacenter-investor]
     notes: null
 
   - id: market.application_market_dots
@@ -2163,7 +2163,7 @@ facts:
     url: https://www.federalregister.gov/documents/2025/11/07/2025-19813/final-2025-list-of-critical-minerals
     as_of: 2026-09-04
     status: canonical
-    printed_in: [investor-overview, super-mills-america]
+    printed_in: [investor-overview, super-mills-america, superwood-datacenter-investor]
     notes: null
 
   - id: market.bauxite_smelter_grade_imported
@@ -2485,7 +2485,7 @@ facts:
     source: CRS IN12519 (tariffs); Construction Dive 2026 (full-value rule); Wood Mackenzie 2026 survey as reported by POWER and Data Center Knowledge (lead times); Associated Builders and Contractors 2026 outlook as reported by Data Center Dynamics (labor)
     as_of: 2026-09-06
     status: canonical
-    printed_in: []
+    printed_in: [superwood-datacenter-investor]
     notes: "Secondary reporting for the Wood Mackenzie and ABC figures; read at source before wide distribution. The supply-chains slide was added and removed on 2026-09-06; not printed."
 
   - id: datacenter.north_america_under_construction_gw

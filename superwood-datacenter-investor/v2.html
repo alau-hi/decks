@@ -110,6 +110,7 @@ td:first-child{color:var(--cream);font-weight:600}
 .tipwrap{position:relative;cursor:help;outline:none}.tipwrap .hint{display:block;font-size:max(.66rem,11px);color:var(--muted);font-style:italic;margin-top:.45rem}.tipwrap .srctip{position:absolute;left:0;right:0;top:calc(100% + .4rem);z-index:30;background:#140d07;color:var(--cream);border:1px solid var(--line);border-radius:.5rem;padding:.8rem 1rem;font-size:max(.8rem,11px);line-height:1.5;box-shadow:0 12px 30px rgba(0,0,0,.45);opacity:0;pointer-events:none;transform:translateY(-4px);transition:opacity .15s,transform .15s}.tipwrap:hover .srctip,.tipwrap:focus .srctip,.tipwrap:focus-within .srctip,.tipwrap.open .srctip{opacity:1;transform:none;pointer-events:auto}.srctip a{color:var(--gold);text-decoration:underline;text-underline-offset:.15em}.srctip a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}.tipwrap:focus{box-shadow:0 0 0 2px var(--wood-bright)}
 .soils{display:flex;align-items:center;gap:1rem;font-size:max(.85rem,12px);color:var(--cream)}.soils .lab{font-size:max(.68rem,11px);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;white-space:nowrap}.soils .ctl{display:flex;flex-direction:column;gap:.15rem}.soils input{accent-color:var(--gold);width:11rem;cursor:pointer;margin:0}.soils input:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}.soils .ticks{display:flex;justify-content:space-between;width:11rem;font-size:max(.62rem,10px);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.soils .ticks i{font-style:normal}.soils-out{min-width:7rem;color:var(--cream);font-weight:600}.soils.top{display:inline-flex;vertical-align:top;gap:.6rem;margin:0 0 .9rem 1.6rem;height:2.15rem;font-size:max(.78rem,11px)}.soils.top .lab{font-size:max(.62rem,10px)}.soils.top input{width:7rem}.soils.top .ticks{display:none}.soils.top .soils-out{min-width:4.2rem}.soils.top.lone{display:flex;margin:0 0 1.1rem}
 /* end soils css */
+#supply .card{padding:1.4rem 1.5rem 1.5rem}#supply .card h3{font-size:1.35rem;margin-bottom:.5rem}#supply .card p{font-size:max(1rem,13px);line-height:1.5}
 /* dividers */
 .div .scrim{background:rgba(18,12,7,.35)}
 .div .kicker{margin-bottom:.8rem}.div h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}.div .lead{margin-top:.8rem}
@@ -288,7 +289,7 @@ table.cmp td{line-height:1.4}
 <section id="buyer" data-nav="Growth">
   <div class="wrap">
     <div class="kicker rv">Market</div>
-    <h2 class="rv">Industry Growth</h2>
+    <h2 class="rv">Data center construction is growing dramatically</h2>
     <p class="lead rv" style="color:var(--cream);max-width:none;margin-top:.2rem">US data center construction is running at <em style="color:var(--gold)">$75 billion a year</em>, up 57% in twelve months.</p>
     <div class="split rv" style="grid-template-columns:1.25fr 1fr;align-items:start">
       <figure class="cbars" aria-label="US private data center construction put in place, billions of dollars per year, 2014 to 2026">
@@ -306,10 +307,24 @@ table.cmp td{line-height:1.4}
   </div>
 </section>
 
+<!-- 4 · SUPPLY CHAINS -->
+<section id="supply" data-nav="Supply chains">
+  <div class="wrap">
+    <div class="kicker rv">Market · Supply chains</div>
+    <h2 class="rv">Resulting in supply chain challenges</h2>
+    <div class="grid3 rv" style="margin-top:.6rem">
+      <div class="card tint"><h3>Power</h3><p>Power transformers average 128 weeks to deliver, substation transformers more than 160. Grid connection sets the schedule.</p></div>
+      <div class="card tint"><h3>Aluminum</h3><p>On the federal Critical Minerals List since 2022, confirmed in the 2025 list. The metal of skins, louvers and busway.</p></div>
+      <div class="card tint"><h3>Structural steel</h3><p>Customers report backlogs and shortages. Section 232 tariffs at 50% since 2025, on full product value since April 2026.</p></div>
+    </div>
+    <p class="lead rv tipwrap" tabindex="0" aria-describedby="tip-supply" style="margin-top:1.3rem;color:var(--cream);max-width:none">Every week of lead time is a week of <em style="color:var(--gold)">unearned power</em>.<span class="hint">Hover or focus for sources</span><span class="srctip" role="tooltip" id="tip-supply">Lead times: Wood Mackenzie 2026 survey as reported by POWER and Data Center Knowledge. Aluminum: Federal Register, Final 2025 List of Critical Minerals (Nov 2025). Steel shortage: what customers report to InventWood. Tariffs: Congressional Research Service IN12519; Construction Dive on the full-value rule, 2026.</span></p>
+  </div>
+</section>
+
 <section id="pushback" data-nav="Communities">
   <div class="wrap">
     <div class="kicker rv">Market · Pushback</div>
-    <h2 class="rv">Industry Challenged by Communities</h2>
+    <h2 class="rv">And communities are pushing back</h2>
     <p class="lead rv" style="color:var(--cream);max-width:none;margin-top:.2rem">Community pushback now blocks or delays more data center projects than ever.</p>
     <div class="grid2 pb rv">
       <article class="pcard"><div class="imgbox"><img src="assets/entrance_office.jpg?v=8f12685b" alt="Concept rendering: SUPERWOOD-clad front entrance to a data center office wing at dusk" loading="lazy"></div>
@@ -325,7 +340,7 @@ table.cmp td{line-height:1.4}
       <div><b>Rules are following</b><span>Henry County, Virginia: 1,000 ft setbacks, 50 dBA at the property line.</span></div>
       <span class="hint">Hover or focus for sources</span><span class="srctip" role="tooltip" id="tip-pb">Data Center Watch, Q1 2026 report (June 2026). Virginia HB 153; Henry County, VA ordinance, Aug 2026. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.</span>
     </div>
-    <p class="pbtease rv">We help with these two. <em style="color:var(--gold)">We can go much further</em>: into the structure of the building and what is inside it.</p>
+    <p class="pbtease rv"><em style="color:var(--gold)">We can go much further</em>: into the structure of the building and what is inside it.</p>
       </div>
 </section>
 
@@ -360,7 +375,7 @@ table.cmp td{line-height:1.4}
 <section id="campus" data-nav="Materials">
   <div class="wrap">
     <div class="kicker rv">Materials</div>
-    <h2 class="rv">What a 1 GW data center is made of</h2>
+    <h2 class="rv">50–80% of a data center’s building and contents are steel</h2>
     <div class="toggle rv" role="tablist" aria-label="View"><button role="tab" id="tab-mass" aria-selected="true" aria-controls="view-mass view-mass-notes" data-view="mass">By mass, log scale</button><button role="tab" id="tab-carbon" aria-selected="false" aria-controls="view-carbon view-carbon-notes" tabindex="-1" data-view="carbon">By embodied carbon</button></div><label class="soils top"><span class="lab">Soil conditions</span><span class="ctl"><input type="range" class="soils-range" min="1" max="3" step="1" value="2" aria-valuetext="Moderate" aria-label="Soil conditions for foundations: good, moderate or poor"><span class="ticks"><i>Good</i><i>Moderate</i><i>Poor</i></span></span><output class="soils-out">Moderate soils</output></label>
     <div class="split rv campus" style="grid-template-columns:2.6fr 1fr;align-items:stretch">
       <div class="chartcol">
@@ -442,7 +457,7 @@ table.cmp td{line-height:1.4}
 <section id="props" data-nav="Properties">
   <div class="wrap">
     <div class="kicker rv">The fit</div>
-    <h2 class="rv">Properties that matter in a <em>data center</em></h2>
+    <h2 class="rv">SUPERWOOD’s properties are a great fit for data centers</h2>
     <div class="split rv" style="grid-template-columns:1fr 1.7fr">
       <div>
         <div class="imgbox" style="aspect-ratio:1.5"><img src="assets/prod_board.jpg?v=36df9876" alt="SUPERWOOD board" loading="lazy"></div>
@@ -466,7 +481,7 @@ table.cmp td{line-height:1.4}
 <section id="now" data-nav="Applications (1)">
   <div class="wrap">
     <div class="kicker rv">Applications · Immediate</div>
-    <h2 class="rv">Skins, screens and fences from SuperMill One</h2>
+    <h2 class="rv">Skins, screens and fences ship today from SuperMill One</h2>
     <p class="lead rv">Boards up to 8" × 16' × 3/8", exterior or interior grade, shipping today. SuperMill One makes about one million square feet a year.</p>
     <p class="defs rv"><b>Immediate</b> shipping from SuperMill One &nbsp;·&nbsp; <b>Soon</b> 1–3 years; straightforward applications engineering &nbsp;·&nbsp; <b>Medium term</b> complex applications engineering such as full building systems, new form factors, or materials engineering &nbsp;·&nbsp; <b>Long term</b> 5+ years; technical potential with no design or code pathway yet</p>
     <div class="tiles n6 rv">
@@ -485,7 +500,7 @@ table.cmp td{line-height:1.4}
 <section id="next" data-nav="Applications (2)">
   <div class="wrap">
     <div class="kicker rv">Applications · Soon (1–3 years)</div>
-    <h2 class="rv">Products that need only straightforward engineering</h2>
+    <h2 class="rv">Other products require only straightforward engineering</h2>
     <div class="tiles n7 rv">
       <div><div class="imgbox"><img src="assets/tile_fanbox.jpg?v=680d3595" alt="" loading="lazy"></div><p><b>Fan enclosures &amp; ducting</b></p></div>
       <div><div class="imgbox"><img src="assets/tile_walkway.jpg?v=458aefdf" alt="" loading="lazy"></div><p><b>Walkways &amp; platforms</b></p></div>
@@ -502,8 +517,8 @@ table.cmp td{line-height:1.4}
 
 <section id="structural" data-nav="Applications (3)">
   <div class="wrap">
-    <div class="kicker rv">Applications · Medium term</div>
-    <h2 class="rv">Structural: starting <em>now</em>, scaling with SuperMill Two</h2>
+    <div class="kicker rv">Applications · Medium term (1–5 years)</div>
+    <h2 class="rv">We’re starting structural product development today, enabling scale with SUPERMILL TWO</h2>
     <div class="split rv" style="grid-template-columns:1fr 1.6fr">
       <div class="card tint">
         <div class="kicker" style="color:var(--gold);margin-bottom:.6rem">Under development with SUPERMILL ONE output</div>
@@ -527,7 +542,7 @@ table.cmp td{line-height:1.4}
 <section id="vision" data-nav="Applications (4)">
   <div class="wrap">
     <div class="kicker rv">Applications · Long term (5+ years)</div>
-    <h2 class="rv">Prefabricated <em>envelopes</em>, then foundations</h2>
+    <h2 class="rv">Longer term, we can do fully prefabricated envelopes and even fast, light foundations</h2>
     <div class="grid2 rv">
       <div class="card tint"><h3>Prefabricated building envelopes</h3><p class="sub">Hyperscalers are asking for this now, to simplify design and delivery and accelerate schedules.</p><p>Structure and skin shipped as panels and modules. Self-supporting shells, far lighter than steel and precast, movable.</p></div>
       <div class="card tint"><h3>Foundations, slabs and paving</h3><p class="sub">Biggest unaddressed impact both to speed of development and construction, and with huge carbon impact. Geotechnical requirements greatly impact schedule and site selection.</p><p>Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete.</p></div>
@@ -539,7 +554,7 @@ table.cmp td{line-height:1.4}
 <section id="ladder" data-nav="Customers">
   <div class="wrap">
     <div class="kicker rv">Customers</div>
-    <h2 class="rv">Three hyperscalers are engaged. Two are past <em>applications identified</em>.</h2>
+    <h2 class="rv">We’re engaging thoughtfully and deeply with customers</h2>
     <div class="ladder rv">
       <div class="lhead"><span></span><div class="stages"><span data-s="Talks">Conversations</span><span data-s="Apps">Applications identified</span><span data-s="Scoped">Projects scoped</span><span data-s="Testing">Testing &amp; mockups</span><span data-s="Purchase">First purchase</span><span data-s="Design basis">Basis of design</span></div><span class="lh">What they are doing with us</span></div>
       <div class="lrow"><h3>Microsoft</h3><div class="track" style="--pos:2"><i></i><b></b><em>Next: first skin project on one building or yard</em></div><p>Facades, interiors and fencing under discussion; roof-truss and enclosure work with their A/E firms; basis-of-design interest</p></div>
@@ -556,7 +571,7 @@ table.cmp td{line-height:1.4}
 <section id="record" data-nav="Microsoft, Meta">
   <div class="wrap">
     <div class="kicker rv">Customers</div>
-    <h2 class="rv">Microsoft and Meta</h2>
+    <h2 class="rv">Working on both immediate and large-scale, strategic opportunities</h2>
     <div class="grid2 rv">
       <div class="profile">
         <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin-bottom:.5rem">Microsoft <em style="color:var(--gold);font-size:.7em">broad engagement</em></h3>
@@ -588,9 +603,40 @@ table.cmp td{line-height:1.4}
   </div>
 </section>
 
-<section id="carbon" data-nav="Carbon">
+
+
+
+<!-- 16 · BEYOND DATA CENTERS -->
+<section id="beyond" data-nav="Springboard">
   <div class="wrap">
-    <div class="kicker rv">Carbon</div>
+    <div class="kicker rv">Beyond data centers</div>
+    <h2 class="rv">We’ll build on the data center opportunity to <em>springboard</em> us into much larger markets</h2>
+    <div class="grid3 thesis rv" style="grid-template-columns:repeat(4,1fr)">
+      <div class="card"><span class="num">01</span><h3>Data centers</h3><p>Skins, fences and screens now; structure with SuperMill Two. A hyperscaler basis of design is the proof point.</p></div>
+      <div class="card"><span class="num">02</span><h3>Interior and exterior products</h3><p>The same boards across commercial construction. $100B+ market.</p></div>
+      <div class="card"><span class="num">03</span><h3>Structural members</h3><p>Members proven in data centers move to offices, warehouses and industrial buildings. $400B+ market.</p></div>
+      <div class="card"><span class="num">04</span><h3>Optimized buildings</h3><p>Prefabricated envelopes and light foundations designed around the material. $700B+ market.</p></div>
+    </div>
+    <p class="lead rv tipwrap" tabindex="0" aria-describedby="tip-beyond" style="margin-top:1.2rem;color:var(--cream);max-width:none">Behind all of it: steel is a $1.5 trillion a year market and concrete $1 trillion.<span class="hint">Hover or focus for sources</span><span class="srctip" role="tooltip" id="tip-beyond">Market sizes are company estimates from the SUPERMILLS Investor Overview; steel and concrete figures are global annual market estimates (ready-mix concrete only).</span></p>
+  </div>
+</section>
+
+<section id="close" data-nav="Close">
+  <div class="bg" style="background-image:url(assets/cover_bg.webp?v=e27a3e35)"></div><div class="scrim" style="background:rgba(18,12,7,.25)"></div>
+  <div class="wrap">
+    <h1 class="rv">Let's build what's <em>next</em>.</h1>
+    <ul class="recap rv"><li>Data centers are short of steel and already build with wood.</li><li>SUPERWOOD turbocharges that wood: skins and fences now, structure next.</li><li>One basis-of-design win with a hyperscaler is the demand case for SuperMill Two.</li></ul>
+    <p class="rv" style="margin-bottom:.4rem">Company, mills, cost roadmap and the raise: <a href="https://sw.inventwood.net/supermills-deck/" style="color:var(--wood-bright)">SUPERMILLS Investor Overview</a></p>
+    <img class="wm rv" src="assets/inventwood_logo.png?v=29cddb1d" alt="InventWood">
+    <p class="rv">Alex Lau · CEO / Co-Founder · <a href="mailto:alex@inventwood.com" style="color:var(--wood-bright)">alex@inventwood.com</a></p>
+    <p class="rv">Lex Harris · Director, Capital Markets &amp; IR · <a href="mailto:lex@inventwood.com" style="color:var(--wood-bright)">lex@inventwood.com</a></p>
+  </div>
+</section>
+
+<!-- APPENDIX -->
+<section id="carbon" data-nav="Appendix">
+  <div class="wrap">
+    <div class="kicker rv">Appendix · Carbon</div>
     <h2 class="rv">Embodied carbon: LCA based on SUPERMILL TWO projections</h2>
     <div class="rv carbonwrap" style="max-width:60rem">
       <div>
@@ -605,20 +651,6 @@ table.cmp td{line-height:1.4}
     <p class="lead rv" style="margin-top:1.1rem;color:var(--cream);max-width:none">SUPERWOOD carbon estimates are based on the LCA developed by Professor Ming Hu, University of Notre Dame.</p>
     </div>
     <p class="note rv">SUPERWOOD 0.5 kg CO₂e/kg manufactured and 0.5–1.5 kg/kg biogenic storage: company projections, pre-LCA. Steel 1.8 kg/kg: global BF-BOF average. EAF 0.4–0.7 kg/kg: typical published range for recycled-scrap steel. Replacement 3:1 to 4:1 by weight (0.25–0.33 kg SUPERWOOD per kg steel): company assumption. Reductions are arithmetic on these inputs.</p>
-  </div>
-</section>
-
-
-
-<section id="close" data-nav="Close">
-  <div class="bg" style="background-image:url(assets/cover_bg.webp?v=e27a3e35)"></div><div class="scrim" style="background:rgba(18,12,7,.25)"></div>
-  <div class="wrap">
-    <h1 class="rv">Let's build what's <em>next</em>.</h1>
-    <ul class="recap rv"><li>Data centers are short of steel and already build with wood.</li><li>SUPERWOOD turbocharges that wood: skins and fences now, structure next.</li><li>One basis-of-design win with a hyperscaler is the demand case for SuperMill Two.</li></ul>
-    <p class="rv" style="margin-bottom:.4rem">Company, mills, cost roadmap and the raise: <a href="https://sw.inventwood.net/supermills-deck/" style="color:var(--wood-bright)">SUPERMILLS Investor Overview</a></p>
-    <img class="wm rv" src="assets/inventwood_logo.png?v=29cddb1d" alt="InventWood">
-    <p class="rv">Alex Lau · CEO / Co-Founder · <a href="mailto:alex@inventwood.com" style="color:var(--wood-bright)">alex@inventwood.com</a></p>
-    <p class="rv">Lex Harris · Director, Capital Markets &amp; IR · <a href="mailto:lex@inventwood.com" style="color:var(--wood-bright)">lex@inventwood.com</a></p>
   </div>
 </section>
 
@@ -648,20 +680,24 @@ function setActive(i){
   secs.forEach((s,k)=>{s.inert=k!==i;});
 }
 function reveal(sec){if(sec&&!sec.classList.contains('in'))sec.classList.add('in');}
-let jumping=false,pending=0;
-/* keys pressed while a smooth scroll is still running are buffered and replayed once the deck comes to rest */
-function step(d){if(jumping){pending=Math.max(-3,Math.min(3,pending+d));return;}jumpTo(cur+d);}
+let jumping=false,animId=0;
+/* slide jumps run their own easing (requestAnimationFrame + instant scrollTo) instead of the browser's smooth scroll: the end of the
+   motion is known exactly, snap is paused while moving, and a key pressed mid-flight retargets the motion to the next slide */
+function animateTo(top,dur,done){cancelAnimationFrame(animId);const from=deck.scrollTop,d=top-from;if(Math.abs(d)<1){deck.scrollTo({top,behavior:'instant'});done();return;}
+  deck.style.scrollSnapType='none';const t0=performance.now(),ease=x=>1-Math.pow(1-x,3);
+  const f=now=>{const p=Math.min(1,(now-t0)/dur);deck.scrollTo({top:from+d*ease(p),behavior:'instant'});
+    if(p<1)animId=requestAnimationFrame(f);else{deck.style.scrollSnapType='';deck.scrollTo({top,behavior:'instant'});done();}};
+  animId=requestAnimationFrame(f);}
+function step(d){jumpTo(cur+d);}
 function jumpTo(i){i=Math.max(0,Math.min(secs.length-1,i));
   const target=()=>deck.scrollTop+secs[i].getBoundingClientRect().top-deck.getBoundingClientRect().top;
   const smooth=!matchMedia('(prefers-reduced-motion:reduce)').matches&&Math.abs(i-cur)===1;
   cur=i;setActive(i);reveal(secs[i]);jumping=true;
   if(!secs[i].contains(document.activeElement))secs[i].focus({preventScroll:true});
-  deck.scrollTo({top:target(),behavior:smooth?'smooth':'instant'});
-  /* a smooth scroll interrupted by the next key never fires a final scroll event; verify once the deck has come to rest and hard-set */
-  clearInterval(jumpTo._iv);let last=-1,ticks=0;
-  jumpTo._iv=setInterval(()=>{const st=deck.scrollTop;ticks++;
-    if(st===last||ticks>40){clearInterval(jumpTo._iv);const tg=target();if(Math.abs(tg-st)>2)deck.scrollTo({top:tg,behavior:'instant'});jumping=false;if(pending){const d=pending;pending=0;jumpTo(cur+d);}}
-    last=st;},60);}
+  const done=()=>{jumping=false;};
+  if(smooth)animateTo(target(),420,done);else{cancelAnimationFrame(animId);deck.style.scrollSnapType='';deck.scrollTo({top:target(),behavior:'instant'});done();}}
+/* a wheel or touch takes over from any running jump */
+['wheel','touchstart'].forEach(ev=>deck.addEventListener(ev,()=>{if(jumping){cancelAnimationFrame(animId);deck.style.scrollSnapType='';jumping=false;}},{passive:true}));
 prevb.onclick=()=>step(-1);nextb.onclick=()=>step(1);
 /* scroll-spy: the section under the scrollport's midpoint is current; the first at the very top and the last at the very bottom */
 function currentIndex(){
