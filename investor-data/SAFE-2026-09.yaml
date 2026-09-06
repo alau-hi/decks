@@ -2476,6 +2476,18 @@ facts:
     printed_in: [superwood-datacenter-investor]
     notes: "Used as examples on the pushback slide, not as a survey of ordinances."
 
+  - id: datacenter.supply_chain_constraints_2026
+    value: "Section 232 steel tariff 50% (2025), full customs value from Apr 2026; power transformers ~128 weeks, substation transformers >160 weeks, switchgear ~44 weeks (Wood Mackenzie 2026 survey); ABC: up to 349,000 additional construction workers needed in 2026; data center backlogs to 8.5 months"
+    unit: mixed
+    statement: Data center construction is constrained by steel tariffs and shortages, multi-year power-equipment lead times and a construction labor shortage
+    basis: published
+    confidence: M
+    source: CRS IN12519 (tariffs); Construction Dive 2026 (full-value rule); Wood Mackenzie 2026 survey as reported by POWER and Data Center Knowledge (lead times); Associated Builders and Contractors 2026 outlook as reported by Data Center Dynamics (labor)
+    as_of: 2026-09-06
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "Secondary reporting for the Wood Mackenzie and ABC figures; read at source before wide distribution. Printed on the Industry Challenged by Supply Chains slide."
+
   - id: datacenter.north_america_under_construction_gw
     value: ">66 GW"
     unit: GW under construction

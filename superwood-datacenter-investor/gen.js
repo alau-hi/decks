@@ -91,7 +91,7 @@ note(s, "The company, team, mills, cost roadmap and the raise are in the SUPERMI
 
 // ---------- 3 · THE BUYER ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
-kicker(s, "The buyer");
+kicker(s, "Industry growth");
 title(s, [t("US data center construction is running at "), gold("$75 billion a year"), t(", up 57% in twelve months")], L, 0.88, 12.2, 27);
 s.addImage({ path: "prep/charts/construction.png", x: L, y: 1.95, w: 6.4, h: 6.4 * 4.3 / 8.6 });
 label(s, "How it is projected to grow", 7.3, 1.95, 5.5);
@@ -106,22 +106,11 @@ growth.forEach(([head, sub], i) => {
   s.addText(head, { x: x + 0.35, y, w: 5.2, h: 0.32, fontFace: SANS, fontSize: 12.5, bold: true, color: CREAM, margin: 0 });
   body(s, sub, x + 0.35, y + 0.34, 5.2, 0.7, 9.5, MUTED);
 });
-const why = [
-  ["Steel-intensive", "500–1,000 tons of structural steel and 5,000–10,000 m³ of concrete per 10 MW."],
-  ["Supply-chain challenged", "Customers report backlogs and a shortage of structural steel; supply chain and timeline are their first concern."],
-  ["Highly repeatable", "Hyperscalers build to a standard basis of design, one data center after another."],
-];
-why.forEach(([head, sub], i) => {
-  const cw = 3.95, x = L + i * 4.125, y = 5.5;
-  panel(s, x, y, cw, 1.0, PANEL2);
-  s.addText(head, { x: x + 0.25, y: y + 0.12, w: cw - 0.5, h: 0.3, fontFace: SANS, fontSize: 12, bold: true, color: CREAM, margin: 0 });
-  body(s, sub, x + 0.25, y + 0.42, cw - 0.5, 0.55, 9.5, DIM);
-});
 note(s, "US Census Bureau, Construction Spending (C30), private data center construction put in place: July 2026 preliminary seasonally adjusted annual rate $75.2B vs $47.8B in July 2025 (+57%); bars are calendar-year totals, not seasonally adjusted; 2026 estimated from the January to July pace; buildings only, servers excluded. JLL North America Data Center Report Midyear 2026 (66 GW). McKinsey, AI power (2025). JLL Global Data Center Outlook 2026. Dell'Oro Group (2026). Steel intensity: arXiv 2509.21312, secondary; tonnage derived. Shortage statements are what customers report to InventWood.", 6.62, 0.45);
 
 // ---------- 4 · COMMUNITY PUSHBACK: AESTHETICS AND NOISE ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
-kicker(s, "The buyer · The community");
+kicker(s, "The buyer · Industry challenged by communities");
 title(s, "Community pushback now blocks or delays more data center projects than ever.", L, 0.88, 12.2, 25);
 const complaints = [
   ["prep/tiles/tile_fence_security.jpg", "Aesthetics", "Windowless boxes on farmland. Counties answer with setbacks and design standards.", "Facades, fences and screens that read as architecture."],
@@ -150,6 +139,29 @@ stats.forEach(([head, sub], i) => {
 });
 s.addText([t("We help with these two. ", { color: CREAM }), t("We can go much further", { color: GOLD, italic: true }), t(": into the structure of the building and what is inside it.", { color: CREAM })], { x: L, y: 6.1, w: CW, h: 0.45, fontFace: SERIF, fontSize: 15, margin: 0, valign: "middle" });
 note(s, "Data Center Watch, Q1 2026 report (June 2026). Virginia HB 153; Henry County, VA ordinance, Aug 2026. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.", 6.72, 0.35);
+
+// ---------- 5 · SUPPLY CHAINS ----------
+s = pres.addSlide(); base(s, "InventWood · The buyer");
+kicker(s, "The buyer · Industry challenged by supply chains");
+title(s, "Data centers are waiting on steel, power equipment and crews.", L, 0.88, 12.2, 25);
+const sc1 = [
+  ["Structural steel", "Customers report backlogs and a shortage of structural steel; supply chain and timeline are their first concern. Section 232 tariffs on steel doubled to 50% in 2025 and since April 2026 apply to a product's full value."],
+  ["Power equipment", "Power transformers average 128 weeks to deliver and substation transformers more than 160; switchgear about 44 weeks, with medium-voltage gear over a year."],
+  ["Crews", "Construction needs up to 349,000 additional workers in 2026; backlogs on some data center build-outs have reached eight and a half months."],
+];
+const sc2 = [
+  ["Steel-intensive", "500–1,000 tons of structural steel and 5,000–10,000 m³ of concrete per 10 MW."],
+  ["Highly repeatable", "Hyperscalers build to a standard basis of design, one data center after another."],
+  ["Where SUPERWOOD fits", "A second source for structural members, skins and screens: made from wood in Frederick, Maryland, prefabricated, one-sixth the weight of steel, so smaller cranes and crews."],
+];
+[[sc1, 2.0, PANEL2, 1.55], [sc2, 3.8, PANEL, 1.3]].forEach(([arr, y, col, hh]) => arr.forEach(([head, sub], i) => {
+  const cw = 3.95, x = L + i * 4.125;
+  panel(s, x, y, cw, hh, col);
+  s.addText(head, { x: x + 0.25, y: y + 0.15, w: cw - 0.5, h: 0.3, fontFace: SANS, fontSize: 13, bold: true, color: CREAM, margin: 0 });
+  body(s, sub, x + 0.25, y + 0.5, cw - 0.5, hh - 0.6, 10, DIM);
+}));
+s.addText([t("Every week of lead time is a week of unearned power. ", { color: CREAM }), t("A material that is not steel, not imported and not heavy is a schedule argument.", { color: GOLD, italic: true })], { x: L, y: 5.45, w: CW, h: 0.6, fontFace: SERIF, fontSize: 16, margin: 0, valign: "middle" });
+note(s, "Structural steel shortage: what customers report to InventWood. Tariffs: Congressional Research Service IN12519; Construction Dive on the full-value rule, 2026. Lead times: Wood Mackenzie 2026 survey as reported by POWER and Data Center Knowledge. Labor: Associated Builders and Contractors, 2026 outlook, as reported by Data Center Dynamics. Weight and prefabrication: company data.", 6.62, 0.45);
 
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
