@@ -4,7 +4,7 @@ Per-slide intent and Alex's instructions, kept current with every change. Decisi
 and scope; `STORY-OUTLINE.md` holds the history, `reviews/` the critiques, `../investor-data/` the numbers.
 Web: https://superwood-datacenter-investor.vercel.app · PPTX/PDF rebuilt only on request.
 
-Conventions (Alex, 2026-09-04): units in tons or '000s of tons, never kt; say "data center", not "campus"; no fluffy
+Conventions (Alex, 2026-09-04): units in tons, never kt; slide 6 axes read in actual tons (Alex 2026-09-06); say "data center", not "campus"; no fluffy
 language; the sibling deck is the **SUPERMILLS Investor Overview** (sw.inventwood.net/supermills-deck); branded
 InventWood; deploy the web deck on every change, rebuild PPTX/PDF only when asked; carbon figures are the Canva set
 (0.5 / 1.3 / steel 1.8), pre-LCA, Prof. Ming Hu named; fire = Class A demonstrated, not guaranteed per board, "much
