@@ -513,8 +513,8 @@ note(s, "US: Census Bureau, Construction Spending (C30), July 2026, seasonally a
 // ---------- CLOSE ----------
 s = newSlide();
 s.background = { path: "prep/close_bg.jpg" };
+s.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: W * 0.62, h: H, fill: { color: "120C07", transparency: 30 } });
 s.addText([t("Let’s work together to build AI buildings that are "), gold("better to build"), t(", good for people, and good for the world.")], { x: 1.0, y: 2.0, w: 11, h: 1.6, fontFace: SERIF, fontSize: 34, color: CREAM, margin: 0 });
-bullets(s, ["Data centers are short of steel and already build with wood.", "SUPERWOOD turbocharges that wood: skins and fences now, structure in the medium term.", "One basis-of-design win with a hyperscaler is the demand case for SuperMill Two."], { x: 1.0, y: 3.55, w: 7.5, h: 1.2, fontSize: 12.5, color: CREAM });
 s.addText("Company, mills, cost roadmap and the raise: SUPERMILLS Investor Overview", { x: 1.0, y: 4.8, w: 9, h: 0.3, fontFace: SANS, fontSize: 11, color: BRIGHT, margin: 0 });
 s.addImage({ path: "prep/inventwood_logo.png", x: 1.0, y: 5.25, w: 3.6, h: 3.6 * 216 / 1473 });
 s.addText("Alex Lau · CEO / Co-Founder · alex@inventwood.com", { x: 1.0, y: 5.95, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });

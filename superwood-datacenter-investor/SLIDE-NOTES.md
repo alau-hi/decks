@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06: close slide: recap bullets removed (title only, Alex); planet render v2 with a much denser global network; left-to-right scrim so the headline reads over the globe.
 - 2026-09-06: close slide background is a new Higgsfield render of Earth with data centers linked by amber arcs (render/close-planet-network.md, assets/close_bg.webp); the cover keeps cover_bg.
 - 2026-09-06: slide 5 subtitle is the one Data Center Watch line; the ordinance examples and sources move into a structured hover pop-up with linked Data Center Watch and NBC News sources (.srctip .row).
 - 2026-09-06: slide 17 bars reordered and relabelled (Alex): Data Centers (US) $75B, All Construction (US) $2,158B, All Construction (Global) about $13,300B (Oxford Economics 2025 forecast, 2017 prices, conf M; new register fact market.global_construction_output_forecast). Line adds "about 0.6% of the world's".
