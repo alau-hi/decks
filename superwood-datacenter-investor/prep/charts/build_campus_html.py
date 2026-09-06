@@ -109,7 +109,7 @@ def rebuild(path):
     w=scenario_data()[DEFAULT]["worth"]
     sec=re.sub(r'<td data-h="Horizon">Long term — slab, foundations</td><td data-h="SUPERWOOD required">[^<]*</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i style="[^"]*"></i><b style="left:8.3%"></b></div>[^<]*</td>',
         f'<td data-h="Horizon">Long term — slab, foundations</td><td data-h="SUPERWOOD required" data-worth="sw">{w["sw"]}</td><td class="gold" data-h="Years of mill output"><div class="yrbar"><i data-worth="bar" style="left:{w["left"]};width:{w["width"]}"></i><b style="left:8.3%"></b></div><span data-worth="yr">{w["yr"]}</span></td>',sec)
-    if 'class="soils"' not in sec:
+    if 'soils-range' not in sec:
         sec=sec.replace('<div class="hleg mills rv">','<div class="hleg mills rv">'+SLIDER.replace('<label class="soils">','<label class="soils inline">'),1)
     h=h[:a]+sec+h[b:]
     # data + JS
