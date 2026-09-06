@@ -100,7 +100,7 @@ td:first-child{color:var(--cream);font-weight:600}
 #props h3{font-size:1.65rem!important;margin-top:1.2rem!important}
 @media (max-width:1150px){.ladder .lhead .stages span{font-size:0!important;letter-spacing:0}.ladder .lhead .stages span::before{content:attr(data-s);font-size:max(.62rem,11px);letter-spacing:.06em}}
 .imgnote{font-size:max(.66rem,11px);font-style:italic;color:var(--muted);text-align:right;margin:.35rem 0 .2rem}
-.pb{gap:1.4rem}.pcard{background:var(--panel);border-radius:.7rem;overflow:hidden}.pcard .imgbox{aspect-ratio:2.4;border-radius:0}.pcard .pbody{padding:1rem 1.2rem 1.15rem}.pcard .lab{display:block;font-size:max(.62rem,11px);letter-spacing:.18em;text-transform:uppercase;color:var(--wood-bright);font-weight:600}.pcard h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin:.15rem 0 .35rem;color:var(--cream)}.pcard p{font-size:max(.9rem,12px);line-height:1.5;color:var(--cream-dim)}.pcard .answer{margin-top:.85rem;padding-top:.75rem;border-top:1px solid var(--line)}.pcard .answer .lab{color:var(--gold)}.pcard .answer p{color:var(--cream);margin-top:.15rem}
+.pb{gap:1.2rem}.pcard{background:var(--panel);border-radius:.7rem;overflow:hidden}.pcard .imgbox{aspect-ratio:3.4;border-radius:0}.pcard .pbody{padding:.7rem 1rem .8rem}.pcard .lab{display:block;font-size:max(.6rem,11px);letter-spacing:.18em;text-transform:uppercase;color:var(--wood-bright);font-weight:600}.pcard h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.2rem;margin:.1rem 0 .25rem;color:var(--cream)}.pcard p{font-size:max(.85rem,12px);line-height:1.45;color:var(--cream-dim)}.pcard .answer{margin-top:.55rem;padding-top:.5rem;border-top:1px solid var(--line)}.pcard .answer .lab{color:var(--gold)}.pcard .answer p{color:var(--cream);margin-top:.1rem}.pbtease{font-family:'Fraunces',serif;font-size:clamp(1.3rem,1.9vw,1.75rem);line-height:1.35;color:var(--cream);max-width:none;margin-top:1.3rem}.pbstats.tipwrap .hint{grid-column:1/-1;margin-top:0;text-align:right}
 .pbstats{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:.6rem}.pbstats div{border-left:2px solid var(--wood-bright);padding:.15rem 0 .15rem .9rem}.pbstats b{display:block;color:var(--cream);font-size:max(.95rem,12px);font-weight:600;line-height:1.35}.pbstats span{display:block;font-size:max(.82rem,11px);color:var(--muted);margin-top:.2rem;line-height:1.4}
 @media (max-width:900px), (orientation:portrait){.pbstats{grid-template-columns:1fr}}
 #vision .card h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.35rem;margin-bottom:.3rem}#vision .card .sub{font-size:max(.95rem,12px);color:var(--cream);line-height:1.5;margin-bottom:.6rem}#vision .card p{max-width:none}
@@ -320,13 +320,13 @@ table.cmp td{line-height:1.4}
         <div class="answer"><span class="lab">SUPERWOOD</span><p>Acoustic screens and barriers; quieter fan enclosures and ductwork.</p></div></div></article>
     </div>
     <p class="imgnote rv">Concept renderings</p>
-    <div class="pbstats rv">
+    <div class="pbstats rv tipwrap" tabindex="0" aria-describedby="tip-pb">
       <div><b>75 projects, about $130 billion, blocked or delayed in one quarter</b><span>Q1 2026, as much as all of 2025. 833 opposition groups in 49 states.</span></div>
       <div><b>Rules are following</b><span>Henry County, Virginia: 1,000 ft setbacks, 50 dBA at the property line.</span></div>
+      <span class="hint">Hover or focus for sources</span><span class="srctip" role="tooltip" id="tip-pb">Data Center Watch, Q1 2026 report (June 2026). Virginia HB 153; Henry County, VA ordinance, Aug 2026. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.</span>
     </div>
-    <p class="lead rv" style="margin-top:1rem;color:var(--cream);max-width:none">We help with these two. <em style="color:var(--gold)">We can go much further</em>: into the structure of the building and what is inside it.</p>
-    <p class="note rv">Data Center Watch, Q1 2026 report (June 2026). Virginia HB 153; Henry County, VA ordinance, Aug 2026. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.</p>
-  </div>
+    <p class="pbtease rv">We help with these two. <em style="color:var(--gold)">We can go much further</em>: into the structure of the building and what is inside it.</p>
+      </div>
 </section>
 
 

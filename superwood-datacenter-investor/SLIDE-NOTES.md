@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06: slide 4 tightened (Alex: too busy): image cards shorter (aspect 3.4, smaller type), teaser line enlarged to serif ~1.75rem; web footnote replaced by a hover/focus pop-up on the stats row (.tipwrap). PPTX/PDF: footnotes no longer print on slides; note() collects them and a "Notes and sources" slide (17) lists them before the close with a small "Note N" reference on each source slide. PPTX and PDF rebuilt (18 pages).
 - 2026-09-06: slides 3–5 kickers "Market", "Market · Pushback", "Market · Mass timber" ("The buyer" removed, Alex). Slide 2 card 01 still says "The buyer is short of steel"; not asked.
 - 2026-09-06: slides 17 (Risks) and 18 (Next steps / path to first projects) removed at Alex's request; markup archived in archive/slides-risks-path-2026-09-06.*. Deck is 17 slides (v2: 16).
 - 2026-09-06: slides 10–13 are "Applications · Immediate / Soon / Medium term / Long term" with dock labels Applications (1)–(4) (Alex: "The path" was confusing); slide 14 kicker "Customers" instead of "The evidence". Slide 15 kicker "Customers" too; slide 18 kicker and dock label "Next steps". Slide 10, 11 and 13 titles drop the horizon prefix the kicker already carries (Alex: do not repeat words).

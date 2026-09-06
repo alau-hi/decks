@@ -28,12 +28,27 @@ function kicker(slide, text, x = L, y = 0.5, w = 8) {
   slide.addText(text.toUpperCase(), { x, y, w, h: 0.32, fontFace: SANS, fontSize: 12, color: BRIGHT, charSpacing: 4, bold: true, margin: 0 });
 }
 function title(slide, runs, x = L, y = 0.88, w = 11.9, size = 30) {
+  curTitle = typeof runs === "string" ? runs : runs.map((r) => r.text).join("");
   slide.addText(runs, { x, y, w, h: 0.95, fontFace: SERIF, fontSize: size, color: CREAM, margin: 0 });
 }
 function t(text, opts = {}) { return { text, options: opts }; }
 function gold(text) { return t(text, { italic: true, color: GOLD }); }
 function note(slide, text, y = 6.72, h = 0.35) {
-  slide.addText(text, { x: L, y, w: CW, h, fontFace: SANS, fontSize: 6.5, italic: true, color: MUTED, margin: 0, valign: "top" });
+  // footnotes are collected on a Notes slide before the close (Alex, 2026-09-06); the slide carries only a small reference
+  ENDNOTES.push({ n: ENDNOTES.length + 1, slide: curSlide, title: curTitle, text });
+  slide.addText(`Note ${ENDNOTES.length}`, { x: W - 2.45, y: H - 0.72, w: 1.5, h: 0.22, fontFace: SANS, fontSize: 7, italic: true, color: MUTED, align: "right", margin: 0 });
+}
+function endnotesSlide() {
+  if (!ENDNOTES.length) return;
+  const s = newSlide(); base(s, "InventWood · Notes"); kicker(s, "Notes"); title(s, "Notes and sources");
+  const half = Math.ceil(ENDNOTES.length / 2), cols = [ENDNOTES.slice(0, half), ENDNOTES.slice(half)];
+  cols.forEach((col, i) => {
+    const runs = [];
+    col.forEach((n, k) => {
+      runs.push(t(`${n.n}  `, { bold: true, color: GOLD }), t(`Slide ${n.slide} · ${n.title}`, { bold: true, color: CREAM, breakLine: true }), t(n.text, { color: DIM, breakLine: k < col.length - 1, paraSpaceAfter: 10 }));
+    });
+    s.addText(runs, { x: L + i * (CW / 2 + 0.2), y: 1.95, w: CW / 2 - 0.2, h: 4.9, fontFace: SANS, fontSize: 8.5, margin: 0, valign: "top" });
+  });
 }
 function panel(slide, x, y, w, h, color = PANEL) {
   slide.addShape(pres.ShapeType.roundRect, { x, y, w, h, rectRadius: 0.09, fill: { color } });
@@ -51,11 +66,13 @@ function bullets(slide, items, opts) {
   slide.addText(items.map((tx, i) => ({ text: tx, options: { bullet: { code: "2022", indent: 12 }, breakLine: i < items.length - 1, paraSpaceAfter: 6 } })),
     Object.assign({ fontFace: SANS, fontSize: 11, color: DIM, margin: 0, valign: "top" }, opts));
 }
-let s;
+let s, curSlide = 0, curTitle = "";
+const ENDNOTES = [];
+function newSlide() { curSlide++; return pres.addSlide(); }
 
 // ---------- 1 · COVER ----------
 // Matches the SUPERMILLS Investor Overview cover: InventWood mark above the title, "NAME — italic tagline", bold date line.
-s = pres.addSlide();
+s = newSlide();
 s.background = { path: "prep/campus_hero.jpg" };
 s.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: W, h: H, fill: { color: "150E08", transparency: 42 } });
 s.addShape(pres.ShapeType.rect, { x: 0, y: 3.9, w: W, h: 3.6, fill: { color: "120C07", transparency: 22 } });
@@ -69,7 +86,7 @@ s.addText("INVENTWOOD  ·  CONFIDENTIAL", { x: W - 4.3, y: 7.0, w: 3.6, h: 0.3, 
 s.addText("Concept rendering", { x: W - 2.3, y: 0.25, w: 1.9, h: 0.25, fontFace: SANS, fontSize: 8, italic: true, color: "E8DECB", align: "right", margin: 0 });
 
 // ---------- 2 · THESIS ----------
-s = pres.addSlide(); base(s, "InventWood · The thesis");
+s = newSlide(); base(s, "InventWood · The thesis");
 kicker(s, "The thesis");
 title(s, [t("We help data centers decarbonize and improve their impact on communities, while they accelerate SUPERWOOD's journey from premium skins into "), gold("structural"), t(" applications")], L, 0.88, 12.2, 24);
 const thesis = [
@@ -90,7 +107,7 @@ thesis.forEach(([head, sub], i) => {
 note(s, "The company, team, mills, cost roadmap and the raise are in the SUPERMILLS Investor Overview. This deck covers one application. Strength: company test data vs ASTM A36; data center sizing: company estimate (slides 5–6).", 6.0, 0.5);
 
 // ---------- 3 · MARKET ----------
-s = pres.addSlide(); base(s, "InventWood · Market");
+s = newSlide(); base(s, "InventWood · Market");
 kicker(s, "Market");
 title(s, "Industry Growth", L, 0.88, 12.2, 27);
 s.addText([t("US data center construction is running at ", { color: CREAM }), t("$75 billion a year", { color: GOLD, italic: true }), t(", up 57% in twelve months.", { color: CREAM })], { x: L, y: 1.42, w: 12.2, h: 0.4, fontFace: SERIF, fontSize: 16, margin: 0 });
@@ -110,7 +127,7 @@ growth.forEach(([head, sub], i) => {
 note(s, "US Census Bureau, Construction Spending (C30), private data center construction put in place: July 2026 preliminary seasonally adjusted annual rate $75.2B vs $47.8B in July 2025 (+57%); bars are calendar-year totals, not seasonally adjusted; 2026 estimated from the January to July pace; buildings only, servers excluded. JLL North America Data Center Report Midyear 2026 (66 GW). McKinsey, AI power (2025). JLL Global Data Center Outlook 2026. Dell'Oro Group (2026). Steel intensity: arXiv 2509.21312, secondary; tonnage derived. Shortage statements are what customers report to InventWood.", 6.62, 0.45);
 
 // ---------- 4 · COMMUNITY PUSHBACK: AESTHETICS AND NOISE ----------
-s = pres.addSlide(); base(s, "InventWood · Market");
+s = newSlide(); base(s, "InventWood · Market");
 kicker(s, "Market · Pushback");
 title(s, "Industry Challenged by Communities", L, 0.88, 12.2, 27);
 s.addText("Community pushback now blocks or delays more data center projects than ever.", { x: L, y: 1.42, w: 12.2, h: 0.4, fontFace: SERIF, fontSize: 16, color: CREAM, margin: 0 });
@@ -119,31 +136,31 @@ const complaints = [
   ["prep/tiles/tile_fanbox.jpg", "Noise", "Fans, chillers, generator tests. Property-line decibel limits are spreading.", "Acoustic screens and barriers; quieter fan enclosures and ductwork."],
 ];
 complaints.forEach(([img, head, sub, ans], i) => {
-  const cw = 5.95, x = L + i * (cw + 0.3), y = 1.95, ih = 1.55;
-  panel(s, x, y, cw, 3.05, PANEL);
+  const cw = 5.95, x = L + i * (cw + 0.3), y = 1.95, ih = 1.15;
+  panel(s, x, y, cw, 2.55, PANEL);
   s.addImage({ path: img, x, y, w: cw, h: ih, sizing: { type: "crop", w: cw, h: ih } });
   s.addText("COMPLAINT", { x: x + 0.3, y: y + ih + 0.15, w: 3, h: 0.2, fontFace: SANS, fontSize: 7.5, bold: true, color: BRIGHT, charSpacing: 1.5, margin: 0 });
-  s.addText(head, { x: x + 0.3, y: y + ih + 0.33, w: cw - 0.6, h: 0.36, fontFace: SERIF, fontSize: 17, color: CREAM, margin: 0 });
-  body(s, sub, x + 0.3, y + ih + 0.7, cw - 0.6, 0.3, 9.5, DIM);
+  s.addText(head, { x: x + 0.3, y: y + ih + 0.33, w: cw - 0.6, h: 0.36, fontFace: SERIF, fontSize: 14, color: CREAM, margin: 0 });
+  body(s, sub, x + 0.3, y + ih + 0.68, cw - 0.6, 0.3, 9, DIM);
   s.addShape(pres.ShapeType.rect, { x: x + 0.3, y: y + ih + 1.03, w: cw - 0.6, h: 0.012, fill: { color: RULE } });
-  s.addText([t("SUPERWOOD   ", { bold: true, color: GOLD, fontSize: 7.5, charSpacing: 1.5 }), t(ans, { color: CREAM, fontSize: 10 })], { x: x + 0.3, y: y + ih + 1.08, w: cw - 0.6, h: 0.36, fontFace: SANS, margin: 0, valign: "middle" });
+  s.addText([t("SUPERWOOD   ", { bold: true, color: GOLD, fontSize: 7.5, charSpacing: 1.5 }), t(ans, { color: CREAM, fontSize: 9.5 })], { x: x + 0.3, y: y + ih + 1.08, w: cw - 0.6, h: 0.36, fontFace: SANS, margin: 0, valign: "middle" });
 });
-conceptTag(s, W - 3.6, 5.02, 3.0, "Concept renderings");
+conceptTag(s, W - 3.6, 4.52, 3.0, "Concept renderings");
 const stats = [
   ["75 projects, about $130 billion, blocked or delayed in one quarter", "Q1 2026, as much as all of 2025. 833 opposition groups in 49 states."],
   ["Rules are following", "Henry County, Virginia: 1,000 ft setbacks, 50 dBA at the property line."],
 ];
 stats.forEach(([head, sub], i) => {
-  const cw = 5.95, x = L + i * (cw + 0.3), y = 5.3;
+  const cw = 5.95, x = L + i * (cw + 0.3), y = 4.85;
   s.addShape(pres.ShapeType.rect, { x, y, w: 0.03, h: 0.7, fill: { color: BRIGHT } });
   s.addText(head, { x: x + 0.2, y, w: cw - 0.2, h: 0.32, fontFace: SANS, fontSize: 11, bold: true, color: CREAM, margin: 0, valign: "top" });
   body(s, sub, x + 0.2, y + 0.34, cw - 0.2, 0.36, 9, MUTED);
 });
-s.addText([t("We help with these two. ", { color: CREAM }), t("We can go much further", { color: GOLD, italic: true }), t(": into the structure of the building and what is inside it.", { color: CREAM })], { x: L, y: 6.1, w: CW, h: 0.45, fontFace: SERIF, fontSize: 15, margin: 0, valign: "middle" });
+s.addText([t("We help with these two. ", { color: CREAM }), t("We can go much further", { color: GOLD, italic: true }), t(": into the structure of the building and what is inside it.", { color: CREAM })], { x: L, y: 5.75, w: CW, h: 0.7, fontFace: SERIF, fontSize: 21, margin: 0, valign: "middle" });
 note(s, "Data Center Watch, Q1 2026 report (June 2026). Virginia HB 153; Henry County, VA ordinance, Aug 2026. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.", 6.72, 0.35);
 
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
-s = pres.addSlide(); base(s, "InventWood · Market");
+s = newSlide(); base(s, "InventWood · Market");
 kicker(s, "Market · Mass timber");
 title(s, [t("Hyperscalers are already building structures with wood. We "), gold("turbocharge"), t(" wood.")], L, 0.88, 12.2, 23);
 const pub = [
@@ -188,7 +205,7 @@ cmpRows.forEach((r, ri) => {
 note(s, "Sources: news.microsoft.com, Nov 2024; Thornton Tomasetti project page; sustainability.atmeta.com, 31 Jul 2025. Logos and photographs are the companies' own, from the cited publications, used to identify the published projects. SUPERWOOD strength: company test data, parallel-to-grain tension. Hybrid-beam gains: derived from beam theory with SUPERWOOD modulus and strength, engineering write-up pending. Beams: concept renderings.", 6.84, 0.25);
 
 // ---------- 5 · WHAT A GW DATA CENTER IS MADE OF ----------
-s = pres.addSlide(); base(s, "InventWood · The size");
+s = newSlide(); base(s, "InventWood · The size");
 kicker(s, "Materials");
 title(s, "What a 1 GW data center is made of", L, 0.88, 11.9, 27);
 label(s, "By mass", L, 1.8, 4); label(s, "By embodied carbon", 6.7, 1.8, 4);
@@ -205,7 +222,7 @@ const sizeR = [["By embodied carbon, steel is about two-thirds of everything est
 note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; carbon is valued on each row's steel, concrete and plastic content (material split per component: estimates, analyses/material_split.json; polymers at an average 3.0 kg CO₂e/kg); copper, aluminum, electronics, water, gypsum and wood not valued. Concrete: footprint bottom-up with moderate soils (slab, footings, pads, paving, yard mats; the published 500–1,000 m³/MW intensity is the upper comparison). Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: immediate = shipping; soon = 1–3 years, straightforward applications engineering; medium term = complex applications engineering, new form factors or materials engineering; long term = 5+ years, technical potential with no design or code pathway yet.", 6.78, 0.3);
 
 // ---------- 6 · ONE DATA CENTER CAN CONSUME A SUPERMILL ----------
-s = pres.addSlide(); base(s, "InventWood · The size");
+s = newSlide(); base(s, "InventWood · The size");
 kicker(s, "The size");
 title(s, [t("Just one data center can consume the "), gold("entire output"), t(" of a SUPERMILL")], L, 0.88, 11.9, 27);
 body(s, "SUPERWOOD a 1 GW data center could require, by horizon, against what each mill makes in a year.", L, 1.75, 11, 0.35, 12, DIM);
@@ -236,7 +253,7 @@ s.addText([t("SuperMill One ≈ 900 tons a year (1M sf)", { color: BRIGHT }), t(
 note(s, "Company estimate from the slide 6 model, low–high scenarios, moderate soils; 0.3–0.6 substitution factor for steel, to be engineering-stamped per element; long-term row also includes server enclosures at 40% of IT mass (a small share of the total), electronics excluded. Mill output at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application; see the SUPERMILLS Investor Overview.", 6.62, 0.45);
 
 // ---------- 9 · PROPERTIES ----------
-s = pres.addSlide(); base(s, "InventWood · The fit");
+s = newSlide(); base(s, "InventWood · The fit");
 kicker(s, "The fit");
 title(s, "Properties that matter in a data center");
 s.addImage({ path: "prep/prod-board.jpg", x: L, y: 1.95, w: 4.0, h: 4.0 * 427 / 640 });
@@ -263,7 +280,7 @@ props.forEach(([icon, head, sub], i) => {
 note(s, "Company test data; property data package and test methods available on request. Fire: chars rather than burns, far better than ordinary wood; ASTM E84 Class A demonstrated in testing, specified per order.", 6.7, 0.35);
 
 // ---------- 10 · SPEED AND MODULARITY ----------
-s = pres.addSlide(); base(s, "InventWood · The fit");
+s = newSlide(); base(s, "InventWood · The fit");
 kicker(s, "The fit");
 title(s, [t("Faster to build: lighter, "), gold("prefabricated"), t(", reconfigurable")], L, 0.88, 11.9, 27);
 const speed = [
@@ -283,7 +300,7 @@ conceptTag(s, 7.3 + 5.45 - 2.6, 5.08);
 note(s, "Schedule figures are mass-timber case studies (ULI Urban Land: ~20% average across seven case studies, 12.7 vs 15.4 months; other studies 25–30%), used as an analogy for a material that builds the same way. No SUPERWOOD schedule data yet.", 6.55, 0.5);
 
 // ---------- 11 · NOW ----------
-s = pres.addSlide(); base(s, "InventWood · Applications");
+s = newSlide(); base(s, "InventWood · Applications");
 kicker(s, "Applications · Immediate");
 title(s, "Skins, screens and fences from SuperMill One");
 s.addText("Every item below ships today as boards up to 8\" × 16' × 3/8\", exterior or interior grade. SuperMill One makes about one million square feet a year across all markets.",
@@ -313,7 +330,7 @@ s.addText([
 conceptTag(s, W - 3.6, 5.02, 3.0, "Concept renderings");
 
 // ---------- 12 · NEXT ----------
-s = pres.addSlide(); base(s, "InventWood · Applications");
+s = newSlide(); base(s, "InventWood · Applications");
 kicker(s, "Applications · Soon (1–3 years)");
 title(s, "Products that need only straightforward engineering", L, 0.88, 11.9, 27);
 const gated = [
@@ -339,7 +356,7 @@ s.addText("Each needs one scoped test program, which can be co-funded with a cus
 conceptTag(s, W - 3.6, 5.2, 3.0, "Concept renderings");
 
 // ---------- 13 · STRUCTURAL ----------
-s = pres.addSlide(); base(s, "InventWood · Applications");
+s = newSlide(); base(s, "InventWood · Applications");
 kicker(s, "Applications · Medium term");
 title(s, [t("Structural: starting "), gold("now"), t(", scaling with SuperMill Two")]);
 // left: under way now
@@ -369,7 +386,7 @@ s.addText([
 conceptTag(s, W - 3.6, 5.42, 3.0, "Concept renderings");
 
 // ---------- 14 · THE LONG-TERM VISION ----------
-s = pres.addSlide(); base(s, "InventWood · Applications");
+s = newSlide(); base(s, "InventWood · Applications");
 kicker(s, "Applications · Long term (5+ years)");
 title(s, [t("Prefabricated "), gold("envelopes"), t(", then foundations")]);
 const vis = [
@@ -390,7 +407,7 @@ s.addText("Stated technical potential, not an engineered plan: slab, paving and 
   { x: L + 0.3, y: 6.15, w: CW - 0.6, h: 0.6, fontFace: SANS, fontSize: 9.5, italic: true, color: DIM, margin: 0, valign: "middle" });
 
 // ---------- 15 · EVERY ACCOUNT ON ONE LADDER ----------
-s = pres.addSlide(); base(s, "InventWood · Customers");
+s = newSlide(); base(s, "InventWood · Customers");
 kicker(s, "Customers");
 title(s, "Customer engagement");
 const stages = ["Conversations", "Applications identified", "Projects scoped", "Testing & mockups", "First purchase", "Basis of design"];
@@ -433,7 +450,7 @@ collab.forEach(([logo, ar, name, desc], i) => {
 note(s, "Next steps undated. Published backup for Microsoft and Meta on the next slide.", 6.97, 0.3);
 
 // ---------- 16 · MICROSOFT AND META, ON THE RECORD AND WITH US ----------
-s = pres.addSlide(); base(s, "InventWood · Customers");
+s = newSlide(); base(s, "InventWood · Customers");
 kicker(s, "Customers");
 title(s, "Microsoft and Meta");
 const profiles = [
@@ -470,7 +487,7 @@ profiles.forEach(([name, stage, pubTxt, src, pts, img, cap], i) => {
 s.addNotes("Sources and details. Microsoft: Microsoft Source, Nov 2024, https://news.microsoft.com/source/features/sustainability/microsoft-builds-first-datacenters-with-wood-to-slash-carbon-emissions/ — two Northern Virginia datacenters with CLT floor panels on a steel frame, about 35% less embodied carbon than conventional steel construction and 65% less than precast; Gensler; Thornton Tomasetti project page https://www.thorntontomasetti.com/project/microsoft-mass-timber-data-centers. Meta: Meta Sustainability, 31 Jul 2025, https://sustainability.atmeta.com/blog/2025/07/31/meta-pilots-mass-timber-for-more-sustainable-data-center-construction/ — mass-timber pilot for administrative buildings; Aiken SC completed 2025 (DPR, SmartLam); Cheyenne WY and Montgomery AL under way; about 41% less embodied carbon in the materials substituted.");
 
 // ---------- 18 · THE CARBON CLAIM ----------
-s = pres.addSlide(); base(s, "InventWood · Carbon");
+s = newSlide(); base(s, "InventWood · Carbon");
 kicker(s, "Carbon");
 title(s, "Embodied carbon: LCA based on SUPERMILL TWO projections", L, 0.88, 11.9, 27);
 // bars on one axis: emissions to the right of zero, storage to the left. Ranges: solid to the low value, faded to the high.
@@ -503,8 +520,10 @@ s.addText([
 s.addText("SUPERWOOD carbon estimates are based on the LCA developed by Professor Ming Hu, University of Notre Dame.", { x: 7.3, y: 2.4, w: 5.45, h: 1.4, fontFace: SERIF, fontSize: 16, color: CREAM, margin: 0, valign: "top" });
 note(s, "SUPERWOOD 0.5 kg CO₂e/kg manufactured and 0.5–1.5 kg/kg biogenic storage: company projections, pre-LCA. Steel 1.8 kg/kg: global BF-BOF average. EAF 0.4–0.7 kg/kg: typical published range for recycled-scrap steel. Replacement 3:1 to 4:1 by weight (0.25–0.33 kg SUPERWOOD per kg steel): company assumption. Reductions are arithmetic on these inputs.", 6.6, 0.45);
 
-// ---------- 18 · RISKS ----------
-s = pres.addSlide();
+endnotesSlide();
+
+// ---------- CLOSE ----------
+s = newSlide();
 s.background = { path: "prep/cover_bg.jpg" };
 s.addText([t("Let's build what's "), gold("next"), t(".")], { x: 1.0, y: 2.6, w: 10, h: 1.0, fontFace: SERIF, fontSize: 44, color: CREAM, margin: 0 });
 bullets(s, ["Data centers are short of steel and already build with wood.", "SUPERWOOD turbocharges that wood: skins and fences now, structure in the medium term.", "One basis-of-design win with a hyperscaler is the demand case for SuperMill Two."], { x: 1.0, y: 3.55, w: 7.5, h: 1.2, fontSize: 12.5, color: CREAM });
