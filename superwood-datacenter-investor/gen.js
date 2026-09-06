@@ -133,7 +133,9 @@ objections.forEach(([head, sub, ans], i) => {
   s.addShape(pres.ShapeType.ellipse, { x, y: y + 0.1, w: 0.14, h: 0.14, fill: { color: GOLD } });
   s.addText(head, { x: x + 0.32, y, w: 6.9, h: 0.34, fontFace: SANS, fontSize: 14, bold: true, color: CREAM, margin: 0 });
   body(s, sub, x + 0.32, y + 0.38, 6.9, 0.4, 11, MUTED);
-  s.addText(ans, { x: x + 0.32, y: y + 0.8, w: 6.9, h: 0.3, fontFace: SANS, fontSize: 11, bold: true, color: CREAM, margin: 0 });
+  s.addShape(pres.ShapeType.rect, { x: x + 0.32, y: y + 0.8, w: 6.9, h: 0.42, fill: { color: PANEL2 } });
+  s.addShape(pres.ShapeType.rect, { x: x + 0.32, y: y + 0.8, w: 0.03, h: 0.42, fill: { color: GOLD } });
+  s.addText([t("SUPERWOOD   ", { bold: true, color: GOLD, fontSize: 8, charSpacing: 1.5 }), t(ans.replace(/^SUPERWOOD: /, ""), { color: CREAM, fontSize: 10.5 })], { x: x + 0.45, y: y + 0.8, w: 6.7, h: 0.42, fontFace: SANS, margin: 0, valign: "middle" });
 });
 label(s, "How strong the pushback is", 8.0, 2.0, 4.8);
 const scale = [
