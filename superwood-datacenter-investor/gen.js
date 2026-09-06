@@ -515,8 +515,6 @@ s = newSlide();
 s.background = { path: "prep/close_bg.jpg" };
 s.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: W * 0.62, h: H, fill: { color: "050912", transparency: 35 } });
 s.addText([t("Let’s work together to build AI buildings that are "), gold("better to build"), t(", good for people, and good for the world.")], { x: 1.0, y: 2.0, w: 11, h: 1.6, fontFace: SERIF, fontSize: 34, color: CREAM, margin: 0 });
-s.addText("Company, mills, cost roadmap and the raise: SUPERMILLS Investor Overview", { x: 1.0, y: 4.8, w: 9, h: 0.3, fontFace: SANS, fontSize: 11, color: BRIGHT, margin: 0 });
-s.addImage({ path: "prep/inventwood_logo.png", x: 1.0, y: 5.25, w: 3.6, h: 3.6 * 216 / 1473 });
 s.addText("Alex Lau · CEO / Co-Founder · alex@inventwood.com", { x: 1.0, y: 5.95, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
 s.addText("Lex Harris · Director, Capital Markets & IR · lex@inventwood.com", { x: 1.0, y: 6.35, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
 

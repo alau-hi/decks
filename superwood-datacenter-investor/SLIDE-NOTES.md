@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06: close slide drops the InventWood logo and the Investor Overview reference line; headline and two contacts remain.
 - 2026-09-06: close slide planet render v3 (blue-green palette, dark space; Alex: v2 looked like the world was rusting); scrim changed to a dark navy gradient.
 - 2026-09-06: close slide: recap bullets removed (title only, Alex); planet render v2 with a much denser global network; left-to-right scrim so the headline reads over the globe.
 - 2026-09-06: close slide background is a new Higgsfield render of Earth with data centers linked by amber arcs (render/close-planet-network.md, assets/close_bg.webp); the cover keeps cover_bg.
