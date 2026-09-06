@@ -123,32 +123,32 @@ note(s, "US Census Bureau, Construction Spending (C30), private data center cons
 s = pres.addSlide(); base(s, "InventWood · The buyer");
 kicker(s, "The buyer · The community");
 title(s, "Community pushback now blocks or delays more data center projects than ever.", L, 0.88, 12.2, 25);
-label(s, "Two complaints are about the building", L, 2.0, 7.2);
-const objections = [
-  ["Aesthetics", "Windowless boxes on farmland. Counties answer with setbacks and design standards.", "SUPERWOOD: facades, fences and screens that read as architecture."],
-  ["Noise", "Fans, chillers, generator tests. Property-line decibel limits are spreading.", "SUPERWOOD: acoustic screens and barriers; quieter fan enclosures and ductwork."],
+const complaints = [
+  ["prep/tiles/tile_fence_security.jpg", "Aesthetics", "Windowless boxes on farmland. Counties answer with setbacks and design standards.", "Facades, fences and screens that read as architecture."],
+  ["prep/tiles/tile_fanbox.jpg", "Noise", "Fans, chillers, generator tests. Property-line decibel limits are spreading.", "Acoustic screens and barriers; quieter fan enclosures and ductwork."],
 ];
-objections.forEach(([head, sub, ans], i) => {
-  const x = L, y = 2.45 + i * 1.35;
-  s.addShape(pres.ShapeType.ellipse, { x, y: y + 0.1, w: 0.14, h: 0.14, fill: { color: GOLD } });
-  s.addText(head, { x: x + 0.32, y, w: 6.9, h: 0.34, fontFace: SANS, fontSize: 14, bold: true, color: CREAM, margin: 0 });
-  body(s, sub, x + 0.32, y + 0.38, 6.9, 0.4, 11, MUTED);
-  s.addShape(pres.ShapeType.rect, { x: x + 0.32, y: y + 0.8, w: 6.9, h: 0.42, fill: { color: PANEL2 } });
-  s.addShape(pres.ShapeType.rect, { x: x + 0.32, y: y + 0.8, w: 0.03, h: 0.42, fill: { color: GOLD } });
-  s.addText([t("SUPERWOOD   ", { bold: true, color: GOLD, fontSize: 8, charSpacing: 1.5 }), t(ans.replace(/^SUPERWOOD: /, ""), { color: CREAM, fontSize: 10.5 })], { x: x + 0.45, y: y + 0.8, w: 6.7, h: 0.42, fontFace: SANS, margin: 0, valign: "middle" });
+complaints.forEach(([img, head, sub, ans], i) => {
+  const cw = 5.95, x = L + i * (cw + 0.3), y = 1.95, ih = 1.55;
+  panel(s, x, y, cw, 3.05, PANEL);
+  s.addImage({ path: img, x, y, w: cw, h: ih, sizing: { type: "crop", w: cw, h: ih } });
+  s.addText("COMPLAINT", { x: x + 0.3, y: y + ih + 0.15, w: 3, h: 0.2, fontFace: SANS, fontSize: 7.5, bold: true, color: BRIGHT, charSpacing: 1.5, margin: 0 });
+  s.addText(head, { x: x + 0.3, y: y + ih + 0.33, w: cw - 0.6, h: 0.36, fontFace: SERIF, fontSize: 17, color: CREAM, margin: 0 });
+  body(s, sub, x + 0.3, y + ih + 0.7, cw - 0.6, 0.3, 9.5, DIM);
+  s.addShape(pres.ShapeType.rect, { x: x + 0.3, y: y + ih + 1.03, w: cw - 0.6, h: 0.012, fill: { color: RULE } });
+  s.addText([t("SUPERWOOD   ", { bold: true, color: GOLD, fontSize: 7.5, charSpacing: 1.5 }), t(ans, { color: CREAM, fontSize: 10 })], { x: x + 0.3, y: y + ih + 1.08, w: cw - 0.6, h: 0.36, fontFace: SANS, margin: 0, valign: "middle" });
 });
-label(s, "How strong the pushback is", 8.0, 2.0, 4.8);
-const scale = [
+conceptTag(s, W - 3.6, 5.02, 3.0, "Concept renderings");
+const stats = [
   ["75 projects, about $130 billion, blocked or delayed in one quarter", "Q1 2026, as much as all of 2025. 833 opposition groups in 49 states."],
   ["Rules are following", "Henry County, Virginia: 1,000 ft setbacks, 50 dBA at the property line."],
 ];
-scale.forEach(([head, sub], i) => {
-  const x = 8.0, y = 2.45 + i * 1.5, cw = 4.75;
-  panel(s, x, y, cw, 1.35, PANEL2);
-  s.addText(head, { x: x + 0.25, y: y + 0.15, w: cw - 0.5, h: 0.55, fontFace: SANS, fontSize: 12.5, bold: true, color: CREAM, margin: 0 });
-  body(s, sub, x + 0.25, y + 0.75, cw - 0.5, 0.55, 10.5, DIM);
+stats.forEach(([head, sub], i) => {
+  const cw = 5.95, x = L + i * (cw + 0.3), y = 5.3;
+  s.addShape(pres.ShapeType.rect, { x, y, w: 0.03, h: 0.7, fill: { color: BRIGHT } });
+  s.addText(head, { x: x + 0.2, y, w: cw - 0.2, h: 0.32, fontFace: SANS, fontSize: 11, bold: true, color: CREAM, margin: 0, valign: "top" });
+  body(s, sub, x + 0.2, y + 0.34, cw - 0.2, 0.36, 9, MUTED);
 });
-s.addText([t("We help with these two. ", { color: CREAM }), t("We can go much further", { color: GOLD, italic: true }), t(": into the structure of the building and what is inside it.", { color: CREAM })], { x: L, y: 5.65, w: CW, h: 0.5, fontFace: SERIF, fontSize: 17, margin: 0, valign: "middle" });
+s.addText([t("We help with these two. ", { color: CREAM }), t("We can go much further", { color: GOLD, italic: true }), t(": into the structure of the building and what is inside it.", { color: CREAM })], { x: L, y: 6.1, w: CW, h: 0.45, fontFace: SERIF, fontSize: 15, margin: 0, valign: "middle" });
 note(s, "Data Center Watch, Q1 2026 report (June 2026). Virginia HB 153; Henry County, VA ordinance, Aug 2026. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.", 6.72, 0.35);
 
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
