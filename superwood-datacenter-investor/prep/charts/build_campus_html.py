@@ -17,7 +17,7 @@ def rows_for(case):
     return [("Platforms, walkways, mezzanines, railings",15),("Acoustic barriers, enclosures, separations",5),("Racking and equipment supports",5),("Tray, containment, doors, misc. metals",10),("Ducting and air-distribution sheet metal",8),("Interior finishes, backplanes, trim",3),("Electrical equipment and conductors",100),("Mechanical equipment, piping, loop water",50),("IT — servers and racks",70),
     ("Steel — primary frame",40),("Steel — roof trusses, joists, deck, girts",60),("Exterior skins — metal panel",7.4),("Louvers, screens and fencing",1.9),
     ("Concrete — slab on grade, paving",sc["slab"]["t_hi"]/1000),("Concrete — foundations, footings, pads",sc["foundations"]["t_hi"]/1000),("Rebar in all concrete",sc["rebar"]["t_hi"]/1000)]
-GROUPS=[("Contents — fit-out and equipment",9,"contents"),("Building — structure and envelope",4,"building"),("Foundation — slab, footings, rebar",3,"foundation")]
+GROUPS=[("Contents",9,"contents","Contents — fit-out and equipment: platforms, acoustic barriers, racking, tray and doors, ducting, interior finishes, electrical, mechanical and IT"),("Building",4,"building","Building — structure and envelope: primary frame, roof trusses and deck, exterior skins, louvers, screens and fencing"),("Foundation",3,"foundation","Foundation — slab on grade and paving, footings, grade beams and equipment pads, and the rebar in all of it")]
 MATS=("steel","concrete","plastic","other"); COL={"steel":"var(--wood)","concrete":"#8c8478","plastic":"var(--teal)","other":"#5a4a36"}
 CAX=500.0
 def pct_mass(kt): return 8.0+26.45*math.log10(kt)
@@ -47,10 +47,10 @@ def row_cells(name,kt,view):
     return carb_bar(parts), f"{tot*1000:,.0f} tons CO₂e{tag}"
 def rows_html(view,case=DEFAULT):
     ROWS=rows_for(case); out=HZ_HEAD; i=0
-    for title,n,gid in GROUPS:
+    for title,n,gid,detail in GROUPS:
         grp=ROWS[i:i+n]; bar,hv,gc=group_cells(grp,view)
         attr=f' data-row="group-{gid}"' if gid=="foundation" else ""
-        out+=f'<div class="hb hd"{attr}><span class="hl">{title}</span><div class="tr">{bar}</div><span class="hv">{hv}</span>{bubbles(gc)}</div>\n'
+        out+=f'<div class="hb hd"{attr}><span class="hl" title="{detail}" tabindex="0" aria-label="{detail}">{title}</span><div class="tr">{bar}</div><span class="hv">{hv}</span>{bubbles(gc)}</div>\n'
         if gid=="foundation": out+='<div class="hb soilrow"><span class="hl"></span>'+SLIDER+'</div>\n'
         for name,kt in grp:
             bar,hv=row_cells(name,kt,view); attr=f' data-row="{CONC[name]}"' if name in CONC else ""
@@ -129,6 +129,6 @@ addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;if(!['ca
     h=h.replace("</script>\n</body>",js.replace("__SOILDATA__",data)+"</script>\n</body>",1)
     h=re.sub(r"\.soils\{.*?\.soils\.inline\{[^}]*\}\n","",h,flags=re.S)
     if ".soils{" not in h:
-        h=h.replace("/* dividers */",".soils{display:flex;align-items:center;gap:1rem;font-size:max(.85rem,12px);color:var(--cream)}.soils .lab{font-size:max(.68rem,11px);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;white-space:nowrap}.soils .ctl{display:flex;flex-direction:column;gap:.15rem}.soils input{accent-color:var(--gold);width:11rem;cursor:pointer;margin:0}.soils input:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}.soils .ticks{display:flex;justify-content:space-between;width:11rem;font-size:max(.62rem,10px);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.soils .ticks i{font-style:normal}.soils-out{min-width:7rem;color:var(--cream);font-weight:600}.hb.soilrow{min-height:2.6rem;margin:.1rem 0 .4rem}.hb.soilrow .soils{grid-column:2/-1;padding:.35rem .6rem;border:1px dashed var(--wood-bright);border-radius:.5rem;background:rgba(226,184,119,.05)}.soils.cell{margin-top:.5rem;gap:.7rem}.soils.cell .lab{font-size:max(.62rem,10px)}.soils.cell input,.soils.cell .ticks{width:9rem}\n/* dividers */",1)
+        h=h.replace("/* dividers */",".soils{display:flex;align-items:center;gap:1rem;font-size:max(.85rem,12px);color:var(--cream)}.soils .lab{font-size:max(.68rem,11px);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;white-space:nowrap}.soils .ctl{display:flex;flex-direction:column;gap:.15rem}.soils input{accent-color:var(--gold);width:11rem;cursor:pointer;margin:0}.soils input:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}.soils .ticks{display:flex;justify-content:space-between;width:11rem;font-size:max(.62rem,10px);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.soils .ticks i{font-style:normal}.soils-out{min-width:7rem;color:var(--cream);font-weight:600}.hb.soilrow{min-height:1.9rem;margin:0}.hb.soilrow .soils{grid-column:2/-1;padding:.15rem .6rem;border:1px dashed var(--wood-bright);border-radius:.5rem;background:rgba(226,184,119,.05)}.hb.soilrow .ticks{display:none}.hb.soilrow .soils-out::after{content:' · good / moderate / poor';color:var(--muted);font-weight:400}.soils.cell{margin-top:.5rem;gap:.7rem}.soils.cell .lab{font-size:max(.62rem,10px)}.soils.cell input,.soils.cell .ticks{width:9rem}\n/* dividers */",1)
     W(path,h); print(path,"divs",sec.count("<div"),sec.count("</div>"),"ok")
 for p in ("slides.html","v2.html"): rebuild(p)

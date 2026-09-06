@@ -42,7 +42,7 @@ The base bottom-up assumes good soils: spread footings on a 40 ft grid and a sla
 |---|---|---|---|
 | A — good soils | none; spread footings and slab on grade as modeled | 0 | 0 |
 | B — moderate soils | over-excavate and replace with lean concrete or controlled low-strength material, 6–12 in under 30–60% of the footprint; footings and grade beams 30% larger | 29,000 | 197,000 |
-| C — poor soils | 3–4 drilled piers or driven piles per column, 18–24 in diameter, 40–60 ft long (3,100–6,300 columns); pile caps in place of spread footings; a pier every 15–20 ft under the grade beams; the hall slab becomes a structural slab 2–4 in thicker | 60,000 | 287,000 |
+| C — poor soils | everything in case B, plus 3–4 drilled piers or driven piles per column, 18–24 in diameter, 40–60 ft long (3,100–6,300 columns); pile caps in place of spread footings; a pier every 15–20 ft under the grade beams; the hall slab becomes a structural slab 2–4 in thicker | 89,000 | 484,000 |
 | Substation and transformer yard mats | 18–24 in mats over 10–20 acres per GW, counted with site work | 19,000 | 49,000 |
 
 Totals by case:
@@ -78,3 +78,6 @@ The Foundations sheet of `materials-mass-and-replacement.xlsx` now carries every
 | Footprint, poor soils | 379,000 – 1,416,000 | 193,000 – 794,000 | 14,000 – 92,000 | 28,000 – 324,000 |
 
 Reading: the footprint basis on good soils halves the long-term SUPERWOOD range at the low end; on poor soils with full site work the high end approaches the per-MW figure. The slide 6 and 7 figures still print the per-MW basis until Alex chooses a scenario.
+
+
+Case nesting (2026-09-06, after Alex asked why moderate soils showed more foundation concrete than poor): case 3 now includes the case 2 ground replacement and enlarged elements, so foundations rise monotonically from good to moderate to poor. Before the change, case 3 replaced the lean concrete with piles and put its structural-slab thickening under slab and paving, which left the foundations line slightly below case 2 at the high end.

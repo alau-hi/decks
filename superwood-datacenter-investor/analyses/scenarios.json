@@ -91,24 +91,24 @@
    "sw_hi": 159282
   },
   "foundations": {
-   "t_lo": 193139,
-   "t_hi": 794226,
-   "sw_lo": 8691,
-   "sw_hi": 107220
+   "t_lo": 262818,
+   "t_hi": 1266040,
+   "sw_lo": 11827,
+   "sw_hi": 170915
   },
   "rebar": {
-   "t_lo": 14315,
-   "t_hi": 92086,
-   "sw_lo": 3478,
-   "sw_hi": 44754
+   "t_lo": 16057,
+   "t_hi": 111745,
+   "sw_lo": 3902,
+   "sw_hi": 54308
   },
   "long_term": {
-   "replaced_lo": 474903,
-   "replaced_hi": 1873273,
-   "sw_lo": 27869,
-   "sw_hi": 324456,
-   "yr_lo": 0.89,
-   "yr_hi": 10.36
+   "replaced_lo": 539026,
+   "replaced_hi": 2313830,
+   "sw_lo": 31428,
+   "sw_hi": 397706,
+   "yr_lo": 1.0,
+   "yr_hi": 12.7
   }
  },
  "_meta": {

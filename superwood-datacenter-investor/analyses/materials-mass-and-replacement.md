@@ -283,7 +283,7 @@ The workbook carries a footprint-based concrete path beside the published per-MW
 | Case 3 — pile caps net of spread footings | 15,220 | 44,953 |
 | Case 3 — piers under grade beams | 2,002 | 14,234 |
 | Case 3 — structural slab thickening | 23,597 | 94,389 |
-| Case 3 poor soils — allowance | 59,584 | 287,016 |
+| Case 3 poor soils — allowance (includes the case 2 measures) | 88,617 | 483,605 |
 | Selected soil allowance | 29,033 | 196,589 |
 | Site paving, roads, yards, parking | 56,634 | 283,168 |
 | Substation / transformer yard mats | 18,502 | 49,339 |
