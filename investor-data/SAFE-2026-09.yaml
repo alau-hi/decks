@@ -2821,7 +2821,7 @@ facts:
     printed_in: [superwood-datacenter-investor]
     notes: "High case: 108,000 + 45,000 + 50,400 = about 200,000 t CO2e per GW at 1.8 kg/kg. Lifts steel's share of estimated embodied carbon from about 60% (building materials) to about 70% (everything estimated)."
 
-  - id: people.don_davies_advisor
+  - id: advisors.don_davies_datacenter
     value: "Don Davies - advisor; past president of Magnusson Klemencic Associates (MKA); founding member of the Carbon Leadership Forum and Building Transparency (EC3); co-founder, Davies-Crooks Associates"
     unit: person
     statement: Don Davies advises InventWood; former president of MKA, structural engineer for several hyperscalers
@@ -2833,7 +2833,7 @@ facts:
     printed_in: [superwood-datacenter-investor]
     notes: "Printed on the customers slide collaborators band. Confirm with Don before wide distribution."
 
-  - id: partners.contractor_rankings
+  - id: collaborators.contractor_rankings
     value: "Turner #1 on ENR Top 400 Contractors (2026 list, sixth consecutive year, $29.2B 2025 revenue); HITT #1 on ENR 2025 telecommunications/data center contractors and #10 overall; BD+C 2025 top-3 data center contractor"
     unit: ranking
     statement: Turner is the #1 US contractor (ENR Top 400); HITT is the #1 US data center contractor (ENR 2025)

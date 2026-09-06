@@ -465,9 +465,7 @@ profiles.forEach(([name, stage, pubTxt, src, pts, img, cap], i) => {
   const cw = 6.0, x = L + i * 6.2;
   s.addText([t(name), t("  " + stage, { italic: true, color: GOLD, fontSize: 14 })], { x, y: 1.9, w: cw, h: 0.5, fontFace: SERIF, fontSize: 22, color: CREAM, margin: 0 });
   panel(s, x, 2.5, cw, 1.45, PANEL2);
-  label(s, "Published", x + 0.25, 2.58, 4, BRIGHT);
   body(s, pubTxt, x + 0.25, 2.85, cw - 0.5, 0.85, 9, CREAM);
-  s.addText(src, { x: x + 0.25, y: 3.68, w: cw - 0.5, h: 0.22, fontFace: SANS, fontSize: 7.5, italic: true, color: MUTED, margin: 0 });
   label(s, "Working with InventWood", x, 4.1, 4, BRIGHT);
   pts.forEach(([h, sub], k) => {
     const y = 4.42 + k * 0.62;
@@ -478,7 +476,7 @@ profiles.forEach(([name, stage, pubTxt, src, pts, img, cap], i) => {
   s.addImage({ path: img, x: x + cw - 1.5, y: 4.42, w: 1.5, h: 1.5 });
   s.addText(cap, { x: x + cw - 2.6, y: 5.97, w: 2.6, h: 0.4, fontFace: SANS, fontSize: 7.5, italic: true, color: MUTED, align: "right", margin: 0 });
 });
-note(s, "Sources: news.microsoft.com, Nov 2024; thorntontomasetti.com; sustainability.atmeta.com, 31 Jul 2025.", 6.6, 0.4);
+s.addNotes("Sources and details. Microsoft: Microsoft Source, Nov 2024 — two Northern Virginia datacenters with CLT floor panels on a steel frame, about 35% less embodied carbon than conventional steel construction and 65% less than precast; Gensler; Thornton Tomasetti project page. Meta: Meta Sustainability, 31 Jul 2025 — mass-timber pilot for administrative buildings; Aiken SC completed 2025 (DPR, SmartLam); Cheyenne WY and Montgomery AL under way; about 41% less embodied carbon in the materials substituted.");
 
 // ---------- 18 · THE CARBON CLAIM ----------
 s = pres.addSlide(); base(s, "InventWood · Carbon");
@@ -497,10 +495,10 @@ bars.forEach(([lab, nlo, nhi, plo, phi, colr, txt], i) => {
   s.addText(lab, { x: bx, y, w: 6.4, h: 0.3, fontFace: SANS, fontSize: 10, color: CREAM, margin: 0 });
   s.addShape(pres.ShapeType.rect, { x: bx, y: y + 0.34, w: bw, h: 0.28, fill: { color: RULE } });
   s.addShape(pres.ShapeType.rect, { x: zx, y: y + 0.34, w: plo * kS, h: 0.28, fill: { color: colr } });
-  if (phi > plo) s.addShape(pres.ShapeType.rect, { x: zx + plo * kS, y: y + 0.34, w: (phi - plo) * kS, h: 0.28, fill: { color: colr, transparency: 55 } });
+  if (phi > plo) { const n = 8, w1 = (phi - plo) * kS / n; for (let k = 0; k < n; k++) s.addShape(pres.ShapeType.rect, { x: zx + plo * kS + k * w1, y: y + 0.34, w: w1 + 0.002, h: 0.28, fill: { color: colr, transparency: Math.round(15 + 75 * k / (n - 1)) }, line: { color: colr, transparency: 100 } }); }
   if (nhi > 0) {
     s.addShape(pres.ShapeType.rect, { x: zx - nlo * kS, y: y + 0.34, w: nlo * kS, h: 0.28, fill: { color: TEAL } });
-    s.addShape(pres.ShapeType.rect, { x: zx - nhi * kS, y: y + 0.34, w: (nhi - nlo) * kS, h: 0.28, fill: { color: TEAL, transparency: 55 } });
+    { const n = 8, w1 = (nhi - nlo) * kS / n; for (let k = 0; k < n; k++) s.addShape(pres.ShapeType.rect, { x: zx - nlo * kS - (k + 1) * w1, y: y + 0.34, w: w1 + 0.002, h: 0.28, fill: { color: TEAL, transparency: Math.round(15 + 75 * k / (n - 1)) }, line: { color: TEAL, transparency: 100 } }); }
   }
   s.addShape(pres.ShapeType.line, { x: zx, y: y + 0.3, w: 0, h: 0.36, line: { color: DIM, width: 0.75 } });
   s.addText(txt, { x: bx + bw + 0.12, y: y + 0.3, w: 1.6, h: 0.36, fontFace: SERIF, fontSize: 11.5, bold: true, color: CREAM, margin: 0, valign: "middle" });
@@ -510,11 +508,8 @@ s.addText([
   t("Biogenic carbon, reported separately.  ", { bold: true, color: GOLD }),
   t("SUPERWOOD stores 0.5–1.5 kg CO₂e per kg of SUPERWOOD as biogenic carbon, 0.1–0.5 kg per kg of steel it substitutes. Under EN 15804 it is released again in the end-of-life module, so it nets to zero over the life cycle; the lasting advantage is lower manufacturing emissions.", { color: DIM }),
 ], { x: L + 0.25, y: 5.3, w: 5.9, h: 1.1, fontFace: SANS, fontSize: 10, margin: 0, valign: "middle" });
-// right: functional unit
-panel(s, 7.3, 1.95, 5.45, 4.5, PANEL);
-label(s, "Per functional unit — replacing one ton of steel", 7.55, 2.1, 5.0, BRIGHT);
-body(s, "SUPERWOOD needed: 0.25–0.33 tons per ton of steel replaced — a 3:1 to 4:1 average replacement by weight, to be engineering-stamped per element.\n\nSUPERWOOD manufacturing emissions: 0.25–0.33 tons × 0.5 = about 0.1–0.2 tons CO₂e per ton of steel substituted.\n\nAgainst average steel (1.8 tons CO₂e): a reduction of 89–94%.\n\nAgainst recycled steel (0.4–0.7 tons CO₂e): a reduction of 50–86%.\n\nCarbon stored in the SUPERWOOD: 0.25–0.33 tons × 0.5–1.5 = 0.1–0.5 tons CO₂e per ton of steel replaced, biogenic, reported separately.\n\nAny stated reduction must name its steel baseline and its substitution factor. Both are shown here; neither is yet verified.", 7.55, 2.45, 5.0, 3.1, 9.5, DIM);
-s.addText("Pre-LCA projection for a full-scale plant. LCA under way with Prof. Ming Hu, University of Notre Dame.", { x: 7.55, y: 5.6, w: 5.0, h: 0.75, fontFace: SANS, fontSize: 10.5, bold: true, color: CREAM, margin: 0, valign: "top" });
+// right: no box — one statement (Alex 2026-09-06)
+s.addText("SUPERWOOD carbon estimates are based on the LCA developed by Professor Ming Hu, University of Notre Dame.", { x: 7.3, y: 2.4, w: 5.45, h: 1.4, fontFace: SERIF, fontSize: 16, color: CREAM, margin: 0, valign: "top" });
 note(s, "SUPERWOOD 0.5 kg CO₂e/kg manufactured and 0.5–1.5 kg/kg biogenic storage: company projections, pre-LCA. Steel 1.8 kg/kg: global BF-BOF average. EAF 0.4–0.7 kg/kg: typical published range for recycled-scrap steel. Replacement 3:1 to 4:1 by weight (0.25–0.33 kg SUPERWOOD per kg steel): company assumption. Reductions are arithmetic on these inputs.", 6.6, 0.45);
 
 // ---------- 18 · RISKS ----------
