@@ -270,7 +270,7 @@ about ten points, which is why the deck prints a 50–80% band rather than a poi
 ## 7. Gaps and next steps
 
 - One building's material takeoff (structure, envelope, foundations, fencing) from a construction partner.
-- Read Hasan et al. 2022 and Sharma et al. 2023 directly; the arXiv preprint is a secondary citation.
+- Concrete intensity scope: the arXiv preprint (Eslami, 2025, section 3.1) says only that "a standard 10-megawatt data center might utilize between 5,000 and 10,000 cubic meters of concrete", with no breakdown between building foundations, slab, site paving, parking or yard, and attributes it to Hasan et al. 2022 (an energy-efficiency review) and Sharma et al. 2023 (Scope 3 quantification). Read both to learn whether site paving and parking are inside the figure; until then the model treats it as all concrete on the site and splits it 40–50% foundations, the rest slab, paving and yard (2026-09-06).
 - Fix the TEM thickness mix so plant output in tonnes is one number.
 - Fast + Epp to state substitution factors for two or three elements (truss, joist, wall panel), and a first opinion
   on whether a SUPERWOOD foundation system is even a sensible engineering target.
