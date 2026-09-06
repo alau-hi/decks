@@ -89,9 +89,9 @@ thesis.forEach(([head, sub], i) => {
 });
 note(s, "The company, team, mills, cost roadmap and the raise are in the SUPERMILLS Investor Overview. This deck covers one application. Strength: company test data vs ASTM A36; data center sizing: company estimate (slides 5–6).", 6.0, 0.5);
 
-// ---------- 3 · THE BUYER ----------
-s = pres.addSlide(); base(s, "InventWood · The buyer");
-kicker(s, "Industry growth");
+// ---------- 3 · MARKET ----------
+s = pres.addSlide(); base(s, "InventWood · Market");
+kicker(s, "Market");
 title(s, "Industry Growth", L, 0.88, 12.2, 27);
 s.addText([t("US data center construction is running at ", { color: CREAM }), t("$75 billion a year", { color: GOLD, italic: true }), t(", up 57% in twelve months.", { color: CREAM })], { x: L, y: 1.42, w: 12.2, h: 0.4, fontFace: SERIF, fontSize: 16, margin: 0 });
 s.addImage({ path: "prep/charts/construction.png", x: L, y: 1.95, w: 6.4, h: 6.4 * 4.3 / 8.6 });
@@ -110,8 +110,8 @@ growth.forEach(([head, sub], i) => {
 note(s, "US Census Bureau, Construction Spending (C30), private data center construction put in place: July 2026 preliminary seasonally adjusted annual rate $75.2B vs $47.8B in July 2025 (+57%); bars are calendar-year totals, not seasonally adjusted; 2026 estimated from the January to July pace; buildings only, servers excluded. JLL North America Data Center Report Midyear 2026 (66 GW). McKinsey, AI power (2025). JLL Global Data Center Outlook 2026. Dell'Oro Group (2026). Steel intensity: arXiv 2509.21312, secondary; tonnage derived. Shortage statements are what customers report to InventWood.", 6.62, 0.45);
 
 // ---------- 4 · COMMUNITY PUSHBACK: AESTHETICS AND NOISE ----------
-s = pres.addSlide(); base(s, "InventWood · The buyer");
-kicker(s, "The buyer · Industry challenged by communities");
+s = pres.addSlide(); base(s, "InventWood · Market");
+kicker(s, "Market · Pushback");
 title(s, "Industry Challenged by Communities", L, 0.88, 12.2, 27);
 s.addText("Community pushback now blocks or delays more data center projects than ever.", { x: L, y: 1.42, w: 12.2, h: 0.4, fontFace: SERIF, fontSize: 16, color: CREAM, margin: 0 });
 const complaints = [
@@ -143,8 +143,8 @@ s.addText([t("We help with these two. ", { color: CREAM }), t("We can go much fu
 note(s, "Data Center Watch, Q1 2026 report (June 2026). Virginia HB 153; Henry County, VA ordinance, Aug 2026. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.", 6.72, 0.35);
 
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
-s = pres.addSlide(); base(s, "InventWood · The buyer");
-kicker(s, "The buyer · Wood emerging");
+s = pres.addSlide(); base(s, "InventWood · Market");
+kicker(s, "Market · Mass timber");
 title(s, [t("Hyperscalers are already building structures with wood. We "), gold("turbocharge"), t(" wood.")], L, 0.88, 12.2, 23);
 const pub = [
   ["prep/logo_microsoft.png", 1688 / 360, "prep/ms_clt_datacenter.jpg", "Photo: Microsoft", "Two Northern Virginia datacenters with cross-laminated timber floors on a steel frame — about 35% less embodied carbon than conventional steel construction, 65% less than precast. Gensler; Thornton Tomasetti.", "Microsoft Source, Nov 2024"],
