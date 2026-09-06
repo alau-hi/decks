@@ -1,6 +1,6 @@
 # Material mass in a data center — the build-up, and how much SUPERWOOD can replace
 
-Date: 2026-09-05 (v9: every row carries a material split (steel, concrete, plastic, other; analyses/material_split.json) and carbon is valued on the steel and concrete content only (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
+Date: 2026-09-06 (v10: IT row spans two horizons — rack cabinets 18% of IT mass soon, server enclosures 22% long term (Alex 2026-09-06); v9: every row carries a material split (steel, concrete, plastic, other; analyses/material_split.json) and carbon is valued on the steel and concrete content only (Alex 2026-09-05); v6: per-component embodied carbon, steel and concrete carbon shares, EAF sensitivity and a steel-share-of-above-ground-mass sheet added to the workbook; v5: racking stays *Soon* — a few months of development; server and equipment enclosures, 40% of IT mass, added to the *Long term*; electronics never — per Alex 2026-09-04. v4 2026-09-01 set the long-term concrete shares). Status: **estimate**.
 Every table below is generated from the live model [materials-mass-and-replacement.xlsx](materials-mass-and-replacement.xlsx)
 — change an input there and regenerate rather than hand-edit. Labels: published / derived / estimated; confidence
 `[conf: H|M|L]`. Treat everything as `[conf: L]` unless marked.
@@ -17,7 +17,7 @@ Low and high columns are whole scenarios (all-low inputs, all-high inputs), not 
 | **Immediate** | Replacements shipping now | SuperMill One boards to 8" × 16' × 3/8" | None beyond E84 Class A where a finish rating applies |
 | **Soon** | Non-structural items behind one scoped test program — racks, platforms, barriers, doors | SuperMill One, then SuperMill Two | A scoped test program per application; racks are a few months of development |
 | **Medium term** | Structural steel (primary and roof), roof trusses and roofs, ducting, enclosures | SuperMill Two boards and veneers | Mass-timber qualification pathway, ICC-ES, E119, NFPA 285, FM acceptance; NFPA 90A / UL 181 for ducting |
-| **Long term** | Concrete: 75% of slab-on-grade and paving, 90% of foundations, footings, piers and pads, with the rebar in each; server and equipment enclosures (40% of IT mass, estimate) — never the electronics | ChipMill-scale products | Stated technical potential (Alex, 2026-09-01 and 2026-09-04); no design or code pathway yet |
+| **Long term** | Concrete: 75% of slab-on-grade and paving, 90% of foundations, footings, piers and pads, with the rebar in each; server enclosures (22% of IT mass, estimate; rack cabinets are *Soon*) — never the electronics | ChipMill-scale products | Stated technical potential (Alex, 2026-09-01 and 2026-09-04); no design or code pathway yet |
 
 ## 1. Assumptions that drive the build-up
 
@@ -113,22 +113,22 @@ the SUPERWOOD mass required.
 | Interior finishes, backplanes, trim (admin / office) | 100% | — | — | — | 1,000–3,000 tons | 130–391 tons | E84 Class A finish; backplanes UL 94 yellow card (not yet started) |
 | Electrical equipment and conductors | — | — | — | — | — | — | Gensets, transformers, switchgear, batteries, copper |
 | Mechanical equipment, piping, loop water | — | — | — | — | — | — | Chillers, fan walls, coolers, piping (ductwork is its own row) |
-| IT — servers and racks | — | — | — | 40% | 6,000–28,000 tons | 1,800–16,800 tons | Server and equipment enclosures only (40% of IT mass, estimate); electronics never. Rack masses [H]; aggregate [L] |
+| IT — servers and racks | — | 18% | — | 22% | 6,000–28,000 tons | 1,800–16,800 tons | Rack cabinets soon (18% of IT mass), server enclosures long term (22%), estimates; electronics never. Rack masses [H]; aggregate [L] |
 
 ## 4. Roll-up by horizon (per 1 GW data center)
 
 | Horizon | Incumbent mass replaced | SUPERWOOD required | Plant-years |
 |---|---|---|---|
 | Immediate — skins, screens, fences, interiors, backplanes | 3,344–12,361 tons | 1,234–2,685 tons (1.4–3.1M sf) | 1.4–3.1 yr of SuperMill One |
-| Soon — platforms, railings, barriers, racking, doors | 11,500–30,000 tons | 3,450–18,000 tons | 0.1–0.6 yr of SuperMill Two |
+| Soon — platforms, railings, barriers, racking, doors | 14,200–42,600 tons | 4,260–25,560 tons | 0.1–0.8 yr of SuperMill Two |
 | Medium term — structural steel, roof trusses and roofs, ducting, enclosures | 53,000–108,000 tons | 15,900–64,800 tons | 0.5–2.1 yr of SuperMill Two |
-| Long term — slab, paving, foundations and their rebar (technical potential) | 1,002,300–2,089,000 tons | 57,690–362,400 tons | 1.8–11.6 yr of SuperMill Two |
+| Long term — slab, paving, foundations and their rebar (technical potential) | 999,600–2,076,400 tons | 56,880–354,840 tons | 1.8–11.3 yr of SuperMill Two |
 | **Cumulative** | **1,070,144–2,239,361 tons** | **78,274–447,885 tons** | **2.5–14.3 yr of SuperMill Two** |
 | Not replaced by SUPERWOOD | 315,200–636,000 tons | | 22–23% of total mass |
 
-- Through the medium term SUPERWOOD addresses **67,844–150,361 tons** of incumbent
+- Through the medium term SUPERWOOD addresses **70,544–162,961 tons** of incumbent
   material — essentially all the steel above the slab, about
-  4.9–5.2% of total data center mass.
+  5.1–5.7% of total data center mass.
   The long-term concrete rows are what move the total: with them, the ceiling is **77.2–77.9% of total
   data center mass**. Those shares (75% of slab and paving, 90% of foundations) are stated technical potential, not an
   engineered plan, and the whole difference between the two figures rests on them.
@@ -150,9 +150,9 @@ server enclosures in the long-term horizon, carry no factor, so long-term avoide
 | Horizon | Incumbent emissions avoided | SUPERWOOD manufacturing | Net reduction | Net vs EAF steel | Biogenic stored (separate) |
 |---|---|---|---|---|---|
 | Immediate (steel) | 5,561–21,377 tons CO₂e | 617–1,343 tons | **4,944–20,034 tons** | 2,751–11,608 tons | 1,604–3,491 tons |
-| Soon (steel) | 19,920–52,050 tons CO₂e | 1,725–9,000 tons | **18,195–43,050 tons** | 6,205–11,700 tons | 4,485–23,400 tons |
+| Soon (steel) | 22,674–64,902 tons CO₂e | 2,130–12,780 tons | **20,544–52,122 tons** | 7,366–15,228 tons | 5,538–33,228 tons |
 | Medium term (steel) | 95,400–194,400 tons CO₂e | 7,950–32,400 tons | **87,450–162,000 tons** | 29,150–43,200 tons | 20,670–84,240 tons |
-| Long term (foundation concrete) | 166,500–411,960 tons CO₂e | 28,845–181,200 tons | **137,655–230,760 tons** | 108,285–129,340 tons | 74,997–471,120 tons |
+| Long term (foundation concrete) | 163,746–399,108 tons CO₂e | 28,440–177,420 tons | **135,306–221,688 tons** | 107,124–125,812 tons | 73,944–461,292 tons |
 
 Against recycled (EAF) steel the avoided figure is far lower, so any claim must state its baseline.
 
@@ -233,7 +233,7 @@ about ten points, which is why the deck prints a 50–80% band rather than a poi
 
 ## 6. Sensitivities — what moves the answer most
 
-1. **Long-term concrete.** The long-term rows are 1,002,300–2,089,000 tons of concrete and rebar on stated technical
+1. **Long-term concrete.** The long-term rows are 999,600–2,076,400 tons of concrete and rebar on stated technical
    potential (75% of slab and paving, 90% of foundations) and a 0.05–0.15 substitution factor, none of it engineered.
    They are the only rows that change the total-mass share materially, and the least evidenced. Present them as
    technical potential and say so on the slide.

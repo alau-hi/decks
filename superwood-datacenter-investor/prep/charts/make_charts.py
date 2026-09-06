@@ -23,8 +23,9 @@ import json as _j, math
 _d=_j.load(open("analyses/material_split.json")); SPLIT=_d["split"]; HZ=_d["horizon"]
 HORDER=["imm","soon","med","long"]
 def cum(name):
-    h=HZ[name]["horizon"]; s=HZ[name]["share"]
-    return [s if (h is not None and HORDER.index(h)<=j) else 0.0 for j in range(4)]
+    """cumulative substitutable share by horizon; a row may carry several steps"""
+    e=HZ[name]; steps=e.get("steps") or ([{"horizon":e["horizon"],"share":e["share"]}] if e.get("horizon") else [])
+    return [sum(s["share"] for s in steps if HORDER.index(s["horizon"])<=j) for j in range(4)]
 from matplotlib.patches import Circle, Wedge
 MAT=[("steel",WOOD),("concrete","#8c8478"),("plastic",TEAL),("other","#5a4a36")]
 carb=[r[1]*(SPLIT[r[0]][0]*1.8+SPLIT[r[0]][1]*0.12+SPLIT[r[0]][2]*3.0) for r in rows]

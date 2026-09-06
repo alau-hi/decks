@@ -161,8 +161,17 @@
    "share": 0.0
   },
   "IT — servers and racks": {
-   "horizon": "long",
-   "share": 0.4
+   "steps": [
+    {
+     "horizon": "soon",
+     "share": 0.18
+    },
+    {
+     "horizon": "long",
+     "share": 0.22
+    }
+   ],
+   "note": "rack cabinets soon, server enclosures long term (Alex 2026-09-06)"
   },
   "Steel — primary frame": {
    "horizon": "med",

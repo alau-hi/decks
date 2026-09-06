@@ -5,9 +5,9 @@ def W(p,s): open(p,"w").write(s)
 _d=json.load(open("analyses/material_split.json")); SPLIT=_d["split"]; HZ=_d["horizon"]; F={"steel":1.8,"concrete":0.12,"plastic":3.0}
 HORDER=["imm","soon","med","long"]
 def cum(name):
-    """cumulative substitutable share by horizon: the row's share from its horizon onward"""
-    h=HZ[name]["horizon"]; s=HZ[name]["share"]
-    return [s if (h is not None and HORDER.index(h)<=j) else 0.0 for j in range(4)]
+    """cumulative substitutable share by horizon; a row may carry several steps"""
+    e=HZ[name]; steps=e.get("steps") or ([{"horizon":e["horizon"],"share":e["share"]}] if e.get("horizon") else [])
+    return [sum(s["share"] for s in steps if HORDER.index(s["horizon"])<=j) for j in range(4)]
 def bubbles(c):
     return '<span class="hz">'+''.join(f'<i style="--p:{p*100:.0f}" title="{p*100:.0f}%"></i>' for p in c)+'</span>'
 HZ_HEAD='<div class="hb hzh"><span class="hl"></span><div></div><span class="hv">Substitutable with wood, % of potential</span><span class="hz"><b>Now</b><b>Soon</b><b>Med</b><b>Long</b></span></div>\n'

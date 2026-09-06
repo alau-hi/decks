@@ -43,7 +43,8 @@ rows=[
 ("elec_t_mw","Electrical: gensets, transformers, switchgear, UPS, busway, copper",50,100,"t/MW","estimated [L]","Genset 30–60 t, 1 MW UPS 10–20 t, transformer 5–8 t"),
 ("mech_t_mw","Mechanical: chillers, fan walls, coolers, piping, water",20,50,"t/MW","estimated [L]",""),
 ("it_t_mw","IT: servers and racks",15,70,"t/MW","estimated [L]","Loaded rack ~1 t; GB200 NVL72 ~1.36 t [H]"),
-("it_enclosure_share","Share of IT mass that is server and equipment enclosures (boxes), replaceable long term",0.4,0.4,"share","estimated [L]; Alex 2026-09-04","Server boxes eventually; the electronics never"),
+("it_rack_share","Share of IT mass that is server rack cabinets (frames, panels, doors) — substitutable soon",0.18,0.18,"share","estimated [L]; Alex 2026-09-06","A loaded rack of 1–1.4 t carries a 150–250 kg steel cabinet"),
+("it_enclosure_share","Share of IT mass that is server enclosures (chassis) — long term",0.22,0.22,"share","estimated [L]; Alex 2026-09-04/06","Server boxes eventually; the electronics never"),
 ("foundation_share","Share of all concrete that is foundations, footings, piers and equipment pads",0.4,0.5,"share","estimated [L]","Remainder is slab on grade, paving and yard"),
 ("slab_lt","Long-term technical potential: share of slab-on-grade and paving concrete replaceable",0.75,0.75,"share","asserted-internal (Alex, 2026-09-01) [L]","Technical potential, not a plan; no design or code pathway yet"),
 ("fdn_lt","Long-term technical potential: share of foundations, footings, piers and pads replaceable",0.9,0.9,"share","asserted-internal (Alex, 2026-09-01) [L]","Technical potential, not a plan"),
@@ -125,7 +126,7 @@ comp=[
 ("Interior finishes, backplanes, trim (admin / office)",lambda c:f"={ref('interior_t_mw',c)}*{IT(c)}","Immediate",lambda c:"1","interior","E84 Class A finish; backplanes UL 94 yellow card (not yet started)"),
 ("Electrical equipment and conductors",lambda c:f"={ref('elec_t_mw',c)}*{IT(c)}",None,lambda c:"0","zero","Gensets, transformers, switchgear, batteries, copper"),
 ("Mechanical equipment, piping, loop water",lambda c:f"={ref('mech_t_mw',c)}*{IT(c)}",None,lambda c:"0","zero","Chillers, fan walls, coolers, piping (ductwork is its own row)"),
-("IT — servers and racks",lambda c:f"={ref('it_t_mw',c)}*{IT(c)}","Long term",lambda c:f"={ref('it_enclosure_share',c)}","steel","Server and equipment enclosures only (40% of IT mass, estimate); electronics never. Rack masses [H]; aggregate [L]"),
+("IT — servers and racks",lambda c:f"={ref('it_t_mw',c)}*{IT(c)}",{"Soon":lambda c:f"={ref('it_rack_share',c)}","Long term":lambda c:f"={ref('it_enclosure_share',c)}"},None,"steel","Rack cabinets soon (18% of IT mass), server enclosures long term (22%), estimates; electronics never. Rack masses [H]; aggregate [L]"),
 ]
 r=2; data_rows=[]; precast_row=None
 for name,f,hor,share,rule,note in comp:
@@ -143,7 +144,7 @@ for name,f,hor,share,rule,note in comp:
         M.cell(row=r,column=col+2,value=f"={c}{r}" if not prev else f"={CL(col+2)}{prev[-1]}+{c}{r}").fill=calc
     # four addressable-share columns (editable); the row's horizon gets the share, others 0
     for h in HORS:
-        _s=share("B") if h==hor else "0"; _s=float(_s) if not _s.startswith("=") else _s
+        _s=(hor[h]("B") if h in hor else "0") if isinstance(hor,dict) else (share("B") if h==hor else "0"); _s=float(_s) if not _s.startswith("=") else _s
         x=M.cell(row=r,column=HCOL[h],value=_s); x.fill=inp; x.number_format="0%"
     tot_share=f"SUM($F{r}:$I{r})"
     for c,(col,scol) in (("B",(10,12)),("C",(11,13))):
