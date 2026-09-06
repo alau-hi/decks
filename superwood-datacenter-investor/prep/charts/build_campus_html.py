@@ -54,23 +54,26 @@ LEG_M='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel<
 LEG_C='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel at 1.8 kg CO₂e/kg</span><span><i style="background:#8c8478"></i>Concrete at 0.12</span><span><i style="background:var(--teal)"></i>Polymers at an average 3.0</span><span class="muted">Other materials not valued</span></div>'
 def rebuild(path):
     h=R(path); a=h.index('<section id="campus"'); b=h.index('</section>',a); sec=h[a:b]
-    notes_m=re.search(r'<div class="view" id="view-mass-notes".*?</p></div></div></div>',sec,re.S).group(0)
-    notes_c=re.search(r'<div class="view" id="view-carbon-notes".*?</p></div></div></div>',sec,re.S).group(0)
-    s0=sec.index('<div class="split rv"'); s1=sec.index('<p class="note rv">')
-    block=f'''<div class="split rv" style="grid-template-columns:1.7fr 1fr;align-items:center">
+    li_m=re.search(r'<div class="view" id="view-mass-notes"[^>]*>(<div class="li".*?</p></div></div>)',sec,re.S).group(1)
+    li_c=re.search(r'<div class="view" id="view-carbon-notes"[^>]*>(<div class="li".*?</p></div></div>)',sec,re.S).group(1)
+    foot=re.search(r'<p class="note rv">.*?</p>',sec,re.S).group(0)
+    s0=sec.index('<div class="split rv"'); s1=sec.rindex('</div>')  # the last </div> in the section closes .wrap; rebuild everything between
+    # everything from the split to the end of .wrap is rebuilt: chart left, notes + legend + footnote right
+    block=f'''<div class="split rv campus" style="grid-template-columns:2.6fr 1fr;align-items:start">
       <div class="chartcol">
         <div class="view" id="view-mass" role="tabpanel" aria-labelledby="tab-mass" data-view="mass"><div class="hbars det">
 {rows_html("mass")}{AX_M}
-</div>{LEG_M}</div>
+</div></div>
         <div class="view" id="view-carbon" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden><div class="hbars det">
 {rows_html("carbon")}{AX_C}
-</div>{LEG_C}</div>
+</div></div>
       </div>
-      <div>
-        {notes_m}
-        {notes_c}
+      <div class="sidecol">
+        <div class="view" id="view-mass-notes" role="tabpanel" aria-labelledby="tab-mass" data-view="mass">{li_m}{LEG_M}</div>
+        <div class="view" id="view-carbon-notes" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden>{li_c}{LEG_C}</div>
+        {foot}
       </div>
     </div>
-    '''
+  '''
     sec=sec[:s0]+block+sec[s1:]; W(path,h[:a]+sec+h[b:]); print(path,"divs",sec.count("<div"),sec.count("</div>"))
 for p in ("slides.html","v2.html"): rebuild(p)
