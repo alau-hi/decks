@@ -92,7 +92,8 @@ note(s, "The company, team, mills, cost roadmap and the raise are in the SUPERMI
 // ---------- 3 · THE BUYER ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
 kicker(s, "Industry growth");
-title(s, [t("US data center construction is running at "), gold("$75 billion a year"), t(", up 57% in twelve months")], L, 0.88, 12.2, 27);
+title(s, "Industry Growth", L, 0.88, 12.2, 27);
+s.addText([t("US data center construction is running at ", { color: CREAM }), t("$75 billion a year", { color: GOLD, italic: true }), t(", up 57% in twelve months.", { color: CREAM })], { x: L, y: 1.42, w: 12.2, h: 0.4, fontFace: SERIF, fontSize: 16, margin: 0 });
 s.addImage({ path: "prep/charts/construction.png", x: L, y: 1.95, w: 6.4, h: 6.4 * 4.3 / 8.6 });
 label(s, "How it is projected to grow", 7.3, 1.95, 5.5);
 const growth = [
@@ -111,7 +112,8 @@ note(s, "US Census Bureau, Construction Spending (C30), private data center cons
 // ---------- 4 · COMMUNITY PUSHBACK: AESTHETICS AND NOISE ----------
 s = pres.addSlide(); base(s, "InventWood · The buyer");
 kicker(s, "The buyer · Industry challenged by communities");
-title(s, "Community pushback now blocks or delays more data center projects than ever.", L, 0.88, 12.2, 25);
+title(s, "Industry Challenged by Communities", L, 0.88, 12.2, 27);
+s.addText("Community pushback now blocks or delays more data center projects than ever.", { x: L, y: 1.42, w: 12.2, h: 0.4, fontFace: SERIF, fontSize: 16, color: CREAM, margin: 0 });
 const complaints = [
   ["prep/entrance_office.jpg", "Aesthetics", "Windowless boxes on farmland. Counties answer with setbacks and design standards.", "Facades, fences and screens that read as architecture."],
   ["prep/tiles/tile_fanbox.jpg", "Noise", "Fans, chillers, generator tests. Property-line decibel limits are spreading.", "Acoustic screens and barriers; quieter fan enclosures and ductwork."],
