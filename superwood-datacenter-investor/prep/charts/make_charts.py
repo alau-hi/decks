@@ -24,32 +24,44 @@ SPLIT=_j.load(open("analyses/material_split.json"))["split"]
 MAT=[("steel",WOOD),("concrete","#8c8478"),("plastic",TEAL),("other","#5a4a36")]
 carb=[r[1]*(SPLIT[r[0]][0]*1.8+SPLIT[r[0]][1]*0.12+SPLIT[r[0]][2]*3.0) for r in rows]
 LEG=[Patch(color=c_,label=n.capitalize()) for n,c_ in MAT]
+GROUP_ROWS=[("Contents — fit-out and equipment",9),("Building — structure and envelope",5),("Foundation — slab, footings, rebar",3)]
+def with_totals(vals):
+    """insert a bold subtotal row at the head of each group: (label, value, split, is_total)"""
+    out=[]; i=0
+    for title,n in GROUP_ROWS:
+        grp=rows[i:i+n]; gk=sum(r[1] for r in grp); gsp=[sum(r[1]*SPLIT[r[0]][j] for r in grp)/gk for j in range(4)]
+        out.append((title.upper(),sum(vals[i:i+n]),gsp,True,gk))
+        for r,v in zip(grp,vals[i:i+n]): out.append((r[0],v,SPLIT[r[0]],False,r[1]))
+        i+=n
+    return out
 def campus(values, out, xlabel, log, narrow, unit, carbon=False):
-    fig,a=plt.subplots(figsize=(7.0,4.3) if narrow else (12.4,6.9),facecolor=INK); clean(a)
+    fig,a=plt.subplots(figsize=(7.0,4.8) if narrow else (12.4,7.6),facecolor=INK); clean(a)
     fs=8 if narrow else 10.5
-    for i,(r,v) in enumerate(zip(rows,values)):
-        sp=SPLIT[r[0]]
+    disp=with_totals(values)
+    for i,(lab,v,sp,is_t,massk) in enumerate(disp):
+        hh=0.78 if is_t else 0.6
         if carbon:
             left=0
             for (n,c_),share,f in zip(MAT[:3],sp[:3],(1.8,0.12,3.0)):
-                w=r[1]*share*f
-                if w>0: a.barh(i,w,left=left,color=c_,height=0.66); left+=w
+                w=massk*share*f
+                if w>0: a.barh(i,w,left=left,color=c_,height=hh); left+=w
         elif log:
-            # bar length is total mass on the log axis; segments show each material's share of the bar
             lo=0.5; span=math.log10(v)-math.log10(lo); left=lo
             for (n,c_),share in zip(MAT,sp):
                 if share<=0: continue
-                right=10**(math.log10(left)+span*share); a.barh(i,right-left,left=left,color=c_,height=0.66); left=right
+                right=10**(math.log10(left)+span*share); a.barh(i,right-left,left=left,color=c_,height=hh); left=right
         else:
             left=0
             for (n,c_),share in zip(MAT,sp):
-                if share>0: a.barh(i,v*share,left=left,color=c_,height=0.66); left+=v*share
-        a.text(v*1.12 if log else v+4,i,f"{v*1000:,.0f} {unit}",va="center",fontsize=7.5 if narrow else 10,color=DIM)
-    a.set_yticks(range(len(rows))); a.set_yticklabels([r[0] for r in rows],fontsize=fs,color=CREAM); a.invert_yaxis()
+                if share>0: a.barh(i,v*share,left=left,color=c_,height=hh); left+=v*share
+        a.text(v*1.12 if log else v+4,i,f"{v*1000:,.0f} {unit}",va="center",fontsize=(8 if narrow else 11) if is_t else (7 if narrow else 9.5),color=CREAM if is_t else DIM,fontweight="bold" if is_t else "normal")
+    a.set_yticks(range(len(disp))); a.set_yticklabels([d[0] for d in disp],fontsize=fs,color=CREAM); a.invert_yaxis()
+    for t,d in zip(a.get_yticklabels(),disp):
+        if d[3]: t.set_fontweight('bold'); t.set_color(BRIGHT); t.set_fontsize(fs-1)
     if log: a.set_xscale("log"); a.set_xlim(0.5,(9000 if narrow else 40000))
-    else: a.set_xlim(0,(260 if narrow else 300))
+    else: a.set_xlim(0,(520 if narrow else 560))
     a.set_xlabel(xlabel,color=MUTED,fontsize=8 if narrow else 10); a.grid(axis="x",color=NR,lw=0.8); a.set_axisbelow(True)
-    a.legend(handles=LEG[:3] if carbon else LEG,loc="lower right",fontsize=7.5 if narrow else 9,facecolor=INK,edgecolor=INK,labelcolor=DIM)
+    a.legend(handles=LEG[:3] if carbon else LEG,loc="lower right",fontsize=9 if narrow else 12,facecolor=INK,edgecolor=INK,labelcolor=DIM)
     plt.tight_layout(); fig.savefig(out,dpi=170,facecolor=INK); plt.close(fig)
 mass=[r[1] for r in rows]; carbv=list(carb)
 campus(mass,"prep/charts/campus_mass.png","'000s of tons per 1 GW data center, high case — log scale",True,False,"tons")

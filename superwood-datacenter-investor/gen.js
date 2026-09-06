@@ -201,7 +201,7 @@ s = pres.addSlide(); base(s, "InventWood · The size");
 kicker(s, "The size");
 title(s, "What a 1 GW data center is made of", L, 0.88, 11.9, 27);
 label(s, "By mass", L, 1.8, 4); label(s, "By embodied carbon", 6.7, 1.8, 4);
-const chW = 5.4, chH = chW * 4.3 / 7.0;
+const chW = 5.4, chH = chW * 4.8 / 7.0;
 s.addImage({ path: "prep/charts/campus_mass_narrow.png", x: L, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_carbon_narrow.png", x: 6.7, y: 2.08, w: chW, h: chH });
 const sizeL = [["50–80% of the above-ground portion of a data center is steel", "Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server enclosures eventually; never the electronics."]];
