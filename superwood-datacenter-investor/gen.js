@@ -285,7 +285,7 @@ note(s, "Schedule figures are mass-timber case studies (ULI Urban Land: ~20% ave
 // ---------- 11 · NOW ----------
 s = pres.addSlide(); base(s, "InventWood · Applications");
 kicker(s, "Applications · Immediate");
-title(s, "Immediate: skins, screens and fences from SuperMill One");
+title(s, "Skins, screens and fences from SuperMill One");
 s.addText("Every item below ships today as boards up to 8\" × 16' × 3/8\", exterior or interior grade. SuperMill One makes about one million square feet a year across all markets.",
   { x: L, y: 1.85, w: CW, h: 0.45, fontFace: SANS, fontSize: 12, color: DIM, margin: 0 });
 s.addText([t("IMMEDIATE ", { bold: true, color: BRIGHT }), t("shipping from SuperMill One   ·   ", {}), t("SOON ", { bold: true, color: BRIGHT }), t("1–3 years; straightforward applications engineering   ·   ", {}), t("MEDIUM TERM ", { bold: true, color: BRIGHT }), t("complex applications engineering such as full building systems, new form factors, or materials engineering   ·   ", {}), t("LONG TERM ", { bold: true, color: BRIGHT }), t("5+ years; technical potential with no design or code pathway yet", {})], { x: L, y: 2.25, w: CW, h: 0.3, fontFace: SANS, fontSize: 9.5, color: DIM, margin: 0 });
@@ -315,7 +315,7 @@ conceptTag(s, W - 3.6, 5.02, 3.0, "Concept renderings");
 // ---------- 12 · NEXT ----------
 s = pres.addSlide(); base(s, "InventWood · Applications");
 kicker(s, "Applications · Soon (1–3 years)");
-title(s, "Soon (1–3 years): applications needing straightforward applications engineering", L, 0.88, 11.9, 27);
+title(s, "Products that need only straightforward engineering", L, 0.88, 11.9, 27);
 const gated = [
   ["tile_fanbox", "Fan enclosures & ducting", "Acoustic and airflow data"],
   ["tile_walkway", "Walkways & platforms", "Load and connection data"],
@@ -371,7 +371,7 @@ conceptTag(s, W - 3.6, 5.42, 3.0, "Concept renderings");
 // ---------- 14 · THE LONG-TERM VISION ----------
 s = pres.addSlide(); base(s, "InventWood · Applications");
 kicker(s, "Applications · Long term (5+ years)");
-title(s, [t("Long term (5+ years): prefabricated "), gold("envelopes"), t(", then foundations")]);
+title(s, [t("Prefabricated "), gold("envelopes"), t(", then foundations")]);
 const vis = [
   ["Prefabricated building envelopes", "Structure and skin shipped as panels and modules — the co-development target with our hyperscaler customers' architects and engineers. Shells that carry their own loads, weigh far less than steel and precast, and can be disassembled and moved.", "Hyperscalers are asking for this now, to simplify design and delivery and accelerate schedules."],
   ["Foundations, slabs and paving", "Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete — installed faster, with lower geotechnical demands, and potentially movable.", "Biggest unaddressed impact both to speed of development and construction, and with huge carbon impact. Geotechnical requirements greatly impact schedule and site selection."],
@@ -433,8 +433,8 @@ collab.forEach(([logo, ar, name, desc], i) => {
 note(s, "Next steps undated. Published backup for Microsoft and Meta on the next slide.", 6.97, 0.3);
 
 // ---------- 16 · MICROSOFT AND META, ON THE RECORD AND WITH US ----------
-s = pres.addSlide(); base(s, "InventWood · The evidence");
-kicker(s, "The evidence");
+s = pres.addSlide(); base(s, "InventWood · Customers");
+kicker(s, "Customers");
 title(s, "Microsoft and Meta");
 const profiles = [
   ["Microsoft", "broad engagement",
@@ -504,49 +504,6 @@ s.addText("SUPERWOOD carbon estimates are based on the LCA developed by Professo
 note(s, "SUPERWOOD 0.5 kg CO₂e/kg manufactured and 0.5–1.5 kg/kg biogenic storage: company projections, pre-LCA. Steel 1.8 kg/kg: global BF-BOF average. EAF 0.4–0.7 kg/kg: typical published range for recycled-scrap steel. Replacement 3:1 to 4:1 by weight (0.25–0.33 kg SUPERWOOD per kg steel): company assumption. Reductions are arithmetic on these inputs.", 6.6, 0.45);
 
 // ---------- 18 · RISKS ----------
-s = pres.addSlide(); base(s, "InventWood · Risks");
-kicker(s, "Risks");
-title(s, "Risks and how we handle them");
-const risks = [
-  ["Insurers and code officials must accept SUPERWOOD for structural use", "Start with skins and non-structural items that need no assembly rating. Qualify structural applications with the first customer, on the pathway mass timber opened."],
-  ["Qualification could run longer than customer design cycles", "Sell what needs no qualification now. Hyperscalers design data centers years ahead, so basis-of-design work starts before qualification ends."],
-  ["One plant, shared across every market", "SuperMill One's output is allocated across every market; a gigawatt's skins alone are one to three plant-years. SuperMill Two resolves it; that is what the raise funds."],
-  ["Price against metal panel, fiber cement, CLT and recycled steel", "Premium skins where appearance and community acceptance carry value. Structural competitiveness arrives with SuperMill Two cost (roadmap basis, not yet realized)."],
-  ["Carbon figures are projections until the LCA is complete", "Labeled pre-LCA everywhere; LCA under way with Prof. Ming Hu, University of Notre Dame. No carbon claim without its baseline and substitution factor."],
-  ["Customer concentration", "Three hyperscalers plus Vertiv, Wooden Data Center and operators — and what is qualified for a data center is qualified for the wider structural market."],
-];
-label(s, "Risk", L, 1.95, 4, BRIGHT); label(s, "How we handle it", 6.25, 1.95, 5, BRIGHT);
-risks.forEach(([r, m], i) => {
-  const y = 2.3 + i * 0.72;
-  s.addShape(pres.ShapeType.rect, { x: L, y: y - 0.07, w: CW, h: 0.012, fill: { color: RULE } });
-  s.addText(r, { x: L, y, w: 5.4, h: 0.62, fontFace: SANS, fontSize: 11, bold: true, color: CREAM, margin: 0, valign: "top" });
-  body(s, m, 6.25, y, 6.5, 0.62, 10, DIM);
-});
-note(s, "No probabilities are assigned. These are the conditions the data-center case depends on.", 6.75, 0.3);
-
-// ---------- 19 · PATH TO FIRST PROJECTS ----------
-s = pres.addSlide(); base(s, "InventWood · The path");
-kicker(s, "The path");
-title(s, "Path to first projects");
-const nexts = [
-  ["Skins on one building or yard", "Facades, interiors, louvers, staff-area or security fencing — installed from SuperMill One output with a willing customer. Produces an installed reference and installed-cost data."],
-  ["A scoped test program with that customer", "Toward whatever the chosen application needs, co-funded. Produces the data package the next application inherits."],
-  ["Basis-of-design work with the customer's architect and engineer", "Structural enclosure and truss solutions that can be written into the standard data center design. Produces a specification that repeats."],
-  ["Measure the carbon delta", "A baseline bill-of-materials comparison and verification plan. Produces defensible numbers as the LCA completes."],
-];
-nexts.forEach(([head, sub], i) => {
-  const y = 2.0 + i * 1.1;
-  s.addText(`${i + 1}`, { x: L, y, w: 0.6, h: 0.55, fontFace: SERIF, fontSize: 26, color: WOOD, margin: 0 });
-  s.addText(head, { x: 1.4, y, w: 7.3, h: 0.4, fontFace: SANS, fontSize: 15, bold: true, color: CREAM, margin: 0 });
-  body(s, sub, 1.4, y + 0.42, 7.3, 0.65, 10.5, MUTED);
-});
-s.addImage({ path: "prep/factory.jpg", x: 9.3, y: 2.0, w: 3.5, h: 3.5 * 900 / 1600 });
-s.addText("SuperMill One, Frederick, MD", { x: 9.3, y: 4.0, w: 3.5, h: 0.3, fontFace: SANS, fontSize: 10.5, italic: true, color: MUTED, align: "center", margin: 0 });
-s.addImage({ path: "media/image111.png", x: 9.3, y: 4.4, w: 3.5, h: 1.84, sizing: { type: "crop", w: 3.5, h: 1.84 } });
-s.addText("Concept for SuperMill Two", { x: 9.3, y: 6.3, w: 3.5, h: 0.3, fontFace: SANS, fontSize: 10.5, italic: true, color: MUTED, align: "center", margin: 0 });
-note(s, "Steps are sequenced, not dated. Each names what it produces.", 6.75, 0.3);
-
-// ---------- 20 · CLOSE ----------
 s = pres.addSlide();
 s.background = { path: "prep/cover_bg.jpg" };
 s.addText([t("Let's build what's "), gold("next"), t(".")], { x: 1.0, y: 2.6, w: 10, h: 1.0, fontFace: SERIF, fontSize: 44, color: CREAM, margin: 0 });
