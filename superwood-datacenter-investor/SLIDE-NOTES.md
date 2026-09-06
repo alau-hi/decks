@@ -62,6 +62,8 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06: slide 6 comparison table enlarged to fill its column (type, row padding, beam thumbnails; table stretches to the pubs column height). Slide 10 item 4 "Mass timber's proven speed".
+- 2026-09-06: slide 5 stats row folded into the subtitle ("75 projects, about $130 billion, blocked or delayed in Q1 2026 alone. Rules follow: 1,000 ft setbacks, 50 dBA at the property line."), sources in its hover pop-up; the 833 groups / 49 states figure moves to the pop-up and the end note.
 - 2026-09-06: slide 8 kicker "The need" (was "The size").
 - 2026-09-06: close slide headline is Alex's call to action: "Let's work together to build AI buildings that are better to build, good for people, and good for the world."
 - 2026-09-06: slide 17 body simplified (Alex): two bars, all US construction $2,158B vs data centers $75B (Census C30 July 2026 SAAR), line "Data centers are about 3.5% of US construction spending. The rest of the built world is the market."; the four-step TAM cards are archived (archive/slide-springboard-cards-2026-09-06.*) and the TAM facts are no longer marked printed here. New register fact datacenter.share_of_us_construction_2026.

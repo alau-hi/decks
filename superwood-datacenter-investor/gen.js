@@ -148,7 +148,7 @@ note(s, "Lead times: Wood Mackenzie 2026 survey as reported by POWER and Data Ce
 s = newSlide(); base(s, "InventWood · Market");
 kicker(s, "Market · Pushback");
 title(s, "And communities are pushing back", L, 0.88, 11.9, 27);
-s.addText("Community pushback now blocks or delays more data center projects than ever.", { x: L, y: 1.42, w: 12.2, h: 0.4, fontFace: SERIF, fontSize: 16, color: CREAM, margin: 0 });
+s.addText("75 projects, about $130 billion, blocked or delayed in Q1 2026 alone. Rules follow: 1,000 ft setbacks, 50 dBA at the property line.", { x: L, y: 1.42, w: 12.2, h: 0.4, fontFace: SERIF, fontSize: 16, color: CREAM, margin: 0 });
 const complaints = [
   ["prep/entrance_office.jpg", "Aesthetics", "Windowless boxes on farmland. Counties answer with setbacks and design standards.", "Facades, fences and screens that read as architecture."],
   ["prep/tiles/tile_fanbox.jpg", "Noise", "Fans, chillers, generator tests. Property-line decibel limits are spreading.", "Acoustic screens and barriers; quieter fan enclosures and ductwork."],
@@ -164,18 +164,8 @@ complaints.forEach(([img, head, sub, ans], i) => {
   s.addText([t("SUPERWOOD   ", { bold: true, color: GOLD, fontSize: 7.5, charSpacing: 1.5 }), t(ans, { color: CREAM, fontSize: 9.5 })], { x: x + 0.3, y: y + ih + 1.08, w: cw - 0.6, h: 0.36, fontFace: SANS, margin: 0, valign: "middle" });
 });
 conceptTag(s, W - 3.6, 4.52, 3.0, "Concept renderings");
-const stats = [
-  ["75 projects, about $130 billion, blocked or delayed in one quarter", "Q1 2026, as much as all of 2025. 833 opposition groups in 49 states."],
-  ["Rules are following", "Henry County, Virginia: 1,000 ft setbacks, 50 dBA at the property line."],
-];
-stats.forEach(([head, sub], i) => {
-  const cw = 5.95, x = L + i * (cw + 0.3), y = 4.85;
-  s.addShape(pres.ShapeType.rect, { x, y, w: 0.03, h: 0.7, fill: { color: BRIGHT } });
-  s.addText(head, { x: x + 0.2, y, w: cw - 0.2, h: 0.32, fontFace: SANS, fontSize: 11, bold: true, color: CREAM, margin: 0, valign: "top" });
-  body(s, sub, x + 0.2, y + 0.34, cw - 0.2, 0.36, 9, MUTED);
-});
-s.addText([t("We can go much further", { color: GOLD, italic: true }), t(": into the structure of the building and what is inside it.", { color: CREAM })], { x: L, y: 5.75, w: CW, h: 0.7, fontFace: SERIF, fontSize: 21, margin: 0, valign: "middle" });
-note(s, "Data Center Watch, Q1 2026 report (June 2026). Virginia HB 153; Henry County, VA ordinance, Aug 2026. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.", 6.72, 0.35);
+s.addText([t("We can go much further", { color: GOLD, italic: true }), t(": into the structure of the building and what is inside it.", { color: CREAM })], { x: L, y: 5.1, w: CW, h: 0.7, fontFace: SERIF, fontSize: 21, margin: 0, valign: "middle" });
+note(s, "Data Center Watch, Q1 2026 report (June 2026): 75 projects, about $130 billion, as much as all of 2025; 833 opposition groups in 49 states. Virginia HB 153; Henry County, VA ordinance, Aug 2026. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.", 6.72, 0.35);
 
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
 s = newSlide(); base(s, "InventWood · Market");
@@ -305,7 +295,7 @@ const speed = [
   ["One-sixth the weight of steel", "Smaller cranes and crews, easier transport, lighter foundations. Time to power is what hyperscalers optimize."],
   ["Prefabricated to precision", "Panels and modules built off site and set like mass timber — standardized designs, plug-and-play systems."],
   ["Designed for assembly and disassembly", "Reusable, reconfigurable components for infrastructure that changes with every hardware generation."],
-  ["Mass timber's schedule record", "About 20% average schedule savings across seven case studies, up to 25–30% in others. SUPERWOOD builds the same way."],
+  ["Mass timber’s proven speed", "About 20% average schedule savings across seven case studies, up to 25–30% in others. SUPERWOOD builds the same way."],
 ];
 speed.forEach(([head, sub], i) => {
   const y = 2.0 + i * 1.1;
