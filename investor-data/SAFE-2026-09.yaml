@@ -2439,8 +2439,7 @@ facts:
     as_of: 2026-09-05
     status: canonical
     printed_in: [superwood-datacenter-investor]
-    notes: "Buildings only; servers and IT excluded (Cushman & Wakefield puts construction at ~20% of total data center cost). Monthly figures are preliminary/revised; annual bars are NSA sums. Supersedes the unsourced '5x in two years' line in the investor-overview register (2023 $20.0B to 2025 $49.7B is 2.5x)."
-
+    notes: "Monthly series and definitions in analyses/us-dc-construction-spending-census.json. Slide 3 shows 2014-2025 calendar totals plus a 2026 estimate of $67.06B (2025 total x Jan-Jul 2026 / Jan-Jul 2025 = 1.348; derived, conf M) and the July 2026 SAAR of $75.2B as a dashed line. Jan-Jul 2026 actual: $37.22B; trailing 12 months to July: $59.35B."
   - id: datacenter.community_pushback_q1_2026
     value: "75 projects, ~$130B blocked or delayed; 833 opposition groups in 49 states; moratorium bills in 14 states"
     unit: projects / USD / groups

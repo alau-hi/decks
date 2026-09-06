@@ -26,7 +26,7 @@ h2 em,h1 em{font-style:italic;color:var(--gold)}
 .kicker{font-size:max(.72rem,11px);font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--wood-bright)}
 .lead{font-size:clamp(.9rem,1.25vw,1.05rem);line-height:1.55;color:var(--cream-dim);font-weight:300;max-width:60ch}
 .lead b,.li b,p b{color:var(--cream);font-weight:600}
-.note{font-size:max(.6rem,9px);line-height:1.35;color:var(--muted);font-style:normal;margin-top:.8rem;max-width:110ch;opacity:.85}
+.note{font-size:max(.62rem,11px);line-height:1.35;color:var(--muted);font-style:normal;margin-top:.8rem;max-width:110ch;opacity:.85}
 .wrap > .card p{max-width:80ch}
 .rv{opacity:0;transform:translateY(1.4rem);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .in .rv{opacity:1;transform:none}
@@ -93,7 +93,7 @@ td:first-child{color:var(--cream);font-weight:600}
 .cbars .saar span{position:absolute;right:0;bottom:.2rem;font-size:max(.68rem,11px);color:var(--wood-bright);white-space:nowrap}
 .cbars figcaption{margin-top:1.9rem}
 .cbars .cb:not(:nth-last-child(-n+4)) b{visibility:hidden}.cbars .cb:nth-child(even):not(.t12) span{visibility:hidden}.cbars .cb b{font-size:max(.78rem,12px)}.cbars .cols{gap:.5rem}
-@media (max-width:700px), (max-width:860px) and (orientation:portrait){.cbars .cols{height:9rem;gap:.15rem}.cbars .cb b{font-size:0}.cbars .cb span{font-size:0}.cbars .cb:nth-child(1) span,.cbars .cb:nth-child(7) span,.cbars .cb.t12 span{font-size:max(.55rem,10px)}}
+@media (max-width:700px), (max-width:860px) and (orientation:portrait){.cbars .cols{height:9rem;gap:.15rem}.cbars .cb b{font-size:0}.cbars .cb span{font-size:0}.cbars .cb:nth-child(1) span,.cbars .cb:nth-child(7) span,.cbars .cb.t12 span{font-size:max(.55rem,11px)}}
 #props .split{grid-template-columns:1fr 1.55fr;gap:2.4rem;align-items:center}
 #props .props{gap:0 1.3rem;grid-auto-rows:1fr;align-items:center;height:100%}#props .props img{margin-top:0}#props .props>div{padding:.35rem 0}#props .props img{width:2rem;height:2rem;margin-top:.15rem}
 #props .props h4{font-size:max(1.02rem,13px);letter-spacing:.06em}#props .props p{font-size:max(.95rem,12.5px);line-height:1.45;color:var(--cream-dim)}
@@ -104,10 +104,10 @@ td:first-child{color:var(--cream);font-weight:600}
 .pbstats{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:.6rem}.pbstats div{border-left:2px solid var(--wood-bright);padding:.15rem 0 .15rem .9rem}.pbstats b{display:block;color:var(--cream);font-size:max(.95rem,12px);font-weight:600;line-height:1.35}.pbstats span{display:block;font-size:max(.82rem,11px);color:var(--muted);margin-top:.2rem;line-height:1.4}
 @media (max-width:900px), (orientation:portrait){.pbstats{grid-template-columns:1fr}}
 #vision .card h3{font-family:'Fraunces',serif;font-weight:400;font-size:1.35rem;margin-bottom:.3rem}#vision .card .sub{font-size:max(.95rem,12px);color:var(--cream);line-height:1.5;margin-bottom:.6rem}#vision .card p{max-width:none}
-.hbars.det .hb{grid-template-columns:11rem minmax(0,1fr) 6.8rem 7rem;gap:.5rem}#campus .hbars.det .hl{font-size:max(.72rem,11px)}#campus .hb .hv{font-size:max(.72rem,11px)}.hz{display:grid;grid-template-columns:repeat(4,1fr);gap:.25rem;justify-items:center;align-items:center}.hz i{width:1.2rem;height:1.2rem;border-radius:50%;border:1px solid var(--wood-bright);background:conic-gradient(var(--gold) calc(var(--p)*1%),rgba(226,184,119,.1) 0)}.hz i[style*='--p:0']{border-color:rgba(205,161,101,.35)}.hb.hd .hz i{width:1.45rem;height:1.45rem}.hz b{font-size:max(.6rem,10px);letter-spacing:.08em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;writing-mode:vertical-rl;transform:rotate(180deg);line-height:1}.hb.hzh{min-height:2.8rem;align-items:end}.hb.hzh .hv{font-size:max(.66rem,11px);color:var(--muted);text-align:right;white-space:normal;line-height:1.2}
+@media (min-width:861px), (min-width:701px) and (orientation:landscape){.hbars.det .hb{grid-template-columns:11rem minmax(0,1fr) 6.8rem 7rem;gap:.5rem}}#campus .hbars.det .hl{font-size:max(.72rem,11px)}#campus .hb .hv{font-size:max(.72rem,11px)}.hz{display:grid;grid-template-columns:repeat(4,1fr);gap:.25rem;justify-items:center;align-items:center}.hz i{width:1.2rem;height:1.2rem;border-radius:50%;border:1px solid var(--wood-bright);background:conic-gradient(var(--gold) calc(var(--p)*1%),rgba(226,184,119,.1) 0)}.hz i[style*='--p:0']{border-color:rgba(205,161,101,.35)}.hb.hd .hz i{width:1.45rem;height:1.45rem}.hz b{font-size:max(.62rem,11px);letter-spacing:.08em;text-transform:uppercase;color:var(--wood-bright);font-weight:600;writing-mode:vertical-rl;transform:rotate(180deg);line-height:1}.hb.hzh{min-height:2.8rem;align-items:end}.hb.hzh .hv{font-size:max(.66rem,11px);color:var(--muted);text-align:right;white-space:normal;line-height:1.2}
 .split.campus{gap:1.6rem}.sidecol .hleg.mats{flex-direction:column;align-items:flex-start;gap:.45rem;margin-top:1.1rem;font-size:max(.85rem,12px)}.sidecol .note{margin-top:1rem}.hbars.det{gap:.28rem}.hbars.det .hb{grid-template-columns:14rem minmax(0,1fr) 7.4rem 7.6rem;min-height:2rem}#campus .hbars.det .hl{font-size:max(.88rem,12px)}#campus .hb .hv{font-size:max(.84rem,12px)}#campus .hb .hv em{font-size:max(.7rem,11px)}.hz i{width:1.3rem;height:1.3rem}.hb.hd .hz i{width:1.55rem;height:1.55rem}.hb.hd .hl{font-size:max(.72rem,11px)}
 .split.campus{align-items:stretch}.sidecol{display:flex;flex-direction:column;padding:1.2rem 0 0 .6rem}.sidecol .view:not([hidden]){display:flex;flex-direction:column;gap:2.2rem;flex:1}.sidecol .li h3{font-size:1.25rem;line-height:1.3;margin-bottom:.6rem}.sidecol .li p{font-size:max(.95rem,12px);line-height:1.6}.sidecol .hleg.mats{margin-top:0;gap:.7rem;font-size:max(.9rem,12px)}.sidecol .note{margin-top:auto;padding-top:2rem}
-.tipwrap{position:relative;cursor:help;outline:none}.tipwrap .hint{display:block;font-size:max(.66rem,11px);color:var(--muted);font-style:italic;margin-top:.45rem}.tipwrap::after{content:attr(data-tip);position:absolute;left:0;right:0;top:calc(100% + .4rem);z-index:30;background:#140d07;color:var(--cream);border:1px solid var(--line);border-radius:.5rem;padding:.8rem 1rem;font-size:max(.8rem,11px);line-height:1.5;box-shadow:0 12px 30px rgba(0,0,0,.45);opacity:0;pointer-events:none;transform:translateY(-4px);transition:opacity .15s,transform .15s}.tipwrap:hover::after,.tipwrap:focus::after{opacity:1;transform:none}.tipwrap:focus{box-shadow:0 0 0 2px var(--wood-bright)}
+.tipwrap{position:relative;cursor:help;outline:none}.tipwrap .hint{display:block;font-size:max(.66rem,11px);color:var(--muted);font-style:italic;margin-top:.45rem}.tipwrap .tip{position:absolute;left:0;right:0;top:calc(100% + .4rem);z-index:30;background:#140d07;color:var(--cream);border:1px solid var(--line);border-radius:.5rem;padding:.8rem 1rem;font-size:max(.8rem,11px);line-height:1.5;box-shadow:0 12px 30px rgba(0,0,0,.45);opacity:0;pointer-events:none;transform:translateY(-4px);transition:opacity .15s,transform .15s}.tipwrap:hover .tip,.tipwrap:focus .tip{opacity:1;transform:none}.tipwrap:focus{box-shadow:0 0 0 2px var(--wood-bright)}
 /* dividers */
 .div .scrim{background:rgba(18,12,7,.35)}
 .div .kicker{margin-bottom:.8rem}.div h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}.div .lead{margin-top:.8rem}
@@ -166,7 +166,7 @@ td:first-child{color:var(--cream);font-weight:600}
   .deck{scroll-snap-type:y proximity}
   section{overflow:visible;overflow-x:clip;scroll-snap-stop:normal;padding:4.5rem var(--dock) 5rem 1.1rem;align-items:flex-start}
   nav.dock{right:.45rem;gap:.35rem;padding:.5rem .3rem;border-radius:.6rem}
-  nav.dock button{font-size:0;width:.5rem;height:.5rem;padding:0;border-radius:50%;background:var(--muted);opacity:.5}
+  nav.dock button{font-size:0;width:24px;height:24px;padding:8px;border-radius:50%;background-color:var(--muted);background-clip:content-box;opacity:.5}
   nav.dock button.active{background:var(--gold);opacity:1;transform:scale(1.4)}
   nav.dock i{display:none}
   .pager button span.lbl{display:none}
@@ -212,7 +212,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
 .toggle button[aria-selected="true"]{background:var(--wood-bright);color:var(--ink-deep)}
 .toggle button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .toggle .hint{font-size:max(.7rem,11px);letter-spacing:.14em;color:var(--muted);padding:0 .7em}
-@media (pointer:coarse){.toggle .hint{display:none}}
+@media (pointer:coarse){.toggle .hint{display:none}#prevb,#nextb{min-height:44px;min-width:44px;padding:0 1rem}.toggle button{min-height:44px}.tipwrap{padding-bottom:.5rem}}
 .detail{margin-left:.6rem;border:1px solid var(--line);background:transparent;color:var(--cream-dim);font:600 .7rem 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:.55em 1em;border-radius:999px;cursor:pointer;vertical-align:middle}.detail:hover,.detail:focus-visible{color:var(--cream);border-color:var(--wood-bright);outline:none}
 .defs{font-size:max(.78rem,11px);color:var(--cream-dim);line-height:1.5;margin:-.2rem 0 .9rem}.defs b{color:var(--wood-bright);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.9em}
 .hleg.mats .muted{color:var(--muted);font-style:italic}
@@ -254,6 +254,7 @@ h2{font-size:clamp(1.6rem,3.1vw,2.45rem)}
 .thesis .card h3{min-height:0}
 .band.speed{grid-template-columns:1fr;margin-top:1.3rem;padding:.8rem 1.1rem}.band.speed p{font-size:max(.9rem,12px);color:var(--cream);line-height:1.5}
 table.cmp td{line-height:1.4}
+@media (max-width:700px), (max-width:860px) and (orientation:portrait){.hbars .hb{grid-template-columns:1fr;gap:.15rem;min-height:0}.hbars .hb .hl{text-align:left}.hbars .hb .hz{justify-items:start;max-width:9rem}.hb.hzh{display:none}}
 </style>
 </head>
 <body class="on-cover">
@@ -261,9 +262,9 @@ table.cmp td{line-height:1.4}
 <div class="pager" id="pager"><button id="prevb" aria-label="Previous section"></button><span class="pn" id="pageno"></span><button id="nextb" aria-label="Next section"></button></div>
 <div class="conf">InventWood · Confidential</div>
 <a class="brand" href="#s1" aria-label="Back to cover"><img src="assets/inventwood_logo.png?v=29cddb1d" alt="InventWood"></a>
-<div class="deck" id="deck">
+<div class="deck" id="deck" role="main">
 <section id="s1" data-nav="Cover">
-  <div class="bg" style="background-image:url(assets/campus_hero.jpg?v=dbc536bd)"></div><div class="scrim"></div>
+  <div class="bg" style="background-image:url(assets/campus_hero.webp?v=891b8a78)"></div><div class="scrim"></div>
   <span class="tag">Concept rendering</span>
   <div class="wrap">
     <img class="coverlogo" src="assets/inventwood_logo.png?v=29cddb1d" alt="InventWood">
@@ -289,8 +290,8 @@ table.cmp td{line-height:1.4}
     <div class="split rv" style="grid-template-columns:1.25fr 1fr;align-items:start">
       <figure class="cbars" aria-label="US private data center construction put in place, billions of dollars per year, 2014 to 2026">
         <div class="saar" style="bottom:87.0%"><span>July 2026 annual rate: $75B</span></div>
-        <div class="cols"><div class="cb"><i style="height:2.1%"></i><b>2</b><span>2014</span></div><div class="cb"><i style="height:3.2%"></i><b>3</b><span>2015</span></div><div class="cb"><i style="height:4.8%"></i><b>4</b><span>2016</span></div><div class="cb"><i style="height:5.4%"></i><b>5</b><span>2017</span></div><div class="cb"><i style="height:8.0%"></i><b>7</b><span>2018</span></div><div class="cb"><i style="height:9.8%"></i><b>8</b><span>2019</span></div><div class="cb"><i style="height:10.7%"></i><b>9</b><span>2020</span></div><div class="cb"><i style="height:11.5%"></i><b>10</b><span>2021</span></div><div class="cb"><i style="height:14.6%"></i><b>13</b><span>2022</span></div><div class="cb"><i style="height:23.1%"></i><b>20</b><span>2023</span></div><div class="cb"><i style="height:40.3%"></i><b>35</b><span>2024</span></div><div class="cb"><i style="height:57.5%"></i><b>50</b><span>2025</span></div><div class="cb t12"><i style="height:68.7%"></i><b>59</b><span>12 mo to Jul 2026</span></div></div>
-        <figcaption>$ billions per year · Census Bureau, private data center construction put in place; calendar-year totals, 2026 shown as the twelve months to July</figcaption>
+        <div class="cols"><div class="cb"><i style="height:2.1%"></i><b>2</b><span>2014</span></div><div class="cb"><i style="height:3.2%"></i><b>3</b><span>2015</span></div><div class="cb"><i style="height:4.8%"></i><b>4</b><span>2016</span></div><div class="cb"><i style="height:5.4%"></i><b>5</b><span>2017</span></div><div class="cb"><i style="height:8.0%"></i><b>7</b><span>2018</span></div><div class="cb"><i style="height:9.8%"></i><b>8</b><span>2019</span></div><div class="cb"><i style="height:10.7%"></i><b>9</b><span>2020</span></div><div class="cb"><i style="height:11.5%"></i><b>10</b><span>2021</span></div><div class="cb"><i style="height:14.6%"></i><b>13</b><span>2022</span></div><div class="cb"><i style="height:23.1%"></i><b>20</b><span>2023</span></div><div class="cb"><i style="height:40.3%"></i><b>35</b><span>2024</span></div><div class="cb"><i style="height:57.5%"></i><b>50</b><span>2025</span></div><div class="cb t12"><i style="height:77.6%"></i><b>67</b><span>2026 est.</span></div></div>
+        <figcaption>$ billions per year · Census Bureau, private data center construction put in place; calendar-year totals. 2026 estimated: the 2025 total grown at the January to July pace, 35% over the same months of 2025</figcaption>
       </figure>
       <div>
         <div class="kicker" style="margin-bottom:.6rem">Where it goes from here</div>
@@ -555,7 +556,7 @@ table.cmp td{line-height:1.4}
     <div class="grid2 rv">
       <div class="profile">
         <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin-bottom:.5rem">Microsoft <em style="color:var(--gold);font-size:.7em">broad engagement</em></h3>
-        <div class="pub tipwrap" tabindex="0" data-tip="Microsoft Source, Nov 2024: two Northern Virginia datacenters with cross-laminated timber floor panels on a steel frame, about 35% less embodied carbon than conventional steel construction and 65% less than precast concrete. Design by Gensler; structural engineering by Thornton Tomasetti (project page). Photographs on the Wood emerging slide are Microsoft's."><p>Two Northern Virginia datacenters: CLT floors on a steel frame, about 35% less embodied carbon than steel construction, 65% less than precast. Gensler; Thornton Tomasetti.</p><span class="hint">Hover for sources and details</span></div>
+        <div class="pub tipwrap" tabindex="0" aria-describedby="tip-ms"><p>Two Northern Virginia datacenters: CLT floors on a steel frame, about 35% less embodied carbon than steel construction, 65% less than precast. Gensler; Thornton Tomasetti.</p><span class="hint">Hover or focus for sources and details</span><span class="tip" role="tooltip" id="tip-ms">Microsoft Source, Nov 2024: two Northern Virginia datacenters with cross-laminated timber floor panels on a steel frame, about 35% less embodied carbon than conventional steel construction and 65% less than precast concrete. Design by Gensler; structural engineering by Thornton Tomasetti (project page). Photographs on the Wood emerging slide are Microsoft's.</span></div>
         <div class="kicker" style="margin-bottom:.5rem">Working with InventWood</div>
         <div class="split" style="grid-template-columns:1fr 5.5rem;gap:1rem">
           <div>
@@ -568,7 +569,7 @@ table.cmp td{line-height:1.4}
       </div>
       <div class="profile">
         <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin-bottom:.5rem">Meta <em style="color:var(--gold);font-size:.7em">engaged for over a year</em></h3>
-        <div class="pub tipwrap" tabindex="0" data-tip="Meta Sustainability, 31 Jul 2025: mass-timber pilot for data center administrative buildings. First completed 2025 in Aiken, South Carolina with DPR Construction and SmartLam; Cheyenne, Wyoming and Montgomery, Alabama under way. About 41% less embodied carbon in the materials substituted. Photograph on the Wood emerging slide is Meta's."><p>Mass-timber administrative buildings: Aiken, SC completed 2025 (DPR, SmartLam); Cheyenne and Montgomery under way; about 41% less embodied carbon in the materials substituted.</p><span class="hint">Hover for sources and details</span></div>
+        <div class="pub tipwrap" tabindex="0" aria-describedby="tip-meta"><p>Mass-timber administrative buildings: Aiken, SC completed 2025 (DPR, SmartLam); Cheyenne and Montgomery under way; about 41% less embodied carbon in the materials substituted.</p><span class="hint">Hover or focus for sources and details</span><span class="tip" role="tooltip" id="tip-meta">Meta Sustainability, 31 Jul 2025: mass-timber pilot for data center administrative buildings. First completed 2025 in Aiken, South Carolina with DPR Construction and SmartLam; Cheyenne, Wyoming and Montgomery, Alabama under way. About 41% less embodied carbon in the materials substituted. Photograph on the Wood emerging slide is Meta's.</span></div>
         <div class="kicker" style="margin-bottom:.5rem">Working with InventWood</div>
         <div class="split" style="grid-template-columns:1fr 5.5rem;gap:1rem">
           <div>
@@ -643,7 +644,7 @@ table.cmp td{line-height:1.4}
 </section>
 
 <section id="close" data-nav="Close">
-  <div class="bg" style="background-image:url(assets/cover_bg.jpg?v=8ef5120e)"></div><div class="scrim" style="background:rgba(18,12,7,.25)"></div>
+  <div class="bg" style="background-image:url(assets/cover_bg.webp?v=e27a3e35)"></div><div class="scrim" style="background:rgba(18,12,7,.25)"></div>
   <div class="wrap">
     <h1 class="rv">Let's build what's <em>next</em>.</h1>
     <ul class="recap rv"><li>Data centers are short of steel and already build with wood.</li><li>SUPERWOOD turbocharges that wood: skins and fences now, structure next.</li><li>One basis-of-design win with a hyperscaler is the demand case for SuperMill Two.</li></ul>

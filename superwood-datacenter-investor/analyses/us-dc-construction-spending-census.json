@@ -55,6 +55,8 @@
   "t12_to_jul26_B": "sum of Aug 2025 through Jul 2026, not seasonally adjusted",
   "ytd_2026_jan_jul_B": "Jan-Jul 2026 only; not used on the slide",
   "saar_jul26_B": "Census seasonally adjusted annual rate for July 2026 (preliminary)",
-  "source": "census.gov/construction/c30/xlsx/privtime.xlsx, column Data center, downloaded 2026-09-06"
- }
+  "source": "census.gov/construction/c30/xlsx/privtime.xlsx, column Data center, downloaded 2026-09-06",
+  "projection_2026_B": "2025 calendar total x (Jan-Jul 2026 / Jan-Jul 2025) = 49.74 x 1.348; derived, conf M; replaces the trailing-12 bar on slide 3 (Alex 2026-09-06)"
+ },
+ "projection_2026_B": 67.06
 }
