@@ -3,7 +3,7 @@
 - Date: 2026-09-06
 - Target model: Nano Banana Pro (via Higgsfield), 1:1; second pass image-to-image on the first
 - Purpose: Soon-slide tile "Walkways & platforms" (`tile_walkway.jpg`, also `prep/tiles/`). Replaces the office-wing decking (see dc-office-decking.md). Alex: "this image one is good except the railing should be superwood".
-- Status: installed. First pass job `9f9bd9c7-15d7-4e93-9267-b741649bad6a` (steel railings); second `232a1d62-70db-4e66-8506-0cedf7e17186` (wood railings); final `abd6272b-e100-4ddf-8586-6134489a4bdb` (round wood handrails and rails — Alex: "more organic-feeling").
+- Status: installed. First pass job `9f9bd9c7-15d7-4e93-9267-b741649bad6a` (steel railings); second `232a1d62-70db-4e66-8506-0cedf7e17186` (wood railings); third `abd6272b-e100-4ddf-8586-6134489a4bdb` (round wood handrails); final `2e037780-73fb-4422-a45f-11c7965838b9` (much thinner, darker espresso railings — Alex: SUPERWOOD lets them be thinner; darker to break the monotony).
 
 ## Prompt (first pass)
 
@@ -16,3 +16,7 @@ Keep this exact scene, camera, light and composition. Change only the railings: 
 ## Prompt (third pass, reference = second pass)
 
 Keep this exact scene, camera, light and composition. Change only the railing profiles: make the wood handrails and the horizontal wood rails round in section, smooth turned cylinders of the same warm medium-brown densified wood, soft organic feel, with slender round wood posts; keep the same rail heights and spacing. Everything else unchanged: deck boards, rooftop cooling units, sky, distant technician. No text, no logos.
+
+## Prompt (fourth pass, reference = third pass)
+
+Keep this exact scene, camera, light and composition. Change only the railings: make the round wood handrails, horizontal rails and posts much thinner, slender like 3 cm rods, and a noticeably darker wood tone, deep espresso walnut brown, so they contrast with the lighter deck boards; keep the same rail heights and spacing. Everything else unchanged: the warm medium-brown deck boards, rooftop cooling units, sky, distant technician. No text, no logos.
