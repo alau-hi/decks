@@ -2724,8 +2724,7 @@ facts:
     as_of: 2026-09-04
     status: canonical
     printed_in: [superwood-datacenter-investor]
-    notes: null
-
+    notes: "Scope resolved 2026-09-06 by reading the sources: Hasan 2022 has no quantity; Sharma 2023 is Schneider WP99, a 1 MW Tier 3 reference design of 12,895 ft2 with core-and-shell embodied carbon 0.23 t CO2e/m2 (EC3), concrete 85% = 233 t CO2e, i.e. roughly 600-800 m3 per MW. Building core and shell only - foundations, slab, hall structure - at a low-density ~13,000 ft2/MW design. Site paving, parking, yards and equipment pads are NOT included. The deck model uses it as all site concrete; a site-work row would be additional."
   - id: datacenter.campus_mass_per_gw
     value: 1,385-2,875 kt total; 185-475 kt excluding concrete
     unit: kt per 1 GW IT load
