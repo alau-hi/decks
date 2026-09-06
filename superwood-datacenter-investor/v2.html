@@ -111,6 +111,7 @@ td:first-child{color:var(--cream);font-weight:600}
 .soils{display:flex;align-items:center;gap:1rem;font-size:max(.85rem,12px);color:var(--cream)}.soils .lab{font-size:max(.68rem,11px);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;white-space:nowrap}.soils .ctl{display:flex;flex-direction:column;gap:.15rem}.soils input{accent-color:var(--gold);width:11rem;cursor:pointer;margin:0}.soils input:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}.soils .ticks{display:flex;justify-content:space-between;width:11rem;font-size:max(.62rem,10px);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.soils .ticks i{font-style:normal}.soils-out{min-width:7rem;color:var(--cream);font-weight:600}.soils.top{display:inline-flex;vertical-align:top;gap:.6rem;margin:0 0 .9rem 1.6rem;height:2.15rem;font-size:max(.78rem,11px)}.soils.top .lab{font-size:max(.62rem,10px)}.soils.top input{width:7rem}.soils.top .ticks{display:none}.soils.top .soils-out{min-width:4.2rem}.soils.top.lone{display:flex;margin:0 0 1.1rem}
 /* end soils css */
 #supply .card{padding:1.4rem 1.5rem 1.5rem}#supply .card h3{font-size:1.35rem;margin-bottom:.5rem}#supply .card p{font-size:max(1rem,13px);line-height:1.5}
+.cmp2{display:grid;gap:1rem;margin-top:1.6rem}.cmp2 .cb{display:grid;grid-template-columns:13rem minmax(0,1fr) 12rem;gap:1rem;align-items:center}.cmp2 .cl{font-size:max(1rem,13px);color:var(--cream);font-weight:600}.cmp2 .ct{height:2.2rem;background:var(--panel);border-radius:.3rem;overflow:hidden}.cmp2 .ct i{display:block;height:100%;min-width:3px;background:var(--wood);border-radius:.3rem}.cmp2 .cv{font-size:max(1rem,13px);color:var(--cream-dim)}@media (max-width:900px), (orientation:portrait){.cmp2 .cb{grid-template-columns:1fr}}
 /* dividers */
 .div .scrim{background:rgba(18,12,7,.35)}
 .div .kicker{margin-bottom:.8rem}.div h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}.div .lead{margin-top:.8rem}
@@ -611,13 +612,11 @@ table.cmp td{line-height:1.4}
   <div class="wrap">
     <div class="kicker rv">Beyond data centers</div>
     <h2 class="rv">We’ll build on the data center opportunity to <em>springboard</em> us into much larger markets</h2>
-    <div class="grid3 thesis rv" style="grid-template-columns:repeat(4,1fr)">
-      <div class="card"><span class="num">01</span><h3>Data centers</h3><p>Skins, fences and screens now; structure with SuperMill Two. A hyperscaler basis of design is the proof point.</p></div>
-      <div class="card"><span class="num">02</span><h3>Interior and exterior products</h3><p>The same boards across commercial construction. $100B+ market.</p></div>
-      <div class="card"><span class="num">03</span><h3>Structural members</h3><p>Members proven in data centers move to offices, warehouses and industrial buildings. $400B+ market.</p></div>
-      <div class="card"><span class="num">04</span><h3>Optimized buildings</h3><p>Prefabricated envelopes and light foundations designed around the material. $700B+ market.</p></div>
+    <div class="cmp2 rv">
+      <div class="cb"><span class="cl">All US construction</span><div class="ct"><i style="width:100%"></i></div><span class="cv">$2,158 billion a year</span></div>
+      <div class="cb"><span class="cl">Data centers</span><div class="ct"><i style="width:3.5%;background:var(--gold)"></i></div><span class="cv">$75 billion a year</span></div>
     </div>
-    <p class="lead rv tipwrap" tabindex="0" aria-describedby="tip-beyond" style="margin-top:1.2rem;color:var(--cream);max-width:none">Behind all of it: steel is a $1.5 trillion a year market and concrete $1 trillion.<span class="hint">Hover or focus for sources</span><span class="srctip" role="tooltip" id="tip-beyond">Market sizes are company estimates from the SUPERMILLS Investor Overview; steel and concrete figures are global annual market estimates (ready-mix concrete only).</span></p>
+    <p class="lead rv tipwrap" tabindex="0" aria-describedby="tip-beyond" style="margin-top:1.4rem;color:var(--cream);max-width:none">Data centers are about <em style="color:var(--gold)">3.5%</em> of US construction spending. The rest of the built world is the market.<span class="hint">Hover or focus for sources</span><span class="srctip" role="tooltip" id="tip-beyond">US Census Bureau, Construction Spending (C30), July 2026, seasonally adjusted annual rates, release CB26-140 of 1 Sep 2026: total construction $2,157.6 billion; private data center construction $75.2 billion (preliminary). Share is the ratio of the two.</span></p>
   </div>
 </section>
 

@@ -56,7 +56,13 @@
   "ytd_2026_jan_jul_B": "Jan-Jul 2026 only; not used on the slide",
   "saar_jul26_B": "Census seasonally adjusted annual rate for July 2026 (preliminary)",
   "source": "census.gov/construction/c30/xlsx/privtime.xlsx, column Data center, downloaded 2026-09-06",
-  "projection_2026_B": "2025 calendar total x (Jan-Jul 2026 / Jan-Jul 2025) = 49.74 x 1.348; derived, conf M; replaces the trailing-12 bar on slide 3 (Alex 2026-09-06)"
+  "projection_2026_B": "2025 calendar total x (Jan-Jul 2026 / Jan-Jul 2025) = 49.74 x 1.348; derived, conf M; replaces the trailing-12 bar on slide 3 (Alex 2026-09-06)",
+  "totals_source": "Census C30 release CB26-140 (1 Sep 2026), July 2026 SAAR, from census.gov/construction/c30/current, fetched 2026-09-06"
  },
- "projection_2026_B": 67.06
+ "projection_2026_B": 67.06,
+ "total_construction_saar_jul26_B": 2157.6,
+ "private_residential_saar_jul26_B": 859.0,
+ "private_nonresidential_saar_jul26_B": 755.2,
+ "public_saar_jul26_B": 543.4,
+ "dc_share_of_total_jul26": 0.0348
 }

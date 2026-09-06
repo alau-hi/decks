@@ -509,21 +509,16 @@ s.addNotes("Sources and details. Microsoft: Microsoft Source, Nov 2024, https://
 s = newSlide(); base(s, "InventWood · Beyond data centers");
 kicker(s, "Beyond data centers");
 title(s, [t("We’ll build on the data center opportunity to "), gold("springboard"), t(" us into much larger markets")], L, 0.88, 11.9, 24);
-const beyond = [
-  ["Data centers", "Skins, fences and screens now; structure with SuperMill Two. A hyperscaler basis of design is the proof point."],
-  ["Interior and exterior products", "The same boards across commercial construction. $100B+ market."],
-  ["Structural members", "Members proven in data centers move to offices, warehouses and industrial buildings. $400B+ market."],
-  ["Optimized buildings", "Prefabricated envelopes and light foundations designed around the material. $700B+ market."],
-];
-beyond.forEach(([head, sub], i) => {
-  const cw = 2.9, x = L + i * (cw + 0.2), y = 2.1;
-  panel(s, x, y, cw, 2.6, PANEL);
-  s.addText(`0${i + 1}`, { x: x + 0.25, y: y + 0.2, w: 1, h: 0.45, fontFace: SERIF, fontSize: 20, color: WOOD, margin: 0 });
-  s.addText(head, { x: x + 0.25, y: y + 0.7, w: cw - 0.5, h: 0.5, fontFace: SANS, fontSize: 13, bold: true, color: CREAM, margin: 0, valign: "top" });
-  body(s, sub, x + 0.25, y + 1.25, cw - 0.5, 1.2, 10, DIM);
+const cmp = [["All US construction", 1.0, WOOD, "$2,158 billion a year"], ["Data centers", 0.035, GOLD, "$75 billion a year"]];
+cmp.forEach(([lab, f, col, val], i) => {
+  const y = 2.5 + i * 1.1, bx = L + 3.2, bw = 6.0;
+  s.addText(lab, { x: L, y, w: 3.0, h: 0.6, fontFace: SANS, fontSize: 14, bold: true, color: CREAM, margin: 0, valign: "middle" });
+  s.addShape(pres.ShapeType.roundRect, { x: bx, y: y + 0.05, w: bw, h: 0.5, rectRadius: 0.05, fill: { color: PANEL } });
+  s.addShape(pres.ShapeType.roundRect, { x: bx, y: y + 0.05, w: Math.max(0.08, bw * f), h: 0.5, rectRadius: 0.05, fill: { color: col } });
+  s.addText(val, { x: bx + bw + 0.3, y, w: 3.0, h: 0.6, fontFace: SANS, fontSize: 14, color: DIM, margin: 0, valign: "middle" });
 });
-s.addText("Behind all of it: steel is a $1.5 trillion a year market and concrete $1 trillion.", { x: L, y: 5.1, w: CW, h: 0.45, fontFace: SERIF, fontSize: 16, color: CREAM, margin: 0 });
-note(s, "Market sizes are company estimates from the SUPERMILLS Investor Overview; steel and concrete figures are global annual market estimates (ready-mix concrete only).");
+s.addText([t("Data centers are about "), gold("3.5%"), t(" of US construction spending. The rest of the built world is the market.")], { x: L, y: 5.2, w: CW, h: 0.6, fontFace: SERIF, fontSize: 20, color: CREAM, margin: 0 });
+note(s, "US Census Bureau, Construction Spending (C30), July 2026, seasonally adjusted annual rates, release CB26-140 of 1 Sep 2026: total construction $2,157.6 billion; private data center construction $75.2 billion (preliminary). Share is the ratio of the two.");
 
 // ---------- CLOSE ----------
 s = newSlide();
