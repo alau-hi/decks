@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06: slide 5 cards: label "SUPERWOOD's answer"; answers pinned to the card foot so both align; cards get a lighter panel and a hairline border so the fan-box image reads as a distinct card.
 - 2026-09-06: close slide drops the InventWood logo; the Investor Overview reference moves below the contacts (Alex).
 - 2026-09-06: close slide planet render v3 (blue-green palette, dark space; Alex: v2 looked like the world was rusting); scrim changed to a dark navy gradient.
 - 2026-09-06: close slide: recap bullets removed (title only, Alex); planet render v2 with a much denser global network; left-to-right scrim so the headline reads over the globe.

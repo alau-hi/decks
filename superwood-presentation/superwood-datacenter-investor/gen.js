@@ -155,13 +155,13 @@ const complaints = [
 ];
 complaints.forEach(([img, head, sub, ans], i) => {
   const cw = 5.95, x = L + i * (cw + 0.3), y = 1.95, ih = 1.15;
-  panel(s, x, y, cw, 2.55, PANEL);
+  s.addShape(pres.ShapeType.roundRect, { x, y, w: cw, h: 2.55, rectRadius: 0.09, fill: { color: PANEL2 }, line: { color: RULE, width: 0.75 } });
   s.addImage({ path: img, x, y, w: cw, h: ih, sizing: { type: "crop", w: cw, h: ih } });
   s.addText("COMPLAINT", { x: x + 0.3, y: y + ih + 0.15, w: 3, h: 0.2, fontFace: SANS, fontSize: 7.5, bold: true, color: BRIGHT, charSpacing: 1.5, margin: 0 });
   s.addText(head, { x: x + 0.3, y: y + ih + 0.33, w: cw - 0.6, h: 0.36, fontFace: SERIF, fontSize: 14, color: CREAM, margin: 0 });
   body(s, sub, x + 0.3, y + ih + 0.68, cw - 0.6, 0.3, 9, DIM);
   s.addShape(pres.ShapeType.rect, { x: x + 0.3, y: y + ih + 1.03, w: cw - 0.6, h: 0.012, fill: { color: RULE } });
-  s.addText([t("SUPERWOOD   ", { bold: true, color: GOLD, fontSize: 7.5, charSpacing: 1.5 }), t(ans, { color: CREAM, fontSize: 9.5 })], { x: x + 0.3, y: y + ih + 1.08, w: cw - 0.6, h: 0.36, fontFace: SANS, margin: 0, valign: "middle" });
+  s.addText([t("SUPERWOOD’S ANSWER   ", { bold: true, color: GOLD, fontSize: 7.5, charSpacing: 1.5 }), t(ans, { color: CREAM, fontSize: 9.5 })], { x: x + 0.3, y: y + ih + 1.08, w: cw - 0.6, h: 0.36, fontFace: SANS, margin: 0, valign: "middle" });
 });
 conceptTag(s, W - 3.6, 4.52, 3.0, "Concept renderings");
 s.addText([t("We can go much further", { color: GOLD, italic: true }), t(": into the structure of the building and what is inside it.", { color: CREAM })], { x: L, y: 5.1, w: CW, h: 0.7, fontFace: SERIF, fontSize: 21, margin: 0, valign: "middle" });
