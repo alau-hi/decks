@@ -108,6 +108,12 @@
    0,
    0,
    0
+  ],
+  "Louvers, screens and fencing": [
+   0.763,
+   0,
+   0,
+   0.237
   ]
  },
  "notes": {
@@ -118,6 +124,7 @@
   "Mechanical equipment, piping, loop water": "copper tubes, aluminum coils, water and refrigerant in other; HDPE pipe plastic",
   "IT — servers and racks": "boards, silicon, copper and aluminum in other",
   "Exterior skins — metal panel": "insulated metal panel: steel skins over a foam core",
-  "Louvers and yard screens": "largely aluminum (other)"
+  "Louvers and yard screens": "largely aluminum (other)",
+  "Louvers, screens and fencing": "display row on slide 6 combining louvers and yard screens (0.9 kt, half aluminum) with security and staff-area fencing (1.0 kt, steel); the workbook keeps them separate"
  }
 }

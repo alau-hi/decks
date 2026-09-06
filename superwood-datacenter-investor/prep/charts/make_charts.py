@@ -16,7 +16,7 @@ rows=[("Platforms, walkways, mezzanines, railings",15,1.0,"soon"),("Acoustic bar
 ("Ducting and air-distribution sheet metal",8,1.0,"med"),("Interior finishes, backplanes, trim",3,1.0,"imm"),
 ("Electrical equipment and conductors",100,0,None),("Mechanical equipment, piping, loop water",50,0,None),("IT — servers and racks",70,0.4,"long"),
 ("Steel — primary frame",40,1.0,"med"),("Steel — roof trusses, joists, deck, girts",60,1.0,"med"),
-("Exterior skins — metal panel",7.4,1.0,"imm"),("Louvers and yard screens",0.9,1.0,"imm"),("Security and staff-area fencing",1.0,1.0,"imm"),
+("Exterior skins — metal panel",7.4,1.0,"imm"),("Louvers, screens and fencing",1.9,1.0,"imm"),
 ("Concrete — slab on grade, paving",1200,0.75,"long"),("Concrete — foundations, footings, pads",1200,0.90,"long"),("Rebar in all concrete",100,0.81,"long")]
 # order: contents at the top, building structure and envelope, foundation at the bottom (Alex 2026-09-05)
 import json as _j, math
@@ -24,7 +24,7 @@ SPLIT=_j.load(open("analyses/material_split.json"))["split"]
 MAT=[("steel",WOOD),("concrete","#8c8478"),("plastic",TEAL),("other","#5a4a36")]
 carb=[r[1]*(SPLIT[r[0]][0]*1.8+SPLIT[r[0]][1]*0.12+SPLIT[r[0]][2]*3.0) for r in rows]
 LEG=[Patch(color=c_,label=n.capitalize()) for n,c_ in MAT]
-GROUP_ROWS=[("Contents — fit-out and equipment",9),("Building — structure and envelope",5),("Foundation — slab, footings, rebar",3)]
+GROUP_ROWS=[("Contents — fit-out and equipment",9),("Building — structure and envelope",4),("Foundation — slab, footings, rebar",3)]
 def with_totals(vals):
     """insert a bold subtotal row at the head of each group: (label, value, split, is_total)"""
     out=[]; i=0
