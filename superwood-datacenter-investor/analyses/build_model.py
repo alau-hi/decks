@@ -42,9 +42,11 @@ rows=[
 ("interior_t_mw","Interior finishes, backplanes, trim (mass)",1,3,"t/MW","estimated [L]","Admin / office wings only"),
 ("elec_t_mw","Electrical: gensets, transformers, switchgear, UPS, busway, copper",50,100,"t/MW","estimated [L]","Genset 30–60 t, 1 MW UPS 10–20 t, transformer 5–8 t"),
 ("mech_t_mw","Mechanical: chillers, fan walls, coolers, piping, water",20,50,"t/MW","estimated [L]",""),
+("mech_shell_share","Share of mechanical mass that is equipment shells, casings and fan-wall frames — SUPERWOOD in the medium term",0.25,0.25,"share","estimated [L]; Alex 2026-09-06","About half of the steel in the row; compressor and pump bodies, tubes and steel piping excluded"),
+("mech_blade_share","Share of mechanical mass that is fan blades — long term, needs investigation",0.02,0.02,"share","estimated [L]; Alex 2026-09-06","Aluminum or composite blades today; SUPERWOOD blades are a research question"),
 ("it_t_mw","IT: servers and racks",15,70,"t/MW","estimated [L]","Loaded rack ~1 t; GB200 NVL72 ~1.36 t [H]"),
 ("it_rack_share","Share of IT mass that is server rack cabinets (frames, panels, doors) — substitutable soon",0.18,0.18,"share","estimated [L]; Alex 2026-09-06","A loaded rack of 1–1.4 t carries a 150–250 kg steel cabinet"),
-("it_enclosure_share","Share of IT mass that is server enclosures (chassis) — long term",0.22,0.22,"share","estimated [L]; Alex 2026-09-04/06","Server boxes eventually; the electronics never"),
+("it_enclosure_share","Share of IT mass that is server enclosures (sheet-steel chassis) — long term",0.30,0.30,"share","estimated [M]; analyses/it-rack-material-stack.md, applied 2026-09-06","Server boxes eventually; the electronics never"),
 ("foundation_share","Share of all concrete that is foundations, footings, piers and equipment pads",0.4,0.5,"share","estimated [L]","Remainder is slab on grade, paving and yard"),
 ("slab_lt","Long-term technical potential: share of slab-on-grade and paving concrete replaceable",0.75,0.75,"share","asserted-internal (Alex, 2026-09-01) [L]","Technical potential, not a plan; no design or code pathway yet"),
 ("fdn_lt","Long-term technical potential: share of foundations, footings, piers and pads replaceable",0.9,0.9,"share","asserted-internal (Alex, 2026-09-01) [L]","Technical potential, not a plan"),
@@ -125,8 +127,8 @@ comp=[
 ("Ducting, plenums and air-distribution sheet metal",lambda c:f"={ref('duct_t_mw',c)}*{IT(c)}","Medium term",lambda c:"1","steel","NFPA 90A / UL 181 noncombustibility expectations for in-airstream components — the hardest gate in this row set"),
 ("Interior finishes, backplanes, trim (admin / office)",lambda c:f"={ref('interior_t_mw',c)}*{IT(c)}","Immediate",lambda c:"1","interior","E84 Class A finish; backplanes UL 94 yellow card (not yet started)"),
 ("Electrical equipment and conductors",lambda c:f"={ref('elec_t_mw',c)}*{IT(c)}",None,lambda c:"0","zero","Gensets, transformers, switchgear, batteries, copper"),
-("Mechanical equipment, piping, loop water",lambda c:f"={ref('mech_t_mw',c)}*{IT(c)}",None,lambda c:"0","zero","Chillers, fan walls, coolers, piping (ductwork is its own row)"),
-("IT — servers and racks",lambda c:f"={ref('it_t_mw',c)}*{IT(c)}",{"Soon":lambda c:f"={ref('it_rack_share',c)}","Long term":lambda c:f"={ref('it_enclosure_share',c)}"},None,"steel","Rack cabinets soon (18% of IT mass), server enclosures long term (22%), estimates; electronics never. Rack masses [H]; aggregate [L]"),
+("Mechanical equipment, piping, loop water",lambda c:f"={ref('mech_t_mw',c)}*{IT(c)}",{"Medium term":lambda c:f"={ref('mech_shell_share',c)}","Long term":lambda c:f"={ref('mech_blade_share',c)}"},None,"steel","Shells, casings and fan-wall frames medium term (Alex 2026-09-06); fan blades long term, needs investigation; compressors, pumps, tubes, piping and water stay"),
+("IT — servers and racks",lambda c:f"={ref('it_t_mw',c)}*{IT(c)}",{"Soon":lambda c:f"={ref('it_rack_share',c)}","Long term":lambda c:f"={ref('it_enclosure_share',c)}"},None,"steel","Rack cabinets soon (18% of IT mass), server enclosures long term (30%), per analyses/it-rack-material-stack.md; electronics never. Rack masses [H]; aggregate [L]"),
 ]
 r=2; data_rows=[]; precast_row=None
 for name,f,hor,share,rule,note in comp:

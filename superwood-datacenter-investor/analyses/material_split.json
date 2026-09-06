@@ -56,10 +56,10 @@
    0.45
   ],
   "IT — servers and racks": [
-   0.4,
+   0.5,
    0,
-   0.1,
-   0.5
+   0.08,
+   0.42
   ],
   "Steel — primary frame": [
    1,
@@ -122,7 +122,7 @@
   "Interior finishes, backplanes, trim": "gypsum and wood in other; steel studs",
   "Electrical equipment and conductors": "copper, aluminum, oil and cells in other; cable insulation plastic",
   "Mechanical equipment, piping, loop water": "copper tubes, aluminum coils, water and refrigerant in other; HDPE pipe plastic",
-  "IT — servers and racks": "boards, silicon, copper and aluminum in other",
+  "IT — servers and racks": "blend of general-purpose racks (~65% steel) and AI racks (~38%); boards, silicon, copper and aluminum in other; see it-rack-material-stack.md",
   "Exterior skins — metal panel": "insulated metal panel: steel skins over a foam core",
   "Louvers and yard screens": "largely aluminum (other)",
   "Louvers, screens and fencing": "display row on slide 6 combining louvers and yard screens (0.9 kt, half aluminum) with security and staff-area fencing (1.0 kt, steel); the workbook keeps them separate"
@@ -157,8 +157,17 @@
    "share": 0.0
   },
   "Mechanical equipment, piping, loop water": {
-   "horizon": null,
-   "share": 0.0
+   "steps": [
+    {
+     "horizon": "med",
+     "share": 0.25
+    },
+    {
+     "horizon": "long",
+     "share": 0.02
+    }
+   ],
+   "note": "shells, casings and fan-wall frames medium term; fan blades long term, needs investigation (Alex 2026-09-06)"
   },
   "IT — servers and racks": {
    "steps": [
@@ -168,10 +177,10 @@
     },
     {
      "horizon": "long",
-     "share": 0.22
+     "share": 0.3
     }
    ],
-   "note": "rack cabinets soon, server enclosures long term (Alex 2026-09-06)"
+   "note": "rack cabinets soon, server chassis long term (analysis applied 2026-09-06)"
   },
   "Steel — primary frame": {
    "horizon": "med",

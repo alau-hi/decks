@@ -2514,7 +2514,7 @@ facts:
     notes: Mostly servers, GPUs and networking; the building share is the Census construction series.
 
   - id: datacenter.racks_and_server_boxes_horizons
-    value: "server rack cabinets: soon (18% of IT mass, a few months of development); server enclosures: long term (22%); electronics: never"
+    value: "server rack cabinets: soon (18% of IT mass, a few months of development); server enclosures: long term (30%); electronics: never"
     unit: null
     statement: In a data center SUPERWOOD can address racks soon (a few months of development), server enclosures (boxes) eventually, and the electronics never
     basis: asserted-internal
@@ -2796,7 +2796,19 @@ facts:
     as_of: 2026-09-06
     status: canonical
     printed_in: []
-    notes: "The deck's IT row still carries the 40% steel estimate of 2026-09-05; the analysis recommends 50% steel, cabinets 18% soon, server enclosures 30% long. Alex to decide."
+    notes: "Applied 2026-09-06 at Alex's direction: IT row 50% steel / 8% plastic / 42% other; cabinets 18% soon, server enclosures 30% long."
+
+  - id: datacenter.mechanical_shells_horizon
+    value: "shells, casings and fan-wall frames: medium term (25% of mechanical mass); fan blades: long term (2%), needs investigation"
+    unit: share of mechanical equipment mass
+    statement: Mechanical equipment shells, casings and fan-wall frames could be SUPERWOOD in the medium term; fan blades possibly in the long term, pending investigation
+    basis: asserted-internal
+    confidence: L
+    source: Alex, 2026-09-06; shares are analyst estimates in the workbook (mech_shell_share, mech_blade_share)
+    as_of: 2026-09-06
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: "Compressor and pump bodies, tubes, steel piping and loop water stay. Blades are aluminum or composite today; valued at the steel substitution factor as a placeholder."
 
   - id: datacenter.equipment_steel_share
     value: "material split per component (steel / concrete / plastic / other); e.g. electrical 60% steel, mechanical 50%, IT 40%, insulated metal panel 65% steel and 30% plastic, louvers 50% steel"

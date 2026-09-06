@@ -222,8 +222,8 @@ const worthCols = ["Horizon", "SUPERWOOD required", "Years of mill output"];
 const worthRows = [
   ["Immediate — skins, screens, fences", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 years of SuperMill One", 1.4, 3.1],
   ["Soon — racks, platforms, barriers", "4,300–26,000 tons", "0.1–0.8 years of SuperMill Two", 0.1, 0.8],
-  ["Medium term — frame, roofs, enclosures", "16,000–65,000 tons", "0.5–2.1 years of SuperMill Two", 0.5, 2.1],
-  ["Long term — slab, foundations", "57,000–355,000 tons", "1.8–11 years of SuperMill Two", 1.8, 11.3],
+  ["Medium term — frame, roofs, enclosures", "17,000–72,000 tons", "0.6–2.3 years of SuperMill Two", 0.6, 2.3],
+  ["Long term — slab, foundations", "57,000–359,000 tons", "1.8–12 years of SuperMill Two", 1.8, 11.5],
 ];
 const wx = [L, 5.4, 9.0], ww = [4.6, 3.4, 3.7];
 worthCols.forEach((c, i) => s.addText(c.toUpperCase(), { x: wx[i], y: 2.3, w: ww[i], h: 0.4, fontFace: SANS, fontSize: 10, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" }));

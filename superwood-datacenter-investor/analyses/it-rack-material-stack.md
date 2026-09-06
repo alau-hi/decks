@@ -1,6 +1,6 @@
 # What a server rack is made of — material stack for the "IT — servers and racks" row
 
-Date: 2026-09-06. Asked by Alex: why only 40% steel, and what is the rest. Status: analysis and recommendation; the deck and workbook still carry the 2026-09-05 split (40% steel / 10% plastic / 50% other; rack cabinets 18% soon, server enclosures 22% long) until Alex decides.
+Date: 2026-09-06. Asked by Alex: why only 40% steel, and what is the rest. Status: recommendation applied 2026-09-06 at Alex's direction (IT 50% steel / 8% plastic / 42% other; rack cabinets 18% soon, server enclosures 30% long).
 
 ## 1. Published bills of materials
 
@@ -58,7 +58,7 @@ Enterprise-rack shares follow from the Lot 9 and Dell figures above [conf: M]. T
 | Rack cabinets substitutable, Soon | 18% | 18% (keep) | 24% enterprise, ~15% AI |
 | Server enclosures substitutable, Long | 22% | 30% | ~35% enterprise, ~22% AI |
 
-Effect if applied: the IT row's embodied carbon rises (more steel valued at 1.8 kg/kg), the Soon row on slide 7 is unchanged, the Long row rises by about 70,000 x 0.08 x 0.3–0.6 = 1,700–3,400 tons of SUPERWOOD per GW, within rounding of the printed range. Not applied yet.
+Effect if applied: the IT row's embodied carbon rises (more steel valued at 1.8 kg/kg), the Soon row on slide 7 is unchanged, the Long row rises by about 70,000 x 0.08 x 0.3–0.6 = 1,700–3,400 tons of SUPERWOOD per GW, within rounding of the printed range. Applied 2026-09-06.
 
 ## Sources
 

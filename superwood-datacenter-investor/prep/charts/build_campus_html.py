@@ -57,7 +57,7 @@ def rebuild(path):
     li_m=re.search(r'<div class="view" id="view-mass-notes"[^>]*>(<div class="li".*?</p></div></div>)',sec,re.S).group(1)
     li_c=re.search(r'<div class="view" id="view-carbon-notes"[^>]*>(<div class="li".*?</p></div></div>)',sec,re.S).group(1)
     foot=re.search(r'<p class="note rv">.*?</p>',sec,re.S).group(0)
-    s0=sec.index('<div class="split rv"'); s1=sec.rindex('</div>')  # the last </div> in the section closes .wrap; rebuild everything between
+    s0=sec.index('<div class="split rv'); s1=sec.rindex('</div>')  # the last </div> in the section closes .wrap; rebuild everything between
     # everything from the split to the end of .wrap is rebuilt: chart left, notes + legend + footnote right
     block=f'''<div class="split rv campus" style="grid-template-columns:2.6fr 1fr;align-items:start">
       <div class="chartcol">
