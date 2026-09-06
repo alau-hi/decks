@@ -1746,6 +1746,18 @@ facts:
     notes: null
 
   # =========================================================================== market
+  - id: market.global_construction_output_forecast
+    value: "US$13.3T (2025 forecast, 2017 prices); US$10.7T in 2020; US$15.2T by 2030"
+    unit: USD, global construction output
+    statement: Global construction output was US$10.7 trillion in 2020 and is forecast to reach US$13.3 trillion by 2025 and US$15.2 trillion by 2030 (2017 prices and exchange rates)
+    basis: published
+    confidence: M
+    source: Oxford Economics, Future of Construction (14 Oct 2021), https://www.oxfordeconomics.com/resource/future-of-construction/ (fetched 2026-09-06)
+    url: https://www.oxfordeconomics.com/resource/future-of-construction/
+    as_of: 2026-09-06
+    status: canonical
+    printed_in: [superwood-datacenter-investor]
+    notes: Slide 17 prints "about $13,300 billion a year" for All Construction (Global) beside the Census US figures; it is a 2021 forecast for 2025 in 2017 prices, not a measured current total, and the deck tooltip says so. Data centers at $75.2B are ~0.6% of it.
   - id: market.global_floor_space
     value: 235 B m2 (2017) -> 461 B m2 (2050)
     unit: billion m2

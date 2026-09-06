@@ -148,7 +148,7 @@ note(s, "Lead times: Wood Mackenzie 2026 survey as reported by POWER and Data Ce
 s = newSlide(); base(s, "InventWood · Market");
 kicker(s, "Market · Pushback");
 title(s, "And communities are pushing back", L, 0.88, 11.9, 27);
-s.addText("75 projects, about $130 billion, blocked or delayed in Q1 2026 alone. Rules follow: 1,000 ft setbacks, 50 dBA at the property line.", { x: L, y: 1.42, w: 12.2, h: 0.4, fontFace: SERIF, fontSize: 16, color: CREAM, margin: 0 });
+s.addText("75 projects, about $130 billion, blocked or delayed in Q1 2026 alone.", { x: L, y: 1.42, w: 12.2, h: 0.4, fontFace: SERIF, fontSize: 16, color: CREAM, margin: 0 });
 const complaints = [
   ["prep/entrance_office.jpg", "Aesthetics", "Windowless boxes on farmland. Counties answer with setbacks and design standards.", "Facades, fences and screens that read as architecture."],
   ["prep/tiles/tile_fanbox.jpg", "Noise", "Fans, chillers, generator tests. Property-line decibel limits are spreading.", "Acoustic screens and barriers; quieter fan enclosures and ductwork."],
@@ -165,7 +165,7 @@ complaints.forEach(([img, head, sub, ans], i) => {
 });
 conceptTag(s, W - 3.6, 4.52, 3.0, "Concept renderings");
 s.addText([t("We can go much further", { color: GOLD, italic: true }), t(": into the structure of the building and what is inside it.", { color: CREAM })], { x: L, y: 5.1, w: CW, h: 0.7, fontFace: SERIF, fontSize: 21, margin: 0, valign: "middle" });
-note(s, "Data Center Watch, Q1 2026 report (June 2026): 75 projects, about $130 billion, as much as all of 2025; 833 opposition groups in 49 states. Virginia HB 153; Henry County, VA ordinance, Aug 2026. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.", 6.72, 0.35);
+note(s, "Blocked or delayed: Data Center Watch, Q1 2026 report (datacenterwatch.org/q1-2026; NBC News, 12 Jun 2026): 75 projects, about $130 billion, as much as all of 2025; 833 opposition groups in 49 states. Rules follow: Virginia HB 153 (500 ft setbacks); Henry County, VA ordinance, Aug 2026 (1,000 ft setbacks, 50 dBA at the property line, closed-loop cooling), per the ailawsbystate.com tracker and Virginia DEQ. Electricity rates and water are the other leading objections; SUPERWOOD does not address them.");
 
 // ---------- 4 · ALREADY BUILDING WITH WOOD — WE TURBOCHARGE WOOD ----------
 s = newSlide(); base(s, "InventWood · Market");
@@ -499,20 +499,20 @@ s.addNotes("Sources and details. Microsoft: Microsoft Source, Nov 2024, https://
 s = newSlide(); base(s, "InventWood · Beyond data centers");
 kicker(s, "Beyond data centers");
 title(s, [t("We’ll build on the data center opportunity to "), gold("springboard"), t(" us into much larger markets")], L, 0.88, 11.9, 24);
-const cmp = [["All US construction", 1.0, WOOD, "$2,158 billion a year"], ["Data centers", 0.035, GOLD, "$75 billion a year"]];
+const cmp = [["Data Centers (US)", 0.0057, GOLD, "$75 billion a year"], ["All Construction (US)", 0.162, WOOD, "$2,158 billion a year"], ["All Construction (Global)", 1.0, WOOD, "about $13,300 billion a year"]];
 cmp.forEach(([lab, f, col, val], i) => {
-  const y = 2.5 + i * 1.1, bx = L + 3.2, bw = 6.0;
-  s.addText(lab, { x: L, y, w: 3.0, h: 0.6, fontFace: SANS, fontSize: 14, bold: true, color: CREAM, margin: 0, valign: "middle" });
+  const y = 2.3 + i * 0.95, bx = L + 3.3, bw = 5.6;
+  s.addText(lab, { x: L, y, w: 3.1, h: 0.6, fontFace: SANS, fontSize: 14, bold: true, color: CREAM, margin: 0, valign: "middle" });
   s.addShape(pres.ShapeType.roundRect, { x: bx, y: y + 0.05, w: bw, h: 0.5, rectRadius: 0.05, fill: { color: PANEL } });
   s.addShape(pres.ShapeType.roundRect, { x: bx, y: y + 0.05, w: Math.max(0.08, bw * f), h: 0.5, rectRadius: 0.05, fill: { color: col } });
-  s.addText(val, { x: bx + bw + 0.3, y, w: 3.0, h: 0.6, fontFace: SANS, fontSize: 14, color: DIM, margin: 0, valign: "middle" });
+  s.addText(val, { x: bx + bw + 0.3, y, w: 3.4, h: 0.6, fontFace: SANS, fontSize: 14, color: DIM, margin: 0, valign: "middle" });
 });
-s.addText([t("Data centers are about "), gold("3.5%"), t(" of US construction spending. The rest of the built world is the market.")], { x: L, y: 5.2, w: CW, h: 0.6, fontFace: SERIF, fontSize: 20, color: CREAM, margin: 0 });
-note(s, "US Census Bureau, Construction Spending (C30), July 2026, seasonally adjusted annual rates, release CB26-140 of 1 Sep 2026: total construction $2,157.6 billion; private data center construction $75.2 billion (preliminary). Share is the ratio of the two.");
+s.addText([t("Data centers are about "), gold("3.5%"), t(" of US construction and about "), gold("0.6%"), t(" of the world’s. The rest of the built world is the market.")], { x: L, y: 5.35, w: CW, h: 0.6, fontFace: SERIF, fontSize: 20, color: CREAM, margin: 0 });
+note(s, "US: Census Bureau, Construction Spending (C30), July 2026, seasonally adjusted annual rates, release CB26-140 of 1 Sep 2026: total construction $2,157.6 billion; private data center construction $75.2 billion (preliminary). Global: Oxford Economics, Future of Construction (Oct 2021), global construction output forecast of US$13.3 trillion for 2025 in 2017 prices; a forecast, not a measured total. Shares are ratios of these figures.");
 
 // ---------- CLOSE ----------
 s = newSlide();
-s.background = { path: "prep/cover_bg.jpg" };
+s.background = { path: "prep/close_bg.jpg" };
 s.addText([t("Let’s work together to build AI buildings that are "), gold("better to build"), t(", good for people, and good for the world.")], { x: 1.0, y: 2.0, w: 11, h: 1.6, fontFace: SERIF, fontSize: 34, color: CREAM, margin: 0 });
 bullets(s, ["Data centers are short of steel and already build with wood.", "SUPERWOOD turbocharges that wood: skins and fences now, structure in the medium term.", "One basis-of-design win with a hyperscaler is the demand case for SuperMill Two."], { x: 1.0, y: 3.55, w: 7.5, h: 1.2, fontSize: 12.5, color: CREAM });
 s.addText("Company, mills, cost roadmap and the raise: SUPERMILLS Investor Overview", { x: 1.0, y: 4.8, w: 9, h: 0.3, fontFace: SANS, fontSize: 11, color: BRIGHT, margin: 0 });
