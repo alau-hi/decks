@@ -2485,8 +2485,8 @@ facts:
     source: CRS IN12519 (tariffs); Construction Dive 2026 (full-value rule); Wood Mackenzie 2026 survey as reported by POWER and Data Center Knowledge (lead times); Associated Builders and Contractors 2026 outlook as reported by Data Center Dynamics (labor)
     as_of: 2026-09-06
     status: canonical
-    printed_in: [superwood-datacenter-investor]
-    notes: "Secondary reporting for the Wood Mackenzie and ABC figures; read at source before wide distribution. Printed on the Industry Challenged by Supply Chains slide."
+    printed_in: []
+    notes: "Secondary reporting for the Wood Mackenzie and ABC figures; read at source before wide distribution. The supply-chains slide was added and removed on 2026-09-06; not printed."
 
   - id: datacenter.north_america_under_construction_gw
     value: ">66 GW"
