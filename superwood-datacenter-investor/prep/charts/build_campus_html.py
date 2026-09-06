@@ -117,7 +117,7 @@ def rebuild(path):
     h=re.sub(r'<script type="application/json" id="soilData">.*?</script>\n','',h,flags=re.S)
     h=re.sub(r'/\* soils slider \*/.*?/\* end soils \*/\n','',h,flags=re.S)
     js='''/* soils slider */
-const soilData=JSON.parse(document.getElementById('soilData').textContent);const soilNames={1:'good',2:'moderate',3:'poor'},soilLabels={1:'Good',2:'Moderate',3:'Poor'};
+const soilData=__SOILDATA__;const soilNames={1:'good',2:'moderate',3:'poor'},soilLabels={1:'Good',2:'Moderate',3:'Poor'};
 function applySoil(v){const d=soilData[soilNames[v]];if(!d)return;
   document.querySelectorAll('#campus [data-row]').forEach(row=>{const view=row.closest('.view').dataset.view;const cell=d[row.dataset.row+':'+view];if(!cell)return;row.querySelector('.tr').innerHTML=cell.tr;row.querySelector('.hv').innerHTML=cell.hv;if(cell.hz)row.querySelector('.hz').outerHTML=cell.hz;});
   const w=d.worth;const sw=document.querySelector('[data-worth="sw"]'),yr=document.querySelector('[data-worth="yr"]'),bar=document.querySelector('[data-worth="bar"]');if(sw){sw.textContent=w.sw;yr.textContent=w.yr;bar.style.left=w.left;bar.style.width=w.width;}
@@ -126,8 +126,7 @@ document.querySelectorAll('.soils-range').forEach(r=>r.addEventListener('input',
 addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;if(!['campus','worth'].includes(secs[cur]&&secs[cur].id))return;if(e.key==='g'||e.key==='G')applySoil(1);if(e.key==='p'||e.key==='P')applySoil(3);if(e.key==='o'||e.key==='O')applySoil(2);});
 /* end soils */
 '''
-    h=h.replace("</script>\n</body>",js+"</script>\n</body>",1)
-    h=h.replace("</body>",f'<script type="application/json" id="soilData">{data}</script>\n</body>',1)
+    h=h.replace("</script>\n</body>",js.replace("__SOILDATA__",data)+"</script>\n</body>",1)
     if ".soils{" not in h:
         h=h.replace("/* dividers */",".soils{display:flex;align-items:center;gap:.7rem;margin-top:1.2rem;font-size:max(.85rem,12px);color:var(--cream)}.soils .lab{font-size:max(.66rem,11px);letter-spacing:.14em;text-transform:uppercase;color:var(--wood-bright);font-weight:600}.soils input{accent-color:var(--gold);width:9rem;cursor:pointer}.soils input:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}.soils-out{min-width:5rem;color:var(--gold);font-weight:600}.soils.inline{display:inline-flex;margin:0 0 0 2rem;vertical-align:middle}\n/* dividers */",1)
     W(path,h); print(path,"divs",sec.count("<div"),sec.count("</div>"),"ok")
