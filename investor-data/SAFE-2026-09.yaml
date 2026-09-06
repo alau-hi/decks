@@ -2786,6 +2786,18 @@ facts:
     printed_in: [superwood-datacenter-investor]
     notes: Print as vision with the label on the slide, never as a forecast - no design or code pathway exists. A ChipMill-scale market on its own if it ever became real.
 
+  - id: datacenter.server_rack_material_stack
+    value: "average rack server 62% ferrous, 17% PCB and electronics, 9% aluminum, 7.5% plastics, 4% copper (Lot 9, 2015); Dell R740 chassis 51% of product mass (2019); 42U cabinet 161 kg steel; GB200 NVL72 rack 1.36 t with ~3.2 km copper cabling"
+    unit: share of mass
+    statement: Published bills of materials put a general-purpose server at 50-62% steel and a loaded general-purpose rack near two-thirds steel; dense AI racks trade steel for copper and land near 35-40%
+    basis: published
+    confidence: H
+    source: EU Lot 9 Task 4 (2015) Table 24; thinkstep/Dell R740 LCA (2019); Dell R6515-R7525 LCA (2020); APC NetShelter SX spec; NVIDIA GB200 NVL72 documentation. Analysis in superwood-datacenter-investor/analyses/it-rack-material-stack.md
+    as_of: 2026-09-06
+    status: canonical
+    printed_in: []
+    notes: "The deck's IT row still carries the 40% steel estimate of 2026-09-05; the analysis recommends 50% steel, cabinets 18% soon, server enclosures 30% long. Alex to decide."
+
   - id: datacenter.equipment_steel_share
     value: "material split per component (steel / concrete / plastic / other); e.g. electrical 60% steel, mechanical 50%, IT 40%, insulated metal panel 65% steel and 30% plastic, louvers 50% steel"
     unit: share of component mass
