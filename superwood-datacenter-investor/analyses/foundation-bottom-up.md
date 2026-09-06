@@ -33,3 +33,35 @@ The model's concrete row, 500–1,000 m³ per MW from the Schneider WP99 referen
 ## Recommendation
 
 Add a footprint-based concrete path to the workbook alongside the per-MW path, with the seven elements above as inputs, and let the slide 6 foundation group print the bottom-up range with the per-MW figure as the upper bound until a real takeoff replaces both. Not applied; Alex to decide.
+
+## Geotechnical allowance (added 2026-09-06 at Alex's request)
+
+The base bottom-up assumes good soils: spread footings on a 40 ft grid and a slab on grade. Two allowance cases on top of it, all estimates [conf: L]:
+
+| Case | What changes | Allowance, m³ low | high |
+|---|---|---|---|
+| A — good soils | none; spread footings and slab on grade as modeled | 0 | 0 |
+| B — moderate soils | over-excavate and replace with lean concrete or controlled low-strength material, 6–12 in under 30–60% of the footprint; footings and grade beams 30% larger | 29,000 | 197,000 |
+| C — poor soils | 3–4 drilled piers or driven piles per column, 18–24 in diameter, 40–60 ft long (3,100–6,300 columns); pile caps in place of spread footings; a pier every 15–20 ft under the grade beams; the hall slab becomes a structural slab 2–4 in thicker | 60,000 | 287,000 |
+| Substation and transformer yard mats | 18–24 in mats over 10–20 acres per GW, counted with site work | 19,000 | 49,000 |
+
+Totals by case:
+
+| Case | Building and pads, m³ | With site work and yard mats, m³ |
+|---|---|---|
+| A — good soils | 104,000 – 301,000 | 179,000 – 634,000 |
+| B — moderate soils | 133,000 – 498,000 | 208,000 – 831,000 |
+| C — poor soils | 164,000 – 588,000 | 238,000 – 921,000 |
+
+Reading: on poor soils with full site work the bottom-up reaches the model's 500,000–1,000,000 m³ per GW; on good soils it is a third to a half of it. The per-MW figure is therefore a poor-soils, heavy-site-work case, not a typical one. Geotechnical conditions are also where a lightweight SUPERWOOD foundation system would matter most: case C is 1.5–2 times case A in concrete, and every ton of that is load the ground must carry.
+
+## Wall system: tilt-up versus insulated metal panel (added 2026-09-06)
+
+The workbook carries this as the `walls_precast` switch (default 0, metal panel), and the steel-share sheet reports both cases. For the assumed footprint:
+
+| Wall system | Concrete | Steel | Where it lands in the model |
+|---|---|---|---|
+| Insulated metal panel (default) | none in the walls | 3,300–12,000 tons of steel-faced panel over 0.8–1.6 million sf of wall | Immediate: SUPERWOOD rain screen area for area |
+| Tilt-up or precast concrete | 8–9 in panels over the same wall area: 15,000–34,000 m³, 36,000–82,000 tons, plus 60–100 kg/m³ of rebar and heavier panel-line footings | metal panel row drops to zero | Medium term: hybrid SUPERWOOD wall panel, gated by NFPA 285 and ASTM E119 assemblies |
+
+Tilt-up therefore adds about 5–10% to the building-and-pads concrete above and moves the facade from an immediate SUPERWOOD skin to a medium-term structural panel. It is also why the steel share of the above-ground building spans 56–66% for tilt-up against 69–79% for metal panel (steel-share sheet). Which system Microsoft's and Meta's standard designs use is still the open item that decides this.
