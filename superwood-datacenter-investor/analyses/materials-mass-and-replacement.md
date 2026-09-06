@@ -47,32 +47,32 @@ Read top to bottom. Building structure and envelope first, then contents. The cu
 
 | Component | Mass per data center | Cumulative |
 |---|---|---|
-| Concrete: slab on grade, paving, yard | 720,000–1,200,000 tons | 720,000–1,200,000 tons |
-| Concrete: foundations, footings, piers, equipment pads | 480,000–1,200,000 tons | 1,200,000–2,400,000 tons |
-| Precast / tilt-up perimeter walls (precast case) | — | 1,200,000–2,400,000 tons |
-| Rebar in all concrete | 30,000–100,000 tons | 1,230,000–2,500,000 tons |
-| Structural steel — primary frame (columns, girders) | 30,000–40,000 tons | 1,260,000–2,540,000 tons |
-| Structural steel — roof trusses, joists, roof deck, girts | 20,000–60,000 tons | 1,280,000–2,600,000 tons |
-| Exterior skins — metal panel / IMP (metal-panel case) | 1,858–7,432 tons | 1,281,858–2,607,432 tons |
-| Louvers and yard / mechanical screens | 186–929 tons | 1,282,044–2,608,361 tons |
-| Security and staff-area fencing | 300–1,000 tons | 1,282,344–2,609,361 tons |
+| Concrete: slab on grade, paving, yard | 322,812–1,189,306 tons | 322,812–1,189,306 tons |
+| Concrete: foundations, footings, piers, equipment pads | 176,450–803,737 tons | 499,261–1,993,043 tons |
+| Precast / tilt-up perimeter walls (precast case) | — | 499,261–1,993,043 tons |
+| Rebar in all concrete | 12,482–83,043 tons | 511,743–2,076,086 tons |
+| Structural steel — primary frame (columns, girders) | 30,000–40,000 tons | 541,743–2,116,086 tons |
+| Structural steel — roof trusses, joists, roof deck, girts | 20,000–60,000 tons | 561,743–2,176,086 tons |
+| Exterior skins — metal panel / IMP (metal-panel case) | 1,858–7,432 tons | 563,601–2,183,519 tons |
+| Louvers and yard / mechanical screens | 186–929 tons | 563,787–2,184,448 tons |
+| Security and staff-area fencing | 300–1,000 tons | 564,087–2,185,448 tons |
 
 ### 2b. Contents — fit-out and equipment
 
 | Component | Mass per data center | Cumulative |
 |---|---|---|
-| Platforms, walkways, mezzanines, railings, tray supports | 5,000–15,000 tons | 1,287,344–2,624,361 tons |
-| Acoustic barriers, enclosures, HVAC separations | 2,000–5,000 tons | 1,289,344–2,629,361 tons |
-| Racking and equipment supports | 2,000–5,000 tons | 1,291,344–2,634,361 tons |
-| Other tray, containment, doors, misc. metals | 5,000–10,000 tons | 1,296,344–2,644,361 tons |
-| Ducting, plenums and air-distribution sheet metal | 3,000–8,000 tons | 1,299,344–2,652,361 tons |
-| Interior finishes, backplanes, trim (admin / office) | 1,000–3,000 tons | 1,300,344–2,655,361 tons |
-| Electrical equipment and conductors | 50,000–100,000 tons | 1,350,344–2,755,361 tons |
-| Mechanical equipment, piping, loop water | 20,000–50,000 tons | 1,370,344–2,805,361 tons |
-| IT — servers and racks | 15,000–70,000 tons | 1,385,344–2,875,361 tons |
+| Platforms, walkways, mezzanines, railings, tray supports | 5,000–15,000 tons | 569,087–2,200,448 tons |
+| Acoustic barriers, enclosures, HVAC separations | 2,000–5,000 tons | 571,087–2,205,448 tons |
+| Racking and equipment supports | 2,000–5,000 tons | 573,087–2,210,448 tons |
+| Other tray, containment, doors, misc. metals | 5,000–10,000 tons | 578,087–2,220,448 tons |
+| Ducting, plenums and air-distribution sheet metal | 3,000–8,000 tons | 581,087–2,228,448 tons |
+| Interior finishes, backplanes, trim (admin / office) | 1,000–3,000 tons | 582,087–2,231,448 tons |
+| Electrical equipment and conductors | 50,000–100,000 tons | 632,087–2,331,448 tons |
+| Mechanical equipment, piping, loop water | 20,000–50,000 tons | 652,087–2,381,448 tons |
+| IT — servers and racks | 15,000–70,000 tons | 667,087–2,451,448 tons |
 
-**Total mass, building and contents: 1,385,344–2,875,361 tons** (about 1.4–2.9 Mt).
-**Excluding concrete: 185,344–475,361 tons** — concrete is 83–87% of everything by mass.
+**Total mass, building and contents: 667,087–2,451,448 tons** (about 0.7–2.5 Mt).
+**Excluding concrete: 167,825–458,405 tons** — concrete is 75–81% of everything by mass.
 
 Two consequences follow before any SUPERWOOD arithmetic:
 
@@ -91,10 +91,10 @@ the SUPERWOOD mass required.
 
 | Component | Immediate | Soon | Medium term | Long term | Incumbent replaced | SUPERWOOD required | Gate / basis |
 |---|---|---|---|---|---|---|---|
-| Concrete: slab on grade, paving, yard | — | — | — | 75% | 540,000–900,000 tons | 27,000–135,000 tons | Technical potential per Alex (75%); no design or code pathway yet. arXiv 2509.21312 [M] for total concrete |
-| Concrete: foundations, footings, piers, equipment pads | — | — | — | 90% | 432,000–1,080,000 tons | 21,600–162,000 tons | Technical potential per Alex (90%); lightweight insulated SUPERWOOD foundations — geotechnical, durability and code pathway all open |
+| Concrete: slab on grade, paving, yard | — | — | — | 75% | 242,109–891,979 tons | 12,105–133,797 tons | Technical potential per Alex (75%); no design or code pathway yet. arXiv 2509.21312 [M] for total concrete |
+| Concrete: foundations, footings, piers, equipment pads | — | — | — | 90% | 158,805–723,364 tons | 7,940–108,505 tons | Technical potential per Alex (90%); lightweight insulated SUPERWOOD foundations — geotechnical, durability and code pathway all open |
 | Precast / tilt-up perimeter walls (precast case) | — | — | 100% | — | — | — | Hybrid SUPERWOOD wall panels; NFPA 285 + E119 assemblies. Active when Inputs walls_precast = 1 |
-| Rebar in all concrete | — | — | — | 81% | 24,300–81,000 tons | 7,290–48,600 tons | Rebar follows the concrete it sits in: foundation share × 90% + slab share × 75% |
+| Rebar in all concrete | — | — | — | 81% | 10,110–67,265 tons | 3,033–40,359 tons | Rebar follows the concrete it sits in: foundation share × 90% + slab share × 75% |
 | Structural steel — primary frame (columns, girders) | — | — | 100% | — | 30,000–40,000 tons | 9,000–24,000 tons | ICC-ES via the mass-timber qualification pathway; FM acceptance; E119 |
 | Structural steel — roof trusses, joists, roof deck, girts | — | — | 100% | — | 20,000–60,000 tons | 6,000–36,000 tons | Design values and connection data; trusses carry no fire-resistance requirement |
 | Exterior skins — metal panel / IMP (metal-panel case) | 100% | — | — | — | 1,858–7,432 tons | 696–1,391 tons | Shipping now; area-for-area rain screen |
@@ -122,18 +122,18 @@ the SUPERWOOD mass required.
 | Immediate — skins, screens, fences, interiors, backplanes | 3,344–12,361 tons | 1,234–2,685 tons (1.4–3.1M sf) | 1.4–3.1 yr of SuperMill One |
 | Soon — platforms, railings, barriers, racking, doors | 14,200–42,600 tons | 4,260–25,560 tons | 0.1–0.8 yr of SuperMill Two |
 | Medium term — structural steel, roof trusses and roofs, ducting, enclosures | 58,000–120,500 tons | 17,400–72,300 tons | 0.6–2.3 yr of SuperMill Two |
-| Long term — slab, paving, foundations and their rebar (technical potential) | 1,001,200–2,083,000 tons | 57,360–358,800 tons | 1.8–11.5 yr of SuperMill Two |
-| **Cumulative** | **1,076,744–2,258,461 tons** | **80,254–459,345 tons** | **2.6–14.7 yr of SuperMill Two** |
-| Not replaced by SUPERWOOD | 308,600–616,900 tons | | 21–22% of total mass |
+| Long term — slab, paving, foundations and their rebar (technical potential) | 415,924–1,704,608 tons | 24,549–295,861 tons | 0.8–9.5 yr of SuperMill Two |
+| **Cumulative** | **491,467–1,880,069 tons** | **47,443–396,406 tons** | **1.5–12.7 yr of SuperMill Two** |
+| Not replaced by SUPERWOOD | 175,619–571,378 tons | | 23–26% of total mass |
 
 - Through the medium term SUPERWOOD addresses **75,544–175,461 tons** of incumbent
   material — essentially all the steel above the slab, about
-  5.5–6.1% of total data center mass.
-  The long-term concrete rows are what move the total: with them, the ceiling is **77.7–78.5% of total
+  7.2–11.3% of total data center mass.
+  The long-term concrete rows are what move the total: with them, the ceiling is **73.7–76.7% of total
   data center mass**. Those shares (75% of slab and paving, 90% of foundations) are stated technical potential, not an
   engineered plan, and the whole difference between the two figures rests on them.
 - What stays: the remaining concrete, servers, gensets, transformers, switchgear, batteries, chillers, copper, loop
-  water — 21–22% of total mass.
+  water — 23–26% of total mass.
 - Plant math: one gigawatt data center's immediate skins are 1.4–3.1M sf, **1.4–3.1 years
   of SuperMill One's entire output**. The medium-term structural horizon alone is 0.6–2.3 years of SuperMill
   Two per gigawatt — two or three gigawatts of data center absorb the plant for years, which is the offtake argument and
@@ -152,7 +152,7 @@ server enclosures in the long-term horizon, carry no factor, so long-term avoide
 | Immediate (steel) | 5,561–21,377 tons CO₂e | 617–1,343 tons | **4,944–20,034 tons** | 2,751–11,608 tons | 1,604–3,491 tons |
 | Soon (steel) | 22,998–66,414 tons CO₂e | 2,130–12,780 tons | **20,868–53,634 tons** | 7,393–15,354 tons | 5,538–33,228 tons |
 | Medium term (steel) | 100,650–207,525 tons CO₂e | 8,700–36,150 tons | **91,950–171,375 tons** | 30,900–45,700 tons | 22,620–93,990 tons |
-| Long term (foundation concrete) | 165,930–408,390 tons CO₂e | 28,680–179,400 tons | **137,250–228,990 tons** | 107,825–127,790 tons | 74,568–466,440 tons |
+| Long term (foundation concrete) | 71,858–339,908 tons CO₂e | 12,274–147,930 tons | **59,583–191,978 tons** | 45,767–105,887 tons | 31,913–384,619 tons |
 
 Against recycled (EAF) steel the avoided figure is far lower, so any claim must state its baseline.
 
@@ -163,10 +163,10 @@ BF-BOF average], interior finishes 1.0 [L]. Equipment (electrical, mechanical, I
 
 | Component | Class | Factor kg CO₂e/kg | Embodied carbon, low–high |
 |---|---|---|---|
-| Concrete: slab on grade, paving, yard | concrete | 0.12 | 86,400–144,000 tons CO₂e |
-| Concrete: foundations, footings, piers, equipment pads | concrete | 0.12 | 57,600–144,000 tons CO₂e |
+| Concrete: slab on grade, paving, yard | concrete | 0.12 | 38,737–142,717 tons CO₂e |
+| Concrete: foundations, footings, piers, equipment pads | concrete | 0.12 | 21,174–96,448 tons CO₂e |
 | Precast / tilt-up perimeter walls (precast case) | concrete | 0.12 | — |
-| Rebar in all concrete | steel | 1.80 | 54,000–180,000 tons CO₂e |
+| Rebar in all concrete | steel | 1.80 | 22,467–149,478 tons CO₂e |
 | Structural steel — primary frame (columns, girders) | steel | 1.80 | 54,000–72,000 tons CO₂e |
 | Structural steel — roof trusses, joists, roof deck, girts | steel | 1.80 | 36,000–108,000 tons CO₂e |
 | Exterior skins — metal panel / IMP (metal-panel case) | steel | 2.07 | 3,846–15,385 tons CO₂e |
@@ -184,11 +184,11 @@ BF-BOF average], interior finishes 1.0 [L]. Equipment (electrical, mechanical, I
 
 | Roll-up | Low | High |
 |---|---|---|
-| Embodied carbon, building materials | 422,981 tons CO₂e | 1,000,127 tons CO₂e |
-| Steel share | 42% | 45% |
-| Concrete share | 34% | 29% |
-| Steel above the slab (steel excl. rebar), share | 29% | 27% |
-| Steel share if steel is recycled (EAF, 0.7 kg/kg) | 27% | 31% |
+| Embodied carbon, building materials | 307,359 tons CO₂e | 920,770 tons CO₂e |
+| Steel share | 48% | 46% |
+| Concrete share | 19% | 26% |
+| Steel above the slab (steel excl. rebar), share | 41% | 30% |
+| Steel share if steel is recycled (EAF, 0.7 kg/kg) | 35% | 32% |
 
 By embodied carbon, steel is roughly 55–60% of the building materials and concrete roughly 40–45% at the global-average
 steel factor; with recycled steel the steel share falls to about a third. The steel above the slab — what SUPERWOOD
@@ -223,7 +223,7 @@ are estimates [conf: L] and editable in the workbook. Printed band on the deck: 
 | Steel share of above-ground mass (wall system per Inputs toggle) | 69% | 78% |
 | — with metal-panel / IMP walls | 69% | 79% |
 | — with tilt-up / precast concrete walls (35,675–71,350 tons of panel) | 56% | 66% |
-| Including slab rebar (at-grade steel) | 74% | 82% |
+| Including slab rebar (at-grade steel) | 71% | 82% |
 | Structure and envelope only | 99% | 99% |
 
 Equipment is 55–60% of above-ground mass, so the answer turns on how much of a genset, switchgear lineup, chiller and
@@ -233,7 +233,7 @@ about ten points, which is why the deck prints a 50–80% band rather than a poi
 
 ## 6. Sensitivities — what moves the answer most
 
-1. **Long-term concrete.** The long-term rows are 1,001,200–2,083,000 tons of concrete and rebar on stated technical
+1. **Long-term concrete.** The long-term rows are 415,924–1,704,608 tons of concrete and rebar on stated technical
    potential (75% of slab and paving, 90% of foundations) and a 0.05–0.15 substitution factor, none of it engineered.
    They are the only rows that change the total-mass share materially, and the least evidenced. Present them as
    technical potential and say so on the slide.
@@ -284,17 +284,17 @@ The workbook carries a footprint-based concrete path beside the published per-MW
 | Case 3 — piers under grade beams | 2,002 | 14,234 |
 | Case 3 — structural slab thickening | 23,597 | 94,389 |
 | Case 3 poor soils — allowance | 59,584 | 287,016 |
-| Selected soil allowance | 0 | 0 |
+| Selected soil allowance | 29,033 | 196,589 |
 | Site paving, roads, yards, parking | 56,634 | 283,168 |
 | Substation / transformer yard mats | 18,502 | 49,339 |
-| All-in with site work, selected soil case | 178,992 | 633,845 |
+| All-in with site work, selected soil case | 208,026 | 830,435 |
 | Slab and paving, footprint basis (m³) | 134,505 | 495,544 |
-| Foundations, footings and pads, footprint basis (m³) | 44,488 | 138,301 |
+| Foundations, footings and pads, footprint basis (m³) | 73,521 | 334,891 |
 | Slab and paving, footprint basis (t) | 322,812 | 1,189,306 |
-| Foundations, footings and pads, footprint basis (t) | 106,770 | 331,923 |
+| Foundations, footings and pads, footprint basis (t) | 176,450 | 803,737 |
 | Per-MW basis for comparison (m³) | 500,000 | 1,000,000 |
 
-Current concrete basis: published per-MW intensity, soil case 1. Wall system, tilt-up versus insulated metal panel, is the `walls_precast` switch; its concrete appears on the precast row of the main sheet and the steel-share sheet reports both cases. All element inputs are estimates [L]; derivation in foundation-bottom-up.md.
+Current concrete basis: footprint bottom-up, soil case 2. Wall system, tilt-up versus insulated metal panel, is the `walls_precast` switch; its concrete appears on the precast row of the main sheet and the steel-share sheet reports both cases. All element inputs are estimates [L]; derivation in foundation-bottom-up.md.
 
 ## Sources
 

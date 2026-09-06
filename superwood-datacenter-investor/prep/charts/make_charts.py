@@ -11,13 +11,14 @@ def clean(a):
 
 # ---- Charts 1 & 4: campus mass and embodied carbon, same rows (wide for web; narrow two-up for the PPTX) ----
 # Data: analyses/materials-mass-and-replacement.md (v4, 2026-09-01). kt per 1 GW, high case; replaceable share; horizon.
+import json as _j0; _SC=_j0.load(open("analyses/scenarios.json"))["moderate"]  # footprint basis, moderate soils (deck default since 2026-09-06)
 rows=[("Platforms, walkways, mezzanines, railings",15,1.0,"soon"),("Acoustic barriers, enclosures, separations",5,1.0,"soon"),
 ("Racking and equipment supports",5,1.0,"soon"),("Tray, containment, doors, misc. metals",10,0.5,"soon"),
 ("Ducting and air-distribution sheet metal",8,1.0,"med"),("Interior finishes, backplanes, trim",3,1.0,"imm"),
 ("Electrical equipment and conductors",100,0,None),("Mechanical equipment, piping, loop water",50,0,None),("IT — servers and racks",70,0.4,"long"),
 ("Steel — primary frame",40,1.0,"med"),("Steel — roof trusses, joists, deck, girts",60,1.0,"med"),
 ("Exterior skins — metal panel",7.4,1.0,"imm"),("Louvers, screens and fencing",1.9,1.0,"imm"),
-("Concrete — slab on grade, paving",1200,0.75,"long"),("Concrete — foundations, footings, pads",1200,0.90,"long"),("Rebar in all concrete",100,0.81,"long")]
+("Concrete — slab on grade, paving",_SC["slab"]["t_hi"]/1000,0.75,"long"),("Concrete — foundations, footings, pads",_SC["foundations"]["t_hi"]/1000,0.90,"long"),("Rebar in all concrete",_SC["rebar"]["t_hi"]/1000,0.81,"long")]
 # order: contents at the top, building structure and envelope, foundation at the bottom (Alex 2026-09-05)
 import json as _j, math
 _d=_j.load(open("analyses/material_split.json")); SPLIT=_d["split"]; HZ=_d["horizon"]

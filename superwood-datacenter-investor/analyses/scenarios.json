@@ -1,0 +1,119 @@
+{
+ "per_mw": {
+  "slab": {
+   "t_lo": 720000,
+   "t_hi": 1200000,
+   "sw_lo": 27000,
+   "sw_hi": 135000
+  },
+  "foundations": {
+   "t_lo": 480000,
+   "t_hi": 1200000,
+   "sw_lo": 21600,
+   "sw_hi": 162000
+  },
+  "rebar": {
+   "t_lo": 30000,
+   "t_hi": 100000,
+   "sw_lo": 7290,
+   "sw_hi": 48600
+  },
+  "long_term": {
+   "replaced_lo": 1001200,
+   "replaced_hi": 2083000,
+   "sw_lo": 57360,
+   "sw_hi": 358800,
+   "yr_lo": 1.83,
+   "yr_hi": 11.46
+  }
+ },
+ "good": {
+  "slab": {
+   "t_lo": 322812,
+   "t_hi": 1189306,
+   "sw_lo": 12105,
+   "sw_hi": 133797
+  },
+  "foundations": {
+   "t_lo": 106770,
+   "t_hi": 331923,
+   "sw_lo": 4805,
+   "sw_hi": 44810
+  },
+  "rebar": {
+   "t_lo": 10740,
+   "t_hi": 63385,
+   "sw_lo": 2610,
+   "sw_hi": 30805
+  },
+  "long_term": {
+   "replaced_lo": 351801,
+   "replaced_hi": 1264051,
+   "sw_lo": 20990,
+   "sw_hi": 222611,
+   "yr_lo": 0.67,
+   "yr_hi": 7.11
+  }
+ },
+ "moderate": {
+  "slab": {
+   "t_lo": 322812,
+   "t_hi": 1189306,
+   "sw_lo": 12105,
+   "sw_hi": 133797
+  },
+  "foundations": {
+   "t_lo": 176450,
+   "t_hi": 803737,
+   "sw_lo": 7940,
+   "sw_hi": 108505
+  },
+  "rebar": {
+   "t_lo": 12482,
+   "t_hi": 83043,
+   "sw_lo": 3033,
+   "sw_hi": 40359
+  },
+  "long_term": {
+   "replaced_lo": 415924,
+   "replaced_hi": 1704608,
+   "sw_lo": 24549,
+   "sw_hi": 295861,
+   "yr_lo": 0.78,
+   "yr_hi": 9.45
+  }
+ },
+ "poor": {
+  "slab": {
+   "t_lo": 379445,
+   "t_hi": 1415840,
+   "sw_lo": 14229,
+   "sw_hi": 159282
+  },
+  "foundations": {
+   "t_lo": 193139,
+   "t_hi": 794226,
+   "sw_lo": 8691,
+   "sw_hi": 107220
+  },
+  "rebar": {
+   "t_lo": 14315,
+   "t_hi": 92086,
+   "sw_lo": 3478,
+   "sw_hi": 44754
+  },
+  "long_term": {
+   "replaced_lo": 474903,
+   "replaced_hi": 1873273,
+   "sw_lo": 27869,
+   "sw_hi": 324456,
+   "yr_lo": 0.89,
+   "yr_hi": 10.36
+  }
+ },
+ "_meta": {
+  "default": "moderate",
+  "note": "footprint basis; soils 1 good / 2 moderate / 3 poor; per_mw is the published intensity for comparison",
+  "sm2_t_per_yr": null
+ }
+}

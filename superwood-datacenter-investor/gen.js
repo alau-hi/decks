@@ -202,7 +202,7 @@ const sizeR = [["By embodied carbon, steel is about two-thirds of everything est
   s.addText(head, { x, y, w: 5.9, h: 0.32, fontFace: SANS, fontSize: 13, bold: true, color: CREAM, margin: 0 });
   body(s, sub, x, y + 0.34, 5.9, 0.62, 10, DIM);
 }));
-note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; carbon is valued on each row's steel, concrete and plastic content (material split per component: estimates, analyses/material_split.json; polymers at an average 3.0 kg CO₂e/kg); copper, aluminum, electronics, water, gypsum and wood not valued. Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: immediate = shipping; soon = 1–3 years, straightforward applications engineering; medium term = complex applications engineering, new form factors or materials engineering; long term = 5+ years, technical potential with no design or code pathway yet.", 6.78, 0.3);
+note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; carbon is valued on each row's steel, concrete and plastic content (material split per component: estimates, analyses/material_split.json; polymers at an average 3.0 kg CO₂e/kg); copper, aluminum, electronics, water, gypsum and wood not valued. Concrete: footprint bottom-up with moderate soils (slab, footings, pads, paving, yard mats; the published 500–1,000 m³/MW intensity is the upper comparison). Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: immediate = shipping; soon = 1–3 years, straightforward applications engineering; medium term = complex applications engineering, new form factors or materials engineering; long term = 5+ years, technical potential with no design or code pathway yet.", 6.78, 0.3);
 
 // ---------- 6 · ONE DATA CENTER CAN CONSUME A SUPERMILL ----------
 s = pres.addSlide(); base(s, "InventWood · The size");
@@ -214,7 +214,7 @@ const worthRows = [
   ["Immediate — skins, screens, fences", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 years of SuperMill One", 1.4, 3.1],
   ["Soon — racks, platforms, barriers", "4,300–26,000 tons", "0.1–0.8 years of SuperMill Two", 0.1, 0.8],
   ["Medium term — frame, roofs, enclosures", "17,000–72,000 tons", "0.6–2.3 years of SuperMill Two", 0.6, 2.3],
-  ["Long term — slab, foundations", "57,000–359,000 tons", "1.8–12 years of SuperMill Two", 1.8, 11.5],
+  ["Long term — slab, foundations", "25,000–296,000 tons", "0.8–9.4 years of SuperMill Two", 0.78, 9.45],
 ];
 const wx = [L, 5.4, 9.0], ww = [4.6, 3.4, 3.7];
 worthCols.forEach((c, i) => s.addText(c.toUpperCase(), { x: wx[i], y: 2.3, w: ww[i], h: 0.4, fontFace: SANS, fontSize: 10, bold: true, color: BRIGHT, charSpacing: 1.2, margin: 0, valign: "bottom" }));
@@ -233,7 +233,7 @@ worthRows.forEach((r, ri) => {
 });
 s.addShape(pres.ShapeType.rect, { x: L, y: 5.87, w: CW, h: 0.012, fill: { color: RULE } });
 s.addText([t("SuperMill One ≈ 900 tons a year (1M sf)", { color: BRIGHT }), t("      ·      ", { color: MUTED }), t("SuperMill Two ≈ 31,000 tons a year (36M sf)", { color: BRIGHT })], { x: L, y: 6.0, w: CW, h: 0.35, fontFace: SANS, fontSize: 11.5, bold: true, margin: 0 });
-note(s, "Company estimate from the slide 6 model, low–high scenarios; 0.3–0.6 substitution factor for steel, to be engineering-stamped per element; long-term row also includes server enclosures at 40% of IT mass (a small share of the total), electronics excluded. Mill output at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application; see the SUPERMILLS Investor Overview.", 6.62, 0.45);
+note(s, "Company estimate from the slide 6 model, low–high scenarios, moderate soils; 0.3–0.6 substitution factor for steel, to be engineering-stamped per element; long-term row also includes server enclosures at 40% of IT mass (a small share of the total), electronics excluded. Mill output at 0.87 kg/sf, 1.3 t/m³. Pricing is set per application; see the SUPERMILLS Investor Overview.", 6.62, 0.45);
 
 // ---------- 9 · PROPERTIES ----------
 s = pres.addSlide(); base(s, "InventWood · The fit");

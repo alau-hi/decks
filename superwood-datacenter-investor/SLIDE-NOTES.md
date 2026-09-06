@@ -51,8 +51,10 @@ Audit fixes 2026-09-06 (reviews/AUDIT-2026-09-06.md, Alex: run 1–4 then polish
 
 Polish pass 2026-09-06: all 20 slides scanned at 1400x850 for overflow, clipping and broken images — none, apart from full-bleed backgrounds on the cover and close by design; slide 6 row rhythm tightened so it renders at 0.80 zoom instead of 0.75; detector warnings remaining are intentional (brand fonts, full-bleed sections, hatched estimate bar).
 
+Footer: confidential mark left, pager centered, InventWood wordmark at the right edge of the window (Alex 2026-09-06).
+
 ## Open items (Alex to confirm)
-- Concrete: a bottom-up for the assumed footprint gives 104,000–301,000 m³ for the building and pads (160,000–585,000 m³ with site work), against 500,000–1,000,000 m³ from the per-MW figure; see analyses/foundation-bottom-up.md. The workbook now has a Foundations scenario sheet with concrete_basis (per-MW vs footprint) and soil_case (good / moderate / poor) switches, plus the existing walls_precast switch; scenario table in analyses/foundation-bottom-up.md. Decide which scenario slides 6 and 7 print (2026-09-06).
+- Concrete: a bottom-up for the assumed footprint gives 104,000–301,000 m³ for the building and pads (160,000–585,000 m³ with site work), against 500,000–1,000,000 m³ from the per-MW figure; see analyses/foundation-bottom-up.md. Decided 2026-09-06 (Alex): decks print the footprint basis with moderate soils by default; a soils slider (good / moderate / poor; keys G / O / P) on slides 6 and 7 swaps the concrete rows, the foundation subtotal and the long-term SUPERWOOD row from analyses/scenarios.json. PPTX prints moderate soils.
 - Concrete intensity (500–1,000 m³/MW) is building core and shell only, traced to Schneider WP99's 1 MW reference design (0.23 t CO₂e/m², concrete 85%); site paving, parking and yards are NOT in it, and the design is low-density (~13,000 ft²/MW). Decide whether to add a site-work concrete row and rescale the building row for hyperscale density (2026-09-06).
 - Wall system in Microsoft's and Meta's standard designs (metal panel vs tilt-up) — drives the steel share and whether facades are "now".
 - Fast + Epp funding program name and dates before wide distribution.
