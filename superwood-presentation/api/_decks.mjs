@@ -3,6 +3,9 @@
 export const DECKS = {
   superwood:  { label: 'SUPERWOOD',          prefix: '/intro',                       home: '/intro' },
   supermills: { label: 'SUPERMILLS America', prefix: '/supermills-deck', home: '/supermills-deck/', password: 'SUPERMILLS_PASSWORD' },
+  // Alex's data center deck lives in this repo (co-owned, no subtree). It shares
+  // the supermills password variable on purpose: one password, one unlock.
+  datacenters: { label: 'SUPERWOOD for Data Centers', prefix: '/datacenters', home: '/datacenters/', password: 'SUPERMILLS_PASSWORD' },
 };
 
 // The deployment's own deck; rows with no better attribution belong to it.
