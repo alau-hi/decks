@@ -52,6 +52,7 @@ Audit fixes 2026-09-06 (reviews/AUDIT-2026-09-06.md, Alex: run 1–4 then polish
 Polish pass 2026-09-06: all 20 slides scanned at 1400x850 for overflow, clipping and broken images — none, apart from full-bleed backgrounds on the cover and close by design; slide 6 row rhythm tightened so it renders at 0.80 zoom instead of 0.75; detector warnings remaining are intentional (brand fonts, full-bleed sections, hatched estimate bar).
 
 ## Open items (Alex to confirm)
+- Concrete: a bottom-up for the assumed footprint gives 104,000–301,000 m³ for the building and pads (160,000–585,000 m³ with site work), against 500,000–1,000,000 m³ from the per-MW figure; see analyses/foundation-bottom-up.md. Decide whether slide 6 should print the bottom-up range (2026-09-06).
 - Concrete intensity (500–1,000 m³/MW) is building core and shell only, traced to Schneider WP99's 1 MW reference design (0.23 t CO₂e/m², concrete 85%); site paving, parking and yards are NOT in it, and the design is low-density (~13,000 ft²/MW). Decide whether to add a site-work concrete row and rescale the building row for hyperscale density (2026-09-06).
 - Wall system in Microsoft's and Meta's standard designs (metal panel vs tilt-up) — drives the steel share and whether facades are "now".
 - Fast + Epp funding program name and dates before wide distribution.
