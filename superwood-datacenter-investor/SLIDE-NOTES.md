@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06: slide 8 kicker "The need" (was "The size").
 - 2026-09-06: close slide headline is Alex's call to action: "Let's work together to build AI buildings that are better to build, good for people, and good for the world."
 - 2026-09-06: slide 17 body simplified (Alex): two bars, all US construction $2,158B vs data centers $75B (Census C30 July 2026 SAAR), line "Data centers are about 3.5% of US construction spending. The rest of the built world is the market."; the four-step TAM cards are archived (archive/slide-springboard-cards-2026-09-06.*) and the TAM facts are no longer marked printed here. New register fact datacenter.share_of_us_construction_2026.
 - 2026-09-06: slide navigation rewritten: jumps run a requestAnimationFrame easing with snap paused, so a second or third arrow mid-flight retargets the motion instead of being queued (Alex: two arrows did not move two slides). Slide 5 teaser drops "We help with these two." Slide 13 kicker "Applications · Medium term (1–5 years)". Slide 4 cards enlarged. PPTX/PDF were rebuilt earlier this round; from now on gen.js is kept in sync but not rebuilt unless Alex asks.

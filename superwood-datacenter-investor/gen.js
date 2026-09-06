@@ -223,7 +223,7 @@ cmpRows.forEach((r, ri) => {
 note(s, "Sources: news.microsoft.com, Nov 2024; Thornton Tomasetti project page; sustainability.atmeta.com, 31 Jul 2025. Logos and photographs are the companies' own, from the cited publications, used to identify the published projects. SUPERWOOD strength: company test data, parallel-to-grain tension. Hybrid-beam gains: derived from beam theory with SUPERWOOD modulus and strength, engineering write-up pending. Beams: concept renderings.", 6.84, 0.25);
 
 // ---------- 5 · WHAT A GW DATA CENTER IS MADE OF ----------
-s = newSlide(); base(s, "InventWood · The size");
+s = newSlide(); base(s, "InventWood · The need");
 kicker(s, "Materials");
 title(s, "50–80% of a data center’s building and contents are steel", L, 0.88, 11.9, 26);
 label(s, "By mass", L, 1.8, 4); label(s, "By embodied carbon", 6.7, 1.8, 4);
@@ -240,8 +240,8 @@ const sizeR = [["By embodied carbon, steel is about two-thirds of everything est
 note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the concrete and structural-steel intensities are published (arXiv 2509.21312, a secondary source); other rows are estimates from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg (global average; recycled 0.4–0.7), concrete 0.12; carbon is valued on each row's steel, concrete and plastic content (material split per component: estimates, analyses/material_split.json; polymers at an average 3.0 kg CO₂e/kg); copper, aluminum, electronics, water, gypsum and wood not valued. Concrete: footprint bottom-up with moderate soils (slab, footings, pads, paving, yard mats; the published 500–1,000 m³/MW intensity is the upper comparison). Steel share: company estimate; the 50–80% band covers metal-panel and tilt-up concrete wall designs. Horizons: immediate = shipping; soon = 1–3 years, straightforward applications engineering; medium term = complex applications engineering, new form factors or materials engineering; long term = 5+ years, technical potential with no design or code pathway yet.", 6.78, 0.3);
 
 // ---------- 6 · ONE DATA CENTER CAN CONSUME A SUPERMILL ----------
-s = newSlide(); base(s, "InventWood · The size");
-kicker(s, "The size");
+s = newSlide(); base(s, "InventWood · The need");
+kicker(s, "The need");
 title(s, [t("Just one data center can consume the "), gold("entire output"), t(" of a SUPERMILL")], L, 0.88, 11.9, 27);
 body(s, "SUPERWOOD a 1 GW data center could require, by horizon, against what each mill makes in a year.", L, 1.75, 11, 0.35, 12, DIM);
 const worthCols = ["Horizon", "SUPERWOOD required", "Years of mill output"];
