@@ -198,7 +198,7 @@ note(s, "Sources: news.microsoft.com, Nov 2024; Thornton Tomasetti project page;
 
 // ---------- 5 · WHAT A GW DATA CENTER IS MADE OF ----------
 s = pres.addSlide(); base(s, "InventWood · The size");
-kicker(s, "The size");
+kicker(s, "Materials");
 title(s, "What a 1 GW data center is made of", L, 0.88, 11.9, 27);
 label(s, "By mass", L, 1.8, 4); label(s, "By embodied carbon", 6.7, 1.8, 4);
 const chW = 5.9, chH = chW * 4.8 / 8.0;

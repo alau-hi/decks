@@ -46,7 +46,7 @@ section:focus{outline:none}
 .pager button:disabled{opacity:.3;cursor:default;background:transparent;color:var(--cream-dim)}
 .pager .pn{font-size:max(.66rem,11px);letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums;padding:0 .3em}
 /* right-hand dock */
-nav.dock{position:fixed;right:1.1rem;top:50%;transform:translateY(-50%);z-index:96;display:flex;flex-direction:column;gap:.12rem;align-items:flex-end;max-height:92vh;overflow:hidden;background:rgba(20,13,7,.55);padding:.5rem .3rem;border-radius:1rem;backdrop-filter:blur(4px)}
+nav.dock{position:fixed;right:1.1rem;top:50%;transform:translateY(-50%);z-index:96;display:flex;flex-direction:column;gap:.12rem;align-items:flex-end;max-height:92vh;overflow:hidden;background:none;padding:.5rem .3rem;border-radius:1rem}
 nav.dock button{border:0;background:transparent;cursor:pointer;font:500 .66rem 'Inter',sans-serif;letter-spacing:.1em;color:var(--muted);opacity:.6;padding:.14em .55em;border-radius:999px;transition:color .25s,opacity .25s,background .25s;text-align:right;white-space:nowrap}
 nav.dock button:hover,nav.dock button:focus-visible{opacity:1;color:var(--cream);outline:none}nav.dock button:focus-visible{box-shadow:0 0 0 2px var(--gold)}
 nav.dock button.active{opacity:1;color:var(--ink-deep);background:var(--wood-bright);font-weight:600}
@@ -355,7 +355,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
 <!-- 5 · CAMPUS -->
 <section id="campus" data-nav="Materials">
   <div class="wrap">
-    <div class="kicker rv">The size</div>
+    <div class="kicker rv">Materials</div>
     <h2 class="rv">What a 1 GW data center is made of</h2>
     <div class="toggle rv" role="tablist" aria-label="View"><button role="tab" id="tab-mass" aria-selected="true" aria-controls="view-mass view-mass-notes" data-view="mass">By mass, log scale</button><button role="tab" id="tab-carbon" aria-selected="false" aria-controls="view-carbon view-carbon-notes" tabindex="-1" data-view="carbon">By embodied carbon</button></div>
     <div class="split rv campus" style="grid-template-columns:2.6fr 1fr;align-items:stretch">
