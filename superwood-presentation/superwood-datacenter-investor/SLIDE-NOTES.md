@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06: slide 4 cards: Power; Steel and aluminum (customer-reported shortage, 50% tariffs on full value, aluminum 60% imported and a critical mineral); Construction labor (349,000 workers, 8.5-month backlogs, ABC via DCD). Sources in the pop-up and end note.
 - 2026-09-06: appendix cover redone in the SUPERMILLS overview design (appendix_bg.jpg, centred title, linked contents row with slide number); slide 8 lead starts "Amount of SUPERWOOD…"; dock buttons numbered.
 - 2026-09-06: slide 5 answers align across both cards (subgrid rows: image, complaint, answer); slide 7 mass/carbon views are stacked in one grid cell and crossfade over 0.8 s so rows stay put (the "other materials not valued" tag is inline so row heights match).
 - 2026-09-06: dock labels carry slide numbers (01 Cover … 20 Carbon) so digit keys and labels match; numbers hidden on phones.

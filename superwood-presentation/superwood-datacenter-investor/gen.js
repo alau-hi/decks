@@ -132,17 +132,17 @@ kicker(s, "Market · Supply chains");
 title(s, "Resulting in supply chain challenges", L, 0.88, 11.9, 27);
 const supply = [
   ["Power", "Power transformers average 128 weeks to deliver, substation transformers more than 160. Grid connection sets the schedule."],
-  ["Aluminum", "On the federal Critical Minerals List since 2022, confirmed in the 2025 list. The metal of skins, louvers and busway."],
-  ["Structural steel", "Customers report backlogs and shortages. Section 232 tariffs at 50% since 2025, on full product value since April 2026."],
+  ["Steel and aluminum", "Customers report structural steel backlogs and shortages, with Section 232 tariffs at 50% since 2025 and on full product value since April 2026. Aluminum is 60% imported and on the federal Critical Minerals List."],
+  ["Construction labor", "The industry needs up to 349,000 additional workers in 2026. Some data center build-outs are backlogged by about eight and a half months."],
 ];
 supply.forEach(([head, sub], i) => {
   const cw = 3.95, x = L + i * 4.125, y = 2.1;
-  panel(s, x, y, cw, 1.9, PANEL2);
+  panel(s, x, y, cw, 2.2, PANEL2);
   s.addText(head, { x: x + 0.25, y: y + 0.2, w: cw - 0.5, h: 0.35, fontFace: SERIF, fontSize: 17, color: CREAM, margin: 0 });
-  body(s, sub, x + 0.25, y + 0.65, cw - 0.5, 1.15, 11, DIM);
+  body(s, sub, x + 0.25, y + 0.65, cw - 0.5, 1.45, 10.5, DIM);
 });
-s.addText([t("Every week of lead time is a week of "), gold("unearned power"), t(".")], { x: L, y: 4.5, w: CW, h: 0.6, fontFace: SERIF, fontSize: 21, color: CREAM, margin: 0 });
-note(s, "Lead times: Wood Mackenzie 2026 survey as reported by POWER and Data Center Knowledge. Aluminum: Federal Register, Final 2025 List of Critical Minerals (Nov 2025). Steel shortage: what customers report to InventWood. Tariffs: Congressional Research Service IN12519; Construction Dive on the full-value rule, 2026.");
+s.addText([t("Every week of lead time is a week of "), gold("unearned power"), t(".")], { x: L, y: 4.8, w: CW, h: 0.6, fontFace: SERIF, fontSize: 21, color: CREAM, margin: 0 });
+note(s, "Lead times: Wood Mackenzie 2026 survey as reported by POWER and Data Center Knowledge. Steel shortage: what customers report to InventWood. Tariffs: Congressional Research Service IN12519; Construction Dive on the full-value rule, 2026. Aluminum: USGS Mineral Commodity Summaries 2026 (net import reliance 60%); Federal Register, Final 2025 List of Critical Minerals (Nov 2025). Labor: Associated Builders and Contractors 2026 outlook, as reported by Data Center Dynamics.");
 
 // ---------- 4 · COMMUNITY PUSHBACK: AESTHETICS AND NOISE ----------
 s = newSlide(); base(s, "InventWood · Market");

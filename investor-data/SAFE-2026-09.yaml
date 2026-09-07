@@ -1984,7 +1984,7 @@ facts:
     url: https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-aluminum.pdf
     as_of: 2026-09-04
     status: canonical
-    printed_in: [investor-overview, super-mills-america]
+    printed_in: [investor-overview, super-mills-america, superwood-datacenter-investor]
     slides: {investor-overview: [Vs Steel], super-mills-america: [The Gap (sources panel only)]}
     conflicts_with: [market.us_aluminum_primary_import_share]
     notes: MCS 2026 stopped netting exported scrap (footnote 3), so 2024 reads 62% here and 47% in MCS 2025 - do not mix series. Aluminum is on the USGS Critical Minerals List.
