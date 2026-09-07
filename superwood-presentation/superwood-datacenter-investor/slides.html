@@ -305,6 +305,8 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
   nav.dock button:hover .lbl,nav.dock button:focus-visible .lbl{opacity:1}
 }
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){nav.dock button .lbl{display:none}}
+/* slide 14: the two cards share aligned rows (title, subtitle, body) */
+#vision .grid2{align-items:stretch;grid-template-rows:auto auto auto}#vision .grid2>.card{display:grid;grid-template-rows:subgrid;grid-row:span 3;align-content:start}#vision .grid2>.card h3,#vision .grid2>.card p{margin-bottom:0}#vision .grid2>.card .sub{margin:.35rem 0 .5rem}
 </style>
 </head>
 <body class="on-cover">
