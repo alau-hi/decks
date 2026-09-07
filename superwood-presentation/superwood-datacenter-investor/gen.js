@@ -90,7 +90,7 @@ s = newSlide(); base(s, "InventWood · The thesis");
 kicker(s, "The thesis");
 title(s, [t("We help data centers decarbonize and improve their impact on communities, while they accelerate SUPERWOOD's journey from premium skins into "), gold("structural"), t(" applications")], L, 0.88, 12.2, 24);
 const thesis = [
-  ["The buyer is short of steel, already trying wood, and dealing with community resistance.",
+  ["Data center developers are short of steel, already trying wood, and dealing with community resistance.",
    "Data centers are among the fastest-growing buyers of structural steel; Microsoft and Meta already build with mass timber; communities are blocking projects over looks and noise."],
   ["Their massively scalable demand helps with low-cost financing for SUPERMILLS",
    "One hyperscaler basis of design, repeated data center after data center, is a year or more of SuperMill Two output."],

@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-07: slide 2 card 1 says "Data center developers", not "the buyer" (Alex: anonymous and rude). Standing rule: name the customer group, never "the buyer".
 - 2026-09-07: slide 12 bottom line: "Customers have expressed interest in all of the above. Engineering work required to design, test, and certify each of these applications."
 - 2026-09-07: slide 14 blueprints re-rendered at hyperscale (hall hundreds of metres long; foundation grid twenty-plus bays). Slides 11–13 bottom notes are plain text, no card box.
 - 2026-09-07: slide 14 cards open with concept blueprints (prefabricated shell isometric; footing grid and slab section), caption "Concept blueprints"; render log render/dc-blueprints-envelope-foundation.md.
