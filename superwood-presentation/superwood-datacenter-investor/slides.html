@@ -274,10 +274,11 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
 #ladder .stages span::before{white-space:nowrap}
 .dock button .n{display:inline-block;min-width:1.6em;margin-right:.4em;color:var(--wood-bright);opacity:.8;font-variant-numeric:tabular-nums;letter-spacing:.02em}.dock button.active .n{color:inherit;opacity:1}@media (max-width:700px), (max-width:860px) and (orientation:portrait){.dock button .n{display:none}}
 /* slide 7 crossfade */
-#campus .chartcol,#campus .legstrip>.view-stack{display:grid}
-#campus .chartcol>.view{grid-area:1/1;transition:opacity .8s ease,visibility 0s 0s}
-#campus .chartcol>.view[hidden]{display:block;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .8s ease,visibility 0s .8s}
-#campus .legstrip>.view{transition:opacity .8s ease}
+#campus .chartcol{display:grid}
+#campus .chartcol>.view,#campus .legstrip>.view{grid-area:1/1;opacity:1;visibility:visible;transition:opacity .8s ease,visibility 0s 0s}
+#campus .chartcol>.view[hidden],#campus .legstrip>.view[hidden]{display:block!important;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .8s ease,visibility 0s .8s}
+#campus .legstrip{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center}
+#campus .legstrip>.src{grid-area:1/2}
 #campus .hb .hv em{display:inline;margin-left:.35rem}
 /* appendix cover, same design as the SUPERMILLS overview deck */
 .tier-divider{align-items:center}.tier-divider .wrap{margin:0 auto;text-align:center}.tier-divider h2{max-width:none;font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}
