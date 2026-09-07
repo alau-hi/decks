@@ -290,6 +290,12 @@ table.cmp td{line-height:1.4}
 #campus .chartcol>.view[hidden]{display:block;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .8s ease,visibility 0s .8s}
 #campus .legstrip>.view{transition:opacity .8s ease}
 #campus .hb .hv em{display:inline;margin-left:.35rem}
+/* appendix cover, same design as the SUPERMILLS overview deck */
+.tier-divider{align-items:center}.tier-divider .wrap{margin:0 auto;text-align:center}.tier-divider h2{max-width:none;font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}
+.apxtoc{max-width:44rem;margin:2.2rem auto 0;display:flex;flex-direction:column;gap:.7rem;text-align:left}
+.apxtoc a{display:grid;grid-template-columns:1fr auto;column-gap:1rem;align-items:baseline;text-decoration:none;padding:.8rem 1.1rem;border:1px solid var(--line);border-radius:10px;background:rgba(20,13,7,.55);backdrop-filter:blur(2px);transition:border-color .25s,background .25s,transform .25s}
+.apxtoc a:hover,.apxtoc a:focus-visible{border-color:var(--wood);background:rgba(184,125,68,.14);transform:translateX(4px);outline:none}
+.apxtoc b{font-family:'Fraunces',serif;font-weight:500;font-size:1.15rem;color:var(--cream)}.apxtoc small{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.12em;color:var(--muted)}
 </style>
 </head>
 <body class="on-cover">
@@ -467,7 +473,7 @@ table.cmp td{line-height:1.4}
   <div class="wrap">
     <div class="kicker rv">The need</div>
     <h2 class="rv">Just one data center can consume the <em>entire output</em> of a SUPERMILL</h2>
-    <p class="lead rv">What one 1 GW data center could take, by horizon, against a year of each mill.</p><label class="soils top lone"><span class="lab">Soil conditions</span><span class="ctl"><input type="range" class="soils-range" min="1" max="3" step="1" value="2" aria-valuetext="Moderate" aria-label="Soil conditions for foundations: good, moderate or poor"><span class="ticks"><i>Good</i><i>Moderate</i><i>Poor</i></span></span><output class="soils-out">Moderate soils</output></label>
+    <p class="lead rv">Amount of SUPERWOOD one 1 GW data center could take, by horizon, against a year of each mill.</p><label class="soils top lone"><span class="lab">Soil conditions</span><span class="ctl"><input type="range" class="soils-range" min="1" max="3" step="1" value="2" aria-valuetext="Moderate" aria-label="Soil conditions for foundations: good, moderate or poor"><span class="ticks"><i>Good</i><i>Moderate</i><i>Poor</i></span></span><output class="soils-out">Moderate soils</output></label>
     <table class="worth rv">
       <thead><tr><th>Horizon</th><th>SUPERWOOD required</th><th>Years of mill output <span style="font-weight:400;letter-spacing:0;text-transform:none;color:var(--muted)">· bar scale 0–12 years, tick at one year</span></th></tr></thead>
       <tbody>
@@ -658,12 +664,13 @@ table.cmp td{line-height:1.4}
 </section>
 
 <!-- APPENDIX -->
-<section id="appendix" data-nav="Appendix" class="div">
-  <div class="bg" style="background-image:url(assets/cover_bg.webp?v=e27a3e35)"></div><div class="scrim"></div>
+<section id="appendix" data-nav="Appendix" class="div tier-divider">
+  <div class="bg" style="background-image:url(assets/appendix_bg.jpg?v=b8ce218c)"></div><div class="scrim" style="background:linear-gradient(180deg,rgba(22,14,8,.6),rgba(22,14,8,.82))"></div>
   <div class="wrap">
-    <div class="kicker rv">SUPERWOOD for Data Centers</div>
-    <h1 class="rv">Appendix</h1>
-    <p class="lead rv">Embodied carbon and the LCA basis.</p>
+    <h2 class="rv" style="text-align:center">Appendix</h2>
+    <nav class="apxtoc rv" aria-label="Appendix sections">
+      <a href="#carbon"><b>Embodied carbon and the LCA basis</b><small>19</small></a>
+    </nav>
   </div>
 </section>
 

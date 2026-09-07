@@ -279,6 +279,12 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
 #campus .chartcol>.view[hidden]{display:block;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .8s ease,visibility 0s .8s}
 #campus .legstrip>.view{transition:opacity .8s ease}
 #campus .hb .hv em{display:inline;margin-left:.35rem}
+/* appendix cover, same design as the SUPERMILLS overview deck */
+.tier-divider{align-items:center}.tier-divider .wrap{margin:0 auto;text-align:center}.tier-divider h2{max-width:none;font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}
+.apxtoc{max-width:44rem;margin:2.2rem auto 0;display:flex;flex-direction:column;gap:.7rem;text-align:left}
+.apxtoc a{display:grid;grid-template-columns:1fr auto;column-gap:1rem;align-items:baseline;text-decoration:none;padding:.8rem 1.1rem;border:1px solid var(--line);border-radius:10px;background:rgba(20,13,7,.55);backdrop-filter:blur(2px);transition:border-color .25s,background .25s,transform .25s}
+.apxtoc a:hover,.apxtoc a:focus-visible{border-color:var(--wood);background:rgba(184,125,68,.14);transform:translateX(4px);outline:none}
+.apxtoc b{font-family:'Fraunces',serif;font-weight:500;font-size:1.15rem;color:var(--cream)}.apxtoc small{font-family:'Inter',sans-serif;font-size:.78rem;letter-spacing:.12em;color:var(--muted)}
 </style>
 </head>
 <body class="on-cover">
@@ -687,12 +693,13 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
 </section>
 
 <!-- APPENDIX -->
-<section id="appendix" data-nav="Appendix" class="div">
-  <div class="bg" style="background-image:url(assets/cover_bg.webp?v=e27a3e35)"></div><div class="scrim"></div>
+<section id="appendix" data-nav="Appendix" class="div tier-divider">
+  <div class="bg" style="background-image:url(assets/appendix_bg.jpg?v=b8ce218c)"></div><div class="scrim" style="background:linear-gradient(180deg,rgba(22,14,8,.6),rgba(22,14,8,.82))"></div>
   <div class="wrap">
-    <div class="kicker rv">SUPERWOOD for Data Centers</div>
-    <h1 class="rv">Appendix</h1>
-    <p class="lead rv">Embodied carbon and the LCA basis.</p>
+    <h2 class="rv" style="text-align:center">Appendix</h2>
+    <nav class="apxtoc rv" aria-label="Appendix sections">
+      <a href="#carbon"><b>Embodied carbon and the LCA basis</b><small>20</small></a>
+    </nav>
   </div>
 </section>
 

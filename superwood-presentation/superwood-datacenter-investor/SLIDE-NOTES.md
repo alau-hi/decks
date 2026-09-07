@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06: appendix cover redone in the SUPERMILLS overview design (appendix_bg.jpg, centred title, linked contents row with slide number); slide 8 lead starts "Amount of SUPERWOOD…"; dock buttons numbered.
 - 2026-09-06: slide 5 answers align across both cards (subgrid rows: image, complaint, answer); slide 7 mass/carbon views are stacked in one grid cell and crossfade over 0.8 s so rows stay put (the "other materials not valued" tag is inline so row heights match).
 - 2026-09-06: dock labels carry slide numbers (01 Cover … 20 Carbon) so digit keys and labels match; numbers hidden on phones.
 - 2026-09-06 (alignment pass, Alex): slide 7 rebuilt full-width (legend strip above the chart, sources in a hover pop-up, no side column; builder updated); slide 12 tile grid six-up; slide 13 kickers aligned outside the cards and columns stretched; slide 11 horizon definitions spaced below the lead; slide 15 stage labels no longer wrap; Appendix cover slide added before the carbon slide (dock: Appendix, Carbon). PPTX generator mirrors all of it.

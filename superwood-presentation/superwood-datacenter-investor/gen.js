@@ -234,7 +234,7 @@ note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the co
 s = newSlide(); base(s, "InventWood · The need");
 kicker(s, "The need");
 title(s, [t("Just one data center can consume the "), gold("entire output"), t(" of a SUPERMILL")], L, 0.88, 11.9, 27);
-body(s, "SUPERWOOD a 1 GW data center could require, by horizon, against what each mill makes in a year.", L, 1.75, 11, 0.35, 12, DIM);
+body(s, "Amount of SUPERWOOD a 1 GW data center could require, by horizon, against what each mill makes in a year.", L, 1.75, 11, 0.35, 12, DIM);
 const worthCols = ["Horizon", "SUPERWOOD required", "Years of mill output"];
 const worthRows = [
   ["Immediate — skins, screens, fences", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 years of SuperMill One", 1.4, 3.1],
@@ -518,11 +518,11 @@ s.addText("Lex Harris · Director, Capital Markets & IR · lex@inventwood.com", 
 
 // ---------- APPENDIX COVER ----------
 s = newSlide();
-s.background = { path: "prep/cover_bg.jpg" };
-s.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: W, h: H, fill: { color: "120C07", transparency: 45 } });
-kicker(s, "SUPERWOOD for Data Centers", 1.0, 2.6);
-s.addText("Appendix", { x: 1.0, y: 3.0, w: 10, h: 1.0, fontFace: SERIF, fontSize: 44, color: CREAM, margin: 0 });
-s.addText("Embodied carbon and the LCA basis.", { x: 1.0, y: 4.05, w: 10, h: 0.5, fontFace: SERIF, fontSize: 18, color: DIM, margin: 0 });
+s.background = { path: "prep/appendix_bg.jpg" };
+s.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: W, h: H, fill: { color: "160E08", transparency: 30 } });
+s.addText("Appendix", { x: 0, y: 2.3, w: W, h: 1.0, fontFace: SERIF, fontSize: 44, color: CREAM, align: "center", margin: 0 });
+s.addShape(pres.ShapeType.roundRect, { x: (W - 7.5) / 2, y: 3.7, w: 7.5, h: 0.7, rectRadius: 0.08, fill: { color: "140D07", transparency: 45 }, line: { color: RULE, width: 0.75 } });
+s.addText([t("Embodied carbon and the LCA basis", { fontFace: SERIF, fontSize: 16, color: CREAM }), t("   20", { fontFace: SANS, fontSize: 10, color: MUTED, charSpacing: 2 })], { x: (W - 7.5) / 2 + 0.3, y: 3.7, w: 6.9, h: 0.7, margin: 0, valign: "middle" });
 
 // ---------- APPENDIX · CARBON ----------
 s = newSlide(); base(s, "InventWood · Appendix");
