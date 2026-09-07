@@ -516,6 +516,14 @@ s.addText([t("Let’s work together to build AI buildings that are "), gold("bet
 s.addText("Alex Lau · CEO / Co-Founder · alex@inventwood.com", { x: 1.0, y: 6.15, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
 s.addText("Lex Harris · Director, Capital Markets & IR · lex@inventwood.com", { x: 1.0, y: 6.55, w: 9, h: 0.4, fontFace: SANS, fontSize: 14, color: DIM, margin: 0 });
 
+// ---------- APPENDIX COVER ----------
+s = newSlide();
+s.background = { path: "prep/cover_bg.jpg" };
+s.addShape(pres.ShapeType.rect, { x: 0, y: 0, w: W, h: H, fill: { color: "120C07", transparency: 45 } });
+kicker(s, "SUPERWOOD for Data Centers", 1.0, 2.6);
+s.addText("Appendix", { x: 1.0, y: 3.0, w: 10, h: 1.0, fontFace: SERIF, fontSize: 44, color: CREAM, margin: 0 });
+s.addText("Embodied carbon and the LCA basis.", { x: 1.0, y: 4.05, w: 10, h: 0.5, fontFace: SERIF, fontSize: 18, color: DIM, margin: 0 });
+
 // ---------- APPENDIX · CARBON ----------
 s = newSlide(); base(s, "InventWood · Appendix");
 kicker(s, "Appendix · Carbon");

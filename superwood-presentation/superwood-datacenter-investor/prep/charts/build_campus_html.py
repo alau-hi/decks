@@ -74,19 +74,23 @@ def scenario_data():
     return data
 AX_M='<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1,000</span><span style="left:34.4%">10,000</span><span style="left:60.9%">100,000</span><span style="left:87.4%;transform:translateX(-60%)">1,000,000</span></div><span class="hv">tons, log scale</span><span></span></div>'
 AX_C='<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:0%">0</span><span style="left:20%">100,000</span><span style="left:40%">200,000</span><span style="left:60%">300,000</span><span style="left:80%">400,000</span><span style="left:100%;transform:translateX(-100%)">500,000</span></div><span class="hv">tons CO₂e</span><span></span></div>'
-LEG_M='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel</span><span><i style="background:#8c8478"></i>Concrete</span><span><i style="background:var(--teal)"></i>Plastic</span><span><i style="background:#5a4a36"></i>Other: copper, aluminum, water, gypsum, wood, electronics</span><span class="muted">Bar length is mass on a log scale; segments show each material\'s share</span></div>'
+LEG_M='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel</span><span><i style="background:#8c8478"></i>Concrete</span><span><i style="background:var(--teal)"></i>Plastic</span><span><i style="background:#5a4a36"></i>Other: copper, aluminum, water, gypsum, wood, electronics</span><span class="muted">Log scale; segments show each material\'s share</span></div>'
 LEG_C='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel at 1.8 kg CO₂e/kg</span><span><i style="background:#8c8478"></i>Concrete at 0.12</span><span><i style="background:var(--teal)"></i>Polymers at an average 3.0</span><span class="muted">Other materials not valued</span></div>'
 SLIDER='<label class="soils"><span class="lab">Soil conditions</span><span class="ctl"><input type="range" class="soils-range" min="1" max="3" step="1" value="2" aria-valuetext="Moderate" aria-label="Soil conditions for foundations: good, moderate or poor"><span class="ticks"><i>Good</i><i>Moderate</i><i>Poor</i></span></span><output class="soils-out">Moderate soils</output></label>'
 def rebuild(path):
     h=R(path); a=h.index('<section id="campus"'); b=h.index('</section>',a); sec=h[a:b]
-    _m=re.search(r'<div class="view" id="view-mass-notes"[^>]*>(<div class="li".*?</p></div></div>)',sec,re.S); li_m=_m.group(1) if _m else ''  # side text removed 2026-09-06 (Alex)
-    li_c=re.search(r'<div class="view" id="view-carbon-notes"[^>]*>(<div class="li".*?</p></div></div>)',sec,re.S).group(1)
-    foot=('<p class="note rv">Company estimate, 1 GW IT load, high case. Published intensities only for concrete and structural steel (arXiv 2509.21312); other rows from unit masses. '
-          'Carbon factors: steel 1.8 kg CO₂e/kg, concrete 0.12, polymers 3.0, valued on each row\u2019s steel, concrete and plastic content; copper, aluminum, electronics, water, gypsum and wood not valued. '
+    # 2026-09-06 (Alex): full-width chart, legend strip above it, sources in a hover pop-up; side column and side statements gone
+    foot=('Company estimate, 1 GW IT load, high case. Published intensities only for concrete and structural steel (arXiv 2509.21312); other rows from unit masses. '
+          'Carbon factors: steel 1.8 kg CO\u2082e/kg, concrete 0.12, polymers 3.0, valued on each row\u2019s steel, concrete and plastic content; copper, aluminum, electronics, water, gypsum and wood not valued. '
           'Concrete from a footprint bottom-up (slab, footings, pads, paving); moderate soils by default. '
-          'Horizons: now = shipping; soon = 1\u20133 years; medium = new form factors or materials engineering; long = 5+ years, no design or code pathway yet.</p>')
-    s0=sec.index('<div class="split rv'); s1=sec.rindex('</div>')
-    block=f'''<div class="split rv campus" style="grid-template-columns:2.6fr 1fr;align-items:stretch">
+          'Horizons: now = shipping; soon = 1\u20133 years; medium = new form factors or materials engineering; long = 5+ years, no design or code pathway yet.')
+    s0=sec.index('<div class="legstrip rv">') if '<div class="legstrip rv">' in sec else sec.index('<div class="split rv'); s1=sec.rindex('</div>')
+    block=f'''<div class="legstrip rv">
+      <div class="view" id="view-mass-notes" role="tabpanel" aria-labelledby="tab-mass" data-view="mass">{LEG_M}</div>
+      <div class="view" id="view-carbon-notes" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden>{LEG_C}</div>
+      <span class="src tipwrap" tabindex="0" aria-describedby="tip-campus">Sources and method<span class="srctip" role="tooltip" id="tip-campus">{foot}</span></span>
+    </div>
+    <div class="split rv campus" style="grid-template-columns:1fr">
       <div class="chartcol">
         <div class="view" id="view-mass" role="tabpanel" aria-labelledby="tab-mass" data-view="mass"><div class="hbars det">
 {rows_html("mass")}{AX_M}
@@ -94,11 +98,6 @@ def rebuild(path):
         <div class="view" id="view-carbon" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden><div class="hbars det">
 {rows_html("carbon")}{AX_C}
 </div></div>
-      </div>
-      <div class="sidecol">
-        <div class="view" id="view-mass-notes" role="tabpanel" aria-labelledby="tab-mass" data-view="mass">{li_m}{LEG_M}</div>
-        <div class="view" id="view-carbon-notes" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden>{li_c}{LEG_C}</div>
-        {foot}
       </div>
     </div>
   '''
