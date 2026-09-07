@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06: dock follows the InventWood intro deck system: numbers only in a column at the right, label appears to the left on hover or focus, active number in wood-bright; content gets the reclaimed width (--dock 4.2rem). Fixed a stray closing div from the new axis label that had pushed the carbon view out of the chart column.
 - 2026-09-06: slide 7: bars slide between mass and carbon geometry (segments matched by material), text crossfades in 0.35 s, legend switches instantly; "log scale" note removed from the legend; axis label sits under the ticks, centred, in cream; sources pop-up wraps and is structured in rows.
 - 2026-09-06: slide 4 cards: Power; Steel and aluminum (customer-reported shortage, 50% tariffs on full value, aluminum 60% imported and a critical mineral); Construction labor (349,000 workers, 8.5-month backlogs, ABC via DCD). Sources in the pop-up and end note.
 - 2026-09-06: appendix cover redone in the SUPERMILLS overview design (appendix_bg.jpg, centred title, linked contents row with slide number); slide 8 lead starts "Amount of SUPERWOOD…"; dock buttons numbered.
