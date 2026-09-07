@@ -62,6 +62,8 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06: slide 5 answers align across both cards (subgrid rows: image, complaint, answer); slide 7 mass/carbon views are stacked in one grid cell and crossfade over 0.8 s so rows stay put (the "other materials not valued" tag is inline so row heights match).
+- 2026-09-06: dock labels carry slide numbers (01 Cover … 20 Carbon) so digit keys and labels match; numbers hidden on phones.
 - 2026-09-06 (alignment pass, Alex): slide 7 rebuilt full-width (legend strip above the chart, sources in a hover pop-up, no side column; builder updated); slide 12 tile grid six-up; slide 13 kickers aligned outside the cards and columns stretched; slide 11 horizon definitions spaced below the lead; slide 15 stage labels no longer wrap; Appendix cover slide added before the carbon slide (dock: Appendix, Carbon). PPTX generator mirrors all of it.
 - 2026-09-06 (Alex batch): slide 7 title back to "What a 1 GW data center is made of" with subtitle "50–80% of a data center's building and contents are steel", side-column statement removed (builder tolerates the missing block); slide 9 hero is the SUPERMILLS cube/panel/I-beam photo (assets/prod_cube.jpg); slide 12 drops the Railings tile; slide 14 card titles enlarged with gold subtitles; slide 15 note removed; slide 16 hint loses "sources link out"; slide 17 keeps only the three bars, sources pop-up on the bars.
 - 2026-09-06: close slide: Investor Overview reference removed for good; contact names pushed further down.
