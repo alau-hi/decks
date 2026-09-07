@@ -234,7 +234,7 @@ note(s, "Company estimate for a 1 GW IT-load data center, high case. Only the co
 s = newSlide(); base(s, "InventWood · The need");
 kicker(s, "The need");
 title(s, [t("Just one data center can consume the "), gold("entire output"), t(" of a SUPERMILL")], L, 0.88, 11.9, 27);
-body(s, "Amount of SUPERWOOD a 1 GW data center could require, by horizon, against what each mill makes in a year.", L, 1.75, 11, 0.35, 12, DIM);
+body(s, "Amount of SUPERWOOD a 1 GW data center could require, against what a mill makes in a year.", L, 1.75, 11, 0.35, 12, DIM);
 const worthCols = ["Horizon", "SUPERWOOD required", "Years of mill output"];
 const worthRows = [
   ["Immediate — skins, screens, fences", "1,200–2,700 tons (1.4–3.1M sf)", "1.4–3.1 years of SuperMill One", 1.4, 3.1],

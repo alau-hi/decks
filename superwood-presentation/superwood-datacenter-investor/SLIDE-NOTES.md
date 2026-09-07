@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06: slide 8 lead: "Amount of SUPERWOOD a 1 GW data center could require, against what a mill makes in a year." (Alex; his message read "by against", taken as a typo for "against").
 - 2026-09-06: slide 7 carbon axis runs to 600,000 t CO₂e so the poor-soils foundation bar (about 523,000) stays inside; the "other materials not valued" tag is a dagger with a tooltip, explained in the carbon legend.
 - 2026-09-06: arrow keys always move between slides: the window key handler runs in the capture phase and stops propagation, and the mass/carbon toggle no longer takes over the arrows when it has focus (M / C keys, click or tap switch the view).
 - 2026-09-06: dock follows the InventWood intro deck system: numbers only in a column at the right, label appears to the left on hover or focus, active number in wood-bright; content gets the reclaimed width (--dock 4.2rem). Fixed a stray closing div from the new axis label that had pushed the carbon view out of the chart column.
