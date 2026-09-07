@@ -62,6 +62,8 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-07: slide 12 bottom line: "Customers have expressed interest in all of the above. Engineering work required to design, test, and certify each of these applications."
+- 2026-09-07: slide 14 blueprints re-rendered at hyperscale (hall hundreds of metres long; foundation grid twenty-plus bays). Slides 11–13 bottom notes are plain text, no card box.
 - 2026-09-07: slide 14 cards open with concept blueprints (prefabricated shell isometric; footing grid and slab section), caption "Concept blueprints"; render log render/dc-blueprints-envelope-foundation.md.
 - 2026-09-06: slide 14 closing statement out of its box: "Significant work ahead to design and prove out these systems, but tremendous rewards for success." Slide 15 reformatted: rows vertically centred with a wider right column and one- or two-line descriptions, collaborators band as a four-column grid with larger logos.
 - 2026-09-06: slide 14 cards use subgrid rows so titles, subtitles and bodies align and both cards end together.

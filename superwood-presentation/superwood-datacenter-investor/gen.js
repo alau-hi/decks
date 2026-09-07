@@ -359,8 +359,7 @@ const gated = [
     s.addText(lab, { x: x + 0.05, y: rowY + 1.6, w: cw - 0.1, h: 0.62, fontFace: SANS, fontSize: 10.5, bold: true, color: CREAM, align: "center", margin: 0, valign: "top" });
   });
 }
-panel(s, L, 5.5, CW, 0.85, PANEL);
-s.addText("Each needs one scoped test program, which can be co-funded with a customer. Order depends on which a customer picks up first.",
+s.addText("Customers have expressed interest in all of the above. Engineering work required to design, test, and certify each of these applications.",
   { x: L + 0.3, y: 5.55, w: CW - 0.6, h: 0.75, fontFace: SANS, fontSize: 11.5, italic: true, color: DIM, margin: 0, valign: "middle" });
 conceptTag(s, W - 3.6, 5.2, 3.0, "Concept renderings");
 

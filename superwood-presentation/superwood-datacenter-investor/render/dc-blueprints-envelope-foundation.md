@@ -13,3 +13,6 @@ Classic architectural blueprint, cyanotype style: deep Prussian-blue paper with 
 
 ## Notes
 - The shell drawing carries a small "WALL SECTION" label despite the no-words instruction; accepted.
+
+## Revision 2 (Alex, 2026-09-07): much bigger buildings
+Re-generated at hyperscale: shell as a hall hundreds of metres long with dozens of bays and a truck for scale (job ff3997da); foundation plan twenty-plus bays long (job 35ed4a7c). v1 files kept in prep/unused-assets.
