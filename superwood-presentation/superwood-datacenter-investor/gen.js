@@ -507,8 +507,8 @@ cmp.forEach(([lab, f, col, val], i) => {
   s.addShape(pres.ShapeType.roundRect, { x: bx, y: y + 0.05, w: Math.max(0.08, bw * f), h: 0.5, rectRadius: 0.05, fill: { color: col } });
   s.addText(val, { x: bx + bw + 0.3, y, w: 3.4, h: 0.6, fontFace: SANS, fontSize: 14, color: DIM, margin: 0, valign: "middle" });
 });
-s.addText([t("Data centers are about "), gold("3.5%"), t(" of US construction and about "), gold("0.6%"), t(" of the world’s. The rest of the built world is the market.")], { x: L, y: 5.35, w: CW, h: 0.6, fontFace: SERIF, fontSize: 20, color: CREAM, margin: 0 });
-note(s, "US: Census Bureau, Construction Spending (C30), July 2026, seasonally adjusted annual rates, release CB26-140 of 1 Sep 2026: total construction $2,157.6 billion; private data center construction $75.2 billion (preliminary). Global: Oxford Economics, Future of Construction (Oct 2021), global construction output forecast of US$13.3 trillion for 2025 in 2017 prices; a forecast, not a measured total. Shares are ratios of these figures.");
+s.addText([t("The rest of the built world is the "), gold("market"), t(".")], { x: L, y: 5.35, w: CW, h: 0.6, fontFace: SERIF, fontSize: 20, color: CREAM, margin: 0 });
+note(s, "US: Census Bureau, Construction Spending (C30), July 2026, seasonally adjusted annual rates, release CB26-140 of 1 Sep 2026: total construction $2,157.6 billion; private data center construction $75.2 billion (preliminary). Global: Oxford Economics, Future of Construction (Oct 2021), global construction output forecast of US$13.3 trillion for 2025 in 2017 prices; a forecast, not a measured total.");
 
 // ---------- CLOSE ----------
 s = newSlide();
