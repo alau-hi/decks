@@ -375,7 +375,7 @@ body(s, "Truss design is starting. Mass-timber enhancement — SUPERWOOD laminat
 // right: at SuperMill Two scale
 label(s, "At SuperMill Two scale", 5.5, 2.1, 6.0);
 const sm2 = [
-  ["tile_mullion2", "Window mullions", "Slender, stiff curtain-wall and storefront mullions in place of aluminum and steel — light structural, non-life-safety"],
+  ["tile_mullion2", "Window mullions", "Slender, stiff curtain-wall and storefront mullions in place of aluminum and steel: better insulating and more attractive — light structural, non-life-safety"],
   ["tile_truss2", "Trusses, roofs & long-span members", "Roof structure first; long-span floors and canopies follow"],
   ["tile_hybrid_glulam", "CLT-type floor, roof & wall assemblies", "Starting with SUPERWOOD hybrid glulam: SUPERWOOD outer laminations on a glulam core. Thin, far stronger panels follow through the mass-timber product route"],
   ["tile_rackocp", "Heavy equipment supports & server enclosures", "Racks come soon, a few months of development; enclosures for servers and equipment follow; the electronics are never replaced"],
