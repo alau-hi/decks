@@ -72,18 +72,18 @@ def scenario_data():
         d["worth"]={"sw":f"{fmt(lo)}–{fmt(hi)} tons","yr":f"{yr} years of SuperMill Two","left":f"{min(ylo,12)/12*100:.1f}%","width":f"{max(min(yhi,12)-ylo,0.2)/12*100:.1f}%"}
         data[case]=d
     return data
-AX_M='<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1,000</span><span style="left:34.4%">10,000</span><span style="left:60.9%">100,000</span><span style="left:87.4%;transform:translateX(-60%)">1,000,000</span></div><span class="hv">tons, log scale</span><span></span></div>'
-AX_C='<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:0%">0</span><span style="left:20%">100,000</span><span style="left:40%">200,000</span><span style="left:60%">300,000</span><span style="left:80%">400,000</span><span style="left:100%;transform:translateX(-100%)">500,000</span></div><span class="hv">tons CO₂e</span><span></span></div>'
-LEG_M='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel</span><span><i style="background:#8c8478"></i>Concrete</span><span><i style="background:var(--teal)"></i>Plastic</span><span><i style="background:#5a4a36"></i>Other: copper, aluminum, water, gypsum, wood, electronics</span><span class="muted">Log scale; segments show each material\'s share</span></div>'
+AX_M='<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1,000</span><span style="left:34.4%">10,000</span><span style="left:60.9%">100,000</span><span style="left:87.4%;transform:translateX(-60%)">1,000,000</span></div><span class="axl">tons, log scale</span></div><span class="hv"></span><span></span></div>'
+AX_C='<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:0%">0</span><span style="left:20%">100,000</span><span style="left:40%">200,000</span><span style="left:60%">300,000</span><span style="left:80%">400,000</span><span style="left:100%;transform:translateX(-100%)">500,000</span></div><span class="axl">tons CO₂e</span></div><span class="hv"></span><span></span></div>'
+LEG_M='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel</span><span><i style="background:#8c8478"></i>Concrete</span><span><i style="background:var(--teal)"></i>Plastic</span><span><i style="background:#5a4a36"></i>Other: copper, aluminum, water, gypsum, wood, electronics</span></div>'
 LEG_C='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel at 1.8 kg CO₂e/kg</span><span><i style="background:#8c8478"></i>Concrete at 0.12</span><span><i style="background:var(--teal)"></i>Polymers at an average 3.0</span><span class="muted">Other materials not valued</span></div>'
 SLIDER='<label class="soils"><span class="lab">Soil conditions</span><span class="ctl"><input type="range" class="soils-range" min="1" max="3" step="1" value="2" aria-valuetext="Moderate" aria-label="Soil conditions for foundations: good, moderate or poor"><span class="ticks"><i>Good</i><i>Moderate</i><i>Poor</i></span></span><output class="soils-out">Moderate soils</output></label>'
 def rebuild(path):
     h=R(path); a=h.index('<section id="campus"'); b=h.index('</section>',a); sec=h[a:b]
     # 2026-09-06 (Alex): full-width chart, legend strip above it, sources in a hover pop-up; side column and side statements gone
-    foot=('Company estimate, 1 GW IT load, high case. Published intensities only for concrete and structural steel (arXiv 2509.21312); other rows from unit masses. '
-          'Carbon factors: steel 1.8 kg CO\u2082e/kg, concrete 0.12, polymers 3.0, valued on each row\u2019s steel, concrete and plastic content; copper, aluminum, electronics, water, gypsum and wood not valued. '
-          'Concrete from a footprint bottom-up (slab, footings, pads, paving); moderate soils by default. '
-          'Horizons: now = shipping; soon = 1\u20133 years; medium = new form factors or materials engineering; long = 5+ years, no design or code pathway yet.')
+    foot=('<span class="row"><b>Basis</b> Company estimate, 1 GW IT load, high case. Published intensities only for concrete and structural steel (arXiv 2509.21312); other rows from unit masses.</span>'
+          '<span class="row"><b>Carbon factors</b> Steel 1.8 kg CO\u2082e/kg, concrete 0.12, polymers 3.0, valued on each row\u2019s steel, concrete and plastic content; copper, aluminum, electronics, water, gypsum and wood not valued.</span>'
+          '<span class="row"><b>Concrete</b> Footprint bottom-up (slab, footings, pads, paving); moderate soils by default.</span>'
+          '<span class="row"><b>Horizons</b> Now = shipping; soon = 1\u20133 years; medium = new form factors or materials engineering; long = 5+ years, no design or code pathway yet.</span>')
     s0=sec.index('<div class="legstrip rv">') if '<div class="legstrip rv">' in sec else sec.index('<div class="split rv'); s1=sec.rindex('</div>')
     block=f'''<div class="legstrip rv">
       <div class="view" id="view-mass-notes" role="tabpanel" aria-labelledby="tab-mass" data-view="mass">{LEG_M}</div>
