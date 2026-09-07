@@ -330,6 +330,8 @@ table.cmp td{line-height:1.4}
 #ladder .collab.grid4>div{display:flex;flex-direction:column;align-items:flex-start;gap:.4rem}
 #ladder .collab.grid4 img{height:1.35rem}
 #ladder .collab.grid4 small{max-width:none}
+/* slide 4 illustrations */
+#supply .grid3.sc{grid-template-rows:auto auto auto}#supply .grid3.sc>.card{display:grid;grid-template-rows:subgrid;grid-row:span 3;align-content:start}#supply .card .imgbox.ic{aspect-ratio:1.5;border-radius:.45rem;margin-bottom:.9rem}#supply .card .imgbox.ic img{object-fit:cover}#supply .grid3.sc .hint{grid-column:1/-1;text-align:right;margin-top:.2rem}#supply .grid3.sc{position:relative}
 </style>
 </head>
 <body class="on-cover">
@@ -384,12 +386,12 @@ table.cmp td{line-height:1.4}
   <div class="wrap">
     <div class="kicker rv">Market · Supply chains</div>
     <h2 class="rv">Resulting in supply chain challenges</h2>
-    <div class="grid3 rv" style="margin-top:.6rem">
-      <div class="card tint"><h3>Power</h3><p>Power transformers average 128 weeks to deliver, substation transformers more than 160. Grid connection sets the schedule.</p></div>
-      <div class="card tint"><h3>Steel and aluminum</h3><p>Customers report structural steel backlogs and shortages, with Section 232 tariffs at 50% since 2025 and on full product value since April 2026. Aluminum is 60% imported and on the federal Critical Minerals List.</p></div>
-      <div class="card tint"><h3>Construction labor</h3><p>The industry needs up to 349,000 additional workers in 2026. Some data center build-outs are backlogged by about eight and a half months.</p></div>
+    <div class="grid3 rv tipwrap sc" tabindex="0" aria-describedby="tip-supply" style="margin-top:.6rem">
+      <div class="card tint"><div class="imgbox ic"><img src="assets/ic_power.jpg?v=ff5213bc" alt="Illustration: power transformer beside a calendar" loading="lazy"></div><h3>Power</h3><p>Power transformers average 128 weeks to deliver, substation transformers more than 160. Grid connection sets the schedule.</p></div>
+      <div class="card tint"><div class="imgbox ic"><img src="assets/ic_metals.jpg?v=79b0bfde" alt="Illustration: steel beams and aluminum ingots on a dock with a ship behind" loading="lazy"></div><h3>Steel and aluminum</h3><p>Customers report structural steel backlogs and shortages, with Section 232 tariffs at 50% since 2025 and on full product value since April 2026. Aluminum is 60% imported and on the federal Critical Minerals List.</p></div>
+      <div class="card tint"><div class="imgbox ic"><img src="assets/ic_labor.jpg?v=ab56af05" alt="Illustration: hard hats on hooks with empty hooks, crane behind" loading="lazy"></div><h3>Construction labor</h3><p>The industry needs up to 349,000 additional workers in 2026. Some data center build-outs are backlogged by about eight and a half months.</p></div>
+      <span class="hint">Hover or focus for sources</span><span class="srctip" role="tooltip" id="tip-supply">Lead times: Wood Mackenzie 2026 survey as reported by POWER and Data Center Knowledge. Steel shortage: what customers report to InventWood. Tariffs: Congressional Research Service IN12519; Construction Dive on the full-value rule, 2026. Aluminum: USGS Mineral Commodity Summaries 2026 (net import reliance 60% of apparent consumption); Federal Register, Final 2025 List of Critical Minerals (Nov 2025). Labor: Associated Builders and Contractors 2026 outlook, as reported by Data Center Dynamics.</span>
     </div>
-    <p class="lead rv tipwrap" tabindex="0" aria-describedby="tip-supply" style="margin-top:1.3rem;color:var(--cream);max-width:none">Every week of lead time is a week of <em style="color:var(--gold)">unearned power</em>.<span class="hint">Hover or focus for sources</span><span class="srctip" role="tooltip" id="tip-supply">Lead times: Wood Mackenzie 2026 survey as reported by POWER and Data Center Knowledge. Steel shortage: what customers report to InventWood. Tariffs: Congressional Research Service IN12519; Construction Dive on the full-value rule, 2026. Aluminum: USGS Mineral Commodity Summaries 2026 (net import reliance 60% of apparent consumption); Federal Register, Final 2025 List of Critical Minerals (Nov 2025). Labor: Associated Builders and Contractors 2026 outlook, as reported by Data Center Dynamics.</span></p>
   </div>
 </section>
 

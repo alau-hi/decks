@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-07: slide 4 cards open with flat amber-line illustrations (transformer and calendar; beams, ingots and ship; hard hats and crane), render/dc-supply-chain-icons.md; the "Every week of lead time" line is gone and the sources pop-up hangs off the card grid.
 - 2026-09-07: slide 2 card 1 says "Data center developers", not "the buyer" (Alex: anonymous and rude). Standing rule: name the customer group, never "the buyer".
 - 2026-09-07: slide 12 bottom line: "Customers have expressed interest in all of the above. Engineering work required to design, test, and certify each of these applications."
 - 2026-09-07: slide 14 blueprints re-rendered at hyperscale (hall hundreds of metres long; foundation grid twenty-plus bays). Slides 11–13 bottom notes are plain text, no card box.
