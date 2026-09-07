@@ -62,6 +62,8 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-07: slide 14 cards open with concept blueprints (prefabricated shell isometric; footing grid and slab section), caption "Concept blueprints"; render log render/dc-blueprints-envelope-foundation.md.
+- 2026-09-06: slide 14 closing statement out of its box: "Significant work ahead to design and prove out these systems, but tremendous rewards for success." Slide 15 reformatted: rows vertically centred with a wider right column and one- or two-line descriptions, collaborators band as a four-column grid with larger logos.
 - 2026-09-06: slide 14 cards use subgrid rows so titles, subtitles and bodies align and both cards end together.
 - 2026-09-06: slide 2 cards retitled in Alex's words (buyer short of steel, trying wood, facing community resistance; scalable demand helps low-cost SUPERMILLS financing; large-scale proving ground for structural applications); one-line bodies drawn from slides 3–13.
 - 2026-09-06: slide 8 lead: "Amount of SUPERWOOD a 1 GW data center could require, against what a mill makes in a year." (Alex; his message read "by against", taken as a typo for "against").

@@ -317,7 +317,19 @@ table.cmp td{line-height:1.4}
 }
 @media (max-width:700px), (max-width:860px) and (orientation:portrait){nav.dock button .lbl{display:none}}
 /* slide 14: the two cards share aligned rows (title, subtitle, body) */
-#vision .grid2{align-items:stretch;grid-template-rows:auto auto auto}#vision .grid2>.card{display:grid;grid-template-rows:subgrid;grid-row:span 3;align-content:start}#vision .grid2>.card h3,#vision .grid2>.card p{margin-bottom:0}#vision .grid2>.card .sub{margin:.35rem 0 .5rem}
+#vision .grid2{align-items:stretch;grid-template-rows:auto auto auto auto}#vision .grid2>.card{display:grid;grid-template-rows:subgrid;grid-row:span 4;align-content:start}#vision .card .imgbox.bp{aspect-ratio:2.35;margin:-.2rem 0 .9rem;border-radius:.4rem}#vision .card .imgbox.bp img{object-fit:cover;object-position:center 40%}#vision .grid2>.card h3,#vision .grid2>.card p{margin-bottom:0}#vision .grid2>.card .sub{margin:.35rem 0 .5rem}
+/* slide 15 layout (2026-09-06) */
+#ladder .ladder .lhead,#ladder .ladder .lrow{grid-template-columns:11rem minmax(0,1fr) 19rem;gap:1.4rem;align-items:center}
+#ladder .ladder .lrow{padding:.75rem 0 .6rem}
+#ladder .ladder .lrow h3{font-size:max(.95rem,13px)}
+#ladder .ladder .lrow p{font-size:max(.84rem,12px);line-height:1.45}
+#ladder .ladder .track em{font-size:max(.74rem,11px)}
+#ladder .band{margin-top:1.3rem;display:grid;grid-template-columns:9rem 1fr;gap:1.4rem;align-items:center}
+#ladder .band>b{margin:0}
+#ladder .collab.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem 1.4rem;align-items:start}
+#ladder .collab.grid4>div{display:flex;flex-direction:column;align-items:flex-start;gap:.4rem}
+#ladder .collab.grid4 img{height:1.35rem}
+#ladder .collab.grid4 small{max-width:none}
 </style>
 </head>
 <body class="on-cover">
@@ -601,10 +613,11 @@ table.cmp td{line-height:1.4}
     <div class="kicker rv">Applications · Long term (5+ years)</div>
     <h2 class="rv">Longer term, we can do fully prefabricated envelopes and even fast, light foundations</h2>
     <div class="grid2 rv">
-      <div class="card tint"><h3>Prefabricated building envelopes</h3><p class="sub">Hyperscalers are asking for this now, to simplify design and delivery and accelerate schedules.</p><p>Structure and skin shipped as panels and modules. Self-supporting shells, far lighter than steel and precast, movable.</p></div>
-      <div class="card tint"><h3>Foundations, slabs and paving</h3><p class="sub">Biggest unaddressed impact both to speed of development and construction, and with huge carbon impact. Geotechnical requirements greatly impact schedule and site selection.</p><p>Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete.</p></div>
+      <div class="card tint"><div class="imgbox bp"><img src="assets/bp_shell.jpg?v=9741c7eb" alt="Blueprint: prefabricated panel building shell, isometric cutaway with wall section" loading="lazy"></div><h3>Prefabricated building envelopes</h3><p class="sub">Hyperscalers are asking for this now, to simplify design and delivery and accelerate schedules.</p><p>Structure and skin shipped as panels and modules. Self-supporting shells, far lighter than steel and precast, movable.</p></div>
+      <div class="card tint"><div class="imgbox bp"><img src="assets/bp_foundation.jpg?v=8f8a629c" alt="Blueprint: footing and grade-beam grid in plan, with a slab-on-grade section" loading="lazy"></div><h3>Foundations, slabs and paving</h3><p class="sub">Biggest unaddressed impact both to speed of development and construction, and with huge carbon impact. Geotechnical requirements greatly impact schedule and site selection.</p><p>Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete.</p></div>
     </div>
-    <div class="card tint rv" style="margin-top:1rem"><p style="font-size:.78rem;font-style:italic;color:var(--cream-dim)">Technical potential, not a plan: 1–2 million tons of concrete and rebar per gigawatt. No design or code pathway yet.</p></div>
+    <p class="imgnote rv">Concept blueprints</p>
+    <p class="lead rv" style="margin-top:.6rem;color:var(--cream);max-width:none">Significant work ahead to design and prove out these systems, but tremendous rewards for success.</p>
   </div>
 </section>
 
@@ -614,13 +627,13 @@ table.cmp td{line-height:1.4}
     <h2 class="rv">We’re engaging thoughtfully and deeply with customers</h2>
     <div class="ladder rv">
       <div class="lhead"><span></span><div class="stages"><span data-s="Talks">Conversations</span><span data-s="Apps">Applications identified</span><span data-s="Scoped">Projects scoped</span><span data-s="Testing">Testing &amp; mockups</span><span data-s="Purchase">First purchase</span><span data-s="Design basis">Basis of design</span></div><span class="lh">What they are doing with us</span></div>
-      <div class="lrow"><h3>Microsoft</h3><div class="track" style="--pos:2"><i></i><b></b><em>Next: first skin project on one building or yard</em></div><p>Facades, interiors and fencing under discussion; roof-truss and enclosure work with their A/E firms; basis-of-design interest</p></div>
-      <div class="lrow"><h3>Meta</h3><div class="track" style="--pos:2"><i></i><b></b><em>Next: backplane listing; first facade project</em></div><p>Over a year across the ecosystem; facades and backplanes under way; structure and racking to follow</p></div>
-      <div class="lrow"><h3>Google</h3><div class="track" style="--pos:1"><i></i><b></b><em>Next: scope with their design teams</em></div><p>Just begun; focus on structural steel</p></div>
-      <div class="lrow"><h3>Vertiv</h3><div class="track" style="--pos:0"><i></i><b></b><em>Next: identify first applications</em></div><p>Exploring SUPERWOOD components</p></div>
-      <div class="lrow"><h3>Data center operators</h3><div class="track" style="--pos:0"><i></i><b></b><em>Next: fence specification and quote</em></div><p>Security fencing around outdoor infrastructure</p></div>
+      <div class="lrow"><h3>Microsoft</h3><div class="track" style="--pos:2"><i></i><b></b><em>Next: first skin project on one building or yard</em></div><p>Facades, interiors and fencing under discussion; roof trusses and enclosures with their architects and engineers; heading for the basis of design.</p></div>
+      <div class="lrow"><h3>Meta</h3><div class="track" style="--pos:2"><i></i><b></b><em>Next: backplane listing; first facade project</em></div><p>Facades and backplanes under way; structural applications and racking to follow.</p></div>
+      <div class="lrow"><h3>Google</h3><div class="track" style="--pos:1"><i></i><b></b><em>Next: scope with their design teams</em></div><p>Just begun; focus on replacing structural steel.</p></div>
+      <div class="lrow"><h3>Vertiv</h3><div class="track" style="--pos:0"><i></i><b></b><em>Next: identify first applications</em></div><p>Equipment builder exploring SUPERWOOD components.</p></div>
+      <div class="lrow"><h3>Data center operators</h3><div class="track" style="--pos:0"><i></i><b></b><em>Next: fence specification and quote</em></div><p>Security fencing around outdoor infrastructure.</p></div>
     </div>
-    <div class="band rv"><b>Engineering and construction collaborators</b><div class="collab"><div><img src="assets/logo_fastepp.png?v=4478952d" alt="Fast + Epp"><small>Top timber engineers</small></div><div><img src="assets/logo_hitt.png?v=d2f56ec6" alt="HITT Contracting"><small>#1 US data center contractor, ENR 2025</small></div><div><img src="assets/logo_turner.png?v=71244092" alt="Turner Construction"><small>#1 US contractor, ENR Top 400</small></div><div><span class="nm">Don Davies, advisor</span><small>Former president of MKA; structural engineer for several hyperscalers</small></div></div></div>
+    <div class="band rv"><b>Engineering and construction collaborators</b><div class="collab grid4"><div><img src="assets/logo_fastepp.png?v=4478952d" alt="Fast + Epp"><small>Top timber engineers</small></div><div><img src="assets/logo_hitt.png?v=d2f56ec6" alt="HITT Contracting"><small>#1 US data center contractor, ENR 2025</small></div><div><img src="assets/logo_turner.png?v=71244092" alt="Turner Construction"><small>#1 US contractor, ENR Top 400</small></div><div><span class="nm">Don Davies, advisor</span><small>Former president of MKA; structural engineer for several hyperscalers</small></div></div></div>
   </div>
 </section>
 

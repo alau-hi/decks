@@ -403,17 +403,16 @@ const vis = [
   ["Foundations, slabs and paving", "Lightweight, insulated SUPERWOOD foundations and slabs in place of concrete — installed faster, with lower geotechnical demands, and potentially movable.", "Biggest unaddressed impact both to speed of development and construction, and with huge carbon impact. Geotechnical requirements greatly impact schedule and site selection."],
 ];
 vis.forEach(([head, sub, why], i) => {
-  // text only — Alex 2026-09-05: no renderings on the long-term slide yet
-  const cw = 6.0, x = L + i * 6.2, y = 2.1;
-  panel(s, x, y, cw, 3.7, PANEL2);
-  s.addText(head, { x: x + 0.3, y: y + 0.25, w: cw - 0.6, h: 0.4, fontFace: SERIF, fontSize: 18, color: CREAM, margin: 0 });
-  // why it matters as the subtitle (Alex 2026-09-06), description beneath
-  s.addText(why, { x: x + 0.3, y: y + 0.72, w: cw - 0.6, h: 1.0, fontFace: SANS, fontSize: 11.5, color: CREAM, margin: 0, valign: "top" });
-  body(s, sub, x + 0.3, y + 1.8, cw - 0.6, 1.6, 10.5, MUTED);
+  // blueprint on top of each card (Alex 2026-09-07): future systems, drawn not built
+  const cw = 6.0, x = L + i * 6.2, y = 2.0, ih = 1.3;
+  panel(s, x, y, cw, 3.95, PANEL2);
+  s.addImage({ path: i === 0 ? "prep/bp_shell.jpg" : "prep/bp_foundation.jpg", x: x + 0.3, y: y + 0.25, w: cw - 0.6, h: ih, sizing: { type: "crop", w: cw - 0.6, h: ih } });
+  s.addText(head, { x: x + 0.3, y: y + ih + 0.4, w: cw - 0.6, h: 0.4, fontFace: SERIF, fontSize: 17, color: CREAM, margin: 0 });
+  s.addText(why, { x: x + 0.3, y: y + ih + 0.85, w: cw - 0.6, h: 0.8, fontFace: SANS, fontSize: 10.5, color: GOLD, margin: 0, valign: "top" });
+  body(s, sub, x + 0.3, y + ih + 1.7, cw - 0.6, 0.85, 9.5, MUTED);
 });
-panel(s, L, 6.15, CW, 0.6, PANEL2);
-s.addText("Stated technical potential, not an engineered plan: slab, paving and foundations are on the order of 1–2 million tons of concrete and rebar per gigawatt. No design or code pathway exists yet.",
-  { x: L + 0.3, y: 6.15, w: CW - 0.6, h: 0.6, fontFace: SANS, fontSize: 9.5, italic: true, color: DIM, margin: 0, valign: "middle" });
+conceptTag(s, W - 3.6, 6.0, 3.0, "Concept blueprints");
+s.addText("Significant work ahead to design and prove out these systems, but tremendous rewards for success.", { x: L, y: 6.25, w: CW - 3.2, h: 0.5, fontFace: SERIF, fontSize: 18, color: CREAM, margin: 0, valign: "middle" });
 
 // ---------- 15 · EVERY ACCOUNT ON ONE LADDER ----------
 s = newSlide(); base(s, "InventWood · Customers");
@@ -423,11 +422,11 @@ const stages = ["Conversations", "Applications identified", "Projects scoped", "
 const gx = 3.6, gw = 5.4, sw = gw / stages.length, rowY0 = 2.45, rowH = 0.78;
 stages.forEach((st, i) => s.addText(st.toUpperCase(), { x: gx + i * sw, y: 1.85, w: sw, h: 0.55, fontFace: SANS, fontSize: 6.5, bold: true, color: BRIGHT, charSpacing: 0.5, align: "center", margin: 0, valign: "bottom" }));
 const accounts = [
-  ["Microsoft", 2, "Facades, biophilic interiors, staff and security fencing under discussion; roof-truss and enclosure work with their architecture and engineering firms; interest in SUPERWOOD in the basis of design", "First skin project on one building or yard"],
-  ["Meta", 2, "Engaged for over a year across the data-center ecosystem; facade applications and backplanes under way; structural applications and racking to follow", "Backplane listing; first facade project"],
-  ["Google", 1, "Engagement just begun; initial focus on replacement of structural steel", "Scope with their design teams"],
-  ["Vertiv", 0, "Data center equipment builder exploring SUPERWOOD components", "Identify first applications"],
-  ["Data center operators", 0, "Operators focused on security fencing around outdoor infrastructure", "Fence specification and quote"],
+  ["Microsoft", 2, "Facades, interiors and fencing under discussion; roof trusses and enclosures with their architects and engineers; heading for the basis of design", "First skin project on one building or yard"],
+  ["Meta", 2, "Facades and backplanes under way; structural applications and racking to follow", "Backplane listing; first facade project"],
+  ["Google", 1, "Just begun; focus on replacing structural steel", "Scope with their design teams"],
+  ["Vertiv", 0, "Equipment builder exploring SUPERWOOD components", "Identify first applications"],
+  ["Data center operators", 0, "Security fencing around outdoor infrastructure", "Fence specification and quote"],
 ];
 accounts.forEach(([name, stage, what, next], r) => {
   const y = rowY0 + r * rowH;
