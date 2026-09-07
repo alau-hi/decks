@@ -62,6 +62,7 @@ Footer: confidential mark left, pager centered, InventWood wordmark at the right
 - SUPERMILLS deck itself still titles itself "SUPERMILLS America" in its own repo.
 
 ## Change log
+- 2026-09-06 (Alex batch): slide 7 title back to "What a 1 GW data center is made of" with subtitle "50–80% of a data center's building and contents are steel", side-column statement removed (builder tolerates the missing block); slide 9 hero is the SUPERMILLS cube/panel/I-beam photo (assets/prod_cube.jpg); slide 12 drops the Railings tile; slide 14 card titles enlarged with gold subtitles; slide 15 note removed; slide 16 hint loses "sources link out"; slide 17 keeps only the three bars, sources pop-up on the bars.
 - 2026-09-06: close slide: Investor Overview reference removed for good; contact names pushed further down.
 - 2026-09-06: slide 16 loses the dot bullets (clean stacked entries); slide 17 line is "The rest of the built world is the market." with no percentages (Alex: let the reader do the math). Deck folder moved by Shaun's session to superwood-presentation/superwood-datacenter-investor (served at /datacenters); staging deploys now rsync from there.
 - 2026-09-06: slide 5 cards: label "SUPERWOOD's answer"; answers pinned to the card foot so both align; cards get a lighter panel and a hairline border so the fan-box image reads as a distinct card.

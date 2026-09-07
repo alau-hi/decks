@@ -215,12 +215,13 @@ note(s, "Sources: news.microsoft.com, Nov 2024; Thornton Tomasetti project page;
 // ---------- 5 · WHAT A GW DATA CENTER IS MADE OF ----------
 s = newSlide(); base(s, "InventWood · The need");
 kicker(s, "Materials");
-title(s, "50–80% of a data center’s building and contents are steel", L, 0.88, 11.9, 26);
+title(s, "What a 1 GW data center is made of", L, 0.88, 11.9, 27);
+s.addText("50–80% of a data center’s building and contents are steel", { x: L, y: 1.42, w: 12.2, h: 0.4, fontFace: SERIF, fontSize: 16, color: CREAM, margin: 0 });
 label(s, "By mass", L, 1.8, 4); label(s, "By embodied carbon", 6.7, 1.8, 4);
 const chW = 5.9, chH = chW * 4.8 / 8.0;
 s.addImage({ path: "prep/charts/campus_mass_narrow.png", x: L, y: 2.08, w: chW, h: chH });
 s.addImage({ path: "prep/charts/campus_carbon_narrow.png", x: 6.85, y: 2.08, w: chW, h: chH });
-const sizeL = [["50–80% of the above-ground portion of a data center is steel", "Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server enclosures eventually; never the electronics."]];
+const sizeL = []; // side statement removed 2026-09-06 (Alex); the subtitle carries the steel share
 const sizeR = [["By embodied carbon, steel is about two-thirds of everything estimated, including the steel inside the equipment", "Building materials alone are about 60% steel at the global-average factor, about a third with recycled steel. The steel and plastics in electrical, mechanical and IT equipment add roughly 250,000 tons CO₂e."]];
 [[sizeL, L], [sizeR, 6.7]].forEach(([arr, x]) => arr.forEach(([head, sub]) => {
   const y = 2.08 + chH + 0.42;
@@ -264,7 +265,7 @@ note(s, "Company estimate from the slide 6 model, low–high scenarios, moderate
 s = newSlide(); base(s, "InventWood · The fit");
 kicker(s, "The fit");
 title(s, "SUPERWOOD’s properties are a great fit for data centers", L, 0.88, 11.9, 27);
-s.addImage({ path: "prep/prod-board.jpg", x: L, y: 1.95, w: 4.0, h: 4.0 * 427 / 640 });
+s.addImage({ path: "prep/prod_cube.jpg", x: L, y: 1.95, w: 3.4, h: 3.4 * 1484 / 1187, sizing: { type: "crop", w: 3.4, h: 3.4 } });
 s.addText([
   t("Stronger than steel.\n", { color: CREAM }),
   t("One-sixth the weight.\n", { color: GOLD }),
@@ -345,7 +346,6 @@ title(s, "Other products require only straightforward engineering", L, 0.88, 11.
 const gated = [
   ["tile_fanbox", "Fan enclosures & ducting", "Acoustic and airflow data"],
   ["tile_walkway", "Walkways & platforms", "Load and connection data"],
-  ["tile_railing2", "Railings", "Load testing to code"],
   ["tile_mullion2", "Window mullions", "Thermal and structural data"],
   ["tile_door", "Interior doors & door protection", "Listing for rated openings"],
   ["tile_backplane", "Equipment backplanes", "Electrical-room listing"],
@@ -456,7 +456,6 @@ collab.forEach(([logo, ar, name, desc], i) => {
   else s.addText(name, { x, y: 6.4, w: 2.2, h: 0.27, fontFace: SANS, fontSize: 10, bold: true, color: CREAM, margin: 0, valign: "middle" });
   s.addText(desc, { x, y: 6.64, w: 2.25, h: 0.3, fontFace: SANS, fontSize: 7, color: MUTED, margin: 0, valign: "top" });
 });
-note(s, "Next steps undated. Published backup for Microsoft and Meta on the next slide.", 6.97, 0.3);
 
 // ---------- 16 · MICROSOFT AND META, ON THE RECORD AND WITH US ----------
 s = newSlide(); base(s, "InventWood · Customers");
@@ -507,7 +506,6 @@ cmp.forEach(([lab, f, col, val], i) => {
   s.addShape(pres.ShapeType.roundRect, { x: bx, y: y + 0.05, w: Math.max(0.08, bw * f), h: 0.5, rectRadius: 0.05, fill: { color: col } });
   s.addText(val, { x: bx + bw + 0.3, y, w: 3.4, h: 0.6, fontFace: SANS, fontSize: 14, color: DIM, margin: 0, valign: "middle" });
 });
-s.addText([t("The rest of the built world is the "), gold("market"), t(".")], { x: L, y: 5.35, w: CW, h: 0.6, fontFace: SERIF, fontSize: 20, color: CREAM, margin: 0 });
 note(s, "US: Census Bureau, Construction Spending (C30), July 2026, seasonally adjusted annual rates, release CB26-140 of 1 Sep 2026: total construction $2,157.6 billion; private data center construction $75.2 billion (preliminary). Global: Oxford Economics, Future of Construction (Oct 2021), global construction output forecast of US$13.3 trillion for 2025 in 2017 prices; a forecast, not a measured total.");
 
 // ---------- CLOSE ----------

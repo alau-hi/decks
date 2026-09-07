@@ -79,7 +79,7 @@ LEG_C='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel 
 SLIDER='<label class="soils"><span class="lab">Soil conditions</span><span class="ctl"><input type="range" class="soils-range" min="1" max="3" step="1" value="2" aria-valuetext="Moderate" aria-label="Soil conditions for foundations: good, moderate or poor"><span class="ticks"><i>Good</i><i>Moderate</i><i>Poor</i></span></span><output class="soils-out">Moderate soils</output></label>'
 def rebuild(path):
     h=R(path); a=h.index('<section id="campus"'); b=h.index('</section>',a); sec=h[a:b]
-    li_m=re.search(r'<div class="view" id="view-mass-notes"[^>]*>(<div class="li".*?</p></div></div>)',sec,re.S).group(1)
+    _m=re.search(r'<div class="view" id="view-mass-notes"[^>]*>(<div class="li".*?</p></div></div>)',sec,re.S); li_m=_m.group(1) if _m else ''  # side text removed 2026-09-06 (Alex)
     li_c=re.search(r'<div class="view" id="view-carbon-notes"[^>]*>(<div class="li".*?</p></div></div>)',sec,re.S).group(1)
     foot=('<p class="note rv">Company estimate, 1 GW IT load, high case. Published intensities only for concrete and structural steel (arXiv 2509.21312); other rows from unit masses. '
           'Carbon factors: steel 1.8 kg CO₂e/kg, concrete 0.12, polymers 3.0, valued on each row\u2019s steel, concrete and plastic content; copper, aluminum, electronics, water, gypsum and wood not valued. '

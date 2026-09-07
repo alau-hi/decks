@@ -114,6 +114,7 @@ td:first-child{color:var(--cream);font-weight:600}
 #supply .card{padding:1.4rem 1.5rem 1.5rem}#supply .card h3{font-size:1.35rem;margin-bottom:.5rem}#supply .card p{font-size:max(1rem,13px);line-height:1.5}
 .cmp2{display:grid;gap:1rem;margin-top:1.6rem}.cmp2 .cb{display:grid;grid-template-columns:14rem minmax(0,1fr) 14rem;gap:1rem;align-items:center}.cmp2 .cl{font-size:max(1rem,13px);color:var(--cream);font-weight:600}.cmp2 .ct{height:2.2rem;background:var(--panel);border-radius:.3rem;overflow:hidden}.cmp2 .ct i{display:block;height:100%;min-width:3px;background:var(--wood);border-radius:.3rem}.cmp2 .cv{font-size:max(1rem,13px);color:var(--cream-dim)}@media (max-width:900px), (orientation:portrait){.cmp2 .cb{grid-template-columns:1fr}}
 #record .li{grid-template-columns:1fr;gap:0}#record .li .dot{display:none}
+.cmp2.tipwrap .hint{text-align:right;margin-top:0}
 /* dividers */
 .div .scrim{background:rgba(18,12,7,.35)}
 .div .kicker{margin-bottom:.8rem}.div h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:340}.div .lead{margin-top:.8rem}
@@ -371,7 +372,8 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
 <section id="campus" data-nav="Materials">
   <div class="wrap">
     <div class="kicker rv">Materials</div>
-    <h2 class="rv">50–80% of a data center’s building and contents are steel</h2>
+    <h2 class="rv">What a 1 GW data center is made of</h2>
+    <p class="lead rv" style="color:var(--cream);max-width:none;margin-top:.2rem">50–80% of a data center’s building and contents are steel</p>
     <div class="toggle rv" role="tablist" aria-label="View"><button role="tab" id="tab-mass" aria-selected="true" aria-controls="view-mass view-mass-notes" data-view="mass">By mass, log scale</button><button role="tab" id="tab-carbon" aria-selected="false" aria-controls="view-carbon view-carbon-notes" tabindex="-1" data-view="carbon">By embodied carbon</button></div><label class="soils top"><span class="lab">Soil conditions</span><span class="ctl"><input type="range" class="soils-range" min="1" max="3" step="1" value="2" aria-valuetext="Moderate" aria-label="Soil conditions for foundations: good, moderate or poor"><span class="ticks"><i>Good</i><i>Moderate</i><i>Poor</i></span></span><output class="soils-out">Moderate soils</output></label>
     <div class="split rv campus" style="grid-template-columns:2.6fr 1fr;align-items:stretch">
       <div class="chartcol">
@@ -423,7 +425,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
 </div></div>
       </div>
       <div class="sidecol">
-        <div class="view" id="view-mass-notes" role="tabpanel" aria-labelledby="tab-mass" data-view="mass"><div class="li" style="grid-template-columns:1fr"><div><h3>50–80% of the above-ground portion of a data center is steel</h3><p>Structure, envelope and contents — frame, roof, skins, platforms, racks, enclosures, equipment. Skins, screens and fences now; racks, platforms and barriers next (racks are a few months of development away); frame and roofs as structure; server enclosures eventually; never the electronics.</p></div></div><div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel</span><span><i style="background:#8c8478"></i>Concrete</span><span><i style="background:var(--teal)"></i>Plastic</span><span><i style="background:#5a4a36"></i>Other: copper, aluminum, water, gypsum, wood, electronics</span><span class="muted">Bar length is mass on a log scale; segments show each material's share</span></div></div>
+        <div class="view" id="view-mass-notes" role="tabpanel" aria-labelledby="tab-mass" data-view="mass"><div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel</span><span><i style="background:#8c8478"></i>Concrete</span><span><i style="background:var(--teal)"></i>Plastic</span><span><i style="background:#5a4a36"></i>Other: copper, aluminum, water, gypsum, wood, electronics</span><span class="muted">Bar length is mass on a log scale; segments show each material's share</span></div></div>
         <div class="view" id="view-carbon-notes" role="tabpanel" aria-labelledby="tab-carbon" data-view="carbon" hidden><div class="li" style="grid-template-columns:1fr"><div><h3>By embodied carbon, steel is about two-thirds of everything estimated, including the steel inside the equipment</h3><p>Building materials alone are about 60% steel at the global-average factor, about a third with recycled steel. The steel and plastics in electrical, mechanical and IT equipment add roughly 250,000 tons CO₂e.</p></div></div><div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel at 1.8 kg CO₂e/kg</span><span><i style="background:#8c8478"></i>Concrete at 0.12</span><span><i style="background:var(--teal)"></i>Polymers at an average 3.0</span><span class="muted">Other materials not valued</span></div></div>
         <p class="note rv">Company estimate, 1 GW IT load, high case. Published intensities only for concrete and structural steel (arXiv 2509.21312); other rows from unit masses. Carbon factors: steel 1.8 kg CO₂e/kg, concrete 0.12, polymers 3.0, valued on each row’s steel, concrete and plastic content; copper, aluminum, electronics, water, gypsum and wood not valued. Concrete from a footprint bottom-up (slab, footings, pads, paving); moderate soils by default. Horizons: now = shipping; soon = 1–3 years; medium = new form factors or materials engineering; long = 5+ years, no design or code pathway yet.</p>
       </div>
@@ -458,7 +460,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
     <h2 class="rv">SUPERWOOD’s properties are a great fit for data centers</h2>
     <div class="split rv" style="grid-template-columns:1fr 1.7fr">
       <div>
-        <div class="imgbox" style="aspect-ratio:1.5"><img src="assets/prod_board.jpg?v=36df9876" alt="SUPERWOOD board" loading="lazy"></div>
+        <div class="imgbox" style="aspect-ratio:1.1"><img src="assets/prod_cube.jpg?v=799d7531" alt="SUPERWOOD as a cube, a panel and an I-beam" loading="lazy"></div>
         <h3 style="font-size:1.25rem;font-weight:600;margin-top:1rem;line-height:1.25">Stronger than steel.<br><em style="color:var(--gold)">One-sixth the weight.</em><br>Made from wood, in America.</h3>
       </div>
       <div class="props">
@@ -522,7 +524,6 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
     <div class="tiles n7 rv">
       <div><div class="imgbox"><img src="assets/tile_fanbox.jpg?v=680d3595" alt="" loading="lazy"></div><p><b>Fan enclosures &amp; ducting</b></p></div>
       <div><div class="imgbox"><img src="assets/tile_walkway.jpg?v=458aefdf" alt="" loading="lazy"></div><p><b>Walkways &amp; platforms</b></p></div>
-      <div><div class="imgbox"><img src="assets/tile_railing2.jpg?v=6e1f0abb" alt="" loading="lazy"></div><p><b>Railings</b></p></div>
       <div><div class="imgbox"><img src="assets/tile_mullion2.jpg?v=cc96fc5b" alt="" loading="lazy"></div><p><b>Window mullions</b></p></div>
       <div><div class="imgbox"><img src="assets/tile_door.jpg?v=d9a3e044" alt="" loading="lazy"></div><p><b>Interior doors &amp; door protection</b></p></div>
       <div><div class="imgbox"><img src="assets/tile_backplane.jpg?v=0f347081" alt="" loading="lazy"></div><p><b>Equipment backplanes</b></p></div>
@@ -585,7 +586,6 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
       <div class="lrow"><h3>Data center operators</h3><div class="track" style="--pos:0"><i></i><b></b><em>Next: fence specification and quote</em></div><p>Operators focused on security fencing around outdoor infrastructure</p></div>
     </div>
     <div class="band rv"><b>Engineering and construction collaborators</b><div class="collab"><div><img src="assets/logo_fastepp.png?v=4478952d" alt="Fast + Epp"><small>Top timber engineers</small></div><div><img src="assets/logo_hitt.png?v=d2f56ec6" alt="HITT Contracting"><small>#1 US data center contractor, ENR 2025</small></div><div><img src="assets/logo_turner.png?v=71244092" alt="Turner Construction"><small>#1 US contractor, ENR Top 400</small></div><div><span class="nm">Don Davies, advisor</span><small>Former president of MKA; structural engineer for several hyperscalers</small></div></div></div>
-    <p class="note rv">Next steps undated. Published backup for Microsoft and Meta on the next slide.</p>
   </div>
 </section>
 
@@ -597,7 +597,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
     <div class="grid2 rv">
       <div class="profile">
         <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin-bottom:.5rem">Microsoft <em style="color:var(--gold);font-size:.7em">broad engagement</em></h3>
-        <div class="pub tipwrap" tabindex="0" aria-describedby="tip-ms"><p>Two Northern Virginia datacenters built with cross-laminated timber floor panels on a steel frame — an estimated 35% embodied-carbon reduction vs. conventional steel construction and 65% vs. precast concrete. Design by Gensler; structural engineering by Thornton Tomasetti.</p><span class="hint">Hover or focus for sources and details; sources link out</span><span class="srctip" role="tooltip" id="tip-ms"><a href="https://news.microsoft.com/source/features/sustainability/microsoft-builds-first-datacenters-with-wood-to-slash-carbon-emissions/" target="_blank" rel="noopener">Microsoft Source, Nov 2024</a>: two Northern Virginia datacenters with cross-laminated timber floor panels on a steel frame, about 35% less embodied carbon than conventional steel construction and 65% less than precast concrete. Design by Gensler; structural engineering by Thornton Tomasetti (<a href="https://www.thorntontomasetti.com/project/microsoft-mass-timber-data-centers" target="_blank" rel="noopener">project page</a>). Photographs on the Wood emerging slide are Microsoft's.</span></div>
+        <div class="pub tipwrap" tabindex="0" aria-describedby="tip-ms"><p>Two Northern Virginia datacenters built with cross-laminated timber floor panels on a steel frame — an estimated 35% embodied-carbon reduction vs. conventional steel construction and 65% vs. precast concrete. Design by Gensler; structural engineering by Thornton Tomasetti.</p><span class="hint">Hover or focus for sources and details</span><span class="srctip" role="tooltip" id="tip-ms"><a href="https://news.microsoft.com/source/features/sustainability/microsoft-builds-first-datacenters-with-wood-to-slash-carbon-emissions/" target="_blank" rel="noopener">Microsoft Source, Nov 2024</a>: two Northern Virginia datacenters with cross-laminated timber floor panels on a steel frame, about 35% less embodied carbon than conventional steel construction and 65% less than precast concrete. Design by Gensler; structural engineering by Thornton Tomasetti (<a href="https://www.thorntontomasetti.com/project/microsoft-mass-timber-data-centers" target="_blank" rel="noopener">project page</a>). Photographs on the Wood emerging slide are Microsoft's.</span></div>
         <div class="kicker" style="margin-bottom:.5rem">Working with InventWood</div>
         <div class="split" style="grid-template-columns:1fr 5.5rem;gap:1rem">
           <div>
@@ -610,7 +610,7 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
       </div>
       <div class="profile">
         <h3 style="font-family:'Fraunces',serif;font-weight:400;font-size:1.5rem;margin-bottom:.5rem">Meta <em style="color:var(--gold);font-size:.7em">engaged for over a year</em></h3>
-        <div class="pub tipwrap" tabindex="0" aria-describedby="tip-meta"><p>Piloting mass timber for data center administrative buildings: first completed in 2025 at Aiken, South Carolina (DPR, SmartLam); projects under way in Cheyenne, Wyoming and Montgomery, Alabama — about a 41% reduction in the embodied carbon of the materials substituted.</p><span class="hint">Hover or focus for sources and details; sources link out</span><span class="srctip" role="tooltip" id="tip-meta"><a href="https://sustainability.atmeta.com/blog/2025/07/31/meta-pilots-mass-timber-for-more-sustainable-data-center-construction/" target="_blank" rel="noopener">Meta Sustainability, 31 Jul 2025</a>: mass-timber pilot for data center administrative buildings. First completed 2025 in Aiken, South Carolina with DPR Construction and SmartLam; Cheyenne, Wyoming and Montgomery, Alabama under way. About 41% less embodied carbon in the materials substituted. Photograph on the Wood emerging slide is Meta's.</span></div>
+        <div class="pub tipwrap" tabindex="0" aria-describedby="tip-meta"><p>Piloting mass timber for data center administrative buildings: first completed in 2025 at Aiken, South Carolina (DPR, SmartLam); projects under way in Cheyenne, Wyoming and Montgomery, Alabama — about a 41% reduction in the embodied carbon of the materials substituted.</p><span class="hint">Hover or focus for sources and details</span><span class="srctip" role="tooltip" id="tip-meta"><a href="https://sustainability.atmeta.com/blog/2025/07/31/meta-pilots-mass-timber-for-more-sustainable-data-center-construction/" target="_blank" rel="noopener">Meta Sustainability, 31 Jul 2025</a>: mass-timber pilot for data center administrative buildings. First completed 2025 in Aiken, South Carolina with DPR Construction and SmartLam; Cheyenne, Wyoming and Montgomery, Alabama under way. About 41% less embodied carbon in the materials substituted. Photograph on the Wood emerging slide is Meta's.</span></div>
         <div class="kicker" style="margin-bottom:.5rem">Working with InventWood</div>
         <div class="split" style="grid-template-columns:1fr 5.5rem;gap:1rem">
           <div>
@@ -637,12 +637,12 @@ table.risks td:first-child{width:38%}table.risks td{font-size:max(.78rem,11px)}
   <div class="wrap">
     <div class="kicker rv">Beyond data centers</div>
     <h2 class="rv">We’ll build on the data center opportunity to <em>springboard</em> us into much larger markets</h2>
-    <div class="cmp2 rv">
+    <div class="cmp2 rv tipwrap" tabindex="0" aria-describedby="tip-beyond">
       <div class="cb"><span class="cl">Data Centers (US)</span><div class="ct"><i style="width:0.57%;background:var(--gold)"></i></div><span class="cv">$75 billion a year</span></div>
       <div class="cb"><span class="cl">All Construction (US)</span><div class="ct"><i style="width:16.2%"></i></div><span class="cv">$2,158 billion a year</span></div>
       <div class="cb"><span class="cl">All Construction (Global)</span><div class="ct"><i style="width:100%"></i></div><span class="cv">about $13,300 billion a year</span></div>
+      <span class="hint">Hover or focus for sources</span><span class="srctip" role="tooltip" id="tip-beyond">US: Census Bureau, Construction Spending (C30), July 2026, seasonally adjusted annual rates, release CB26-140 of 1 Sep 2026: total construction $2,157.6 billion; private data center construction $75.2 billion (preliminary). Global: Oxford Economics, Future of Construction (Oct 2021), global construction output forecast of US$13.3 trillion for 2025 in 2017 prices; a forecast, not a measured total.</span>
     </div>
-    <p class="lead rv tipwrap" tabindex="0" aria-describedby="tip-beyond" style="margin-top:1.4rem;color:var(--cream);max-width:none">The rest of the built world is the <em style="color:var(--gold)">market</em>.<span class="hint">Hover or focus for sources</span><span class="srctip" role="tooltip" id="tip-beyond">US: Census Bureau, Construction Spending (C30), July 2026, seasonally adjusted annual rates, release CB26-140 of 1 Sep 2026: total construction $2,157.6 billion; private data center construction $75.2 billion (preliminary). Global: Oxford Economics, Future of Construction (Oct 2021), global construction output forecast of US$13.3 trillion for 2025 in 2017 prices; a forecast, not a measured total.</span></p>
   </div>
 </section>
 
