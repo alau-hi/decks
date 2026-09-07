@@ -90,12 +90,12 @@ s = newSlide(); base(s, "InventWood · The thesis");
 kicker(s, "The thesis");
 title(s, [t("We help data centers decarbonize and improve their impact on communities, while they accelerate SUPERWOOD's journey from premium skins into "), gold("structural"), t(" applications")], L, 0.88, 12.2, 24);
 const thesis = [
-  ["The buyer is short of steel and already building with wood",
-   "Data centers are among the fastest-growing buyers of structural steel. Customers report backlogs and shortages, and Microsoft and Meta already build data-center structures in mass timber."],
-  ["We turbocharge the wood they already use",
-   "Mass timber replaces concrete floors. SUPERWOOD, stronger than A36 steel in tension at one-sixth the weight, adds the steel: members, skins and screens — and strengthens the mass timber itself. It ships today from SuperMill One; truss design and mass-timber enhancement are under way."],
-  ["One basis-of-design win is SuperMill Two-scale demand",
-   "A gigawatt data center's skins alone are one to three years of SuperMill One's output; its structure is a year or more of SuperMill Two. Long term: prefabricated envelopes and, eventually, foundations."],
+  ["The buyer is short of steel, already trying wood, and dealing with community resistance.",
+   "Data centers are among the fastest-growing buyers of structural steel; Microsoft and Meta already build with mass timber; communities are blocking projects over looks and noise."],
+  ["Their massively scalable demand helps with low-cost financing for SUPERMILLS",
+   "One hyperscaler basis of design, repeated data center after data center, is a year or more of SuperMill Two output."],
+  ["And provides a large-scale proving ground for structural applications.",
+   "Skins and fences first, then trusses and hybrid glulam, on the code pathway mass timber has already opened."],
 ];
 thesis.forEach(([head, sub], i) => {
   const cw = 3.95, x = L + i * 4.125, y = 2.1;
