@@ -19,7 +19,7 @@ def rows_for(case):
     ("Concrete — slab on grade, paving",sc["slab"]["t_hi"]/1000),("Concrete — foundations, footings, pads",sc["foundations"]["t_hi"]/1000),("Rebar in all concrete",sc["rebar"]["t_hi"]/1000)]
 GROUPS=[("Contents",9,"contents","Contents — fit-out and equipment: platforms, acoustic barriers, racking, tray and doors, ducting, interior finishes, electrical, mechanical and IT"),("Building",4,"building","Building — structure and envelope: primary frame, roof trusses and deck, exterior skins, louvers, screens and fencing"),("Foundation",3,"foundation","Foundation — slab on grade and paving, footings, grade beams and equipment pads, and the rebar in all of it")]
 MATS=("steel","concrete","plastic","other"); COL={"steel":"var(--wood)","concrete":"#8c8478","plastic":"var(--teal)","other":"#5a4a36"}
-CAX=500.0
+CAX=600.0  # poor-soils foundation carbon reaches ~523 kt, so the axis runs to 600
 DISP={"Steel — primary frame":"Primary frame","Steel — roof trusses, joists, deck, girts":"Roof trusses, joists, deck, girts"}
 def pct_mass(kt): return 8.0+26.45*math.log10(kt)
 def mass_bar(kt,sp):
@@ -44,7 +44,7 @@ def group_cells(grp,view):
 def row_cells(name,kt,view):
     sp=SPLIT[name]
     if view=="mass": return mass_bar(kt,sp), f"{kt*1000:,.0f} tons"
-    parts=carb_parts(kt,sp); tot=sum(v for _,v in parts); tag=" <em>other materials not valued</em>" if sp[3]>=0.3 else ""
+    parts=carb_parts(kt,sp); tot=sum(v for _,v in parts); tag=' <em title="Other materials not valued" aria-label="other materials not valued">\u2020</em>' if sp[3]>=0.3 else ""
     return carb_bar(parts), f"{tot*1000:,.0f} tons CO₂e{tag}"
 def rows_html(view,case=DEFAULT):
     ROWS=rows_for(case); out=HZ_HEAD; i=0
@@ -73,9 +73,9 @@ def scenario_data():
         data[case]=d
     return data
 AX_M='<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:8.0%">1,000</span><span style="left:34.4%">10,000</span><span style="left:60.9%">100,000</span><span style="left:87.4%;transform:translateX(-60%)">1,000,000</span><span class="axl">tons, log scale</span></div><span class="hv"></span><span></span></div>'
-AX_C='<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:0%">0</span><span style="left:20%">100,000</span><span style="left:40%">200,000</span><span style="left:60%">300,000</span><span style="left:80%">400,000</span><span style="left:100%;transform:translateX(-100%)">500,000</span><span class="axl">tons CO₂e</span></div><span class="hv"></span><span></span></div>'
+AX_C='<div class="hb ax"><span class="hl"></span><div class="tr ticks"><span style="left:0%">0</span><span style="left:16.7%">100,000</span><span style="left:33.3%">200,000</span><span style="left:50%">300,000</span><span style="left:66.7%">400,000</span><span style="left:83.3%">500,000</span><span style="left:100%;transform:translateX(-100%)">600,000</span><span class="axl">tons CO₂e</span></div><span class="hv"></span><span></span></div>'
 LEG_M='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel</span><span><i style="background:#8c8478"></i>Concrete</span><span><i style="background:var(--teal)"></i>Plastic</span><span><i style="background:#5a4a36"></i>Other: copper, aluminum, water, gypsum, wood, electronics</span></div>'
-LEG_C='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel at 1.8 kg CO₂e/kg</span><span><i style="background:#8c8478"></i>Concrete at 0.12</span><span><i style="background:var(--teal)"></i>Polymers at an average 3.0</span><span class="muted">Other materials not valued</span></div>'
+LEG_C='<div class="hleg mats"><span><i style="background:var(--wood)"></i>Steel at 1.8 kg CO₂e/kg</span><span><i style="background:#8c8478"></i>Concrete at 0.12</span><span><i style="background:var(--teal)"></i>Polymers at an average 3.0</span><span class="muted">\u2020 Other materials not valued</span></div>'
 SLIDER='<label class="soils"><span class="lab">Soil conditions</span><span class="ctl"><input type="range" class="soils-range" min="1" max="3" step="1" value="2" aria-valuetext="Moderate" aria-label="Soil conditions for foundations: good, moderate or poor"><span class="ticks"><i>Good</i><i>Moderate</i><i>Poor</i></span></span><output class="soils-out">Moderate soils</output></label>'
 def rebuild(path):
     h=R(path); a=h.index('<section id="campus"'); b=h.index('</section>',a); sec=h[a:b]
